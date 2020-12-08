@@ -1,0 +1,24 @@
+.THIS{transition:all .5s ease}
+.THIS p.pleaseSelectText{margin-top:1.5em}
+.THIS .slds-card{max-width:450px;margin:1.5em 0;padding-top:.8em;border-width:2px}
+.THIS .slds-card__header{display:none}
+.THIS .slds-select{height:41px}
+.THIS .mdrBlock lightning-input .slds-required:not(.firstAsterisk){display:inline-block}
+.THIS .slds-card__body{display:flex;margin-left:2.5em;align-items:center}
+.THIS lightning-icon{margin-right:3.1em;padding:2px;transition:background-color .5s ease;border:3px solid gray;border-radius:50px;background-color:transparent}
+.THIS lightning-icon svg{fill:transparent}
+.THIS .schoolName{font-size:1.2em;font-weight:700;margin-bottom:.2em}
+.THIS .cardSchoolContainer{cursor:pointer}
+.THIS .cardSchoolContainer .schoolName{font-size:1.2em;font-weight:700;margin-bottom:.2em}
+.THIS .cardSchoolContainer.selected .slds-card{border-color:green}
+.THIS .cardSchoolContainer.selected lightning-icon{padding:5px;border:none;border-radius:50px;background-color:green}
+.THIS .cardSchoolContainer.selected lightning-icon svg{fill:#fff}
+.THIS .boxshadow{border-radius:3px;background:#fff;box-shadow:0 2px 4px 0 rgba(0,0,0,.5)}
+.THIS .submit-button{font-size:1.15rem;font-weight:400;line-height:2.75}.THIS .slds-required.firstAsterisk{margin-left:-.74em}
+.THIS .record-label+p{color:#4f5759}.THIS .record-label{font-size:.88rem;margin-bottom:.2rem;color:#000}
+.THIS .slds-required:not(.firstAsterisk){display:none}
+.THIS label.record-label{display:flex}
+
+/*added by jagadeesh Bug# 135298 */
+.THIS .test{color :black;text-decoration: none;} 
+.THIS .test .cardSchoolContainer {max-width: 450px;}

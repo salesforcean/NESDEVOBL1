@@ -1,0 +1,77 @@
+<!--
+ - Created by Ashish on 11-12-2018.
+ -->
+
+<aura:component description="NES_KnowledgeBase" implements="forceCommunity:availableForAllPageTypes" access="global" extends="c:Peak_Base">
+
+
+    <lightning:layout>
+        <lightning:layoutItem size="12">
+            <div class="slds-text-heading_medium slds-p-bottom_x-large"><b>Find what you need</b></div>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+    <lightning:layout >
+        <lightning:layoutItem size="4">
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item slds-is-active" title="Account Management" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Account Management</a>
+                    </li>
+                </ul>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="4" class="slds-p-left_medium">
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item" title="Eligibilty" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Eligibilty</a>
+                    </li>
+                </ul>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="4" class="slds-p-left_medium">
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item" title="Enrollment" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Enrollment</a>
+                    </li>
+                </ul>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+    <lightning:layout class="slds-p-top_small">
+        <lightning:layoutItem size="4">
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item" title="Uploading Documents" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Uploading Documents</a>
+                    </li>
+                </ul>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="4" class="slds-p-left_medium">
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item" title="Passwords" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Passwords</a>
+                    </li>
+                </ul>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="4" class="slds-p-left_medium">
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item" title="Designated Caretakers" role="presentation">
+                        <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Designated Caretakers</a>
+                    </li>
+                </ul>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+
+
+
+</aura:component>

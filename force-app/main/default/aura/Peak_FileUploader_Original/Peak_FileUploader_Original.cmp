@@ -1,0 +1,380 @@
+<!--
+ - Created by 7Summits - Joe Callin on 3/17/18.
+ - 2019-08-13 modified for #102160 User Story,Task 104354 (Maddileti Boya) 
+ - 2019-08-27 modified for #102160 User Story,Task 107549 (Maddileti Boya) 
+ - 2019-10-04 added token cache #US109799/fixed #BUG112429  (Mark Membrino)
+ - 2019-10-04 updated skip for now #US108687 (Ali Khan)
+ - 2019-11-12 updated for #115213 User Story (Maddileti Boya)
+ -  2019-11-21 updated css styles for 119110 bug(#115213 US)  (Maddileti Boya)
+ - 2019-12-02 Updated Css Styles and cmp (Ravi)
+-->
+
+<aura:component description="Peak_FileUploader_Original" access="global" controller="Peak_FileUploadController" extensible="true" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" extends="c:Peak_FileUploadBase">
+    <ltng:require styles="{!$Resource.icons + '/popupStyles.css'}" />
+    
+    <!--NOTE DUE TO A SALESFORCE HEAP LIMIT THE MAX FILE SIZE ALLOWED FOR THIS UPLOADED IS ~4.2MB-->
+    <aura:attribute name="isInit" type="Boolean" default="false"/>
+    <aura:attribute name="uploaderInit" type="Boolean" default="false"/>
+    <aura:attribute name="iframeLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="cameraOpen" type="Boolean" default="false"/>
+    <aura:attribute name="cameraActive" type="Boolean" default="false"/>
+    <aura:attribute name="imageCaptured" type="Boolean" default="false"/>
+    <aura:attribute name="studentId" type="String"/>
+    <aura:attribute name="caretakerId" type="String"/>
+    <aura:attribute name="studentName" type="String"/>
+    <aura:attribute name="studentGrade" type="String"/>
+    <aura:attribute name="processId" type="String"/>
+    <aura:attribute name="householdId" type="String"/>
+    <aura:attribute name="programEnrollmentId" type="String"/>
+    <aura:attribute name="documentInfo" type="Object" />
+    <aura:attribute name="stream" type="Object" />
+    
+    <aura:attribute name="enrollmentComponentAffiliationId" type="String"/>
+    <aura:attribute name="enrollmentDocumentId" type="String"/>
+    <aura:attribute name="ecAllowedFileFormats" type="String" default=".pdf"/>
+    <aura:attribute name="allowsPhotos" type="Boolean" />
+    <aura:attribute name="cameraAccessError" type="String"/>
+    
+    <!--Used internally by the component-->
+    <aura:attribute name="sizeAbbr" type="List" default="KB,MB,GB"/>
+    <aura:attribute name="chunkSize" type="Integer" default="950000"/>
+    <aura:attribute name="curList" type="List"/>
+    <aura:attribute name="validList" type="List"/>
+    <aura:attribute name="invalidList" type="List"/>
+    <aura:attribute name="fileInfo" type="Object"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+    <aura:attribute name="isSupported" type="Boolean" default="false"/>
+    <aura:attribute name="attributesToConvert" type="List" default="message,allTypesText,errorSize,errorExt,uploadLabel"/>
+    <aura:attribute name="showList" type="Boolean" default="false"/>
+    <aura:attribute name="backButtonLabel" type="String" default="Back to Student Overview"/>
+    <aura:attribute name="cameraBlocked" type="Boolean" default="false"/>
+	<aura:attribute name="docTokenTimeout" type="String" default="{!$Label.c.NES_DocTokenTimeoutMinutes}"/>
+
+    
+    <!--These are in the design file and can be set by the property panel or another component-->
+    <aura:attribute name="showFileLists" type="Boolean" default="true"/>
+    
+    <aura:attribute name="parentId" type="String"/>
+    <aura:attribute name="title" type="String" default=""/>
+    <aura:attribute name="message" type="String" default=""/>
+    <aura:attribute name="uploadLabel" type="String" default=""/>
+    <aura:attribute name="mobileUploadTitle" type="String" default=""/>
+    <aura:attribute name="allTypesText" type="String" default=""/>
+    
+    <aura:attribute name="validListText" type="String" default=""/>
+    <aura:attribute name="invalidListText" type="String" default="This file was rejected"/>
+    <aura:attribute name="invalidListTextMultiple" type="String" default="These files were rejected"/>
+    <aura:attribute name="deleteText" type="String" default="Cancel"/>
+    <aura:attribute name="removeText" type="String" default="Remove file from list"/>
+    <aura:attribute name="errorSize" type="String" default="{0} was rejected because it's bigger than the max file size of {1}"/>
+    <aura:attribute name="errorExt" type="String" default="{0} was rejected because it isn't one of these allowed formats: {1}"/>
+    <aura:attribute name="useClientUpload" type="Boolean" default="true"/>
+    
+    <!--These should only be set by another component-->
+    <aura:attribute name="inForm" type="Boolean" default="false"/>
+    
+    <aura:attribute name="CustomClassName" type="String" default=""/>
+    <aura:attribute name="CustomIdName" type="String" default=""/>
+    <aura:attribute name="isOnRecordPage" type="Boolean" default="false"/>
+    <aura:attribute name="showWarningDialog" type="Boolean" default="false"/>
+    
+    <aura:attribute name="canvasWidth" type="Integer" default="100"/>
+    <aura:attribute name="canvasHeight" type="Integer" default="100"/>
+    
+     <!--  add by maddileti for #115213 User Story on 2019-11-12  -->
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+   <!--  end by maddileti for #115213 User Story on 2019-11-12  -->
+    <aura:registerEvent name="setFileList" type="c:Peak_SetFileListEvent"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div>
+        
+        <aura:if isTrue="{!v.showWarningDialog}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Unsubmitted Files</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p class="slds-p-left_medium">Your unsubmitted files will be lost if you navigate away before submitting. Are you sure you want to leave this page?</p>
+                        <div class="slds-p-around_medium">
+                            <lightning:button variant="neutral" label="No, Stay On This Page" class="slds-var-m-right_large" onclick="{!c.dismissModal}"/>
+                            <lightning:button variant="brand" label="Yes, Take Me Back to Student Overview" onclick="{!c.directBack}"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.isOnRecordPage == false}">
+            <lightning:layout multipleRows="false">
+                <lightning:layoutItem size="12">
+                    <!-- Added By Ravi-->
+                    <lightning:button variant="neutral" class="backtostudent" label="&#60; Back to Student Overview" onclick="{!c.goToOverview}" />
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.isLoading}">
+            <div class="{!v.isOnRecordPage ? 'recordPageStyles' : ''}">
+                <c:Peak_LoadingGif size="small" variant="brand"/>
+            </div>
+        </aura:if>
+        
+        <div>
+            <aura:if isTrue="{!!v.uploaderInit}">
+                <div class="slds-text-align_center slds-p-around_medium large-margin-top">
+                    <em class="slds-text-heading_medium">Authenticating...</em>
+                </div>
+            </aura:if>
+            
+            <iframe aura:id="pearsonauth" id="pearsonauthiframe" src="{!$Label.c.NES_DocumentURL_iframe}" onload="{!c.iframeLoaded}" style="border:0; height:0; width:0;"></iframe>
+            
+            <aura:if isTrue="{!v.uploaderInit}">
+               <div>
+                   <!-- Added by Ravi-->
+                <h5>{!v.studentName}</h5>
+                <h2>{!v.documentInfo.documentName}</h2></div>
+                <div class="uploader-box">
+                    
+                    <lightning:layout multipleRows="true">
+                        
+                        <lightning:layoutItem mediumDeviceSize="8" size="12">
+                            
+                            
+                            <div class="{!v.documentInfo.documentName ? 'slds-var-m-bottom_x-large' : 'slds-hide'}">
+                               <!-- Removed by Ravi-->
+                                <!-- <h5>{!v.studentName}</h5>
+                                <h2>{!v.documentInfo.documentName}</h2-->
+                                <aura:iteration items="{!v.documentInfo.textEnrollmentComponents}" var="theText">
+                                    <aura:unescapedHtml value="{!theText.Component_Message__c}"/>
+                                </aura:iteration>
+                            </div>
+                            
+                            <section class="{!'peak-component ' + v.CustomClassName}" id="{!v.CustomIdName}">
+                                
+                                <aura:if isTrue="{!v.uploaderInit}">
+                                    <aura:if isTrue="{!or(v.title != '', v.message != '')}">
+                                        <lightning:layout class="upload-info slds-p-bottom_small">
+                                            <lightning:layoutItem flexibility="grow">
+                                                <aura:if isTrue="{!v.title != ''}">
+                                                    <lightning:layout >
+                                                        <lightning:layoutItem >
+                                                            <h4 class="slds-text-heading_small"><c:Peak_Base labelText="{!v.title}"/></h4>
+                                                        </lightning:layoutItem>
+                                                    </lightning:layout>
+                                                </aura:if>
+                                                <aura:if isTrue="{!v.message != ''}">
+                                                    <lightning:layout >
+                                                        <lightning:layoutItem>
+                                                            <p>
+                                                                <aura:unescapedHtml value="{!format(v.message, v.fileInfo.maxFileSize, v.fileInfo.prettyExtensions)}"/>
+                                                            </p>
+                                                        </lightning:layoutItem>
+                                                    </lightning:layout>
+                                                </aura:if>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                    </aura:if>
+                                    <lightning:layout multipleRows="true" class="spinner-container">
+                                        
+                                        <aura:if isTrue="{!!v.isLoading}">
+                                            <lightning:layoutItem size="12" class="slds-p-bottom_medium">
+                                                <lightning:layout class="file-input">
+                                                    <lightning:layoutItem flexibility="grow" class="button-block">
+                                                        <lightning:input class="lowercase" aura:id="fileInput" disabled="{!v.cameraOpen}" type="file" label="{!v.uploadLabel}" name="file" multiple="true" accept="{!v.ecAllowedFileFormats}" onchange="{!c.handleFilesChange}" variant="{!v.uploadLabel != '' ? 'standard' : 'label-hidden'}" />
+                                                        <aura:if isTrue="{!and(v.allowsPhotos, !v.isOnRecordPage)}">
+                                                            <span class="slds-form--inline slds-p-horizontal_small docOr">or</span>
+                                                            <lightning:input class="lowercase slds-hide_medium mobileSecondFileInput picture" aura:id="fileInput" disabled="{!v.cameraOpen}" type="file" label="{!v.uploadLabel}" name="file" multiple="true" accept="{!v.ecAllowedFileFormats}" onchange="{!c.handleFilesChange}" variant="{!v.uploadLabel != '' ? 'standard' : 'label-hidden'}" />
+                                                            <lightning:button variant="brand" label="Take a picture" disabled="{!v.cameraOpen}" class="picture lowercase slds-show_medium" onclick="{!c.accessCamera}" />
+                                                        </aura:if>
+                                                    </lightning:layoutItem>
+                                                </lightning:layout>
+                                            </lightning:layoutItem>
+                                            <aura:if isTrue="{!v.cameraBlocked}">
+                                                <p class="slds-text-color_error">Please allow camera access to use the 'Take a Picture' functionality.</p>
+                                            </aura:if>
+                                        </aura:if>
+                                        
+                                        <lightning:layout>
+                                            <lightning:layoutItem size="12" padding="around-medium" class="{!v.cameraOpen ? 'slds-show' : 'slds-hide'}">
+                                                <div aura:id="capturingItems" class="{!v.cameraActive ? 'slds-show' : 'slds-hide'}">
+                                                    <video aura:id="video" width="640" height="480"></video>
+                                                    <lightning:button variant="brand" class="slds-m-top_x-large" label="Snap" aura:id="snap" onclick="{!c.drawImage}"/>
+                                                    <lightning:button variant="brand" class="slds-m-left_x-large slds-m-top_x-large" label="Cancel" aura:id="cancel" onclick="{!c.cancelImage}"/>
+                                                </div>
+                                                <div aura:id="capturedItems" class="{!v.imageCaptured ? 'slds-show' : 'slds-hide'}">
+                                                    <aura:if isTrue="{!v.canvasWidth > 100}">
+                                                        <canvas aura:id="canvas" id="canvas" width="{!v.canvasWidth}" height="{!v.canvasHeight}"></canvas>
+                                                    </aura:if>
+                                                    <lightning:button variant="brand" class="slds-m-top_x-large slds-m-right_x-large" label="Use Photo" aura:id="addCameraShot" onclick="{!c.addCameraShotToList}"/>
+                                                    <lightning:button variant="brand" class="slds-m-top_x-large" label="Retake Photo" aura:id="retake" onclick="{!c.retakePhoto}"/>
+                                                </div>
+                                            </lightning:layoutItem>
+                                        </lightning:layout>
+                                        
+                                        <aura:if isTrue="{!and(v.showList, v.showFileLists)}">
+                                            <aura:if isTrue="{!v.validList.length > 0}">
+                                                <lightning:layoutItem padding="" size="12" class="slds-p-bottom_medium">
+                                                    <lightning:layout multipleRows="true">
+                                                        <aura:if isTrue="{!v.validListText != ''}">
+                                                            <lightning:layoutItem padding="" size="12">
+                                                                <h4><c:Peak_Base labelText="{!v.validListText}"/></h4>
+                                                            </lightning:layoutItem>
+                                                        </aura:if>
+                                                        <aura:iteration items="{!v.validList}" var="file">
+                                                            <lightning:layoutItem padding="" size="12" class="file-details">
+                                                                <lightning:layout verticalAlign="center" class="slds-truncate file-item">
+                                                                    <lightning:layoutItem padding="" size="8" class="file-name slds-p-right_xx-small slds-truncate">
+                                                                        <p class="slds-truncate" title="{!file.name}">
+                                                                            {!file.name}
+                                                                        </p>
+                                                                    </lightning:layoutItem>
+                                                                    <lightning:layoutItem padding="" size="4" class="file-info slds-text-align_right">
+                                                                        <p>
+                                                                            <aura:if isTrue="{!!v.inForm}">
+                                                                                <span class="file-delete slds-p-left_xx-small"><a href="javascript:void(0)" onclick="{!c.deleteFile}" data-name="{!file.name}" data-valid="{!file.valid}"><c:Peak_Base labelText="{!v.deleteText}"/></a></span>
+                                                                                <aura:set attribute="else">
+                                                                                    <span class="file-remove slds-p-left_xx-small"><a href="javascript:void(0)" onclick="{!c.removeFile}" data-name="{!file.name}" data-valid="{!file.valid}"><c:Peak_Base labelText="{!v.removeText}"/></a></span>
+                                                                                </aura:set>
+                                                                            </aura:if>
+                                                                        </p>
+                                                                    </lightning:layoutItem>
+                                                                </lightning:layout>
+                                                            </lightning:layoutItem>
+                                                        </aura:iteration>
+                                                    </lightning:layout>
+                                                </lightning:layoutItem>
+                                            </aura:if>
+                                            <aura:if isTrue="{!v.invalidList.length > 0}">
+                                                <lightning:layoutItem padding="" size="12" class="slds-p-top_small slds-p-bottom_small">
+                                                    <lightning:layout multipleRows="true">
+                                                        <aura:if isTrue="{!v.invalidListText != ''}">
+                                                            <lightning:layoutItem padding="" size="12">
+                                                                <h4>{! v.invalidList.length > 1 ? v.invalidListTextMultiple : v.invalidListText}</h4>
+                                                            </lightning:layoutItem>
+                                                        </aura:if>
+                                                        <aura:iteration items="{!v.invalidList}" var="file">
+                                                            <lightning:layoutItem padding="" size="12" class="file-details">
+                                                                <lightning:layout verticalAlign="center">
+                                                                    <lightning:layoutItem class="slds-text-color_error">
+                                                                        <p class="errorReason slds-var-m-top_medium">{!if(file.errorType == 'size', format(v.errorSize, file.name, file.errorMessage), format(v.errorExt, file.name, file.errorMessage))}</p>
+                                                                    </lightning:layoutItem>
+                                                                </lightning:layout>
+                                                            </lightning:layoutItem>
+                                                        </aura:iteration>
+                                                    </lightning:layout>
+                                                </lightning:layoutItem>
+                                            </aura:if>
+                                        </aura:if>
+                                    </lightning:layout>
+                                    
+                                    <lightning:layout multipleRows="false">
+                                        <aura:if isTrue="{!v.validList.length > 0}">
+                                            <aura:if isTrue="{!v.isOnRecordPage == false}">
+                                                <lightning:layoutItem size="12">
+                                                    <!-- community w/ records -->
+                                                    <p class="navigationDisclaimer slds-p-bottom_medium">NOTE: Navigating away from this page without pressing submit will require you to re-upload the files.</p>
+                                                    <lightning:button variant="brand" disabled="{!v.cameraOpen}" label="Submit" onclick="{!c.handleSubmit}" />
+                                                    <span class="slds-form--inline slds-p-horizontal_small docOr"></span>
+                                                    <lightning:button label="Skip for Now" variant="base" onclick="{!c.openModel}" /> 
+                                <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
+                               <aura:if isTrue="{!v.isModalOpen}">
+                                    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+ 
+                                 <div class="slds-modal__container">
+                                              
+                                           <div class="slds-modal__content slds-p-around_large" id="modal-content-id-1">
+                                             
+                                                <p><b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Any unsubmitted information will not be saved.<br/>
+                                                      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> Do you wish to skip anyway?<br/><br/><br/>
+                                                  </b>
+                                               </p>
+                                                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                           <lightning:button variant="brand" label="Yes, skip" onclick="{!c.skipForNow}" class="lower"/>
+                                                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                  <lightning:button variant="neutral" label="Cancel" onclick="{! c.closeModel }" class="lower"/>
+                                                 </div>
+                                                 </div>
+                                       </section>
+                                    
+                                        <div class="slds-backdrop slds-backdrop_open"></div>
+                                </aura:if>
+                                                  
+                                <!--  end by maddileti for #115213 User Story on 2019-11-12  -->
+                                </lightning:layoutItem>
+                                                <aura:set attribute="else">
+                                                    <!-- service cloud w/ records -->
+                                                    <lightning:layoutItem >
+                                                        <lightning:button variant="brand" disabled="{!v.cameraOpen}" label="Submit" onclick="{!c.handleSubmit}" />
+                                                    </lightning:layoutItem>
+                                                </aura:set>
+                                            </aura:if>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!v.isOnRecordPage == false}">
+                                                    <!-- community w/ no records -->
+                                                	<lightning:layoutItem>
+                                                        <p class="navigationDisclaimer slds-p-bottom_medium"/>
+                                                        <lightning:button variant="brand" disabled="true" label="Submit" onclick="{!c.handleSubmit}" />
+                                                        <span class="slds-form--inline slds-p-horizontal_small docOr"></span>
+                                                        <lightning:button label="Skip for Now" variant="base" onclick="{!c.openModel}" />
+                                       <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
+                                      <aura:if isTrue="{!v.isModalOpen}">
+                                            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+ 
+                                              <div class="slds-modal__container">
+                                             
+                                           <div class="slds-modal__content slds-p-around_large" id="modal-content-id-1">
+                                             
+                                                <p><b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Any unsubmitted information will not be saved.<br/>
+                                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Do you wish to skip anyway?<br/><br/><br/>
+                                                  </b>
+                                               </p>
+                                                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                           
+                                            <lightning:button variant="brand" label="Yes, skip" onclick="{!c.skipForNow}" class="lower"/>
+                                                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                  <lightning:button variant="neutral" label="Cancel" onclick="{! c.closeModel }" class="lower"/>
+                                                  </div>
+                                                 </div>
+                                       </section>
+                                    
+                                        <div class="slds-backdrop slds-backdrop_open"></div>
+                                </aura:if>
+                        
+                                                <!--  end by maddileti for #115213 User Story on 2019-11-12  -->
+
+                                                    </lightning:layoutItem>
+                                                    <aura:set attribute="else">
+                                                    <!-- service cloud w/ no records -->
+                                                        <lightning:layoutItem >
+                                                        <lightning:button variant="brand" disabled="true" label="Submit" onclick="{!c.handleSubmit}" />
+                                                        </lightning:layoutItem>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </lightning:layout>
+                                </aura:if>
+                            </section>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="12" mediumDeviceSize="4" class="mobilePaddingRemoval slds-p-around--x-large slds-p-right--none">
+                            <aura:if isTrue="{!and(v.documentInfo.messageEnrollmentComponents != null, v.documentInfo.messageEnrollmentComponents.length > 0)}">
+                                <div class="contextual-help">
+                                    <h5>Contextual help</h5>
+                                    <ul>
+                                        <aura:iteration items="{!v.documentInfo.messageEnrollmentComponents}" var="message">
+                                            <li><aura:unescapedHtml value="{!message.Component_Message__c}"/></li>
+                                        </aura:iteration>
+                                    </ul>
+                                </div>
+                            </aura:if>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </div>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

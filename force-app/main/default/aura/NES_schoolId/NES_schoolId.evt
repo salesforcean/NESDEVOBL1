@@ -1,0 +1,4 @@
+<!--c:schoolId-->
+<aura:event type="APPLICATION">
+    <aura:attribute name="schoolids" type="String"/>
+</aura:event>

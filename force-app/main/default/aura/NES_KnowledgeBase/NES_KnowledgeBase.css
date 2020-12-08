@@ -1,0 +1,31 @@
+/**
+ * Created by Ashish on 11-12-2018.
+ */
+.THIS.articleList{
+    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+.THIS a {
+          color: black;
+}
+.THIS .slds-tabs_default__nav {
+      background: #F3F3F3;
+      border-bottom:none;
+
+}
+.THIS .slds-tabs_default__link{
+    text-align:center;
+}
+.THIS .slds-tabs_default__item{
+    width:100%;
+}
+.THIS .slds-tabs_default__link:focus{
+    color:rgb(170, 76, 19);
+}
+.THIS a:active {
+  color:rgb(170, 76, 19);
+}
+.THIS a:hover{
+    color:rgb(170, 76, 19);
+}

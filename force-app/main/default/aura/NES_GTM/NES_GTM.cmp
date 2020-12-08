@@ -1,0 +1,10 @@
+<aura:component access="global" controller="Peak_Utils" extends="c:Peak_Base" >
+    
+  <aura:handler event="c:NES_GTMEvent" action="{!c.handleGTMEvent}"/>  
+  <aura:handler event="forceCommunity:routeChange" action="{!c.handleRouteChange}"/>
+ <!-- Google Tag Manager (noscript) -->
+<iframe src="{!$Label.c.NES_GTM_Code}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe> 
+<!-- End Google Tag Manager (noscript)-->
+ 
+</aura:component>

@@ -1,0 +1,123 @@
+.THIS .documentblocks{padding-right:1.0rem;padding-left:2.0rem;align-items:initial}
+.THIS .documentAcceptedRows1{
+   /*  margin-right:1rem;
+   margin-left:0.6rem;*/
+    
+    
+
+    padding:2rem;
+    padding-right: 16px;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-bottom: 16px;
+
+    border-left:0px solid #9acd32;
+    border-radius:0px;
+    background:#fff;
+    border-bottom: 1px solid #ddd;}
+.THIS .documentAcceptedRows{
+    
+    padding:2rem;
+    padding-right: 16px;
+    padding-top: 16px;
+    padding-left: 0px;
+    padding-bottom: 16px;
+
+    border-left:0px solid #9acd32;
+    border-radius:0px;
+    background:#fff;
+    border-bottom: 1px solid #ddd;}
+
+.THIS .slds-icon{
+    margin-top: 15px;
+}
+.THIS .slds-button.slds-button_brand {
+    font-size: .8rem;
+    line-height: 3;
+    top:8px;
+    padding-right: 50px; 
+    padding-left: 50px;
+    
+
+}
+.THIS .slds-button_brand:hover,
+.THIS .slds-button_brand:focus,
+.THIS .slds-button--brand:hover,
+.THIS .slds-button--brand:focus {
+    background-color: #7c370e !important;border-color: #7c370e;color: #ffffff;}
+.THIS .slds-button_brand{ background-color: #d86018; border: 1px solid #d86018;}
+.THIS{margin:1rem 1rem 5rem}
+/* modifed by ravi on 03/01/2020 */
+.THIS .documentblock{
+    padding-right:1.0rem;
+    padding-left:15px;
+    align-items:center;
+    
+}
+.THIS .documentCentralDetailHead{margin:-1rem;padding:1.5rem 2rem 0;
+    
+    margin-bottom: 0px;
+border-bottom:2px solid #e0e0e0}
+.THIS .documentCentralDetailHead h2{font-size:1.5rem}
+.THIS .documentNeedsAttentionRow{cursor:pointer;border-left:3px solid #d86018}
+.THIS .documentNeedsAttentionRow,
+.THIS .documentUnderReviewRow{
+    margin-right:1rem;
+    margin-left:1rem;
+    padding:1rem;
+    border-radius:3px;
+    background:#fff;
+    box-shadow:0 2px 4px 0 rgba(0,0,0,.12)}
+.THIS .documentUnderReviewRow{border-left:3px solid #c24b14}
+/* modified by ravi on 03/01/2020 */
+
+.THIS .documentAcceptedRow{
+    
+    padding:1rem;
+    border-left:0px solid #9acd32;border-radius:3px;background:#fff;border-bottom: 1px solid #ddd;}
+.THIS .docType{font-size:1.15rem;font-weight:400;padding-right:.5em}
+.THIS .docCentralText{
+    max-width:700px;
+    margin-top:1em}
+.THIS .xContainer{padding:0;padding-right:.5em;text-align:right}
+.THIS .docIcon{text-align:right}
+.THIS .docType img{width:1.25rem;height:auto}
+.THIS .docType img,
+.THIS .docType span{display:inline-block;vertical-align:middle}
+.THIS .close-div{border:none;background-color:transparent}
+.THIS .close-div:focus{outline:0;box-shadow:0 0 3px #0070d2}
+.THIS .needsAttentionButton{width:100%;
+    margin-top: 0px;padding:0;text-align:left;border:none;background-color:transparent}
+.THIS .needsAttentionButton:focus{outline:0}
+.THIS .needsAttentionButton:focus .documentNeedsAttentionRow{outline:0;box-shadow:0 0 3px #0070d2}
+.THIS .documentAcceptedStatus,
+.THIS .documentNeedsAttentionStatus,
+.THIS .documentUnderReviewStatus{font-size:1rem}
+.THIS .documentNeedsAttentionStatus{color:#d86018}
+.THIS .documentAcceptedStatus{color:#9acd32}
+.THIS .documentUnderReviewStatus{color:#c24b14}
+.THIS .review svg{fill:#d86018}
+.THIS .close-div{cursor:pointer}
+.THIS .student-name{font-size:1.15rem;font-weight:600}
+.THIS .display-block{display:block;width:100%}
+@media (max-width:800px){
+    .THIS .documentBlock{text-align:center}}
+
+/* Added by ravi on 10/01/2020*/
+
+.THIS .slds-align_absolute-center{
+    
+    
+    margin-right: 0px;
+    margin-left: 0px;
+
+
+}
+ .THIS .slds-size_11-of-12{
+    
+   /* width: 400px;*/
+
+    margin-top: 16px;
+
+
+}

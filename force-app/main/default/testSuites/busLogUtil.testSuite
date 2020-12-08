@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>NES_AccountBusinessLogicTest</testClassName>
+    <testClassName>NES_AddStudentControllerTest</testClassName>
+    <testClassName>NES_AnnualHouseholdInfoBusinessLogicTest</testClassName>
+    <testClassName>NES_AnnualStudentInfoTriggerTest</testClassName>
+    <testClassName>NES_AnnualStudentInfoUtilities2Test</testClassName>
+    <testClassName>NES_AnnualStudentInfoUtilitiesTest</testClassName>
+    <testClassName>NES_ASIUtilitiesTest</testClassName>
+    <testClassName>NES_BusinessLogicUtilsTest</testClassName>
+    <testClassName>NES_EnrollmentDocTriggerTest</testClassName>
+    <testClassName>NES_EntranceAgeUtilityTest</testClassName>
+    <testClassName>NES_HomeLanguageSurveyTriggerTest</testClassName>
+    <testClassName>NES_HouseholdIncomeBusinessLogicTest</testClassName>
+    <testClassName>NES_PriorSchoolHandlerTest</testClassName>
+    <testClassName>NES_ProgramEnrollmentTriggerTest</testClassName>
+    <testClassName>NES_UtilitiesTest</testClassName>
+</ApexTestSuite>

@@ -1,0 +1,30 @@
+.THIS .abcd {
+  
+  margin-left: 600px;
+    background-color: black;
+}
+
+.THIS .buttoneutral{
+    /*color:#fff;
+    background:#bbb;
+    width: 384px;*/
+    /*Added for US335364 by Jagadeesh*/
+	color: black;
+    background: #f6f6f6;
+   /* width: 396px;*/
+    width: 100%;
+    border: 2px solid #b5b5b5;}
+
+/*Added for US335364 by Jagadeesh*/
+@media screen and (max-width:47.9375em) {
+.THIS .buttoneutral{
+    /*color:#fff;
+    background:#bbb;
+    width: 384px;*/
+	color: black;
+    background: #f6f6f6;
+   /* width: 396px;*/
+    width: 100%;
+    border: 2px solid #b5b5b5;}    
+    
+}

@@ -1,0 +1,12 @@
+/**
+ * peak_lightning - Generates the assets used for Peak Lightning
+ * @version 1.0.0
+ * @author 7Summits
+ *
+ * COMPILED FILE DO NOT DIRECTLY EDIT
+ */
+@import 'https://fonts.googleapis.com/css?family=Josefin+Sans:300';
+.font-specialty {
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-weight: 300 !important;
+}

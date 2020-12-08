@@ -1,0 +1,73 @@
+<!--
+ - Created by Ashish Pandey on 03-12-2018.
+ -->
+
+<aura:component description="NES_Announcements" controller="NES_AnnouncementsController" implements="forceCommunity:availableForAllPageTypes" access="global" extends="c:Peak_Base">
+
+    <!--Declare Attribute adding commen-->
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="contactAnnouncements" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:attribute name="showDismissingSpinner" type="Boolean" default="false"/>
+    <aura:attribute name="var1" type="Boolean" default="true"/>
+    
+     
+    <aura:if isTrue="{!and(!empty(v.contactAnnouncements),v.contactAnnouncements.length > 0)}">
+  <!-- <aura:if isTrue="{!v.var1}">-->
+        <div class="slds-carousel">
+            <div class="slds-carousel__stage">
+                <div class="slds-carousel__panels">
+                    <!-- ************************-->
+                     <!-- Announcements-->
+                    <!-- ************************-->
+                    <aura:iteration items="{!v.contactAnnouncements}" var="announcement" indexVar="index">
+                      
+                        <div data-critical="{!announcement.Announcement__r.Alert_Type__c == 'Critical' ? 'critical' : ''}" id="{! 'content-id-' + index}" class="{! index == 0 ? 'slds-carousel__panel slds-show' : 'slds-carousel__panel slds-hide'}" role="tabpanel" >
+                            <div class="slds-carousel__content">
+                                <lightning:layout multipleRows="false">
+                                    <lightning:layoutItem size="{!announcement.Announcement__r.Dismissable__c ? 10 : 12}">
+                                        <h2 class="slds-carousel__content-title">{!announcement.Name}</h2>
+                                        <span><aura:unescapedHtml value="{!announcement.Announcement__r.Body__c}"/></span>
+                                    </lightning:layoutItem>
+                                    <aura:if isTrue="{!announcement.Announcement__r.Dismissable__c}">
+                                        <lightning:layoutItem size="2" class="slds-align_absolute-center">
+                                            <aura:if isTrue="{!v.showDismissingSpinner}">
+                                                <div class="dismissSpinner">
+                                                    <div role="status" class="slds-spinner slds-spinner_small slds-spinner_inline">
+                                                        <span class="slds-assistive-text">Loading</span>
+                                                        <div class="slds-spinner__dot-a"></div>
+                                                        <div class="slds-spinner__dot-b"></div>
+                                                    </div>
+                                                </div>
+
+                                                <aura:set attribute="else">
+                                                     <span class="dismiss slds-text-color_weak dismiss" data-index="{!index}" tabindex="0" data-id="{!announcement.Id}"
+                                                           onclick="{!c.handleDismiss}" onkeydown="{!c.handleKeyPress}">dismiss</span>
+                                                </aura:set>
+                                            </aura:if>
+
+                                        </lightning:layoutItem>
+                                    </aura:if>
+                                </lightning:layout>
+                            </div>
+                        </div>
+                    </aura:iteration>
+                </div>
+                <!-- ************************-->
+                <!-- carousel__indicators -->
+                <!-- ************************-->
+                     <ul class="slds-carousel__indicators" role="tablist"> 
+                        <aura:iteration items="{!v.contactAnnouncements}" var="announcement" indexVar="index">
+                            <aura:if isTrue="{!and(!empty(v.contactAnnouncements),v.contactAnnouncements.length>0)}">
+                                <li class="slds-carousel__indicator" role="presentation">
+                                    <a id="{! 'id-' + index}" class="{! index == 0 ? 'slds-carousel__indicator-action slds-is-active' : 'slds-carousel__indicator-action'}" onclick="{!c.changeContentNow}" role="tab" title="1">
+                                        <span class="slds-assistive-text">Next Notification</span>
+                                    </a>
+                                </li>
+                            </aura:if>
+                        </aura:iteration>
+                    </ul> 
+            </div>
+        </div>
+   </aura:if>
+</aura:component>

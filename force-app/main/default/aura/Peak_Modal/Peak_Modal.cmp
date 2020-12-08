@@ -1,0 +1,51 @@
+<!--
+ - Created by kentheberling on 9/5/18.
+ -->
+
+<aura:component description="Peak_Modal" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" extends="c:Peak_Base">
+    <aura:attribute default="Modal Title" type="String" name="modalTitle" />
+
+    <aura:attribute default="Close" type="String" name="closeText" />
+    <aura:attribute default="Cancel" type="String" name="cancelText" />
+
+    <aura:attribute default="true" type="Boolean" name="showFooter" />
+
+    <aura:attribute default="" type="String" name="paragraphOne" />
+    <aura:attribute default="" type="String" name="paragraphTwo" />
+    <aura:attribute default="" type="String" name="paragraphThree" />
+
+    <aura:attribute default="true" type="Boolean" name="isOpen" />
+     <!-- Added by ajith for deployment sake there are lot of components referecing these attributes -->
+    <aura:attribute name="saveText" type="String" default="" />
+    <aura:attribute name="actionName" type="String" default="" />
+
+    <aura:if isTrue="{!v.isOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{!v.closeText}"  onclick="{!c.closeModal}">
+                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                        <span class="slds-assistive-text"><c:Peak_Base labelText="{!v.closeText}" /></span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><c:Peak_Base labelText="{!v.modalTitle}" /></h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <c:Peak_IfParagraph paragraph="{!v.paragraphOne}" />
+                    <c:Peak_IfParagraph paragraph="{!v.paragraphTwo}" />
+                    <c:Peak_IfParagraph paragraph="{!v.paragraphThree}" />
+                </div>
+                <!-- Optionally show footer -->
+                <aura:if isTrue="{!v.showFooter}">
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick="{!c.closeModal}"><c:Peak_Base labelText="{!v.cancelText}" /></button>
+                        <!-- Only show Save button if it has a text value! -->
+                        <aura:if isTrue="{!v.saveText != ''}"><button class="slds-button slds-button_brand" onclick="{!v.actionName}"><c:Peak_Base labelText="{!v.saveText}" /></button></aura:if>
+                    </footer>
+                </aura:if>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
+</aura:component>

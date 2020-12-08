@@ -1,0 +1,48 @@
+/**
+ * Created by Ashish on 28-12-2018.
+ */
+.THIS a {
+          color: black;
+}
+.THIS .slds-tabs_default__nav {
+      background: #F3F3F3;
+      border-bottom:none;
+      padding-top:1rem;
+      padding-bottom:1rem;
+
+}
+.THIS .slds-tabs_default__link{
+    text-align:center;
+    font-size: 1rem;
+}
+.THIS .slds-tabs_default__item{
+    width:100%;
+}
+.THIS .slds-tabs_default__link:focus{
+    color:rgb(170, 76, 19);
+}
+.THIS a:active {
+  color:rgb(170, 76, 19);
+}
+.THIS a:hover{
+    color:rgb(170, 76, 19);
+}
+/*.THIS .slds-is-active::after{
+    margin-bottom: -14px;
+}
+.THIS .slds-tabs_default__item:hover{
+    margin-bottom: -14px;
+}*/
+.THIS .slds-tabs_default__item:after {
+  display: block;
+  content: '';
+  bottom: -13px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  position: absolute;
+  /* background: red; */
+}
+.THIS .slds-tabs_default__item:hover:after{
+    color:rgb(170, 76, 19);
+}

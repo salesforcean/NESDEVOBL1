@@ -1,0 +1,37 @@
+<!--
+ - Created by karolbrennan on 1/15/19.
+ -->
+<aura:component description="NES IE Warning" implements="forceCommunity:availableForAllPageTypes">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute type="String" name="chromeLink" default="https://www.google.com/chrome/" />
+    <aura:attribute type="String" name="edgeLink" default="https://www.microsoft.com/en-us/windows/microsoft-edge" />
+    <aura:attribute type="Boolean" name="isOpen" default="false" />
+    <aura:attribute type="String" name="heading" default="Uh oh, are you using Internet Explorer 11?"/>
+    <aura:attribute type="String" name="message" default="Please use Google Chrome or Microsoft Edge to resolve this issue."/>
+    <aura:attribute type="String" name="chromeLabel" default="Download Chrome" />
+    <aura:attribute type="String" name="edgeLabel" default="Download Edge" />
+
+    <aura:if isTrue="{!v.isOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header" style="border: none!important;border-radius:.25rem!important;padding:0!important;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick="{!c.closeModal}">
+                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                        <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-horizontal--medium slds-p-vertical--xx-large" style="border-radius:.25rem;" id="modal-content-id-1">
+                    <div class="warning slds-text-align_center">
+                        <aura:if isTrue="{!v.heading}"><h2>{!v.heading}</h2></aura:if>
+                        <aura:if isTrue="{!v.message}"><p class="slds-p-vertical_small">{!v.message}</p></aura:if>
+                        <p>
+                            <a class="slds-button slds-button_brand" href="{!v.chromeLink}" target="_blank">{!v.chromeLabel}</a>
+                            <a class="slds-button slds-button_brand" href="{!v.edgeLink}" target="_blank">{!v.edgeLabel}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

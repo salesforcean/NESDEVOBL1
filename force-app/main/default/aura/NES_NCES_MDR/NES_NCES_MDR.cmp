@@ -1,0 +1,182 @@
+<!--
+ - Created by lukestevens on 2019-01-24.
+ -->
+
+<aura:component description="NCES MDR Component" controller="NES_MDRIntegration"
+                implements="forceCommunity:availableForAllPageTypes"
+                access="global" extends="c:Peak_Base">
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="states" type="Object[]"/>
+    <aura:attribute name="schools" type="Object[]"/>
+    <aura:attribute name="schoolName" type="String" default=""/>
+    <aura:attribute name="schoolCity" type="String" default=""/>
+    <aura:attribute name="schoolState" type="String"/>
+    <aura:attribute name="schoolZip" type="String"/>
+    <aura:attribute name="schoolAddress" type="String"/>
+    <aura:attribute name="schoolDistrict" type="String"/>
+    <aura:attribute name="schoolCountry" type="String"/>
+    <aura:attribute name="schoolPhoneNumber" type="String"/>
+    <aura:attribute name="schoolFaxNumber" type="String"/>
+    <aura:attribute name="selectedSchool" type="Integer" />
+    <aura:attribute name="alreadyInSearch" type="Boolean" default="false"/>
+    <aura:attribute name="schoolSelectionNeeded" type="Boolean" default="false"/>
+
+    <aura:attribute name="questionGroupId" type="String"/>
+    <aura:attribute name="programEnrollmentId" type="String"/>
+    <aura:attribute name="sectionId" type="String"/>
+    <aura:attribute name="processId" type="String"/>
+    <aura:attribute name="spinner" type="Boolean" default="true"/>
+
+    <aura:attribute name="completedSearch" type="Boolean" default="false"/>
+    <aura:attribute name="isManualAddress" type="Boolean" default="false"/>
+
+    <aura:attribute name="questions" type="Object[]"/>
+
+    <aura:handler action="{!c.handleSubmit}" event="c:NES_SubmitQuestionsEvent"/>
+
+    <aura:registerEvent name="tellParentItNeedsToRunAssignment" type="c:NES_AssignmentNeededEvent"/>
+
+    <aura:method name="validateFields" action="{!c.validateFields}">
+        <aura:attribute name="validated" type="Boolean" default="false"/>
+    </aura:method>
+
+    <div>
+
+        <aura:if isTrue="{!v.spinner}">
+            <lightning:spinner size="medium" variant="brand" alternativeText="Loading..."/>
+        </aura:if>
+
+        <aura:iteration var="question" items="{!v.questions}" indexVar="index">
+
+            <aura:if isTrue="{!question.mdrField}">
+                <aura:if isTrue="{!question.firstMDRField}">
+                        <div class="mdrBlock">
+                        <p aura:id="introText">Begin completing the below fields to populate a list of schools to choose from: </p>
+                        <lightning:input aura:id="formItem" type="text" placeholder="School Name" minLength="6" onchange="{!c.searchForSchool}" value="{!v.schoolName}" required="{!v.isManualAddress}"/>
+                        <lightning:input aura:id="formItem" type="text" placeholder="School City" onchange="{!c.searchForSchool}" value="{!v.schoolCity}" required="{!v.isManualAddress}"/>
+                        <lightning:select aura:id="formItem" name="School State" required="{!v.isManualAddress}" onchange="{!c.searchForSchool}" value="{!v.schoolState}">
+                            <option value="">School State</option>
+                            <aura:iteration items="{!v.states}" var="state">
+                                <option value="{!state.State_Abbreviation__c}">{!state.Label}</option>
+                            </aura:iteration>
+                        </lightning:select>
+
+                         <aura:if isTrue="{!and(v.schools.length > 0, !v.isManualAddress)}">
+                            <p aura:id="schoolListText"  class="pleaseSelectText slds-m-vertical_large">Please select a school from below:</p>
+                            <aura:iteration items="{!v.schools}" var="school" indexVar="index">
+                                
+                                <a href="javascript:void(0)" onclick="{!c.selectSchool}" data-schoolIndex="{!index}" class="test" ><!-- added by jagadeesh Bug# 135298-->
+                                   <div class="{! 'cardSchoolContainer' + (v.selectedSchool == index ? ' selected' : '')}" >
+                                    <lightning:card >
+                                        <div >
+                                            <lightning:icon iconName="utility:check" size="small" class="{!v.selectedSchool}"/>
+                                        </div>
+                                        <div>
+                                            <p class="schoolName">{!school.schoolName}</p>
+                                            <p>{!school.districtName}</p>
+                                            <p>{!school.streetAddress}</p>
+                                            <p>{!school.city}, {!school.stateAbbr}, {!school.postalCode}, {!school.countryAbbr}</p>
+                                            <p>Phone number: {!school.phoneNumber}</p>
+                                            <p>Fax number: {!school.faxNumber}</p>
+                                        </div>
+                                    </lightning:card>
+                                </div>
+                                </a>
+                            </aura:iteration>
+                        </aura:if>
+
+					  <aura:if isTrue="{!and(v.completedSearch, !v.isManualAddress)}">
+                            <p aura:id="manualAddressLeadText" class="slds-m-top_large">None of these what you were looking for? Enter the school's address manually below: </p>
+                            <lightning:button label="Enter School Manually" class="slds-m-vertical_large" onclick="{!c.triggerManualAddress}"/>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.isManualAddress}">
+                            <p class="slds-m-vertical_large">Please fill in the additional required fields below for manual address entry:</p>
+                            <lightning:input aura:id="formItem" type="text" required="true" label="School District" value="{!v.schoolDistrict}"/>
+                            <lightning:input aura:id="formItem" type="text" required="true" label="Street Address" value="{!v.schoolAddress}"/>
+                            <lightning:input aura:id="formItem" type="text" pattern="^[0-9]{5}(?:-[0-9]{4})?$" messageWhenPatternMismatch="Please enter a valid zip code." required="true" label="Zip Code" value="{!v.schoolZip}" maxlength="10"/>
+                            <lightning:input aura:id="formItem" type="text" required="true" label="Country Abbreviation" value="{!v.schoolCountry}"/>
+                        </aura:if>
+                    </div>
+                </aura:if>
+
+                <aura:set attribute="else">
+                    <aura:if isTrue="{! !empty(question.questionPrompt)}">
+                        <div class="slds-p-vertical_small">
+                            <!-- Label for any type of input -->
+                            <label class="record-label slds-form-element__label" for="{!question.questionId}">
+                                <aura:if isTrue="{!and(question.required,!empty(question.questionPrompt))}">
+                                    <abbr class="slds-required firstAsterisk" title="required" data-aura-rendered-by="34:391;a">*</abbr>
+                                </aura:if>
+                                <aura:unescapedHtml value="{!question.questionPrompt}" />
+                            </label>
+                            <aura:if isTrue="{!!empty(question.componentMessage)}">
+                                <p><aura:unescapedHtml value="{!question.componentMessage}"/></p>
+                            </aura:if>
+                            <aura:if isTrue="{!question.questionType == 'Picklist' || question.questionType == 'Radio' || question.questionType == 'Checkbox Group' || question.questionType == 'Date' }">
+                                <!-- Picklist -->
+                                <aura:if isTrue="{!question.questionType == 'Picklist'}">
+                                    <lightning:select aura:id="fieldId" label="" class="{!question.hasCriteria ? 'hasCriteria' : ''}" onchange="{!c.runAssignment}"
+                                                     value="{!question.targetField}"
+                                                      required="{!question.required}">
+                                        <option value="">- select one -</option>
+                                        <aura:iteration items="{!question.picklistValues}" var="option">
+                                            <option value="{!option.value}">{!option.label}</option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </aura:if>
+
+                                <!-- Radio -->
+                                <aura:if isTrue="{!question.questionType == 'Radio'}">
+                                    <lightning:radioGroup aura:id="fieldId" label="" class="{!question.hasCriteria ? 'hasCriteria' : ''}" onchange="{!c.runAssignment}" value="{!question.targetField}" required="{!question.required}" options="{!question.picklistValues}"/>
+                                </aura:if>
+
+                                <!-- Checkbox Group -->
+                                <aura:if isTrue="{!question.questionType == 'Checkbox Group'}">
+                                    <lightning:checkboxGroup aura:id="fieldId" class="{!question.hasCriteria ? 'hasCriteria' : ''}" label="" name="" onchange="{!c.runAssignment}" value="{!question.targetField}" required="{!question.required}" options="{!question.picklistValues}"/>
+                                </aura:if>
+
+                                <aura:if isTrue="{!question.questionType == 'Date'}">
+                                    <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + question.hasCriteria ? ' hasCriteria' : ''}" label="" onblur="{!c.validateDate}" type="text" required="{!question.required}" value="{!question.targetField}"/>
+                                </aura:if>
+
+                                <!-- All other input types -->
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!question.questionType == 'Address'}">
+                                        <c:NES_Address questionGroupId="{!question.questionId}" programEnrollmentId="{!v.programEnrollmentId}" aura:id="groupComp"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!question.questionType == 'School Search'}">
+                                        <c:NES_NCES_MDR questionGroupId="{!question.questionId}" programEnrollmentId="{!v.programEnrollmentId}" aura:id="groupComp"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!equals(question.questionType,'Date/Time')}">
+                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + question.hasCriteria ? ' hasCriteria' : ''}" label=""  type="datetime-local" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!equals(question.questionType,'Time')}">
+                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + question.hasCriteria ? ' hasCriteria' : ''}" label="" type="time" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!equals(question.questionType,'Boolean')}">
+                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + question.hasCriteria ? ' hasCriteria' : ''}" type="checkbox" label="" onchange="{!c.runAssignment}" required="{!question.required}" checked="{!question.targetField}"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!equals(question.questionType,'Number')}">
+                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + question.hasCriteria ? ' hasCriteria' : ''}" min="0" label="" type="number" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!equals(question.questionType,'Phone')}">
+                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + question.hasCriteria ? ' hasCriteria' : ''}" label="" type="tel" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                    </aura:if>
+                                    <aura:if isTrue="{!equals(question.questionType,'Text')}">
+                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + question.hasCriteria ? ' hasCriteria' : ''}" label="" onblur="{!c.updateValidationMessages}" type="text" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </aura:if>
+
+                </aura:set>
+
+            </aura:if>
+        </aura:iteration>
+
+    </div>
+
+</aura:component>

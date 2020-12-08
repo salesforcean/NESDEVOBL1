@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Peak_AnnouncementEmailControllerTest</testClassName>
+    <testClassName>Peak_AnnouncementsControllerTest</testClassName>
+    <testClassName>Peak_ApexLogManagerTest</testClassName>
+    <testClassName>Peak_ApexLogTest</testClassName>
+    <testClassName>Peak_BaseControllerTest</testClassName>
+    <testClassName>Peak_ContentObjectHelperTest</testClassName>
+    <testClassName>Peak_ContentObjectTest</testClassName>
+    <testClassName>Peak_FileUploadControllerTest</testClassName>
+    <testClassName>Peak_KnowledgeFileListControllerTest</testClassName>
+    <testClassName>Peak_KnowledgeFilterAllDataTest</testClassName>
+    <testClassName>Peak_KnowledgeFilterTest</testClassName>
+    <testClassName>Peak_MockHttpResponseGenerator</testClassName>
+    <testClassName>Peak_NavigationalTopicsListTest</testClassName>
+    <testClassName>Peak_RelatedFilesControllerTest</testClassName>
+    <testClassName>Peak_ResponseTest</testClassName>
+    <testClassName>Peak_SiteMapControllerTest</testClassName>
+    <testClassName>Peak_TestUtils</testClassName>
+    <testClassName>Peak_UtilsTest</testClassName>
+</ApexTestSuite>

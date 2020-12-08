@@ -1,0 +1,81 @@
+/**
+ * Created by Ashish on 03-12-2018.
+ */
+.THIS.documentCentralDetailRow{
+    padding: 1rem;
+    border-left: 3px solid #d86018;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+.THIS .slds-carousel__image{
+    display:none;
+}
+.THIS .slds-carousel__content img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+    max-height: 100%;
+}
+.THIS .dismiss{
+    cursor:pointer;
+}
+.THIS .slds-carousel__panels{
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+    height: auto !important;
+}
+.THIS .slds-carousel__panel {
+    border-left: 3.5px solid #d86018;
+}
+.THIS .slds-carousel__indicator-action.slds-is-active {
+    border-color:#d86018;
+    background:#d86018;
+}
+.THIS .slds-carousel__indicator-action:focus{
+    border-color:#d86018;
+    background:#d86018;
+}
+.THIS .slds-carousel__content-title {
+    font-weight: 600 !important;
+}
+.THIS div[data-critical="critical"] {
+    border-color: rgb(214, 60, 38);
+}
+.THIS div[data-critical="critical"] .slds-carousel__content-title {
+    color: rgb(214, 60, 38);
+}
+.THIS .slds-carousel__indicator-action{
+    width:0.7rem;
+    height:0.7rem;
+}
+.THIS .slds-carousel__content{
+    text-align:left;
+    font-size: 1rem;
+    height: auto !important;
+}
+.THIS .slds-text-color_weak {
+    color: #C4C4C4;
+}
+.THIS h2 {
+    font-size:1rem !important;
+    color:#bb5215;
+}
+.THIS .linkColor {
+    color:#d86018;
+}
+
+.THIS .dismissSpinner {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    margin-right: 2em;
+    margin-top: 1em;
+}
+
+.THIS .dismiss {
+    display: block;
+    text-align: right;
+    padding-right: 1rem;
+    width: 100%;
+    color: #666666;
+}

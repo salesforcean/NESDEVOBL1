@@ -1,0 +1,31 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" >
+    <lightning:buttonMenu aura:id="menu1" iconName="utility:settings" alternativeText="Show menu" onselect="{! c.handleSelect }">
+        <lightning:menuItem label="Menu Item One" value="MenuItemOne" />
+        <lightning:menuItem label="Menu Item Two" value="MenuItemTwo" />
+        <lightning:menuItem label="Menu Item Three" value="MenuItemThree" disabled="true" />
+        <lightning:menuItem label="Menu Item Four" value="MenuItemFour" />
+    </lightning:buttonMenu>
+
+    <lightning:buttonMenu aura:id="menu2" iconName="utility:threedots_vertical" alternativeText="Show menu" onselect="{! c.handleSelect }">
+        <lightning:menuItem label="Menu Item One" value="MenuItemOne" />
+        <lightning:menuItem label="Menu Item Two" value="MenuItemTwo" />
+        <lightning:menuItem label="Menu Item Three" value="MenuItemThree" disabled="true" />
+        <lightning:menuItem label="Menu Item Four" value="MenuItemFour" />
+    </lightning:buttonMenu>
+
+    <lightning:layout multipleRows="true" class="boxshadow">
+      <lightning:layoutItem size="12" padding="around-medium" class="borderbottom bottomshadow">
+          <lightning:layout multipleRows="true" verticalAlign="center">
+            <!-- <lightning:layoutItem class="slds-align_absolute-center slds-order_1 slds-large-order_1"> alignmentBump="left" -->
+                <lightning:layoutItem class="slds-order_1 slds-large-order_1"> 
+                <lightning:buttonMenu aura:id="menu2" iconName="utility:threedots_vertical" alternativeText="Show menu" onselect="{! c.handleSelect }">
+                    <lightning:menuItem label="Menu Item One" value="MenuItemOne" />
+                    <lightning:menuItem label="Menu Item Two" value="MenuItemTwo" />
+                    <lightning:menuItem label="Menu Item Three" value="MenuItemThree" disabled="true" />
+                    <lightning:menuItem label="Menu Item Four" value="MenuItemFour" />
+                </lightning:buttonMenu>
+            </lightning:layoutItem>
+          </lightning:layout>
+      </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

@@ -1,0 +1,26 @@
+.THIS .stencils{padding:token(spacingSmall);opacity:.5;border:1px solid token(borderColor);border-radius:token(borderRadiusMedium)}
+.THIS .stencils .stencil{width:100%;border-radius:token(borderRadiusMedium);background:token(borderColor)} 
+.THIS .stencils .stencil:nth-child(2){opacity:.75}.THIS .stencils .stencil:nth-child(3){opacity:.5} 
+.THIS .stencils .stencil:nth-child(n+3){opacity:.25} 
+.THIS .stencils .stencil.heading1{max-width:500px;height:2rem;margin-bottom:token(spacingSmall)} 
+.THIS .stencils .stencil.heading2{max-width:300px;height:1.5rem;margin-bottom:token(spacingSmall)} 
+.THIS .stencils .stencil.heading3{max-width:300px;height:1.25rem;margin-bottom:token(spacingSmall)} 
+.THIS .stencils .stencil.heading4{max-width:200px;height:1.125rem;margin-bottom:token(spacingSmall)} 
+.THIS .stencils .stencil.paragraph{height:.875rem;margin-bottom:token(spacingXSmall)} 
+.THIS .slick-dots li button:before, .THIS .slick-next:before, .THIS .slick-prev:before{color:token(colorTextLink)}
+.THIS .carousel{visibility:hidden}
+.THIS .carousel.slick-initialized{visibility:visible}
+.THIS .uiMessage.info {background-color:white;border-left:3.5px solid #d86018;border-right:0px;border-top:0px;border-bottom:0px;}
+.THIS .uiMessage.info h4{color: #bb5215;font-size:1rem!important;font-weight:600!important;line-height:24px;}
+.THIS .uiMessage{
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+    height: auto !important;
+    padding:12px;
+}
+.THIS .bBody {font-size:16px!important;line-height:24px;color:#000000;}
+.THIS .uiMessage.warning {background-color:white;border-left:3.5px solid blue;border-right:0px;border-top:0px;border-bottom:0px;}
+.THIS .uiMessage.warning h4{color: blue;font-size:1rem!important;font-weight:600!important;line-height:24px;}
+.THIS .uiMessage.error {background-color:white;border-left:3.5px solid red;border-right:0px;border-top:0px;border-bottom:0px;}
+.THIS .uiMessage.error h4{color: red;font-size:1rem!important;font-weight:600!important;line-height:24px;}
+.THIS .slick-dots li button{color:#d86018;font-size:14px;}
+.THIS .slick-arrow {display:none!important;}

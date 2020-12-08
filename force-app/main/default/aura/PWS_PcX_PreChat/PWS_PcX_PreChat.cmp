@@ -1,0 +1,41 @@
+<aura:component 
+                description="Custom pre-chat component that uses primarily JavaScript."
+                implements="lightningsnapin:prechatUI">
+    
+    <!-- Contains methods for getting pre-chat fields, starting a chat, and validating fields -->
+    <lightningsnapin:prechatAPI aura:id="prechatAPI"/>
+    
+    <!-- load jquery for form validation -->
+   <ltng:require scripts="{!join(',',
+    $Resource.jQuery341,
+    $Resource.jQueryValidate,
+    $Resource.jQueryValidateAddMethods)}" afterScriptsLoaded="{!c.scriptsLoaded}" />
+     
+    <!-- After this component has initialized, call the controller's onInit function -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <!-- After this component has rendered, call the controller's onRender function -->
+    <aura:handler name="render" value="{!this}" action="{!c.onRender}"/>
+    
+    <!-- wrap in form tag for validation plugin -->
+    <form id="pcxPreChat">
+        <div class="prechatUI embeddedServiceLiveAgentStatePrechatDefaultUI" data-aura-class="embeddedServiceLiveAgentStatePrechatDefaultUI">
+            <div class="formContent embeddedServiceSidebarForm" data-aura-class="embeddedServiceSidebarForm">
+                        
+                <p id="introduction">To start, tell us about yourself.</p>
+                <p id="required">* Indicates Required</p>
+                
+                <ul class="fieldList" role="presentation">
+                    <!-- Add pre-chat field HTML elements in the controller's onInit function -->
+                </ul>
+                
+                <p id="termsAndConditions">By submitting your contact information you agree to our <a href="https://www.connectionsacademy.com/terms-of-use" target="_blank">Terms of Use</a> and <a href="https://www.connectionsacademy.com/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+            </div>
+               
+            <div class="buttonWrapper embeddedServiceSidebarForm" data-aura-class="embeddedServiceSidebarForm">
+                <button aria-live="off" data-aura-class="uiButton--default uiButton embeddedServiceSidebarButton" class="startButton uiButton--default uiButton embeddedServiceSidebarButton" type="button" onclick="{!c.onStartButtonClick}">
+                    <span class="label bBody">LET'S CHAT</span>
+                </button>			
+            </div>
+        </div>
+    </form>
+</aura:component>

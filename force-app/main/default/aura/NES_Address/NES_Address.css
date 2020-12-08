@@ -1,0 +1,36 @@
+/**
+ * Created by Ashish on 19-12-2018.
+ */
+.THIS .hideEl {
+    display: none;
+}
+.THIS hr {
+    margin: 0;
+}
+.THIS #suggestionsModal{
+    border: 1px solid rgb(217, 219, 221);
+    padding-left: 0.7rem;
+    font-size: 1rem;
+}
+.THIS a{
+    color:rgb(107, 109, 112);
+}
+.THIS .slds-input__icon-group.slds-input__icon-group_right {
+    display: none;
+}
+
+/* Added for #US 159016 - Begin */
+
+.THIS .errstyle textarea {
+  background-color:	rgb(255, 255, 255);
+  border-color:	rgb(194, 57, 52);
+  box-shadow:	rgb(194, 57, 52) 0 0 0 1px inset;
+  background-clip: padding-box;
+}
+
+.THIS .poboxErr{
+    color: rgb(194, 57, 52);
+    font-family: Open Sans;
+        font-size: 12px;
+}
+/* for #US 159016 - End */

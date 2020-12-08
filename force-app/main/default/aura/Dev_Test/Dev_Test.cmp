@@ -1,0 +1,22 @@
+<!--
+ - Created by karolbrennan on 11/25/18.
+ -->
+
+<aura:component access="global"
+                extends="c:Peak_Base"
+                description="Dev Test Component"
+                implements="forceCommunity:availableForAllPageTypes"
+                controller="NES_Utilities">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div>
+
+        <lightning:button variant="brand" label="CLICK ME" onclick="{!c.clickButton}" />
+
+        <lightning:select name="selectmenu" label="Choose one" onchange="{!c.chooseOne}">
+            <option value="">Choose One</option>
+            <option value="0010R00000Ud7PuQAJ">0010R00000UuyggQAB</option>
+            <option value="0010R00000UpQOfQAN">0010R00000UpQOfQAN</option>
+            <option value="0010R00000Utj4hQAB">0010R00000Utj4hQAB</option>
+        </lightning:select>
+    </div>
+</aura:component>

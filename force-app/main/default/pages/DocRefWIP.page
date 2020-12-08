@@ -1,0 +1,139 @@
+<!--
+  @File Name          : DocRefWIP.page
+  @Description        : Displays the Document File References contents
+  @Author             : Andrew Sim 
+  @Group              : 
+  @Last Modified By   : mmembrino@pearson.com
+  @Last Modified On   : 6/19/2020, 9:18:10 PM
+  @Modification Log   : 
+  Ver       Date            Author              Modification
+  1.0   2019-08-14      Andrew Sim              Initial Version
+  1.1   2019-09-13      Andrew Sim              Added responseHTML to support line breaks #102150/106220
+  2.0   6/18/2020       mmembrino@pearson.com   moved fetch to client to support viewing of files > 6MB
+-->
+
+<apex:page id="pageId" doctype="html-5.0" controller="NES_DocumentFileRefViewerController" sidebar="false" showHeader="false" showChat="false" lightningStylesheets="true">
+    <head>
+        <apex:slds />
+        <style>
+            #pdf-frame {
+                display: flex;
+                align-items: stretch;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            function disableSpinner() { document.getElementById('spinner').className += ' slds-hide'; }
+            function setPageStatus(string) { document.getElementById("{!$Component.theText3}").innerHTML = string; }
+            function handleErrors(response) {
+                if (!response.ok) {
+                    let status = `Oh Ohh! Something went wrong!
+                        </br>status: ${response.status}
+                        </br>error: ${response.statusText}
+                        </br>url: ${response.url}`;
+                    setPageStatus(status);
+                    disableSpinner();
+                    throw Error(response.statusText);
+                }
+                return response;
+            }
+            function handleIframeLoaded() {
+                
+                // supported mime-types
+                let mimeTypes = { jpeg:"image/jpeg", jpg:"image/jpeg", png:"image/png", gif:"image/gif", pdf:"application/pdf", txt: "text/plain;charset=UTF-8" };
+                setTimeout(function() {
+                    authURL="{!$Label.NES_DocumentURL}";
+                    document.getElementById('authiframe').contentWindow.postMessage({ messageType: 'sendCookie' }, authURL);
+                    
+                    // obtain authorization token 
+                    window.addEventListener("message", function _listener(messageEvent) {
+                        // console.log('EVENT ======');
+                        if ((messageEvent.origin===authURL) && (messageEvent.data.messageType==='sendCookie')) {
+                            setPageStatus("Loading...");
+                            
+                            // console.log("User is authenticated.");
+                            // console.log("authToken: ", messageEvent.data.token);
+                            // actionFunction
+                            // setAuthToken(messageEvent.data.token);
+                            
+                            window.removeEventListener("message", _listener);
+
+                            // request data...
+                            let url = ("{!url}").replace(/ /g, '%20');
+                            console.log('url:', url);
+                            let accId = "{!accountId}";
+                            let authToken = messageEvent.data.token;
+                            
+                            // building fetch request header...
+                            let myHeaders = new Headers();
+                            myHeaders.append('x-ctx-currentapplication', 'enrollment');
+                            myHeaders.append('x-ctx-authentication', authToken);
+                            if (accId !== undefined) { myHeaders.append('x-ctx-locationid', accId); }
+
+                            // building fetch request init...
+                            const myInit = {
+                                method: 'GET',
+                                headers: myHeaders,
+                                mode: 'cors',
+                                cache: 'default'
+                            };
+                            let myRequest = new Request(url);
+
+                            // fetching...
+                            fetch(myRequest, myInit)                            
+                                .then(handleErrors)
+                                .then(function(response) {
+                                    return response.blob();
+                                })
+                                .then(function(myBlob) {
+                                    console.log("ok");
+                                    var mimeType = mimeTypes["{!extension}"];
+                                    // console.log('mimeType:', mimeType);
+                                    var file = new Blob([myBlob], {type: mimeType});
+                                    var objectURL = URL.createObjectURL(file);
+                                    document.querySelector('#pdf-frame').src = '';
+                                    document.querySelector('#pdf-frame').src = objectURL;
+                                    setPageStatus('');
+                                    disableSpinner();
+                                    objectURL = URL.revokeObjectURL(file);
+                                })
+                                .catch(error => console.log(error));
+                        } else {
+                            setPageStatus("Authentication failed!");
+                            disableSpinner();
+                        }
+                    });            
+                }, 2000);       
+            }
+        </script>
+        
+        <!-- pdf/text/image loaded here -->
+        <iframe id="pdf-frame"></iframe>
+
+        <!-- auth happens here -->
+        <iframe id="authiframe" src="{!$Label.NES_DocumentURL_iframe}" onload="handleIframeLoaded();" style="border:0; height:0; width:0;"/>
+        
+        <!-- page messages -->
+        <apex:outputText id="theText3" 
+            value="Authenticating..." 
+            styleClass="slds-text-align_left slds-p-around_medium slds-text-heading_medium" 
+            style="font-style: italic;"
+        >
+        </apex:outputText>
+        
+        <!-- SPINNER -->
+        <div id="spinner" class="slds-spinner_container" >
+                <div role="status" class="slds-spinner slds-spinner--large slds-spinner--brand">
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+        <!-- SPINNER -->
+        
+    </body>
+</apex:page>

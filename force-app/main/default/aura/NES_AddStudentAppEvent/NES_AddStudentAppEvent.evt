@@ -1,0 +1,9 @@
+<!--
+ - Created by triciaigoe on 12/6/18.
+
+  This event is fired to tell the dashboard component that a new student was created
+ -->
+
+<aura:event type="APPLICATION" description="NES_AddStudentAppEvent">
+    <aura:attribute name="message" type="String" />
+</aura:event>

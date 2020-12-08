@@ -1,0 +1,131 @@
+<!--
+ - Created by karolbrennan on 10/9/18.
+ -->
+
+<aura:component controller="Peak_Utils" description="NES Community Footer" access="global" implements="forceCommunity:availableForAllPageTypes">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="col1Title" type="String" default="Helpful Links" />
+    <aura:attribute name="col1Link1Title" type="String" default="News &amp; Events" />
+    <aura:attribute name="col1Link1URL" type="String" default="" />
+    <aura:attribute name="col1Link2Title" type="String" default="Support" />
+    <aura:attribute name="col1Link2URL" type="String" default="" />
+    <aura:attribute name="col1Link3Title" type="String" default="" />
+    <aura:attribute name="col1Link3URL" type="String" default="" />
+    <aura:attribute name="col1Link4Title" type="String" default="" />
+    <aura:attribute name="col1Link4URL" type="String" default="" />
+    <aura:attribute name="col2Title" type="String" default="About Us" />
+    <aura:attribute name="col2Link1Title" type="String" default="About" />
+    <aura:attribute name="col2Link1URL" type="String" default="" />
+    <aura:attribute name="col2Link2Title" type="String" default="Careers" />
+    <aura:attribute name="col2Link2URL" type="String" default="" />
+    <aura:attribute name="col2Link3Title" type="String" default="Company Blog" />
+    <aura:attribute name="col2Link3URL" type="String" default="" />
+    <aura:attribute name="col2Link4Title" type="String" default="Find a School" />
+    <aura:attribute name="col2Link4URL" type="String" default="" />
+    <aura:attribute name="copyrightText" type="String" default="Connections Academy. All Rights Reserved." />
+    <aura:attribute name="metaLink1Title" type="String" default="FERPA Notice" />
+    <aura:attribute name="metaLink1URL" type="String" default="" />
+    <aura:attribute name="metaLink2Title" type="String" default="PPRA Notice" />
+    <aura:attribute name="metaLink2URL" type="String" default="" />
+    <aura:attribute name="metaLink3Title" type="String" default="Privacy Policy" />
+    <aura:attribute name="metaLink3URL" type="String" default="" />
+    <aura:attribute name="metaLink4Title" type="String" default="Nondiscriminatory Policy" />
+    <aura:attribute name="metaLink4URL" type="String" default="" />
+    <aura:attribute name="year" type="Integer" default=""/>
+    <div>
+        <!-- Bug-134878 Imaged removed by Ravi-->
+    <!--div style="{!'background:url('+$Resource.footerBackgroundImage+') top center no-repeat #3f3f3f;background-size:cover;'}"-->
+        <lightning:layout multipleRows="true" class="container">
+            <lightning:layoutItem size="6" mediumDeviceSize="2">
+                <strong>{!v.col1Title}</strong><br/>
+                <nav>
+                <ul aria-label="{!v.col1Title}">
+                <aura:if isTrue="{!v.col1Link1Title}">
+                    <li>
+                        <a href="{!v.col1Link1URL}">{!v.col1Link1Title}</a><br/>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.col1Link2Title}">
+                    <li>
+                    <a href="{!v.col1Link2URL}">{!v.col1Link2Title}</a><br/>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.col1Link3Title}">
+                    <li>
+                    <a href="{!v.col1Link3URL}">{!v.col1Link3Title}</a><br/>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.col1Link4Title}">
+                    <li>
+                    <a href="{!v.col1Link4URL}">{!v.col1Link4Title}</a><br/>
+                    </li>
+                </aura:if>
+                </ul>
+                </nav>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6" mediumDeviceSize="2">
+                <strong>{!v.col2Title}</strong><br/>
+                <nav>
+                    <ul aria-label="{!v.col2Title}">
+                <aura:if isTrue="{!v.col2Link1Title}">
+                    <li>
+                    <a href="{!v.col2Link1URL}">{!v.col2Link1Title}</a><br/>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.col2Link2Title}">
+                    <li>
+                    <a href="{!v.col2Link2URL}">{!v.col2Link2Title}</a><br/>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.col2Link3Title}">
+                    <li>
+                    <a href="{!v.col2Link3URL}">{!v.col2Link3Title}</a><br/>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.col2Link4Title}">
+                    <li>
+                    <a href="{!v.col2Link4URL}">{!v.col2Link4Title}</a><br/>
+                    </li>
+                </aura:if>
+                    </ul>
+                </nav>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" mediumDeviceSize="8">&nbsp;</lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout multipleRows="true" class="container">
+            <lightning:layoutItem size="12">
+            <hr />
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout multipleRows="true" class="container">
+            <lightning:layoutItem size="12" mediumDeviceSize="5">
+                <span class="copyright">&copy; Copyright {!v.year}&nbsp;{!v.copyrightText ? v.copyrightText : ''}</span>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" mediumDeviceSize="7" class="slds-text-align_right metaLinks">
+                <nav><ul class="bottomLinks">
+                <aura:if isTrue="{!v.metaLink1Title}">
+                    <li>
+                    <a href="{!v.metaLink1URL}">{!v.metaLink1Title}</a>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.metaLink2Title}">
+                    <li>
+                    <a href="{!v.metaLink2URL}">{!v.metaLink2Title}</a>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.metaLink3Title}">
+                    <li>
+                    <a href="{!v.metaLink3URL}">{!v.metaLink3Title}</a>
+                    </li>
+                </aura:if>
+                <aura:if isTrue="{!v.metaLink4Title}">
+                    <li>
+                    <a href="{!v.metaLink4URL}">{!v.metaLink4Title}</a>
+                    </li>
+                </aura:if>
+                    </ul></nav>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

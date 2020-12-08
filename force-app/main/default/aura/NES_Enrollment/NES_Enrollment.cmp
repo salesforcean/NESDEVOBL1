@@ -1,0 +1,336 @@
+<!--
+ - Created by karolbrennan on 11/16/18.
+   Updated: 07/18/19 lightning helptext to show description (Eshwar Vekal)
+ -->
+
+<aura:component description="NES Enrollment Forms" implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" extends="c:Peak_Base" controller="NES_EnrollmentController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="studentId" type="String" />
+    <aura:attribute name="processId" type="String" />
+    <aura:attribute name="programEnrollmentId" type="String" />
+    <aura:attribute name="studentName" type="String" />
+    <aura:attribute name="caretakerId" type="String"/>
+    <aura:attribute name="studentGrade" type="String" />
+    <aura:attribute name="processInformation" type="Object"/>
+    <aura:attribute name="studentNameSubText" type="String" default="Some steps will require you to upload documents that must be verified, you will be notified via email when verification is complete." />
+    <aura:attribute name="currentEnrollmentText" type="String" default="Current enrollment" />
+    <aura:attribute name="currentYear" type="String" default="WACA 2018 / 2019 School Year" />
+    
+    <aura:attribute name="forms" type="Object" />
+    <aura:attribute name="formInformation" type="Object" />
+    <aura:attribute name="formsLoaded" type="Boolean" default="false" />
+    <aura:attribute name="activeTab" type="Integer" default="0" />
+    <aura:attribute name="stages" type="Object[]"/>
+    <aura:attribute name="completedStages" type="Integer" default="0"/>
+    <aura:attribute name="sections" type="Object[]"/>
+    <aura:attribute name="incompleteSections" type="Object[]"/> 
+    <aura:attribute name="messages" type="Object[]"/>
+    <aura:attribute name="stageMessages" type="Object[]"/>
+    <aura:attribute name="invalidUser" type="Boolean"/>
+
+    <aura:attribute name="currentStep" type="Integer"/>
+    <aura:attribute name="currentStageId" type="String"/>
+    <aura:attribute name="currentFormId" type="String"/>
+    <aura:attribute name="currentSectionId" type="String"/>
+    <aura:attribute name="currentECAId" type="String"/>
+    <aura:attribute name="currentSectionType" type="String"/>
+    <aura:attribute name="allStepsComplete" type="Boolean"/>
+
+    <aura:attribute name="showTabs" type="Boolean" default="true"/>
+    <aura:attribute name="showContent" type="Boolean" default="false"/>
+
+    <aura:attribute name="withdrawModalOpen" type="Boolean" default="false" />
+    <aura:attribute name="spinner" type="Boolean" default="true" />
+	<!--Swapna:for GTM -->
+    <aura:attribute name="currentSectionName" type="String"/>
+	<aura:attribute name="currentFormName" type="String"/>
+	<aura:attribute name="currentFormStatus" type="String"/>
+    <aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" />
+    <aura:registerEvent name="isSameSchoolEvent" type="c:NES_schoolId"/>
+
+    <c:NES_WithdrawEnrollment programEnrollmentId="{!v.programEnrollmentId}" isOpen="{!v.withdrawModalOpen}" />
+
+    <div>
+        <aura:if isTrue="{!v.spinner}">
+            <lightning:spinner size="medium" variant="brand" alternativeText="Loading"/>
+        </aura:if>
+        <aura:if isTrue="{!v.invalidUser}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">You do not have access to this page</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p class="slds-p-left_medium">Please click below to continue</p>
+                    <div class="slds-p-around_medium">
+                        <lightning:button variant="neutral" label="Back to home page" onclick="{!c.goToDashboard}"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+        
+        <lightning:layout multipleRows="true" verticalAlign="left" class="slds-p-vertical_medium">
+             
+            <lightning:layoutItem size="12" flexibility="grow"  padding="horizontal-small">
+                <!-- Added by Ravi-->
+                <lightning:button variant="neutral" label="&#60; Back to Dashboard" onclick="{!c.goToDashboard}"/>
+            </lightning:layoutItem>
+                  
+        </lightning:layout>
+          
+      <!--  <lightning:layout multipleRows="true" verticalAlign="center" class="slds-p-vertical_medium bordertop">	
+            <lightning:layoutItem size="12" padding="horizontal-small">
+             <h2>{!v.studentName}</h2> 
+                <p>{!v.studentNameSubText}</p>
+            </lightning:layoutItem>
+        </lightning:layout>-->
+        <lightning:layout multipleRows="true" class="boxshadow">
+            <lightning:layoutItem size="12" padding="around-small" class="borderbottom bottomshadow">
+
+                <lightning:layout multipleRows="true" verticalAlign="center">
+                    <lightning:layoutItem size="10" largeDeviceSize="5" padding="horizontal-small" class="slds-order_1">
+                        <h6>{!v.currentEnrollmentText}</h6> 
+                       <h3>{!v.studentName}|{!v.processInformation.processName}</h3><!--StdName-->
+                    </lightning:layoutItem>
+                    
+                    
+                    <!-- added by Ravi Desktop and Mobile changes on 1/1/2020-->
+                     <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+                    <lightning:layoutItem size="12" largeDeviceSize="3"  padding="horizontal-small"  class="slds-order_desk slds-large-order_2 progressContainer">
+                       
+                        <aura:if isTrue="{!v.stages.length > 1}">
+                            
+                              <div class="slds-progress">
+                                <ol class="slds-progress__list">
+                                    <aura:iteration items="{!v.stages}" var="stage">
+                                      <li class="{!stage.Status__c == 'Complete'
+                                                                ? 'slds-is-completed slds-progress__item'
+                                                                : stage.Status__c == 'In Progress'
+                                                                    ? 'slds-is-active slds-progress__item'
+                                                                    : 'slds-progress__item'}" onmouseenter="{!c.stepHover}" onmouseleave="{!c.stepHover}">
+                                            <button disabled="disabled" class="slds-progress__marker slds-button"
+                                                    style="{!stage.Status__c == 'Complete' ? 'background:url('+$Resource.icons+'/ok.png) center center no-repeat #3c8630!important;background-size:100%!important;border-width: 3px;' : ''}"
+                                                    title="{!stage.Enrollment_Component__r.Name}"> 
+                                                <!-- Text above the status indicator  is to be removed By Ravi-->
+                                                <!--span class="slds-assistive-text">{!stage.Enrollment_Component__r.Name}</span-->
+                                            </button>
+                                        </li> 
+                                
+                                    </aura:iteration>
+                                </ol>
+                               
+                                <lightning:progressBar value="{!v.completedStages == v.stages.length ? (100) : (v.completedStages/(v.stages.length-1)) * 100}" size="small" />
+                            
+                                </div> 
+                        </aura:if>
+                    </lightning:layoutItem>
+                          <aura:set attribute="else">
+                              <lightning:layoutItem size="12" largeDeviceSize="3"  padding="horizontal-small"  class="slds-order_4 slds-large-order_2 progressContainer">
+                       
+                        <aura:if isTrue="{!v.stages.length > 1}">
+                            
+                              <div class="slds-progress">
+                                <ol class="slds-progress__list">
+                                    <aura:iteration items="{!v.stages}" var="stage">
+                                      <li class="{!stage.Status__c == 'Complete'
+                                                                ? 'slds-is-completed slds-progress__item'
+                                                                : stage.Status__c == 'In Progress'
+                                                                    ? 'slds-is-active slds-progress__item'
+                                                                    : 'slds-progress__item'}" onmouseenter="{!c.stepHover}" onmouseleave="{!c.stepHover}">
+                                            <button disabled="disabled" class="slds-progress__marker slds-button"
+                                                    style="{!stage.Status__c == 'Complete' ? 'background:url('+$Resource.icons+'/ok.png) center center no-repeat #3c8630!important;background-size:100%!important;border-width: 3px;' : ''}"
+                                                    title="{!stage.Enrollment_Component__r.Name}"> 
+                                                <!-- Text above the status indicator  is to be removed By Ravi-->
+                                                <!--span class="slds-assistive-text">{!stage.Enrollment_Component__r.Name}</span-->
+                                            </button>
+                                        </li> 
+                                
+                                    </aura:iteration>
+                                </ol>
+                               
+                                <lightning:progressBar value="{!v.completedStages == v.stages.length ? (100) : (v.completedStages/(v.stages.length-1)) * 100}" size="small" />
+                            
+                                </div> 
+                        </aura:if>
+                    </lightning:layoutItem>
+                               </aura:set>
+                    </aura:if>
+                    
+                    <!--Ravi end Desktop and Mobile changes on 1/1/2020--> 
+                    
+                    
+                    
+                    
+                    
+                  <lightning:layoutItem size="12"  largeDeviceSize="3" flexibility="no-shrink" padding="horizontal-medium" class="status-block borderleft slds-order_6 slds-large-order_4">
+                      <!-- modifed by ravi-->
+                      <h6>Status 
+                 	<aura:if isTrue="{!and(v.stageMessages != null, v.stageMessages.length > 0)}">
+  							<aura:iteration items="{!v.stageMessages}" var="message">
+							<lightning:helptext content="{!message.Component_Message__c}"/>
+							</aura:iteration>
+                             <!--aura:set attribute="else">
+                                 <lightning:helptext />
+                            </aura:set-->
+                            </aura:if>
+ 						 	
+                      </h6>
+                      <!-- end here-->
+                      <h5 class="{!v.processInformation.ecaStatus == 'Time Expired' ? 'slds-text-color_error' : 'slds-text-color_success'}">{!v.processInformation.ecaStatus}
+                       <aura:if isTrue="{!and(v.studentGrade != 'undefined', v.studentGrade != undefined, v.studentGrade != '', v.studentGrade != null)}">&nbsp;|&nbsp;{!v.studentGrade}</aura:if> 
+                        </h5>
+                    </lightning:layoutItem>
+                    <!-- BELOW IS NOT WORKING FOR iconName="utility:threedots_vertical",  -->
+                    <lightning:layoutItem class="slds-align_absolute-centerMenu slds-order_2 slds-large-order_5">
+                       <!--lightning:icon iconName="utility:apps" alternativeText="Withdraw" size="x-small"/--> 
+                        <lightning:buttonMenu aura:id="menu" variant="container" menuAlignment="right" iconName="utility:chevrondown" 
+                        onselect="{! c.handleWithdraw}" alternativeText="Show menu" iconSize="x-small">
+                            <lightning:menuItem value="withdrawStudent" label="Deactivate" /> 
+                        </lightning:buttonMenu>
+                        <!-- OR We can use this , MISC: utility:chevrondown utility:down iconSize="medium" -->
+                         <!--a class="slds-vertical-tabs__link" href="javascript:void(0)" onclick="{! c.handleWithdraw }">
+                            <lightning:icon iconName="utility:threedots_vertical" alternativeText="Withdraw" title ="Withdraw"/>
+                             
+                        </a-->  
+
+
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </lightning:layoutItem>
+            
+
+            <lightning:layoutItem size="12">
+                <div class="slds-vertical-tabs">
+                    <ul class="{! 'slds-vertical-tabs__nav ' + (v.showTabs ? 'showSide' : 'hideSide')}" role="tablist" aria-orientation="vertical">
+                        <aura:iteration items="{!v.forms}" var="form" indexVar="index">
+                            <li class="{!v.activeTab == index ? 'slds-is-active slds-vertical-tabs__nav-item' : 'slds-vertical-tabs__nav-item'}" role="presentation" onclick="{!c.handleTabClick}" id="{! 'tab' + index}">
+                                <a class="slds-vertical-tabs__link" href="javascript:void(0)" role="tab" tabindex="{!v.activeTab == index ? '-1' : '0'}" id="{!'tablink' + index}" aria-selected="{!v.activeTab == index ? true : false}" aria-controls="{!'tabcontent' + index}">
+                                    <!-- Circles to be Added to be infront of basic family information component Added by Ravi-->
+                                    <div class="progress-indicator-icon slds-align-middle slds-show_inline-block slds-size_1-of-5 slds-text-align_left">
+                                        <!-- <lightning:icon iconName="utility:check" size="small"
+                                                        class="{!form.ecaStatus == 'Complete' || form.ecaStatus == 'Started' ? '' : 'hideit'}" /> --> <!--Defect 158726-->
+                                        <lightning:icon iconName="utility:check" size="small"
+                                                        class="{!form.ecaStatus == 'Complete' ? '' : 'hideit'}" />
+                                    </div>
+                                    <!--span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span-->
+                                    <div class="slds-align-left slds-show_inline-block slds-size_4-of-5">
+                                        <h5>{!form.name}</h5>
+                                        <aura:if isTrue="{!form.ecaStatus}">
+                                            <em class="{!form.ecaStatus == 'Complete' || form.ecaStatus == 'In Progress' ? 'slds-text-color_success' : ''}">{!form.ecaStatus}</em>
+                                            <aura:set attribute="else">
+                                                <em>Not Started</em>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                    <!--div class="progress-indicator-icon slds-align-middle slds-show_inline-block slds-size_1-of-5 slds-text-align_right">
+                                        <lightning:icon iconName="utility:check" size="small"
+                                                        class="{!form.ecaStatus == 'Complete' || form.ecaStatus == 'Started' ? '' : 'hideit'}" />
+                                    </div-->
+                                </a>
+                            </li>
+                        </aura:iteration>
+                    </ul>
+                    <aura:iteration items="{!v.forms}" var="form" indexVar="index">
+
+                        <div class="{!(v.activeTab == index ? 'slds-show slds-vertical-tabs__content' : 'slds-hide slds-vertical-tabs__content')}" id="{!'tabcontent' + index}" role="tabpanel" aria-labelledby="{!'tablink' + index}">
+                            <div class="{!v.showContent ? ' showSide' : ' hideSide'}">
+                            <lightning:layout multipleRows="true">
+                                <lightning:layoutItem size="12" mediumDeviceSize="12" largeDeviceSize="{! v.messages.length > 0 || v.stageMessages.length > 0 ? 12 : 12}" padding="around-large">
+                                    <!-- Added By Ravi-->
+                                    <lightning:button class="mobileBack" label="&#60; Back to Forms List" title="Back to Forms List" onclick="{! c.toggleMobileSide }"/>
+                                    <!--h2>{!form.name}</h2-->
+                                    <p><lightning:formattedRichText value="{!form.componentMessage}"/></p>
+                                    <!-- lightning helptext to show description 
+                                    <aura:if isTrue="{!form.componentMessage}">
+                                        <lightning:helptext content="{!form.componentMessage}"/>
+                                    </aura:if>
+									-->         
+                                    
+                                    <aura:iteration items="{!v.sections}" var="section">
+                                        <div class="slds-card slds-m-bottom_x-large slds-m-top_medium">
+                                            <lightning:layout multipleRows="true">
+                                                <!-- Circles to be removed under the component By Ravi-->
+                                                <!--lightning:layoutItem size="2" mediumDeviceSize="1" padding="around-medium"  class="slds-align_absolute-center progress-indicator-icon">
+                                                        <lightning:icon iconName="utility:check" size="small"
+                                                                    class="{!section.ecaStatus == 'Complete' || section.ecaStatus == 'Started' ? '' : 'hideit'}" />  
+                                                </lightning:layoutItem-->
+                                                <lightning:layoutItem size="10" mediumDeviceSize="7" padding="around-medium" class="enrollmentSectionDesc">
+                                                    <h5>{!section.name}</h5>
+                                                    <p><lightning:formattedRichText value="{!section.componentMessage}"/></p>
+                                                    <!-- lightning helptext to show description
+                                                    <aura:if isTrue="{!section.componentMessage}">
+                                                        <lightning:helptext content="{!section.componentMessage}"/>
+                                                    </aura:if>
+													-->
+                                                    
+                                                </lightning:layoutItem>
+                                                
+                                                <lightning:layoutItem size="12" mediumDeviceSize="4" padding="around-medium" class="slds-align_absolute-center enrollmentButtonArea">
+                                                      <!-- Name changed Submitted to Under Review By Ravi-->  
+                                                    <aura:if isTrue="{!section.ecaStatus == 'Complete' || section.docStatus == 'Submitted'}">
+                                                            <aura:if isTrue="{!section.docStatus == 'Submitted'}">
+                                                         <div class ="URspacing">
+                                                    	<i>Under Review</i>
+                                                         </div>
+                                                         <aura:set attribute="else">
+                                                         <lightning:layoutItem size="1" mediumDeviceSize="1" padding="around-medium"  class="slds-align_absolute-right progress-indicator-icon">
+                                                        <!-- <lightning:icon iconName="utility:check" size="small"
+                                                          class="{!section.ecaStatus == 'Complete' || section.ecaStatus == 'Started' ? '' : 'hideit'}" /> --> <!-- Defect 158726-->
+                                                        <lightning:icon iconName="utility:check" size="small"
+                                                          class="{!section.ecaStatus == 'Complete' ? '' : 'hideit'}" />
+                                                		</lightning:layoutItem>
+                                                             <div class="ComSpacing">
+                                                             <i>Complete</i>
+                                                           </div>
+                                                        </aura:set>
+                                                        </aura:if>
+                                                        
+                                                        <aura:set attribute="else">
+                                                        <lightning:button disabled="{!(section.ecaStatus == 'Complete' || section.docStatus == 'Submitted') ? 'true' : 'false'}" name="{!section.Id}" variant="brand" class="{! 'start-button ' + (and(section.docStatus == '', section.ecaStatus != 'Complete') ? 'start' : 'submitted')}" title="{!and(section.docStatus == '', section.ecaStatus != 'Complete') ? 'Start' : section.ecaStatus == 'Complete' ? 'Complete' : 'Submitted'}" label="{!and(section.docStatus == '', section.ecaStatus != 'Complete') ? 'Start' : section.ecaStatus == 'Complete' ? 'Complete' : 'Under Review'}" onclick="{!c.handleStart}"/>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                     
+                                                       
+                                                        
+                                                </lightning:layoutItem>
+                                            </lightning:layout>
+                                        </div>
+                                    </aura:iteration>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="12" mediumDeviceSize="12" largeDeviceSize="4" padding="around-large">
+									<!-- commented by Ravi -->
+                                    <!--aura:if isTrue="{!and(v.stageMessages != null, v.stageMessages.length > 0)}">
+                                        <div class="stage-messages">
+                                            <h5>Stage Messages</h5>
+                                            <ul>
+                                                <aura:iteration items="{!v.stageMessages}" var="message">
+                                                    <li><aura:unescapedHtml value="{!message.Component_Message__c}"/></li>
+                                                </aura:iteration>
+                                            </ul>
+                                        </div>
+                                    </aura:if-->
+
+
+                                    <aura:if isTrue="{!and(v.messages != null, v.messages.length > 0)}">
+                                    <div class="contextual-help">
+                                        <h5>Contextual help</h5>
+                                        <ul>
+                                            <aura:iteration items="{!v.messages}" var="message">
+                                                <li><aura:unescapedHtml value="{!message.Component_Message__c}"/></li>
+                                            </aura:iteration>
+                                        </ul>
+                                    </div>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </div>
+                        </div>
+                    </aura:iteration>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

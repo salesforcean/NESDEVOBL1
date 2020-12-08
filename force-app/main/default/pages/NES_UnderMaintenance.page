@@ -1,0 +1,18 @@
+<apex:page showHeader="false" id="SiteTemplate">
+    <apex:stylesheet value="{!$Label.NES_CommBaseurl}s/errorstyle"/>
+  <apex:panelGrid cellpadding="0" cellspacing="0" width="98%" border="0" columns="2" style="text-align: left;" id="theHeader">
+      <apex:outputLink value="{!$Label.NES_CommBaseurl}" id="connectionsimg"><apex:image url="{!$Label.NES_CommBaseurl}s/communityLogo.png" style="align: left;" alt="Connections Academy" width="233" height="75" title="Connections Academy"/>
+ </apex:outputLink> </apex:panelGrid>
+
+                      
+    <hr class="hrdivider" color="#d86218"/>
+  <div style="text-align:center;font-size: 16px;">
+  <apex:insert name="body"/>
+  We're sorry, but the Pearson Connexus Enrollment site is currently undergoing maintenance.<BR></BR><BR></BR>
+  This maintenance period is expected to be <B>from 2 - 6 a.m. EST on November 8, 2020</B>.  Please check back again at that time.<BR></BR><BR></BR>
+  We apologize for any inconvenience.  
+  <apex:insert name="footer">
+    <site:googleAnalyticsTracking />
+  </apex:insert>
+  </div>
+</apex:page>

@@ -1,0 +1,4 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" >
+	This is test Page!
+    <lightning:button variant="brand" label="Invite a Caretaker"/>
+</aura:component>

@@ -1,0 +1,19 @@
+<!--
+ - Created by karolbrennan on 10/15/18.
+ -->
+
+<design:component label="NES Need Help">
+    <design:attribute name="heading" label="Heading" />
+    <design:attribute name="action1Title" label="Action 1 Title" />
+    <design:attribute name="action1Icon" label="Action 1 Icon" />
+    <design:attribute name="action1Description" label="Action 1 Description" />
+    <design:attribute name="action1Link" label="Action 1 Link" />
+    <design:attribute name="action2Title" label="Action 2 Title" />
+    <design:attribute name="action2Icon" label="Action 2 Icon" />
+    <design:attribute name="action2Description" label="Action 2 Description" />
+    <design:attribute name="action2Link" label="Action 2 Link" />
+    <design:attribute name="action3Title" label="Action 3 Title" />
+    <design:attribute name="action3Icon" label="Action 3 Icon" />
+    <design:attribute name="action3Description" label="Action 3 Description" />
+    <design:attribute name="action3Link" label="Action 3 Link" />
+</design:component>

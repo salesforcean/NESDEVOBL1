@@ -1,0 +1,36 @@
+<!--
+ - Created by Ritvik on 28-09-2018.
+ -->
+
+<aura:component description="Dev_ClientSideiFrame"
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes"
+                extends="c:Dev_Base"
+                access="global">
+
+    <aura:attribute name="srcURL"     type="String" />
+    <aura:attribute name="height"          type="String" default="1000" access="public"/>
+    <aura:attribute name="width"           type="String" default="500" access="public"/>
+    <aura:attribute name="recordId" type="String" access="global"/>
+    <aura:attribute name="nextURL" type="String" default="/7s-payment-confirm" access="public"/>
+    <aura:attribute name="postMessageOrigin1" type="String" default="/7s-payment-confirm" access="public"/>
+    <aura:attribute name="postMessageOrigin2" type="String" default="/7s-payment-confirm" access="public"/>
+    <aura:attribute name="postMessageOrigin3" type="String" default="/7s-payment-confirm" access="public"/>
+    <aura:attribute name="postMessageOrigin4" type="String" default="/7s-payment-confirm" access="public"/>
+    <aura:attribute name="debugMode" type="Boolean" default="true" access="global"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <lightning:layout horizontalAlign="center">
+        <aura:if isTrue="{!v.isLoading}">
+            <lightning:spinner size="large"/>
+        </aura:if>
+
+        <lightning:layoutItem>
+            <iframe aura:id="iFrame" width="{!v.width}" height="{!v.height}" frameborder="0" src="{!v.srcURL}"
+                    onload="{!c.onLoadHandler}"></iframe>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+
+</aura:component>

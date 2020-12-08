@@ -1,0 +1,24 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="eventLabel" type="String" access="GLOBAL"/>
+    <aura:attribute name="eventNm" type="String" access="GLOBAL"/>
+    <aura:attribute name="eventValue" type="String" access="GLOBAL"/>
+    <aura:attribute name="step" type="String" access="GLOBAL"/>
+    <aura:attribute name="stepValue" type="String" access="GLOBAL"/>
+  	<aura:attribute name="pagePath" type="String" access="GLOBAL"/>
+    <aura:attribute name="timeStamp" type="DateTime" access="GLOBAL"/>
+    <aura:attribute name="status" type="String" access="GLOBAL"/>
+    <aura:attribute name="houseHold" type="String" access="GLOBAL"/>
+    <aura:attribute name="studentId" type="String" access="GLOBAL"/>
+    <aura:attribute name="relationship" type="String" access="GLOBAL"/>
+    <aura:attribute name="schoolName" type="String" access="GLOBAL"/>
+    <aura:attribute name="schoolYear" type="String" access="GLOBAL"/>
+    <aura:attribute name="stateOfResidence" type="String" access="GLOBAL"/>
+    <aura:attribute name="age" type="String" access="GLOBAL"/>
+    <aura:attribute name="gradeLevel" type="String" access="GLOBAL"/>
+    <aura:attribute name="newStudentData" type="Object" />
+    <aura:attribute name="StudentName" type="String" access="GLOBAL"/>
+    <aura:attribute name="FormName" type="String" access="GLOBAL"/>
+    <aura:attribute name="SectionName" type="String" access="GLOBAL"/>
+    <aura:attribute name="FormStatus" type="String" access="GLOBAL"/>
+    <aura:attribute name="careTakerId" type="String" access="GLOBAL"/>
+</aura:event>

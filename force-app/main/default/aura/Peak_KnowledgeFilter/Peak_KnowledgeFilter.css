@@ -1,0 +1,170 @@
+.THIS {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12);
+	background: white;
+}
+.THIS .peak_knowledgeFilter__search .slds-form-element {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none
+}
+.THIS .peak_knowledgeFilter__search .slds-form-element>label {
+	display: none
+}
+.THIS .peak_knowledgeFilter__search input {
+	/*font-size: 1.625rem;
+	line-height: 1.625rem;*/
+	/*padding: 1.125rem .625rem*/
+}
+.THIS .searchIcon svg{
+    fill:rgb(170, 76, 19);
+}
+.THIS .peak_knowledgeFilter__search input::-moz-placeholder,
+.THIS .peak_knowledgeFilter__search input::-webkit-input-placeholder,
+.THIS .peak_knowledgeFilter__search input::placeholder {
+	/*font-size: 1.625rem!important*/
+}
+.THIS .peak_knowledgeFilter__search .slds-icon_container {
+	right: 1.5rem
+}
+.THIS .peak_knowledgeFilter__filter label {
+	display: none
+}
+.THIS .peak_knowledgeFilter__filter select {
+	font-size: 1rem;
+	height: 2.5rem
+}
+.THIS .peak_knowledgeFilter__pager button {
+	text-transform: uppercase
+}
+.THIS .peak_knowledgeFilter__pager button.pager-left {
+	padding-right: 1rem;
+}
+.THIS .peak_knowledgeFilter__pager button.pager-right {
+	padding-left: 1rem;
+}
+.THIS .peak_knowledgeFilter__pager button .slds-icon_container {
+	position: relative;
+	top: -1px
+}
+.THIS .peak_knowledgeFilter__pager button .slds-icon_container svg {
+	fill: #fff
+}
+.THIS .peak_knowledgeFilter__results {
+	position: relative;
+	min-height: 150px
+}
+.THIS .peak_knowledgeFilter__results table {
+	background: none
+}
+
+.THIS .peak_knowledgeFilter__results table tr:first-of-type th, .THIS .peak_knowledgeFilter__results table tr:first-of-type td {
+	border: none;
+}
+
+.THIS .peak_knowledgeFilter__pager{
+	padding: 0rem .75rem .75rem .75rem;
+}
+
+.THIS .peak_knowledgeFilter__results table tr th, .THIS .peak_knowledgeFilter__results table tr td {
+	padding-left: 0.75rem;
+}
+
+.THIS .peak_knowledgeFilter__results .slds-table_bordered {
+	border: none;
+}
+
+@media (max-width: 48em) {
+	.THIS .peak_knowledgeFilter__results table {
+		border: 0;
+		display: block;
+	}
+
+	.THIS .peak_knowledgeFilter__results table tbody {
+		display: block;
+		padding: 1em;
+	}
+
+}
+.THIS .peak_knowledgeFilter__results table thead th {
+	font-size: .8125rem;
+	padding-top: .375rem;
+	padding-bottom: .375rem
+}
+.THIS .peak_knowledgeFilter__results table thead th:first-child {
+	width: 65%
+}
+@media (max-width: 48em) {
+	.THIS .peak_knowledgeFilter__results table thead {
+		display: none
+	}
+}
+.THIS .peak_knowledgeFilter__results table tbody tr th {
+	font-weight: normal;
+	font-size: 1.08rem;
+}
+.THIS .peak_knowledgeFilter__results table tbody tr td,
+.THIS .peak_knowledgeFilter__results table tbody tr th {
+	padding-top: 1rem;
+	padding-bottom: 1.5rem
+}
+.THIS .peak_knowledgeFilter__results table tbody tr td div ul,
+.THIS .peak_knowledgeFilter__results table tbody tr th div ul {
+	flex-wrap: wrap
+}
+@media only screen and (max-width: 47.9375em) {
+	.THIS .peak_knowledgeFilter__results table tbody tr td div ul,
+	.THIS .peak_knowledgeFilter__results table tbody tr th div ul {
+		justify-content: flex-end
+	}
+}
+@media (max-width: 48em) {
+	.THIS button.slds-button.slds-button_brand {
+		width: 90%;
+	}
+
+	.THIS .peak_knowledgeFilter__results table tbody tr {
+		display: flex;
+		flex-direction: column;
+		margin: .625rem 0;
+		border-top: 2px solid
+	}
+	.THIS .peak_knowledgeFilter__results table tbody tr td,
+	.THIS .peak_knowledgeFilter__results table tbody tr th {
+		display: flex;
+		width: 100%;
+		padding: .625rem 0;
+		flex-direction: column;
+		align-items: start;
+	}
+	.THIS .peak_knowledgeFilter__results table tr:first-of-type th, .THIS .peak_knowledgeFilter__results table tr:first-of-type td {
+		border-top: 1px solid rgb(212, 212, 212);
+	}
+	.THIS .peak_knowledgeFilter__results table tbody tr td:first-child,
+	.THIS .peak_knowledgeFilter__results table tbody tr th:first-child {
+		border-top: 0
+	}
+	.THIS .peak_knowledgeFilter__results table tbody tr td>div,
+	.THIS .peak_knowledgeFilter__results table tbody tr th>div {
+		font-size: .875rem;
+		padding-left: 0;
+		text-align: left;
+		flex: 4
+	}
+	.THIS .peak_knowledgeFilter__results table tbody tr td:before,
+	.THIS .peak_knowledgeFilter__results table tbody tr th:before {
+		font-size: .75rem;
+		font-weight: 400;
+		padding-right: .25rem;
+		content: attr(data-label);
+		text-transform: uppercase;
+		flex: 2
+	}
+}
+.THIS .peak_knowledgeFilter__results table.isSearching {
+	border-bottom: 0
+}
+.THIS .peak_knowledgeFilter__results .peak_knowledgeFilter_topicsList a {
+	font-size: .75rem;
+	color: black;
+}

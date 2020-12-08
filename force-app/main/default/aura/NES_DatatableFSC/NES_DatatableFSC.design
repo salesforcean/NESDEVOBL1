@@ -1,0 +1,67 @@
+<design:component >
+    
+    <!-- <design:attribute name="mydata_standard1" label="Collection - Accounts"/>
+    <design:attribute name="selectedRows_standard1" label="Output Selected Accounts"/>
+    
+    <design:attribute name="mydata_standard2" label="Collection - Contacts"/>
+    <design:attribute name="selectedRows_standard2" label="Output Selected Contacts"/> -->
+		
+    <!-- BELOW TO SUPPORT QUERYING OF RECORDS FOR BOTH RELATED & MASTER DETAIL RECORDS -->
+    	
+    <design:attribute name="tableHeading" label="1__ Datatable Header" default="Datatable"/>
+    <design:attribute name="querysObjectAPIName" label="1_querysObjectAPIName" default="Account"/>
+    <design:attribute name="whereClauseIDFieldAPIName"  label="2_whereClauseIDFieldAPIName" default="Id"/>
+    <design:attribute name="whereClauseIDFieldValue" label="3_whereClauseIDFieldValue"/>
+
+    <!-- CHANGE THE OBJECT NAMES HERE AND IN THE CMP FILE TO SUPPORT DIFFERENT OBJECTS -->
+    <design:attribute name="column01_label" label="column01 01_label"/>
+    <design:attribute name="column01_fieldName" label="column01 02_fieldName"/>
+    <design:attribute name="column01_type" label="column01 03_type" default="text"/>
+    <design:attribute name="column01_icon" label="column01 04_icon"/>
+    <design:attribute name="column01_sortable" label="column01 05_sortable" default="false"/>
+    <design:attribute name="column01_editable" label="column01 06_editable" default="false"/>
+    <design:attribute name="column01_required" label="column01 07_required" default="false"/>
+    
+    <design:attribute name="column02_label" label="column02 01_label"/>
+    <design:attribute name="column02_fieldName" label="column02 02_fieldName"/>
+    <design:attribute name="column02_type" label="column02 03_type" default="text"/>
+    <design:attribute name="column02_icon" label="column02 04_icon"/>
+    <design:attribute name="column02_sortable" label="column02 05_sortable" default="false"/>
+    <design:attribute name="column02_editable" label="column02 06_editable" default="false"/>
+    <design:attribute name="column02_required" label="column02 07_required" default="false"/>
+    
+    <design:attribute name="column03_label" label="column03 01_label"/>
+    <design:attribute name="column03_fieldName" label="column03 02_fieldName"/>
+    <design:attribute name="column03_type" label="column03 03_type" default="text"/>
+    <design:attribute name="column03_icon" label="column03 04_icon"/>
+    <design:attribute name="column03_sortable" label="column03 05_sortable" default="false"/>
+    <design:attribute name="column03_editable" label="column03 06_editable" default="false"/>
+    <design:attribute name="column03_required" label="column03 07_required" default="false"/>
+
+    <design:attribute name="column04_label" label="column04 01_label"/>
+    <design:attribute name="column04_fieldName" label="column04 02_fieldName"/>
+    <design:attribute name="column04_type" label="column04 03_type" default="text"/>
+    <design:attribute name="column04_icon" label="column04 04_icon"/>
+    <design:attribute name="column04_sortable" label="column04 05_sortable" default="false"/>
+    <design:attribute name="column04_editable" label="column04 06_editable" default="false"/>
+    <design:attribute name="column04_required" label="column04 07_required" default="false"/>
+
+    <design:attribute name="column05_label" label="column05 01_label"/>
+    <design:attribute name="column05_fieldName" label="column05 02_fieldName"/>
+    <design:attribute name="column05_type" label="column05 03_type" default="text"/>
+    <design:attribute name="column05_icon" label="column05 04_icon"/>
+    <design:attribute name="column05_sortable" label="column05 05_sortable" default="false"/>
+    <design:attribute name="column05_editable" label="column05 06_editable" default="false"/>
+    <design:attribute name="column05_required" label="column05 07_required" default="false"/>
+
+    <design:attribute name="column06_label" label="column06 01_label"/>
+    <design:attribute name="column06_fieldName" label="column06 02_fieldName"/>
+    <design:attribute name="column06_type" label="column06 03_type" default="text"/>
+    <design:attribute name="column06_icon" label="column06 04_icon"/>
+    <design:attribute name="column06_sortable" label="column06 05_sortable" default="false"/>
+    <design:attribute name="column06_editable" label="column06 06_editable" default="false"/>
+    <design:attribute name="column06_required" label="column06 07_required" default="false"/>
+
+    <design:attribute name="hideShow" label="Show or Hide Checkbox Column" datasource="show,hide" default="hide"/>    
+    <!-- <design:attribute name="singleSelection" label="Single or Multi-Row Selection (Set to 1 for Single)"/> -->
+</design:component>

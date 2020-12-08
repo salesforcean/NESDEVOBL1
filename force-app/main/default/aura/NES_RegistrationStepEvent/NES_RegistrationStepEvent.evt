@@ -1,0 +1,7 @@
+<!--
+ - Created by karolbrennan on 11/5/18.
+ -->
+
+<aura:event type="APPLICATION" description="NES Registration Step" access="global">
+    <aura:attribute name="currentStep" default="1" type="String" />
+</aura:event>

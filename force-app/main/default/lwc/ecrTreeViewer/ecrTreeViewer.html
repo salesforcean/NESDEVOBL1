@@ -1,0 +1,21 @@
+<!-- ecrTreeViewer -->
+<template>
+  <div class="slds-box slds-theme_shade">
+    <!-- HEADING AREA -->
+    <c-header icon="custom:custom66" value="Process Tree"></c-header>
+    <!-- / HEADING AREA -->
+
+    <!-- OPTIONS AREA -->
+    <c-ecr-options
+      value={ecId}
+      label-text="Academic Program"
+      placeholder-text="Select Academic Program"
+      onselect={handleChange}
+    ></c-ecr-options>
+    <!-- / OPTIONS AREA -->
+
+    <!-- TREE -->
+    <c-ecr-tree root-id={ecId}></c-ecr-tree>
+    <!-- /TREE -->
+  </div>
+</template>

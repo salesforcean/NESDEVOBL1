@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.1 (67048) - http://www.bohemiancoding.com/sketch -->
+    <title>icon: spinner</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Caretaker" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="nucleo-mini" font-size="22" font-weight="normal" line-spacing="14">
+        <g id="Registration-5_d" transform="translate(-770.000000, -422.000000)" fill="#63B800">
+            <text id="icon:-spinner">
+                <tspan x="770" y="440.375"></tspan>
+            </text>
+        </g>
+    </g>
+</svg>

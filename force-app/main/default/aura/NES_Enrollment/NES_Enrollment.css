@@ -1,0 +1,140 @@
+@media screen and (min-width:47.9375em){
+    .THIS .borderleft{
+        padding-left:2rem;
+        border-left:2px 
+            solid #e8e8e8
+    }
+}
+
+
+@media screen and (max-width:47.9375em){
+    
+  
+    .THIS .status-block{margin-top:1rem;
+        margin-bottom:1rem;
+        
+    }
+}
+@media screen and (max-width:970px){.THIS .slds-p-around_medium.slds-size_10-of-12.slds-medium-size_7-of-12.enrollmentSectionDesc{width:80%;margin-right:1em}
+    .THIS .slds-align_absolute-center.slds-p-around_medium.slds-size_12-of-12.slds-medium-size_4-of-12.enrollmentButtonArea{width:100%}}
+.THIS .borderbottom,.THIS .bottomshadow{border-bottom:1px solid #e8e8e8}.THIS .bottomshadow{z-index:2;box-shadow:0 2px 4px 0 rgba(0,0,0,.12)}.THIS .boxshadow{border-radius:3px;background:#fff;box-shadow:0 2px 4px 0 rgba(0,0,0,.5)}.THIS h2,.THIS h3{font-weight:600!important}.THIS .start-button{font-size:1.15rem;font-weight:400;line-height:2.75;display:block;width:100%}.THIS .start-button.submitted{font-size:1.3em}.THIS .slds-button_icon-container-more svg[data-key=down]{display:none}.THIS .slds-dropdown-trigger{margin-right:-1rem}.THIS .slds-dropdown-trigger .slds-button_icon svg{width:1.5rem;height:1.5rem}.THIS .slds-dropdown__item a,.THIS .slds-dropdown__it
+em a:focus,.THIS .slds-dropdown__item a:hover{color:#000;background-color:#fff}.THIS .caretaker-btn{font-size:.9rem;line-height:2.75;padding-left:2.5rem}.THIS .slds-vertical-tabs{border:none;border-radius:0!important}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav{width:auto;min-width:16rem;border-right:0;background:#f5f5f5}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav a,.THIS .slds-vertical-tabs .slds-vertical-tabs__nav a:focus,.THIS .slds-vertical-tabs .slds-vertical-tabs__nav a:hover{color:#4f5759}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav .slds-vertical-tabs__nav-item{border-color:#fff;background:#f5f5f5}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav .slds-vertical-tabs__nav-item.slds-is-active{background:#fff}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav .slds-vertical-tabs__nav-item.slds-is-active .slds-vertical-tabs__link{text-decoration:none;border-left:3px solid #D86018}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav .slds-vertical-tabs__nav-item .slds-vertical-tabs__link{padding-top:1rem;padding-bottom:1rem;padding-left:1.5rem;border-left:3px solid #f5f5f5}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav .slds-vertical-tabs__nav-item .slds-vertical-tabs__link:hover{border-left:3px solid #bb5215;background:#f5f5f5}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav .slds-vertical-tabs__nav-item h5{font-weight:600;color:#121212!important}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav .slds-vertical-tabs__nav-item em{font-size:.875rem}.THIS .slds-vertical-tabs .slds-vertical-tabs__content p{margin-bottom:.5rem}
+.THIS .progress-indicator-icon .slds-icon_container{width:1.75rem;min-width:1.75rem!important;height:1.75rem;min-height:1.75rem!important;border:2px solid green;border-radius:100%}
+.THIS .progress-indicator-icon .slds-icon_container svg{padding:.25rem;border-radius:100%;background:green;fill:#fff}
+.THIS .progress-indicator-icon .slds-icon_container.hideit{border-color:#eaeaea}
+.THIS .progress-indicator-icon .slds-icon_container.hideit svg{display:none}
+.THIS .icon .slds-icon_container{width:1.75rem;min-width:1.75rem!important;height:1.75rem;min-height:1.75rem!important;border:2px solid green;border-radius:100%}.THIS .icon .slds-icon_container svg{padding:.25rem;border-radius:100%;background:green;fill:#fff}.THIS .icon .slds-icon_container.hideit{border-color:#eaeaea}.THIS .icon .slds-icon_container.hideit svg{display:none}
+.THIS .slds-progress{width:300px;max-width:100%;margin-top:0rem;}
+.THIS .slds-progress .slds-progress-bar__value{
+    background:#008638
+}
+.THIS .slds-progress .slds-progress__list .slds-progress__item:not(:first-of-type):not(:last-of-type) span.slds-assistive-text{left:-10rem!important;width:20rem!important;text-align:center;text-indent:0;background-color:transparent!important}.THIS .slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker{width:1rem;height:1rem;border:5px solid #dddbda;background:#fff;box-shadow:none!important}.THIS .slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker svg{display:none}.THIS .slds-progress .slds-progress__list .slds-progress__item.slds-is-active .slds-progress__marker .slds-assistive-text,.THIS .slds-progress .slds-progress__list .slds-progress__item:hover .slds-progress__marker .slds-assistive-text{z-index:999;opacity:1;background:#fff!important}
+ 
+.THIS .slds-progress .slds-progress__list .slds-progress__item.slds-is-active .slds-progress__marker{border-color:#008638!important;box-shadow:none!important}.THIS .slds-progress .slds-progress__list .slds-progress__item.slds-is-completed .slds-progress__marker{width:1rem;height:1rem;border-color:#008638!important;background:#008638!important;box-shadow:none!important}.THIS .slds-progress .slds-progress__list .slds-progress__item.slds-is-completed .slds-progress__marker .slds-assistive-text{top:-2.4rem!important}.THIS .slds-progress .slds-progress__list .slds-progress__item .slds-assistive-text{top:-2.5rem;overflow:visible!important;clip:unset!important;width:unset!important;height:unset!important;transition:all .25s ease;text-indent:-2rem;opacity:0;color:#000}.THIS .slds-progress .slds-progress__list .slds-progress__item:first-of-type .slds-assistive-text{left:1.5rem}.THIS .slds-progress .slds-progress__list .slds-progress__item:last-of-type .slds-assistive-text{right:-.5rem;text-align:right}.THIS .slds-progress .slds-progress__list .slds-progress__item.hideItem .slds-progress__marker .slds-assistive-text{opacity:0}.THIS .slds-progress .slds-popover{display:none!important}.THIS .slds-card h5{font-size:14px;font-weight:600;color:#2f2f2f}.THIS .slds-card p{font-style:italic;color:#2f2f2f}
+
+.THIS .mobileBack{
+    display:none
+}
+.THIS .slds-vertical-tabs__content{padding:0}.THIS .slds-vertical-tabs__content .hideSide,
+.THIS .slds-vertical-tabs__content .showSide{padding:1rem}
+@media (max-width:800px){
+    .THIS .test{display:block}
+    .THIS .mobileBack{display:block;
+        margin-bottom:20px
+    }
+    .THIS .slds-vertical-tabs__content .hideSide,
+    .THIS .slds-vertical-tabs__content .showSide{padding:1rem}.THIS .slds-vertical-tabs .slds-vertical-tabs__nav.showSide{width:100%}.THIS .hideSide{display:none}}
+.THIS .slds-card {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-bottom-width: 1px;
+
+}
+
+.THIS .slds-align_absolute-center{
+ 
+    padding-top: 0px;
+    padding-bottom: 0px;  
+    margin-right: 0px;
+    
+  
+
+    
+    /*padding-left: 150px;*/
+
+}
+
+
+.THIS .unReview{
+
+    
+    margin-right: 0px;
+    padding-right: 0px;
+    padding-left: 25px;
+
+} 
+.THIS .slds-align_absolute-right{
+    
+    margin-left: 120px;
+
+}
+.THIS .progress-indicator-icon{
+     width: 35px;
+    margin-right: 10px;
+ }
+.THIS .slds-p-right_small{
+
+    padding-left: 35px;
+    padding-right: 12px;
+}
+.THIS .status-block{
+    width: 200px;
+}
+.THIS .slds-order_desk{
+     margin-left: 100px;
+}
+/* added by ravi on 01/01/2020 */
+.THIS .slds-p-right_small{
+    padding-left: 12px;
+}
+.THIS .slds-order_1{
+    padding-left: 30px;
+}
+/* added by ravi on 01/01/2020*/
+.THIS .slds-order_4{
+     margin-left: 0px;
+    
+}
+/* removed from line 48 -55*/
+.THIS .slds-p-around_large{
+  
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+
+}
+/* added by ravi 02/01/2020 */
+  .THIS .status-block{
+   margin-left:15px; 
+}
+/* added by ravi 06/01/2020 */
+.THIS .slds-button{
+    
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+.THIS .URspacing{
+    padding-left: 140px;
+
+}
+.THIS .ComSpacing{
+    
+    padding-left: 5px;
+
+}
+/* added margin left by ravi on 07/01/2020 */
+ .THIS .slds-align_absolute-centerMenu{
+    margin-left: 50px
+}

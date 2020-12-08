@@ -1,0 +1,65 @@
+<!--
+ - Created by karolbrennan on 10/15/18.
+ -->
+
+<aura:component description="NES Need Help" implements="forceCommunity:availableForAllPageTypes"
+                access="global" controller="Peak_Utils" extends="c:Peak_Base">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="heading" type="String" default="Need Help?" />
+    <aura:attribute name="action1Title" type="String" default="Find an Answer" />
+    <aura:attribute name="action1Icon" type="String" default="iconSearch" />
+    <aura:attribute name="action1Description" type="String" default="Pellentesque convallis ligula sit amet urna vestibulum." />
+    <aura:attribute name="action1Link" type="String" default="" />
+    <aura:attribute name="action2Title" type="String" default="Submit a Ticket" />
+    <aura:attribute name="action2Icon" type="String" default="iconAirplane" />
+    <aura:attribute name="action2Description" type="String" default="Pellentesque convallis ligula sit amet urna vestibulum." />
+    <aura:attribute name="action2Link" type="String" default="" />
+    <aura:attribute name="action3Title" type="String" default="Get Live Support" />
+    <aura:attribute name="action3Icon" type="String" default="iconDiscuss" />
+    <aura:attribute name="action3Description" type="String" default="Pellentesque convallis ligula sit amet urna vestibulum." />
+    <aura:attribute name="action3Link" type="String" default="" />
+    <aura:attribute name="resourceUrl" type="String" default="" />
+
+    <div>
+        <lightning:layout>
+            <lightning:layoutItem size="12">
+                <h2>{!v.heading}</h2>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="12" mediumDeviceSize="4" padding="around-xx_small" class="needHelpBlock">
+                <a href="{!v.action1Link}">
+                    <div class="top-line">
+                        <aura:if isTrue="{!v.action1Icon}">
+                            <img src="{!v.resourceUrl + v.action1Icon}" alt="{!v.action1Title + ' Icon'}" />
+                        </aura:if>
+                        <strong>{!v.action1Title}</strong>
+                    </div>
+                    <span>{!v.action1Description}</span>
+                </a>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" mediumDeviceSize="4" padding="around-xx_small" class="needHelpBlock">
+                <a href="{!v.action2Link}">
+                    <div class="top-line">
+                        <aura:if isTrue="{!v.action1Icon}">
+                            <img src="{!v.resourceUrl + v.action2Icon}" alt="{!v.action2Title + ' Icon'}" />
+                        </aura:if>
+                        <strong>{!v.action2Title}</strong>
+                    </div>
+                    <span>{!v.action2Description}</span>
+                </a>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" mediumDeviceSize="4" padding="around-xx_small" class="needHelpBlock">
+                <a href="{!v.action3Link}">
+                    <div class="top-line">
+                        <aura:if isTrue="{!v.action1Icon}">
+                            <img src="{!v.resourceUrl + v.action3Icon}" alt="{!v.action3Title + ' Icon'}" />
+                        </aura:if>
+                        <strong>{!v.action3Title}</strong>
+                    </div>
+                    <span>{!v.action3Description}</span>
+                </a>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>

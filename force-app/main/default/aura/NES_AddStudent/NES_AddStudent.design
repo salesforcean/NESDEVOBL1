@@ -1,0 +1,9 @@
+<!--
+ - Created by lukestevens on 2019-02-10.
+ -->
+
+<design:component label="NES Add a Student">
+    <design:attribute name="notParentNotice" label="Notice for when the user is not a parent"/>
+    <design:attribute name="disclaimerHeading" label="Disclaimer heading" />
+    <design:attribute name="disclaimerText" label="Note below the disclaimer"/>
+</design:component>

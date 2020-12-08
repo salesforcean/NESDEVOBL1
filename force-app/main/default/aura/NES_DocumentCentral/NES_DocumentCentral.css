@@ -1,0 +1,47 @@
+.THIS .display-block{line-height:1.5;display:block;width:100%}
+.THIS.documentCentralBlock{
+    width:100%;
+    padding:1rem;
+    
+    cursor:pointer!important;
+    border-radius:4px;
+    background:#fff;
+    box-shadow:0 6px 10px 0 rgba(0,0,0,.12);
+    border-top-width:1px;
+    border-right-width:0px;
+    border-bottom-width:0px;
+    border-left-width:1px;
+   
+}
+.THIS.documentCentralBlock:focus{outline:2;box-shadow:0 0 3px #0070d2}
+.THIS .rightChevron{position:absolute;top:0;right:1em;display:flex;height:100%;align-items:center}
+.THIS.documentCentralBlock h3{font-weight:600!important}
+.THIS lightning-icon.slds-icon_container{vertical-align:baseline}
+.THIS.documentCentralVerify{
+    position:relative;
+    width:100%;
+    padding:.63rem 1.25rem;
+    cursor:pointer;
+    color:#fff;
+    border-radius:3px;
+    background:#d93b1c;
+    box-shadow:0 2px 4px 0 rgba(0,0,0,.12)}
+.THIS.documentCentralVerify:focus{outline:0;background:#b1290e;box-shadow:0 0 3px #0070d2}
+.THIS.documentCentralVerify:hover{background:#b1290e}
+.THIS.documentCentralVerify p{display:inline-block;padding-right:20px;vertical-align:sub}
+.THIS .rightIcon svg{fill:#fff}@media (max-width:556px){
+    .THIS .extraSmallRow{width:100%}.THIS .extraSmallRow .slds-text-align_left,
+    .THIS .extraSmallRow .slds-text-align_right{text-align:left}}
+.THIS .uiOutputRichText.Style{
+
+   padding-left: 10rem;
+  }
+.THIS .slds-align_absolute-center {
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+}
+/* Added by ravi on 07/01/2020  
+.THIS .slds-align_absolute-center:hover{background:#D86018}
+.THIS .slds-align_absolute-right:hover{background:#D86018}
+.THIS .documentCentralBlock:hover{background:#D86018}*/

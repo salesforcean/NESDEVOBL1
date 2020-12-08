@@ -1,0 +1,17 @@
+<!--
+ - Created by karolbrennan on 12/11/18.
+ -->
+
+<design:component label="NES Community Registration">
+    <design:attribute name="step1Heading" label="Get Started: Step 1 Heading" />
+    <design:attribute name="step1Subheading" label="Get Started: Step 1 Subheading" />
+    <design:attribute name="step1BodyText" label="Get Started: Step 1 Body Text" />
+    <design:attribute name="disclaimer" label="Disclaimer Text"/>
+    <design:attribute name="step2Heading" label="Create Login: Step 2 Heading" />
+    <design:attribute name="step2Subheading" label="Create Login: Step 2 Subheading" />
+    <design:attribute name="step2BodyText" label="Create Login: Step 2 Body Text" />
+    <design:attribute name="step2HelperText" label="Create Login: Username Helper Text" />
+    <design:attribute name="step3Heading" label="Success/Confirm Email: Step 3 Heading" />
+    <design:attribute name="step3Subheading" label="Success/Confirm Email: Step 3 Subheading" />
+    <design:attribute name="step3BodyText" label="Success/Confirm Email: Step 3 Body Text" />
+</design:component>

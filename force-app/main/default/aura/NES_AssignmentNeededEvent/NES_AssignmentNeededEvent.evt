@@ -1,0 +1,6 @@
+<!--
+ - Created by lukestevens on 2019-03-25.
+ -->
+
+<aura:event type="COMPONENT" description="NES_AssignmentNeededEvent">
+</aura:event>

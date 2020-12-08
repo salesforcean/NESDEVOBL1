@@ -1,0 +1,4 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <!--testing item-delete later-do not push -->
+    <!--bundle 48, second save-->
+</aura:component>

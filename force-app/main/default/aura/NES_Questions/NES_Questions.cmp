@@ -1,0 +1,363 @@
+<!--
+Purpose: Question LC for Enrollment 
+Change Log: 
+	2018-12-13 Created (triciagoe)
+	2019-02-08 #101934 User Story (Maddileti Boya)
+    2019-08-06 Fix for misdeployed c__ #101924 (Andrew Sim)
+    2019-10-07 Added Skip For Now #US108687 (Ali Khan)
+    2019-11-12 updated for #115213 User Story (Maddileti Boya)
+    2019-11-21 updated css styles for 119110 bug(#115213 US)  (Maddileti Boya)
+	2019-12-02 updated css styles and Cmp
+ -->
+
+<aura:component description="NES_Questions" implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" extends="c:Peak_Base" controller="NES_QuestionsController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="sectionId" type="String"/>
+    <aura:attribute name="sectionName" type="String"/>
+    <aura:attribute name="studentId" type="String"/>
+    <aura:attribute name="studentName" type="String"/>
+    <aura:attribute name="caretakerId" type="String"/>
+    <aura:attribute name="processId" type="String"/>
+    <aura:attribute name="programEnrollmentId" type="String"/>
+    <aura:attribute name="selected" type="String"/>
+    <aura:attribute name="logo" type="String"/>
+    <aura:attribute name="numberRequired" type="Integer"/>
+    <aura:attribute name="questions" type="Object[]"/>
+    <aura:attribute name="messages" type="Object[]"/>
+    
+    <aura:attribute name="spinner" type="Boolean" default="true"/>
+    <aura:attribute name="runCompletion" type="Boolean" default="false"/>
+    <aura:attribute name="alreadyCompleted" type="Boolean" default="false"/>
+    <aura:attribute name="doNotSubmit" type="Boolean" default="false"/>
+    <aura:attribute name="invalidUser" type="Boolean" default="false"/>
+    
+    <aura:attribute name="value" type="List" default=""/>
+    <!-- Swapna: Added for GTM -->
+    <aura:attribute name="formName" type="String"/>
+    <aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" />
+    <aura:registerEvent name="submitQuestionsEvent" type="c:NES_SubmitQuestionsEvent"/>
+    <aura:registerEvent name="isSameSchoolEvent" type="c:NES_schoolId"/>
+    <!--  add by maddileti  -->
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <!--  end by maddileti  -->
+    <div>
+        <aura:if isTrue="{!v.spinner}">
+            <lightning:spinner size="medium" variant="brand" alternativeText="Loading..."/>
+        </aura:if>
+        <aura:if isTrue="{!v.invalidUser}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">You do not have access to this page</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p class="slds-p-left_medium">Please click below to continue</p>
+                        <div class="slds-p-around_medium">
+                            <lightning:button variant="neutral" label="Back to overview" onclick="{!c.goToOverview}"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <aura:set attribute="else" >
+                <aura:if isTrue="{!v.alreadyCompleted}">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header">
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">You have already completed this section</h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <p class="slds-p-left_medium">Please click below to continue enrollment</p>
+                                <div class="slds-p-around_medium">
+                                    <lightning:button variant="neutral" label="&#60; Back to Student Overview" onclick="{!c.goToOverview}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </aura:if>
+                
+                <lightning:layout multipleRows="true" verticalAlign="center" class="slds-p-vertical_medium">
+                    <lightning:layoutItem size="12" flexibility="grow" padding="horizontal-small">
+                        <lightning:button variant="neutral" label="&#60; Back to Student Overview" onclick="{!c.goToOverview}" />
+                    </lightning:layoutItem>
+                </lightning:layout>
+                
+                
+                    <!--Added by Ravi-->
+                 <div class="slds-grid slds-gutters slds-wrap">
+                     <div class="slds-col slds-size_12-of-12">
+                        <div class="slds-grid slds-gutters slds-wrap">
+  							<div class="slds-col slds-size_12-of-12">
+                             <lightning:layout class="boxshadow slds-p-around_medium" multipleRows="true">
+                             <lightning:layoutItem class="slds-p-left_medium" size="12" mediumDeviceSize="12">       
+                             <aura:if isTrue="{! v.sectionName != null}">
+                                        <h5 class="slds-text-heading_small">{!v.studentName}</h5>
+                                        <h2>{!v.sectionName}</h2>
+                             </aura:if>
+                                 </lightning:layoutItem>
+                                    </lightning:layout>
+                            </div>
+                  
+                     <div class="slds-col slds-size_12-of-12">
+                
+                <lightning:layout class="boxshadow slds-p-around_medium" multipleRows="true">
+                    <lightning:layoutItem class="slds-p-left_medium" size="12" mediumDeviceSize="8">
+                        
+                       <!-- <aura:if isTrue="{! v.sectionName != null}">
+                            <h5 class="slds-text-heading_small">{!v.studentName}</h5>
+                            <h2>{!v.sectionName}</h2>
+                        </aura:if-->
+                        <aura:iteration var="question" items="{!v.questions}" indexVar="index">
+                            <aura:if isTrue="{!question.questionPrompt != null || question.textComponent == true || question.questionType == 'School Search' || question.questionType == 'Address'}">
+                                <div class="slds-p-vertical_small">
+                                    <!-- Label for any type of input -->
+                                    <label class="record-label slds-form-element__label" for="{!question.questionId}">
+                                        <aura:if isTrue="{!and(question.required,!empty(question.questionPrompt))}">
+                                            <abbr class="slds-required firstAsterisk" title="required" data-aura-rendered-by="34:391;a">*</abbr>
+                                        </aura:if>
+                                        <aura:unescapedHtml value="{!question.questionPrompt}" />
+                                        <!-- when ready to switch over to helptext
+	                                    <aura:if isTrue="{!!empty(question.componentMessage)}">
+											<lightning:helptext content="{!question.componentMessage}"/>
+                                    	</aura:if>
+										-->
+                                    </label>
+                                    <aura:if isTrue="{!!empty(question.componentMessage)}">
+                                        <p><aura:unescapedHtml value="{!question.componentMessage}"/></p>
+                                    </aura:if>
+                                    <aura:if isTrue="{!and(question.questionReadOnly!=null,question.questionReadOnly)}">
+                                        <!-- <ui:inputText label="" value="{!question.targetField}" disabled ='true' />-->
+                                        <lightning:input label="" disabled="true" value="{!question.targetField}" />
+                                        <aura:set attribute="else">
+                                            <aura:if isTrue="{!question.questionType == 'Picklist' || question.questionType == 'Radio' || question.questionType == 'Checkbox Group' || question.questionType == 'Date' }">
+                                                <!-- Picklist -->
+                                                <aura:if isTrue="{!question.questionType == 'Picklist'}">
+                                                    <lightning:select aura:id="fieldId" label="" class="{!question.hasCriteria ? 'hasCriteria' : ''}" onchange="{!c.runAssignment}"
+                                                                      value="{!question.targetField}"
+                                                                      required="{!question.required}">
+                                                        <option value="">- select one -</option>
+                                                        <aura:iteration items="{!question.picklistValues}" var="option">
+                                                            <option value="{!option.value}">{!option.label}</option>                                                            
+                                                        </aura:iteration>
+                                                        <optgroup label=""></optgroup>
+                                                    </lightning:select>
+                                                </aura:if>
+                                                
+                                                <!-- Radio -->
+                                                <aura:if isTrue="{!question.questionType == 'Radio'}">
+                                                    <lightning:radioGroup aura:id="fieldId" label="" onchange="{!c.runAssignment}" class="{!question.hasCriteria ? 'hasCriteria' : ''}" value="{!question.targetField}" required="{!question.required}" options="{!question.picklistValues}"/>
+                                                </aura:if>
+                                                
+                                                <!-- Checkbox Group -->
+                                                <aura:if isTrue="{!question.questionType == 'Checkbox Group'}">
+                                                    <lightning:checkboxGroup aura:id="fieldId" label="" name="" class="{!question.hasCriteria ? 'hasCriteria' : ''}" onchange="{!c.runAssignment}" data-hascriteria="{!question.hasCriteria}" value="{!question.targetField}" required="{!question.required}" options="{!question.picklistValues}"/>
+                                                </aura:if>
+                                                
+                                                <aura:if isTrue="{!question.questionType == 'Date'}">
+                                                    <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + (question.hasCriteria ? ' hasCriteria' : '')}" label="" onblur="{!c.validateDate}" type="text" required="{!question.required}" value="{!question.targetField}"/>
+                                                </aura:if>
+                                                
+                                                <!-- All other input types -->
+                                                <aura:set attribute="else">
+                                                    <aura:if isTrue="{!question.questionType == 'Address'}">
+                                                        <c:NES_Address questionGroupId="{!question.questionId}" programEnrollmentId="{!v.programEnrollmentId}" required="{!question.required}" aura:id="groupComp"/>
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!question.questionType == 'School Search'}">
+                                                        <c:NES_NCES_MDR questionGroupId="{!question.questionId}" programEnrollmentId="{!v.programEnrollmentId}" sectionId="{!v.sectionId}" processId="{!v.processId}" aura:id="groupComp" tellParentItNeedsToRunAssignment="{!c.runAssignmentRegardlessOfCriteria}"/>
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!equals(question.questionType,'Date/Time')}">
+                                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + (question.hasCriteria ? ' hasCriteria' : '')}" label=""  type="datetime-local" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!equals(question.questionType,'Time')}">
+                                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + (question.hasCriteria ? ' hasCriteria' : '')}" label="" type="time" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!equals(question.questionType,'Boolean')}">
+                                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + (question.hasCriteria ? ' hasCriteria' : '')}" type="checkbox" label="" onchange="{!c.runAssignment}" required="{!question.required}" checked="{!question.targetField}"/>
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!equals(question.questionType,'Number')}">
+                                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + (question.hasCriteria ? ' hasCriteria' : '')}" min="0" label="" type="number"  messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>                                                    
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!equals(question.questionType,'Phone')}">
+                                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + (question.hasCriteria ? ' hasCriteria' : '')}" label="" type="tel" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}" />
+                                                    </aura:if>
+                                                    <aura:if isTrue="{!equals(question.questionType,'Text')}">
+                                                        <lightning:input aura:id="fieldId" class="{!'slds-size_1-of-2' + (question.hasCriteria ? ' hasCriteria' : '')}" label="" onblur="{!c.updateValidationMessages}" type="text" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                                    </aura:if>
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:set>
+                                    </aura:if>
+                                </div>
+                            </aura:if>
+                        </aura:iteration>
+                          
+                    </lightning:layoutItem>
+                    <!-- added by ravi for ux changes-->
+                   <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+                       
+                   <lightning:layoutItem size="12" mediumDeviceSize="4" padding="around-large">
+                      <!--added by ravi-->
+                       <div class= "jag">
+                        <aura:if isTrue="{!and(v.messages != null, v.messages.length > 0)}">
+                            <div class="contextual-help">
+                                <h5>Contextual help</h5><br/>
+                                <!--removed Ul & li, replaced by div for the bug336325 : Jagadeesh -->
+                                <div>
+                                    <aura:iteration items="{!v.messages}" var="message">
+                                        <div><aura:unescapedHtml value="{!message.Component_Message__c}"/></div>
+                                        <!-- when ready to switch over to helptext-->
+                                        <!--Commented to fix 134158 -->
+	                                   <!-- <lightning:helptext value="{!message.Component_Message__c}"/>-->
+										
+                                    </aura:iteration>
+                                </div>
+                            </div>
+                        </aura:if>
+                       </div>
+                       <!--ennded here-->
+                    </lightning:layoutItem>
+                    
+                    <lightning:layoutItem size="12" class="slds-p-vertical_small slds-p-left_medium" >
+                        <lightning:button class="submit-button" label="SUBMIT" variant="brand" onclick="{!c.handleSubmit}"/>
+                        <!--  Ali Khan #US108687 -->
+                         <span class="slds-form--inline slds-p-horizontal_small docOr"></span>
+                         <!--span class="slds-medium-show-only" >&nbsp;&nbsp;&nbsp;&nbsp;</span-->
+                         <!--UX change-->
+                        <u>  <lightning:button class="slds-skip" label="Skip for Now " variant="base" onclick="{!c.openModel}"/></u>
+                       
+                           
+                       <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
+                            <aura:if isTrue="{!v.isModalOpen}">
+                                  <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+ 
+                                    <div class="slds-modal__container">
+                                             
+                                         <!--Modal/Popup Box Body Starts here-->
+                                           
+                                             <div class="slds-modal__content slds-p-around_large" id="modal-content-id-1">
+                                                    
+                                                 <p><b>Any unsubmitted information will not be saved.<br/></b></p>
+                                                    <p><b>Do you wish to skip anyway?<br/><br/><br/>
+                                                  </b>
+                                               </p>
+                                           <lightning:button variant="brand" label="Yes, skip" onclick="{!c.skipForNow}" class="lower"/>
+                                                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                  <lightning:button variant="neutral" label="Cancel" onclick="{! c.closeModel }" class="lower"/>
+                                                
+                                                 </div>
+                                                 </div>
+                                       </section>
+                                    
+                                        <div class="slds-backdrop slds-backdrop_open"></div>
+                                
+                          </aura:if>
+                        
+                    <!--  end by maddileti for #115213 User Story on 2019-11-12  -->
+                        <!--  Ali Khan #US108687 -->
+                    
+                           </lightning:layoutItem>
+                     
+                     <aura:set attribute="else">
+                         <lightning:layoutItem size="12" class="slds-p-vertical_small slds-p-left_medium" >
+                        <lightning:button class="submit-button" label="SUBMIT" variant="brand" onclick="{!c.handleSubmit}"/>
+                        <!--  Ali Khan #US108687 -->
+                         <span class="slds-form--inline slds-p-horizontal_small docOr"></span>
+                         <!--span class="slds-medium-show-only" >&nbsp;&nbsp;&nbsp;&nbsp;</span-->
+                         <!--UX change-->
+                        <u>  <lightning:button class="slds-skip" label="Skip for Now " variant="base" onclick="{!c.openModel}"/></u>
+                       
+                           
+                       <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
+                            <aura:if isTrue="{!v.isModalOpen}">
+                                  <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+ 
+                                    <div class="slds-modal__container">
+                                             
+                                         <!--Modal/Popup Box Body Starts here-->
+                                           
+                                             <div class="slds-modal__content slds-p-around_large" id="modal-content-id-1">
+                                                    
+                                                 <p><b>Any unsubmitted information will not be saved.<br/></b></p>
+                                                    <p><b>Do you wish to skip anyway?<br/><br/><br/>
+                                                  </b>
+                                               </p>
+                                           <lightning:button variant="brand" label="Yes, skip" onclick="{!c.skipForNow}" class="lower"/>
+                                                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                  <lightning:button variant="neutral" label="Cancel" onclick="{! c.closeModel }" class="lower"/>
+                                                
+                                                 </div>
+                                                 </div>
+                                       </section>
+                                    
+                                        <div class="slds-backdrop slds-backdrop_open"></div>
+                          </aura:if>
+                        
+                    <!--  end by maddileti for #115213 User Story on 2019-11-12  -->
+                        <!--  Ali Khan #US108687 -->
+                    </lightning:layoutItem>
+                             <lightning:layoutItem size="12" mediumDeviceSize="4" padding="around-large">
+                      
+                        <aura:if isTrue="{!and(v.messages != null, v.messages.length > 0)}">
+                            <div class="contextual-help">
+                                <h5>Contextual help</h5>
+                                <ul>
+                                    <aura:iteration items="{!v.messages}" var="message">
+                                        <li><aura:unescapedHtml value="{!message.Component_Message__c}"/></li>
+                                        <!-- when ready to switch over to helptext-->
+                                      
+	                                <!--   <lightning:helptext value="{!message.Component_Message__c}"/> -->
+										
+                                    </aura:iteration>
+                                </ul>
+                            </div>
+                        </aura:if>
+                           
+                    </lightning:layoutItem>
+                         
+                         
+                       </aura:set>
+                           
+                    </aura:if>
+                    <!-- ended here-->
+                </lightning:layout>
+                            </div>
+                         </div>    
+                       <!--   <div class="slds-col">-->
+                       
+                   <div class="slds-col slds-size_4-of-12">
+                    <div class="slds-grid">
+                          <!--     <div class="slds-col slds-size_8-of-12" >-->
+                
+  <!--lightning:layout class="boxshadow slds-p-around_medium "  multipleRows="true">
+      <div class ="text-align-top">
+ 		   <lightning:layoutItem size="12" mediumDeviceSize="12" padding="around-small">
+                        <aura:if isTrue="{!and(v.messages != null, v.messages.length > 0)}">
+                            <div class="contextual-help">
+                                <h5>Contextual help</h5>
+                                <ul>
+                                    <aura:iteration items="{!v.messages}" var="message"-->
+                                        <!--li><aura:unescapedHtml value="{!message.Component_Message__c}"/></li--> 
+                                        <!-- when ready to switch over to helptext
+	                                    <lightning:helptext value="{!message.Component_Message__c}"/>
+										-->
+                                    <!--/aura:iteration>
+                                </ul>
+                            </div>
+                        </aura:if>
+          </lightning:layoutItem>  
+      </div>
+ </lightning:layout-->
+                          </div>
+                       </div>
+                       </div>
+                         
+                      <!--   </div>
+           
+                     </div>-->
+                </div>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

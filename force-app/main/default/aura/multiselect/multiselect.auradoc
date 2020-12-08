@@ -1,0 +1,6 @@
+<aura:documentation> 
+     <aura:description>Documentation</aura:description>
+	<aura:example name="multiselect" ref="multiselect" label="multiselect">
+						This component exposes dynamic picklist selection in flows, also handles displaying dependent picklist selection witout displaying the controlling field.
+	</aura:example>
+</aura:documentation>

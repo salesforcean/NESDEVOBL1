@@ -1,0 +1,28 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,lightning:isUrlAddressable,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"
+                extends="c:Peak_Base"
+                controller="StudentEnrollment" >
+    
+    <aura:attribute name="recordId" type="string" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:NES_AddStudentAppEvent" action="{!c.handleAddStudent}"/>
+    <aura:registerEvent name="studentsLoadedEvent" type="c:NES_StudentsLoadedEvent"/>
+    <aura:registerEvent name="isSameSchoolEvent" type="c:NES_schoolId"/>
+        
+    <aura:attribute name="studentId" type="String" />
+    <aura:attribute name="processId" type="String" />
+    <aura:attribute name="programEnrollmentId" type="String" />
+    <aura:attribute name="studentName" type="String" />
+    <aura:attribute name="caretakerId" type="String"/>
+    <aura:attribute name="studentGrade" type="String" />
+    <aura:attribute name="loading" type="Boolean" default="false" />
+    <aura:attribute name="heading" type="String" default="My Students" />
+    <aura:attribute name="message" type="String" />
+    <aura:attribute name="URLMode" type="String" default="" />
+    <!-- Student Objects -->
+    <aura:attribute name="students" type="Object" />
+    <!--
+    -   Attributes used when coming from confirmation email.
+    -   Needs to have arriveFromEmail trigger to True based on referral page
+    -->
+    <ui:button label="Enrollment" press="{!c.Enrollment}"/>     
+</aura:component>

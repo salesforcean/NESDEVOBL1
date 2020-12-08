@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Open Sans'), local('OpenSans'), url('../fonts/OpenSans-Regular.eot?orgId=00Dg0000001qE28##iefix') format('embedded-opentype'), url('../fonts/OpenSans-Regular.woff?orgId=00Dg0000001qE28') format('woff'), url('../fonts/OpenSans-Regular.ttf?orgId=00Dg0000001qE28') format('truetype'), url('../fonts/OpenSans-Regular.svg?orgId=00Dg0000001qE28##OpenSansRegular') format('svg');
+}
+
+html, body {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 300 !important;
+}
+
+html a, body a, html h1, body h1, html h2, body h2, html h3, body h3, html h4, body h4, html h5, body h5, html h6, body h6 {
+  font-family: 'Open Sans', sans-serif !important;
+}

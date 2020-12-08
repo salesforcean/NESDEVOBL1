@@ -1,0 +1,179 @@
+<!-- 
+    *   Component: NES_DatatableFSC (Flow Screen Component) 
+    *   Created by ali.khan (Ness Tech) on 10/20/19.
+			
+    *   This component exposes datatable with in-line edit in Flows
+    *   - in-line edit supported for text / date / date-time / email fields. 
+    *   - read-only Picklist & Lookup fields as of now.
+  
+-->
+
+<aura:component controller="NES_DatatableFSC" implements="lightning:availableForFlowScreens,flexipage:availableForAllPageTypes" access="global">
+    
+    <!-- BELOW TO SUPPORT QUERYING OF RECORDS FOR BOTH RELATED & MASTER DETAIL RECORDS -->	
+    <aura:attribute name="querysObjectAPIName" type="String" default="Account"/>
+    <aura:attribute name="whereClauseIDFieldAPIName" type="String" default="Id"/>
+    <aura:attribute name="whereClauseIDFieldValue" type="String"/>
+
+    <!--- REVIEW THESE AND REMOVE, COPIED FROM datatableFSC -->
+    <aura:attribute name="tableHeading" type="String" />
+    <aura:attribute name="obj" type="String" />
+    <aura:attribute name="mydata" type="SObject[]"/>
+    <aura:attribute name="queryFields" type="String[]"/>
+    <aura:attribute name="selectedRows" type="SObject[]"/>
+    <aura:attribute name="sortedBy" type="String" />
+    <aura:attribute name="sortedDirection" type="String" />
+    <aura:attribute name="maxRowSelection" type="String" />
+    <aura:attribute name="hideCheckboxColumn" type="Boolean" default="false" />
+    <aura:attribute name="preSelection" type="SObject[]" />
+    <aura:attribute name="preSelectedIds" type="List" />
+
+    <!-- NEED THESE FOR ERROR HANDLING & INLINEEDIT SAVES-->
+    <aura:attribute name="errors" type="Object" default="[]"/>
+    <aura:attribute name="draftValues" type="Object" default="[]"/>
+
+    <!-- GET THE FIELDS YOU WANT IN THE DATATABLE -->
+    <aura:attribute name="mycolumns" type="List"/>
+
+    <aura:attribute name="column01_label" type="String"/>
+    <aura:attribute name="column01_fieldName" type="String"/>
+    <aura:attribute name="column01_type" type="String" default="text"/>
+    <aura:attribute name="column01_icon" type="String"/>
+    <!-- <aura:attribute name="column01_attributes" type="String" default="text"/> -->
+    <aura:attribute name="column01_sortable" type="String"/>
+    <aura:attribute name="column01_editable" type="String"/>
+    <aura:attribute name="column01_required" type="String"/>
+
+    <aura:attribute name="column02_label" type="String"/>
+    <aura:attribute name="column02_fieldName" type="String"/>
+    <aura:attribute name="column02_type" type="String" default="text"/>
+    <aura:attribute name="column02_icon" type="String"/>
+    <aura:attribute name="column02_sortable" type="String"/>
+    <aura:attribute name="column02_editable" type="String"/>
+    <aura:attribute name="column02_required" type="String"/>
+
+    <aura:attribute name="column03_label" type="String"/>
+    <aura:attribute name="column03_fieldName" type="String"/>
+    <aura:attribute name="column03_type" type="String" default="text"/>
+    <aura:attribute name="column03_icon" type="String"/>
+    <aura:attribute name="column03_sortable" type="String"/>
+    <aura:attribute name="column03_editable" type="String"/>
+    <aura:attribute name="column03_required" type="String"/>
+
+    <aura:attribute name="column04_label" type="String"/>
+    <aura:attribute name="column04_fieldName" type="String"/>
+    <aura:attribute name="column04_type" type="String" default="text"/>
+    <aura:attribute name="column04_icon" type="String"/>
+    <aura:attribute name="column04_sortable" type="String"/>
+    <aura:attribute name="column04_editable" type="String"/>
+    <aura:attribute name="column04_required" type="String"/>
+
+    <aura:attribute name="column05_label" type="String"/>
+    <aura:attribute name="column05_fieldName" type="String"/>
+    <aura:attribute name="column05_type" type="String" default="text"/>
+    <aura:attribute name="column05_icon" type="String"/>
+    <aura:attribute name="column05_sortable" type="String"/>
+    <aura:attribute name="column05_editable" type="String"/>
+    <aura:attribute name="column05_required" type="String"/>
+    
+    <aura:attribute name="column06_label" type="String"/>
+    <aura:attribute name="column06_fieldName" type="String"/>
+    <aura:attribute name="column06_type" type="String" default="text"/>
+    <aura:attribute name="column06_icon" type="String"/>
+    <aura:attribute name="column06_sortable" type="String"/>
+    <aura:attribute name="column06_editable" type="String"/>
+    <aura:attribute name="column06_required" type="String"/>    
+
+    <aura:attribute name="singleSelection" type="String" />
+    <aura:attribute name="hideShow" type="String" default="show"/>
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:handler event="force:refreshView" action="{! c.init }" />
+    <!-- <aura:handler name="onSaveSuccess" event="force:recordSaveSuccess" action="{!c.init}"/> -->
+
+    <!-- Edit related attributes -->
+    <aura:attribute name="tableHeight" type="Integer" default="450"/>
+    <aura:attribute name="pageReference" type="Object"/>
+    <lightning:navigation aura:id="navService"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+
+    <!-- attributes to navigate to new window -->
+    <aura:attribute name="url" type="String" />
+    <aura:attribute name="mode" type="String" default="newWindow"/>
+
+    <!--Spinner-->
+    <lightning:spinner aura:id="spinner" alternativeText="Loading" size="large" />
+
+    <!-- @todo: Move this to another component -->
+    <!-- lightning:record-form related attributes / components -->
+    <aura:attribute name="recForm_recordId" type="String"/>
+    <aura:attribute name="recForm_title" type="String" default="Prior School Info"/>
+    <aura:attribute name="recForm_show" type="boolean" default="false" />
+    <aura:attribute name="recForm_mode" type="String" default="view"/>
+    <aura:attribute name="recForm_Fields" type="String[]" default="SchoolType__c,SchoolName__c,State__c,MonthStarted__c,EnrollmentStatus__c,YearStarted__c"/>
+
+    <div class="slds-box">
+        <aura:if isTrue="{!v.recForm_show}">
+            <div class="slds-box">
+                <div class="slds-clearfix">
+                    <div class="slds-float_right">
+                        <lightning:icon iconName="action:close" alternativeText="Close" size="xx-small" title="Close" onclick="{! c.recForm_handleClose }"/>
+                    </div>
+                </div>
+                <lightning:card title="{! v.recForm_title }">
+                    <lightning:recordForm
+                        aura:id="viewEditRecordForm"
+                        objectApiName="Prior_School__c"
+                        recordId="{! v.recForm_recordId }"
+                        fields="{! v.recForm_Fields }"
+                        columns="2"
+                        mode="{! v.recForm_mode }" 
+                        onsubmit="{! c.recForm_handleSubmit }"
+                        oncancel="{! c.recForm_handleClose }"
+                        onsuccess="{! c.recForm_handleSuccess }"
+                    />
+                </lightning:card>
+            <!-- layoutType="Full" -->
+            <!-- layoutType="Compact" -->
+            </div>
+        </aura:if>
+    <!-- END lightning:record-form END -->
+
+        <aura:if isTrue="{!!v.recForm_show}">
+            <div class="slds-clearfix">
+                <div class="slds-float_right">
+                    <!-- <div class="slds-m-around- -x-large"> -->
+                    <div class="slds-m-around_small">
+                        <lightning:buttonGroup>
+                            <lightning:buttonIcon iconName="utility:refresh" variant="border-filled" onclick="{! c.init }" alternativeText="Reload"
+                            />
+                            <lightning:button label="New" iconName="utility:new" title="New" class="slds-button slds-button_brand" onclick="{! c.createRecord }" />
+                        </lightning:buttonGroup>
+                    </div>
+                </div>
+            </div>
+
+            <!-- @todo: populate this incase of page Save Errors Or otherwise.
+            <ui:message title="Error" severity="error" closable="true">
+                    This is an error message.
+            </ui:message> -->
+            <lightning:datatable aura:id="flowTable" data="{! v.mydata }" 
+                columns="{! v.mycolumns }" 
+                keyField="Id"
+                sortedBy="{! v.sortedBy }"
+                sortedDirection="{! v.sortedDirection }"
+                maxRowSelection="{! v.maxRowSelection }"
+                selectedRows="{! v.preSelectedIds }"  
+                onrowselection="{! c.getSelectedName }"
+                hideCheckboxColumn="{! v.hideCheckboxColumn }"
+                onsort="{! c.updateColumnSorting }"
+                errors="{! v.errors }"
+                draftValues="{! v.draftValues }"
+                onsave="{! c.handleSaveEdition }"
+                oncellchange="{! c.handleCellChange }"
+                onrowaction="{! c.handleRowAction }"
+            />
+        </aura:if>
+
+    </div>
+</aura:component>

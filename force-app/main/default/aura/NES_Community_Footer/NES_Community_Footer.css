@@ -1,0 +1,4 @@
+/*Commented by Ravi Bug #135343
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');*/
+.THIS{font-size:.75rem;padding:1.5rem 0;color:#fff;background-color:#3f3f3f}
+.THIS hr{opacity:.25}.THIS a,.THIS a:active,.THIS a:hover,.THIS a:visited{color:#fff}.THIS .metaLinks a{margin:0 .75rem}.THIS ul.bottomLinks li{display:inline-block}@media screen and (max-width:47.9375em){.THIS{line-height:2}.THIS .copyright,.THIS .metaLinks{text-align:center}.THIS .metaLinks a{display:block}}

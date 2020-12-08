@@ -1,0 +1,755 @@
+/* Commented by Ravi Bug #135343
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');*/
+.THIS .forceTopicFeaturedTopicItem.topicItem {
+    height: 75px !important;
+    padding: 8px;
+}
+
+.THIS .forceTopicFeaturedTopicItem .topicLabel {
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: none;
+    color: #000;
+}
+
+.THIS .forceTopicFeaturedTopicItem .topicContent {
+    transition: all .5s;
+    border-bottom: 3px solid transparent;
+    background-color: #f3f3f3;
+}
+
+    .THIS .forceTopicFeaturedTopicItem .topicContent:focus, .THIS .forceTopicFeaturedTopicItem .topicContent:hover, .THIS .forceTopicFeaturedTopicItem .topicLink:focus .topicContent {
+        border-bottom: 3px solid;
+        background-color: #fff;
+    }
+
+.THIS .forceRelatedCardContainer .container {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+    .THIS .forceRelatedCardContainer .container .forceCard {
+        margin: 0;
+    }
+
+.THIS .topicRelatedArticleList .selfServiceArticleListItem {
+    margin: 0;
+    margin-bottom: 2em;
+    padding: 1.5em;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+
+.THIS .topicStats.slds-card-wrapper.forceChatterTopicMetrics.forceCommunityTopicMetrics {
+    margin-top: -1.35em;
+    padding: 2em 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+
+.THIS .forceCommunityRelatedTopics .forceTopicTopicList.topicListHeader {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: .7rem;
+}
+
+.THIS .forceCommunityRecordListCompact, .THIS .forceCommunityRecordListStandard {
+    padding-left: 1em;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+
+    .THIS .forceCommunityRecordListCompact .listTitle, .THIS .forceCommunityRecordListStandard .listTitle {
+        display: none;
+    }
+
+    .THIS .forceCommunityRecordListCompact .filterListPlaceholder ul, .THIS .forceCommunityRecordListStandard .filterListPlaceholder ul {
+        color: #000;
+    }
+
+    .THIS .forceCommunityRecordListCompact .viewAllLink, .THIS .forceCommunityRecordListStandard .viewAllLink {
+        padding-bottom: 15px;
+    }
+
+.THIS div.forceCommunityContactSupportForm .slds-p-bottom--x-small {
+    position: relative;
+    z-index: 2;
+    margin-top: -8px;
+    margin-right: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+
+.THIS div.forceCommunityContactSupportForm h1 {
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+.THIS div.forceCommunityContactSupportForm .slds-section:first-of-type {
+    padding: 1em;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+
+.THIS div.forceCommunityContactSupportForm .slds-page-header__title {
+    text-align: left;
+}
+
+.THIS div.forceCommunityContactSupportForm .forceCommunityContactSupportConfirmation {
+    padding-left: 0;
+}
+
+.THIS div.forceCommunityContactSupportForm .slds-m-top--small {
+    max-width: 560px;
+}
+
+.THIS community_article-similar-articles-item {
+    display: flex;
+}
+
+.THIS community_article-similar-articles-list h2, .THIS community_article-topic-trending-articles-list h2 {
+    margin-bottom: .7rem;
+}
+
+.THIS community_article-similar-articles-list span, .THIS community_article-topic-trending-articles-list span {
+    font-weight: 400;
+    margin-right: 1rem;
+}
+
+.THIS .forceCommunityRelatedTopics ul.forceTopicTopicList, .THIS community_article-similar-articles-list ul, .THIS community_article-topic-trending-articles-list ul {
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
+
+    .THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a, .THIS community_article-similar-articles-list ul li a, .THIS community_article-topic-trending-articles-list ul li a {
+        position: relative;
+        padding: 1.3em;
+        color: #000;
+    }
+
+        .THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a:hover, .THIS community_article-similar-articles-list ul li a:hover, .THIS community_article-topic-trending-articles-list ul li a:hover {
+            text-decoration: none;
+            color: #d86018;
+        }
+
+        .THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a:after, .THIS community_article-similar-articles-list ul li a:after, .THIS community_article-topic-trending-articles-list ul li a:after {
+            font-size: 1.2em;
+            font-weight: 700;
+            position: absolute;
+            top: 15px;
+            right: 16px;
+            content: '>';
+            color: #d86018;
+        }
+
+        .THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a span:nth-of-type(2), .THIS community_article-similar-articles-list ul li a span:nth-of-type(2), .THIS community_article-topic-trending-articles-list ul li a span:nth-of-type(2) {
+            display: none;
+        }
+
+.THIS h1 {
+    font-size: 1.2rem;
+    padding-bottom: 9px;
+    text-align: left;
+}
+
+.THIS div.container.forceQuickActionLayout {
+    padding-left: 0;
+}
+
+.THIS .forceCommunityTabset .uiTabBar ul {
+    background-color: #fafafa;
+}
+
+.THIS {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    background-color: #3f3f3f;
+}
+
+    .THIS .myAccount, .THIS .profile.uiMenuItem {
+        display: none;
+    }
+
+    .THIS .not-selected {
+        visibility: hidden;
+    }
+
+    .THIS .rowActionsPlaceHolder, .THIS .slds-button-group, .THIS .slds-button_icon-more {
+        display: none;
+    }
+
+    .THIS article.content .forcePageBlockSectionRow:last-of-type {
+        margin-bottom: 2.5em;
+    }
+/* Ravi- US 201136- Commented for KBA Pagelayout Updates
+    .THIS article.content .forcePageBlockSectionRow:first-of-type, .THIS article.content .forcePageBlockSectionRow:nth-of-type(2) {
+        display: none;
+    }*/
+
+    .THIS .selfServiceArticleLayout.zoom h1.selfServiceArticleHeaderDetail {
+        font-size: 1.5rem;
+    }
+
+    .THIS .selfServiceArticleLayout.zoom {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+    }
+/* Ravi- US 201136- Commented for KBA Pagelayout Updates
+        .THIS .selfServiceArticleLayout.zoom .slds-form-element {
+            border: none;
+        }
+
+        .THIS .forceCommunityObjectHome .forceListViewManagerHeader, .THIS .selfServiceArticleLayout.zoom .forcePageBlockSectionRow:last-of-type, .THIS .selfServiceArticleListItem .view-count, .THIS .selfServiceArticleListItem .view-count + .dot {
+            display: none;
+        } */
+
+    .THIS .login-link {
+        font-size: 1rem;
+        line-height: 2 !important;
+        display: inline-block;
+        padding: .25rem 2rem;
+        border-radius: 3px;
+        background: #C24B14;
+    }
+
+        .THIS .login-link .linkLabel {
+            font-weight: 600 !important;
+            display: inline !important;
+            overflow: visible !important;
+            text-transform: uppercase !important;
+        }
+
+    .THIS div[data-region-name=navBar], .THIS div[data-region-name=profileMenu] {
+        margin-top: -.25rem;
+    }
+
+    .THIS .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger {
+        padding-right: 1rem;
+        text-align: right;
+    }
+
+    .THIS .helpButtonEnabled .flatButton {
+        background: #C24B14;
+    }
+
+    .THIS .helpButtonDisabled .flatButton {
+        pointer-events: none;
+        background: #bbb;
+    }
+
+        .THIS .helpButtonDisabled .flatButton:hover {
+            background: #bbb;
+        }
+
+    .THIS .waitingCancelChat {
+        border: none !important;
+        border-radius: 3px;
+        background: #C24B14;
+    }
+
+        .THIS .waitingCancelChat .label {
+            text-decoration: none !important;
+            color: #fff !important;
+        }
+
+    .THIS .embeddedServiceSidebarButton, .THIS .embeddedServiceSidebarButton.uiButton--inverse, .THIS .embeddedServiceSidebarButton.uiButton--inverse:disabled {
+        background: #c74b00 !important;
+    }
+
+        .THIS .embeddedServiceSidebarButton.uiButton--inverse .label {
+            color: #fff;
+        }
+
+    .THIS .container {
+        width: 1200px;
+        max-width: 100%;
+        margin: 0 auto;
+    /* added by ravi*/
+        padding-right: 0rem;
+        padding-left: 0rem;
+    }
+
+    .THIS .slds-icon_container {
+        vertical-align: sub;
+    }
+
+@media screen and (min-width:47.9375em) {
+    .THIS .sm-top-margin-on-desktop {
+        margin-top: .5rem;
+    }
+}
+
+.THIS .slds-text-heading--medium, .THIS .slds-text-heading_medium {
+    font-weight: 400;
+}
+
+.THIS .slds-text-color_success {
+    color: #027e46 !important;
+}
+
+.THIS .forceCommunityRelatedList .uiVirtualDataTable {
+    width: 100% !important;
+}
+
+.THIS .forceCommunityRelatedList .forceListViewManagerPrimaryDisplayManager .forceRecordLayout td:nth-of-type(2), .THIS .forceCommunityRelatedList .forceListViewManagerPrimaryDisplayManager .forceRecordLayout th:nth-of-type(3) {
+    display: none;
+}
+
+.THIS .forceCommunityRelatedList .outputLookupLink {
+    border-bottom: none !important;
+}
+
+.THIS .forceCommunityRelatedRecords .listViewContent td:first-of-type, .THIS .forceCommunityRelatedRecords .listViewContent th:nth-of-type(2) {
+    display: none;
+}
+
+.THIS .forceCommunityRelatedRecords .forceRelatedListSingleContainer:first-of-type .outputLookupLink {
+    pointer-events: none;
+    border-bottom: none !important;
+}
+
+.THIS .forceRelatedListContainer .container {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+    .THIS .forceRelatedListContainer .container .view-all-label {
+        display: none;
+    }
+
+.THIS .selfServiceCasePublisher .publisherContainer .inputTextContainer {
+    width: 100%;
+}
+
+.THIS .siteforceContentArea h1, .THIS .siteforceContentArea h2, .THIS .siteforceContentArea h3, .THIS .siteforceContentArea h4, .THIS .siteforceContentArea h5, .THIS .siteforceContentArea h6 {
+    font-family: Open Sans,Helvetica,Arial,sans-serif;
+    font-weight: 500;
+}
+
+.THIS .siteforceContentArea h1 {
+    font-size: 2rem;
+}
+
+.THIS .siteforceContentArea h2 {
+    font-size: 1.5rem;
+}
+
+.THIS .siteforceContentArea h3 {
+    font-size: 1.25rem;
+}
+
+.THIS .siteforceContentArea h4 {
+    font-size: 1.125rem;
+}
+
+.THIS .siteforceContentArea h5 {
+    font-size: 1rem;
+}
+
+.THIS .siteforceContentArea h6 {
+    font-size: .875rem;
+}
+
+.THIS .slds-button_brand, .THIS .slds-button_neutral {
+    font-weight: 600;
+    line-height: 3;
+    text-transform: uppercase;
+}
+
+.THIS .slds-button_neutral {
+    color: #000;
+    border: none;
+    background: #e0e0e0;
+}
+
+    .THIS .slds-button_neutral:hover {
+        background: rgba(0,0,0,.2);
+    }
+
+    .THIS .slds-button_neutral.add:before {
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1;
+        margin-right: .5rem;
+        content: '+';
+        vertical-align: middle;
+    }
+
+@media screen and (max-width:47.9375em) {
+    .THIS .slds-button.slds-button_brand, .THIS .slds-button.slds-button_neutral {
+        font-size: .9rem !important;
+        line-height: 3 !important;
+        display: block;
+        width: 100%;
+        padding-right: 1rem !important;
+        padding-left: 1rem !important;
+    }
+}
+
+.THIS label {
+    font-size: .8rem;
+    line-height: 1.5;
+}
+
+@media screen and (max-width:25em) {
+    .THIS .signinButtonArea span.slds-m-right_medium {
+        display: none;
+    }
+}
+
+@media screen and (max-width:47.9375em) {
+    .THIS .slds-form-element {
+        position: relative;
+        margin-bottom: 1rem;
+    }
+
+    .THIS .signinButtonArea .cNES_Community_Theme .slds-button.slds-button_neutral, .THIS .signinButtonArea .slds-button.slds-button_brand {
+        font-size: .5rem !important;
+        display: inline-block;
+        width: 31%;
+        margin-right: 9px;
+    }
+
+    .THIS .signinButtonArea span.slds-m-right_medium {
+        font-size: .5rem;
+    }
+}
+
+.THIS .slds-input {
+    line-height: 3;
+}
+
+    .THIS .slds-input::placeholder {
+        color: #575757;
+    }
+
+.THIS .registration.slds-progress {
+    width: 90%;
+    max-width: 480px;
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width:47.9375em) {
+    .THIS .registration.slds-progress {
+        margin-top: 1.5rem;
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+}
+
+.THIS .registration.slds-progress #progress-indicator-tooltip {
+    display: none !important;
+}
+
+.THIS .registration.slds-progress .slds-progress-bar {
+    width: 96%;
+    height: .35rem;
+    margin-top: -.1rem;
+}
+
+    .THIS .registration.slds-progress .slds-progress-bar .slds-progress-bar__value {
+        background-color: #3c8630;
+    }
+
+    .THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='0'] > span {
+        width: 27% !important;
+    }
+
+    .THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='33'] > span {
+        width: 28% !important;
+    }
+
+    .THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='66'] > span {
+        width: 50% !important;
+    }
+
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item {
+    position: relative;
+}
+
+    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:first-of-type, .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(3), .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4) {
+        width: 28%;
+    }
+
+    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(2) {
+        width: 20%;
+    }
+
+    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4) {
+        justify-content: flex-end !important;
+    }
+
+        .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4):before {
+            right: -.2rem;
+        }
+
+    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item.slds-is-active .slds-progress__marker, .THIS .registration.slds-progress .slds-progress__list .slds-progress__item.slds-is-completed .slds-progress__marker {
+        color: #3c8630;
+        border-color: #3c8630;
+        background-color: #3c8630;
+    }
+
+    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-color: #dddbda;
+        box-shadow: none;
+    }
+
+        .THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker:before {
+            font-weight: 600;
+            line-height: 1;
+            position: absolute;
+            top: -1.75rem;
+            left: -2rem;
+            white-space: nowrap;
+            text-transform: capitalize;
+            color: #555;
+        }
+
+@media screen and (max-width:47.9375em) {
+    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker:before {
+        font-size: .7rem;
+        top: 1.75rem;
+        left: -1.25rem;
+    }
+}
+
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker[title='Get Started']:before {
+    content: 'Get Started';
+}
+
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker[title='Create Account']:before {
+    content: 'Create Account';
+}
+
+@media screen and (max-width:47.9375em) {
+    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker[title='Create Account']:before {
+        left: -1.75rem;
+    }
+}
+
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker[title='Begin Enrollment']:before {
+    left: -2.5rem;
+    content: 'Begin Enrollment';
+    letter-spacing: -.25px;
+}
+
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker svg {
+    display: none !important;
+}
+
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(2) .slds-progress__marker {
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(2):before {
+    top: .2rem;
+    left: .15rem;
+    width: .85rem;
+    height: .85rem;
+}
+
+.THIS .header {
+    padding: 0 .25rem !important;
+    /*Added by Ravi*/
+    border-bottom: 5px solid #D86018;
+    background: #fff;
+}
+
+    .THIS .header .logo {
+        max-width: 100%;
+        height: auto;
+        max-height: 75px;
+    }
+
+@media screen and (max-width:47.9375em) {
+    .THIS .header .logo {
+        max-height: 40px !important;
+        margin: .5rem !important;
+    }
+}
+
+.THIS .header .menuicon, .THIS .header button[title='Toggle SideBar'] {
+    margin-right: 1rem;
+}
+
+    .THIS .header .menuicon svg, .THIS .header button[title='Toggle SideBar'] svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: #bb5215 !important;
+    }
+
+.THIS .header .selfServiceCasePublisher .inputTextContainer {
+    width: 100%;
+}
+
+.THIS .header .selfServiceUserProfileMenu {
+    margin-top: .75rem;
+}
+
+    .THIS .header .selfServiceUserProfileMenu .profileName {
+        display: none !important;
+    }
+
+    .THIS .header .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger .triggerDownArrow {
+        display: inline-block !important;
+        margin-left: .5em;
+        border: none;
+    }
+
+        .THIS .header .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger .triggerDownArrow:before {
+            font-family: Open Sans,sans-serif;
+            font-size: 1.25rem;
+            font-weight: 100;
+            position: relative;
+            top: .25rem;
+            left: .25rem;
+            display: block;
+            width: 12px;
+            content: '\203A';
+            transform: rotate(90deg);
+            color: #000;
+            text-shadow: none;
+        }
+
+.THIS .header .forceCommunityGlobalNavigation {
+    margin-top: .75rem;
+    color: #000;
+    background: transparent !important;
+}
+
+    .THIS .header .forceCommunityGlobalNavigation .comm-navigation__list a[title=Home], .THIS .header .forceCommunityGlobalNavigation .slds-button.slds-icon-waffle_container {
+        display: none;
+    }
+
+    .THIS .header .forceCommunityGlobalNavigation .comm-navigation__list {
+        justify-content: flex-end;
+    }
+
+    .THIS .header .forceCommunityGlobalNavigation .slds-list__item a {
+        font-size: .85rem;
+        font-weight: 600;
+        border-bottom: 2px solid transparent;
+    }
+
+        .THIS .header .forceCommunityGlobalNavigation .slds-list__item a.slds-is-active, .THIS .header .forceCommunityGlobalNavigation .slds-list__item a:hover {
+            border-color: #bb5215;
+            background: transparent !important;
+        }
+
+    .THIS .header .forceCommunityGlobalNavigation .slds-list_vertical {
+        padding-top: 2rem;
+        background-color: #fff;
+    }
+
+@media screen and (max-width:47.9375em) {
+    .THIS .header .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .THIS .header .menuList.visible.positioned {
+        width: 50vw;
+    }
+}
+
+.THIS .mainContentArea {
+    min-height: 40vh;
+    padding-bottom: 2rem;
+    background: #fafafa;
+}
+
+    .THIS .mainContentArea h3 > span {
+        float: right;
+    }
+
+    .THIS .mainContentArea .forceCommunityRichText ul {
+        padding-left: 0;
+    }
+
+        .THIS .mainContentArea .forceCommunityRichText ul li {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+            .THIS .mainContentArea .forceCommunityRichText ul li:before {
+                font-size: 1.75rem;
+                line-height: 1.25rem;
+                position: absolute;
+                left: 2rem;
+                text-align: center;
+                vertical-align: top;
+                white-space: nowrap;
+            }
+
+.THIS .contextual-help {
+    padding: 1.5rem;
+    background: #f5f5f5;
+    box-shadow:0 0px 0px 0 rgba(0,0,0,.0);
+}
+
+    .THIS .contextual-help h5 {
+        font-weight: 600;
+    }
+
+    
+
+        .THIS .contextual-help ul li {
+            margin: .5rem 0;
+        }
+
+.THIS .footer {
+    padding: 0 !important;
+}
+
+.THIS .datePicker, .THIS .datePicker .buttonBar, .THIS .datePicker .calBody, .THIS .datePicker .calDays, .THIS .datePicker .dateBar, .THIS .datePicker select, .THIS lightning-calendar {
+    display: none !important;
+}
+
+.THIS .slds-button--brand:disabled, .THIS .slds-button--brand[disabled], .THIS .slds-button_brand:disabled, .THIS .slds-button_brand[disabled] {
+    border-color: #666;
+    background: #666;
+}
+/*Added by Ravi*/
+.THIS .slds-p-around_small {
+
+ padding-left: 0rem;
+ padding-right: 0rem;
+ }
+
+.THIS .slds-col--padded {
+
+ padding-left: 0px;
+ padding-right: 0px;
+ }
+
+.THIS .uiOutputRichText{
+padding-left: 30px;
+  }
+.THIS .comm-layout-column .mainContentArea .style {
+
+    margin-top: 0px; 
+    padding-top: 0px; 
+    padding-bottom: 0px;
+ }
+
+/*.THIS .slds-grid {
+    
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+
+}
+.THIS .slds-col{
+    
+    padding-right: 20px;
+    padding-left: 20px;
+
+}*/

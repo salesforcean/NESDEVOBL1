@@ -1,0 +1,16 @@
+<!--
+ - Created by karolbrennan on 11/16/18.
+ -->
+
+<aura:component description="Dev_Label" implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="title" type="String" />
+    <aura:attribute name="status" type="String" />
+    <aura:attribute name="icon" type="String" />
+
+    <div>
+        {!v.title}<br />
+        {!v.status}
+        <span class="circle"></span>
+        <lightning:icon iconName="utility:connected_apps" />
+    </div>
+</aura:component>

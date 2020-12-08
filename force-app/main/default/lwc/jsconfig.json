@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/ecrOptions": [
+                "ecrOptions/ecrOptions.js"
+            ],
+            "c/ecrTree": [
+                "ecrTree/ecrTree.js"
+            ],
+            "c/ecrTreeViewer": [
+                "ecrTreeViewer/ecrTreeViewer.js"
+            ],
+            "c/header": [
+                "header/header.js"
+            ],
+            "c/picklistSelector": [
+                "picklistSelector/picklistSelector.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    },
+    "paths": {
+        "c/*": [
+            "*"
+        ]
+    }
+}

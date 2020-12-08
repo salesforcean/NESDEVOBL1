@@ -1,0 +1,15 @@
+<!-- NES_StudentReenrollmentAction -->
+<!-- 
+  Author: Ali KM (Ness Tech)
+  Date: May/7/2020
+  US: 168070 
+  Purpose: Expose 'Re-enrollment' process as a Action/Button on PE_STUDENT page layouts
+-->
+
+<aura:component implements="force:hasRecordId,force:lightningQuickAction">
+  <aura:attribute name="context" type="String" default="RE_ENROLLMENT" />
+  <c:NES_ReactivateWithdrawnStudent
+    context="{!v.context}"
+    recordId="{!v.recordId}"
+  />
+</aura:component>

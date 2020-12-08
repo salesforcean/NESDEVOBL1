@@ -1,0 +1,19 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" >
+  <p>Click on the Menu Icon to transform it to "X":</p>
+  <div id="changeId" aura:id="changeIt" class="container" onclick="{! c.toggleChange }">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+
+
+  <ui:menu>
+    <ui:menuTriggerLink aura:id="trigger" label="Click me to display menu items"/>
+    <ui:menuList class="actionMenu" aura:id="actionMenu">
+        <ui:actionMenuItem aura:id="item1" label="Item 1" click="{!c.doSomething}"/>
+        <ui:actionMenuItem aura:id="item2" label="Item 2" click="{!c.doSomething}"/>
+        <ui:actionMenuItem aura:id="item3" label="Item 3" click="{!c.doSomething}"/>
+        <ui:actionMenuItem aura:id="item4" label="Item 4" click="{!c.doSomething}"/>
+   </ui:menuList>
+  </ui:menu>
+</aura:component>

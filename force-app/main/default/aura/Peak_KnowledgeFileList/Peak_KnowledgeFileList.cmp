@@ -1,0 +1,56 @@
+<!--
+ - Created by 7Summits on 10/23/17.
+ -->
+
+<aura:component controller="Peak_KnowledgeFileListController" description="Peak_KnowledgeFileList" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="render" value="{!this}" action="{!c.getHeight}"/>
+
+    <!-- design attributes -->
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="title" type="String" default="Files" />
+    <aura:attribute name="maxLength" type="String" default="20" />
+
+    <!-- internal attributes -->
+    <aura:attribute name="fileList" type="List" default="[]" access="private"/>
+    <aura:registerEvent name="knowledgeEvent" type="c:Peak_KnowledgeListEvent"/>
+
+    <aura:if isTrue="{!v.fileList.length > 0}">
+        <article class="slds-card" id="list-wrapper">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-contact" >
+                        <lightning:icon iconName="standard:file" />
+                    </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2><span class="slds-text-heading_small">{!v.title} ({!v.fileList.length})</span></h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body slds-m-vertical_large">
+                <aura:iteration items="{!v.fileList}" var="file" indexVar="index">
+                    <article class="slds-tile slds-media slds-m-vertical_medium">
+                        <div class="slds-media__figure">
+                      <span class="slds-icon_container">
+                        <c:Peak_KnowledgeFileList_Icon type="{!file.fileExtension}" />
+                      </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <h5 class="slds-tile__title"><a href="javascript:void(0)" data-id="{!file.id}" onclick="{!c.handleFileClick}">{!file.title}</a></h5>
+                            <div class="slds-tile__detail">
+                                <ul class="slds-list_horizontal slds-has-dividers_right">
+                                    <li class="slds-item">{!file.lastModifiedDate}</li>
+                                    <li class="slds-item">{!file.contentSize}</li>
+                                    <li class="slds-item">{!file.fileExtension}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </aura:iteration>
+            </div>
+        </article>
+    </aura:if>
+
+</aura:component>

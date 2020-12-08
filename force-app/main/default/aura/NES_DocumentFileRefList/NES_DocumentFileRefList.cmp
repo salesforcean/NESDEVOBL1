@@ -1,0 +1,68 @@
+<!--
+    Purpose: Displays a list of Document File References similar to the OOTB related list but with view/download buttons integrated into docustore
+ - 2019-07-30 Initial (Anitha Pagadiapal)
+ - 2019-08-02 Added code for view and download buttons (Andrew Sim)
+ - 2019-08-12 Added code for docustore integration (Andrew Sim)
+ - 2019-10-04 added token cache #US109799/fixed #BUG112429  (Mark Membrino)
+-->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"
+                controller="NES_DocumentFileRefListController">
+    
+    <aura:attribute name="docList" type="List" />
+    <aura:attribute name="utilitySettings" type="Utility_Settings__c" />
+    <aura:attribute name="downloadDocument" type="Boolean" default="false" />
+    
+    <aura:attribute name="iframeLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="authReady" type="Boolean" default="false"/>
+    <aura:attribute name="authToken" type="String" default=""/>
+    <aura:attribute name="authURL" type="String" default="{!$Label.c.NES_DocumentURL}"/>
+	<aura:attribute name="docTokenTimeout" type="String" default="{!$Label.c.NES_DocTokenTimeoutMinutes}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:attribute name="enrollment_document" type="Enrollment_Document__c"/>
+    <force:recordData aura:id="mainRecord"
+                      recordId="{!v.recordId}"
+                      fields="Id,Name,Program_Enrollment_AccountId__c"
+                      targetFields="{!v.enrollment_document}"
+                      layoutType="FULL"/>
+    
+    <lightning:card title="" class="slds-card_boundary" iconName="standard:document">
+        <aura:set attribute="title">
+            <b>{!'Document File References (' + (v.docList.length) + ')'}</b>
+        </aura:set>    
+        
+        <ul class="slds-has-dividers_bottom-space">
+            
+            <aura:iteration items="{!v.docList}" var="obj">
+                
+                <li class="slds-item">
+                    <table><tr>
+                        <lightning:tile>
+                            <td>   
+                                <ul class="slds-list_horizontal slds-has-dividers_right">
+                                    <lightning:formattedUrl value="{!'/' + obj.Id}" label="{!obj.Name}"/></ul>
+                                <ul class="slds-list_horizontal slds-has-dividers_right">
+                                    <lightning:formattedText value="{!'Version: ' + obj.Version__c}"/></ul>
+                                <ul class="slds-list_horizontal slds-has-dividers_right">
+                                    <lightning:formattedText value="Created:&nbsp;"/><lightning:formattedDateTime value="{!obj.CreatedDate}"/></ul>
+                            </td>
+                            <td>
+                                <lightning:button aura:id="{!obj.Id}" label="View" title="View" name="{!obj.Id}" onclick="{!c.handleViewClick}"/>
+                                <aura:if isTrue="{!v.downloadDocument}">
+                                    <lightning:button aura:id="{!obj.Id}" label="Download" title="Download" name="{!obj.File_Path__c}" onclick="{!c.handleDownloadClick}"/>
+                                </aura:if>
+                            </td>
+                        </lightning:tile>
+                        </tr></table>
+                </li>
+                
+            </aura:iteration>
+            
+        </ul>
+    </lightning:card>
+    
+    <!-- use iframe to obtain docustoreAuthToken -->
+    <iframe aura:id="authiframe" id="authiframe" src="{!$Label.c.NES_DocumentURL_iframe}" onload="{!c.handleIframeLoaded}" style="border:0; height:0; width:0;"></iframe>
+    
+</aura:component>

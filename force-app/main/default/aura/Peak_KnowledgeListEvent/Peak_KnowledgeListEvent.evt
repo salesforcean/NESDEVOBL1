@@ -1,0 +1,6 @@
+<!--
+ - Created by 7Summits - Joe Callin on 11/16/17.
+ -->
+<aura:event type="APPLICATION" description="Peak_KnowledgeListEvent">
+    <aura:attribute name="eventValue" type="String"/>
+</aura:event>

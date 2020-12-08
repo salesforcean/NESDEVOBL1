@@ -1,0 +1,8 @@
+<!--
+ - Created by 7Summits on 10/23/17.
+ -->
+
+<design:component label="7S Knowledge Related Files List">
+    <design:attribute name="title" label="Title" />
+    <design:attribute name="recordId" default="{!recordId}" label="Record Id" />
+</design:component>

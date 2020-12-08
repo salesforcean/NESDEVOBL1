@@ -1,0 +1,34 @@
+<!--
+ - Created by ajith on 08/10/18.
+ -->
+
+<aura:component description="NES Form Component"
+                implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable"
+                controller="NES_FormController"
+                access="global">
+
+    <lightning:accordion aura:id="accordion">
+        <aura:iteration items="{!v.PearsonFormResponse.detail}" var="form">
+            <lightning:accordionSection name="{!form.FieldLabel}" label="{!form.FieldLabel}">
+                <aura:set attribute="body">
+                    <aura:iteration items="{!form.SubFormDetails}" var="sub">
+                        <aura:if isTrue="{!sub.FieldType == 'Freeform Text'}">
+                            <lightning:input label="{!sub.FieldLabel}" name="{!sub.FieldLabel}" value="{!sub.FieldValue}"/>
+                        </aura:if>
+                        <aura:if isTrue="{!sub.FieldType == 'Picklist'}">
+                            <lightning:select aura:id="{!sub.FieldLabel}" label="{!sub.FieldLabel}" required="true" messageWhenValueMissing="{!sub.HelpText}">
+                                <option value="">--Select--</option>
+                                <aura:iteration items="{!sub.SelectionOptions}" var="item">
+                                    <option text="{!item}" value="{!item}" />
+                                </aura:iteration>
+                            </lightning:select>
+                        </aura:if>
+                        <aura:if isTrue="{!sub.FieldType == 'Checkbox'}">
+                            <ui:inputCheckbox aura:id="checkbox" label="{!sub.FieldLabel}" change="{!c.onCheck}"/>
+                        </aura:if>
+                    </aura:iteration>
+                </aura:set>
+            </lightning:accordionSection>
+        </aura:iteration>
+    </lightning:accordion>
+</aura:component>

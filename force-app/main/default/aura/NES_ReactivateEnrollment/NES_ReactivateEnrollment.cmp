@@ -1,0 +1,164 @@
+<!--
+- Created by karolbrennan on 1/16/19.
+-->
+
+<aura:component description="NES Reactivate Enrollment" implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" extends="c:Peak_Base" controller="NES_EnrollmentController">
+    <aura:attribute type="String" name="studentName" />
+    <aura:attribute type="String" name="studentId" />
+    <aura:attribute type="String" name="processId" />
+    <aura:attribute type="String" name="programEnrollmentId" />
+    <aura:attribute type="String" name="acadName" />
+    <aura:attribute type="String" name="gradeLevelId" /> 
+    <aura:attribute type="String" name="schoolYeara" />
+    <aura:attribute type="String" name="message" />
+    <aura:attribute type="Boolean" name="success" default="false" />
+    <aura:attribute type="Boolean" name="hasError" default="false" /> 
+    <aura:attribute type="Boolean" name="isError" default="false" />
+    <aura:attribute type="String" name="errorMessage" default=''/>
+    <aura:attribute type="Boolean" name="isOpen" default="false" />
+    <aura:attribute type="Boolean" name="isSet" default="false" />
+    <aura:attribute name="stdId" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- add by Maddileti for US # 335371 on 12/04/2020  -->
+    <aura:attribute name="gradeLevels" type="Grade_Level__c[]" /> 
+    <aura:attribute name="schoolYears" type="School_Year__c[]" />
+    <aura:attribute name="gradeLevel" type="String" /> 
+    <aura:attribute name="schoolYear" type="String" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="SchoolNames" type="Account[]" />
+    <aura:attribute name="schoolName" type="String" />
+    <aura:attribute type="Boolean" name="isOpenReactivation" default="false" />
+    <aura:attribute name="Type" type="String" default="Reactivate"/>
+    <aura:attribute type="Boolean" name="GradeFlag" default="false" />
+    <aura:attribute name="disableGrade" type="Boolean" default="false" />
+    <aura:attribute name="valuesselect" type="Boolean" default="false" />
+    <!-- add by Maddileti for US # 335371 on 12/04/2020  -->
+    <!--  added by Chinnamanaidu Neerasa -->
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    
+    <div class="viewButton slds-p-top_medium">
+        <span class="btnblock">
+            <aura:if isTrue="{!v.isSet}">
+                <a href="javascript:void(0)" class="slds-button slds-button_brand" onclick="{!c.openModel}">Reactivate</a>
+                <!--  added by Chinnamanaidu Neerasa  for #119347 User Story on 2019-11-25  -->
+                <aura:if isTrue="{!v.isModalOpen}">
+                    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header" style="border:none;padding:0;">
+                                <button class="abcd" title="Close"  onclick="{!c.closeModel}">
+                                    <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                                    <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                                </button>
+                            </header>   
+                            <!-- Added by Chinnamanaidu , Story 119347 - Modal/Popup Box Body Starts here-->                                          
+                            <div class="slds-modal__content slds-p-around_large" id="modal-content-id-1">            
+                                <div class="slds-text-align_center">
+                                    <div class="slds-text-heading_medium"><b>Reactivate Enrollment</b></div>
+                                </div><!--removing /oblenroll/s/tickets below to label"-->
+                                To reactivate your student, please access our <a href="{!Label.NES_Community_Tickets_URL}"><b> Support </b></a>site to call or create a ticket for assistance.
+                            </div>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </aura:if>
+                <aura:set attribute="else">
+                    <a href="javascript:void(0)" class="{!v.Type == 'Reactivate' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" onclick="{!c.reactivateAction}">Reactivate</a>   
+                    <a href="javascript:void(0)" class="{!v.Type == 'Re-enroll' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" onclick="{!c.reEnrollmentAction}">Re-Enroll</a>   
+                    <aura:if isTrue="{!v.hasError}">
+                        <p class="slds-text-color_error">{!v.message}</p>
+                    </aura:if>
+                </aura:set>
+            </aura:if>                
+        </span>
+        <!--commented for UX update -->
+      <!--  <span class="slds-show_small">&rsaquo;</span> -->
+    </div>
+    <!--aura:if isTrue="{!v.isOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header" style="border:none;padding:0;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick="{!c.closeModal}">
+                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                        <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium slds-text-align_center" style="border-radius:.25rem;" id="modal-content-id-1">
+                    <h2 class="slds-text-align_center slds-m-bottom_medium">Reactivate Enrollment</h2>
+                    <aura:if isTrue="{!v.hasError}">
+                        <p class="slds-text-color_error">{!v.message}</p>
+                    </aura:if>
+                    <aura:if isTrue="{!v.success}">
+                        <p>{!v.studentName + ' has been successfully reactivated.'}</p>
+                    </aura:if>
+                </div>
+                end by Chinnamanaidu Neerasa  for #119347 on 29-11-2019
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if-->
+    <!-- add by Maddileti for US # 335371 on 12/04/2020  -->
+    <aura:if isTrue="{!v.isOpenReactivation}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header" style="border:none;padding:0;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick="{!c.closeModals}">
+                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                        <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium slds-text-align_left" style="border-radius:.25rem;" id="modal-content-id-1">
+                    <h3 class="slds-text-align_left slds-m-bottom_medium">{!v.studentName}</h3>
+ 
+                    <lightning:input aura:id="School" name="schoolName" label="School to attend"  value="{!v.acadName}" disabled="true" required="true" />                    <br/>
+                    <lightning:select aura:id="Year" name="schoolYear" label="School Year"  value="{!v.schoolYear}" required="true" onchange ="{!c.schoolSelect}">
+                        <option value="">--select year --</option>
+                        <aura:iteration items="{!v.schoolYears}" var="year">
+                            <option value="{!year.Name}" selected ="{!year.name}">{!year.Name}</option><br/>
+                        </aura:iteration>
+                    </lightning:select><br/>
+                    <lightning:select aura:id="Grade" name="grades" label="Requesting grade"  value="{!v.gradeLevel}" required="true" disabled="{!v.disableGrade}">
+                        <option value="">-- select One --</option>
+                        <aura:iteration items="{!v.gradeLevels}" var="grade">
+                            <option value="{!grade.Name}">{!grade.Name}</option><br/>
+                        </aura:iteration>
+                    </lightning:select>
+                    <br/>
+                    
+                    <br/><br/>
+                    <lightning:button variant="brand" label=" Student Reactivate" onclick="{!c.reReactivate}"/>
+                    <br/><br/>
+           
+                    <aura:if isTrue="{!v.isError}">
+                        <div><p> * For the current school year, you must request the same grade. If you would like to request a different grade, please contact support.</p></div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.isOpen}">
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                <header class="slds-modal__header" style="border:none;padding:0;">
+                                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick="{!c.closeModal}">
+                                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                                        <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                                    </button>
+                                </header>
+                                <div class="slds-modal__content slds-p-around_medium slds-text-align_center" style="border-radius:.25rem;" id="modal-content-id-1">
+                                    <h2 class="slds-text-align_center slds-m-bottom_medium">Reactivate Enrollment</h2>
+                                    <aura:if isTrue="{!v.hasError}">
+                                        <p class="slds-text-color_error">{!v.message}</p>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.success}">
+                                        <p>{!v.studentName + ' has been successfully reactivated.'}</p>
+                                    </aura:if>
+                                </div>
+                                
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                    </aura:if>
+                </div>
+                
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    <!--End by Maddileti for US # 335371 on 12/04/2020  -->
+</aura:component>

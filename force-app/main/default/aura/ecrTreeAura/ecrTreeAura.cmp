@@ -1,0 +1,12 @@
+<aura:component
+  implements="force:lightningQuickAction,flexipage:availableForAllPageTypes,force:appHostable,force:hasRecordId"
+  access="global"
+>
+  <aura:attribute name="isLoaded" type="Boolean" default="false" />
+  <aura:attribute name="recordId" type="String" />
+  <aura:handler name="init" value="{!this}" action="{!c.gotoURL}" />
+
+  <!-- <div class="slds-m-around_medium">
+    <c:ecrTreeViewer recordId="{!v.recordId}" />
+  </div> -->
+</aura:component>

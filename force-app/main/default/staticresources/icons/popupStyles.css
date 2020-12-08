@@ -1,0 +1,6 @@
+.slds-modal__container{
+    max-width: 70rem !important;
+    width:80% !important;
+}
+.slds-file-selector__button:before {background: url('uploadicon.png') top center no-repeat;}
+.picture:before {background: url('pictureicon.png') top center no-repeat;}

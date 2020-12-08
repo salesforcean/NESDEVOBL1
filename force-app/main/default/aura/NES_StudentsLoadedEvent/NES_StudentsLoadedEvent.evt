@@ -1,0 +1,7 @@
+<!--
+ - Created by karolbrennan on 12/12/18.
+ -->
+
+<aura:event type="APPLICATION" description="NES_StudentsLoadedEvent">
+    <aura:attribute name="numberOfStudents" type="Integer" default="0" />
+</aura:event>

@@ -1,0 +1,40 @@
+<!--
+    Purpose: Displays a list of Document File References similar to the OOTB related list but with view/download buttons integrated into docustore
+    Change Log: 
+		2019-01-02 Initial (melindagrad)
+		2019-08-14 Fixed account Id logic US #101928 (Andrew Sim)
+ -->
+
+<aura:component description="NES_DocumentDownload"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global">
+
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    <aura:attribute name="isInit" type="Boolean" default="false"/>
+    <aura:attribute name="downloaderInit" type="Boolean" default="false"/>
+    <aura:attribute name="iframeLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="ssoToken" type="String" default=""/>
+    <aura:attribute name="fileId" type="String"/>
+    <aura:attribute name="postmessage" type="String" default="{!$Label.c.NES_DocumentURL}"/>
+	<aura:attribute name="docTokenTimeout" type="String" default="{!$Label.c.NES_DocTokenTimeoutMinutes}"/>
+
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="simpleRecord" type="Object" />
+
+    <force:recordData aura:id="forceRecordCmp"
+                      recordId="{!v.recordId}"
+                      targetRecord ="{!v.record}"
+                      targetFields ="{!v.simpleRecord}"
+                      fields="Id, File_Path__c, Enrollment_Document__r.Program_Enrollment_AccountId__c, Enrollment_Document__r.Uploader__r.Contact.Household_Id__c, Enrollment_Document__r.Uploader__r.Contact.AccountId" />
+
+    <aura:handler name="change" value="{!v.simpleRecord}" action="{!c.doInit}"/>
+
+    <div>
+        <aura:if isTrue="{!v.isLoading}">
+            <c:Peak_LoadingGif size="small" variant="brand"/>
+        </aura:if>
+
+        <iframe aura:id="pearsonauth" id="pearsonauthiframe" src="{!$Label.c.NES_DocumentURL_iframe}" onload="{!c.iframeLoaded}" style="border:0; height:0; width:0;"></iframe>
+    </div>
+
+</aura:component>

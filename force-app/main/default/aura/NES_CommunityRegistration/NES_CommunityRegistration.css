@@ -1,0 +1,60 @@
+.THIS h1,.THIS h3{font-size:1.125rem!important;font-weight:600!important}.THIS h2,.THIS h4{font-size:1rem!important;font-weight:400!important}.THIS p{font-size:1rem;margin:1rem 0}.THIS p.small-text{font-size:.75rem}@media screen and (max-width:47.9375em){.THIS h1,.THIS h3{font-size:1.15rem!important}.THIS h2,.THIS h4,.THIS h5,.THIS h6{font-size:.75rem!important}}.THIS a{color:#bf5622}.THIS .fontSize{font-size:1rem}@media screen and (max-width:47.9375em){.THIS .slds-form-element{margin-top:1rem;margin-bottom:0}}.THIS .slds-form-element__help{font-size:.75rem;margin-top:.5rem}.THIS .checkbtn{line-height:3;margin-top:1.65rem;white-space:nowrap}@media screen and (max-width:47.9375em){.THIS .checkbtn{font-size:.65rem;line-height:2.75rem!important;position:relative;top:-2px}}.THIS button.small-btn{font-size:.8rem}.THIS button.btn-next{font-size:1.1875rem;line-height:2.5!important;margin-top:1.5rem;padding-right:1.5rem;padding-left:1.5rem;text-transform:uppercase}@media screen and (max-width:47.9375em){.THIS button.btn-next{font-size:.875rem;font-weight:600;line-height:3!important;width:100%;margin-top:.75rem}}.THIS button.slds-button_neutral{font-weight:600;white-space:nowrap;text-transform:uppercase;color:#555;border:none;background:#dfdfdf}.THIS .slds-button_brand{background-color:#c54b17}.THIS .slds-button_brand[disabled]{text-transform:uppercase;border-color:#e8bd9d;background:#e8bd9d}.THIS ul{margin-left:1.25rem;list-style:initial}.THIS form{width:100%;max-width:500px;margin:1rem auto 0}@media screen and (min-width:47.9375em){.THIS form{padding-right:4rem;padding-left:4rem}}.THIS .passwordblock{position:relative}.THIS .showhidepw{position:absolute;z-index:999;top:0;right:.5rem;cursor:pointer}.THIS .passwordHelper{font-size:.75rem!important;position:absolute;top:-9rem;left:50%;width:17rem;margin-left:-8.25rem;padding:.5rem;transition:all .5s ease;border-radius:3px;background:rgba(0,0,0,.8)}@media screen and (max-width:47.9375em){.THIS .passwordHelper{top:-10rem!important}}.THIS .passwordHelper ul{margin:0!important;padding:0!important}.THIS .passwordHelper ul li{list-style:none;color:#fff}.THIS .passwordHelper ul li img{margin-right:.5rem}.THIS .passwordHelper:after{position:absolute;left:50%;width:0;height:0;margin-top:.5rem;margin-left:-10px;content:'';border-top:10px solid rgba(0,0,0,.8);border-right:10px solid transparent;border-left:10px solid transparent}.THIS .passwordHelper.valid{background:#63b800}.THIS .passwordHelper.valid:after{border-top-color:#63b800}.THIS .spinner{display:inline-block;margin-right:2rem;margin-left:1rem;vertical-align:middle}.THIS .slds-text-color_success,.THIS .success{color:#3c8630}.THIS .fail{color:#b80900}
+
+/*Added by Venkata for US172504 on 2020/08/20 */
+.THIS .slds-grid_align-center{
+    padding: 0 20px;
+}
+
+.THIS .slds-p-around_small{
+    margin-right: 20px;
+}
+/*added for the US166467 : Jagadeesh */
+/* Style buttons */
+.THIS .buttonload {
+  width : 25px;
+  padding-right: 5px
+}
+.THIS .buttonGrey {
+  background: #ccc !important;
+  border: none;
+}
+.THIS .userIcon {
+  width : 30px;
+  padding-right: 5px
+}
+
+.THIS .availableMsg{
+    color : #21c61f;
+    font-size : 14px;
+}
+.THIS .notAvailableMsg{
+   color : #ce0303; 
+    font-size : 14px;
+}
+.THIS .inputTextallign{
+    width :390px;
+}
+.THIS .inputTextallign123{
+    width :800px;
+}
+.THIS .userInputadj{
+    padding-right :15px;
+}
+.THIS .usercheckButton{
+    height : 41px;
+}
+.THIS .passwordblocksub{
+    margin-right: 15px;
+}
+@media only screen and (max-width: 600px) {
+.THIS .buttonadj_mob {
+   width: 95%;
+  } 
+    
+.THIS .buttonadjpswd_mob {
+   width: 95%;
+  }
+.THIS .fontAdj_mob{
+        height : 45px;
+    }
+}

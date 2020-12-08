@@ -1,0 +1,38 @@
+<apex:page showHeader="false" title="NES File Not Found" cache="false">
+  <apex:composition template="{!$Site.Template}">
+    <apex:define name="body">
+      <left>
+        <apex:panelGrid styleClass="firstgrid" bgcolor="white" columns="1">
+          <apex:panelGrid width="758" cellpadding="0" cellspacing="0" bgcolor="white" border="0" columns="1" >
+            <br/>
+            <apex:outputPanel layout="block" >
+              <apex:panelGrid styleClass="copygrid" width="758" cellpadding="0" cellspacing="0" bgcolor="white" border="0" columns="1">
+                <apex:panelGroup >
+                  <apex:outputText styleClass="h1title" value="Uh-oh. This page does not exist.">
+                 </apex:outputText>
+                  <br/>
+                  <br/>
+                   <apex:outputText styleClass="h2title" value="The link you clicked may be broken or may have been removed.">     
+                  </apex:outputText>
+                  <br/>
+                  <br/>  
+                    <apex:outputText styleClass="h3title" value="Please begin on the main page by clicking the link below: "/><br/><br/>
+                    <apex:outputLink styleClass="vfcommlink" value="{!$Label.NES_CommBaseurl}s" id="homepage">Home</apex:outputLink>  <br/>
+                </apex:panelGroup>
+              </apex:panelGrid>
+             </apex:outputPanel>
+          </apex:panelGrid>
+        </apex:panelGrid>
+      </left>
+    </apex:define>
+      <apex:define name="footer">
+        <apex:panelGrid cellpadding="30" cellspacing="0" width="100%" border="0" styleClass="oblfooter" columns="1" id="oblfooter">
+    <apex:panelGroup id="oblfooterarea">
+        <hr />
+      <apex:outputText styleClass="oblfootertext" value="© Copyright 2020 Connections Academy. All Rights Reserved."/>
+    </apex:panelGroup>
+   </apex:panelGrid>
+      </apex:define>
+  </apex:composition>
+  <site:previewAsAdmin />
+</apex:page>

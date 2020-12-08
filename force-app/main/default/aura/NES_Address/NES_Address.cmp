@@ -1,0 +1,156 @@
+<!--
+ - Created by Ashish Pandey on 19-12-2018.
+ -->
+
+
+<aura:component description="NES_Address" controller="NES_ExperianIntegration" access="global" implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="searchKeyword" type="String" description="Search keyword that needs to be used for searching" default=""/>
+    <aura:attribute name="record" type="Object" description="Holds the selected search result"/>
+    <aura:attribute name="isValid" type="Boolean" default="true"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false"/>
+    <aura:attribute name="suggestionsModal" type="Object[]" default="[]"/>
+    <aura:attribute name="formattedAddress" type="Object"/>
+    <aura:attribute name="hierarchySettings" type="Object"/>
+    <aura:attribute name="required" type="Boolean" default="true"/>
+    <aura:attribute name="isAddressLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="isManualAddress" type="Boolean" default="false"/>
+    <aura:attribute name="questionGroupId" type="String"/>
+    <aura:attribute name="programEnrollmentId" type="String"/>
+    <aura:attribute name="timerStarted" type="Boolean" default="false"/>
+    <aura:attribute name="questions" type="Object[]"/>
+    <aura:attribute name="apiAddress" type="Boolean"/>
+    <aura:attribute name="selectedAddressFormatURL" type="String"/>
+       
+    <!--Added for #US 159016 - Begin -->
+    <aura:attribute name="streetError" type="Boolean"/>
+    <aura:attribute name="streetErrorMsg" type="String"/>
+    <aura:attribute name="pobError" type="Boolean"/>
+    <aura:attribute name="pobErrorMsg" type="String"/>
+    <!--Added for #US 159016 - End -->
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:handler action="{!c.handleSubmit}" event="c:NES_SubmitQuestionsEvent"/>
+
+    <aura:method name="validateFields" action="{!c.validateFields}">
+        <aura:attribute name="validated" type="Boolean" default="false"/>
+    </aura:method>
+
+    <lightning:layout class="slds-is-relative" multipleRows="true">
+        <!-- ******************** -->
+        <!-- Search form -->
+        <!-- ******************** -->
+        <lightning:layoutItem size="12">
+            <aura:if isTrue="{!!v.isManualAddress}">
+                <lightning:layout>
+                    <lightning:layoutItem size="{!if($Browser.isPhone, 12, 9)}">
+                        <div class="slds-col" > <!-- Check validity if enter key is pressed -->
+                            <lightning:input value="{!v.searchKeyword}"
+                                             onchange="{!c.autoComplete}"
+                                             name="inputSearch"
+                                             type="search"
+                                             class="dbo-searchField"
+                                             placeholder="Start typing an address..."
+                                             aura:id="searchField"
+                                             onfocus="{!c.handleFocus}"
+                                             label="Address" />
+                           
+                            <aura:if isTrue="{!!v.isValid}">
+                                <div id="input-5-message" role="alert" class="slds-form-element__help warning">Whoops. Provide at least 3 characters</div>
+                            </aura:if>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </aura:if>
+
+            <!-- ******************** -->
+            <!-- AUTO COMPLETE SECTION -->
+            <!-- ******************** -->
+            <aura:if isTrue="{!!v.isManualAddress}">
+                <lightning:layout class="lightning-suggestions_container">
+                    <lightning:layoutItem size="12" mediumDeviceSize="9">
+                        <ul id="suggestionsModal" aura:id="suggestionsModalAura" class="hideEl">
+                            <!--IF Address Records are retrieved -->
+                            <aura:if isTrue="{!v.isAddressLoaded}">
+                                <aura:if isTrue="{!v.suggestionsModal.length > 0}">
+                                    <aura:iteration items="{!v.suggestionsModal}" var="sigleLineAdd" indexVar="indx">
+                                            <li data-record="{!indx}">
+                                                <a data-member="{!indx}" data-id="{!sigleLineAdd.format}" href="javascript:void(0)" onclick="{!c.handleSelection}">
+                                                    {!sigleLineAdd.suggestion}
+                                                </a>
+                                            </li>
+                                    </aura:iteration>
+                                            <hr/>
+                                            <li><a href="javascript:void(0)" onclick="{!c.handleManualAddress}">Enter address manually</a></li>
+                                    <aura:set attribute="else">
+                                        <!--Added for #US 159016 - Begin -->
+                                        <aura:if isTrue="{!v.pobError}">
+                                          <p class="poboxErr"> <aura:unescapedHtml value="{!v.pobErrorMsg}"/></p>
+                                        </aura:if>
+                                        <!--Added for #US 159016 - End -->
+                                        <p>There are <b>0 results</b>.</p>
+                                        <hr/>
+                                        <li><a href="javascript:void(0)" onclick="{!c.handleManualAddress}">Enter address manually</a></li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:if>
+                        </ul>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </aura:if>
+            <!-- ******************** -->
+            <!-- Manual Address Fields section -->
+            <!-- ******************** -->
+            <aura:if isTrue="{!v.isManualAddress}">
+                <lightning:layoutItem class="slds-p-left_medium" size="12" mediumDeviceSize="8">
+                    <aura:iteration var="question" items="{!v.questions}">
+                        <div class="slds-p-vertical_small">
+                            <!-- Label for any type of input -->
+                            <label class="record-label slds-form-element__label" for="{!question.questionId}">
+                                <aura:if isTrue="{!question.required}">
+                                    <abbr class="slds-required firstAsterisk" title="required" data-aura-rendered-by="34:391;a">*</abbr>
+                                </aura:if>
+                                <aura:unescapedHtml value="{!question.questionPrompt}" />
+                            </label>
+                            <aura:if isTrue="{!equals(question.questionType,'Text')}">
+                                <aura:if isTrue="{!question.apiMapping == 'addressLine1'}">
+                                    <lightning:textarea aura:id="addressFieldId" class="slds-size_1-of-2" label="" required="{!question.required}" value="{!question.targetField}" onblur ="{!c.handlePOBOX}"/>
+                					<!--Added for #US 159016 - Begin -->
+                                    <!--**Added c.handlePOBOX for #US 159016** -->
+                                    <aura:if isTrue="{!v.streetError}">
+                                        <p class="poboxErr"><aura:unescapedHtml value="{!v.streetErrorMsg}"/></p>
+                                    </aura:if>
+                                    <!--Added for #US 159016 - End -->
+                                    <aura:set attribute="else">
+                                        <lightning:input aura:id="addressFieldId" class="slds-size_1-of-2" label="" type="text" messageWhenPatternMismatch="{!question.validationMessage}" pattern="{!question.validation}" required="{!question.required}" value="{!question.targetField}"/>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:if>
+                         <aura:if isTrue="{!equals(question.questionType,'Picklist')}">
+                                <div class="slds-size_1-of-2">
+                                    <lightning:select aura:id="addressFieldId" label="" value="{!question.targetField}" required="{!question.required}" onchange="{!c.runAssignment}">
+                                        <option value="">- select one -</option>
+                                        <aura:iteration items="{!question.picklistValues}" var="option">
+                                            <!-- <option label="{!option.Option_Label__c}" value="{!option.Option_Value__c}">{!option.Option_Label__c}</option> commented by jagadeesh--> 
+                                            <option value="{!option.value}">{!option.label}</option> <!-- added for bug188601 by jagadeesh -->
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                            </aura:if>
+                            <!-- added here : Begin -->
+                            <aura:if isTrue="{!question.questionType == 'Date'}">
+                                  <lightning:input aura:id="addressFieldId" class="slds-size_1-of-2" label="" type="text" required="{!question.required}" value="{!question.targetField}"/>
+                             </aura:if>
+                            <!-- added here : End -->
+                             
+                        </div>
+                    </aura:iteration>
+                    <lightning:layoutItem size="12" class="slds-p-top_medium">
+                        <lightning:button variant="neutral" label="Search again" onclick="{! c.searchAgain }" />
+                    </lightning:layoutItem>
+                </lightning:layoutItem>
+            </aura:if>
+
+        </lightning:layoutItem>
+
+    </lightning:layout>
+</aura:component>

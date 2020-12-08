@@ -1,0 +1,119 @@
+<!--
+ - Created by Ashish Pandey on 03-12-2018.
+ - Change Log:
+ -         2019-09-09 modified for User Story #102169 (Maddileti Boya)
+ -     UI changes by Ravi 
+ -->
+
+<aura:component description="NES_DocumentCentral Original" implements="forceCommunity:availableForAllPageTypes" controller="NES_DocumentCentralController" access="global" extends="c:Peak_Base">
+  <!-- <c:NES_Announcements/> --> <!--To fix multiple announcements display -->
+    <!--Declare Attribute-->
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="isLoaded" type="Boolean" default="false" />
+    <aura:attribute name="heading" type="String" default="Document Central" />
+    <aura:attribute name="couldnotverify" type="String" default="We could not verify one or more documents." />
+    <aura:attribute name="detailbody" type="String" default="Manage all your documents here! You can upload and check the status of all required documents" />
+    <aura:attribute name="centralDocument" type="Object" />
+    <aura:attribute name="totalDocuments" type="Integer" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <!-- Added By Ravi --> 
+    
+    <lightning:layoutItem size="12" mediumDeviceSize="5">
+                <div class="slds-align_absolute-left">
+                    <div class="slds-text-align_left display-block slds-p-left_small" style = "padding-left: 0px;">
+                            <h2>{!v.heading}</h2>
+                        <br></br>
+                    </div>
+                </div>
+            </lightning:layoutItem>
+ 
+    <aura:if isTrue="{!v.isLoaded}">
+        <aura:if isTrue="{!v.centralDocument.numberOfNeedsReviewDocs==null}">
+
+        <button class="documentCentralBlock" onclick="{!c.handleShowModal}">
+            <lightning:layout multipleRows="true">
+            <!--lightning:layoutItem size="12" mediumDeviceSize="5">
+                <div class="slds-align_absolute-center">
+                    <div class="slds-text-align_left display-block slds-p-left_small">
+                            <h3>{!v.heading}</h3>
+                    </div>
+                </div>
+            </lightning:layoutItem-->
+                <!-- End By Ravi-->
+
+            <!--******************Needs Attention condition******************-->
+            <lightning:layoutItem size="3" mediumDeviceSize="2" class="slds-align_absolute-center">
+                <div class="slds-text-body_regular slds-text-align_center">
+                    Needs Attention
+                    <span class="slds-text-heading_small">({!v.centralDocument.numberOfNeedsReviewDocs == null ? '0' : v.centralDocument.numberOfNeedsReviewDocs})</span><br/>
+                </div>
+            </lightning:layoutItem>
+
+            <!--******************Under Review condition******************-->
+            <lightning:layoutItem size="3" mediumDeviceSize="2" class="slds-border_left slds-align_absolute-right">
+                <div class="slds-text-body_regular slds-text-align_right">
+                    Under Review
+                    <span class="slds-text-heading_small">({!v.centralDocument.numberOfUnderReviewDocs == null ? '0' : v.centralDocument.numberOfUnderReviewDocs})</span><br/>
+                    
+                </div>
+            </lightning:layoutItem>
+
+            <!--******************Completed condition******************-->
+            <lightning:layoutItem size="3" mediumDeviceSize="2" class="slds-border_left slds-align_absolute-center">
+                <div class="slds-text-body_regular slds-text-align_center">
+                     Verified
+                    <span class="slds-text-heading_small">({!v.centralDocument.numberOfAcceptedDocs == null ? '0' : v.centralDocument.numberOfAcceptedDocs})</span><br/>
+                   
+                </div>
+            </lightning:layoutItem>
+                
+          <!--// Start add by Maddileti for User Story #102169 (Maddileti Boya) on 2019-09-09-->
+                <!--******************Not Submitted Condition******************-->
+                <lightning:layoutItem size="3" mediumDeviceSize="2" class="slds-border_left slds-align_absolute-right">
+                <div class="slds-text-body_regular slds-text-align_right">
+                    Not Submitted
+                    <span class="slds-text-heading_small">({!v.centralDocument.numberOfNotSubmittedDocs == null ? '0' : v.centralDocument.numberOfNotSubmittedDocs})</span><br/>
+                    
+                </div>
+            </lightning:layoutItem>
+                
+          <!--// End add by Maddileti for User Story #102169 (Maddileti Boya) on 2019-09-09-->
+            <!-- Removed by arrow icon By Ravi -->
+            <!--******************Right Chevron******************-->
+            <!--lightning:layoutItem size="12" mediumDeviceSize="1" class="slds-show_small">
+                <div class="slds-align_absolute-center">
+                    <div class="slds-text-align_right display-block">
+                        <lightning:icon iconName="utility:chevronright" size="xx-small"/>
+                    </div>
+                </div>
+            </lightning:layoutItem-->
+        </lightning:layout>
+        </button>
+
+        <aura:set attribute="else">
+            <button class="documentCentralVerify" onclick="{!c.handleShowModal}">
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem size="11" smallDeviceSize="4" mediumDeviceSize="4" class="extraSmallRow">
+                        <div>
+                            <div class="slds-text-align_left display-block">
+                                <h5>{!v.heading}</h5>
+                            </div>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="11" smallDeviceSize="8" mediumDeviceSize="8" class="extraSmallRow">
+                        <div>
+                            <div class="slds-text-align_right display-block">
+                                <p>{!v.couldnotverify}</p>
+                            </div>
+                        </div>
+                    </lightning:layoutItem>
+                        <div class="rightChevron">
+                            <lightning:icon class="rightIcon" iconName="utility:chevronright" size="xx-small"/>
+                        </div>
+                </lightning:layout>
+            </button>
+        </aura:set>
+    </aura:if>
+    </aura:if>
+</aura:component>

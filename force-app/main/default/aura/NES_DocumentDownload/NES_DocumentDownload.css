@@ -1,0 +1,12 @@
+/**
+ * Created by karolbrennan on 1/4/19.
+ */
+.THIS .cPeak_LoadingGif {
+    z-index: 100;
+    max-height: 100px;
+    position: relative;
+    top: initial;
+    right: initial;
+    display: block;
+    margin: 100px auto;
+}

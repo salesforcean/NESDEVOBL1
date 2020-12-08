@@ -1,0 +1,59 @@
+.THIS.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px 0;
+    width: 10px;
+}
+/* Commented by Ravi Bug# 135343
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');*/
+.THIS .generated-question{display:flex;flex-direction:column;justify-content:space-between}
+.THIS select{height:36px}
+.THIS h2{font-weight:600!important;line-height:1.25}
+.THIS .addStudentBlock{position:relative}.THIS .addStudentBlock,.THIS .studentBlock{margin-bottom:2rem;padding:1rem;border-left:3px solid #bb5215;border-radius:3px;background:#fff;box-shadow:0 2px 4px 0 rgba(0,0,0,.12)}.THIS h5{font-weight:600}.THIS h6{font-size:.7rem!important;color:#888}.THIS .viewButton{display:flex}.THIS .viewButton span:not(.btnblock){font-size:1.5rem;line-height:1.75;padding-left:1rem}.THIS .viewButton .btnblock{flex-grow:2}.THIS .viewButton button{font-size:1rem;line-height:2.5;display:block;width:100%;text-align:center;letter-spacing:1px}.THIS .slds-button_brand{font-size:1rem;line-height:2.5;padding-right:2rem;padding-left:2rem;text-transform:uppercase}.THIS .studentsBlock .slds-progress .steplabel{position:absolute;top:-1.5rem;color:#4e4e4e}.THIS .studentsBlock .slds-progress .steplabel:first-of-type{left:-.5em}.THIS .studentsBlock .slds-progress .steplabel:nth-of-type(2){left:36%}.THIS .studentsBlock .slds-progress .steplabel:nth-of-type(3){right:-.5em}.THIS .studentsBlock .slds-progress .slds-progress-bar__value{background:#008638}.THIS .studentsBlock .slds-progress .slds-progress__list{margin-top:1.5rem}.THIS .studentsBlock .slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker{width:1rem;height:1rem;border:5px solid #dddbda;background:#fff;box-shadow:none!important}.THIS .studentsBlock .slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker svg{display:none}.THIS .studentsBlock .slds-progress .slds-progress__list .slds-progress__item.slds-is-completed .slds-progress__marker{width:1rem;height:1rem;border-color:#008638!important;background:#008638!important;box-shadow:none!important}.THIS .studentsBlock .slds-progress .slds-popover{display:none!important}.THIS .uiInputDate .has-error{border-color:#c23934;background-clip:padding-box;box-shadow:inset 0 0 0 1px #c23934}.THIS .record-label p{display:inline;margin:0}.THIS .supplementalQuestions .slds-form-element .slds-form-element__label{display:none}.THIS .relationshipArea .slds-form-element__label{display:inline-block;width:89%}.THIS .slds-form-element__help{position:absolute;bottom:-2em}.THIS .slds-form-element__label{display:flex;margin-bottom:1em}.THIS .relationshipArea .slds-form-element__label,.THIS .slds-radio .slds-form-element__label{margin-bottom:0}.THIS .relationshipArea legend.slds-form-element__label,.THIS .slds-radio legend.slds-form-element__label{margin-bottom:.5em}.THIS .unevenFix{display:flex;width:100%;flex-wrap:wrap}.THIS .unevenFix .slds-p-around_small{display:flex;align-items:stretch;align-content:stretch}.THIS .unevenFix .slds-p-around_small .slds-form-element{display:flex;flex-direction:column;justify-content:space-between;flex:1}.THIS .unevenFix .slds-p-around_small .slds-form-element .slds-grow{flex-grow:
+                        0}
+  .THIS .slds-col {
+             
+  border: dashed 2px #cccccc;
+ 
+  	display: inline-block;
+    padding-right: 12px;
+    padding-left: 12px;
+    height: 170px;
+    width: 49%;
+    padding-bottom: 125px;
+    padding-top: 80px;
+    cursor: pointer; 
+     color: solid black;           
+
+ }
+/*Added for US335364 by Jagadeesh*/
+  @media screen and (max-width:47.9375em) {
+      .THIS .slds-col {
+       border: dashed 2px #cccccc;
+       display: inline-block;
+    padding-right: 12px;
+    padding-left: 12px;
+    height: 170px;
+    width: 100%;
+    padding-bottom: 125px;
+    padding-top: 80px;
+    cursor: pointer; 
+     color: solid black; 
+    }
+                }
+   
+   
+
+                
+ .THIS .slds-black{
+       color: #000000;
+ }
+ .THIS .slds-form-element__control{
+    margin-right: 10px;
+ }
+/* Added by ravi on 07/01/2020 */                
+
+                .THIS .slds-col:hover{ text-decoration: underline}
+                
+                .THIS .btn_clr{
+             color:#000000;        
+                }

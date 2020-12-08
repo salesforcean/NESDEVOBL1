@@ -1,0 +1,8 @@
+<design:component>
+	<design:attribute name="object" label="1. sObject API Name" default="" required="true" />
+	<design:attribute name="fieldLabel" label="2. Picklist Field Label" default="" required="true" />
+	<design:attribute name="field" label="3. Picklist Field API Name" default="" required="true" />
+	<design:attribute name="controllingField" label="4. Controlling Field API Name" default=" " />
+	<design:attribute name="controllingFieldValue" label="5. Controlling Field Picklist Value" default=" " />
+	<design:attribute name="value" label="6. Default Picklist Field Value" default=" " />
+</design:component>

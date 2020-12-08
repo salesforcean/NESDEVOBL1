@@ -1,0 +1,123 @@
+<!--
+ - Created by karolbrennan on 10/16/18.
+ -->
+<aura:component access="global"
+                extends="c:Peak_Base"
+                description="NES Community Registration"
+                implements="forceCommunity:availableForAllPageTypes"
+                controller="NES_RegistrationController">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="loading" type="Boolean" default="false" />
+    <aura:attribute name="currentStep" type="String" default="1" />
+    <aura:attribute name="emailProvider" type="String" />
+    <aura:attribute name="formData" type="Object" />
+    <aura:attribute name="usernameValid" type="Boolean" default="true"/>
+    <aura:attribute name="usernameAvailable" type="Boolean" />
+    <aura:attribute name="usernameChecked" type="Boolean" default="false" />
+    <aura:attribute name="fName" type="String" />
+    <aura:attribute name="lName" type="String" />
+    <aura:attribute name="email" type="String" />
+    <aura:attribute name="uName" type="String" />
+    <aura:attribute name="password" type="String" />
+    <aura:attribute name="showPassword" type="Boolean" default="true" />
+    <aura:attribute name="step1Complete" type="Boolean" default="false" />
+    <aura:attribute name="step2Complete" type="Boolean" default="false" />
+    <aura:attribute name="emailExists" type="Boolean" default="false" />
+    <aura:attribute name="step1heading" type="String" default="Welcome! Create your account"/>
+    <aura:attribute name="step1subheading" type="String" default="Fill out this form to create your account and start checking your students' eligibility"/>
+    <aura:attribute name="step1bodytext" type="String" default="Please note that you should be the legal guardian of the child you're attempting to enroll."/>
+    <aura:attribute name="step2heading" type="String" default="Great! Now create your login."/>
+    <aura:attribute name="step2subheading" type="String" default="Create your login username and password... you'll need this to log into your account."/>
+    <aura:attribute name="step2bodytext" type="String" default=""/>
+    <aura:attribute name="step2UsernameAvailableMessage" type="String" />
+    <aura:attribute name="step2UsernameUnavailableMessage" type="String" />
+    <aura:attribute name="step3heading" type="String" default="Account created!"/>
+    <aura:attribute name="step3subheading" type="String" default="Now confirm your email address"/>
+    <aura:attribute name="step3bodytext" type="String" default="Click the 'Confirm' button on the email we just sent. This helps to ensure the security of your personal information and enables password resets."/>
+
+    <aura:attribute name="NES_AddStudent" type="Aura.Component[]" required="false" />
+    <aura:attribute name="addStudentActive" type="Boolean" default="false" />
+    <aura:registerEvent name="handleStep" type="c:NES_RegistrationStepEvent" />
+    <aura:registerEvent name="detectRegistrationPage" type="c:NES_DetectRegistrationPage" />
+    <div>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="12">
+                <lightning:progressIndicator class="registration" currentStep="{!v.currentStep}" type="base" hasError="false" variant="base">
+                    <lightning:progressStep label="Get Started" value="1"/>
+                    <lightning:progressStep label="Choose Username" value="2"/>
+                    <lightning:progressStep label="Confirm Email" value="3"/>
+                    <lightning:progressStep label="Begin Enrollment" value="4"/>
+                </lightning:progressIndicator>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="12" class="slds-text-align_center">
+                <form class="slds-text-align_left registrationForm">
+                    <aura:if isTrue="{!v.currentStep == '1'}">
+                        <aura:if isTrue="{!v.step1heading}"><h2 class="slds-m-bottom_small">{!v.step1heading}</h2></aura:if>
+                        <aura:if isTrue="{!v.step1subheading}"><h5>{!v.step1subheading}</h5></aura:if>
+                        <aura:if isTrue="{!v.step1bodytext}"><p class="small-text">{!v.step1bodytext}</p></aura:if>
+
+                        <lightning:input type="text" name="fName" label="First Name" value="{!v.fName}" required="true" onchange="{!c.handleInput}" />
+                        <lightning:input type="text" name="lName" label="Last Name" value="{!v.lName}" required="true" onchange="{!c.handleInput}" />
+                        <lightning:input type="email" name="email" label="Email" value="{!v.email}" placeholder="email@domain.com" required="true" onchange="{!c.handleInput}" />
+
+                        <aura:if isTrue = "{!v.emailExists}">
+                         <span class="slds-form-element__helper"><h5>Looks like you already have an account with us!
+                                 You can go ahead and <a onclick = "{!c.navigate}">Sign In</a></h5></span>
+                        </aura:if>
+                                 <p class="slds-text-align_center">
+                            <lightning:button class="btn-next" disabled="{!!v.step1Complete}" variant="brand" label="Continue Registration" onclick="{!c.nextStep}" />
+                        </p>
+                    </aura:if>
+                    <aura:if isTrue="{!v.currentStep == '2'}">
+
+                        <aura:if isTrue="{!v.step2heading}"><h2 class="slds-m-bottom_small">{!v.step2heading}</h2></aura:if>
+                        <aura:if isTrue="{!v.step2subheading}"><h5 class="slds-m-bottom_medium">{!v.step2subheading}</h5></aura:if>
+                        <aura:if isTrue="{!v.step2bodytext}"><p>{!v.step2bodytext}</p></aura:if>
+                        <lightning:layout>
+                            <lightning:layoutItem size="12">
+                                <lightning:input type="text" name="uName" label="Create your Username" maxlength="50" minlength="3" value="{!v.uName}" onchange="{!c.handleInput}" required="true" />
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        <lightning:layoutItem size="12">
+                            <div class="{!v.usernameValid ? 'slds-form-element__help' : 'slds-has-error slds-text-color_error'}">Must be unique with no spaces or special characters.</div>
+                        </lightning:layoutItem>
+                        <div class="passwordblock">
+                            <div class="showhidepw">
+                                <img src="{!v.showPassword ? $Resource.icons + '/hidepw.png' : $Resource.icons + '/showpw.png'}" alt="{!v.showPassword ? 'Hide Password' : 'Show Password'}" onclick="{!c.togglePassword}" />
+                            </div>
+
+                            <lightning:input type="{!v.showPassword ? 'text' : 'password'}" name="password" label="Create your Password" value="{!v.password}" onchange="{!c.handleInput}" required="true" />
+                            <div class="{!v.password.length > 0 ? v.formData.validPassword ? 'passwordHelper valid slds-hide' : 'passwordHelper' : 'slds-hide'}">
+                                <ul>
+                                    <li><img src="{!v.formData.passwordUniqueness.hasEight ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" alt="Status Icon" /> 8 Character Minimum</li>
+                                    <li><img src="{!v.formData.passwordValidation.hasLowercase ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" alt="Status Icon" /> 1 Lowercase Letter</li>
+                                    <li><img src="{!v.formData.passwordValidation.hasUppercase ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" alt="Status Icon" /> 1 Uppercase Letter</li>
+                                    <li><img src="{!v.formData.passwordValidation.hasNumber ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" alt="Status Icon" /> 1 Numeric Character</li>
+                                    <li><img src="{!v.formData.passwordValidation.hasSpecialChar ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" alt="Status Icon" /> 1 Special Character (_, @, ., -)</li>
+                                    <li><img src="{!v.formData.passwordUniqueness.hasUsername ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" alt="Status Icon" /> Does Not Contain Username</li>
+                                    <li><img src="{!v.formData.passwordUniqueness.hasFirstName ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" alt="Status Icon" /> Does Not Contain First Name</li>
+                                    <li><img src="{!v.formData.passwordUniqueness.hasLastName ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" alt="Status Icon" /> Does Not Contain Last Name</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ui:outputText aura:id="userError" class="slds-hide fail" value="{!v.step2UsernameUnavailableMessage ? v.step2UsernameUnavailableMessage : v.uName + ' is not available'}" />
+                        <p class="slds-text-align_center">
+                            <lightning:button class="btn-next" disabled="{!!v.step2Complete}" variant="brand" label="Continue Registration" onclick="{!c.createAccount}" />
+                        </p>
+                    </aura:if>
+                    <aura:if isTrue="{!v.currentStep == '3'}">
+                        <aura:if isTrue="{!v.step3heading}"><h2 class="slds-text-color_success">{!v.step3heading}</h2></aura:if>
+                        <aura:if isTrue="{!v.step3subheading}"><h2>{!v.step3subheading}</h2></aura:if>
+                        <aura:if isTrue="{!v.step3bodytext}"><p>{!v.step3bodytext}</p></aura:if> 
+                    </aura:if>
+                </form>
+            </lightning:layoutItem>
+        </lightning:layout>
+
+    </div>
+
+</aura:component>

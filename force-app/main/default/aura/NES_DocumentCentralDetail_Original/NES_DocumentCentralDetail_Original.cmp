@@ -1,0 +1,196 @@
+<!--
+ - Created by Ashish Pandey on 03-12-2018.
+ - Change Log:
+ -         2019-09-09 modified for User Story #102169 (Maddileti Boya) 
+ -         2019-09-20 modified for Bug  #109609(102169 User Story) (Maddileti Boya) 
+ -->
+
+<aura:component description="NES_DocumentCentralDetail Original" controller="NES_DocumentCentralController" implements="forceCommunity:availableForAllPageTypes" access="global" extends="c:Peak_Base">
+
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="centralDocument" type="Object" />
+    <aura:attribute name="documentNeedsAttention" type="List"/>
+    <aura:attribute name="documentAccepted" type="List"/>
+    <aura:attribute name="documentUnderReview" type="List"/>
+    <!--aura:attribute name="documentUnderReview" type="List"/-->
+    <!-- add by maddileti  -->
+    <aura:attribute name="documentNotSubmitted" type="List"/>
+    <aura:attribute name="isLoaded" type="Boolean" default="false" />
+    <aura:attribute name="detailbody" type="String" default=""/>
+    <aura:attribute name="heading" type="String" default=""/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <div>
+       <!--*******Header of the Modal*****-->
+        <lightning:layout class="documentCentralDetailHead" multipleRows="true">
+            <lightning:layoutItem size="10" smallDeviceSize="11" class="slds-p-bottom_x-large">
+                <h2 class="slds-text-heading_medium" ><b>{!v.heading}</b></h2>
+                <div class="slds-text-body_small docCentralText">{!v.detailbody}</div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="1" class="slds-p-left_x-large xContainer">
+                <button onclick="{!c.handleClose}" class="close-div">
+                    <lightning:icon iconName="utility:close" title="Close" alternativeText="Close" size="small"/>
+                </button>
+            </lightning:layoutItem>
+        </lightning:layout>
+         <!-- // start add by Maddileti for bug #109609 (Maddileti Boya) on 2019-09-20 -->
+        <!--*******Documents Needs Attentions List*****-->
+        <aura:iteration items="{!v.documentNeedsAttention}" var="doc" indexVar="key">
+            <!-- Making this one a button type for accessibility interaction -->
+            <button onclick="{!c.redirectToDoc}" class="slds-m-top_x-large needsAttentionButton" data-id="{!doc.Enrollment_Component_Affiliation__c}" data-docid="{!doc.Id}">
+                <lightning:layout horizontalAlign="spread" class="documentblocks documentAcceptedRows1 x-large" multipleRows="true">
+                    
+                    <lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-align_absolute-center">
+                        <div class="slds-text-align_left display-block studentNameContainer">
+                            <h3>{!doc.Program_Enrollment__r.hed__Contact__r.Name}</h3>
+                            <span class="student-name">{!doc.Type__c}</span>
+                        </div>
+                    </lightning:layoutItem>
+                    <!--lightning:layoutItem size="1" mediumDeviceSize="1">
+                        <div class="docType docIcon">
+                            <img class="slds-m-right_x-small" src="{!$Resource.PearsonIcons + '/pearson_icons/attention_icon@2x.png'}" alt="needs attention"/>
+                        </div>
+                    </lightning:layoutItem-->
+                    <!--lightning:layoutItem size="11" mediumDeviceSize="3">
+                        <div class="docType">
+                            <span>{!doc.Type__c}</span>
+                        </div>
+                    </lightning:layoutItem-->
+                    <lightning:layoutItem size="11" mediumDeviceSize="3">
+                        <!--p class="slds-text-body_regular">Status</p-->
+                        <p>{!doc.Status__c}</p>
+                    </lightning:layoutItem>
+                    <!--lightning:layoutItem size="1" class="slds-align_absolute-center">
+                        <div class="slds-text-align_right display-block">
+                            <lightning:icon class="slsd-float_right closeIcon" iconName="utility:chevronright" size="small"/>
+                        </div>
+                    </lightning:layoutItem-->
+                     <lightning:layoutItem size="3" mediumDeviceSize="3" class="slds-show_small" >
+                <div class="slds-align_absolute-center" style="margin-bottom:-50px">
+                    <div class="slds-text-align_right display-block">
+                        <lightning:button variant="brand" label="SUBMIT"/>
+                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <lightning:icon iconName="utility:chevronright" size="small"/> 
+                    </div>
+                </div>
+                  </lightning:layoutItem>
+                </lightning:layout>
+            </button>
+        </aura:iteration>
+
+        <!--*******Documents Under Review List*****-->
+        <aura:iteration items="{!v.documentUnderReview}" var="doc" indexVar="key">
+            <div data-id="{!doc.Enrollment_Component_Affiliation__c}" data-docid="{!doc.Id}">
+                <lightning:layout horizontalAlign="spread" class="documentblock documentAcceptedRows x-large" multipleRows="true">
+                    <lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-align_absolute-center">
+                        <div class="slds-text-align_left display-block studentNameContainer">
+                            <h3>{!doc.Program_Enrollment__r.hed__Contact__r.Name}</h3>
+                            <span class="student-name">{!doc.Type__c}</span>
+                        </div>
+                    </lightning:layoutItem>
+                    <!--lightning:layoutItem size="1" mediumDeviceSize="1">
+                        <div class="docType docIcon">
+                            <img class="slds-m-right_x-small" src="{!$Resource.underReviewSVG}" alt="under review"/>
+                        </div>
+                    </lightning:layoutItem-->
+                    <!--lightning:layoutItem size="11" mediumDeviceSize="3">
+                        <div class="docType">
+                            <span>{!doc.Type__c}</span>
+                        </div>
+                    </lightning:layoutItem-->
+                    <lightning:layoutItem size="11" mediumDeviceSize="3">
+                        <!--p class="slds-text-body_regular">Status</p-->
+                        <p>{!doc.Status__c}</p>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="1" class="slds-align_absolute-center">
+                        <div class="slds-text-align_right display-block">
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>
+        </aura:iteration>
+
+        <!--*******Documents Accepted List*****-->
+        <aura:iteration items="{!v.documentAccepted}" var="doc" indexVar="key">
+            <div data-id="{!doc.Enrollment_Component_Affiliation__c}" data-docid="{!doc.Id}">
+                <lightning:layout horizontalAlign="spread" class="documentblock documentAcceptedRows x-large" multipleRows="true">
+                    <lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-align_absolute-center">
+                        <div class="slds-text-align_left display-block studentNameContainer">
+                            <h3 >{!doc.Program_Enrollment__r.hed__Contact__r.Name}</h3>
+                            <span class="student-name">{!doc.Type__c}</span>
+                        </div>
+                    </lightning:layoutItem>
+                    <!--lightning:layoutItem size="1" mediumDeviceSize="1">
+                        <div class="docType docIcon">
+                            <img class="slds-m-right_x-small" src="{!$Resource.PearsonIcons + '/pearson_icons/complete_icon@2x.png'}" alt="complete"/>
+                        </div>
+                    </lightning:layoutItem-->
+                    <!--lightning:layoutItem size="11" mediumDeviceSize="3">
+                        <div class="docType">
+                            <span>{!doc.Type__c}</span>
+                        </div>
+                    </lightning:layoutItem-->
+                    <lightning:layoutItem size="11" mediumDeviceSize="3">
+                        <!--p class="slds-text-body_regular">Status</p>
+                        <p class="slds-text-body_regular documentAcceptedStatus">{!doc.Status__c}</p-->
+                        <p>{!doc.Status__c}</p>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="1" class="slds-align_absolute-center">
+                        <div class="slds-text-align_right display-block">
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>
+        </aura:iteration>
+        <!-- // Start add by Maddileti for User Story #102169 (Maddileti Boya) on 2019-09-09  -->
+              <!--*******Documents Not Submitted*****-->
+        <aura:iteration items="{!v.documentNotSubmitted}" var="doc" indexVar="key">
+            <button onclick="{!c.redirectToDocument}" class="slds-m-top_x-large needsAttentionButton" data-id="{!doc.Id}">
+            <div data-id="{!doc}" data-docid="{!doc.Id}">
+                <lightning:layout horizontalAlign="spread"  multipleRows="true" class="documentblock documentAcceptedRow x-large">
+                     <lightning:layoutItem size="12" mediumDeviceSize="12" class="slds-show_small" >
+                <div class="slds-align_absolute-center" style="margin-bottom:-35px">
+                    <div class="slds-text-align_right display-block">
+                        <lightning:button variant="brand" label="SUBMIT"/>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <!--lightning:icon iconName="utility:chevronright" size="small"/-->
+                    </div>
+                </div>
+                  </lightning:layoutItem>
+                    <!--div align = "left"-->
+                    <lightning:layoutItem size="12" mediumDeviceSize="4" class="slds-align_absolute-center">
+                        <div class="slds-text-align_left display-block studentNameContainer">
+                            <h3>{!doc.Program_Enrollment__r.hed__Contact__r.Name}</h3>
+                            <span class="student-name">{!doc.Enrollment_Component__r.Name}</span>
+                        </div>
+                    </lightning:layoutItem>
+                    <!--/div-->
+                    <!--lightning:layoutItem size="1" mediumDeviceSize="1">
+                        <div class="docType docIcon">
+                            <img class="slds-m-right_x-small" src="{!$Resource.PearsonIcons + '/pearson_icons/complete_icon@2x.png'}" alt="Not Submitted"/>
+                        </div>
+                    </lightning:layoutItem-->
+                    <!--lightning:layoutItem size="11" mediumDeviceSize="3">
+                        <div class="slds-text-body_regular">
+                            <span>{!doc.Enrollment_Component__r.Name}</span>
+                        </div>
+                    </lightning:layoutItem-->
+                    <lightning:layoutItem size="11" mediumDeviceSize="3">
+                        <!--p class="slds-text-body_regular">Status</p-->
+                        <p>{!doc.Status__c}</p>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="1" class="slds-align_absolute-center">
+                        <div class="slds-text-align_right display-block">
+                        </div>
+                    </lightning:layoutItem>
+                  
+                </lightning:layout>
+            </div>
+         </button>
+        </aura:iteration>
+   <!-- // End add by Maddileti for User Story #102169 (Maddileti Boya) on 2019-09-09 -->
+   <!-- // End add by Maddileti for bug #109609 (Maddileti Boya) on 2019-09-20 -->
+    </div>
+
+</aura:component>

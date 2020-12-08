@@ -1,0 +1,12 @@
+<!--
+ - Created by karolbrennan on 1/15/19.
+ -->
+
+<design:component label="IE Warning">
+    <design:attribute name="heading" label="Heading" />
+    <design:attribute name="message" label="Message" />
+    <design:attribute name="chromeLabel" label="Download Chrome Label" />
+    <design:attribute name="chromeLink" label="Link to download Chrome" />
+    <design:attribute name="edgeLabel" label="Download Edge Label" />
+    <design:attribute name="edgeLink" label="Link to download Edge" />
+</design:component>

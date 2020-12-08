@@ -1,0 +1,10 @@
+<aura:documentation>
+	<aura:description>Documentation</aura:description>
+	<aura:example name="dynamicPicklistFSC" ref="dynamicPicklistFSC" label="dynamicPicklistFSC">
+			Created by ali.khan (Ness Tech) on 10/17/19.
+			Modifying existing code by 'mshanemc'
+			Source Code: https://github.com/mshanemc/processBuilderBlocks
+		
+			This component exposes dynamic picklist selection in flows, also handles displaying dependent picklist selection witout displaying the controlling field.
+	</aura:example>
+</aura:documentation>

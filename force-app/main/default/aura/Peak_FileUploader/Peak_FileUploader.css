@@ -1,0 +1,202 @@
+.THIS .abcd{
+    padding-bottom:40px;
+    padding-top:60px;
+}
+.THIS .lower {
+   width: 35%;
+  text-transform: none;
+
+}
+.THIS .modal-dialog {
+          
+          width: 100%;
+ 
+}
+.THIS .slds-colravi{
+    border: dashed 2px #cccccc;
+    display: inline-block;
+    padding-right: 9px;
+    padding-left: 9px;
+    height:140px;
+    width: 240px;
+    padding-bottom: 70px;
+    padding-top: 50px;
+    cursor: pointer;
+    
+}
+.THIS .slds-colravi1{
+    margin-left: 15px;
+	border: dashed 2px #cccccc;
+    display: inline-block;
+    padding-right: 9px;
+    padding-left: 9px;
+    height:140px;
+    width: 240px;
+    padding-bottom: 70px;
+    padding-top: 50px;
+    cursor: pointer;  
+}
+
+.THIS .inBox{
+    
+    height:120px;
+    width: 240px;
+    padding-bottom: 20px;
+    padding-top: 50px;
+    
+}
+
+    
+.THIS{position:relative;}
+.THIS .slds-modal__container{
+    max-width: 70rem !important;
+    width:70% !important;
+}
+/* removed width  by ravi for mobile view on 16/01/2020 */
+.THIS .uploader-box {
+    margin-top: 2px;
+    /*width:66.66%;*/
+    border-radius: 3px;
+    background: white;
+    padding-left: 20px;
+   	/*padding-Right:20px;*/
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12);
+}
+
+/* end here on 01/01/2020 */
+.THIS .slds-modal__container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 50rem;
+    min-width: 20rem;
+}
+
+.THIS .large-margin-top{
+    margin-top: 5em;
+}
+.THIS .cPeak_LoadingGif {
+    z-index: 100;
+    top: 20px;
+    background-color: transparent;
+}
+
+.THIS .recordPageStyles .cPeak_LoadingGif {
+    top: -80px;
+}
+
+.THIS .file-details .file-item {margin:.5rem 0;padding:1rem .5rem 1rem 1rem;border:1px dashed #B0B0B0}
+.THIS .file-details .file-name {font-family: 'Courier New', serif; line-height: 1.5;}
+.THIS .file-delete a, .THIS .file-remove a { background: #C51A1A; color: white !important; text-transform: uppercase; font-weight: 600; padding: 0.5rem 1rem; border-radius: 3px; margin-right: .5em;}
+.THIS .file-details .help-icon button{vertical-align:text-bottom;color:currentColor}
+.THIS .file-input,.THIS .spinner-container{position:relative}
+.THIS .slds-file-selector__button {font-size: .9rem; line-height: 2rem; background: #D86018; border: 1px solid #D86018; color: white; text-transform: none !important; padding: 0 1rem; text-align: center; vertical-align: middle; line-height: 1.875rem; max-height: none !important;text-transform: uppercase;}
+.THIS .slds-file-selector__button:hover,.THIS .slds-file-selector__button:focus { background-color: #AA4C13;border-color: #AA4C13;transition: border 0.15s linear 0s; cursor: pointer;}
+.THIS .slds-button_brand { background: #D86018; border: 1px solid #D86018;}
+.THIS .slds-button_brand[disabled], .THIS .slds-button_brand[disabled]:hover {
+    background: rgb(224, 229, 238);
+    border-color: rgba(0, 0, 0, 0);
+}
+.THIS .slds-button_brand.lowercase {text-transform: none;}
+.THIS .slds-button.lowercase {text-transform: none;}
+.THIS .slds-button_brand:focus,.THIS .slds-button_brand:hover { background: #AA4C13; border: 1px solid #AA4C13;}
+.THIS .slds-file-selector__button svg { display: none;}
+.THIS .slds-file-selector__button:before {content: ''; width: 1.5rem; height: 1.5rem; margin-right: .5rem;}
+.THIS .picture { font-size: .9rem; line-height: 2rem;}
+.THIS .picture:before {display: inline-block;content: ''; width: 1.5rem; height: 1.5rem;vertical-align: middle; margin-right: .5rem;}
+.THIS .file-input .slds-form-element {display: inline-block;vertical-align: middle;}
+.THIS .slds-file-selector__button svg, .THIS .slds-file-selector__text { display: none;}
+.THIS .slds-file-selector__dropzone {border: none;}
+.THIS #camera { position: relative;}
+.THIS video, .THIS canvas {max-width: 100%;}
+@media screen and (max-width: 60em){
+    .THIS .button-block > * { display: block; text-align:center;}
+    .THIS .button-block .slds-file-selector.slds-file-selector_files { display: block; height: 50px;}
+    .THIS video {
+        width: 100% !important;
+        height: auto !important;
+    }
+    .THIS .slds-button_brand, .THIS .slds-form-element, .THIS .slds-form-element slot {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .THIS .slds-file-selector__button {
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+    }
+
+    .THIS .slds-modal__container .slds-button.slds-button_brand, .THIS .slds-modal__container .slds-button.slds-button_neutral {
+        line-height: 1.3em!important;
+        padding: 11.5px;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        display: block;
+        max-width: 100%;
+    }
+
+    .THIS .slds-modal__container .slds-button.slds-button_neutral {
+        margin-bottom: 1.5em;
+    }
+}
+
+.THIS .mobileSecondFileInput .slds-file-selector__button:after {
+    content: 'Take a Picture';
+    left: 41%;
+    position: absolute;
+    color: white;
+}
+
+.THIS .mobileSecondFileInput span.slds-file-selector__button.slds-button.slds-button_neutral {
+    color: transparent;
+}
+
+.THIS .docOr {
+    max-width: 280px;
+}
+
+
+.THIS .slds-button.slds-button_brand, .THIS .slds-button.slds-button_neutral {
+  font-size: .9rem;
+  line-height: 3;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.THIS .boxshadow{border-radius:2px;background:#fff;box-shadow:0 1px 1px 0 rgba(0,0,0,.5)}
+/* Added by Ravi */
+.THIS .slds-size_12-of-12{
+    
+    
+    padding-right: 10px;
+
+}
+/* ended here on 01/01/2020*/
+/* added by ravi on 07/01/2020 */
+.THIS .slds-skip{
+   color: #000000
+}
+/* added by Maddileti for bug 135296 on 11/02/2020  */
+@media (min-width: 1200px) {
+  .THIS .modal-dialog {width: 40%; margin: 0px auto; }
+     .THIS .lower { 
+    text-transform: none;
+    padding-left: 10px;
+    padding-right: 10px;
+   /* border-right-width: 25px;
+    border-left-width: 25px; */
+    width: 41%;
+}
+}
+/* added by Maddileti for bug 136920 on 07/09/2020  */
+.THIS .mobilePaddingRemoval {
+    width: 320px; 
+}
+
+/* added for the bug bug336325 : Jagadeesh */
+.THIS .contextual-ui ol, .THIS .contextual-ui ul{
+    list-style: disc;
+}

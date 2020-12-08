@@ -1,0 +1,63 @@
+<aura:component description="Reactivate Student Enrollment For New School Year; Used for 'Reactivation - New SY' quick action on PE record detail page." implements="force:hasRecordId,force:lightningQuickAction" access="global" controller="NES_ReactivationNewSYHelper" >
+    
+    <!-- Attributes -->
+    <aura:attribute name="gradeLevels" type="Grade_Level__c[]" description="to store list of grade levels"/> 
+    <aura:attribute name="schoolYears" type="School_Year__c[]"  description="to store list of School years"/>
+    <aura:attribute name="gradeLevel" type="String"  description="to store slected grade level"/> 
+    <aura:attribute name="schoolYear" type="String"  description="to store selected school year"/> 
+    <aura:attribute name="noGradeLevel" type="Boolean" default="true" description="to store if there are no grade levels"/>
+    <aura:attribute name="noSchoolYears" type="Boolean" default="true" description="to store if there are no school year"/>
+    <aura:attribute name="loaded" type="Boolean"  description="to store if the values are loaded"/>
+    <aura:attribute name="isError" type="Boolean"  description="to store if there is an error"/> 
+    <aura:attribute name="errorMessage" type="String"  description="to store error message"/>
+    <aura:attribute name="recordId" type="String"  description="to store PE record 	Id"/>
+    <aura:attribute name="PErecordDetails" type="Object"  description="tostore PE record details"/>
+    
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <!-- Checking if there is an error -->
+    <aura:if isTrue="{!v.isError}">
+        <!-- Displaying the error message -->
+        <div class="slds-text-color_error"><p>{!v.errorMessage}</p></div>
+        <aura:set attribute="else">
+            <!-- checking if 'loaded' variable is true -->
+            <aura:if isTrue="{! v.loaded }">
+                <!-- School Years Dropdown start-->
+
+                <lightning:select  name="Yearselect" label="Select a Year"  value="{!v.schoolYear}" onchange="{!c.onYearChange}" disabled='{!v.noSchoolYears}'>
+                    <option value="">-- None --</option>
+                    <!-- iterating over  'schoolYears' collection to provide options to select from -->
+                    <aura:iteration items="{!v.schoolYears}" var="year">
+                        <option value="{!year.Name}">{!year.Name}</option><br/>
+                    </aura:iteration>
+                </lightning:select>
+                <!-- School Years Dropdown end-->
+                <br/>
+                <!-- Grade Levels Dropdown start-->
+                <lightning:select name="Gradeselect" label="Select a Grade"  value="{!v.gradeLevel}" disabled="{!or(v.noGradeLevel, v.schoolYear=='')}">
+                    <option value="">-- None --</option>
+                    <!-- iterating over  'gradeLevels' collection to provide options to select from -->
+                    <aura:iteration items="{!v.gradeLevels}" var="grade">
+                        <option value="{!grade.index}">{!grade.Name}</option><br/>
+                    </aura:iteration>
+                </lightning:select>
+                <!-- Grade Levels Dropdown end-->
+                <br/>
+                <!-- Continue Button for reactivate-->
+                <lightning:button variant="brand" label="Continue" title="Continue" onclick="{! c.handleContinue }" disabled="{!or(v.schoolYear=='',v.gradeLevel=='')}" />
+                
+                <aura:set attribute="else">
+                    <!-- Spinner Start -->
+                    <div style="position:relative">
+                        <lightning:spinner alternativeText="Loading" style="position:absolute"/>
+                    </div>
+                    <!-- Spinner End-->
+                </aura:set>
+                
+            </aura:if>
+        </aura:set>
+    </aura:if>
+</aura:component>

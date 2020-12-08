@@ -1,0 +1,79 @@
+<!--
+ - Created by karolbrennan on 11/8/18.
+ -->
+
+<aura:component description="NES Document Uploader"
+                implements="forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,force:hasSObjectName"
+                access="global"
+                extends="c:Peak_Base"
+                controller="NES_DocumentCentralController">
+    <aura:attribute name="isInitialized" type="Boolean" default="false"/>
+    <aura:attribute name="invalidUser" type="Boolean" default="false"/>
+    <aura:attribute name="hasError" type="Boolean" default="false"/>
+    <aura:attribute name="DocumentInfo" type="Object" />
+    <aura:attribute name="enrollmentComponentAffiliationId" type="String"/>
+    <aura:attribute name="enrollmentDocumentId" type="String"/>
+    <aura:attribute name="caretakerId" type="String"/>
+    <aura:attribute name="studentName" type="String"/>
+    <aura:attribute name="studentId" type="String"/>
+    <aura:attribute name="programEnrollmentId" type="String"/>
+    <aura:attribute name="documentStatusMessages" type="String[]"/>
+
+    <aura:attribute name="isOnRecordPage" type="Boolean" default="false"/>
+ 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="isSameSchoolEvent" type="c:NES_schoolId"/>
+
+    <div>
+        <aura:if isTrue="{!v.invalidUser}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">You do not have access to this page</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p class="slds-p-left_medium">Please click below to continue</p>
+                        <div class="slds-p-around_medium">
+                            <lightning:button variant="neutral" label="Back to home page" onclick="{!c.goToDashboard}"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.isInitialized}">
+                    <lightning:layout multipleRows="true">
+                        <lightning:layoutItem size="12" mediumDeviceSize="12">
+                            <form>
+                                <div class="slds-m-vertical_medium">
+                                    <c:Peak_FileUploader studentName="{!v.studentName}" caretakerId="{!v.caretakerId}" documentInfo="{!v.DocumentInfo}" enrollmentComponentAffiliationId="{!v.enrollmentComponentAffiliationId}" enrollmentDocumentId="{!v.enrollmentDocumentId}" isOnRecordPage="{!v.isOnRecordPage}" />
+                                </div>
+                            </form>
+                            <!-- Begin : commented for the Bug 136920 by maddileti  >
+                            <aura:if isTrue="{!v.isOnRecordPage}">
+                                <aura:set attribute="else">
+                                    <aura:iteration items="{!v.DocumentInfo.enrollmentDocumentReasonMessages}" var="reasonMessage">
+                                        <div class="reasonMessageContainer">
+                                            <lightning:icon iconName="utility:warning" alternativeText="Warning!" variant="warning"/>
+                                            <div>
+                                                <p><b>{!v.DocumentInfo.studentName + '\'s '} {!v.DocumentInfo.documentType} needs attention </b></p>
+                                                <p>{!reasonMessage}</p>
+                                            </div>
+                                        </div>
+                                    </aura:iteration>
+                                </aura:set>
+                            </aura:if>
+							End : commented for the Bug 136920 by maddileti -->
+                            
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <aura:set attribute="else">
+                        <aura:if isTrue="{!v.hasError}">
+                            <p class="slds-text-color_error">Sorry, we could not find that document. Please return to the dashboard and try again.</p>
+                        </aura:if>
+                    </aura:set>
+                </aura:if>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

@@ -1,0 +1,6 @@
+<!--
+ - Created by triciaigoe on 1/21/19.
+ -->
+
+<aura:event type="APPLICATION" description="NES_SubmitQuestionsEvent">
+</aura:event>

@@ -1,0 +1,9 @@
+<!--
+ - Created by karolbrennan on 11/30/18.
+ -->
+
+<design:component label="NES Document Central Original">
+    <design:attribute name="heading" label="Heading (eg: Document Central)" />
+    <design:attribute name="couldnotverify" label="Alert Text (eg: We could not verify one or more documents.)" />
+    <design:attribute name="detailbody" label="Modal body text - displayed below heading" />
+</design:component>

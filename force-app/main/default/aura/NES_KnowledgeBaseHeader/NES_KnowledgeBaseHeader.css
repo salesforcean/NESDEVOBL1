@@ -1,0 +1,19 @@
+/**
+ * Created by Ashish on 11-12-2018.
+ */
+.THIS.slds-text-title--caps {
+      font-size: .75rem;
+      line-height: 1.25;
+      color: rgb(79, 87, 89);
+      text-transform: lowercase;
+      letter-spacing: .0625rem;
+}
+.THIS a {
+    font-size:20px;
+    color:black;
+}
+.THIS .slds-breadcrumb__item{
+    font-size:20px;
+    text-transform: capitalize;
+    font-weight:bold;
+}

@@ -1,0 +1,35 @@
+<!--
+ - Created by Ritvik on 28-09-2018.
+ -->
+
+<design:component label="7S Client Side iFrame">
+    <design:attribute name="debugMode"
+                      label="Debug Mode"
+                      description="Enable/disable debug mode"/>
+
+    <design:attribute name="height" label="Height (px/%)" />
+    <design:attribute name="width" label="Width (px/%)"/>
+    <design:attribute name="srcURL"
+                      label="iFrame page URL"
+                      description="Set the iFrame URL"/>
+    <design:attribute name="nextURL"
+                      label="next page URL"
+                      description="Set the page URL after confirmed"/>
+    <design:attribute name="postMessageOrigin1"
+                      label="Listener URL 1"
+                      description="Set the first URL to be listening for messages"/>
+    <design:attribute name="postMessageOrigin2"
+                      label="Listener URL 2"
+                      description="Set the second URL to be listening for messages"/>
+    <design:attribute name="postMessageOrigin3"
+                      label="Listener URL 3"
+                      description="Set the third URL to be listening for messages"/>
+    <design:attribute name="postMessageOrigin4"
+                      label="Listener URL 4"
+                      description="Set the fourth URL to be listening for messages"/>
+
+    <design:attribute name="recordId"
+                      label="Record Id"
+                      default="{!recordId}"
+                      description="Set to {!recordId} to pass the page's record Id."/>
+</design:component>

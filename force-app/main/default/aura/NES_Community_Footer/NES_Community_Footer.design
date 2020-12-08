@@ -1,0 +1,33 @@
+<!--
+ - Created by karolbrennan on 10/9/18.
+ -->
+
+<design:component label="NES Community Footer">
+    <design:attribute name="col1Title" label="Column 1 Title" />
+    <design:attribute name="col1Link1Title" label="Column 1 Link 1 Title" />
+    <design:attribute name="col1Link1URL" label="Column 1 Link 1 URL" />
+    <design:attribute name="col1Link2Title" label="Column 1 Link 2 Title" />
+    <design:attribute name="col1Link2URL" label="Column 1 Link 2 URL" />
+    <design:attribute name="col1Link3Title" label="Column 1 Link 3 Title" />
+    <design:attribute name="col1Link3URL" label="Column 1 Link 3 URL" />
+    <design:attribute name="col1Link4Title" label="Column 1 Link 4 Title" />
+    <design:attribute name="col1Link4URL" label="Column 1 Link 4 URL" />
+    <design:attribute name="col2Title" label="Column 2 Title" />
+    <design:attribute name="col2Link1Title" label="Column 2 Link 1 Title" />
+    <design:attribute name="col2Link1URL" label="Column 2 Link 1 URL" />
+    <design:attribute name="col2Link2Title" label="Column 2 Link 2 Title" />
+    <design:attribute name="col2Link2URL" label="Column 2 Link 2 URL" />
+    <design:attribute name="col2Link3Title" label="Column 2 Link 3 Title" />
+    <design:attribute name="col2Link3URL" label="Column 2 Link 3 URL" />
+    <design:attribute name="col2Link4Title" label="Column 2 Link 4 Title" />
+    <design:attribute name="col2Link4URL" label="Column 2 Link 4 URL" />
+    <design:attribute name="copyrightText" label="Copyright Text" description="This is what displays after &copy; (year) " />
+    <design:attribute name="metaLink1Title" label="Bottom Right Link 1 Title" />
+    <design:attribute name="metaLink1URL" label="Bottom Right Link 1 URL" />
+    <design:attribute name="metaLink2Title" label="Bottom Right Link 2 Title" />
+    <design:attribute name="metaLink2URL" label="Bottom Right Link 2 URL" />
+    <design:attribute name="metaLink3Title" label="Bottom Right Link 3 Title" />
+    <design:attribute name="metaLink3URL" label="Bottom Right Link 3 URL" />
+    <design:attribute name="metaLink4Title" label="Bottom Right Link 4 Title" />
+    <design:attribute name="metaLink4URL" label="Bottom Right Link 4 URL" />
+</design:component>

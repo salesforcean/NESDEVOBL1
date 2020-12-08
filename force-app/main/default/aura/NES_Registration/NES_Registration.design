@@ -1,0 +1,16 @@
+<!--
+ - Created by karolbrennan on 10/25/18.
+ -->
+<design:component label="NES Registration">
+    <design:attribute name="step1heading" label="Step 1 Heading" />
+    <design:attribute name="step1subheading" label="Step 1 Sub-Heading" />
+    <design:attribute name="step1bodytext" label="Step 1 Body Text" />
+    <design:attribute name="step2heading" label="Step 2 Heading" />
+    <design:attribute name="step2subheading" label="Step 2 Sub-Heading" />
+    <design:attribute name="step2bodytext" label="Step 2 Body Text" />
+    <design:attribute name="step2UsernameAvailableMessage" label="Username Available Message" />
+    <design:attribute name="step2UsernameUnavailableMessage" label="Username Unavailable Message" />
+    <design:attribute name="step3heading" label="Step 3 Heading" />
+    <design:attribute name="step3subheading" label="Step 3 Sub-Heading" />
+    <design:attribute name="step3bodytext" label="Step 3 Body Text" />
+</design:component>

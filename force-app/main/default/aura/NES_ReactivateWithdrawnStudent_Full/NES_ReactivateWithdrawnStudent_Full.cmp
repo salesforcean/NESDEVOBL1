@@ -1,0 +1,7 @@
+<!--
+- Created by Krishna Peddanagammol on 2019/11/27 for US#119618.
+-->
+<aura:component implements="force:hasRecordId,force:lightningQuickAction" >
+    <aura:attribute name="context" type="String" default="FULL"/>
+    <c:NES_ReactivateWithdrawnStudent context='{!v.context}' recordId='{!v.recordId}'/>
+</aura:component>

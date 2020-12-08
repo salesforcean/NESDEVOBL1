@@ -1,0 +1,14 @@
+<apex:page showHeader="false" id="SiteTemplate">
+    <apex:stylesheet value="{!$Label.NES_CommBaseurl}s/errorstyle"/>
+  <apex:panelGrid cellpadding="0" cellspacing="0" width="98%" border="0" columns="2" style="text-align: left;" id="theHeader">
+      <apex:outputLink value="{!$Label.NES_CommBaseurl}" id="connectionsimg"><apex:image url="{!$Label.NES_CommBaseurl}s/communityLogo.png" style="align: left;" alt="Connections Academy" width="233" height="75" title="Connections Academy"/>
+ </apex:outputLink> </apex:panelGrid>
+
+                      
+    <hr class="hrdivider" color="#d86218"/>
+
+  <apex:insert name="body"/>
+  <apex:insert name="footer">
+    <site:googleAnalyticsTracking />
+  </apex:insert>
+</apex:page>

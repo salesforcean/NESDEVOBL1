@@ -1,0 +1,11 @@
+<!--
+ - Created by Ritvik on 28-09-2018.
+ -->
+
+<aura:component description="Dev_Base" extensible="true" extends="c:Peak_Base">
+    <aura:if isTrue="{!v.isLoading}">
+        <lightning:spinner variant="inverse" size="small"/>
+    </aura:if>
+
+    {!v.body}
+</aura:component>

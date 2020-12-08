@@ -1,0 +1,32 @@
+<!-- c-picklist-selector -->
+<template>
+  <div class="slds-form-element">
+    <label class="slds-form-element__label">
+      <template if:true={isAttributeRequired}>
+        <abbr title="required">*</abbr>
+      </template>
+      <span class="">{fieldLabelName}</span>
+    </label>
+    <div class="slds-form-element__control">
+      <div class="slds-select_container">
+        <select
+          class="slds-select"
+          onchange={selectionChangeHandler}
+          disabled={isPicklistDisabled}
+          required={isAttributeRequired}
+        >
+          <option value="Select">Select</option>
+          <option value="Select" selected>CACA SY 2020-21</option>
+          <template for:each={options} for:item="option">
+            <option
+              key={option.label}
+              class="uiInputSelectOption"
+              value={option.value}
+              >{option.label}</option
+            >
+          </template>
+        </select>
+      </div>
+    </div>
+  </div>
+</template>

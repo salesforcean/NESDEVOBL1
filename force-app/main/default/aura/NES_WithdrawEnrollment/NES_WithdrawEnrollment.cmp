@@ -1,0 +1,66 @@
+<!--
+ - Created by karolbrennan on 1/11/19.
+ -->
+
+<aura:component description="NES Withdraw Enrollment" implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" extends="c:Peak_Base" controller="NES_EnrollmentController">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="isOpen" type="Boolean" default="false" />
+    <aura:attribute name="confirmationOpen" type="Boolean" default="false" />
+    <aura:attribute name="programEnrollmentId" type="String" />
+    <aura:attribute name="withdrawalReason" type="String" />
+    <aura:attribute name="success" type="Boolean" default="false" />
+    <aura:attribute name="hasError" type="Boolean" default="false" />
+    <aura:attribute name="errorMessage" type="String" />
+    <aura:attribute name="terminationReasons" type="List[]" />
+
+    <aura:if isTrue="{!v.isOpen}">
+
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+
+            <div class="slds-modal__container">
+                <header class="slds-modal__header" style="border:none;padding:0;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick="{!c.closeModal}">
+                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                        <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                    </button>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_small" id="modal-content-id-1">
+                    <h2 class="slds-m-bottom_medium slds-text-align_center">Deactivate Enrollment</h2>
+                    <div>
+                        <lightning:select class="slds-m-bottom_x-large" label="Reason for deactivation" required="true" value="{!v.withdrawalReason}">
+                            <option value="">--- choose one ---</option>
+                            <aura:iteration items="{!v.terminationReasons}" var="option">
+                                <option value="{!option}">{!option}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-text-align_center">
+                        <aura:if isTrue="{!v.hasError}">
+                            <p class="slds-text-color_error">{!v.errorMessage}</p>
+                        </aura:if>
+                        <aura:if isTrue="{!v.success}">
+                            <p>You have successfully deactiviated this student.</p>
+                        </aura:if>
+                        <aura:if isTrue="{!v.confirmationOpen}">
+                            <p>Are you sure?</p>
+                        </aura:if>
+                    </div>
+                </div>
+
+                <footer class="slds-modal__footer" style="border:none;">
+                    <button class="slds-button slds-button_neutral" onclick="{!c.closeModal}"><c:Peak_Base labelText="Cancel" /></button>
+                    <aura:if isTrue="{!v.confirmationOpen}">
+                            <button class="slds-button slds-button_brand" onclick="{!c.handleSubmit}"><c:Peak_Base labelText="Confirm" /></button>
+                        <aura:set attribute="else">
+                            <button class="slds-button slds-button_brand" onclick="{!c.confirm}"><c:Peak_Base labelText="Submit" /></button>
+                        </aura:set>
+                    </aura:if>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+
+    </aura:if>
+</aura:component>

@@ -1,0 +1,50 @@
+<!--
+ - Created by Ashish Pandey on 18-12-2018.
+ -->
+
+<aura:component description="NES_AssociateQuestionsTracking"
+                implements="force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes,force:hasRecordId"
+                controller="NES_RelationshipViewerController" extends="c:Peak_Base"> 
+
+    <aura:attribute name="relatedEC" type="object" />
+    <aura:attribute name="isformRelatedEC" type="Boolean" default="false"/>
+    <aura:attribute name="isLoaded" type="Boolean" default="false" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    
+    <table class="slds-table slds-no-row-hover">
+        <aura:if isTrue="{!v.isLoaded}">
+            <aura:if isTrue="{!not(empty(v.relatedEC))}">
+                <aura:iteration items="{!v.relatedEC}"  var="mapKey" indexVar="key">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="slds-text-title_caps" scope="col">
+                                <div class="slds-truncate" title="{!mapKey.key}">{!mapKey.key}</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th data-label="{!mapKey.key}" scope="row">
+                                <div>
+                                    <aura:iteration items="{!mapKey.value}" var="mapValue">
+                                        <a data-id="{!mapValue.ecId}" onclick="{!c.navigateToRecord}">{!mapValue.ecName}</a><br/>
+                                    </aura:iteration>
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </aura:iteration>
+                <aura:set attribute="else">
+                    <div class="slds-text-heading_small">Nothing to display!</div>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+        <div class="spinHolder">
+            <aura:if isTrue="{!!v.isLoaded}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant="brand"/>
+            </aura:if>
+        </div>
+    </table>
+
+</aura:component>

@@ -1,0 +1,7 @@
+<!--
+ - Created by karolbrennan on 11/16/18.
+ -->
+<design:component label="NES Enrollment Forms">
+    <design:attribute name="studentNameSubText" label="Student Name Subtext" />
+    <design:attribute name="currentEnrollmentText" label="Current Enrollment Heading" />
+</design:component>

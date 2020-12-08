@@ -1,0 +1,26 @@
+<!--
+- Created by Krishna Peddanagammol on 2019/11/27 for US#119618.
+-->
+<aura:component description="Reactivate Student Enrollment" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller="NES_EnrollmentReactivationHandler" >
+    <aura:attribute name="context" type="String"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="record" type="hed__Program_Enrollment__c" />
+    <aura:attribute name="peRecord" type="Object" />
+    <force:recordData aura:id="record" layoutType="FULL" recordId="{!v.recordId}"  
+                  targetRecord="{!v.record}" targetFields="{!v.peRecord}" 
+                  recordUpdated="{!c.recordLoaded}" />
+   
+    <aura:attribute type="String" name="studentName" />
+    <aura:attribute type="String" name="programEnrollmentId" />
+    <aura:attribute type="String" name="message" />
+    <aura:attribute type="Boolean" name="success" default="false" />
+    <aura:attribute type="Boolean" name="hasError" default="false" />
+    <aura:attribute type="Boolean" name="isOpen" default="false" />
+    
+    <aura:if isTrue="{!v.hasError}">
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate slds-text-color_error">{!v.message}</h2>
+    </aura:if>
+    <aura:if isTrue="{!v.success}">
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{!v.studentName + ' has been successfully reactivated.'}</h2>        
+    </aura:if>
+</aura:component>

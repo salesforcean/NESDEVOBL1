@@ -1,0 +1,86 @@
+.THIS .slds-p-around_medium{
+
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+   
+}
+.THIS .slds-p-left_medium {
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    padding-left: 20px;
+
+}
+/* added by ravi on 01/01/2020 */
+.THIS .slds-p-right_small{
+   padding-left: 12px;
+} 
+.THIS .slds-p-around_small {
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+.THIS .slds-button{
+    
+    border-right-width: 50px;
+    border-left-width: 50px;
+  	
+
+}
+.THIS .slds-modal__container{width: 70%;max-width: 75rem !important;width:75% !important; margin: 0px auto;}
+.THIS .lower { 
+    text-transform: none;
+
+    width: 100%;
+}
+.THIS .modal-dialog {width: 100%; }
+.THIS .boxshadow{border-radius:3px;background:#fff;box-shadow:0 0px 1px 0 rgba(0,0,0,.5)}
+.THIS .submit-button{font-size:1.15rem;font-weight:400;line-height:2.75}
+.THIS .slds-required.firstAsterisk{margin-left:-.74em}
+/* Removed by Guru
+.THIS .record-label+p{color:#4f5759}
+.THIS .record-label{font-size:.88rem;margin-bottom:.2rem;color:#000}*/
+
+/* Add by Guru US 319250 */
+.THIS .record-label+p{color:#333}
+.THIS .record-label{font-size:.88rem;margin-bottom:.2rem;color:#333}
+
+
+.THIS .slds-required:not(.firstAsterisk){display:none}.THIS label.record-label{display:flex}
+
+.THIS .slds-skip{
+   color: #000000
+}
+/* added by Maddileti for bug 135296 on 11/02/2020  */
+@media (min-width: 1200px) {
+  .THIS .modal-dialog {width: 40%; margin: 0px auto; }
+ .THIS .lower { 
+    text-transform: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right-width: 25px;
+    border-left-width: 25px;
+    width: 41%;
+} 
+}
+
+/* Add by Guru US 319250 */
+/* Below is the new code to be included*/
+.THIS ol { list-style: none;  counter-reset: my-awesome-counter; } 
+
+.THIS ol li { counter-increment: my-awesome-counter; padding: 0  0 5px 0; } 
+
+.THIS ol li::before { content: counter(my-awesome-counter) ". "; } 
+
+.THIS p { hyphens: none !important;} 
+
+.THIS ul li { list-style-type: disc; margin-left: 20px; padding: 0 0 5px 0; } 
+
+.THIS .extra-info { font-style: italic; display:block;} 
+
+.THIS h3 {  padding-bottom: 20px;  } 
+
+.THIS h4 { margin-top: 20px;padding-bottom: 10px; text-transform: uppercase; font-size: 14px !important; color: #666666; }

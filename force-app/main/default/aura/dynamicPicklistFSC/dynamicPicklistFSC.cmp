@@ -1,0 +1,28 @@
+<!--  
+   Component: dynamicPicklistFSC     
+   Created by ali.khan (Ness Tech) on 10/17/19.
+   Modifying existing code by 'mshanemc'
+   Source Code: https://github.com/mshanemc/processBuilderBlocks
+  
+   This component exposes dynamic picklist selection in flows, also handles displaying dependent picklist selection witout displaying the controlling field.
+  -->
+<aura:component controller="dynamicPicklistFSCController" implements="lightning:availableForFlowScreens" access="global">
+    
+    <aura:attribute name="fieldLabel" type="String" default=""/>
+    <aura:attribute name="field" type="String" default=""/>
+    <aura:attribute name="object" type="String" default="" />
+    <aura:attribute name="options" type="List" />
+    <aura:attribute name="value" type="String" default=""/>
+    <aura:attribute name="controllingField" type="String" default="" />
+    <aura:attribute name="controllingFieldValue" type="String"  default="" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+    <div class="slds-m-bottom--large">
+        <lightning:select  class="slds-size_1-of-2" name="selectItem" label="{!v.fieldLabel}" value="{!v.value}">
+            <aura:iteration items="{!v.options}" var="option">
+                <option value="{!option.value}" selected="{!option.selected}">{!option.label}</option>
+            </aura:iteration>
+        </lightning:select>
+    </div>
+    
+</aura:component>

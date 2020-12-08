@@ -1,0 +1,275 @@
+<!--
+ - Created by karolbrennan on 10/26/18.
+ -         2019-10-03 modified for #US102165 Additional fields for the Registration process (Mark Membrino) 
+           2019-11-08 modified for #US116612 Additional fields for the Add student process (Anitha P) 
+           2019-12-02 modified for #US116612 to remove mandatory logic for middle name 
+ -->
+
+<aura:component description="NES Add a Student"
+                access="global"
+                extends="c:Peak_Base"
+                implements="forceCommunity:availableForAllPageTypes"
+                controller="NES_AddStudentController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="addStudentEvent" type="c:NES_AddStudentAppEvent"/>
+    <aura:handler event="c:NES_StudentsLoadedEvent" action="{!c.handleStudentsLoaded}"/>
+    <!--aura:handler event="c:NES_AddStudentAppEvent2" action="{!c.handleAddStudentAppEvent2}"/-->
+
+    <aura:attribute name="loading" type="Boolean" default="false" />
+    <aura:attribute name="email" type="String" />
+    <aura:attribute name="notParentNotice" type="String" default="If you are not a parent or legal guardian of this student, you are not authorized to enroll them in school. For further assistance, contact us at 1 (800) 382-6010." />
+    <aura:attribute name="disclaimerHeading" type="String" default="These preliminary checks help ensure this student is eligible" />
+    <!-- Updated default text for the Bug :177563 by Jagadeesh -->
+    <aura:attribute name="disclaimerText" type="String" default="NOTE: Passing these preliminary eligibility checks does not guarantee your student's spot in school, but it gets the most important questions out of the way first so you aren't spending more time than necessary." />
+    <aura:attribute name="showRelationshipError" type="Boolean" default="false" />
+    <aura:attribute name="addStudentActive" type="Boolean" default="false" />
+    <aura:attribute name="disableCreate" type="Boolean" default="true" />
+    <aura:attribute name="notParentSubheading" type="String" />
+    <aura:attribute name="notParentText" type="String" />
+
+    <aura:attribute name="confirmOpen" type="Boolean" default="false" />
+    <aura:attribute name="newStudentData" type="Object" />
+    <aura:attribute name="supplementalQuestionsLoaded" type="Boolean" default="false" />
+    <aura:attribute name="supplementalQuestions" type="Object[]" />
+    <aura:attribute name="message" type="String" default="" />
+    <aura:attribute name="numberOfStudents" type="Integer" default="0" />
+    <aura:attribute name="suffixOptions" type="List" default="[]"/>
+	<aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" /> <!-- Swapna: Add for GTM -->
+    <div>
+        <div class="{!v.addStudentActive ? 'addStudentBlock' : 'slds-hide'}">
+            <!-- Loading indicator -->
+            <aura:if isTrue="{!v.loading}">
+                <lightning:spinner variant="brand" size="medium" alternativeText="Loading..." />
+            </aura:if>
+
+            <lightning:layout multipleRows="true">
+                
+                <lightning:layoutItem size="12" padding="around-small">
+                    <h4>Add a Student</h4>
+                </lightning:layoutItem>
+                    
+                <lightning:layoutItem size="12" mediumDeviceSize="3" padding="around-small">
+                    <lightning:input aura:id="fieldId" type="text" name="fName" label="Legal First Name"  maxlength="40" value="{!v.newStudentData.firstName}" required="true" />
+                </lightning:layoutItem>
+                 <!-- Start-added for US116612 -->
+                <lightning:layoutItem size="12" mediumDeviceSize="2" padding="around-small">
+                    <lightning:input aura:id="fieldId" type="text" name="mName" label="Middle Name"  maxlength="40" value="{!v.newStudentData.middleName}"   />
+                </lightning:layoutItem>
+                 <lightning:layoutItem size="12" mediumDeviceSize="3" padding="around-small">
+                    <lightning:input aura:id="fieldId" type="text" name="lName" label="Legal Last Name"  maxlength="40" value="{!v.newStudentData.lastName}" required="true" />
+                </lightning:layoutItem>
+                 <lightning:layoutItem size="12" mediumDeviceSize="2" padding="around-small">
+                 <lightning:select aura:id="fieldId" name="suffix" label="Suffix" value="{!v.newStudentData.suffix}" required="false" >
+	                 <option value="">--None--</option>
+						<aura:iteration items="{!v.suffixOptions}" var="s" >
+						<option value="{!s}" >{!s}</option>
+						</aura:iteration>
+					</lightning:select>
+                </lightning:layoutItem>
+                <!--Start-added for US116612 -->
+                <lightning:layoutItem size="12" padding="around-small">
+                    <fieldset class="slds-form-element relationshipArea" aria-live="assertive">
+                        <legend class="slds-form-element__legend slds-form-element__label"><abbr class="slds-required" title="required">* </abbr>What is your relationship to this student?</legend>
+                        <div class="{!v.showRelationshipError ? 'slds-has-error slds-form-element__control' : 'slds-form-element__control'}">
+                            <span class="slds-radio">
+                                <input aura:id="relationship1" type="radio" id="radio-1" name="relationship" value="Parent" onchange="{!c.relationshipChanged}"/>
+                                <label class="slds-radio__label" for="radio-1">
+                                    <span class="slds-radio_faux"></span>
+                                    <span class="slds-form-element__label"><b>Parent</b> (biological or adoptive) who is defined on the birth certificate or legal documentation as a parent to the student</span>
+                                </label>
+                            </span>
+                            <span class="slds-radio">
+                                <input aura:id="relationship2" type="radio" id="radio-2" name="relationship" value="Legal Guardian" onchange="{!c.relationshipChanged}"/>
+                                <label class="slds-radio__label" for="radio-2">
+                                    <span class="slds-radio_faux"></span>
+                                    <span class="slds-form-element__label"><b>Legal Guardian</b> with decision making authority (verification of relationship will be required)</span>
+                                </label>
+                            </span>
+                            <span class="slds-radio">
+                                <input aura:id="relationship3" type="radio" id="radio-3" name="relationship" value="Eligible Student" onchange="{!c.relationshipChanged}"/>
+                                <label class="slds-radio__label" for="radio-3">
+                                    <span class="slds-radio_faux"></span>
+                                    <span class="slds-form-element__label"><b>Eligible Student</b> (those students age 18 or older or who are an emancipated minor enrolling self)</span>
+                                </label>
+                            </span>
+                            <span class="slds-radio">
+                                <input aura:id="relationship4" type="radio" id="radio-4" name="relationship" value="none" onchange="{!c.relationshipChanged}"/>
+                                <label class="slds-radio__label" for="radio-4">
+                                    <span class="slds-radio_faux"></span>
+                                    <span class="slds-form-element__label"><b>None of the Above</b> (designation from the parent of legal guardian of this student will be required)</span>
+                                </label>
+                            </span>
+                        </div>
+                        <aura:if isTrue="{!v.showRelationshipError}">
+                            <div class="slds-form-element__help slds-text-color_error slds-p-top_x-small"><p>Select an option.</p></div>
+                        </aura:if>
+                    </fieldset>
+                </lightning:layoutItem>
+
+                <lightning:layoutItem class="{!v.newStudentData.relationshipType == 'none' ? '' : 'slds-hide'}" size="12" padding="horizontal-small">
+                    <p>{!v.notParentNotice}</p>
+                </lightning:layoutItem>
+                <aura:if isTrue="{!v.newStudentData.relationshipType != 'none'}">
+                    <div class="unevenFix">
+                        <lightning:layoutItem size="12" mediumDeviceSize="6" padding="around-small">
+                            <lightning:select aura:id="schoolSelect" name="activeSchools" value="{!v.newStudentData.SelectedSchoolId}" required="true" label="Please confirm the school this student should attend:"
+                                              onchange="{!c.handleSchoolSelect}">
+                                <option value="">- select school -</option>
+                                <aura:iteration items="{!v.newStudentData.activeSchools}" var="school">
+                                    <option value="{!school.Id}">{!school.Name}</option>
+                                </aura:iteration>
+                            </lightning:select>
+                        </lightning:layoutItem>
+                        <aura:if isTrue="{!and(v.newStudentData.SelectedSchoolId != null, v.newStudentData.SelectedSchoolId != '')}">
+                            <lightning:layoutItem size="12" mediumDeviceSize="6" padding="around-small">
+                                <lightning:select aura:id="yearSelect" required="true" name="schoolYear" label="Apply for what school year?" onchange="{!c.handleYearSelect}">
+                                    <option value="">- select year -</option>
+                                    <aura:iteration items="{!v.newStudentData.schoolYears}" var="year">
+                                        <option value="{!year.Id}">{!year.Name}</option>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </lightning:layoutItem>
+
+                    </aura:if>
+                    </div>
+                    <aura:if isTrue="{!v.supplementalQuestionsLoaded}">
+                        <lightning:layoutItem size="12" class="supplementalQuestions">
+                            <lightning:layout multipleRows="true" class="slds-grid_vertical-stretch">
+                                <lightning:layoutItem size="12" padding="around-small">
+                                    <h5>{!v.disclaimerHeading}</h5>
+                                    <p class="slds-m-top_x-small">{!v.disclaimerText}</p>
+                                </lightning:layoutItem>
+                                <aura:iteration items="{!v.supplementalQuestions}" var="question">
+                                    <lightning:layoutItem size="12" mediumDeviceSize="6" padding="around-small" class="generated-question">
+                                        <!-- Label for any type of input -->
+                                        <label class="record-label slds-form-element__label" for="{!question.questionId}">
+                                            <aura:if isTrue="{!question.required}">
+                                                <abbr class="slds-required" title="required" data-aura-rendered-by="34:391;a">*</abbr>
+                                            </aura:if>
+                                            <aura:unescapedHtml value="{!question.questionPrompt}" />
+                                        </label>
+
+                                        <aura:if isTrue="{!question.questionType == 'Picklist' || question.questionType == 'Radio' || question.questionType == 'Checkbox Group' || question.questionType == 'Date' }">
+                                            <!-- Picklist -->
+                                            <aura:if isTrue="{!question.questionType == 'Picklist'}">
+                                                <lightning:select aura:id="fieldId" label=""
+                                                                  value="{!question.targetField}"
+                                                                  required="{!question.required}">
+                                                    <option value="">- select one -</option>
+                                                    <aura:iteration items="{!question.picklistValues}" var="option">
+                                                        <option value="{!option.value}">{!option.label}</option>
+                                                    </aura:iteration>
+                                                </lightning:select>
+                                            </aura:if>
+
+                                            <!-- Radio -->
+                                            <aura:if isTrue="{!question.questionType == 'Radio'}">
+                                                <lightning:radioGroup aura:id="fieldId" label=""
+                                                                      value="{!question.targetField}"
+                                                                      required="{!question.required}"
+                                                                      options="{!question.picklistValues}"/>
+                                            </aura:if>
+
+                                            <!-- Checkbox Group -->
+                                            <aura:if isTrue="{!question.questionType == 'Checkbox Group'}">
+                                                <lightning:checkboxGroup aura:id="fieldId"
+                                                                         value="{!question.targetField}"
+                                                                         required="{!question.required}"
+                                                                         options="{!question.picklistValues}"/>
+                                            </aura:if>
+
+                                            <aura:if isTrue="{!question.questionType == 'Date'}">
+                                                <ui:inputDate aura:id="dateField" value="{!question.targetField}" format="MM/DD/YYYY" required="{!question.required}"
+                                                              displayDatePicker="false" blur="{!c.validateDate}"/>
+                                            </aura:if>
+
+                                            <!-- All other input types -->
+                                            <aura:set attribute="else">
+                                                <lightning:input aura:id="fieldId"
+                                                                 pattern="{!question.validation}"
+                                                                 messageWhenPatternMismatch="{!question.validationMessage}"
+                                                                 type="{!question.questionType}"
+                                                                 value="{!question.targetField}"
+                                                                 placeholder="{!question.questionType == 'Date' ? 'MM/DD/YYYY' : ''}"
+                                                                 required="{!question.required}"/>
+                                            </aura:set>
+                                        </aura:if>
+                                    </lightning:layoutItem>
+                                </aura:iteration>
+                            </lightning:layout>
+                        </lightning:layoutItem>
+                    </aura:if>
+                </aura:if>
+                <div aria-live="assertive">
+                    <aura:if isTrue="{!v.message !=''}">
+                        <lightning:layoutItem size="12">
+                            <p class="slds-text-color_error" role="log">{!v.message}</p>
+                        </lightning:layoutItem>
+                    </aura:if>
+                </div>
+                <lightning:layoutItem size="12">
+                    <lightning:layout multipleRows="true" class="submit-buttons">
+                      <!--  <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-m-top_medium slds-p-horizontal_x-small"> 
+                        <lightning:button variant="neutral" label="{!v.newStudentData.relationshipType == 'none' ? 'Close' : 'Cancel'}" onclick="{!c.confirm}" />
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-m-top_medium slds-text-align_right slds-p-horizontal_x-small">
+                            <aura:if isTrue="{!v.newStudentData.relationshipType != 'none'}">
+                            <lightning:button variant="brand" label="Create Student" onclick="{!c.handleSubmit}" disabled="{!v.disableCreate}"/>
+                            </aura:if>
+                        </lightning:layoutItem> -->
+                        
+                        <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-m-top_medium slds-text-align_left slds-p-horizontal_x-small">
+                            <aura:if isTrue="{!v.newStudentData.relationshipType != 'none'}">
+                            <lightning:button variant="brand" label="Create Student" onclick="{!c.handleSubmit}" disabled="{!v.disableCreate}"/>
+                            </aura:if>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="12" mediumDeviceSize="6" class="slds-m-top_medium slds-text-align_right slds-p-horizontal_x-small">
+                           <u> <lightning:button class="slds-black" variant="base" label="{!v.newStudentData.relationshipType == 'none' ? 'Close' : 'Cancel'}" onclick="{!c.confirm}" /></u>
+                        
+						</lightning:layoutItem>
+                        
+                    </lightning:layout>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+         <!--div class="slds-box slds-box_small">
+               
+             <div class="slds-col">
+                 <div class="c-container">
+                     <lightning:layout>
+                    <lightning:layoutItem flexibility="auto" size="12">
+                 <lightning:button variant="neutral" class="add" label="Hello" onclick="{!c.addStudent}" /> 
+                         </lightning:layoutItem>
+                     </lightning:layout>
+                         </div>
+                
+             </div>
+        </div-->
+        
+        <aura:if isTrue="{!!v.addStudentActive}">
+            <div class="slds-grid">
+                     <div class="slds-col slds-size_1-of-3 slds-text-align_center" >  
+           <!-- <p class="slds-text-align_left slds-p-top_large">-->
+                          
+ 						<lightning:button variant="base" class="btn_clr" label="+ Add another student" onclick="{!c.addStudent}" />
+                         
+                             <!--lightning:buttonIcon iconName="utility:Add a Student" variant="bare"  onclick="{! c.addStudent }" alternativeText="Add a Student" /-->
+                         <!-- modified by ravi  
+                    <h5>  <output type = "text" value = "+ Add another student" onclick="{!c.addStudent}"/></h5>
+                       -->   
+         <!--  </p>-->
+                </div>
+            </div>
+        </aura:if>
+        
+        
+        
+        
+        <c:Peak_Modal modalTitle="{!$Label.c.NES_Add_Student_Confirmation_Title}"
+                      paragraphOne="{!$Label.c.NES_Add_Student_Confirmation_Body}"
+                      saveText="{!$Label.c.NES_Add_Student_Confirmation_Save_Button_Text}"
+                      cancelText="{!$Label.c.NES_Add_Student_Confirmation_Cancel_Button_Text}"
+                      actionName="{!c.cancel}"
+                      isOpen="{!v.confirmOpen}" />
+    </div>
+</aura:component>

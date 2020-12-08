@@ -1,0 +1,135 @@
+<!--
+  @File Name          : NES_DocumentFileRefViewerNew.page
+  @Description        : 
+  @Author             : mmembrino@pearson.com
+  @Group              : 
+  @Last Modified By   : mmembrino@pearson.com
+  @Last Modified On   : 6/18/2020, 4:45:25 PM
+  @Modification Log   : 
+  Ver       Date            Author                  Modification
+  1.0    6/18/2020   mmembrino@pearson.com          Initial Version
+-->
+
+<apex:page doctype="html-5.0" controller="NES_DocumentFileRefViewerController" sidebar="false" showHeader="false" showChat="false" lightningStylesheets="true">
+    <head>
+        <apex:slds />
+        <style>
+            #pdf-frame {
+                display: flex;
+                align-items: stretch;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+
+        <apex:form id="form">
+            <apex:actionFunction action="{!setAuthToken}" name="setAuthToken" reRender="output1">
+                <apex:param name="authToken" value=""/>    
+            </apex:actionFunction>
+        </apex:form>
+        
+        <script type="text/javascript">
+            // var weblink = 'https://resources.docs.salesforce.com/226/latest/en-us/sfdc/pdf/salesforce_apex_language_reference.pdf';
+            // var weblink = 'https://media.readthedocs.org/pdf/flask-cors/latest/flask-cors.pdf';
+            
+            console.log("dfrId: ", '{!dfrId}');
+            console.log("accountId: ", "{!accountId}");
+            console.log("extension: ", "{!extension}");
+            console.log("url: ", "{!url}");
+            console.log("authToken: ", "{!authToken}");
+
+            // var weblink = 'https://resources.docs.salesforce.com/226/latest/en-us/sfdc/pdf/salesforce_apex_language_reference.pdf';
+            //var weblink = 'https://media.gettyimages.com/photos/sunset-at-vidhana-soudha-in-bangalore-karnataka-india-picture-id899271434';
+            //var weblink = 'https://en.wikipedia.org/wiki/Static_web_page';
+            var weblink = 'https://api.github.com/users/hadley/orgs';
+            //var weblink = 'https://www.google.com/';
+
+            fetch(weblink).then(function(response) {
+                console.log("isPDF: ", '{!isPDF}');
+                console.log("isImage: ", '{!isImage}');
+                console.log("isText: ", '{!isText}');
+                console.log('authUrl:', "{!$Label.NES_DocumentURL}");
+                return response.blob();
+            }).then(function(myBlob) {
+                var mimeType = '';
+                var isp = '{!isPDF}';
+                
+                if ('{!isPDF}' === true) { 
+                    mimeType = 'application/pdf'; 
+                    console.log('mimeinside:', mimeType);
+                }
+                mimeType = 'text/html';
+                //mimeType = 'image/jpeg';
+                //mimeType = 'text/plain;charset=UTF-8';
+                // var file = new Blob([myBlob], {type: 'application/pdf'});
+                console.log('mimeType outside:', mimeType);
+                var file = new Blob([myBlob], {type: mimeType});
+                
+                var objectURL = URL.createObjectURL(file);
+                document.querySelector('#pdf-frame').src = '';
+                document.querySelector('#pdf-frame').src = objectURL;
+                // objectURL = URL.revokeObjectURL(file);
+            });
+
+            function handleIframeLoaded() {
+                setTimeout(function() {
+                    //console.log('POSTING TO IFRAME');
+                    authURL="{!$Label.NES_DocumentURL}";
+                    document.getElementById('authiframe').contentWindow.postMessage({ messageType: 'sendCookie' }, authURL);
+                    
+                    // obtain authorization token 
+                    window.addEventListener("message", function _listener(messageEvent) {
+                        console.log('EVENT ======');
+                        if ((messageEvent.origin===authURL) && (messageEvent.data.messageType==='sendCookie')) {
+                            console.log("User is authenticated.");
+                            console.log("authToken: ", messageEvent.data.token);
+                            // actionFunction
+                            // setAuthToken(messageEvent.data.token);
+                            // console.log("dfrId: ", '{!dfrId}');
+                            // console.log("accountId: ", "{!accountId}");
+                            // console.log("extension: ", "{!extension}");
+                            // console.log("url: ", "{!url}");
+                            // console.log("authToken: ", "{!authToken}");
+
+                            // // var weblink = 'https://resources.docs.salesforce.com/226/latest/en-us/sfdc/pdf/salesforce_apex_language_reference.pdf';
+                            // var weblink = 'https://media.gettyimages.com/photos/sunset-at-vidhana-soudha-in-bangalore-karnataka-india-picture-id899271434';
+
+                            // fetch(weblink).then(function(response) {
+                            //     console.log("isPDF: ", '{!isPDF}');
+                            //     console.log("isImage: ", '{!isImage}');
+                            //     console.log("isText: ", '{!isText}');
+                            //     console.log('authUrl:', "{!$Label.NES_DocumentURL}");
+                            //     return response.blob();
+                            // }).then(function(myBlob) {
+                            //     var mimeType = '';
+                                
+                            //     if ('{!isPDF}') { 
+                            //         mimeType = 'application/pdf'; 
+                            //         console.log('mimeinside:', mimeType);
+                            //     }
+                            //     // var file = new Blob([myBlob], {type: 'application/pdf'});
+                            //     console.log('mimeType outside:', mimeType);
+                            //     var file = new Blob([myBlob], {type: mimeType});
+                                
+                            //     var objectURL = URL.createObjectURL(file);
+                            //     document.querySelector('#pdf-frame').src = '';
+                            //     document.querySelector('#pdf-frame').src = objectURL;
+                            //     // objectURL = URL.revokeObjectURL(file);
+                                
+                            // });
+                            window.removeEventListener("message", _listener);
+                        }
+                    });            
+                }, 2000);       
+            }
+        </script>
+        
+        <!-- <iframe id="authiframe" src="{!$Label.NES_DocumentURL_iframe}" onload="handleIframeLoaded();" style="border:0; height:0; width:0;"/> -->
+
+        <iframe id="pdf-frame"></iframe>
+        
+    </body>
+</apex:page>

@@ -1,0 +1,83 @@
+<!--
+ - Created by karolbrennan on 10/9/18.
+ -->
+
+<aura:component implements="forceCommunity:themeLayout" access="global" description="NES_Public_Community_Theme" controller="Peak_Utils" extends="c:Peak_Base">
+
+    <aura:attribute name="logoName" type="String"/>
+    <aura:attribute name="search" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="footer" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="isGuest" type="Boolean" default="false"/>
+    <aura:attribute name="baseUrl" type="String" default="" />
+    <aura:attribute name="sfbaseUrl" type="String"/>
+    <aura:attribute name="onRegistrationPage" type="Boolean" default="true" />
+    <aura:attribute name="currentRegistrationStep" type="String" default="1" />
+ 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" /> <!-- Swapna:Added for gtm -->
+    <c:NES_GTM />
+    <aura:handler event="c:NES_RegistrationStepEvent" action="{!c.handleStep}" />
+    <aura:handler event="c:NES_schoolId" action="{!c.handleSchoolIdEvent}"/>
+    <div>
+       
+        <div class="siteforceContentArea">
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12" class="comm-layout-column header">
+                    <lightning:layout multipleRows="false" class="container">
+                        <aura:if isTrue="{!(empty(v.logoName))}">
+                            <lightning:layoutItem flexibility="shrink" class="slds-order_1 slds-medium-order_1">
+                                <aura:if isTrue="{!v.isGuest}">
+                                    <img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" />
+                                    <aura:set attribute="else">
+                                        <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" /></a>
+                                    </aura:set>
+                                </aura:if>
+                            </lightning:layoutItem>
+                        </aura:if>
+                        <aura:if isTrue="{!not(empty(v.logoName))}">
+                            <lightning:layoutItem flexibility="shrink" class="slds-order_1 slds-medium-order_1">
+                                <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Label.c.NES_Community_Stem_Url+'/sfsites/c/resource/' + v.logoName}" class="logo" alt="{!v.logoName}"/></a>                               
+                            </lightning:layoutItem>
+                        </aura:if>
+                        <!--removing auraif-isTrue as the public pages are very limited  ADO 142925- GG -->
+                       <!-- <aura:if isTrue="{!v.onRegistrationPage}">-->
+                            <lightning:layoutItem flexibility="grow" class="{!v.currentRegistrationStep == '1' ? 'slds-order_2 slds-text-align_right slds-p-top_x-small signinButtonArea' : 'slds-hide'}">
+                                <div class="slds-hide_medium">
+                                    <lightning:button variant="brand" onclick="{!c.handleLogin}" label="Sign In" class="login"/>
+                                </div>
+                                <div class="slds-show_medium slds-m-top_small">
+                                    <span class="slds-m-right_small">ALREADY HAVE AN ACCOUNT?</span>
+                                    <lightning:button variant="brand" onclick="{!c.handleLogin}" label="Sign In" class="login"/>
+                                </div>
+                            </lightning:layoutItem>
+                        <!--   <aura:set attribute="else">
+                                <lightning:layoutItem flexibility="grow" class="slds-order_2 sm-top-margin-on-desktop">
+                                    {!v.navBar}
+                                </lightning:layoutItem>-->
+                                <!-- Swapna:For notifications-->
+                                <!--<lightning:layoutItem flexibility="shrink" class="slds-order_3 slds-align_absolute-center slds-p-right_small">
+                                    <forceCommunity:notifications/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem flexibility="shrink" class="slds-order_3 slds-text-align_right slds-p-right_small sm-top-margin-on-desktop">
+                                    {!v.profileMenu}
+                                </lightning:layoutItem>
+                            </aura:set>
+                        </aura:if>-->
+                    </lightning:layout>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="12" class="comm-layout-column mainContentArea" >
+                    <lightning:layout multipleRows="false" class="container">
+                        <lightning:layoutItem size="12">
+                            {!v.body}
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="12" class="comm-layout-column footer">
+                    {!v.footer}
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </div>
+</aura:component>

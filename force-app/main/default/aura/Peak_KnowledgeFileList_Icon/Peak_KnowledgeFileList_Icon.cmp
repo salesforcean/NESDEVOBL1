@@ -1,0 +1,10 @@
+<!--
+ - Created by 7Summits on 10/24/17.
+ -->
+
+<aura:component description="Peak_KnowledgeFileList_Icon">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="type" type="String" default="" />
+    <aura:attribute name="iconName" type="String" access="private" />
+    <lightning:icon iconName="{!v.iconName}" />
+</aura:component>

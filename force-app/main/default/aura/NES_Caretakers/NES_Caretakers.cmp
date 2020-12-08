@@ -1,0 +1,51 @@
+<!--
+ - Created by karolbrennan on 11/8/18.
+ -->
+
+<aura:component description="NES Caretakers"
+                implements="forceCommunity:availableForAllPageTypes"
+                access="global" controller="NES_EnrollmentController"
+                extends="c:Peak_Base">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="studentName" type="String" />
+    <aura:attribute name="studentId" type="String" />
+    <aura:attribute name="caretakerRecords" type="Object[]"/>
+    <aura:attribute name="modalActive" type="boolean" default="false" />
+    <div>
+        <a href="javascript:void(0)" class="slds-button slds-button_neutral caretaker-btn"
+             onclick="{!c.openModal}"
+             style="{! 'background-image:url(' + $Resource.icons + '/caretakersicon.png);background-position:12% center;background-repeat:no-repeat;'}">Caretakers</a>
+        <aura:if isTrue="{!v.modalActive}">
+            <div id="caretaker-modal" class="slds-text-align_left">
+                <section role="dialog" tabindex="-1" aria-label="Add and remove caretakers for student" aria-modal="true" aria-describedby="modal-content" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header slds-modal__header_empty">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.closeModal}">
+                                <lightning:icon iconName="utility:close" size="medium" />
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_large" id="modal-content">
+                            <h3>{!v.studentName}'s Caretakers</h3>
+                            <p>You may invite other Caretakers to view and modify your Students’ accounts and data. Please note that once access has been granted, other Caretakers will have the same permissions to view and edit student information and withdraw students from school enrollment.</p>
+                            <br />
+                            <aura:if isTrue="{!empty(v.caretakerRecords)}">
+                                <h4>{!v.studentName} does not have any caretakers</h4>
+                                <br />
+                                <aura:set attribute="else">
+                                    <aura:iteration var="caretaker" items="{!v.caretakerRecords}">
+                                        <h4>{!caretaker.hed__RelatedContact__r.Name}</h4>
+                                        <br/>
+                                    </aura:iteration>
+                                </aura:set>
+                            </aura:if>
+                            <!--<lightning:button variant="neutral" label="Invite a Caretaker" />-->
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+</aura:component>
