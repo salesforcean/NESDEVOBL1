@@ -3,13 +3,13 @@
     margin: 10px 0 20px 0;
     width: 10px;}
 
-    .THIS .statusBlock{
-        padding-left: 0px;
+.THIS .statusBlock{
+    padding-left: 0px;
     
     
-    }
+}
 .THIS .contactName .slds-m-bottom_medium{
-        margin-bottom: 0px;
+    margin-bottom: 0px;
     
 }
 /* Name of the record modified by ravi */
@@ -39,8 +39,8 @@
 .THIS .studentBlock.complete{border-left:0}.THIS h5{font-weight:600}.THIS h6{font-size:.7rem!important;color:#686868}.THIS h5.completed-enrollment{font-weight:600;text-transform:capitalize;color:#329947}
 .THIS .viewButton{
     display:flex;
-	padding-top: 0px;
-
+    padding-top: 0px;
+    
 }
 .THIS .viewButton span:not(.btnblock){font-size:1.5rem;line-height:1.75;padding-left:1rem}
 .THIS .viewButton .btnblock{flex-grow:2}
@@ -57,18 +57,18 @@
     font-size:1rem;
     text-align:center;
     line-height:2.5;
-     margin-top: 10px;
+    margin-top: 10px;
     
     /*padding-left: 8rem;
     padding-right: 8rem;*/
     
     /* modified by ravi bug136923 19/02/2020
-     width:380px;
-   
+    width:380px;
+    
     padding-left: 100%;
     padding-right: 100%;*/
     height: 40px;
-   /* width: 152px;*/
+    /* width: 152px;*/
     text-transform:uppercase}
 
 .THIS .slds-button_neutral{
@@ -79,17 +79,17 @@
     width: 152px;
     /*added for the US 335364 */
     margin-top: 10px;
-
+    
     
     /* modified by ravi bug136923 19/02/2020
-     padding-left: 100px;
+    padding-left: 100px;
     padding-right: 100px;
     padding-left: 9rem;
     padding-right: 9rem;
     width: 320px;
     */
-	text-transform:uppercase;
-     
+    text-transform:uppercase;
+    
 }
 .THIS #studentTiles .viewButton .slds-button.slds-button_neutral{
     color: black;
@@ -101,12 +101,12 @@
 .THIS .statusBlock{
     /*commented for UX update */
     /*width: 191px;*/
-	/* margin-left: 30px;*/
+    /* margin-left: 30px;*/
     padding-top: 0px;
 }
 /* removed by ravi on 01/01/2020
 .THIS .slds-progress__list{
-    width: 190px;
+width: 190px;
 }*/
 
 .THIS .slds-progress .slds-progress-bar__value{background:#008638}
@@ -131,7 +131,6 @@
     width: 100%;
 }
 .THIS .contactNameBlock {
-
     height: 30px;
     /* modified by ravi bug 279284*/
     word-wrap: break-word;
@@ -140,7 +139,7 @@
     
 }
 /*modified by ravi bug136923 19/02/2020 */
- .THIS .viewButtonMobile{
+.THIS .viewButtonMobile{
     
     width: 100%;
     
@@ -148,9 +147,10 @@
 .THIS .slds-progress{width:300px;max-width:100%;}
 /* added by ravi on 01/01/2020 */
 .THIS.statusBlockMobile{
-  	margin-left: 0px;
-	 
-}.THIS .sit-in-the-corner {
+    margin-left: 0px;
+    
+}
+.THIS .sit-in-the-corner {
     float: right;
     margin-left: 5px;
     margin-top: -85px;
@@ -198,6 +198,7 @@
 }
 .THIS .fontAdj{
     font-size: 12.9px;
+    
 }
 .THIS .divAdj2{
     padding-top: 10px;
@@ -241,92 +242,9 @@
 
 .THIS .newSchoolButton.tooltip:hover .tooltiptext {
     visibility: visible;
-}.THIS .sit-in-the-corner {
-    float: right;
-    margin-left: 5px;
-    margin-top: -85px;
 }
 
-.THIS .addButton {
-    width : 40px;
-    /*padding-right: 5px*/
-}
-.THIS .tileAdj {
-    /*width : 100%;*/
-    /*padding-right: 5px*/
-    
-}
-
-.THIS .addButtonDivAdj {
-    width : 416px;
-    padding-right: 0px;
-    
-    /*padding-right: 5px*/
-    
-}
-
-.THIS .dots-here:after {
-    border-bottom: 1px dotted;
-    content: '';
-    flex: 1;
-}
-
-.THIS .dots-here{
-    display: flex;
-    width: 300px;
-}
-.THIS .slds-border_top{
-    border-top : 1px dotted;
-}
-.THIS .schoolSeperator {
-    border-top-width: 2px;
-    border-top-style: dashed;
-    width: 104%;
-}
-.THIS .divAdj1{
-    padding-top: 5px;
-    width: 104%;
-}
-.THIS .divAdj2{
-    padding-top: 10px;
-}
-
-.THIS .contactName {
-    padding-top : 13px;
-}
-
-/*New School Tooltip : added by Jagadeesh for the US335364*/
-.THIS .newSchoolButton.tooltip {
-    position: relative;
+.THIS .tooltipTrigger {
     display: inline-block;
-    
-}
-
-.THIS .newSchoolButton.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 0px 0;
-    position: absolute;
-    z-index: 1;
-    top: 112%;
-    left: 50%;
-    margin-left: -80px;
-}
-
-.THIS .newSchoolButton.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
-}
-
-.THIS .newSchoolButton.tooltip:hover .tooltiptext {
-    visibility: visible;
+    vertical-align: middle;
 }

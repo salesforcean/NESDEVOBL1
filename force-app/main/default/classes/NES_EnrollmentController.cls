@@ -1,9 +1,9 @@
 /**
- * Created by triciaigoe on 12/26/18.
- */ 
+* Created by triciaigoe on 12/26/18.
+*/ 
 
 public without sharing class NES_EnrollmentController {
-
+    
     /**
 * Created by Ashish Sharma on 11/14/18.
 * Parameters: ID
@@ -16,7 +16,7 @@ and Program_Enrollment__c objects
     public static List<Enrollment_Component_Affiliation__c> getRelatedStages(Id programEnrollmentId){
         return NES_EnrollmentHelper.getRelatedStages(programEnrollmentId);
     }
-
+    
     /**
 * Created by Ashish Sharma on 11/14/18.
 * Parameters: ID
@@ -29,7 +29,7 @@ and Parent_Enrollment_Component__c objects
     public static List<Enrollment_Component__c> getRelatedMessages(Id enrollmentComponentId, Id programEnrollmentId){
         return NES_EnrollmentHelper.getRelatedMessages(enrollmentComponentId, programEnrollmentId);
     }
-
+    
     /**
 * Created by Ashish Sharma on 11/14/18.
 * Parameters: ID
@@ -41,7 +41,7 @@ and using those child components get the required information
     public static NES_DashboardUtilities.Process getProcessInformation(Id processComponentId, Id programEnrollmentId){
         return NES_EnrollmentHelper.getProcessInformation(processComponentId, programEnrollmentId);
     }
-
+    
     /**
 * Created by Ashish Sharma on 11/14/18.
 * Parameters: ID
@@ -53,7 +53,7 @@ and using those child components get the required form information
     public static List<NES_DashboardUtilities.Form> getRelatedForms(Id stageComponentId, Id enrollmentId){
         return NES_EnrollmentHelper.getRelatedForms(stageComponentId, enrollmentId);
     }
-
+    
     /**
 * Created by Ashish Sharma on 11/14/18.
 * Parameters: ID
@@ -65,13 +65,13 @@ and using those child components get the required component information
     public static List<NES_DashboardUtilities.RelatedFormContent> getRelatedFormContent(Id formComponentId, Id enrollmentId){
         return NES_EnrollmentHelper.getRelatedFormContent(formComponentId, enrollmentId);
     }
-
+    
     //grab the caretakers for a student
     @AuraEnabled
     public static Peak_Response getCaretakers(Id studentIdString) {
         return NES_EnrollmentHelper.grabCaretakers(studentIdString);
     }
-
+    
     /**
 * Created by Raju on 11/30/18.
 * Parameters: ID, String
@@ -82,7 +82,7 @@ and using those child components get the required component information
     public static Peak_Response terminateApplication(Id opportunityId, String withdrawalReason){
         return NES_EnrollmentHelper.terminateApplication(opportunityId, withdrawalReason);
     }
-
+    
     /**
 * Created by Raju on 11/30/18.
 * Return Type: Peak_Response
@@ -92,57 +92,56 @@ and using those child components get the required component information
     public static Peak_Response getTerminationReasons(){
         return NES_EnrollmentHelper.getTerminationReasons();
     }
-
+    
     /**
-     * Created By Anand on 12/19/2018
-     * purpose: To reactivate Student and create opportunity if any Opportunity StageName is not closedLost related  to
-     * program Enrollments
-     * @param programEnrollmentId
-     * @return Peak_Response
-     */
-
+* Created By Anand on 12/19/2018
+* purpose: To reactivate Student and create opportunity if any Opportunity StageName is not closedLost related  to
+* program Enrollments
+* @param programEnrollmentId
+* @return Peak_Response
+*/
+    
     // Updated by Krishna Peddanagammol  for US#119618 on 11/28/2019 Included new parameters reactivationType, whoReactivated
     // @AuraEnabled
     // public static Peak_Response reactivateStudent(Id programEnrollmentId, String reactivationType, String whoReactivated) {
     //     return NES_EnrollmentHelper.reactivateStudent(programEnrollmentId,reactivationType,whoReactivated);
     // }
-
+    
     @AuraEnabled
     public static Peak_Response reactivateStudent(Id programEnrollmentId) {
         return NES_EnrollmentHelper.reactivateStudent(programEnrollmentId);
     }
-
+    
     @AuraEnabled
     public static Id getSchoolId(Id enrollmentId) {
         return NES_QuestionsHelper.grabSchoolId(enrollmentId);
     }
-
+    
     @AuraEnabled
     public static String grabNameOfStudent(Id studentId, Id programEnrollmentId) {
         return NES_EnrollmentUtils.getStudentName(studentId, programEnrollmentId);
     }
     
     /**
-     * Created By Chinnamanaidu on 26/11/2019- task # 120987 for US#119347
-     * purpose: Used to display popup window when the  Program Enrollment's related Opportunity Application End Reason (Internal) field
-     * starts with the "Regulation".
-     * @param programEnrollmentId
-     */
+* Created By Chinnamanaidu on 26/11/2019- task # 120987 for US#119347
+* purpose: Used to display popup window when the  Program Enrollment's related Opportunity Application End Reason (Internal) field
+* starts with the "Regulation".
+* @param programEnrollmentId
+*/
     @AuraEnabled
     public static boolean displayPopupReg(Id studentId) {
         return NES_EnrollmentHelper.displayPopupReg1(studentId);
     }
-
+    
     @AuraEnabled (cacheable=false)
     public static boolean getIsEnrollmentReady(Id enrollmentId) {
-       List<hed__Program_Enrollment__c> peS = new list<hed__Program_Enrollment__c> ([select Initial_ECA_Creation_Complete__c from hed__Program_Enrollment__c where id = :enrollmentId]);
-
+        List<hed__Program_Enrollment__c> peS = new list<hed__Program_Enrollment__c> ([select Initial_ECA_Creation_Complete__c from hed__Program_Enrollment__c where id = :enrollmentId]);
+        
         if (peS[0].Initial_ECA_Creation_Complete__c == true)
             return true;
         else   
             return false;
     }
-
 
     @AuraEnabled
     public static List<Grade_Level__c> getGradeLevels(String instituteName,String year) {

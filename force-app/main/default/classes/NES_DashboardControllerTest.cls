@@ -65,11 +65,11 @@ public class NES_DashboardControllerTest {
     }
     
     
-   
+    
     /**
 * Created by Raju on 30/11/18.
 * Purpose : This method is a Test method for both getTerminationReasons and terminateApplication methods of NES_DashboardController class.
-*/
+**/
     static testMethod void testTerminateApplication() {
         hed__Program_Enrollment__c hpe = [SELECT Id, Status__c FROM hed__Program_Enrollment__c WHERE CreatedDate = TODAY LIMIT 1];
         Opportunity opty=Peak_TestUtils.createOpportunity(hpe.Id);
@@ -81,8 +81,7 @@ public class NES_DashboardControllerTest {
     /**
 * Created by Raju on 06/12/18.
 * Purpose : This method is a Test method for both getOpenCases and getClosedCases methods of NES_DashboardController class.
-
-*/
+**/
     static testMethod void testgetClosedCases() {
         
         hed__Relationship__c  relationship = [SELECT hed__Contact__c  FROM hed__Relationship__c  LIMIT 1];
@@ -98,7 +97,7 @@ public class NES_DashboardControllerTest {
         }
     }
     
-  
+    
     
     
     static testMethod void testGetRelatedStudentsInfo() {
@@ -113,7 +112,7 @@ public class NES_DashboardControllerTest {
         
     }
     
-     static testMethod void testGetRelatedStudentsInfoInactivePE() {
+    static testMethod void testGetRelatedStudentsInfoInactivePE() {
         hed__Relationship__c  relationship = [SELECT hed__Contact__c  FROM hed__Relationship__c  LIMIT 1];
         User u = [SELECT Id FROM User WHERE ContactId=: relationship.hed__Contact__c  AND IsActive = TRUE LIMIT 1];
         hed__Program_Enrollment__c progEnrollment = [Select Id, Status__c from hed__Program_Enrollment__c limit 1];
@@ -126,7 +125,7 @@ public class NES_DashboardControllerTest {
         }
         
     }
-        
+    
     static testMethod void testUtilityMethods(){
         hed__Program_Enrollment__c progEnrollment = [Select Id,hed__Account__r.ITR_Start_Date__c,hed__Account__r.ITR_End_Date__c, Status__c from hed__Program_Enrollment__c limit 1];
         List<Account> academicPrograms = [Select Id, Name, ParentId, Registration_Start_Date__c,recordType.Name, Registration_End_Date__c from Account where  recordType.Name = 'Academic Program'];

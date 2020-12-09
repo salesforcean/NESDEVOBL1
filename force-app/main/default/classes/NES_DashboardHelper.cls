@@ -7,14 +7,14 @@
 public without sharing class NES_DashboardHelper {
     private static Peak_ApexLog logger = new Peak_ApexLog('DashboardHelper');
     
-
+    
     
     /**
     * Created By : Jagadish Babu
     * Created Date : 03/12/2020
     * Parameter : CareTaker User Id
     * Purpose : This method is used get the students under care taker with respect to program enrollment and prepare the JSON to care taker dashboard (US 338596)
-    */
+    **/
     public static List<NES_DashboardUtilities.StudentsInformation> getRelatedStudentsInfoWithId(Id ctUserId) {
         try{
             Id careTakerContactId;
@@ -30,7 +30,7 @@ public without sharing class NES_DashboardHelper {
                 Id studentRecordTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(NES_DashboardUtilities.STUDENT_RT).getRecordTypeId();
                 //Get all the available academic programs as Registration dates
                 Map<Id, List<Account>> mapOfAvailableSchoolYrs = getAvailableAcademicPrograms();
-              
+                
                 //Get the relation ship records under Care Taker
                 for (hed__Relationship__c con : [
                     SELECT hed__RelatedContact__c
@@ -148,8 +148,8 @@ public without sharing class NES_DashboardHelper {
     //Returns Grade Level Names per the grade Names
     public static String getGradeLevel(String gradeName){
         String resultGradeName = '';
-            if(gradeName != null){
-                if(gradeName == 'K')
+        if(gradeName != null){
+            if(gradeName == 'K')
                 resultGradeName = 'Kindergarten';
             else if(gradeName == '1')
                 resultGradeName = '1st Grade';
@@ -159,9 +159,8 @@ public without sharing class NES_DashboardHelper {
                 resultGradeName = '3rd Grade';
             else
                 resultGradeName = gradeName + 'th Grade';
-        }
-        
+        }        
         return resultGradeName;        
     }   
-      
+    
 }

@@ -7,6 +7,22 @@
         // get list of students
         helper.getStudents(component, event, helper);
     },
+    callOtherSchoolEnrollment: function(component, event, helper)
+    {
+        var selectedStudentId = event.currentTarget.value;
+        //alert(selectedStudentId);
+        //console.log(selectedStudentId);
+        //component.set("v.selectedStudentId",selectedStudentId);
+        component.set("v.isOtherSchoolEnrollment",'true'); 
+        var OSEcmp = component.find("OSEcmp");
+        var message = OSEcmp.getMessage(selectedStudentId,'true');
+    },
+    closeOtherSchoolEnrollmentModel: function(component, event, helper)
+    {
+        component.set("v.isOtherSchoolEnrollment",'false');
+        // get list of students
+        //helper.getStudents(component, event, helper);
+    },
     closeModal: function(component)
     {
         component.set("v.message",null);
@@ -66,6 +82,7 @@
             component.set("v.message", messageParam);
         }
         helper.getStudents(component, event, helper);
+        
     },
     stepHover: function(component, event, helper) {
         helper.stepHover(component, event, helper);

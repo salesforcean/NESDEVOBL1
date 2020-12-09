@@ -4,8 +4,7 @@
 ({
     getStudents: function(component, event, helper)
     {
-        
-        window.scrollTo(0, 0); 
+        window.scrollTo(0, 0);
         var action = component.get("c.getAssociatedStudentsInfo");       
         action.setCallback(this, function(response){
             var students = response.getReturnValue();
