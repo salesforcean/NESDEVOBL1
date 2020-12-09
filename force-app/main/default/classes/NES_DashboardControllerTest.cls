@@ -1,7 +1,6 @@
 /**
 * Created by Anushka on 19/11/18.
 * Purpose : Test class for NES_DashboardControllerTest class
-
 */
 @isTest
 public class NES_DashboardControllerTest { 
@@ -66,24 +65,7 @@ public class NES_DashboardControllerTest {
     }
     
     
-    /**
-* Created by Anushka on 20/11/18.
-* Purpose : This method is a Test method for getRelatedStudents method of NES_DashboardController class.
-*/
-    
-    /*static testMethod void testGetRelatedStudents() {
-        hed__Relationship__c  relationship = [SELECT hed__Contact__c  FROM hed__Relationship__c  LIMIT 1];
-        User u = [SELECT Id FROM User WHERE ContactId=: relationship.hed__Contact__c  AND IsActive = TRUE LIMIT 1];
-        
-        System.runAs(u){
-            List<NES_DashboardUtilities.StudentInformation> studentInformation =  NES_DashboardController.getAssociatedStudents();
-            System.assertNotEquals(null,studentInformation );
-            NES_DashboardController.getRelatedStudents(null);
-            studentInformation =  NES_DashboardController.getRelatedStudents(UserInfo.getUserId());
-            System.assertNotEquals(null,studentInformation );
-        }
-        
-    }*/
+   
     /**
 * Created by Raju on 30/11/18.
 * Purpose : This method is a Test method for both getTerminationReasons and terminateApplication methods of NES_DashboardController class.
@@ -116,25 +98,7 @@ public class NES_DashboardControllerTest {
         }
     }
     
-    //Created by Jagadeesh Bokam for US:216449
-   /* static testMethod void getRelatedStudentsWithoutECATest() {
-       
-        hed__Relationship__c  relationship1 = [SELECT hed__Contact__c  FROM hed__Relationship__c  LIMIT 1];
-        User u = [SELECT Id FROM User WHERE ContactId=: relationship1.hed__Contact__c  AND IsActive = TRUE LIMIT 1]; 
-        
-        List<Enrollment_Component_Affiliation__c> listEca = [select id from Enrollment_Component_Affiliation__c];
-        delete listEca;
-        
-        System.runAs(u){
-            List<NES_DashboardUtilities.StudentInformation> studentInformation =  NES_DashboardController.getAssociatedStudents();
-            System.assertNotEquals(null,studentInformation );
-            NES_DashboardController.getRelatedStudents(null);
-            studentInformation =  NES_DashboardController.getRelatedStudents(UserInfo.getUserId());
-            System.assertNotEquals(null,studentInformation );
-        }
-        
-    }*/
-    
+  
     
     
     static testMethod void testGetRelatedStudentsInfo() {
@@ -176,7 +140,7 @@ public class NES_DashboardControllerTest {
         NES_DashboardHelper.getGradeLevel('1');
         NES_DashboardHelper.getGradeLevel('2');
         NES_DashboardHelper.getGradeLevel('3');
-		NES_DashboardHelper.getGradeLevel('4');        
+        NES_DashboardHelper.getGradeLevel('4');        
     } 
     
 }

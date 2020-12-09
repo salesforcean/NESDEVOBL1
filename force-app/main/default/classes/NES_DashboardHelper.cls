@@ -7,117 +7,14 @@
 public without sharing class NES_DashboardHelper {
     private static Peak_ApexLog logger = new Peak_ApexLog('DashboardHelper');
     
-    /**
-* Created by Ashish Sharma on 12/05/18
-* Parameters: Id
-* Return Type: List<NES_DashboardUtilities.StudentInformation>
-* Purpose : This method is used to retrieve all program enrollments related to the students (based on care taker user's Id passed in the method parameter)
-and then get all PROCESS_RT
-type Enrollment components and related ECAs. Return this information after adding
-in List<NES_DashboardUtilities.StudentInformation>
-*/
-    /*public static List<NES_DashboardUtilities.StudentInformation> getRelatedStudentsWithId(Id ctUserId) {
-        try {
-            Id careTakerContactId;
-            
-            //Retrieve the care taker contact Id of the current logged in user
-            for (User tempUser : [SELECT ContactId FROM User WHERE Id = :ctUserId]) {
-                careTakerContactId = tempUser.ContactId;
-            }
-            
-            
-            if (careTakerContactId != null) {
-                //Retrieve the related student Ids of the careTakerContactId
-                Set<Id> studentIds = new Set<Id>();
-                Id studentRecordTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(NES_DashboardUtilities.STUDENT_RT).getRecordTypeId();
-                
-                for (hed__Relationship__c con : [
-                    SELECT hed__RelatedContact__c
-                    FROM hed__Relationship__c
-                    WHERE hed__Contact__c = :careTakerContactId
-                    AND hed__RelatedContact__r.RecordTypeId = :studentRecordTypeId
-                ]) {
-                    studentIds.add(con.hed__RelatedContact__c);
-                }
-                
-                if (studentIds.size() > 0) {
-                    /*
-Retrieve all program enrollments related to the students and then get all PROCESS_RT
-type Enrollment components and related ECAs. Return this information after adding
-in List<NES_DashboardUtilities.StudentInformation>
-*/
-                   /* List<NES_DashboardUtilities.StudentInformation> students = new List<NES_DashboardUtilities.StudentInformation>();
-                    //added hed__Account__c,hed__Account__r.name, hed__Account__r.Parent.name,hed__Account__r.School_Year__r.Name for UX update
-                    List<hed__Program_Enrollment__c> programEnrollments = [
 
-                        SELECT Id, hed__Account__c,hed__Account__r.name, hed__Account__r.Parent.name,hed__Account__r.School_Year__r.name, hed__Contact__c, hed__Contact__r.Name,hed__Contact__r.FirstName,hed__Contact__r.AccountId, Status__c, Final_Grade_Level__c,
-                        hed__Account__r.Registration_Start_Date__c, hed__Account__r.Registration_End_Date__c, hed__Account__r.ParentId,
-                        (SELECT Order__c, Enrollment_Component__r.Name, Status__c,Enrollment_Component__r.Order__c,
-                         Program_Enrollment__r.Final_Grade_Level__c, Enrollment_Component__r.RecordType.Name
-                         FROM Enrollment_Component_Affiliation__r
-                         WHERE status__c <> 'Not Applicable' and (Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.PROCESS_RT
-                         OR Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.STAGE_RT))
-                        FROM hed__Program_Enrollment__c
-                        WHERE hed__Contact__c IN:studentIds
-                    ];
-                    
-                    for (hed__Program_Enrollment__c temp : programEnrollments) {
-                        
-                        System.debug(temp.Id);
-                        if (temp.Enrollment_Component_Affiliation__r != null && temp.Enrollment_Component_Affiliation__r.size() > 0) {
-                            List<Enrollment_Component_Affiliation__c> stages = new List<Enrollment_Component_Affiliation__c>();
-                            
-                            for (Enrollment_Component_Affiliation__c eca : temp.Enrollment_Component_Affiliation__r) {
-                                if (eca.Enrollment_Component__r.RecordType.Name == NES_DashboardUtilities.STAGE_RT) {
-                                    stages.add(eca);
-                                }
-                                
-                            }
-                            
-                            for (Enrollment_Component_Affiliation__c eca : temp.Enrollment_Component_Affiliation__r) {
-                                if (eca.Enrollment_Component__r.RecordType.Name == NES_DashboardUtilities.PROCESS_RT) {
-                                    String statusString;
-                                    if (String.isNotBlank(temp.Status__c)) {
-                                        statusString = temp.Status__c;
-                                    } else {
-                                        statusString = eca.Status__c;
-                                    }
-                                   // students.add(new NES_DashboardUtilities.StudentInformation(temp.Id, temp.hed__Contact__c, statusString, temp.hed__Contact__r.Name, temp.hed__Account__r.ParentId, stages, eca.Enrollment_Component__c, temp.Final_Grade_Level__c, temp.hed__Account__r.Registration_Start_Date__c, temp.hed__Account__r.Registration_End_Date__c));
-                                      //Added for Bug# 279284
-
-                                    //added temp.Status__c, temp.hed__Account__r.name for UX update 
-                                    students.add(new NES_DashboardUtilities.StudentInformation(temp.Id, temp.hed__Account__r.Parent.name, temp.hed__Account__r.School_Year__r.name, temp.Status__c, temp.hed__Account__r.name, temp.hed__Contact__c, statusString, temp.hed__Contact__r.FirstName, temp.hed__Account__r.ParentId, stages, eca.Enrollment_Component__c, temp.Final_Grade_Level__c, temp.hed__Account__r.Registration_Start_Date__c, temp.hed__Account__r.Registration_End_Date__c));
-                                }
-                            }
-                        }
-                        //added for the US 216449 By : Jagadeesh Bokam
-                        else {
-
-                            //Commented the below line for Defect 332731
-                            //students.add(new NES_DashboardUtilities.StudentInformation(temp.Id, temp.hed__Contact__c, temp.Status__c, temp.hed__Contact__r.Name, temp.hed__Account__r.ParentId,null,null, temp.Final_Grade_Level__c, temp.hed__Account__r.Registration_Start_Date__c, temp.hed__Account__r.Registration_End_Date__c));
-                            //Added for Bug# 279284
-                            //added temp.Status__c, temp.hed__Account__r.name for UX update
-                            students.add(new NES_DashboardUtilities.StudentInformation(temp.Id, temp.hed__Account__r.Parent.name, temp.hed__Account__r.School_Year__r.name, temp.Status__c, temp.hed__Account__r.name,temp.hed__Contact__c, temp.Status__c, temp.hed__Contact__r.FirstName, temp.hed__Account__r.ParentId,null,null, temp.Final_Grade_Level__c, temp.hed__Account__r.Registration_Start_Date__c, temp.hed__Account__r.Registration_End_Date__c));
-                        }
-                    }
-                    return students;
-                }
-            }
-            
-            return null;
-        } catch (Exception e) {
-            logger.logException('getRelatedStudentsWithId', e);
-            logger.saveLogs();
-            return null;
-        }
-    }*/
     
-    /*
+    /**
     * Created By : Jagadish Babu
-	* Created Date : 03/12/2020
-	* Parameter : CareTaker User Id
-	* Purpose : This method is used get the students under care taker with respect to program enrollment and prepare the JSON to care taker dashboard (US 338596)
-	*/
+    * Created Date : 03/12/2020
+    * Parameter : CareTaker User Id
+    * Purpose : This method is used get the students under care taker with respect to program enrollment and prepare the JSON to care taker dashboard (US 338596)
+    */
     public static List<NES_DashboardUtilities.StudentsInformation> getRelatedStudentsInfoWithId(Id ctUserId) {
         try{
             Id careTakerContactId;
@@ -162,17 +59,17 @@ in List<NES_DashboardUtilities.StudentInformation>
                             studentInfo.studentLName = con.LastName;
                             studentInfo.studentId = con.Id;
                             studentInfo.academicPrograms = new List<NES_DashboardUtilities.AcademicProgramsWrapper>();
-                            for(hed__Program_Enrollment__c peRec : con.hed__Program_Enrollments__r){   							
-                                if(!instituationSet.contains(peRec.hed__Account__r.ParentId)){								
+                            for(hed__Program_Enrollment__c peRec : con.hed__Program_Enrollments__r){                            
+                                if(!instituationSet.contains(peRec.hed__Account__r.ParentId)){                              
                                     String buttonLabel = '';
-									String buttonTarget = '';    
+                                    String buttonTarget = '';    
                                     List<Account> availablePrograms = mapOfAvailableSchoolYrs.containsKey(peRec.hed__Account__r.ParentId) ? mapOfAvailableSchoolYrs.get(peRec.hed__Account__r.ParentId): null;
                                     buttonLabel = getButtonLabelName(peRec,availablePrograms);
                                     if(buttonLabel == 'Continue')
                                         buttonTarget = '/enrollment';
                                     if(buttonLabel == 'Contact Us')
                                         buttonTarget ='/tickets';
-                                    String processECId = mapProcessECAWithPEId.containsKey(peRec.Id) ? mapProcessECAWithPEId.get(peRec.Id).Enrollment_Component__c : null;	
+                                    String processECId = mapProcessECAWithPEId.containsKey(peRec.Id) ? mapProcessECAWithPEId.get(peRec.Id).Enrollment_Component__c : null;  
                                     String processECAStatus = mapProcessECAWithPEId.containsKey(peRec.Id) ? mapProcessECAWithPEId.get(peRec.Id).Status__c : null;
                                     String statusString;
                                     if (String.isNotBlank(peRec.Status__c)) {
@@ -186,7 +83,7 @@ in List<NES_DashboardUtilities.StudentInformation>
                                     studentInfo.academicPrograms.add(new NES_DashboardUtilities.AcademicProgramsWrapper(peRec.hed__Account__r.name, peRec.Id, processECId,statusString,peRec.Status__c,peRec.hed__Account__r.ParentId,peRec.Program_Grade_Level__c,StudentGradeLevel,peRec.hed__Account__r.Registration_Start_Date__c,peRec.hed__Account__r.Registration_End_Date__c,peRec.hed__Account__r.Parent.Name,peRec.Start_Year__r.Name, buttonLabel, buttonTarget));
                                     instituationSet.add(peRec.hed__Account__r.ParentId);
                                 }                                                                                                        
-    }
+                            }
                             studentsInformation.add(studentInfo);
                         }
                         
@@ -220,7 +117,7 @@ in List<NES_DashboardUtilities.StudentInformation>
         else if(peRecord.Status__c == NES_DashboardUtilities.INACTIVE_STATUS){
             if(availableAcademicPrograms.size() > 0){
                 resultString = NES_DashboardUtilities.REACTIVATE_BTN_LABEL;                
-            }                                                                                          		
+            }                                                                                               
         }
         else if(peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS){            
             if(availableAcademicPrograms.size() > 0){
@@ -248,7 +145,7 @@ in List<NES_DashboardUtilities.StudentInformation>
         return resultMap;
     }  
     
-	//Returns Grade Level Names per the grade Names
+    //Returns Grade Level Names per the grade Names
     public static String getGradeLevel(String gradeName){
         String resultGradeName = '';
             if(gradeName != null){
