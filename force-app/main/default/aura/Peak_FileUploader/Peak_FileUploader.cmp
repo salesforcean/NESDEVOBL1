@@ -306,7 +306,7 @@
                                                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                            <lightning:button variant="brand" label="Yes, skip" onclick="{!c.skipForNow}" class="lower"/>
                                                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                  <lightning:button variant="neutral" label="Cancel" onclick="{! c.closeModel }" class="lower"/>
+                                                  <!--lightning:button variant="neutral" label="Cancel" onclick="{! c.closeModel }" class="lower"/-->
                                                  </div>
                                                  </div>
                                        </section>
@@ -332,6 +332,7 @@
                                                         <span class="slds-form--inline slds-p-horizontal_small docOr"></span>
                                                         <!-- modifed by ravi on 07-02-2020-->
                                                         <u>  <lightning:button class="slds-skip" label="Skip for Now " variant="base" onclick="{!c.openModel}"/></u>
+                                                        
                                        <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
                                       <aura:if isTrue="{!v.isModalOpen}">
                                             <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">

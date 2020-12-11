@@ -70,11 +70,20 @@
     // Add by Maddileti for US #335371
     reactivateAction: function (component, event, helper)
     {
-           var button=event.getSource().get('v.label');
+        var button=event.target.id;
+        
         console.log('Button Clicked :'+button);
-    /*    if(button='Re-Enroll'){
-            component.set('v.enrollFlag',true);
-        }*/
+        if(button=='reenroll'){
+            console.log('display re enroll button ');
+            component.set("v.enrollFlag",true);
+            component.set("v.reactiveFlag",false);
+            component.set("v.disableGrade",true);
+        } 
+        else if(button=='reactive'){
+            component.set("v.reactiveFlag",true);
+            component.set("v.enrollFlag",false);
+            
+        }
         var schoolYeara=component.get('v.schoolYeara');
         console.log('schoolYeara:'+schoolYeara);
         
@@ -86,7 +95,7 @@
                 studentGradeLevel = 'K';
                 break;
             case '1st Grade':
-                studentGradeLevel = '1';
+                studentGradeLevel = '1';  
                 break;
             case '2nd Grade':
                 studentGradeLevel = '2';
@@ -101,14 +110,14 @@
         console.log('studentGradeLevel=='+studentGradeLevel);
         component.set('v.gradeLevelId',studentGradeLevel);
         component.set('v.isOpenReactivation', true);
-                  //  component.set('v.enrollFlag',true);
-
+        //  component.set('v.enrollFlag',true);
+        
         var year=component.find('Year');
         year.set('v.value',component.get('v.schoolYeara'));
-       // alert(component.get('v.schoolYeara'));
+        // alert(component.get('v.schoolYeara'));
         var grade=component.find('Grade');
         grade.set('v.value',component.get('v.gradeLevelId'));
-
+        
         
     },
     
@@ -123,56 +132,56 @@
         console.log('New Grade Selected :'+gradeNew);
         var previousSchoolYear=component.get('v.schoolYeara');
         var previousGrade=component.get("v.gradeLevelId");
-           if(previousSchoolYear==newSchoolYear){ 
-                if(previousGrade==gradeNew){
-                    component.set("v.isError",false);
-                    //this.handleSubmit(component, event, helper);
-                    var a = component.get('c.handleSubmit');
-                    $A.enqueueAction(a);
-                    helper.InvokeReactive(component,event,helper);
-                }
-                else{
-                    component.set("v.isError",true);
-                }
+        if(previousSchoolYear==newSchoolYear){ 
+            if(previousGrade==gradeNew){
+                component.set("v.isError",false);
+                //this.handleSubmit(component, event, helper);
+                var a = component.get('c.handleSubmit');
+                $A.enqueueAction(a);
+                helper.InvokeReactive(component,event,helper);
             }
-            else{ 
-                component.set('v.isOpen', true);
-                var stId=component.get('v.studentId');
-                var acName=component.get("v.acadName");
-                var studentName=component.get("v.studentName");
-                console.log('std:'+stId);
-               var action = component.get("c.nextYearEnrollment");
-                action.setParams({
-                    studentId: stId, 
-                    instituteNam:acName,
-                    schoolYear : newSchoolYear,
-                    gradeLevels : gradeNew,
-                    callType: 'community'
-                });
-                action.setCallback(this, function(response){
-                    var peakResponse = response.getReturnValue();
-                    console.log(peakResponse);
-                    if(peakResponse.success){
-                        component.set("v.success", true);
-                        window.setTimeout(
-                            $A.getCallback(function(){
-                                var redirect = $A.get("e.force:navigateToURL");
-                                redirect.setParams({
-                                    "url" : "/dashboard"
-                                });
-                                redirect.fire();
-                            }), 3000
-                        );
-                        
-                        
-                    } else {
-                        component.set("v.hasError",true);
-                        component.set("v.message", peakResponse.messages[0]);
-                    }
-                });
-                $A.enqueueAction(action);
+            else{
+                component.set("v.isError",true);
             }
-          
+        }
+        else{ 
+            component.set('v.isOpen', true);
+            var stId=component.get('v.studentId');
+            var acName=component.get("v.acadName");
+            var studentName=component.get("v.studentName");
+            console.log('std:'+stId);
+            var action = component.get("c.nextYearEnrollment");
+            action.setParams({
+                studentId: stId, 
+                instituteNam:acName,
+                schoolYear : newSchoolYear,
+                gradeLevels : gradeNew,
+                callType: 'community'
+            });
+            action.setCallback(this, function(response){
+                var peakResponse = response.getReturnValue();
+                console.log(peakResponse);
+                if(peakResponse.success){
+                    component.set("v.success", true);
+                    window.setTimeout(
+                        $A.getCallback(function(){
+                            var redirect = $A.get("e.force:navigateToURL");
+                            redirect.setParams({
+                                "url" : "/dashboard"
+                            });
+                            redirect.fire();
+                        }), 3000
+                    );
+                    
+                    
+                } else {
+                    component.set("v.hasError",true);
+                    component.set("v.message", peakResponse.messages[0]);
+                }
+            });
+            $A.enqueueAction(action);
+        }
+        
     },
     closeModals: function (component,event,helper)
     {
@@ -180,18 +189,37 @@
         
     }, 
     
-  reEnrollmentAction : function (component, event, helper){
+    reEnrollmentAction : function (component, event, helper){
         helper.getNextYearAvailability(component, event, helper);          
     },
     schoolSelect: function (component,event,helper){
-       //check label and year from dash board and compare selected year if re-enroll show message
-       //grade drop down should be disabled
+        //check label and year from dash board and compare selected year if re-enroll show message
+        //grade drop down should be disabled
+        component.set("v.disableGrade",false);
         var newSchoolYear=component.find('Year').get('v.value');
         component.set("v.gradeLevels",[]);
         helper.getGrades(component, event, helper,newSchoolYear);
         
-    } 
+    },
+    reEnrollment : function (component,event,helper){
+        var newSchoolYear=component.find('Year').get('v.value');
+        var gradeNew=component.find('Grade').get('v.value');
+        console.log('New School Year :'+newSchoolYear);
+        console.log('New Grade Selected :'+gradeNew);
+        var previousSchoolYear=component.get('v.schoolYeara');
+        var previousGrade=component.get("v.gradeLevelId");
+        if(previousSchoolYear==newSchoolYear){
+            
+            component.set("v.reEnrollmentMessage",true);
+            
+        } else{
+            component.set("v.reEnrollmentMessage",false);
+        }
+        
+        
+    }
     
-  // End by Maddileti for US #335371
+    
+    // End by Maddileti for US #335371
     
 })

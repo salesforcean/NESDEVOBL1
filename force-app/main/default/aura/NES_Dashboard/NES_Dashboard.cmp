@@ -102,7 +102,7 @@
                                         <lightning:layoutItem size="1" padding="around-small" >
                                                 <button class="slds-button newSchoolButton tooltip" onclick="{!c.callOtherSchoolEnrollment}" value="{!student.studentId}" name="{!student.studentFName}" >  
                                                     <img class="addButton" src="{! $Resource.addButton}" alt="Enroll in another school" /> 
-                                                    <a><span class="tooltiptext">Enroll in another school</span></a>
+                                                    <span class="tooltiptext">Enroll in another school</span>
                                                 </button>
                                         </lightning:layoutItem>
                                     </lightning:layout>

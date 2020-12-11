@@ -1,7 +1,8 @@
 public without sharing class NES_OtherSchoolEnrollmentHelper {
     @AuraEnabled
     public static List<Account> getSchoolsToAttend(String selectedStudentId) {
-    List<Id> schoolsToRemove;
+    List<Id> schoolsToRemove= new List<Id>();
+                List<Account> schoolsToAttend = new List<Account>();
         List<hed__Program_Enrollment__c> studentPEs = [select id, 
                                                        hed__Contact__c,
                                                        hed__Contact__r.Name,
@@ -16,13 +17,17 @@ public without sharing class NES_OtherSchoolEnrollmentHelper {
                                                        hed__Contact__r.Caretaker_Id__r.Account.ShippingState,
                                                        hed__Contact__r.Caretaker_Id__r.Account.name
                                                        from hed__Program_Enrollment__c 
-                                                       where hed__Contact__c=:selectedStudentId ];
+                                                       where hed__Contact__c=:selectedStudentId 
+                                                       order by createddate Desc];
+        if(studentPEs[0].hed__Contact__r.Caretaker_Id__r.Account.ShippingState!=null){
         String CTstate= studentPEs[0].hed__Contact__r.Caretaker_Id__r.Account.ShippingState;
         for(hed__Program_Enrollment__c pe:studentPEs){
+            if(pe.hed__Account__r.ParentId!=null){
             schoolsToRemove.add(pe.hed__Account__r.ParentId);
+            }
         }
-        List<Account> schoolsToAttend= [SELECT id,name,shippingstate from account where id NOT IN :schoolsToRemove and shippingstate=:CTstate and recordtype.name='Educational Institution'];
-        
+        schoolsToAttend= [SELECT id,name,shippingstate from account where id NOT IN :schoolsToRemove and shippingstate=:CTstate and recordtype.name='Educational Institution'];
+        }
         return schoolsToAttend;
     }
 }

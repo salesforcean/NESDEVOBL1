@@ -14,7 +14,7 @@
         <aura:attribute name="selectedStudentName" type="String" />
         <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" /> 
     </aura:method>
-    
+    <lightning:notificationsLibrary aura:id="notifLib"/>
     <aura:if isTrue="{!v.isOtherSchoolEnrollment}">
         
         <!--###### MODAL BOX Start######-->
@@ -28,8 +28,8 @@
                                           variant="bare-inverse"
                                           class="slds-modal__close"/>
                     <!--
-                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Other School Enrollment</h2>
-                -->
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Other School Enrollment</h2>-->
+                    
                 </header> 
                 <!--###### MODAL BOX BODY Part Start######-->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
@@ -46,7 +46,6 @@
                                                 <h4 class="contactName slds-m-bottom_medium"> <b>{!v.selectedStudentName}</b>  
                                                 </h4>
                                             </div>
-                                            
                                         </lightning:layoutItem>
                                     </lightning:layout>
                                 </lightning:layoutItem>
@@ -55,6 +54,7 @@
                     </div>
                     
                     
+                    <br/>
                     <lightning:select aura:id="School" name="School" label="School to Attend"  value="{!v.School}" required="true" onchange ="{!c.schoolSelect}">
                         <option value="">--Select school --</option>
                         <aura:iteration items="{!v.schoolsToAttend}" var="School">
@@ -76,7 +76,16 @@
                         </aura:iteration>
                     </lightning:select><br/>
                     
-                    
+                    <div class="slds-size--2-of-5">
+                    <div class="viewButton slds-p-top_Large">
+                        
+                        <span class="btnblock">
+                            <a href="javascript:void(0)"
+                               class="slds-button slds-button_brand"
+                               onclick="{!c.navigate}">Enroll</a>
+                        </span>
+                    </div>
+                    </div>
                 </div>
                 <!--###### MODAL BOX FOOTER Part Start ######-->
                 <!--

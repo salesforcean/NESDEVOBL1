@@ -243,6 +243,9 @@ width: 190px;
 .THIS .newSchoolButton.tooltip:hover .tooltiptext {
     visibility: visible;
 }
+.THIS .newSchoolButton.tooltip:focus .tooltiptext {
+  visibility: visible;
+}
 
 .THIS .tooltipTrigger {
     display: inline-block;

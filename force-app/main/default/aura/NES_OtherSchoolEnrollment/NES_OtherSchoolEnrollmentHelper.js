@@ -8,7 +8,7 @@
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                alert(JSON.stringify(schoolsToAttend));
+                //alert(JSON.stringify(returnedResponse));
                 if(response.getReturnValue().length > 0){
                     //component.set("v.noSchoolYears", false);
                     component.set("v.schoolsToAttend", returnedResponse);

@@ -33,6 +33,11 @@
     <aura:attribute name="disableGrade" type="Boolean" default="false" />
     <aura:attribute name="valuesselect" type="Boolean" default="false" />
     <aura:attribute name="enrollFlag" type="Boolean" default="false" />
+    <aura:attribute name="reactiveFlag" type="Boolean" default="false" />
+    <aura:attribute name="reEnrollmentMessage" type="Boolean" default="false" />
+    
+           
+
     <!-- add by Maddileti for US # 335371 on 12/04/2020  -->
     <!--  added by Chinnamanaidu Neerasa -->
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
@@ -63,8 +68,8 @@
                     <div class="slds-backdrop slds-backdrop_open"></div>
                 </aura:if>
                 <aura:set attribute="else">
-                    <a href="javascript:void(0)" class="{!v.Type == 'Reactivate' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" label="Reactivate" onclick="{!c.reactivateAction}">Reactivate</a>   
-                    <a href="javascript:void(0)" class="{!v.Type == 'Re-enroll' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" label="Re-Enroll" onclick="{!c.reactivateAction}">Re-Enroll</a>   
+                    <a href="javascript:void(0)" id="reactive" class="{!v.Type == 'Reactivate' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" onclick="{!c.reactivateAction}">Reactivate</a>   
+                    <a href="javascript:void(0)" id="reenroll" class="{!v.Type == 'Re-enroll' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" onclick="{!c.reactivateAction}">Re-Enroll</a>   
                     <aura:if isTrue="{!v.hasError}">
                         <p class="slds-text-color_error">{!v.message}</p>
                     </aura:if>
@@ -117,23 +122,30 @@
                             <option value="{!year.Name}" selected ="{!year.name}">{!year.Name}</option><br/>
                         </aura:iteration>
                     </lightning:select><br/>
+
                     <lightning:select aura:id="Grade" name="grades" label="Requesting grade"  value="{!v.gradeLevel}" required="true" disabled="{!v.disableGrade}">
                         <option value="">-- select One --</option>
                         <aura:iteration items="{!v.gradeLevels}" var="grade">
                             <option value="{!grade.Name}">{!grade.Name}</option><br/>
                         </aura:iteration>
                     </lightning:select>
+                      
                     <br/>
                     
                     <br/><br/>
+                    <aura:if isTrue="{!v.reactiveFlag}">
                     <lightning:button variant="brand" label=" Student Reactivate" onclick="{!c.reReactivate}"/><!--add another button show those as per the button label and call corresponding methods-->
-                    <aura:if isTrue="{v.enrollFlag}">
-                    <lightning:button variant="brand" label="Re-Enroll" onclick="{!c.reReactivate}"/>
+                    </aura:if>
+                     <aura:if isTrue="{!v.enrollFlag}">
+                    <lightning:button variant="brand" label="Re-Enroll" onclick="{!c.reEnrollment}"/>
                      </aura:if>
                     <br/><br/>
            
                     <aura:if isTrue="{!v.isError}">
                         <div><p> * For the current school year, you must request the same grade. If you would like to request a different grade, please contact support.</p></div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.reEnrollmentMessage}">
+                        <div><p> * The system cannot process same year re-enrollment. Please contact support at 1-800-xxx-xxxx to proceed.</p></div>
                     </aura:if>
                     <aura:if isTrue="{!v.isOpen}">
                         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">

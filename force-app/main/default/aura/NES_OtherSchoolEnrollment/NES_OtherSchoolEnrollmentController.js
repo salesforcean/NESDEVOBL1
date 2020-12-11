@@ -7,7 +7,7 @@
             var selectedStudentId = params.selectedStudentId;
             var isOtherSchoolEnrollment = params.isOtherSchoolEnrollment;
             var selectedStudentName = params.selectedStudentName;
-            alert(selectedStudentId + " 888888" + isOtherSchoolEnrollment+'selectedStudentId'+selectedStudentName);
+            //alert(selectedStudentId + " 888888" + isOtherSchoolEnrollment+'selectedStudentId'+selectedStudentName);
             component.set("v.selectedStudentId",selectedStudentId); 
             component.set("v.selectedStudentName",selectedStudentName);
             component.set("v.isOtherSchoolEnrollment","true");
