@@ -32,9 +32,9 @@ trigger NES_EnrollmentDocTrigger on Enrollment_Document__c (before insert, befor
     if(Trigger.isInsert){
         if(Trigger.isBefore)
         {
-          NES_EnrollmentDocHandler.handleBeforeInsert(Trigger.new);
-          
-          }
+           NES_EnrollmentDocHandler.handleBeforeInsert(Trigger.new);
+            
+        }
         if(Trigger.IsAfter){
           // NES_EnrollmentDocHandler.handleAfterInsert(Trigger.new, Trigger.newMap);
            //Swapna:Changed the logic to ensure the business and logic is executed for active students

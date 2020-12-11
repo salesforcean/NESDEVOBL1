@@ -55,9 +55,10 @@ public abstract class NES_EnrollmentReactivationBase {
 
         validateStudPEID(stud_PEID); // validate stud_PEID
         
-        // fetch PE rec
+        // Added Start_Year__r.Current_Year__c for 335376 by Shravani Pendyala
+        // fetch PE rec 
         studPE =
-            [SELECT Id, Name, hed__Contact__r.Name,hed__Account__r.Registration_Start_Date__c, hed__Account__r.OwnerId,
+            [SELECT Id, Start_Year__r.Current_Year__c,hed__Account__r.ParentId, Name, hed__Contact__r.Name,hed__Account__r.Registration_Start_Date__c, hed__Account__r.OwnerId,
                 hed__Account__r.Registration_End_Date__c, hed__Account__r.Confirmation_End_Date__c,hed__Contact__r.AccountId, 
                 AcademicPerformanceEligibility__c, RecordTypeId, RecordType.Name, Status__c, Household_Program_Enrollment__c,
                 (SELECT Id,StageName FROM Opportunities__r)
@@ -106,6 +107,12 @@ public abstract class NES_EnrollmentReactivationBase {
             throw new InvalidParameterValue_Exception(
                 'This Program Enrollment is not eligible for Student ' +  type + ', Id:' 
                     + studPE.Id + '; RecordType:' + studPE.RecordType.Name + ', Expected: Student');
+        } 
+        
+        // Added for 335376 by Shravani Pendyala
+        if (studPE.Start_Year__r.Current_Year__c != true) {
+            throw new InvalidParameterValue_Exception(
+                'This Program Enrollment is not eligible; Start Year is Current Year:' + studPE.Start_Year__r.Current_Year__c + ', Expected: true');
         }
 
         // // move to implementing child class...

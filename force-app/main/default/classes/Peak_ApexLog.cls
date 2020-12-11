@@ -108,7 +108,7 @@ public with sharing class Peak_ApexLog {
         }
         // if the message we're attempting to log is not configured to log
         // for our persona, ignore it
-        if (this.userClassLogLevel < logLevel) {
+                if (this.userClassLogLevel < logLevel) {
             System.debug(INFO_NO_LOG);
             return;
         }

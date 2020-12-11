@@ -32,6 +32,7 @@
     <aura:attribute type="Boolean" name="GradeFlag" default="false" />
     <aura:attribute name="disableGrade" type="Boolean" default="false" />
     <aura:attribute name="valuesselect" type="Boolean" default="false" />
+    <aura:attribute name="enrollFlag" type="Boolean" default="false" />
     <!-- add by Maddileti for US # 335371 on 12/04/2020  -->
     <!--  added by Chinnamanaidu Neerasa -->
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
@@ -62,8 +63,8 @@
                     <div class="slds-backdrop slds-backdrop_open"></div>
                 </aura:if>
                 <aura:set attribute="else">
-                    <a href="javascript:void(0)" class="{!v.Type == 'Reactivate' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" onclick="{!c.reactivateAction}">Reactivate</a>   
-                    <a href="javascript:void(0)" class="{!v.Type == 'Re-enroll' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" onclick="{!c.reEnrollmentAction}">Re-Enroll</a>   
+                    <a href="javascript:void(0)" class="{!v.Type == 'Reactivate' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" label="Reactivate" onclick="{!c.reactivateAction}">Reactivate</a>   
+                    <a href="javascript:void(0)" class="{!v.Type == 'Re-enroll' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" label="Re-Enroll" onclick="{!c.reactivateAction}">Re-Enroll</a>   
                     <aura:if isTrue="{!v.hasError}">
                         <p class="slds-text-color_error">{!v.message}</p>
                     </aura:if>
@@ -125,7 +126,10 @@
                     <br/>
                     
                     <br/><br/>
-                    <lightning:button variant="brand" label=" Student Reactivate" onclick="{!c.reReactivate}"/>
+                    <lightning:button variant="brand" label=" Student Reactivate" onclick="{!c.reReactivate}"/><!--add another button show those as per the button label and call corresponding methods-->
+                    <aura:if isTrue="{v.enrollFlag}">
+                    <lightning:button variant="brand" label="Re-Enroll" onclick="{!c.reReactivate}"/>
+                     </aura:if>
                     <br/><br/>
            
                     <aura:if isTrue="{!v.isError}">

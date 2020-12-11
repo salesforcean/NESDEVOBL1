@@ -692,7 +692,8 @@ public without sharing class NES_DocumentCentralHelper {
         try {
             //Get list of child 'message' OR 'text' enrollment components
             List<Enrollment_Component_Relationship__c> ecRelationships = [
-                SELECT Id, Child_Enrollment_Component__c
+                SELECT Id, Child_Enrollment_Component__c, 
+                       Child_Enrollment_Component__r.Id, Child_Enrollment_Component__r.Component_Message__c  ,Child_Enrollment_Component__r.Order__c
                 FROM Enrollment_Component_Relationship__c
                 WHERE Parent_Enrollment_Component__c = :enrollmentComponentId
                 AND Child_Enrollment_Component__r.RecordTypeId = :messageRecordTypeId
@@ -702,17 +703,23 @@ public without sharing class NES_DocumentCentralHelper {
             //Add all message Ids to a list
             for (Enrollment_Component_Relationship__c rel : ecRelationships) {
                 messageIds.add(rel.Child_Enrollment_Component__c);
+                enrollmentComponentsList.add(new Enrollment_Component__c(id = rel.Child_Enrollment_Component__r.Id, 
+                                                                        Component_Message__c = rel.Child_Enrollment_Component__r.Component_Message__c,
+                                                                        Order__c = rel.Child_Enrollment_Component__r.Order__c));
+
+                peakResponse.results = enrollmentComponentsList;
             }
             
+            //MM 12/9/2020 Moved this code into the for loop above so we could maintain the order from the ECR and not from the EC.
             //Query all the messages to return whole object
-            if (!Peak_Utils.isNullOrEmpty(messageIds)) {
+            /*if (!Peak_Utils.isNullOrEmpty(messageIds)) {
                 enrollmentComponentsList = [
                     SELECT Id, Component_Message__c, Order__c
                     FROM Enrollment_Component__c
-                    WHERE Id IN :messageIds
+                    WHERE Id IN :messageIds 
                 ];
                 peakResponse.results = enrollmentComponentsList;
-            }
+            } */
             
         } catch(Exception e) {
             peakResponse.success = FALSE;

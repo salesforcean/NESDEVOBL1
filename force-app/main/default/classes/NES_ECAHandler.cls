@@ -84,7 +84,6 @@ public class NES_ECAHandler {
         List<Enrollment_Component_Affiliation__c> affiliations = [
                                                                   // added 123972- ECA's EC record type and record name
                                                                   SELECT Id, Status__c, Order__c, Deferral_Date__c, Enrollment_Component__r.Component_Type__c, Enrollment_Component__r.RecordType.Name,
-
                                                                   Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c,Program_Enrollment__r.Status__c, Program_Enrollment__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.id, Program_Enrollment__r.WaitlistFlag__c, 
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.id, Enrollment_Component__r.Name,
@@ -112,7 +111,6 @@ public class NES_ECAHandler {
             //updated for 122106, added oldMap check for ECA.Status = 'Not Applicable'
             //MM 8/26/2020  Added check to only include ECA for PEs in the old ECA process.
             //updated for 227705, added oldMap check for ECA.Status = 'Deferred'
-
             /*if (eca.Program_Enrollment__r.hed__Account__r.Use_Updated_ECA_Process__c == false && (oldMap.get(eca.Id).Status__c == 'Complete' || 
                (oldMap.get(eca.Id).Status__c == 'Not Applicable' || oldMap.get(eca.Id).Status__c == 'Deferred') && 
                oldMap.get(eca.Id).Status__c != eca.Status__c && (eca.Status__c == 'Not Started' || eca.Status__c == 'In Progress'))){
@@ -128,7 +126,6 @@ public class NES_ECAHandler {
                oldMap.get(eca.Id).Status__c != eca.Status__c && (eca.Status__c == 'Not Started' || eca.Status__c == 'In Progress'))){
                    system.debug('Old status********'+oldMap.get(eca.Id).Status__c);
                    system.debug('New status********'+eca.Status__c);
-
                    statusChangedECAs.add(eca);
             }
             

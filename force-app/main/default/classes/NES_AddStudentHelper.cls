@@ -424,7 +424,7 @@ public without sharing class NES_AddStudentHelper {
                 // Deserialize the JSON
                 List<NES_EvaluateUtil.Question> questionDataList = (List<NES_EvaluateUtil.Question>) JSON.deserialize(questionJSON, List<NES_EvaluateUtil.Question>.class);
                 NES_EvaluateUtil.NewStudentData studentData = (NES_EvaluateUtil.NewStudentData) JSON.deserialize(studentJSON, NES_EvaluateUtil.NewStudentData.class);
-
+                 
                 //Insert Contact for the student
                 String firstName = String.isNotBlank(studentData.firstName) ? studentData.firstName : '';
                 String middleName = String.isNotBlank(studentData.middleName) ? studentData.middleName : '';//added for US116612
@@ -450,7 +450,6 @@ public without sharing class NES_AddStudentHelper {
                 Id academicProgramRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
                 Account academicProgram = [
                         SELECT Id, ParentId, RecordTypeId, School_Year__c, OwnerId, Confirmation_End_Date__c, Use_Updated_ECA_Process__c,
-
                                Too_Young_Cutoff__c, Too_Old_Cutoff__c,MaxSpecialEdBirthdate__c
                         FROM Account
                         WHERE ParentId = :studentData.SelectedSchoolId
@@ -725,7 +724,7 @@ public without sharing class NES_AddStudentHelper {
                        i++;
                        insert nonNullInsertingAffiliations;                
                        break;//Breaking the loop as the DML executed and no exceptions
-                }
+                    }
                     catch(Exception e){
                         logger.logException('Retrying a timed out insert', e);
                         logger.saveLogs();                        
@@ -749,7 +748,6 @@ public without sharing class NES_AddStudentHelper {
 
                 //With the ECA rewrite, we changed the hard stop process to only look at dates from the Academic program.
                 Boolean shouldHardStop = false;
-
 				//Replaced with MaxSpecialEdBirthdate__c instead of Too_Old_Cutoff__c in below if condition for 335863
                 if (birthdate < academicProgram.MaxSpecialEdBirthdate__c || birthdate > academicProgram.Too_Young_Cutoff__c)
                     shouldHardStop = true;

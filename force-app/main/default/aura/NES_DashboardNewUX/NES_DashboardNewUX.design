@@ -1,0 +1,10 @@
+<!--
+ - Created by karolbrennan on 11/21/18.
+ -->
+
+<design:component label="NES Dashboard New UX">
+    <design:attribute name="heading" label="Page Heading" />
+    <design:attribute name="emailHeading" label="Email Confirmation Heading" />
+    <design:attribute name="emailSubheading" label="Email Confirmation Sub-Heading" />
+    <design:attribute name="emailBodytext" label="Email Confirmation Body Text" />
+</design:component>

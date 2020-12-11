@@ -5,10 +5,10 @@
 	 * @param fields - pre-chat fields object with attributes needed to render
 	 */
     renderFields: function (helper, fields) {
-       	//keep track of school code during the loop
+        //keep track of school code during the loop
         //because some school codes require additional fields
         var schoolCode;
-        
+
         // default to false
         window.zipCodeLookupRequired = false;
 
@@ -41,12 +41,12 @@
 
             // Set general attributes
             input.className = field.className;
-            input.placeholder = field.label + (field.required ? " *" : "");            
-            
+            input.placeholder = field.label + (field.required ? " *" : "");
+
             // set value if not null
             if (field.value != null) {
                 input.value = field.value;
-                if (field.name === "School_ID_Location__c") {                    
+                if (field.name === "School_ID_Location__c") {
                     schoolCode = field.value;
                 }
             }
@@ -144,7 +144,7 @@
     performZipCodeLookup: function (helper, startChatMethod, preChatInfo) {
         if (window.$) {
             const zipCodeValue = $("input[name='Chat_Zip_Code__c']").val();
-            
+
             if (zipCodeValue.length === 5) {
                 const parameters = {
                     zipCode: zipCodeValue,
@@ -159,6 +159,7 @@
 
                 $.getJSON("https://" + window.zipCodeLookupDomain + "/API/FindByZip/locations/getLocationByZipCode", parameters)
                     .done(function (data) {
+																  
                         const schoolJson = JSON.parse(data);
                         const $schoolIdHiddenField = $("input[name='School_ID_Location__c']");
                         if (schoolJson && schoolJson.idLocation) {
@@ -166,6 +167,7 @@
                             // replace school id with value returned from API unless it's iNaCA
                             idLocation === iNaCaSchoolId ? $schoolIdHiddenField.val("") : $schoolIdHiddenField.val(idLocation);
                             // form values have changed so regenerate prechatInfo object
+																						
                             preChatInfo = helper.createStartChatDataArray();
                         } else {
                             // invalid zip or error on API call
@@ -186,15 +188,19 @@
         }
     },
     /**
-    * Gets HTML input type of field based on criteria
-    *
-    * @param field - form field object
-    * @param schoolCode - school code where chat was initiated
-    */
+     * Gets HTML input type of field based on criteria
+     *
+     * @param {string} field Form field object
+     * @param {number} schoolCode School code where chat was initiated
+     */
     getInputType: function (field, schoolCode) {
-        const hiddenFields = ["School ID Location", "Mktg_LeadSourceCode", "Chat Zip Code", "Channel Type", "Lead Source", "Company"];
+        const hiddenFields = [
+            "School ID Location", "Mktg_LeadSourceCode", "Chat Zip Code", 
+            "Company", "Channel Type", "Lead Source",
+            "GA Click ID", "GA Client ID", "GA Device", "GA Exp ID", "GA Medium", "GA Source"
+        ];
         const schoolCodesToDisplayZipCode = [91, 4950];
-        
+
         if (field.type === "inputEmail") {
             return "email";// return email for email inputs
         } else if (field.type === "inputPhone") {
@@ -207,8 +213,9 @@
             return "text";
         }
 
-        if (hiddenFields.includes(field.label))
+        if (hiddenFields.includes(field.label)) {
             return "hidden";
+        }
 
         return "text";
     },

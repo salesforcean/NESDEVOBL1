@@ -1,0 +1,96 @@
+<!--
+- Created by Shravani Pendyala on 08/12/20. 
+-->
+
+<aura:component description="NES Other School Enrollment" implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" extends="c:Peak_Base" controller="NES_OtherSchoolEnrollmentHelper">
+    
+    <aura:attribute name="schoolsToAttend" type="Object" />
+    <aura:attribute name="selectedStudentId" type="String" />
+    <aura:attribute name="selectedStudentName" type="String" />
+    <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" default="false" />
+    
+    <aura:method name="getMessage" action="{!c.doInit}" access="public">
+        <aura:attribute name="selectedStudentId" type="String" /> 
+        <aura:attribute name="selectedStudentName" type="String" />
+        <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" /> 
+    </aura:method>
+    
+    <aura:if isTrue="{!v.isOtherSchoolEnrollment}">
+        
+        <!--###### MODAL BOX Start######-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- ###### MODAL BOX HEADER Start ######-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.closeOtherSchoolEnrollmentModel }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <!--
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Other School Enrollment</h2>
+                -->
+                </header> 
+                <!--###### MODAL BOX BODY Part Start######-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <!--<p><b>Harry Potter
+                            </b>
+                        </p>-->
+                    <div class="slds-col slds-size_1-of-2 slds-max-small-size_1-of-1">  
+                        <div class="c-container">
+                            <lightning:layout verticalAlign="stretch" multipleRows="true"  class="complete">
+                                <lightning:layoutItem flexibility="auto" size="12">
+                                    <lightning:layout multipleRows="true">
+                                        <lightning:layoutItem size="11" padding="around-small" class="contactNameBlock">
+                                            <div>
+                                                <h4 class="contactName slds-m-bottom_medium"> <b>{!v.selectedStudentName}</b>  
+                                                </h4>
+                                            </div>
+                                            
+                                        </lightning:layoutItem>
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </div>
+                    </div>
+                    
+                    
+                    <lightning:select aura:id="School" name="School" label="School to Attend"  value="{!v.School}" required="true" onchange ="{!c.schoolSelect}">
+                        <option value="">--Select school --</option>
+                        <aura:iteration items="{!v.schoolsToAttend}" var="School">
+                            <option value="{!School.Name}" selected ="{!School.name}">{!School.Name}</option><br/>
+                        </aura:iteration>
+                    </lightning:select><br/>
+                    
+                    <lightning:select aura:id="Year" name="schoolYear" label="School Year"  value="{!v.schoolYear}" required="true" onchange ="{!c.schoolYearSelect}">
+                        <option value="">--Select school year --</option>
+                        <aura:iteration items="{!v.schoolYears}" var="year">
+                            <option value="{!year.Name}" selected ="{!year.name}">{!year.Name}</option><br/>
+                        </aura:iteration>
+                    </lightning:select><br/>
+                    
+                    <lightning:select aura:id="grade" name="grade" label="Requesting grade"  value="{!v.grade}" required="true" onchange ="{!c.gradeSelect}">
+                        <option value="">--select a grade --</option>
+                        <aura:iteration items="{!v.schoolYears}" var="year">
+                            <option value="{!year.Name}" selected ="{!year.name}">{!year.Name}</option><br/>
+                        </aura:iteration>
+                    </lightning:select><br/>
+                    
+                    
+                </div>
+                <!--###### MODAL BOX FOOTER Part Start ######-->
+                <!--
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeOtherSchoolEnrollmentModel }"/>
+                    </footer>-->
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        <!--###### MODAL BOX Part END Here ######-->
+        
+    </aura:if>
+    
+</aura:component>

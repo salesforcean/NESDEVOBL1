@@ -8,12 +8,10 @@
 ({
 
     doInit: function doInit(cmp, evt, helper) {
-       
         helper.getFiles(cmp);
     },
 
     handleFileClick: function handleFileClick(cmp, event, helper) {
-        
         helper.showPreview(event);
     },
     getHeight: function getHeight(component, event, helper) {

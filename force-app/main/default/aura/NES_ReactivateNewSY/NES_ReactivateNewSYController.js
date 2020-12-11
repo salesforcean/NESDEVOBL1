@@ -8,8 +8,7 @@
         component.set("v.loaded", false);
         helper.handleContinue(component, event, helper);
     },
-    // called on Year selection
-
+    // called on Year selection 
     onYearChange : function(component, event, helper) {
         if(component.get("v.schoolYear")!=null && component.get("v.schoolYear")!=''){
         helper.getGrades(component, event, helper,component.get("v.schoolYear"));

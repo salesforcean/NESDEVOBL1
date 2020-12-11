@@ -62,4 +62,16 @@ public class CS_SSTFPublicGroupPermissionTest {
             test.stopTest();
         }
     }
+    Static testMethod void SSTFpermissionPGBatchScheduleTest(){
+         
+            test.startTest();
+            
+            String chron = '0 0 23 * * ?';
+            CS_SSTF_PUBLICGRPUSR_KM_BatchSchedule sch = new CS_SSTF_PUBLICGRPUSR_KM_BatchSchedule();   
+            String jobid = system.schedule('Schoolstaffschedule', chron, sch);
+            CronTrigger ct =[Select id,CronJobDetailId,CronExpression,TimesTriggered  from CronTrigger where Id=:jobId  Limit 1];
+            System.assertEquals(chron, ct.CronExpression);
+            System.assertEquals(0, ct.TimesTriggered);
+            test.stopTest();
+    }
 }

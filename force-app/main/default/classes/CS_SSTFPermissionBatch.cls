@@ -18,7 +18,6 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
         String batchQueryStr = 'SELECT Id, Name, AccountId,Account.Name, Commuity_User__c,Commuity_User__r.Profile.Name FROM Contact WHERE Recordtype.DeveloperName=:schoolstaffRec  AND Commuity_User__c !=null AND LastModifiedDate >= :dateTimeInterval';         
 
 
-
         //System.debug('TEST REC'+batchQueryStr);
         return Database.getQueryLocator(batchQueryStr);
     }
@@ -28,7 +27,6 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
         List<PermissionSetAssignment> permissionSetList = new List<PermissionSetAssignment>();
         Set<String> permissionSetNames = new Set<String>();
 
-
         Set<PermissionSetAssignment> deletepermSet = new Set<PermissionSetAssignment>();
         List<PermissionSetAssignment> deletepermList = new List<PermissionSetAssignment>();
         Map<String,Id> permissionSetMap = new Map<String,Id>();
@@ -36,7 +34,6 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
         Map<String,String> permissionSetAssignmentMap = new Map<String,String>();
         Map<String,Educational_Institution_SSTF_Mapping__mdt> schooltoMdtMap = new Map<String,Educational_Institution_SSTF_Mapping__mdt>();
         Set<String> uniqueCommuserSet = new Set<String>();
-        
 
         Set<String> profileName = new set<String>();  
          //Looping Metadata and capturing Profile Names
@@ -53,7 +50,6 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
         //fetching all Metadata from org
         List<Educational_Institution_SSTF_Mapping__mdt> EISSTFMappingList =  [SELECT MasterLabel,
                                                                         Permission_Set_Name__c,
-
                                                                         School__c                                                                     
                                                                         FROM Educational_Institution_SSTF_Mapping__mdt];
         //looping metadata and capturing permissionSet names
@@ -78,7 +74,6 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
                                                   AND PermissionSetId IN (SELECT Id  FROM PermissionSet WHERE IsOwnedByProfile =false)])                                                
         {
 
-
             
             permissionSetAssignmentMap.put(psa.AssigneeId,psa.PermissionSetId);
             permissionSetAssignetoIdMap.put(psa.AssigneeId,psa);
@@ -89,7 +84,6 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
           for(Contact con: ContactList) 
           {
               //System.debug('Printing SchooltoMdtMap'+schooltoMdtMap.get(con.account.name));
-
               if(con.AccountId !=null && schooltoMdtMap.get(con.account.name) !=null && uniqueCommuserSet.contains(con.Commuity_User__c))
               {
 
@@ -98,7 +92,6 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
                       if(permissionSetAssignmentMap.get(con.Commuity_User__c)!=null && permissionSetAssignmentMap.get(con.Commuity_User__c)!=permissionSetMap.get(schooltoMdtMap.get(con.account.name).Permission_Set_Name__c)){
                           //System.debug('Lets delete this permission-->'+permissionSetAssignetoIdMap.get(con.Commuity_User__c));
 
-
                           deletepermSet.add(permissionSetAssignetoIdMap.get(con.Commuity_User__c));
                       }
                       // 
@@ -106,14 +99,12 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
                            //If there is no realignment to different school and if there is already existing permissionset for the School staff then do
                            //nothing 
 
-
                           // System.debug('Conditions are matched so do nothing-->'+con.Id+'==comm user-->'+con.Commuity_User__c);
                        }else{    
                       PermissionSetAssignment psa = new PermissionSetAssignment (PermissionSetId =permissionSetMap.get(schooltoMdtMap.get(con.account.name).Permission_Set_Name__c) ,
                                                                                            AssigneeId = con.Commuity_User__c);
                       permissionSetList.add(psa);
                        }
-
 
                     // }
               }
@@ -126,7 +117,6 @@ global class CS_SSTFPermissionBatch implements  Database.Batchable<sObject>{
             Database.insert(permissionSetList,false);
         }
        
-
 
         if(deletepermSet !=null && deletepermSet.size() > 0){
             deletepermList.addAll(deletepermSet);

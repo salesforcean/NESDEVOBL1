@@ -49,7 +49,7 @@ public with sharing class NES_AnnualStudentInfoHandler {
                 List<String> changedFields = new List<String> ();
                 for (String str : mapFields.keySet()) {
                     try {
-                        if (newInfo.get(str) != null) {
+                      //  if (newInfo.get(str) != null) {
                             changedFields.add(str);
                             
                             //These are for the new ECA processing model.  
@@ -58,14 +58,19 @@ public with sharing class NES_AnnualStudentInfoHandler {
                             newFieldUpdate.objectAndFieldName = 'Annual_Student_Information__c.' + str;
                             newFieldUpdate.newValue = newInfo.get(str);
                             newFieldUpdate.schoolYear = newInfo.School_Year__c;
+                            newFieldUpdate.studentOrHousehold = 'Student';
+
                             fieldUpdateList.add(newFieldUpdate);
-                        }
+                     //   }
                     } catch(Exception e) {
                         System.debug('Error: ' + e);
                         logger.logException('handleAfterInsert', e);
                         logger.saveLogs();
                     }
                 }
+
+                System.debug('fieldUpdateList:' + fieldUpdateList);
+
                 changedFieldsMap.put(newInfo.Id, changedFields);
                 List<Id> changedObjects = new List<Id> ();
                 if (peToObjectMap.keySet().contains(newInfo.Program_Enrollment__c)) {
@@ -151,7 +156,10 @@ public with sharing class NES_AnnualStudentInfoHandler {
                             newFieldUpdate.objectAndFieldName = 'Annual_Student_Information__c.' + str;
                             newFieldUpdate.newValue =  newInfo.get(str);
                             newFieldUpdate.schoolYear = newInfo.School_Year__c;
+                            newFieldUpdate.studentOrHousehold = 'Student';
                             fieldUpdateList.add(newFieldUpdate);
+
+                            //System.debug('newFieldUpdate:' + newFieldUpdate);
                         }
                     } catch(Exception e) {
                         System.debug('Error: ' + e);

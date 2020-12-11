@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION">
+
+    <aura:attribute name="newStudentData" type="Object" />
+
+</aura:event>

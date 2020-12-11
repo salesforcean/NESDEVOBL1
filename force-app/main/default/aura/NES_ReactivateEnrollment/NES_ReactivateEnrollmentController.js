@@ -70,7 +70,11 @@
     // Add by Maddileti for US #335371
     reactivateAction: function (component, event, helper)
     {
-        
+           var button=event.getSource().get('v.label');
+        console.log('Button Clicked :'+button);
+    /*    if(button='Re-Enroll'){
+            component.set('v.enrollFlag',true);
+        }*/
         var schoolYeara=component.get('v.schoolYeara');
         console.log('schoolYeara:'+schoolYeara);
         
@@ -97,13 +101,14 @@
         console.log('studentGradeLevel=='+studentGradeLevel);
         component.set('v.gradeLevelId',studentGradeLevel);
         component.set('v.isOpenReactivation', true);
-        
+                  //  component.set('v.enrollFlag',true);
+
         var year=component.find('Year');
         year.set('v.value',component.get('v.schoolYeara'));
        // alert(component.get('v.schoolYeara'));
         var grade=component.find('Grade');
         grade.set('v.value',component.get('v.gradeLevelId'));
-        
+
         
     },
     
@@ -179,7 +184,8 @@
         helper.getNextYearAvailability(component, event, helper);          
     },
     schoolSelect: function (component,event,helper){
-       
+       //check label and year from dash board and compare selected year if re-enroll show message
+       //grade drop down should be disabled
         var newSchoolYear=component.find('Year').get('v.value');
         component.set("v.gradeLevels",[]);
         helper.getGrades(component, event, helper,newSchoolYear);

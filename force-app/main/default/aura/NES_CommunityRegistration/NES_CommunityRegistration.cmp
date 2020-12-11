@@ -12,7 +12,7 @@
                 extends="c:Peak_Base"
                 implements="forceCommunity:availableForAllPageTypes"
                 controller="NES_RegistrationController">
-
+    
     <!-- Component initialization -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:attribute name="isInit" type="Boolean" default="false" />
@@ -29,31 +29,30 @@
     <aura:attribute name="step3Heading" type="String" default="Now, confirm your email address." />
     <aura:attribute name="step3Subheading" type="String" default="" />
     <aura:attribute name="step3BodyText" type="String" default="Click the 'Confirm' button on the email we just sent. This helps to ensure the security of your personal information and enables password resets." />
-
+    
     <!-- Loading indicator -->
     <aura:attribute name="loading" type="Boolean" default="false" />
-
+    
     <!-- Current step indicator -->
     <aura:attribute name="currentStep" type="String" default="1" />
-
+    
     <!-- Messages - shows on success/failure to create user -->
     <aura:attribute name="creationMessage" type="String" default="" />
     <aura:attribute name="errorMessage" type="String" default="" />
-
+    
     <!-- FormData - holds all user input -->
     <aura:attribute name="formData" type="Object" />
     <aura:attribute name="stateOptions" type="List" default="[]"/>
     <aura:attribute name="phoneTypeOptions" type="List" default="[]"/>
     <aura:attribute name="suffixOptions" type="List" default="[]"/>
-
+    
     <!-- Step completion indicators -->
     <aura:attribute name="step1Complete" type="Boolean" default="false" />
     <aura:attribute name="step2Complete" type="Boolean" default="false" />
-
+     
     <!-- Show password helper pop up-->
     <aura:attribute name="showPasswordPopup" type="Boolean" default="false" />
-	       
-
+    
     <!--  added for the US166467 : Jagadeesh -->
     <aura:attribute name="checkUserFlag" type = "Boolean" default="true"/>
     <aura:attribute name="checkingFlag" type = "Boolean" default="false"/>
@@ -68,17 +67,17 @@
     <aura:registerEvent name="handleStep" type="c:NES_RegistrationStepEvent" />
     <!-- This event is what allows us to display the sign in link on the first step of the registration page within the community theme -->
     <aura:registerEvent name="detectRegistrationPage" type="c:NES_DetectRegistrationPage" />
- 
+    
     <!-- Component Body -->
     <div>
-       
+        
         <!-- Loading indicator -->
         <aura:if isTrue="{!v.loading}">
             <lightning:spinner variant="brand" size="medium" alternativeText="Loading..." />
         </aura:if>
-
+        
         <aura:if isTrue="{!v.isInit}">
-<!--
+            <!--
             <div class="slds-progress registration">
                 <ol class="slds-progress__list">
                     <li class="{!v.currentStep > '1' ? 'slds-is-completed slds-progress__item' : v.currentStep == '1' ? 'slds-is-active slds-progress__item' : 'slds-progress__item'}">
@@ -114,190 +113,190 @@
             <!-- Registration Form -->
             <lightning:layout multipleRows="true" horizontalAlign="center">
                 <lightning:layoutItem size="12">
-
-                    <!-- <form>-->
-
-                        <!-- Step 1: Get Started -->
-			
-                        <aura:if isTrue="{!v.currentStep == '1'}">
-                <lightning:layoutItem size="12">
-
-                                <aura:if isTrue="{!v.step1Heading != null}">
-                                    <h1 class="slds-m-bottom_small">{!v.step1Heading}</h1>
-                                </aura:if>
-                                <aura:if isTrue="{!v.step1Subheading != null}">
-                                    <h2>{!v.step1Subheading}</h2>
-                                </aura:if>
-                                <aura:if isTrue="{!v.step1BodyText != null}">
-                                    <p class="small-text">{!v.step1BodyText}</p>
-                                </aura:if>
-                                <aura:if isTrue="{!v.disclaimer != null}">
-                                    <p class="small-text">{!v.disclaimer}</p>
-                                </aura:if>
-
                     
-								<lightning:layout multipleRows="true">
-									<lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="3">
-										<lightning:input type="text" 
-														 name="fName"
-														 label="Parent/Legal Guardian First Name"
-														 maxlength="40"
-														 value="{!v.formData.fName}"
-														 required="true"
-                                                         
-														 onchange="{!c.handleInput}" />
-									</lightning:layoutItem>
-
-									<lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="2">
-										<lightning:input type="text"
-														 name="mName"
-														 label="Middle"
-														 placeholder="(Optional)"
-														 maxlength="40"
-														 value="{!v.formData.mName}"
-														 required="false"
-														 onchange="{!c.handleInput}" />
-									</lightning:layoutItem>
-									<lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="3">
-										<lightning:input type="text"
-														 name="lName"
-														 label="Last"
-														 maxlength="40"
-														 value="{!v.formData.lName}"
-														 required="true"
-                                                        
-														 onchange="{!c.handleInput}" />
-									</lightning:layoutItem>
-									<lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="2">
-										<lightning:select aura:id="field" name="suffix" label="Suffix" value="{!v.formData.suffix}" required="false" onchange="{!c.handleInput}" >
-											<option value="">--None--</option>
-											<aura:iteration items="{!v.suffixOptions}" var="s" >
-												<option value="{!s}" >{!s}</option>
-											</aura:iteration>
-										</lightning:select>
-									</lightning:layoutItem>
-									<lightning:layoutItem size="12" padding="horizontal-small">
-										<div >Please enter your legal name as it appears in legal documents.
-										</div>
-									</lightning:layoutItem>
-								</lightning:layout>
-
-								<lightning:layout class="slds-m-bottom_xx-small" multipleRows="true">
-									<lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="2">
-		  	        					<lightning:input pattern="[0-9]{5}" aura:id="field" label="Zip" name="postalCode" value="{!v.formData.postalCode}" required="true" onchange="{!c.handleInput}"/>
-									</lightning:layoutItem>
-									<lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="4">
-										<lightning:select aura:id="field" name="accountState" label="State" value="{!v.formData.stateCode}" required="true" onchange="{!c.handleInput}" >
-											<option value="">--None--</option>
-											<aura:iteration items="{!v.stateOptions}" var="s" >
-												<option value="{!s}" >{!s}</option>
-											</aura:iteration>
-										</lightning:select>
-									</lightning:layoutItem>
-
-								</lightning:layout>
-
-								<lightning:layout class="slds-m-bottom_small">
-									<lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="6">
-										<!-- //2019-09-11 modified for bug #106030 (Maddileti Boya) Email length changed to 60  -->
-
-										<lightning:input type="email"
-														 name="email"
-														 label="Email"
-														 maxlength="60"
-														 value="{!v.formData.email}"
-														 placeholder="email@domain.com"
-														 required="true"
-														 onchange="{!c.handleInput}" />
-									</lightning:layoutItem>
-								</lightning:layout>  
-                    <!-- Swapna: US 124685 -->
-								<lightning:layout >
-									<lightning:layoutItem size="12" padding="horizontal-small">
-										<p>
-                                            By sharing your personal email address with us, you are consenting to Connections Academy teachers and school staff sending you communications about your student and their schooling. To revoke this access, please call {!$Label.c.NES_Email_Ph}.
-										</p>
-
-									</lightning:layoutItem>
-								</lightning:layout>
-
-	        					
-								<lightning:layout class="slds-m-bottom_small" multipleRows="true">
-									<lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="2">
-										<lightning:select aura:id="field" name="phoneType" label="Phone" value="{!v.formData.phoneType}" required="true" onchange="{!c.handleInput}" >
-											<option value="">--None--</option>
-											<aura:iteration items="{!v.phoneTypeOptions}" var="s">
-												<option value="{!s}" >{!s}</option>
-											</aura:iteration>
-										</lightning:select>
-									</lightning:layoutItem>
-									<lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="4">
-										<lightning:input type="tel" label="" name="phoneNumber" placeholder="xxx-xxx-xxxx" value="{!v.formData.phoneNumber}" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}|[0-9]{10}"  onchange="{!c.handleInput}"/>
-									</lightning:layoutItem>
-								</lightning:layout>
-
-								<lightning:layout >
-									<lightning:layoutItem size="12" padding="horizontal-small">
-										<lightning:input type="checkbox" name="SMSOptIn" label="Sign up for text message alerts"  aura:id="SMSOptIn" class="slds-p-vertical_small" checked="{!v.formData.SMSOptIn}" />
-										<p>
-                                            By checking this box, I consent to receiving important information regarding my student's enrollment via text or SMS messages at the mobile phone number I provided.  Such calls or texts may be placed using automatic dialing equipment.  Message and data rates may apply.  Approx 4 msg/month. See our <a HRef="https://www.connectionsacademy.com/terms-of-use" target="_blank">Terms of Use</a> and  <a HRef="https://www.connectionsacademy.com/privacy-policy" target="_blank">Privacy Policy</a> for more information.  I may opt out of these messages at any time by replying STOP to any message. Text HELP for help.
-										</p>
-
-									</lightning:layoutItem>
-								</lightning:layout>
-
-
-                                <aura:if isTrue="{!v.formData.emailExists}">
+                    <!-- <form>-->
+                    
+                    <!-- Step 1: Get Started -->
+                    
+                    <aura:if isTrue="{!v.currentStep == '1'}">
+                        <lightning:layoutItem size="12">
+                            
+                            <aura:if isTrue="{!v.step1Heading != null}">
+                                <h1 class="slds-m-bottom_small">{!v.step1Heading}</h1>
+                            </aura:if>
+                            <aura:if isTrue="{!v.step1Subheading != null}">
+                                <h2>{!v.step1Subheading}</h2>
+                            </aura:if>
+                            <aura:if isTrue="{!v.step1BodyText != null}">
+                                <p class="small-text">{!v.step1BodyText}</p>
+                            </aura:if>
+                            <aura:if isTrue="{!v.disclaimer != null}">
+                                <p class="small-text">{!v.disclaimer}</p>
+                            </aura:if>
+                            
+                            
+                            <lightning:layout multipleRows="true">
+                                <lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="3">
+                                    <lightning:input type="text" 
+                                                     name="fName"
+                                                     label="Parent/Legal Guardian First Name"
+                                                     maxlength="40"
+                                                     value="{!v.formData.fName}"
+                                                     required="true"
+                                                     
+                                                     onchange="{!c.handleInput}" />
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="2">
+                                    <lightning:input type="text"
+                                                     name="mName"
+                                                     label="Middle"
+                                                     placeholder="(Optional)"
+                                                     maxlength="40"
+                                                     value="{!v.formData.mName}"
+                                                     required="false"
+                                                     onchange="{!c.handleInput}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="3">
+                                    <lightning:input type="text"
+                                                     name="lName"
+                                                     label="Last"
+                                                     maxlength="40"
+                                                     value="{!v.formData.lName}"
+                                                     required="true"
+                                                     
+                                                     onchange="{!c.handleInput}" />
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="2">
+                                    <lightning:select aura:id="field" name="suffix" label="Suffix" value="{!v.formData.suffix}" required="false" onchange="{!c.handleInput}" >
+                                        <option value="">--None--</option>
+                                        <aura:iteration items="{!v.suffixOptions}" var="s" >
+                                            <option value="{!s}" >{!s}</option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem size="12" padding="horizontal-small">
+                                    <div >Please enter your legal name as it appears in legal documents.
+                                    </div>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <lightning:layout class="slds-m-bottom_xx-small" multipleRows="true">
+                                <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="2">
+                                    <lightning:input pattern="[0-9]{5}" aura:id="field" label="Zip" name="postalCode" value="{!v.formData.postalCode}" required="true" onchange="{!c.handleInput}"/>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="4">
+                                    <lightning:select aura:id="field" name="accountState" label="State" value="{!v.formData.stateCode}" required="true" onchange="{!c.handleInput}" >
+                                        <option value="">--None--</option>
+                                        <aura:iteration items="{!v.stateOptions}" var="s" >
+                                            <option value="{!s}" >{!s}</option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </lightning:layoutItem>
+                                
+                            </lightning:layout>
+                            
+                            <lightning:layout class="slds-m-bottom_small">
+                                <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="6">
+                                    <!-- //2019-09-11 modified for bug #106030 (Maddileti Boya) Email length changed to 60  -->
+                                    
+                                    <lightning:input type="email"
+                                                     name="email"
+                                                     label="Email"
+                                                     maxlength="60"
+                                                     value="{!v.formData.email}"
+                                                     placeholder="email@domain.com"
+                                                     required="true"
+                                                     onchange="{!c.handleInput}" />
+                                </lightning:layoutItem>
+                            </lightning:layout>  
+                            <!-- Swapna: US 124685 -->
+                            <lightning:layout >
+                                <lightning:layoutItem size="12" padding="horizontal-small">
                                     <p>
-                                        It looks like you've already registered with that email address. Please
-                                        <lightning:button class="small-btn" variant="brand"
-                                                          onclick="{!c.goToURL}"
-                                                          label="Sign In"/>
+                                        By sharing your personal email address with us, you are consenting to Connections Academy teachers and school staff sending you communications about your student and their schooling. To revoke this access, please call {!$Label.c.NES_Email_Ph}.
                                     </p>
-                                    <p class="small-text">
-                                        For further assistance please <a href="javascript:void(0)" data-link="/tickets" onclick="{!c.goToURL}">contact us.</a>
+                                    
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            
+                            <lightning:layout class="slds-m-bottom_small" multipleRows="true">
+                                <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="2">
+                                    <lightning:select aura:id="field" name="phoneType" label="Phone" value="{!v.formData.phoneType}" required="true" onchange="{!c.handleInput}" >
+                                        <option value="">--None--</option>
+                                        <aura:iteration items="{!v.phoneTypeOptions}" var="s">
+                                            <option value="{!s}" >{!s}</option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="4">
+                                    <lightning:input type="tel" label="" name="phoneNumber" placeholder="xxx-xxx-xxxx" value="{!v.formData.phoneNumber}" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}|[0-9]{10}"  onchange="{!c.handleInput}"/>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            <lightning:layout >
+                                <lightning:layoutItem size="12" padding="horizontal-small">
+                                    <lightning:input type="checkbox" name="SMSOptIn" label="Sign up for text message alerts"  aura:id="SMSOptIn" class="slds-p-vertical_small" checked="{!v.formData.SMSOptIn}" />
+                                    <p>
+                                        By checking this box, I consent to receiving important information regarding my student's enrollment via text or SMS messages at the mobile phone number I provided.  Such calls or texts may be placed using automatic dialing equipment.  Message and data rates may apply.  Approx 4 msg/month. See our <a HRef="https://www.connectionsacademy.com/terms-of-use" target="_blank">Terms of Use</a> and  <a HRef="https://www.connectionsacademy.com/privacy-policy" target="_blank">Privacy Policy</a> for more information.  I may opt out of these messages at any time by replying STOP to any message. Text HELP for help.
                                     </p>
-                                </aura:if>
-
-                                <p class="slds-text-align_center">
-                                    <lightning:button class="btn-next"
-                                                      disabled="{!!v.step1Complete}"
-                                                      variant="brand"
-                                                      label="Continue Registration"
-                                                      onclick="{!c.goToStep2}" />
+                                    
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                            
+                            
+                            <aura:if isTrue="{!v.formData.emailExists}">
+                                <p>
+                                    It looks like you've already registered with that email address. Please
+                                    <lightning:button class="small-btn" variant="brand"
+                                                      onclick="{!c.goToURL}"
+                                                      label="Sign In"/>
                                 </p>
-							</lightning:layoutItem>
-
-                        </aura:if>
-
-                        <!-- Step 2: Create Username -->
-                        <aura:if isTrue="{!v.currentStep == '2'}">
-							<lightning:layout horizontalAlign="center">
+                                <p class="small-text">
+                                    For further assistance please <a href="javascript:void(0)" data-link="/tickets" onclick="{!c.goToURL}">contact us.</a>
+                                </p>
+                            </aura:if>
+                            
+                            <p class="slds-text-align_center">
+                                <lightning:button class="btn-next"
+                                                  disabled="{!!v.step1Complete}"
+                                                  variant="brand"
+                                                  label="Continue Registration"
+                                                  onclick="{!c.goToStep2}" />
+                            </p>
+                        </lightning:layoutItem>
+                        
+                    </aura:if>
+                    
+                    <!-- Step 2: Create Username -->
+                    <aura:if isTrue="{!v.currentStep == '2'}">
+                        <lightning:layout horizontalAlign="center" >
                             <lightning:layoutItem size="12" mediumDeviceSize="10" padding="horizontal-small">
-
-								<aura:if isTrue="{!v.step2Heading != null}">
-									<h3 class="slds-m-bottom_small">{!v.step2Heading}</h3>
-								</aura:if>
-								<aura:if isTrue="{!v.step2Subheading != null}">
-									<h4 class="slds-m-bottom_medium">{!v.step2Subheading}</h4>
-								</aura:if>
-								<aura:if isTrue="{!v.step2BodyText != null}">
-									<p>{!v.step2BodyText}</p>
-								</aura:if>
-								<lightning:layout multipleRows="true">
+                                
+                                <aura:if isTrue="{!v.step2Heading != null}">
+                                    <h3 class="slds-m-bottom_small">{!v.step2Heading}</h3>
+                                </aura:if>
+                                <aura:if isTrue="{!v.step2Subheading != null}">
+                                    <h4 class="slds-m-bottom_medium">{!v.step2Subheading}</h4>
+                                </aura:if>
+                                <aura:if isTrue="{!v.step2BodyText != null}">
+                                    <p>{!v.step2BodyText}</p>
+                                </aura:if>
+                                <lightning:layout multipleRows="true">
                                     <lightning:layoutItem size="12" mediumDeviceSize="7" >
-										<lightning:input type="text"
+                                        <lightning:input type="text"
                                                          class="userInputadj"
-														 name="uName"
-														 label="Create your Username"
-														 maxlength="40"
-														 minlength="3"
-														 value="{!v.formData.uName}"
-														 onchange="{!c.handleInput}"
-														 required="true" 
-														 />
-									<lightning:layoutItem size="12" >
-										<div class="{!v.formData.usernameIsValid ? 'slds-form-element__help' : 'slds-has-error slds-text-color_error slds-form-element__help'}">{!v.step2HelperText}</div>
+                                                         name="uName"
+                                                         label="Create your Username"
+                                                         maxlength="40"
+                                                         minlength="3"
+                                                         value="{!v.formData.uName}"
+                                                         onchange="{!c.handleInput}"
+                                                         required="true" 
+                                                         />
+                                        <lightning:layoutItem size="12" >
+                                            <div class="{!v.formData.usernameIsValid ? 'slds-form-element__help' : 'slds-has-error slds-text-color_error slds-form-element__help'}">{!v.step2HelperText}</div>
                                             <aura:if isTrue = "{!v.UserAvailFlag}">
                                                 <p class="availableMsg"><img class="userIcon" src="{! $Resource.checkIcon}" alt="" />Username is available </p>
                                                 
@@ -326,12 +325,12 @@
                                         <aura:if isTrue = "{!v.disableFlag}">
                                             <lightning:button class="btn-next usercheckButton buttonGrey fontAdj_mob" variant="brand" label="check username" disabled="true" />
                                         </aura:if>
-									</lightning:layoutItem>
+                                    </lightning:layoutItem>
                                     <!--End:  added for the US166467 : Jagadeesh -->
                                 </lightning:layout>
                                 <lightning:layout multipleRows="true">
-								<lightning:layoutItem size="12">
-
+                                    <lightning:layoutItem size="12" >
+                     
                                         <ui:outputText aura:id="userError" class="slds-hide fail" value="{!v.step2UsernameUnavailableMessage ? v.step2UsernameUnavailableMessage : v.uName + ' is not available'}" />
 
                                     </lightning:layoutItem>
@@ -339,102 +338,102 @@
                                     <lightning:layoutItem size="12" mediumDeviceSize= "7">
                                         
                                         <div class="passwordblock passwordblocksub">
-									<div class="showhidepw">
-										<img src="{!v.formData.showPassword ? $Resource.icons + '/showpw.png' : $Resource.icons + '/hidepw.png'}" alt="{!v.formData.showPassword ? 'Show Password' : 'Hide Password'}" onclick="{!c.togglePassword}" />
-									</div>
-
+                                            <div class="showhidepw">
+                                                <img src="{!v.formData.showPassword ? $Resource.icons + '/showpw.png' : $Resource.icons + '/hidepw.png'}" alt="{!v.formData.showPassword ? 'Show Password' : 'Hide Password'}" onclick="{!c.togglePassword}" />
+                                            </div>
+                                            
                                             <lightning:input aura:id="passwordInput" type="{!v.formData.showPassword ? 'password' : 'text'}" clas="userInput" name="password" label="Create your Password" value="{!v.formData.password}" disabled="{!v.passwordDisableFlag}" onchange="{!c.handleInput}" onblur="{!c.togglePasswordHelper}" required="true" />
-									<aura:if isTrue="{!v.showPasswordPopup}">
-										<div class="{!v.formData.passwordIsValid ? 'passwordHelper valid' : 'passwordHelper'}">
-											<ul>
-												<li>
-                                                    <!--commented : Begin - for Bug#159983-->
-                                                  <!--  <img alt="Status Icon" src="{!v.formData.hasEightCharacters
-													? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}"/> -->
-                                                    <!--commented : End - for Bug#159983-->
-                                                   <img alt="Status Icon" src="{!v.formData.passwordValidation.hasEightCharacters
-													? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}"/>
-													Minimum 8 Characters</li>
-												<li><img alt="Status Icon" src="{!v.formData.passwordUniqueness.hasUppercase
-													 ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
-													1 Uppercase Letter</li>
-												<li><img alt="Status Icon" src="{!v.formData.passwordUniqueness.hasNumber
-													 ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
-													1 Numeric Character</li>
-												<li><img alt="Status Icon" src="{!v.formData.passwordValidation.hasSpecialCharacter
-													 ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
-                                                    <!--Modified String by removing (,) between special characters for Bug#159983-->
-													No Special Characters Except &nbsp;_ &nbsp; @&nbsp; . &nbsp; - </li>
-												<li><img alt="Status Icon" src="{!v.formData.passwordValidation.hasUsername
-													 ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
-													Does Not Contain Username</li>
-												<li><img alt="Status Icon" src="{!v.formData.passwordValidation.hasFirstName
-													 ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
-													Does Not Contain First Name</li>
-												<li><img alt="Status Icon" src="{!v.formData.passwordValidation.hasLastName
-													 ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
-													Does Not Contain Last Name</li>
-											</ul>
-										</div>
-
-
-									</aura:if>
-									<aura:if isTrue="{!v.errorMessage != null}">
-										<span class="slds-text-color_error slds-m-top_small">{!v.errorMessage}</span>
-									</aura:if>
-								</div>
-								</lightning:layoutItem>
-								</lightning:layout>
+                                            <aura:if isTrue="{!v.showPasswordPopup}">
+                                                <div class="{!v.formData.passwordIsValid ? 'passwordHelper valid' : 'passwordHelper'}">
+                                                    <ul>
+                                                        <li>
+                                                            <!--commented : Begin - for Bug#159983-->
+                                                            <!--  <img alt="Status Icon" src="{!v.formData.hasEightCharacters
+             ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}"/> -->
+                                                            <!--commented : End - for Bug#159983-->
+                                                            <img alt="Status Icon" src="{!v.formData.passwordValidation.hasEightCharacters
+                                                                                        ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}"/>
+                                                            Minimum 8 Characters</li>
+                                                        <li><img alt="Status Icon" src="{!v.formData.passwordUniqueness.hasUppercase
+                                                                                        ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
+                                                            1 Uppercase Letter</li>
+                                                        <li><img alt="Status Icon" src="{!v.formData.passwordUniqueness.hasNumber
+                                                                                        ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
+                                                            1 Numeric Character</li>
+                                                        <li><img alt="Status Icon" src="{!v.formData.passwordValidation.hasSpecialCharacter
+                                                                                        ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
+                                                            <!--Modified String by removing (,) between special characters for Bug#159983-->
+                                                            No Special Characters Except &nbsp;_ &nbsp; @&nbsp; . &nbsp; - </li>
+                                                        <li><img alt="Status Icon" src="{!v.formData.passwordValidation.hasUsername
+                                                                                        ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
+                                                            Does Not Contain Username</li>
+                                                        <li><img alt="Status Icon" src="{!v.formData.passwordValidation.hasFirstName
+                                                                                        ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
+                                                            Does Not Contain First Name</li>
+                                                        <li><img alt="Status Icon" src="{!v.formData.passwordValidation.hasLastName
+                                                                                        ? $Resource.icons + '/ok.png' : $Resource.icons + '/alert.png'}" />
+                                                            Does Not Contain Last Name</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                
+                                            </aura:if>
+                                            <aura:if isTrue="{!v.errorMessage != null}">
+                                                <span class="slds-text-color_error slds-m-top_small">{!v.errorMessage}</span>
+                                            </aura:if>
+                                        </div>
+                                    </lightning:layoutItem>
+                                </lightning:layout>
                                 <p class="slds-text-align_left buttonadjpswd_mob">
-									<lightning:button class="btn-next"
-													  disabled="{!!v.step2Complete}"
-													  variant="brand"
-													  label="Create Account"
-													  onclick="{!c.handleSubmit}" />
-								</p>
-							</lightning:layoutItem>
-							</lightning:layout>
+                                    <lightning:button class="btn-next"
+                                                      disabled="{!!v.step2Complete}"
+                                                      variant="brand"
+                                                      label="Create Account"
+                                                      onclick="{!c.handleSubmit}" />
+                                </p>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </aura:if>
+                    
+                    <!-- Step 3: Confirmation / Last Step -->
+                    <aura:if isTrue="{!v.currentStep == '3'}">
+                        <aura:if isTrue="{!v.creationMessage != null}">
+                            <h3 class="slds-text-color_success">{!v.creationMessage}</h3>
                         </aura:if>
-
-                        <!-- Step 3: Confirmation / Last Step -->
-                        <aura:if isTrue="{!v.currentStep == '3'}">
-                            <aura:if isTrue="{!v.creationMessage != null}">
-                                <h3 class="slds-text-color_success">{!v.creationMessage}</h3>
-                            </aura:if>
-                            <aura:if isTrue="{!v.step3Heading != null}">
-                                <h3>{!v.step3Heading}</h3>
-                            </aura:if>
-                            <aura:if isTrue="{!v.step3Subheading != null}">
-                                <h3>{!v.step3Subheading}</h3>
-                            </aura:if>
-                            <aura:if isTrue="{!v.step3BodyText != null}">
-                                <p>{!v.step3BodyText}</p>
-                            </aura:if>
-
-                            <p>
-                              <lightning:button class="small-btn" variant="brand"
-                                                onclick="{!c.goToURL}"
-                                                label="Sign In to Continue"/>
-                            </p>
+                        <aura:if isTrue="{!v.step3Heading != null}">
+                            <h3>{!v.step3Heading}</h3>
                         </aura:if>
-
-                   <!--  </form> -->
-				</lightning:layoutItem>
+                        <aura:if isTrue="{!v.step3Subheading != null}">
+                            <h3>{!v.step3Subheading}</h3>
+                        </aura:if>
+                        <aura:if isTrue="{!v.step3BodyText != null}">
+                            <p>{!v.step3BodyText}</p>
+                        </aura:if>
+                        
+                        <p>
+                            <lightning:button class="small-btn" variant="brand"
+                                              onclick="{!c.goToURL}"
+                                              label="Sign In to Continue"/>
+                        </p>
+                    </aura:if>
+                    
+                    <!--  </form> -->
+                </lightning:layoutItem>
                 
                 <!--Added the below hidden fields as part of US 200242 which will be populated from GTM-->	
-				<div id="hdnfieldsDiv" class="section group">
-                <input type="hidden" id="clientID" name="clientID" value="" />
-                <input type="hidden" id="device_type" name="device_type" value=""/>
-                <input type="hidden" id="keyword" name="keyword" value=""/>
-                <input type="hidden" id="campaignName" name="campaignName" value=""/>
-                <input type="hidden" id="utm_source" name="utm_source" value=""/>
-                <input type="hidden" id="utm_medium" name="utm_medium" value=""/>
-                <input type="hidden" id="experimentID" name="experimentID" value=""/>
-                <input type="hidden" id="timestamp" name="timestamp" value=""/>
-                <input type="hidden" id="gclickid" name="gclickid" value=""/>
-                <!--End-->
+                <div id="hdnfieldsDiv" class="section group">
+                    <input type="hidden" id="clientID" name="clientID" value="" />
+                    <input type="hidden" id="device_type" name="device_type" value=""/>
+                    <input type="hidden" id="keyword" name="keyword" value=""/>
+                    <input type="hidden" id="campaignName" name="campaignName" value=""/>
+                    <input type="hidden" id="utm_source" name="utm_source" value=""/>
+                    <input type="hidden" id="utm_medium" name="utm_medium" value=""/>
+                    <input type="hidden" id="experimentID" name="experimentID" value=""/>
+                    <input type="hidden" id="timestamp" name="timestamp" value=""/>
+                    <input type="hidden" id="gclickid" name="gclickid" value=""/>
+                    <!--End-->
                 </div>
-			</lightning:layout>			
+            </lightning:layout>			
             <!-- End Registration Form -->
         </aura:if>
     </div>

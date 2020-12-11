@@ -10,12 +10,14 @@
     callOtherSchoolEnrollment: function(component, event, helper)
     {
         var selectedStudentId = event.currentTarget.value;
-        //alert(selectedStudentId);
+        alert(selectedStudentId);
+        var selectedStudentName = event.currentTarget.name;
+        alert(JSON.stringify(selectedStudentName));
         //console.log(selectedStudentId);
         //component.set("v.selectedStudentId",selectedStudentId);
         component.set("v.isOtherSchoolEnrollment",'true'); 
         var OSEcmp = component.find("OSEcmp");
-        var message = OSEcmp.getMessage(selectedStudentId,'true');
+        var message = OSEcmp.getMessage(selectedStudentId,selectedStudentName,'true');
     },
     closeOtherSchoolEnrollmentModel: function(component, event, helper)
     {

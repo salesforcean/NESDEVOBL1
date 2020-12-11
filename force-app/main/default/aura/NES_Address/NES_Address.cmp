@@ -20,7 +20,7 @@
     <aura:attribute name="questions" type="Object[]"/>
     <aura:attribute name="apiAddress" type="Boolean"/>
     <aura:attribute name="selectedAddressFormatURL" type="String"/>
-       
+     <aura:attribute name="interationVal" type="Integer" default="0"/>  
     <!--Added for #US 159016 - Begin -->
     <aura:attribute name="streetError" type="Boolean"/>
     <aura:attribute name="streetErrorMsg" type="String"/>
@@ -41,6 +41,7 @@
         <!-- ******************** -->
         <lightning:layoutItem size="12">
             <aura:if isTrue="{!!v.isManualAddress}">
+               
                 <lightning:layout>
                     <lightning:layoutItem size="{!if($Browser.isPhone, 12, 9)}">
                         <div class="slds-col" > <!-- Check validity if enter key is pressed -->
@@ -52,8 +53,10 @@
                                              placeholder="Start typing an address..."
                                              aura:id="searchField"
                                              onfocus="{!c.handleFocus}"
-                                             label="Address" />
-                           
+                                             label="Address" 
+                                             onload="{!c.handleInteration}"
+                                             />
+                            
                             <aura:if isTrue="{!!v.isValid}">
                                 <div id="input-5-message" role="alert" class="slds-form-element__help warning">Whoops. Provide at least 3 characters</div>
                             </aura:if>
@@ -71,6 +74,7 @@
                         <ul id="suggestionsModal" aura:id="suggestionsModalAura" class="hideEl">
                             <!--IF Address Records are retrieved -->
                             <aura:if isTrue="{!v.isAddressLoaded}">
+                                
                                 <aura:if isTrue="{!v.suggestionsModal.length > 0}">
                                     <aura:iteration items="{!v.suggestionsModal}" var="sigleLineAdd" indexVar="indx">
                                             <li data-record="{!indx}">
@@ -97,6 +101,7 @@
                     </lightning:layoutItem>
                 </lightning:layout>
             </aura:if>
+           
             <!-- ******************** -->
             <!-- Manual Address Fields section -->
             <!-- ******************** -->
@@ -105,10 +110,13 @@
                     <aura:iteration var="question" items="{!v.questions}">
                         <div class="slds-p-vertical_small">
                             <!-- Label for any type of input -->
+                            
                             <label class="record-label slds-form-element__label" for="{!question.questionId}">
                                 <aura:if isTrue="{!question.required}">
                                     <abbr class="slds-required firstAsterisk" title="required" data-aura-rendered-by="34:391;a">*</abbr>
                                 </aura:if>
+                                       
+                                
                                 <aura:unescapedHtml value="{!question.questionPrompt}" />
                             </label>
                             <aura:if isTrue="{!equals(question.questionType,'Text')}">

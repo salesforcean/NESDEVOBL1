@@ -5,7 +5,6 @@
  *               All the Relationship records will be pulled that were updated on a specific time frame (Historical records processing) and based on that the related Program Enrollment records defined for each Student and Learning Coach,
  *               will be processed to determine whether the LC Community user(s) access should be provisioned or revoked to the School CT permission-set accordingly. This batch chains the invocation of the batch job on the Program Enrollment
  *               records that will have to be processed subsequently (Lines of code commented out currently as Program Enrollment batch has chaining effect on the Relationship batch job.)
-
  * CHANGE-LOG:
  * ==========
  * By Rakesh 2020-06-24: 
@@ -25,7 +24,7 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
         permsSetAssignDeleteList = new list<PermissionSetAssignment>();
     }            
 
-    global Database.QueryLocator start(Database.BatchableContext bc) {        
+    global Database.QueryLocator start(Database.BatchableContext bc) { 
         Id recordTypeIdSTD = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_STUDENTS).getRecordTypeId();
         Id recordTypeIdLC = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_LEARNING_COACH).getRecordTypeId();      
         Records_Processing_Intervals__mdt recordProcessInterval = [SELECT Id, Days__c, Hours__c, Minutes__c FROM Records_Processing_Intervals__mdt WHERE DeveloperName = :CS_Constants.LC_KBA_ACCESS_RELNSHIP_RECS_PROCESS_INTERVAL];
@@ -37,7 +36,6 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
         else {
             batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Status__c, hed__RelatedContact__c, hed__RelatedContact__r.Name FROM hed__Relationship__c WHERE hed__Contact__c = :studRecsIdSet AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND hed__RelatedContact__r.RecordTypeId = :recordTypeIdLC AND hed__Type__c = \''+CS_Constants.LEARNING_COACH_TYPE+'\'';            
         }
-
 
         return Database.getQueryLocator(batchQueryStr);
     }
@@ -52,7 +50,7 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
             studentIdAndLCRecIdWithRelationshipsMap.put(String.valueOf(relationRecObj.hed__Contact__c)+'-'+String.valueOf(relationRecObj.hed__RelatedContact__c), relationRecObj);
           }
           // To identify the related Learning Coaches associated to the respective Students across Schools. 
-          if(!studentIdWithSetOfLCRecIdSetMap.containsKey(relationRecObj.hed__Contact__c)){
+          if(!studentIdWithSetOfLCRecIdSetMap.containsKey(relationRecObj.hed__Contact__c)){ 
             set<Id> relatedLCRecsIdSet = new set<Id>();
             relatedLCRecsIdSet.add(relationRecObj.hed__RelatedContact__c);
             studentIdWithSetOfLCRecIdSetMap.put(relationRecObj.hed__Contact__c, relatedLCRecsIdSet);
@@ -67,7 +65,6 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
         // Calling the Batch-Apex handler class to process the revoking and provisioning of the CT permission-sets in relation to the Schools that the Learning Coach comes under.
         if(!studentIdWithSetOfLCRecIdSetMap.isEmpty() && !studentIdAndLCRecIdWithRelationshipsMap.isEmpty()){
             CS_LCUserAccessToSchoolCTKBAsHandler handlerObj = new CS_LCUserAccessToSchoolCTKBAsHandler();            
-
             permissionSetsRemovalMap.putAll(handlerObj.processRelationshipRecsForCTPermSetsAccess(studentIdWithSetOfLCRecIdSetMap, studentIdAndLCRecIdWithRelationshipsMap));            
         }
     }        

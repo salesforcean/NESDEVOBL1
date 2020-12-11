@@ -10,13 +10,13 @@
             lName: '',
             suffix: '',
             email: '',
-			postalCode: '',
-			postalCodeIsValid: true,
-			stateCode: '',
-			phoneNumber: '',
-			phoneNumberIsValid: true,
-			phoneType:'',
-			SMSOptIn:false,
+            postalCode: '',
+            postalCodeIsValid: true,
+            stateCode: '',
+            phoneNumber: '',
+            phoneNumberIsValid: true,
+            phoneType:'',
+            SMSOptIn:false,
             emailIsValid: false,
             emailExists: false,
             uName: '',
@@ -41,11 +41,11 @@
             showPassword: true,
             schoolId: ''
         };
-
+        
         // Set formData on the component
         component.set("v.formData", formData);
-
-		var pickvar = component.get("c.getStateValuesIntoList");
+        
+        var pickvar = component.get("c.getStateValuesIntoList");
         pickvar.setCallback(this, function(response) {
             var state = response.getState();
             if(state === 'SUCCESS'){
@@ -57,8 +57,8 @@
             }
         })
         $A.enqueueAction(pickvar);
-		
-		var pickvarPT = component.get("c.getPhoneTypeValuesIntoList");
+        
+        var pickvarPT = component.get("c.getPhoneTypeValuesIntoList");
         pickvarPT.setCallback(this, function(response) {
             var state = response.getState();
             if(state === 'SUCCESS'){
@@ -70,8 +70,8 @@
             }
         })
         $A.enqueueAction(pickvarPT);
-
-		var pickvarSuf = component.get("c.getSuffixValuesIntoList");
+        
+        var pickvarSuf = component.get("c.getSuffixValuesIntoList");
         pickvarSuf.setCallback(this, function(response) {
             var state = response.getState();
             if(state === 'SUCCESS'){
@@ -83,7 +83,7 @@
             }
         })
         $A.enqueueAction(pickvarSuf);
-
+        
     },   
     goToNextStep: function(component, event, helper)
     {
@@ -103,7 +103,7 @@
         //added by jagadeesh
         component.set("v.step2UsernameCheck", true);
         
-
+        
         if(newStep === '3'){
             window.setTimeout(
                 $A.getCallback(function(){
@@ -117,7 +117,7 @@
         var formData = component.get("v.formData");
         var regExpEmailFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         formData.emailIsValid = regExpEmailFormat.test(formData.email);
-
+        
         // if the email address is a valid one, check to see if it already exists
         if(formData.emailIsValid){
             helper.checkIfEmailExists(component, email);
@@ -125,24 +125,24 @@
             // reset email exists message so we don't leave the message open
             formData.emailExists = false;
         } 
-		//component.set("v.formData", formData);
+        //component.set("v.formData", formData);
     }, 
-	
-	validatePostalCode: function(component, event, helper, postalCode)
+    
+    validatePostalCode: function(component, event, helper, postalCode)
     {
         var formData = component.get("v.formData");
-		var regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
-		formData.postalCodeIsValid = regexp.test(postalCode);
+        var regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
+        formData.postalCodeIsValid = regexp.test(postalCode);
     },
-
-	validatePhoneNumber: function(component, event, helper, phoneNumber)
+    
+    validatePhoneNumber: function(component, event, helper, phoneNumber)
     {
         var formData = component.get("v.formData");
-		var regexp1 = /^[0-9]{3}[\-][\0-9]{3}[\-][0-9]{4}$/;
-		var regexp2 = /^[0-9]{10}$/;
-		formData.phoneNumberIsValid = (regexp1.test(phoneNumber) || regexp2.test(phoneNumber));
+        var regexp1 = /^[0-9]{3}[\-][\0-9]{3}[\-][0-9]{4}$/;
+        var regexp2 = /^[0-9]{10}$/;
+        formData.phoneNumberIsValid = (regexp1.test(phoneNumber) || regexp2.test(phoneNumber));
     },
-
+    
     checkIfEmailExists: function(component, email)
     {
         var action = component.get("c.emailExists");
@@ -160,19 +160,19 @@
         });
         $A.enqueueAction(action);
     },
-
+    
     validatePassword: function(component, event, helper)
     {
         component.set("v.showPasswordPopup", true);
         var formData = component.get("v.formData");
         var password = formData.password;
-
+        
         //We are preventing non-accepted characters from entry, so makes
         //more sense from a user standpoint to always return true here
-		//commented : Begin - for Bug#159983
+        //commented : Begin - for Bug#159983
         //formData.hasSpecialCharacter = true
         ////commented : End - for Bug#159983
-
+        
         formData.passwordValidation = {
             hasEightCharacters: /.{8,}/.test(password),
             hasUsername: !password.toLowerCase().includes(formData.uName.toLowerCase()),
@@ -186,16 +186,16 @@
             hasUppercase: /[A-Z]+/.test(password),
             hasNumber: /[0-9]+/.test(password)
         };
-
+        
         var validTallies = 0;
         Object.values(formData.passwordUniqueness).forEach(tally => {
             if(tally){validTallies++}
-        });
-
+                                                           });
+        
         formData.passwordIsValid = (!Object.values(formData.passwordValidation).includes(false) && validTallies == 2);
-
+        
         component.set("v.formData", formData);
-
+        
         if(formData.passwordIsValid){
             window.setTimeout(
                 $A.getCallback(function(){
@@ -203,7 +203,7 @@
                 }), 1500
             );
         } 
-   },
+    },
     validateSteps: function(component, event, helper)
     {
         var formData = component.get("v.formData");
@@ -238,7 +238,6 @@
         };
         return JSON.stringify(gtmhiddenObject);
     },
-
     
     //Added for the US166467 : Jagadeesh
     checkUserNameAvailability: function(component, event, helper)
@@ -276,6 +275,6 @@
             
         });
         $A.enqueueAction(action);
-    }
-   
+    } 
+    
 })

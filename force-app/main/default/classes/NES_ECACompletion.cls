@@ -59,7 +59,6 @@ public without sharing class NES_ECACompletion {
     //Evaluate whether to run logic for Contact change
 	//This is the entry point when a record other that a PE was the changed record that may need reassignment
     public static void relatedCompletion(Map<Id, List<String>> changedFields, String objectName, Map<Id, List<Id>> peToObjectMap, List<EvaluationUtils.fieldUpdate> fieldUpdateList) {
-
         //MM 11/24/2020 Removing the check for should run completion as part of the ECA rewrite.  Added below to only care about this flag when it is the old ECA model
         //if (shouldRunCompletion) {
             List<hed__Program_Enrollment__c> programEnrollments = new List<hed__Program_Enrollment__c> ();
@@ -99,13 +98,11 @@ public without sharing class NES_ECACompletion {
 
             System.debug('changedFieldsMap.size()::'+changedFieldsMap.size());
             //If there are any PEs in the old model, hand them off.
-
             if (oldECAModelPEs.size() > 0 && NES_Constants.runAssignment && shouldRunCompletion) 
                 programEnrollmentCriteria(changedFieldsMap, objectName, programEnrollments);
             
             if (fieldUpdateListNewModel.size() > 0)  //Must be at least one PE in the NEW ECA model that has a changed field so call the new ECA stuff.
                 EvaluationUtils.evaluateChangedFields  (fieldUpdateListNewModel);
-
         //}
     }
 

@@ -33,9 +33,8 @@
     <aura:attribute name="metaLink4Title" type="String" default="Nondiscriminatory Policy" />
     <aura:attribute name="metaLink4URL" type="String" default="" />
     <aura:attribute name="year" type="Integer" default=""/>
-    <div>
-        <!-- Bug-134878 Imaged removed by Ravi-->
-    <!--div style="{!'background:url('+$Resource.footerBackgroundImage+') top center no-repeat #3f3f3f;background-size:cover;'}"-->
+    
+    <div style="{!'background:url('+$Resource.footerBackgroundImage+') top center no-repeat #3f3f3f;background-size:cover;'}">
         <lightning:layout multipleRows="true" class="container">
             <lightning:layoutItem size="6" mediumDeviceSize="2">
                 <strong>{!v.col1Title}</strong><br/>

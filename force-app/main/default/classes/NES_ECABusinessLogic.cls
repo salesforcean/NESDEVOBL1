@@ -415,7 +415,7 @@ System.enqueueJob(new NES_PlacementQueueable(asiIds));
 }*/
         }
     }
-    
+ 
     
     /**
 * Created By Ajith on 28-12-2018.
@@ -778,7 +778,7 @@ System.enqueueJob(new NES_PlacementQueueable(asiIds));
              if(affiliation.Program_Enrollment__r.Status__c != 'Complete'){
             progEnrollIds.add(affiliation.Program_Enrollment__c);
             componentIds.add(affiliation.Enrollment_Component__c);
-        }
+             }
         }
         if (progEnrollIds.size()>0){
             map<Id,id> parentFormIds = new map<Id,id>();

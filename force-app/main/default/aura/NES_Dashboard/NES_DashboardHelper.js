@@ -12,6 +12,7 @@
             var state = response.getState();
             if(state === "SUCCESS"){
                 if(students !== null && students.length > 0) {
+                    console.log(JSON.stringify(students));
                     component.set("v.studentsInfo",students);
                 }
             } else {

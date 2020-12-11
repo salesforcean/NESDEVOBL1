@@ -1,0 +1,241 @@
+.THIS.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px 0;
+    width: 10px;}
+
+.THIS .statusBlock{
+    padding-left: 0px;
+    
+    
+}
+.THIS .contactName .slds-m-bottom_medium{
+    margin-bottom: 0px;
+    
+}
+/* Name of the record modified by ravi */
+
+.THIS .slds-m-top_small{
+    margin-top: 0px;
+}
+/* Commented by Ravi Bug# 135343
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');*/
+.THIS .uppercase{text-transform:uppercase}.THIS h2{font-weight:600!important;line-height:1.25}  
+.THIS .studentBlock{
+    margin-bottom:1rem;
+    padding:1rem;
+    border-radius:4px;
+    background:#fff;
+    box-shadow:0 6px 10px 0 rgba(0,0,0,.12);
+    border-top-width:10px;
+    border-right-width:0px;
+    border-bottom-width:0px;
+    border-left-width:10px;
+    /*added for the US 335364*/
+    padding-bottom: 25px;
+    /*width: 453px;
+    padding-bottom: 27px;*/
+    
+}
+.THIS .studentBlock.complete{border-left:0}.THIS h5{font-weight:600}.THIS h6{font-size:.7rem!important;color:#686868}.THIS h5.completed-enrollment{font-weight:600;text-transform:capitalize;color:#329947}
+.THIS .viewButton{
+    display:flex;
+    padding-top: 0px;
+    
+}
+.THIS .viewButton span:not(.btnblock){font-size:1.5rem;line-height:1.75;padding-left:1rem}
+.THIS .viewButton .btnblock{flex-grow:2}
+.THIS .viewButton .slds-button{
+    font-size:1rem;
+    line-height:2.5;
+    display:block;
+    letter-spacing:1px
+}
+
+
+
+.THIS .slds-button_brand{
+    font-size:1rem;
+    text-align:center;
+    line-height:2.5;
+    margin-top: 10px;
+    
+    /*padding-left: 8rem;
+    padding-right: 8rem;*/
+    
+    /* modified by ravi bug136923 19/02/2020
+    width:380px;
+    
+    padding-left: 100%;
+    padding-right: 100%;*/
+    height: 40px;
+    /* width: 152px;*/
+    text-transform:uppercase}
+
+.THIS .slds-button_neutral{
+    font-size:1rem;
+    line-height:2.5;
+    text-align:center;
+    height: 40px;
+    width: 152px;
+    /*added for the US 335364 */
+    margin-top: 10px;
+    
+    
+    /* modified by ravi bug136923 19/02/2020
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-left: 9rem;
+    padding-right: 9rem;
+    width: 320px;
+    */
+    text-transform:uppercase;
+    
+}
+.THIS #studentTiles .viewButton .slds-button.slds-button_neutral{
+    color: black;
+    background: #f6f6f6;
+    width: 100% !important;
+    border: 2px solid #b5b5b5;}
+
+/* Removed margin left by ravi for ui changes on 02/01/2020 */ 
+.THIS .statusBlock{
+    /*commented for UX update */
+    /*width: 191px;*/
+    /* margin-left: 30px;*/
+    padding-top: 0px;
+}
+/* removed by ravi on 01/01/2020
+.THIS .slds-progress__list{
+width: 190px;
+}*/
+
+.THIS .slds-progress .slds-progress-bar__value{background:#008638}
+.THIS .slds-progress .slds-progress__list .slds-progress__item:not(:first-of-type):not(:last-of-type) span.slds-assistive-text{left:-9em;width:20em!important;text-align:center;text-indent:unset;background-color:transparent!important}
+
+.THIS .slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker{width:1rem;height:1rem;border:5px solid #dddbda;background:#fff;box-shadow:none!important}
+.THIS .slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker svg{display:none}.THIS .slds-progress .slds-progress__list .slds-progress__item.slds-is-active .slds-progress__marker .slds-assistive-text,.THIS .slds-progress .slds-progress__list .slds-progress__item:hover .slds-progress__marker .slds-assistive-text{z-index:999;opacity:1;background:#fff!important}.THIS .slds-progress .slds-progress__list .slds-progress__item.slds-is-active .slds-progress__marker{border-color:#008638!important;box-shadow:none!important}.THIS .slds-progress .slds-progress__list .slds-progress__item.slds-is-completed .slds-progress__marker{width:1rem;height:1rem;border-color:#008638!important;background:#008638!important;box-shadow:none!important}.THIS .slds-progress .slds-progress__list .slds-progress__item.slds-is-completed .slds-progress__marker .slds-assistive-text{top:-2.4rem!important}.THIS .slds-progress .slds-progress__list .slds-progress__item .slds-assistive-text{top:-2.5rem;overflow:visible!important;clip:unset!important;width:unset!important;height:unset!important;transition:all .25s ease;text-indent:-2rem;opacity:0;color:#000}.THIS .slds-progress .slds-progress__list .slds-progress__item:first-of-type .slds-assistive-text{left:1.5rem}.THIS .slds-progress .slds-progress__list .slds-progress__item:last-of-type .slds-assistive-text{right:-.5rem;text-align:right}.THIS .slds-progress .slds-progress__list .slds-progress__item.hideItem .slds-progress__marker .slds-assistive-text{opacity:0}.THIS .slds-progress .slds-popover{display:none!important}@media (min-width:725px) and (max-width:870px){.THIS .studentBlock .buttonBlock,.THIS .studentBlock .statusBlock{width:100%}.THIS .studentBlock .contactNameBlock{width:100%}}
+.THIS .viewButton .btnblock{width:auto;}
+
+.THIS .btnblockHide{
+    display:none;
+}
+
+.THIS .slds-p-bottom_medium{
+    font-size:1.5rem;
+    text-align:left;
+}
+/* added by ravi */
+.THIS .slds-text-align_right {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+}
+.THIS .contactNameBlock {
+    height: 30px;
+    /* modified by ravi bug 279284*/
+    word-wrap: break-word;
+    padding-top: 0px;
+    /*display: none;*/
+    
+}
+/*modified by ravi bug136923 19/02/2020 */
+.THIS .viewButtonMobile{
+    
+    width: 100%;
+    
+}
+.THIS .slds-progress{width:300px;max-width:100%;}
+/* added by ravi on 01/01/2020 */
+.THIS.statusBlockMobile{
+    margin-left: 0px;
+    
+}
+.THIS .sit-in-the-corner {
+    float: right;
+    margin-left: 5px;
+    margin-top: -85px;
+}
+
+.THIS .addButton {
+    width : 40px;
+    /*padding-right: 5px*/
+}
+.THIS .tileAdj {
+    /*width : 100%;*/
+    /*padding-right: 5px*/
+    
+}
+
+.THIS .addButtonDivAdj {
+    width : 416px;
+    padding-right: 0px;
+    
+    /*padding-right: 5px*/
+    
+}
+
+.THIS .dots-here:after {
+    border-bottom: 1px dotted;
+    content: '';
+    flex: 1;
+}
+
+.THIS .dots-here{
+    display: flex;
+    width: 300px;
+}
+.THIS .slds-border_top{
+    border-top : 1px dotted;
+}
+.THIS .schoolSeperator {
+    border-top-width: 2px;
+    border-top-style: dashed;
+    width: 104%;
+}
+.THIS .divAdj1{
+    padding-top: 5px;
+    width: 104%;
+}
+.THIS .divAdj2{
+    padding-top: 10px;
+}
+
+.THIS .contactName {
+    padding-top : 13px;
+}
+
+/*New School Tooltip : added by Jagadeesh for the US335364*/
+.THIS .newSchoolButton.tooltip {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.THIS .newSchoolButton.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 0px 0;
+    position: absolute;
+    z-index: 1;
+    top: 112%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+.THIS .newSchoolButton.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.THIS .newSchoolButton.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

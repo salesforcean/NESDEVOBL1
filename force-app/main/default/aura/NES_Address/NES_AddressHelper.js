@@ -5,6 +5,7 @@
  */
 ({
     handleInit : function(component, event, helper) {
+       
         var action = component.get("c.getSearchSettings");
         action.setCallback(this, function(response){
             var state = response.getState();
@@ -55,7 +56,9 @@
     },
     /** method is for the "0 results" bug after AJAX returns successful with records/results **/
     getDataForAutocomplete:function(component, event, helper){
+        
         var userInput = component.get("v.searchKeyword").toLowerCase();
+        console.log('mailing>>'+userInput);
         if(!userInput) {
             component.set("v.timerStarted", false);
             return;

@@ -1,0 +1,9 @@
+<!--
+ - Created for testing
+
+  
+ -->
+
+<aura:event type="APPLICATION" description="NES_AddStudentAppEvent2">
+    <aura:attribute name="message" type="String" />
+</aura:event>

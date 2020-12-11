@@ -30,7 +30,6 @@ global with sharing class Batch_FECTaskCreation implements DataBase.Batchable<SO
                         Program_Enrollment__r.Total_Forms_Completed__c,
                         Program_Enrollment__r.Percent_Complete__c,
                         Program_Enrollment__r.CreatedDate,
-
                         Program_Enrollment__r.Date_Today__c,
                         Program_Enrollment__r.hed__Contact__c
                 FROM    Case 
@@ -89,7 +88,6 @@ global with sharing class Batch_FECTaskCreation implements DataBase.Batchable<SO
     }
 
     global void execute(SchedulableContext sc) {
-
         //To schedule.
         //Batch_FECTaskCreation sc=new Batch_FECTaskCreation(); 
         //System.schedule('Batch_FECTaskCreation',' 0 0 5 * * ?', sc);
@@ -110,7 +108,6 @@ global with sharing class Batch_FECTaskCreation implements DataBase.Batchable<SO
 
     public static Task setNewTask(Case cs, FEC_Task_Creation_Rule__mdt rule) {
         
-
         string newSubject;
         id taskOwner;
         //The initial call should not include the actual completion and should use the owner from the case even if it is a queue.

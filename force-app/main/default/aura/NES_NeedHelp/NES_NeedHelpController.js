@@ -4,10 +4,7 @@
 ({
     doInit : function(component)
     {
-      
-        
         var action = component.get('c.getResourceUrl');
-      
         action.setCallback(this, function(response){
             var state = response.getState();
             if(component.isValid() && state === 'SUCCESS') {
@@ -18,6 +15,4 @@
         });
         $A.enqueueAction(action);
     }
-    
-    
 });

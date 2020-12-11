@@ -17,6 +17,7 @@ public with sharing class NES_AccountBusinessLogicTest {
         householdAccount.RecordTypeId = AccountHouseholdRecordTypeId;
         householdAccount.LC_HighestLevelofEducation__c = 'High school graduate';
         insert householdAccount;
+        
     }
     static testMethod void createUniqueIDTest(){
         Account institutionAccount = Peak_TestUtils.createEducationalInstitutionAccount();
@@ -24,7 +25,7 @@ public with sharing class NES_AccountBusinessLogicTest {
         Account academicProgram = Peak_TestUtils.createAccountForNewStudentData(institutionAccount.Id, schoolYear.Id);
     }
     static testMethod void populateSchoolIDTest(){
-        Account account1 = [SELECT Id, Name, RecordType.Name FROM Account WHERE RecordType.Name = 'Educational Institution'];
+        Account account1 = [SELECT Id, Name, RecordType.Name FROM Account WHERE RecordType.Name = 'Educational Institution' limit 1];
         account1.Name = 'New name';
         account1.School_Id__c = '';
         update account1;
@@ -52,4 +53,5 @@ public with sharing class NES_AccountBusinessLogicTest {
         account1.Computer_in_Home__c = 'Yes';
         update account1;
     }
+    
 }

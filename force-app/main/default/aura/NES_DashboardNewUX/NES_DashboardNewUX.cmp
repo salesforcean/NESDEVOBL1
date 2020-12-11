@@ -1,0 +1,222 @@
+<!--
+ - Created by karolbrennan on 11/8/18.
+ - Modified by Ravi
+ -->
+
+<aura:component description="NES_Dashboard"
+                implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable"
+                access="global"
+                extends="c:Peak_Base"
+                controller="NES_DashboardController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:NES_AddStudentAppEvent" action="{!c.handleAddStudent}"/>
+    <aura:registerEvent name="studentsLoadedEvent" type="c:NES_StudentsLoadedEvent"/>
+    
+    <aura:registerEvent name="isSameSchoolEvent" type="c:NES_schoolId"/>
+    <aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" /> <!-- Swapna: Add for GTM -->
+    <aura:attribute name="loading" type="Boolean" default="false" />
+    <aura:attribute name="heading" type="String" default="My Students" />
+    <aura:attribute name="message" type="String" />
+    <!-- Student Objects -->
+    <aura:attribute name="students" type="Object" />
+    <aura:attribute name="studentsInfo" type="Object" />
+    <!--
+    -   Attributes used when coming from confirmation email.
+    -   Needs to have arriveFromEmail trigger to True based on referral page
+    -->
+    <aura:attribute name="arriveFromEmail" type="Boolean" default="false" />
+    <aura:attribute name="emailHeading" type="String" default="Email confirmed!"/>
+    <aura:attribute name="emailSubheading" type="String" default="Now, add your Student(s)"/>
+    <aura:attribute name="emailBodytext" type="String" default="Add each of your students and check their eligibility."/>
+    
+    <!-- @todo implement an event that will notify this component of changes when students are added -->
+    <!-- <c:NES_Announcements/> --> <!--To fix announcements display issue -->
+    <aura:if isTrue="{!v.loading}">
+        <lightning:spinner variant="brand" size="medium" alternativeText="Loading..." />
+    </aura:if>
+    
+    <aura:if isTrue="{!v.message}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header" style="border:none;padding:0;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick="{!c.closeModal}">
+                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                        <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium slds-text-align_center" style="border-radius:.25rem;" id="modal-content-id-1">
+                    <h2 class="slds-m-bottom_medium"><c:Peak_Base labelText="Uh, oh!" /></h2>
+                    <aura:unescapedHtml value="{!v.message}" />
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    <div>
+        
+        <div class="{!arriveFromEmail ? 'slds-m-bottom_medium' : 'slds-hide'}">
+            <!-- @todo this block should only show if you come from a confirmation email -->
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12" padding="around-small">
+                    <lightning:progressIndicator class="registration" currentStep="4" type="base" hasError="false" variant="base">
+                        <lightning:progressStep label="Get Started" value="1"/>
+                        <lightning:progressStep label="Choose Username" value="2"/>
+                        <lightning:progressStep label="Create Account" value="3"/>
+                        <lightning:progressStep label="Begin Enrollment" value="4"/>
+                    </lightning:progressIndicator>
+                </lightning:layoutItem>
+            </lightning:layout>
+            
+            <div>
+                <aura:if isTrue="{!v.emailHeading}"><h2 class="slds-text-color_success">{!v.emailHeading}</h2></aura:if>
+                <aura:if isTrue="{!v.emailSubheading}"><h2>{!v.emailSubheading}</h2></aura:if>
+                <aura:if isTrue="{!v.emailBodytext}"><p class="small-text">{!v.emailBodytext}</p></aura:if>
+            </div>
+        </div>
+        
+        <div class="{!v.studentsInfo.length > 0 ? 'studentsBlock' : 'slds-hide'}" id="studentTiles">
+            <div class="slds-p-bottom_medium">
+                <aura:if isTrue="{!v.heading}">
+                    <!-- Added By Ravi-->
+                    {!v.heading}
+                </aura:if>
+            </div>
+            
+            <div class="slds-grid slds-gutters slds-wrap tileAdj">
+			   <aura:iteration items="{!v.studentsInfo}" var="student" indexVar="indx"> <!--Jagadeesh : Add for the US335364-->
+                    <div class="slds-col slds-size_1-of-2 slds-max-small-size_1-of-1">  
+                        <div class="c-container">
+						  <lightning:layout verticalAlign="stretch" multipleRows="true" aura:id="{!student.studentId}" class="{!'studentBlock' + (student.ecaStatus == 'Complete' ? ' complete' : '')}">
+                                <lightning:layoutItem flexibility="auto" size="12">
+                                    <lightning:layout multipleRows="true">
+                                         <lightning:layoutItem size="11" padding="around-small" class="contactNameBlock">
+                                            <div>
+                                                <h4 class="contactName slds-m-bottom_medium"> <b>{!student.studentFName}</b>  
+                                                </h4>
+                                            </div>
+
+                                        </lightning:layoutItem>
+                                         <!--Jagadeesh : Add for the US335364-->
+                                        <!--Enroll new school button & Tooltip  -->
+                                        <lightning:layoutItem size="1" padding="around-small" >
+                                                <button class="slds-button newSchoolButton tooltip" onclick="{!c.moveItemUp}"  >  
+                                                    <img class="addButton" src="{! $Resource.addButton}" alt="" /> 
+                                                    <span class="tooltiptext">Enroll in another school</span>
+                                                </button>
+                                        </lightning:layoutItem>
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                                
+                                <lightning:layoutItem flexibility="auto" size="12">
+                                    
+                                    <lightning:layout multipleRows="true" > 
+
+                                        <!-- Status modified by ravi -->
+                                        <aura:iteration items="{!student.academicPrograms}" var="program" indexVar="index">
+                                            <div align="left" style="width: 100%">
+
+                                                <lightning:layoutItem size="12" mediumDeviceSize="12" padding="around-medium" class="statusBlock">
+                                                    <!--Jagadeesh : Add for the US335364-->
+                                                    <!--Dotted Lines for School seperator -->
+                                                    <div>
+                                                        <aura:if isTrue="{! index != 0 }">
+                                                            <hr class ="schoolSeperator"></hr>
+                                                        </aura:if>
+                                                    </div>
+                                                    <div><h4>{!program.instituationName}</h4></div>
+                                                    <div class="divAdj1">
+                                                        School year: {!program.schoolYear} &nbsp; | &nbsp; Status: {!program.ecaStatus}
+                                                        <aura:if isTrue="{!and(program.ecaStatus == 'In Progress',program.programGradeLevel)}">
+                                                            &nbsp;|&nbsp; {!program.programGradeLevel}
+                                                        </aura:if>
+                                                    </div>
+                                                </lightning:layoutItem>
+
+                                                <lightning:layoutItem size="12" mediumDeviceSize="12" padding="around-small" class="slds-text-align_right buttonBlock">
+                                                    <!-- <div class="{!program.buttonLabel == 'Complete' ? 'btnblockHide' : 'slds-show'}"> -->
+                                                    <!--Jagadeesh : Add for the US335364-->
+                                                    <aura:if isTrue="{!(program.buttonLabel == 'Reactivate' || program.buttonLabel == 'Re-enroll')}">
+                                                        <c:NES_ReactivateEnrollment
+                                                                                    studentName="{!student.studentFName}"
+                                                                                    studentId="{!student.studentId}"
+                                                                                    processId="{!program.processId}"
+                                                                                    programEnrollmentId="{!program.programEnrollmentId}" 
+                                                                                    acadName ="{!program.instituationName}"  
+                                                                                    schoolYeara = "{!program.schoolYear}"
+                                                                                    gradeLevelId = "{!program.programGradeLevel}"
+                                                                                    schoolName = "{!program.instituationName}"
+                                                                                    Type = "{!program.buttonLabel}"
+                                                                                    />
+                                                        <!--gradeLevelId = "{!program.gradeLevelId}"/>-->
+                                                        
+                                                        <aura:set attribute="else">
+                                                            <aura:if isTrue="{!program.buttonLabel != 'Complete'}">
+                                                                <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+                                                                    
+                                                                    <div class="viewButton slds-p-top_Large">
+                                                                        
+                                                                        <span class="btnblock">
+                                                                            <a href="javascript:void(0)"
+                                                                               class="{!program.buttonLabel == 'Continue' || program.buttonLabel == 'TELL US ABOUT NEXT YEAR'? 'slds-button slds-button_brand' : 'slds-button slds-button_neutral'}"
+                                                                               data-student="{!student.studentFName}"
+                                                                               data-studentid="{!student.studentId}"
+                                                                               data-processid="{!program.processId}"
+                                                                               data-placement="{!program.programGradeLevel}"
+                                                                               data-programenrollmentid="{!program.programEnrollmentId}"
+                                                                               data-link="{!program.buttonTarget}"
+                                                                               data-status="{!program.ecaStatus}"
+                                                                               data-buttonlbl="{!program.buttonLabel}" 
+                                                                               onclick="{!c.navigate}">{!program.buttonLabel}</a>
+                                                                        </span>
+                                                                        
+                                                                        <!-- Removied Arrow icon from beside continue button By Ravi-->
+                                                                        <!--span class="slds-show_small">&rsaquo;</span-->
+                                                                    </div>
+                                                                    
+                                                                    <aura:set attribute="else">
+                                                                        <div class="viewButtonMobile slds-p-top_Large">
+                                                                            <span class="btnblock">
+                                                                                
+                                                                                <a href="javascript:void(0)"
+                                                                                   class="{!program.buttonLabel == 'Continue' || program.buttonLabel == 'TELL US ABOUT NEXT YEAR' ? 'slds-button slds-button_brand' : 'slds-button slds-button_neutral'}"
+                                                                                   data-student="{!student.studentFName}"
+                                                                                   data-studentid="{!student.studentId}"
+                                                                                   data-processid="{!program.processId}"
+                                                                                   data-placement="{!program.programGradeLevel}"
+                                                                                   data-programenrollmentid="{!program.programEnrollmentId}"
+                                                                                   data-link="{!program.buttonTarget}"
+                                                                                   data-status="{!program.ecaStatus}"
+                                                                                   data-buttonlbl="{!program.buttonLabel}" 
+                                                                                   onclick="{!c.navigate}">{!program.buttonLabel}</a>
+                                                                            </span>
+                                                                            <!-- Removied Arrow icon from beside continue button By Ravi-->
+                                                                            <!--span class="slds-show_small">&rsaquo;</span-->
+                                                                        </div>
+                                                                    </aura:set>
+                                                                    
+                                                                </aura:if>
+                                                            </aura:if>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                  
+                                                    <aura:if isTrue="{!and(program.buttonLabel == 'Complete',program.buttonLabel != 'TELL US ABOUT NEXT YEAR')}">
+                                                        <h5 class="completed-enrollment" align = "left"><i>Enrollment Complete</i></h5>
+                                                        <!--<span>We have sent an email with the next steps for {!student.contactName}</span> -->
+                                                        <div align = "left">An email will come soon with next steps </div>
+                                                    </aura:if>
+                                                    <!--  </div> -->
+                                                </lightning:layoutItem>
+                                            </div> 
+                                        </aura:iteration>
+                                        <!-- Ended here-->
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </div> 
+                    </div> 
+                </aura:iteration> 
+            </div>  
+        </div>
+    </div>
+</aura:component>

@@ -295,6 +295,7 @@
 
                 console.log("sections", returnedResponse);
                 if(returnedResponse) {
+                    console.log('getSectionsreturnedResponse', returnedResponse);
                     component.set("v.currentSectionId", returnedResponse[0].Id);
                 }
                 helper.getMessages(component,event,helper);

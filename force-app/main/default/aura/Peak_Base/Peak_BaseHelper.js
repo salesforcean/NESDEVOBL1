@@ -151,7 +151,6 @@
     },
     // Validate a field without aura
     rawValidateField: function rawValidateField(fieldName) {
-      
         // Because some dynamically created components aren't found by aura :/
         // Why name and not ID? Because aura doesn't let you put an id on lightning:input or lightning:select!
         var fields = document.getElementsByName(fieldName);
@@ -247,7 +246,6 @@
         }
     },
     goToUrl: function(url) {
-        
         var action = $A.get('e.force:navigateToURL');
         action.setParams({
             url: url

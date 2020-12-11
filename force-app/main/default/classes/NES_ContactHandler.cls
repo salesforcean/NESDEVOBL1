@@ -42,15 +42,14 @@ public class NES_ContactHandler {
            // if (newContact.RecordTypeId == studentContactId) {  //MM 11/6/2020 Removed the need for a contact to be a student.
                 runCriteriaContacts.add(newContact);
            // }
-            }
-
+        }
         if (runCriteriaContacts.size() > 0){ 
             Contact contactObject = new Contact(); // This takes all available fields from the required object.
             Schema.SObjectType objType = contactObject.getSObjectType();
             Map<String, Schema.SObjectField> mapFields = Schema.SObjectType.Contact.fields.getMap();
             Map<Id, List<String>> changedFieldsMap = new Map<Id, List<String>> ();
             List<EvaluationUtils.fieldUpdate> fieldUpdateList = new List<EvaluationUtils.fieldUpdate> (); //How we track field changes in the new ECA model.
-            
+
             //For the ECA rewrite we need to find which PEs are using the new model and which are using the old and direct those contacts
             //to the old ECA process or the new process.
             Map<Id, List<hed__Program_Enrollment__c>> contactIdToPEListMapNewECAProcess = new Map<Id, List<hed__Program_Enrollment__c>> ();
@@ -70,7 +69,7 @@ public class NES_ContactHandler {
                     contactIdToPEListMapNewECAProcess.put(pe.hed__Contact__c, thisContactsPEs);
                 }
             }
-                
+
             for (Contact newContact : runCriteriaContacts) {
                 // Contact oldContact = oldMap.get(newContact.Id);
                 Contact oldContact = actlstoldMap.get(newContact.Id); //Swapna:Changed to active list
@@ -88,7 +87,6 @@ public class NES_ContactHandler {
                                     newFieldUpdate.programEnrollmentId = PE.Id;
                                     newFieldUpdate.objectAndFieldName = 'Contact.' + str;
                                     newFieldUpdate.newValue = newContact.get(str);
-
                                     if (newContact.RecordTypeId == studentContactId)
                                         newFieldUpdate.studentOrHousehold = 'Student';
                                     else
@@ -101,11 +99,11 @@ public class NES_ContactHandler {
                 }
 
                 if (contactsWithAtLeastOneOldECA.contains(newContact.Id))
-                changedFieldsMap.put(newContact.Id, changedFields);
+                    changedFieldsMap.put(newContact.Id, changedFields);
             }
 
             if (changedFieldsMap.size() > 0 && NES_Constants.runAssignment)  //These are the old ECA model.
-            NES_ECACompletion.contactCompletion(changedFieldsMap);
+                NES_ECACompletion.contactCompletion(changedFieldsMap);
 
             system.debug ('ContactTrigger  fieldUpdateList:' + fieldUpdateList);
 

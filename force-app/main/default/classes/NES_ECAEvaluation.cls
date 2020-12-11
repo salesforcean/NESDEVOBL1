@@ -472,7 +472,7 @@ OR Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.MESSA
 						}
 						catch(Exception e){
 							//logger.logException('runAssignment', e); 
-							logger.logException('runAssignment retry '+i, e); 
+							logger.logException('runAssignment retry '+i, e);
 							logger.saveLogs();
 						}
 					}while(i<5);
@@ -849,7 +849,6 @@ AND Enrollment_Component__c IN :ECsToQueryFor
               } else
                    {
                    formAffiliation.Status__c = 'Complete';
-                   formAffiliation.Date_Completed__c = System.today();
               }
                     newAffiliations.add(formAffiliation);
           }

@@ -3,6 +3,9 @@
  */
 ({
     
+    handleInteration: function(component, event, helper){
+        console.log('<<<<interation>>>');
+    },
     handleInit: function(component, event, helper){
         component.set("v.streetError",false);
         helper.handleInit(component);
@@ -63,7 +66,9 @@
             
             var enable_search = true;
             //if(qTarget === "Account.ShippingStreet"){
+            //alert('*** Before IF qregex ==> '+qregex);
             if(qregex != null){
+                    // alert('*** After IF qregex ==> '+qregex);
 					eve2 = eve2.toLowerCase();
                	    if(eve2.length >=3  && (eve2.includes("po ") || eve2.includes("post box") || eve2.includes("po box") 
                                      ||eve2.includes("p.o")||eve2.includes("pob")||eve2.includes("p o")||eve2.includes("p -")
@@ -129,6 +134,7 @@
         component.set("v.searchKeyword",selectedValue);
         var suggestionsContainer = document.getElementById("suggestionsModal");
         suggestionsContainer.classList.add("hideEl"); 
+        console.log('handleSelection');
     },
     /* This will see if the user pressed the enter key then check validity */
     checkKey : function(component, event, helper) {

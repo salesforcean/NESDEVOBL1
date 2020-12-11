@@ -26,7 +26,6 @@
             <!-- checking if 'loaded' variable is true -->
             <aura:if isTrue="{! v.loaded }">
                 <!-- School Years Dropdown start-->
-
                 <lightning:select  name="Yearselect" label="Select a Year"  value="{!v.schoolYear}" onchange="{!c.onYearChange}" disabled='{!v.noSchoolYears}'>
                     <option value="">-- None --</option>
                     <!-- iterating over  'schoolYears' collection to provide options to select from -->

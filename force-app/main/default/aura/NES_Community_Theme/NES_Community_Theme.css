@@ -387,6 +387,7 @@
         width: 100%;
         padding-right: 1rem !important;
         padding-left: 1rem !important;
+        
     }
 }
 
@@ -692,6 +693,7 @@
     padding: 1.5rem;
     background: #f5f5f5;
     box-shadow:0 0px 0px 0 rgba(0,0,0,.0);
+    
 }
 
     .THIS .contextual-help h5 {
@@ -699,9 +701,11 @@
     }
 
     
-
-        .THIS .contextual-help ul li {
+.THIS .contextual-help ul li {
             margin: .5rem 0;
+    /*Added for the Bug 336325 by Jagadeesh */
+    		list-style-type: disc;
+    		
         }
 
 .THIS .footer {

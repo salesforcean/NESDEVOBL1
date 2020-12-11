@@ -5,7 +5,7 @@
   *******************************************
   Date:23/03/2020
   ********************************************
-  Apex Classes: CS_SSTFPublicGroupUserPermissionBatch
+  Apex Classes: c
   *****************************************************************************
   Description:This class is controller for Assigning permission set to Public Group Members 
 			    - Query all the Group Members of the Particular Group,identify whether the perimission set is already been assigned for each Member

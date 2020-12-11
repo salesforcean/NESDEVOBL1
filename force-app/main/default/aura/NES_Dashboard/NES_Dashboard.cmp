@@ -31,6 +31,7 @@
     
     <!-- @todo implement an event that will notify this component of changes when students are added -->
     <!-- <c:NES_Announcements/> --> <!--To fix announcements display issue -->
+    <c:NES_OtherSchoolEnrollment aura:id="OSEcmp"/>
     <aura:if isTrue="{!v.loading}">
         <lightning:spinner variant="brand" size="medium" alternativeText="Loading..." />
     </aura:if>
@@ -99,9 +100,9 @@
                                          <!--Jagadeesh : Add for the US335364-->
                                         <!--Enroll new school button & Tooltip  -->
                                         <lightning:layoutItem size="1" padding="around-small" >
-                                                <button class="slds-button newSchoolButton tooltip" onclick="{!c.callOtherSchoolEnrollment}"  >  
+                                                <button class="slds-button newSchoolButton tooltip" onclick="{!c.callOtherSchoolEnrollment}" value="{!student.studentId}" name="{!student.studentFName}" >  
                                                     <img class="addButton" src="{! $Resource.addButton}" alt="Enroll in another school" /> 
-                                                    <span class="tooltiptext">Enroll in another school</span>
+                                                    <a><span class="tooltiptext">Enroll in another school</span></a>
                                                 </button>
                                         </lightning:layoutItem>
                                     </lightning:layout>

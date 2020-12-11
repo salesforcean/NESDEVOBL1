@@ -8,8 +8,6 @@
 ({
 
     doInit: function doInit(cmp, evt, helper) {
-       
-      
         // initialize data store
         helper.initStore();
 
@@ -18,11 +16,9 @@
 
         // get the topic list and pre-filter if needed
         helper.getTopics(cmp, preFilterTopicName);
-       
     },
 
     searchChange: function searchChange(cmp, evt, helper) {
-           
         var timer = cmp.get('v.searchDebounce');
         clearTimeout(timer);
 
@@ -35,14 +31,12 @@
     },
 
     filterChange: function filterChange(cmp, evt, helper) {
-        
         var value = evt.getSource().get('v.value');
         var name = evt.getSource().get('v.name');
         helper.setFilterSelected(cmp, name, value);
     },
 
     pagerNext: function pagerNext(cmp, evt, helper) {
-      
         helper.pagerNext(cmp);
     },
 
@@ -51,7 +45,6 @@
     },
 
     handleTopicsLoaded: function handleTopicsLoaded(cmp, evt, helper) {
-        
         helper.search(cmp);
     }
 

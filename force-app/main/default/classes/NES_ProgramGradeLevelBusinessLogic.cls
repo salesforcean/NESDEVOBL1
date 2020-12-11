@@ -50,7 +50,7 @@ public with sharing class NES_ProgramGradeLevelBusinessLogic {
         }
         if(waitlistedPEIds.size() > 0 ){
             //Changed batch size to 8 from 20 as part of BUG217915 bulk testing
-            Database.executeBatch(new NES_WaitListCalculatorBatch(waitlistedPEIds),8); 
+            Database.executeBatch(new NES_WaitListCalculatorBatch(waitlistedPEIds),8); // 8 20 50
         } 
     }
     /**

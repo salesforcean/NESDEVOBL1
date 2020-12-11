@@ -23,6 +23,7 @@ trigger NES_ContactTrigger on Contact(after insert, after update, before insert,
 
         NES_ContactHandler.handleAfterUpdate(Trigger.oldMap, Trigger.newMap, actlstoldMap, actlstnewMap);   
 
+
         // 2020-May-15: Sumanth B: Removed call to CS code as per the Task # 177183
             
     }
@@ -36,6 +37,7 @@ trigger NES_ContactTrigger on Contact(after insert, after update, before insert,
         //                  I am going to leave the parameter because I don't want change the signature and break a bunch of stuff.
         //Set<ID> idsReferenced = Trigger.newMap.keySet();
         //List<hed__Program_Enrollment__c> allRelatedInProgPEs = [select hed__Contact__c from hed__Program_Enrollment__c where Status__c = 'In Progress' and hed__Contact__c IN :idsReferenced];
+
 
 
         //Set<Id> ContactsWithAnInProgPE = new Set<Id> ();

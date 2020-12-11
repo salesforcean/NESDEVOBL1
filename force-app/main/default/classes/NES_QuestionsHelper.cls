@@ -576,12 +576,17 @@ public without sharing class NES_QuestionsHelper {
 		//Converted "sectionAffiliation" as ListType for the Defect 226838 by Jagadeesh
         List<Enrollment_Component_Affiliation__c> sectionAffiliation = new List<Enrollment_Component_Affiliation__c>();
         sectionAffiliation = [SELECT Status__c FROM Enrollment_Component_Affiliation__c WHERE Enrollment_Component__c = :sectionId AND Program_Enrollment__c = :programEnrollmentId];
-        Enrollment_Component__c questionType = [SELECT Question_Type__c FROM Enrollment_Component__c WHERE Id = :sectionId];
+        List<Enrollment_Component__c> questionType = new List<Enrollment_Component__c>();
+        questionType = [SELECT Id, Question_Type__c FROM Enrollment_Component__c WHERE Id = :sectionId];
         System.debug(questionType);
         System.debug(sectionId);
         List<NES_EvaluateUtil.Question> questions = new List<NES_EvaluateUtil.Question>();
         //Still return questions for MDR even if that one sub-section is complete but the parent one is not
-        if (sectionAffiliation.size() >0 && sectionAffiliation[0].Status__c == 'Complete' && questionType.Question_Type__c != 'School Search') { 
+
+        if (programEnrollmentId == null)
+            return questions;
+
+        if (sectionAffiliation.size() >0 && sectionAffiliation[0].Status__c == 'Complete' && questionType.size() > 0 && questionType[0].Question_Type__c != 'School Search') { 
             NES_EvaluateUtil.Question newQuestion = new NES_EvaluateUtil.Question();
             newQuestion.questionId = 'Complete';
             questions.add(newQuestion);
@@ -619,8 +624,7 @@ public without sharing class NES_QuestionsHelper {
                         WHERE hed__Account__c = :studentEnrollment.hed__Account__c
                         AND hed__Contact__c = :caretaker.ContactId
                         LIMIT 1
-                ];
-
+                ]; 
                 // If new ECA Model, set below flag to true
                 if (studentEnrollment.hed__Account__r.Use_Updated_ECA_Process__c)
                     NES_Constants.runAssignment = true; 
@@ -935,7 +939,7 @@ public without sharing class NES_QuestionsHelper {
                                     NES_EvaluateUtil.Question singleQuestion = new NES_EvaluateUtil.Question();
                                     if (newComponent.Component_Type__c == 'Student') {
                                         System.debug(studentDataMap2);
-                                        if (questionType.Question_Type__c == 'School Search')  //MM 9/10/2020  Added to support a bug with School Search not finding the correct Prior School record.
+                                        if (questionType[0].Question_Type__c == 'School Search')  //MM 9/10/2020  Added to support a bug with School Search not finding the correct Prior School record.
                                             singleQuestion = NES_EvaluateUtil.configureQuestion(newComponent, optionExclusionMap, studentDataMap2, orderDecimal, false, sectionId, studentCriteriaStrings);
                                         else
                                             singleQuestion = NES_EvaluateUtil.configureQuestion(newComponent, optionExclusionMap, studentDataMap2, orderDecimal, false, null, studentCriteriaStrings);

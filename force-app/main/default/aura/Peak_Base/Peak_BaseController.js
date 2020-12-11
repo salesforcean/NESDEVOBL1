@@ -3,7 +3,6 @@
  */
 ({
     initPeakBase: function(component, event, helper) {
-        
         if(component.get('v.labelText') !== ''){
                 helper.setLabel(component);
         }

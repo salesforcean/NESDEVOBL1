@@ -50,7 +50,6 @@ public with sharing class NES_ProgramGradeLevelTriggerTest {
     * Purpose : Test waitlistCalculator method on update
     */
     static testMethod void testUpdateProgramGradeLevel(){
-
         Program_Grade_Level__c programGradeLevel = [Select id, ActivateWaitlist__c  from Program_Grade_Level__c limit 1];
         programGradeLevel.ActivateWaitlist__c = True;
         Test.startTest();

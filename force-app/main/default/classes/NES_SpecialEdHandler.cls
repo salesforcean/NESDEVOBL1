@@ -58,7 +58,6 @@ public class NES_SpecialEdHandler {
                             EvaluationUtils.fieldUpdate newFieldUpdate = new EvaluationUtils.fieldUpdate();
                             newFieldUpdate.programEnrollmentId = newInfo.Program_Enrollment__c;
                             newFieldUpdate.objectAndFieldName = 'Special_Education__c.' + str;
-
                             newFieldUpdate.newValue = newInfo.get(str);
                             fieldUpdateList.add(newFieldUpdate);
                         }
@@ -76,7 +75,6 @@ public class NES_SpecialEdHandler {
                 changedObjects.add(newInfo.Id);
                 peToObjectMap.put(newInfo.Program_Enrollment__c, changedObjects);
             }
-
             if (fieldUpdateList.size()>0) {
                 NES_ECACompletion.shouldRunCompletion = true;
             }
@@ -140,7 +138,6 @@ public class NES_SpecialEdHandler {
                             EvaluationUtils.fieldUpdate newFieldUpdate = new EvaluationUtils.fieldUpdate();
                             newFieldUpdate.programEnrollmentId = newInfo.Program_Enrollment__c;
                             newFieldUpdate.objectAndFieldName = 'Special_Education__c.' + str;
-
                             newFieldUpdate.newValue = newInfo.get(str);
                             fieldUpdateList.add(newFieldUpdate);
                         }
@@ -158,7 +155,6 @@ public class NES_SpecialEdHandler {
                 changedObjects.add(newInfo.Id);
                 peToObjectMap.put(newInfo.Program_Enrollment__c, changedObjects);
             }
-
             if (fieldUpdateList.size()>0) {
                 NES_ECACompletion.shouldRunCompletion = true;
             }
