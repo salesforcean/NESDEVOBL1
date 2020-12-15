@@ -452,7 +452,7 @@ and using those child components get the required component information
     }
     // Created by Maddileti for US #335371 on 12/04/2020
     // Creating New PEs ,Opportunity & ECA's for New School Year
-    public static Peak_Response nextYearEnrollment(Id studentId,String instituteNam,String schoolYear,String gradeLevels,String callType) {
+    public static Peak_Response nextYearEnrollment(Id studentId,String instituteNam,String schoolYear,String gradeLevels,String callType, boolean enrollFlag,Id programEnrollmentId) {
         Peak_Response peakResponse = new Peak_Response();
         NES_ECACompletion.shouldRunCompletion = false;
         NES_Constants.runAssignment = false;
@@ -506,6 +506,17 @@ and using those child components get the required component information
                 newStudentEnrollment.Program_Grade_Level__c  = progGrades.id;
                 newStudentEnrollment.Final_Grade_Level__c  = progGrades.Grade_Level__r.name;
                 newStudentEnrollment.Has_Open_Opportunity__c = true;
+                
+               if(enrollFlag){
+			   
+			      newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student';
+                 
+                } else {
+				   
+				  hed__Program_Enrollment__c oldPE =[select Enrollment_Type__c from hed__Program_Enrollment__c where id =:programEnrollmentId limit 1];
+                  newStudentEnrollment.Enrollment_Type__c =oldPE.Enrollment_Type__c;
+                    
+                }   
              
                 string str = Id.valueOf(reactivateStudent.id); 
                 

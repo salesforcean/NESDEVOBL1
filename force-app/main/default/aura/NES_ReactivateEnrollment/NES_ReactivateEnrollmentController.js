@@ -156,7 +156,9 @@
                 instituteNam:acName,
                 schoolYear : newSchoolYear,
                 gradeLevels : gradeNew,
-                callType: 'community'
+                callType: 'community',
+                enrollFlag: component.get("v.enrollFlag") ,
+                programEnrollmentId: component.get("v.programEnrollmentId") 
             });
             action.setCallback(this, function(response){
                 var peakResponse = response.getReturnValue();
@@ -195,8 +197,22 @@
     schoolSelect: function (component,event,helper){
         //check label and year from dash board and compare selected year if re-enroll show message
         //grade drop down should be disabled
-        component.set("v.disableGrade",false);
+        // component.set("v.disableGrade",false);
         var newSchoolYear=component.find('Year').get('v.value');
+        console.log('New School Year :'+newSchoolYear);
+        var previousSchoolYear=component.get('v.schoolYeara');
+        console.log('previousSchoolYear Selected :'+previousSchoolYear);
+        if(previousSchoolYear==newSchoolYear){ 
+            
+            component.set("v.disableGrade",true);
+        } else if (previousSchoolYear!= newSchoolYear){
+            
+            component.set("v.disableGrade",false);
+            
+            
+        }
+        //}
+        //var newSchoolYear=component.find('Year').get('v.value');
         component.set("v.gradeLevels",[]);
         helper.getGrades(component, event, helper,newSchoolYear);
         
@@ -212,8 +228,45 @@
             
             component.set("v.reEnrollmentMessage",true);
             
-        } else{
+        } else {
             component.set("v.reEnrollmentMessage",false);
+            component.set('v.enrollmentSuccessMessage', true);
+            var stId=component.get('v.studentId');
+            var acName=component.get("v.acadName");
+            var studentName=component.get("v.studentName");
+            console.log('std:'+stId);
+            var action = component.get("c.nextYearEnrollment");
+            action.setParams({
+                studentId: stId, 
+                instituteNam:acName,
+                schoolYear : newSchoolYear,
+                gradeLevels : gradeNew,
+                callType: 'community',
+                enrollFlag: component.get("v.enrollFlag") ,
+                programEnrollmentId: component.get("v.programEnrollmentId") 
+            });
+            action.setCallback(this, function(response){
+                var peakResponse = response.getReturnValue();
+                console.log(peakResponse);
+                if(peakResponse.success){
+                    component.set("v.success", true);
+                    window.setTimeout(
+                        $A.getCallback(function(){
+                            var redirect = $A.get("e.force:navigateToURL");
+                            redirect.setParams({
+                                "url" : "/dashboard"
+                            });
+                            redirect.fire();
+                        }), 3000
+                    );
+                    
+                    
+                } else {
+                    component.set("v.hasError",true);
+                    component.set("v.message", peakResponse.messages[0]);
+                }
+            });
+            $A.enqueueAction(action); 
         }
         
         

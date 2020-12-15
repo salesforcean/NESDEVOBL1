@@ -66,11 +66,9 @@
         })
         $A.enqueueAction(action);
      },
-    // Add by Maddileti for US #335371 
+    // End by Maddileti for US #335371 
     
-    
-    
-    getNextYearAvailability: function(component, event, helper){
+     getNextYearAvailability: function(component, event, helper){
         console.log('----entered into helper-----');
     	var schoolName = component.get("v.schoolName");
         var currentSchoolYr = component.get("v.schoolYeara");

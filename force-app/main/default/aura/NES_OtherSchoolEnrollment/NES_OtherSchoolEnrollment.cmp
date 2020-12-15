@@ -4,10 +4,20 @@
 
 <aura:component description="NES Other School Enrollment" implements="forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global" extends="c:Peak_Base" controller="NES_OtherSchoolEnrollmentHelper">
     
-    <aura:attribute name="schoolsToAttend" type="Object" />
+    <aura:attribute name="schoolsToAttend" type="Object" /> 
+    <aura:attribute name="schoolYears" type="Object" /> 
+    <aura:attribute name="grades" type="Object" /> 
     <aura:attribute name="selectedStudentId" type="String" />
     <aura:attribute name="selectedStudentName" type="String" />
-    <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" default="false" />
+    <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" default="false" /> 
+    <aura:attribute name="noSchools" type="Boolean" default="true" />
+    <aura:attribute name="noYears" type="Boolean" default="true" />
+    <aura:attribute name="noGradeLevel" type="Boolean" default="true" />
+    
+    
+    <aura:attribute name="School" type="String" />
+    <aura:attribute name="schoolYear" type="String" />
+    <aura:attribute name="grade" type="String" />
     
     <aura:method name="getMessage" action="{!c.doInit}" access="public">
         <aura:attribute name="selectedStudentId" type="String" /> 
@@ -62,17 +72,17 @@
                         </aura:iteration>
                     </lightning:select><br/>
                     
-                    <lightning:select aura:id="Year" name="schoolYear" label="School Year"  value="{!v.schoolYear}" required="true" onchange ="{!c.schoolYearSelect}">
+                    <lightning:select aura:id="Year" name="schoolYear" label="School Year"  value="{!v.schoolYear}" required="true" onchange ="{!c.schoolYearSelect}"  disabled='{!v.noSchools}'>
                         <option value="">--Select school year --</option>
                         <aura:iteration items="{!v.schoolYears}" var="year">
-                            <option value="{!year.Name}" selected ="{!year.name}">{!year.Name}</option><br/>
+                            <option value="{!year.Name}" selected ="{!year.Name}">{!year.Name}</option><br/>
                         </aura:iteration>
-                    </lightning:select><br/>
-                    
-                    <lightning:select aura:id="grade" name="grade" label="Requesting grade"  value="{!v.grade}" required="true" onchange ="{!c.gradeSelect}">
-                        <option value="">--select a grade --</option>
-                        <aura:iteration items="{!v.schoolYears}" var="year">
-                            <option value="{!year.Name}" selected ="{!year.name}">{!year.Name}</option><br/>
+                    </lightning:select>
+                    <br/>
+                    <lightning:select aura:id="grade" name="grade" label="Requesting grade"  value="{!v.grade}" required="true" onchange ="{!c.gradeSelect}"  disabled='{!v.noYears}'>
+                        <option value="">--Select a grade level--</option>
+                        <aura:iteration items="{!v.grades}" var="grade">
+                            <option value="{!grade.index}">{!grade.Name}</option><br/>
                         </aura:iteration>
                     </lightning:select><br/>
                     
@@ -82,7 +92,7 @@
                         <span class="btnblock">
                             <a href="javascript:void(0)"
                                class="slds-button slds-button_brand"
-                               onclick="{!c.navigate}">Enroll</a>
+                               onclick="{!c.handleEnroll}">Enroll</a>
                         </span>
                     </div>
                     </div>

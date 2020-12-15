@@ -116,6 +116,8 @@
             schoolYear:component.get("v.schoolYear"),
             gradeLevels:grade=='0'?'K':grade,
             callType:'application',
+            enrollFlag:true,
+            programEnrollmentId:PErecordDetails.programEnrollment.Id
         });
         action.setCallback(this, function(response){
             var state = response.getState();

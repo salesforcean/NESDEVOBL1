@@ -35,7 +35,7 @@
     <aura:attribute name="enrollFlag" type="Boolean" default="false" />
     <aura:attribute name="reactiveFlag" type="Boolean" default="false" />
     <aura:attribute name="reEnrollmentMessage" type="Boolean" default="false" />
-    
+    <aura:attribute name="enrollmentSuccessMessage" type="Boolean" default="false" />
            
 
     <!-- add by Maddileti for US # 335371 on 12/04/2020  -->
@@ -115,7 +115,7 @@
                 <div class="slds-modal__content slds-p-around_medium slds-text-align_left" style="border-radius:.25rem;" id="modal-content-id-1">
                     <h3 class="slds-text-align_left slds-m-bottom_medium">{!v.studentName}</h3>
  
-                    <lightning:input aura:id="School" name="schoolName" label="School to attend"  value="{!v.acadName}" disabled="true" required="true" />                    <br/>
+                    <lightning:input aura:id="School" name="schoolName" label="School to attend"  value="{!v.acadName}" disabled="true" required="true" /> <br/>
                     <lightning:select aura:id="Year" name="schoolYear" label="School Year"  value="{!v.schoolYear}" required="true" onchange ="{!c.schoolSelect}">
                         <option value="">--select year --</option>
                         <aura:iteration items="{!v.schoolYears}" var="year">
@@ -146,6 +146,29 @@
                     </aura:if>
                     <aura:if isTrue="{!v.reEnrollmentMessage}">
                         <div><p> * The system cannot process same year re-enrollment. Please contact support at 1-800-xxx-xxxx to proceed.</p></div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.enrollmentSuccessMessage}">
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                <header class="slds-modal__header" style="border:none;padding:0;">
+                                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick="{!c.closeModal}">
+                                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                                        <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                                    </button>
+                                </header>
+                                <div class="slds-modal__content slds-p-around_medium slds-text-align_center" style="border-radius:.25rem;" id="modal-content-id-1">
+                                    <h2 class="slds-text-align_center slds-m-bottom_medium">Re-Enrollment</h2>
+                                    <aura:if isTrue="{!v.hasError}">
+                                        <p class="slds-text-color_error">{!v.message}</p>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.success}">
+                                        <p>{!v.studentName + ' has been successfully re-enrolled.'}</p>
+                                    </aura:if>
+                                </div>
+                                
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
                     </aura:if>
                     <aura:if isTrue="{!v.isOpen}">
                         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">

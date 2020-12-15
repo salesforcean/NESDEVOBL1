@@ -340,21 +340,14 @@ public class EvaluationUtils  {
 
         //Now insert all the Program Enrollment Criteria records.
         list <Program_Enrollment_Criteria__c> pecsToInsert = new list <Program_Enrollment_Criteria__c> ();
-        Set<Id> pecAlreadyIncluded = new Set<Id> ();
+        Set<string> pecAlreadyIncluded = new Set<string> (); //The combination of criteriaid, questiongroup, school year and student or household.
         for (Enrollment_Component_Criteria__c ecc : [
             SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c   
             FROM    Enrollment_Component_Criteria__c 
             WHERE   Enrollment_Component__c in :allECs]) 
         {
             eccs.add(ecc);
-            if (!pecAlreadyIncluded.contains(ecc.Criteria__c)) {
-
-                //For certain objects, we need to eveluate the result of the pe criteria after we have inserted them.  There are two reasons for this:
-                // 1. They related to household data and may have been entered for another student.
-                // 2. They are on a record for this student that was created earlier in the add a student process prior to the PECs existing.
-                //The list of objects that we care about are: account, contact, Program Enrollment and Annual Student Info.
-
-
+            if (!pecAlreadyIncluded.contains(ecc.Criteria__c + ecc.Student_or_Household__c + ecc.Question_Group__c + ecc.School_Year__c)) {
                 // collect schoolYearExtId && questionGroupExtId
                 if (String.isNotEmpty(ecc.School_Year__c))
                     schoolYearByExternalId.put(ecc.School_Year__c,null);
@@ -362,7 +355,7 @@ public class EvaluationUtils  {
                     questionGroupByExternalId.put(ecc.Question_Group__c,null);
                 // collect schoolYearExtId && questionGroupExtId END...
 
-                pecAlreadyIncluded.add(ecc.Criteria__c);
+                pecAlreadyIncluded.add(ecc.Criteria__c + ecc.Student_or_Household__c + ecc.Question_Group__c + ecc.School_Year__c);
                 Program_Enrollment_Criteria__c newPEC = new Program_Enrollment_Criteria__c();
                 newPEC.Program_Enrollment__c = programEnrollment;
                 newPEC.Criteria__c = ecc.Criteria__c;

@@ -1,8 +1,30 @@
 public without sharing class NES_OtherSchoolEnrollmentHelper {
+    
+/**
+* Created by Sravani Pendyala on 12/01/2020.
+* Return Type: List<School_Year__c>
+* Purpose : This method is used to get list of valid School years for given Institute   
+*/
+    @AuraEnabled
+    public static List<School_Year__c> getSchoolYears(String instituteName) {
+        List<School_Year__c> schoolYears = NES_EnrollmentController.getSchoolYears(instituteName);
+        return schoolYears;
+    }
+        @AuraEnabled
+    public static Peak_Response otherSchoolEnrollment(Id studentId,String instituteNam,String schoolYear,String gradeLevels, String callType, boolean enrollFlag, Id programEnrollmentId) {
+        Peak_Response pr = NES_EnrollmentController.nextYearEnrollment(studentId,instituteNam,schoolYear,gradeLevels,callType,enrollFlag,programEnrollmentId);
+        return pr;
+    }
+        @AuraEnabled
+    public static List<Grade_Level__c> getGradeLevels(string selectedYr,String instituteName) {
+        List<Grade_Level__c> gradeLevels = NES_EnrollmentController.getGradeLevels(instituteName,selectedYr);
+        return gradeLevels;
+    }
+    
     @AuraEnabled
     public static List<Account> getSchoolsToAttend(String selectedStudentId) {
-    List<Id> schoolsToRemove= new List<Id>();
-                List<Account> schoolsToAttend = new List<Account>();
+        List<Id> schoolsToRemove= new List<Id>();
+        List<Account> schoolsToAttend = new List<Account>();
         List<hed__Program_Enrollment__c> studentPEs = [select id, 
                                                        hed__Contact__c,
                                                        hed__Contact__r.Name,
@@ -20,13 +42,13 @@ public without sharing class NES_OtherSchoolEnrollmentHelper {
                                                        where hed__Contact__c=:selectedStudentId 
                                                        order by createddate Desc];
         if(studentPEs[0].hed__Contact__r.Caretaker_Id__r.Account.ShippingState!=null){
-        String CTstate= studentPEs[0].hed__Contact__r.Caretaker_Id__r.Account.ShippingState;
-        for(hed__Program_Enrollment__c pe:studentPEs){
-            if(pe.hed__Account__r.ParentId!=null){
-            schoolsToRemove.add(pe.hed__Account__r.ParentId);
+            String CTstate= studentPEs[0].hed__Contact__r.Caretaker_Id__r.Account.ShippingState;
+            for(hed__Program_Enrollment__c pe:studentPEs){
+                if(pe.hed__Account__r.ParentId!=null){
+                    schoolsToRemove.add(pe.hed__Account__r.ParentId);
+                }
             }
-        }
-        schoolsToAttend= [SELECT id,name,shippingstate from account where id NOT IN :schoolsToRemove and shippingstate=:CTstate and recordtype.name='Educational Institution'];
+            schoolsToAttend= [SELECT id,name,shippingstate from account where id NOT IN :schoolsToRemove and shippingstate=:CTstate and recordtype.name='Educational Institution'];
         }
         return schoolsToAttend;
     }

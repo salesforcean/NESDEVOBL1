@@ -14,7 +14,8 @@
     
     <aura:registerEvent name="isSameSchoolEvent" type="c:NES_schoolId"/>
     <aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" /> <!-- Swapna: Add for GTM -->
-    <aura:attribute name="loading" type="Boolean" default="false" />
+    <aura:attribute name="loading" type="Boolean" default="false" />  
+    <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" default="false" />
     <aura:attribute name="heading" type="String" default="My Students" />
     <aura:attribute name="message" type="String" />
     <!-- Student Objects -->
@@ -31,7 +32,7 @@
     
     <!-- @todo implement an event that will notify this component of changes when students are added -->
     <!-- <c:NES_Announcements/> --> <!--To fix announcements display issue -->
-    <c:NES_OtherSchoolEnrollment aura:id="OSEcmp"/>
+    <c:NES_OtherSchoolEnrollment aura:id="OSEcmp"/> <!--US:332932 -->
     <aura:if isTrue="{!v.loading}">
         <lightning:spinner variant="brand" size="medium" alternativeText="Loading..." />
     </aura:if>
@@ -100,7 +101,7 @@
                                          <!--Jagadeesh : Add for the US335364-->
                                         <!--Enroll new school button & Tooltip  -->
                                         <lightning:layoutItem size="1" padding="around-small" >
-                                                <button class="slds-button newSchoolButton tooltip" onclick="{!c.callOtherSchoolEnrollment}" value="{!student.studentId}" name="{!student.studentFName}" >  
+                                                <button class="slds-button newSchoolButton tooltip" onclick="{!c.callOtherSchoolEnrollment}" value="{!student.studentId}" name="{!student.studentFName}" content="Enroll in another school" >  
                                                     <img class="addButton" src="{! $Resource.addButton}" alt="Enroll in another school" /> 
                                                     <span class="tooltiptext">Enroll in another school</span>
                                                 </button>

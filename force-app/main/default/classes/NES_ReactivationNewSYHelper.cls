@@ -33,8 +33,8 @@ public class NES_ReactivationNewSYHelper {
 * Purpose : This method is used to Reactive the PE for new School year.
 */
     @AuraEnabled
-    public static Peak_Response newYearReactivate(Id studentId,String instituteNam,String schoolYear,String gradeLevels, String callType) {
-        Peak_Response pr = NES_EnrollmentController.nextYearEnrollment(studentId,instituteNam,schoolYear,gradeLevels,callType);
+    public static Peak_Response newYearReactivate(Id studentId,String instituteNam,String schoolYear,String gradeLevels, String callType, boolean enrollFlag, Id programEnrollmentId) {
+        Peak_Response pr = NES_EnrollmentController.nextYearEnrollment(studentId,instituteNam,schoolYear,gradeLevels,callType,enrollFlag,programEnrollmentId);
         return pr;
     }
     

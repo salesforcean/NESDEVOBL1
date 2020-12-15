@@ -7,14 +7,11 @@
         // get list of students
         helper.getStudents(component, event, helper);
     },
+    /* US:332932 --- commented for deployment */
     callOtherSchoolEnrollment: function(component, event, helper)
     {
         var selectedStudentId = event.currentTarget.value;
-        //alert(selectedStudentId);
         var selectedStudentName = event.currentTarget.name;
-        //alert(JSON.stringify(selectedStudentName));
-        //console.log(selectedStudentId);
-        //component.set("v.selectedStudentId",selectedStudentId);
         component.set("v.isOtherSchoolEnrollment",'true'); 
         var OSEcmp = component.find("OSEcmp");
         var message = OSEcmp.getMessage(selectedStudentId,selectedStudentName,'true');
