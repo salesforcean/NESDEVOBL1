@@ -44,7 +44,7 @@ public class NES_ReactivateSYTest {
         //Create a relationship between the User Contact and Student Contact
         hed__Relationship__c  relationship = Peak_TestUtils.createRelationship(careTaker.ContactId, student.Id, true);
         
-        //Create a student enrollment with House Hold Enrollment
+        //Create a student enrollment
         Id studentEnrollmentType = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
         hed__Program_Enrollment__c studentEnrollment = Peak_TestUtils.createProgramEnrollment(academicProgram.Id, student.Id, schoolYear.Id, false);
         studentEnrollment.RecordTypeId = studentEnrollmentType;
@@ -209,18 +209,15 @@ public class NES_ReactivateSYTest {
         User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'portalUser@gmail.com'];
         Contact studentid=[select id,Birthdate__c from Contact where LastName ='TestCon' AND RecordType.name = 'Students' limit 1];
         Account institutionalAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
-        Account academicProgram = [SELECT Id,name, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c FROM Account
-                                   WHERE RecordType.Name = 'Academic Program' LIMIT 1];
+        Account academicProgram = [SELECT Id,name, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c FROM Account WHERE RecordType.Name = 'Academic Program' LIMIT 1];
         
         Grade_Level__c gradeLevel=[select id,name from Grade_Level__c where name ='1' limit 1];
-        
         List<School_Year__c> schoolYears = [Select id,name FROM School_Year__c WHERE Name ='Test School' LIMIT 1];
-        hed__Program_Enrollment__c stdPE=[select id from hed__Program_Enrollment__c limit 1];
+        hed__Program_Enrollment__c stdPE=[select id from hed__Program_Enrollment__c WHERE RecordType.Name = 'Student' limit 1];
         boolean flag=true;
-        
+        String callType='community';
         System.runAs(careTaker) { 
             Test.startTest();
-            String callType='community';
             Peak_Response studentInsertResponse = NES_EnrollmentController.nextYearEnrollment(studentid.Id,academicProgram.Name,schoolYears[0].name,gradeLevel.Name, callType,flag,stdPE.id);
             Test.stopTest();
         }

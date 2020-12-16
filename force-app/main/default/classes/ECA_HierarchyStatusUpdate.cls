@@ -268,7 +268,8 @@ public without sharing class ECA_HierarchyStatusUpdate
             // if (parent.enrollment_component__r.recordtype.name == 'Stage' && originalStatus == 'Not Applicable')
             //     continue;
 
-            String updatedStatus = getChildrenStatus(parent, false);
+            // String updatedStatus = getChildrenStatus(parent, false);
+            String updatedStatus = getChildrenStatus(parent, true);
 			
             if(updatedStatus!=null && ((updatedStatus != originalStatus) || (inFlightParent!=null && inFlightParent.Status__c !=  parent.status__c)) ) // parent.status__c)
             {

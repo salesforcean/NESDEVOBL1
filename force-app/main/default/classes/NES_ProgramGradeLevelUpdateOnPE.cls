@@ -8,8 +8,8 @@
 global class NES_ProgramGradeLevelUpdateOnPE  implements DataBase.Batchable<SObject>, Schedulable {
     public Map<String, Id> pglMap;//Key Academic Program with Grade Level Key and PGL Id as value
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        Id StudentrecTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
-        String queryString = 'SELECT Id,Program_Grade_Level__c,hed__Account__c,V2_External_ID__c,RecordType.Name,(Select Id, Final_Grade_Level__c from Annual_Student_Information__r order by Final_Grade_Level__c DESC NULLS LAST limit 1) FROM hed__Program_Enrollment__c WHERE RecordTypeId=:StudentrecTypeId AND Program_Grade_Level__c = null AND hed__Account__c !=null';
+        Id StudentrecTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();        
+        String queryString = 'SELECT Id,hed__Contact__r.CA_StartYear__r.Name,Program_Grade_Level__c,hed__Account__c,V2_External_ID__c,RecordType.Name,(Select Id, Final_Grade_Level__c from Annual_Student_Information__r order by Final_Grade_Level__c DESC NULLS LAST limit 1) FROM hed__Program_Enrollment__c WHERE RecordTypeId=:StudentrecTypeId AND Program_Grade_Level__c = null AND hed__Account__c !=null AND hed__Contact__r.CA_StartYear__r.Name<>\'2020-2021\'';
     	return Database.getQueryLocator(queryString);
     }
     global void execute(Database.BatchableContext BC, List<SObject> scope) {
