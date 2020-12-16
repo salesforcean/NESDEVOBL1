@@ -490,8 +490,23 @@ and using those child components get the required component information
                     LIMIT 1
                 ];
                 
-                hed__Program_Enrollment__c caretakerEnrollmentId = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c = :caretaker.ContactId AND hed__Account__c = :academicProgram.Id limit 1];
+                List<hed__Program_Enrollment__c> caretakerEnrollments = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c = :caretaker.ContactId AND hed__Account__c = :academicProgram.Id limit 1];
                // Grade_Level__c grades=[SELECT id,Name FROM Grade_Level__c  where Name =:gradeLevels limit 1];
+                
+                hed__Program_Enrollment__c caretakerEnrollmentId = new hed__Program_Enrollment__c();
+                if (caretakerEnrollments.size() == 0) {
+                    Id caretakerEnrollmentTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Caretaker').getRecordTypeId();
+                    caretakerEnrollmentId.hed__Contact__c = caretaker.ContactId;
+                    caretakerEnrollmentId.RecordTypeId = caretakerEnrollmentTypeId;
+                    caretakerEnrollmentId.OwnerId = academicProgram.OwnerId;
+                    if (academicProgram != null) {
+                        caretakerEnrollmentId.hed__Account__c = academicProgram.Id;
+                    }
+                    insert caretakerEnrollmentId;
+                } else {
+                    caretakerEnrollmentId = caretakerEnrollments[0];
+                }
+                
                 
                 Program_Grade_Level__c progGrades =[select id,Grade_Level__r.name from Program_Grade_Level__c where Academic_Program__r.name =:academicProgram.name AND Grade_Level__r.name =:gradeLevels limit 1];
                 //Program Enrollment for student
@@ -506,18 +521,23 @@ and using those child components get the required component information
                 newStudentEnrollment.Program_Grade_Level__c  = progGrades.id;
                 newStudentEnrollment.Final_Grade_Level__c  = progGrades.Grade_Level__r.name;
                 newStudentEnrollment.Has_Open_Opportunity__c = true;
-                
+                system.debug('enrollFlag=='+enrollFlag);
+                // add by Maddileti for US # 332934 on 12/16/2020 
                if(enrollFlag){
-			   
-			      newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student';
-                 
+                 /*  if (caretakerEnrollments.size() == 0) {
+                       newStudentEnrollment.Enrollment_Type__c = 'Initial Enrollment';
+                   } else{
+                       newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student';
+                   } */
+                   newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student';
+                   
                 } else {
 				   
 				  hed__Program_Enrollment__c oldPE =[select Enrollment_Type__c from hed__Program_Enrollment__c where id =:programEnrollmentId limit 1];
                   newStudentEnrollment.Enrollment_Type__c =oldPE.Enrollment_Type__c;
                     
                 }   
-             
+               // End by Maddileti for US # 332934 on 12/16/2020 
                 string str = Id.valueOf(reactivateStudent.id); 
                 
                 try{

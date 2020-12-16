@@ -10,13 +10,15 @@ public without sharing class NES_OtherSchoolEnrollmentHelper {
         List<School_Year__c> schoolYears = NES_EnrollmentController.getSchoolYears(instituteName);
         return schoolYears;
     }
-        @AuraEnabled
-    public static Peak_Response otherSchoolEnrollment(Id studentId,String instituteNam,String schoolYear,String gradeLevels, String callType, boolean enrollFlag, Id programEnrollmentId) {
-        Peak_Response pr = NES_EnrollmentController.nextYearEnrollment(studentId,instituteNam,schoolYear,gradeLevels,callType,enrollFlag,programEnrollmentId);
+    
+    @AuraEnabled
+    public static Peak_Response otherSchoolEnrollment(Id studentId,String instituteNam,String schoolYear,String gradeLevels, String callType, boolean enrollFlag) {
+        Peak_Response pr = NES_EnrollmentController.nextYearEnrollment(studentId,instituteNam,schoolYear,gradeLevels,callType,enrollFlag,null);
         return pr;
     }
-        @AuraEnabled
-    public static List<Grade_Level__c> getGradeLevels(string selectedYr,String instituteName) {
+    
+    @AuraEnabled
+    public static List<Grade_Level__c> getGradeLevels(String instituteName,string selectedYr) {
         List<Grade_Level__c> gradeLevels = NES_EnrollmentController.getGradeLevels(instituteName,selectedYr);
         return gradeLevels;
     }
@@ -37,6 +39,7 @@ public without sharing class NES_OtherSchoolEnrollmentHelper {
                                                        hed__Contact__r.Caretaker_Id__r.name,
                                                        hed__Contact__r.Caretaker_Id__r.AccountId,
                                                        hed__Contact__r.Caretaker_Id__r.Account.ShippingState,
+                                                       hed__Contact__r.Caretaker_Id__r.Account.ShippingPostalCode,
                                                        hed__Contact__r.Caretaker_Id__r.Account.name
                                                        from hed__Program_Enrollment__c 
                                                        where hed__Contact__c=:selectedStudentId 
@@ -48,7 +51,7 @@ public without sharing class NES_OtherSchoolEnrollmentHelper {
                     schoolsToRemove.add(pe.hed__Account__r.ParentId);
                 }
             }
-            schoolsToAttend= [SELECT id,name,shippingstate from account where id NOT IN :schoolsToRemove and shippingstate=:CTstate and recordtype.name='Educational Institution'];
+            schoolsToAttend= [SELECT Id,Name,Shippingstate,ShippingPostalCode from account where id NOT IN :schoolsToRemove and shippingstate=:CTstate and recordtype.name='Educational Institution'];
         }
         return schoolsToAttend;
     }

@@ -14,9 +14,12 @@ global class StorageCleanUpBatch implements Database.Batchable<sObject>, Databas
 {   
     // instance member to retain state across transactions
     global Integer recordsProcessed = 0;
-    //private String qryStr = 'SELECT Id from Enrollment_Component_Affiliation__c WHERE CREATEDDATE < 2020-08-02T00:00:00Z';
-    //global String qryStr = 'SELECT Id from Enrollment_Component_Affiliation__c WHERE CREATEDDATE < 2020-11-15T00:00:00Z';
-    global String qryStr = 'SELECT Id from Program_Enrollment_Criteria__c WHERE CREATEDDATE < 2020-11-15T00:00:00Z';
+    //private String qryStr = 'SELECT Id from Enrollment_Component_Affiliation__c WHERE CREATEDDATE < 2020-12-01T00:00:00Z';
+    //global String qryStr = 'SELECT Id from Enrollment_Component_Affiliation__c WHERE CREATEDDATE < 2020-12-08T00:00:00Z';
+    //global String qryStr = 'SELECT Id from Program_Enrollment_Criteria__c WHERE CREATEDDATE < 2020-12-08T00:00:00Z';
+    global String qryStr = 'SELECT Id from Peak_Apex_Log__c WHERE CREATEDDATE < 2020-12-08T00:00:00Z';
+
+    
 
     public StorageCleanUpBatch() {}
 

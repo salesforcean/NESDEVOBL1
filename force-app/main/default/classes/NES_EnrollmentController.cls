@@ -171,10 +171,14 @@ and using those child components get the required component information
         List<School_year__c> schoolYears = new List<School_year__c>();
         Date todayDate  = date.today();
         Set<Id> schoolYrIds = new Set<Id>();
+        system.debug('instituteName== '+instituteName);
         for(Account academicProgrm : [select Id,Parent.Name,Registration_End_Date__c,Registration_Start_Date__c,School_Year__c from account where recordtype.Name = 'Academic Program' AND Registration_Start_Date__c <= :todayDate AND Registration_End_Date__c >= :todayDate and parent.Name =:instituteName]){
+            system.debug('academicProgrm== '+academicProgrm);
             schoolYrIds.add(academicProgrm.School_Year__c);
         }
+        system.debug('schoolYrIds== '+schoolYrIds);
         
+
         schoolYears = [Select Id, Name from School_year__c where Id IN: schoolYrIds];
         
         return schoolYears;

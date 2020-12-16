@@ -116,7 +116,7 @@
                     <h3 class="slds-text-align_left slds-m-bottom_medium">{!v.studentName}</h3>
  
                     <lightning:input aura:id="School" name="schoolName" label="School to attend"  value="{!v.acadName}" disabled="true" required="true" /> <br/>
-                    <lightning:select aura:id="Year" name="schoolYear" label="School Year"  value="{!v.schoolYear}" required="true" onchange ="{!c.schoolSelect}">
+                    <lightning:select aura:id="Year" name="schoolYear" label="School Year"  value="{!v.schoolYear}" required="true" onchange ="{!c.gradeSelect}">
                         <option value="">--select year --</option>
                         <aura:iteration items="{!v.schoolYears}" var="year">
                             <option value="{!year.Name}" selected ="{!year.name}">{!year.Name}</option><br/>
@@ -134,10 +134,11 @@
                     
                     <br/><br/>
                     <aura:if isTrue="{!v.reactiveFlag}">
-                    <lightning:button variant="brand" label=" Student Reactivate" onclick="{!c.reReactivate}"/><!--add another button show those as per the button label and call corresponding methods-->
+                    <lightning:button variant="brand" label=" Student Reactivate" onclick="{!c.reReactivate}"/>
                     </aura:if>
+                     <!-- add by Maddileti for US # 332934 on 12/16/2020  -->
                      <aura:if isTrue="{!v.enrollFlag}">
-                    <lightning:button variant="brand" label="Re-Enroll" onclick="{!c.reEnrollment}"/>
+                    <lightning:button variant="brand" label="Re-Enroll" onclick="{!c.reEnrollingNewSY}"/>
                      </aura:if>
                     <br/><br/>
            
@@ -170,6 +171,7 @@
                         </section>
                         <div class="slds-backdrop slds-backdrop_open"></div>
                     </aura:if>
+                    <!-- End by Maddileti for US # 332934 on 12/16/2020  -->
                     <aura:if isTrue="{!v.isOpen}">
                         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
                             <div class="slds-modal__container">

@@ -62,6 +62,8 @@ public class PECEvaluation {
                 {
                     for (String field : criteriaObjectFieldsMapByPEType.get(k).get(objName)) // Ex: "waitlistflag__c","date_today__c","LastSchoolType__c","DisciplinaryFlagOverride__c","HomelessRiskFlag__c"
                     {
+                        if (rec.get(field)==null)
+                            continue;
                         EvaluationUtils.fieldUpdate fldUpdate = new EvaluationUtils.fieldUpdate();
                         fldUpdate.programEnrollmentId = programEnrollment;
                         fldUpdate.objectAndFieldName = objName + '.' + field; 

@@ -185,6 +185,7 @@
         }
         
     },
+    // End by Maddileti for US #335371
     closeModals: function (component,event,helper)
     {
         component.set('v.isOpenReactivation',false);
@@ -194,14 +195,13 @@
     reEnrollmentAction : function (component, event, helper){
         helper.getNextYearAvailability(component, event, helper);          
     },
-    schoolSelect: function (component,event,helper){
-        //check label and year from dash board and compare selected year if re-enroll show message
-        //grade drop down should be disabled
-        // component.set("v.disableGrade",false);
+     // Add by Maddileti for US # 332934 on 12/16/2020 
+    gradeSelect: function (component,event,helper){
         var newSchoolYear=component.find('Year').get('v.value');
         console.log('New School Year :'+newSchoolYear);
         var previousSchoolYear=component.get('v.schoolYeara');
         console.log('previousSchoolYear Selected :'+previousSchoolYear);
+        if(component.get("v.enrollFlag")){
         if(previousSchoolYear==newSchoolYear){ 
             
             component.set("v.disableGrade",true);
@@ -211,19 +211,25 @@
             
             
         }
-        //}
+         }
         //var newSchoolYear=component.find('Year').get('v.value');
         component.set("v.gradeLevels",[]);
+        component.find('Grade').set('v.value','');
         helper.getGrades(component, event, helper,newSchoolYear);
         
     },
-    reEnrollment : function (component,event,helper){
+    reEnrollingNewSY : function (component,event,helper){
+        var validity1 = component.find("Year").checkValidity();
+        var validity2 = component.find("Grade").checkValidity();
+        if(!validity1 || !validity2) return; 
+        
         var newSchoolYear=component.find('Year').get('v.value');
         var gradeNew=component.find('Grade').get('v.value');
         console.log('New School Year :'+newSchoolYear);
         console.log('New Grade Selected :'+gradeNew);
         var previousSchoolYear=component.get('v.schoolYeara');
         var previousGrade=component.get("v.gradeLevelId");
+  
         if(previousSchoolYear==newSchoolYear){
             
             component.set("v.reEnrollmentMessage",true);
@@ -268,11 +274,11 @@
             });
             $A.enqueueAction(action); 
         }
-        
+
         
     }
     
+    // End by Maddileti for US # 332934 on 12/16/2020
     
-    // End by Maddileti for US #335371
     
 })

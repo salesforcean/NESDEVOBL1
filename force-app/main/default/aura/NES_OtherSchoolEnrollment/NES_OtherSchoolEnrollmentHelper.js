@@ -14,13 +14,13 @@
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                component.set("v.loaded", true);
+                
                 component.find('notifLib').showToast({
                     "variant": "SUCCESS",
                     "title": "SUCCESS",
-                    "message": "Successfully reactivated.",
+                    "message": "Successfully Enrolled.",
                 });
-                $A.get("e.force:closeQuickAction").fire();
+                helper.closeOtherSchoolEnrollmentModel(component, event, helper);
             }else {
                 var error = response.getError();
                 console.log("Error: ", error);
@@ -28,6 +28,22 @@
         })
         $A.enqueueAction(action);
         
+    },
+        closeOtherSchoolEnrollmentModel: function(component, event, helper)
+    {
+        component.set("v.isOtherSchoolEnrollment",'false');
+        component.set("v.isLoaded",'false');
+        component.set("v.noSchools",'true');
+        component.set("v.noYears",'true');
+        component.set("v.noGradeLevel",'true');
+        
+        component.set("v.schoolsToAttend",[]);
+        component.set("v.schoolYears",[]);
+        component.set("v.grades",[]);
+        
+        component.set("v.selectedStudentId",'');
+        component.set("v.selectedStudentName",'');
+        $A.get('e.force:refreshView').fire();
     },
 	getSchoolsToAttend : function(component, event, helper,selectedStudentId) {
         var action = component.get("c.getSchoolsToAttend");
@@ -60,18 +76,18 @@
 	},
     	getSchoolYears : function(component, event, helper,selectedSchool) {
         var action = component.get("c.getSchoolYears");
-            alert(JSON.stringify("selectedSchool== "+selectedSchool));
+        //alert(JSON.stringify("selectedSchool== "+selectedSchool));
         action.setParams({
-            selectedSchool:selectedSchool,  
+            instituteName:selectedSchool,  
         });
         action.setCallback(this, function(response){
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                alert(JSON.stringify(returnedResponse));
+                //alert(JSON.stringify(returnedResponse));
                 if(response.getReturnValue().length > 0){
-                    //component.set("v.noSchoolYears", false);
-                    component.set("v.schoolYears", returnedResponse); 
+                    component.set("v.noSchools", false);
+                    component.set("v.schoolYears", returnedResponse);
                 } else{
                     component.find('notifLib').showToast({
                         "variant": "warning",
@@ -88,19 +104,55 @@
         $A.enqueueAction(action);
 	},
     
-    	getGradeLevels : function(component, event, helper,selectedSchool,instituteName,selectedYr) {
+    	getGradeLevels : function(component, event, helper,selectedSchool) {
         var action = component.get("c.getGradeLevels");
+            var instituteName= component.get("v.School");
+            var selectedYr= component.get("v.schoolYear")
+            //alert('instituteName== '+instituteName);
+            //alert('selectedYr== '+selectedYr);
         action.setParams({
-            selectedYr:selectedYr, 
             instituteName:instituteName,
+            selectedYr:selectedYr, 
         });
         action.setCallback(this, function(response){
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                
-                alert(JSON.stringify("getGradeLevels== "+returnedResponse));
-                if(response.getReturnValue().length > 0){
+                //alert(JSON.stringify(returnedResponse));
+                if(response.getReturnValue().length > 0){returnedResponse.forEach(grade => {
+                        if(grade.hasOwnProperty('Name')){
+                        
+                        var studentGradeLevel = null;
+                        switch(grade.Name){
+                        case 'K':
+                        grade.index = '0';
+                        studentGradeLevel = 'Kindergarten';
+                        break;
+                        case '1':
+                        grade.index = grade.Name;
+                        studentGradeLevel = '1st Grade';
+                        break;
+                        case '2':
+                        grade.index = grade.Name;
+                        studentGradeLevel = '2nd Grade';
+                        break;
+                        case '3':
+                        grade.index = grade.Name;
+                        studentGradeLevel = '3rd Grade';
+                        break;
+                        default:
+                        grade.index = grade.Name;
+                        studentGradeLevel = grade.Name + 'th Grade';
+                        break;
+                    }
+                                             grade.Name = studentGradeLevel;
+                                             }
+                                             });
+                    
+                    returnedResponse.sort(function(a, b) {
+                        return a.index - b.index;
+                    });
+                    component.set("v.noYears", false);
                     component.set("v.grades", returnedResponse);
                 } else{
                     component.find('notifLib').showToast({

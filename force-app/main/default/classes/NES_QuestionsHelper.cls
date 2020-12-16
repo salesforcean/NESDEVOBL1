@@ -569,7 +569,6 @@ public without sharing class NES_QuestionsHelper {
         return studentEnrollment;
     }
 
-    
 
     // Looks for additional ECAs
     public static List<NES_EvaluateUtil.Question> getRelatedQuestions2(Id programEnrollmentId, String questionJSON, Id sectionId, Boolean excludeMDRFields) {
@@ -718,7 +717,7 @@ public without sharing class NES_QuestionsHelper {
                             ];
                         }
 
-                       system.debug('groupRelationships'+groupRelationships);
+                    system.debug('groupRelationships'+groupRelationships);
                     Set<Id>childQuestionIds = new Set<Id>();
                      
                     //Looking through all relationships where the parent is one of the question groups
@@ -746,10 +745,10 @@ public without sharing class NES_QuestionsHelper {
                                     Question_Prompt__c, Question_Read_Only__c, Tooltip_Text__c, Component_Message__c,
                                     Question_Validation__c, Question_Validation_Message__c,
                                     Question_Type__c, Is_Required__c, Answer_Target__c, Question_School_Year__c, API_Mapping__c, Default_Value__c, (
-                                    SELECT Id, Criteria_Type__c, Criteria_Number__c, Student_or_Household__c, Criteria__r.Criteria_Field__c,
-                                            Criteria__r.Comparison_Field__c, Criteria__r.Operator__c,
+                                    SELECT  Id, Criteria_Type__c, Criteria_Number__c, Student_or_Household__c, Criteria__r.Criteria_Field__c,
+                                            Criteria__r.Comparison_Field__c, Criteria__r.Operator__c, Criteria__c, Question_Group__c, School_Year__c, 
                                             Criteria__r.Comparison_Data_Type__c, Criteria__r.Comparison_Value__c
-                                    FROM Enrollment_Component_Criteria__r
+                                    FROM    Enrollment_Component_Criteria__r
                             ), (SELECT Id, Group_Logic__c, Group_Number__c FROM Criteria_Groups__r), (SELECT Option_Label__c, Option_Value__c, Order__c, Id FROM Enrollment_Component_Picklist_Options__r)
                             FROM Enrollment_Component__c
                             WHERE Id IN:questionComponentIds
@@ -759,12 +758,16 @@ public without sharing class NES_QuestionsHelper {
                     Set<String> studentCriteriaStrings = new Set<String>();
                     Set<String> caretakerCriteriaStrings = new Set<String>();
                     Set<Id> criteriaReferenced = new Set<Id>();
+                    // Set<Id> eccQuestionGroupReferenced = new Set<Id>();
 
                     for (Enrollment_Component__c enrollmentComponent : componentChildren) { 
                         enrollmentComponentMap.put(enrollmentComponent.Id, enrollmentComponent);
                        
                         for(Enrollment_Component_Criteria__c ecc : enrollmentComponent.Enrollment_Component_Criteria__r) {
                             criteriaReferenced.add(ecc.Criteria__c);
+                            // if (ecc.Question_Group__c!=null)
+                            //     eccQuestionGroupReferenced.add(ecc.Question_Group__c);
+
                             if(ecc.Student_or_Household__c == 'Student') {
                                 studentCriteriaStrings.add(ecc.Criteria__r.Criteria_Field__c);
                                 if(ecc.Criteria__r.Comparison_Field__c != null) {
@@ -789,10 +792,39 @@ public without sharing class NES_QuestionsHelper {
                         //For all the question and question group components that have assignment criteria, determine which meet the assignment criteria
                         //so the code below can decide if that component should be displayed. 
                         //Earlier, we collected the unique list of criteria referenced in any assignment logic.  Go get the results for those.
-                        Map<Id, Boolean> criteriaToCurrentResultMap = new Map<Id, Boolean> ();
-                        for (Program_Enrollment_Criteria__c pec: [select id, Criteria__c, result__c from Program_Enrollment_Criteria__c where Program_Enrollment__c = :studentEnrollment.Id and Criteria__c in :criteriaReferenced]){
-                            criteriaToCurrentResultMap.put(pec.Criteria__c, pec.result__c);
+                        // WIP => Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c,
+                        // Map<Id, Boolean> criteriaToCurrentResultMap = new Map<Id, Boolean> ();
+                        Map<String, Boolean> criteriaToCurrentResultMap = new Map<String, Boolean> ();
+                        Map<String, Enrollment_Component__c> criteriaQuestionGroups = new Map<String, Enrollment_Component__c>();
+                        Map<String, School_Year__c> criteriaSchoolYears = new Map<String, School_Year__c>();
+                        for (Program_Enrollment_Criteria__c pec: [
+                            SELECT Id, Criteria__c, Result__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c
+                            FROM Program_Enrollment_Criteria__c 
+                            WHERE 
+                                Program_Enrollment__c = :studentEnrollment.Id AND 
+                                Criteria__c IN :criteriaReferenced 
+                                // AND Question_Group__c IN :eccQuestionGroupReferenced
+                                
+                        ]){
+                            // criteriaToCurrentResultMap.put(pec.Criteria__c, pec.result__c);
+                            String key = pec.Criteria__c + pec.Student_or_Household__c + pec.School_Year__c + pec.Question_Group__c;
+                            criteriaToCurrentResultMap.put(key, pec.result__c);
+
+                            if (!String.isBlank(pec.School_Year__c))
+                                criteriaSchoolYears.put(pec.School_Year__c, null);
+
+                            if (!String.isBlank(pec.Question_Group__c))
+                                criteriaQuestionGroups.put(pec.Question_Group__c, null);
                         }
+
+                        // query for the QuestionGroup & SchoolYear Ids & build a Map.
+                        if (criteriaSchoolYears.size() > 0 ) {
+                            criteriaSchoolYears = getSchoolYearsById(criteriaSchoolYears.keySet());
+                        }
+                        if (criteriaQuestionGroups.size() > 0 ) {
+                            criteriaQuestionGroups = getECsById(criteriaQuestionGroups.keySet());
+                        }
+                        // query for the QuestionGroup & SchoolYear Ids & build a Map. END...
 
                         System.debug( 'criteriaReferenced' + criteriaReferenced);
                         System.debug( 'criteriaToCurrentResultMap' + criteriaToCurrentResultMap);
@@ -805,7 +837,14 @@ public without sharing class NES_QuestionsHelper {
                             if (enrollmentComponent.Assignment_Logic__c <> null) {
                                 Map<Object, Boolean> criteriaNumberToResultMap = new Map<Object, Boolean> (); 
                                 for(Enrollment_Component_Criteria__c ecc : enrollmentComponent.Enrollment_Component_Criteria__r) {
-                                    criteriaNumberToResultMap.put((integer) ecc.Criteria_Number__c, criteriaToCurrentResultMap.get(ecc.Criteria__c));
+                                    // criteriaNumberToResultMap.put((integer) ecc.Criteria_Number__c, criteriaToCurrentResultMap.get(ecc.Criteria__c));
+                                    School_Year__c schoolYear = criteriaSchoolYears.get(ecc.School_Year__c);
+                                    Enrollment_Component__c questionGroupEC = criteriaQuestionGroups.get(ecc.Question_Group__c);
+                                    String key = ecc.Criteria__c + ecc.Student_or_Household__c; 
+                                    key += (schoolYear!=null?schoolYear.Id:null); 
+                                    key += (questionGroupEC!=null?questionGroupEC.Id:null);
+                                    System.debug('key>>' + key);
+                                    criteriaNumberToResultMap.put((integer) ecc.Criteria_Number__c, criteriaToCurrentResultMap.get(key));
                                 }
 
                                 System.debug( 'enrollmentComponent.Assignment_Logic__c:' + enrollmentComponent.Assignment_Logic__c);
@@ -1082,4 +1121,32 @@ public without sharing class NES_QuestionsHelper {
         System.debug('currentForm::'+currentForm);
         return currentForm[0].Name;
     }
+
+    // Mark Membrino | 12/14/2020 | START...
+    public static Map<String, School_Year__c> getSchoolYearsById(Set<String> ids)
+    {
+        // collect SchoolYears
+        Map<String, School_Year__c> schoolYears = new Map<String, School_Year__c>();
+        for (School_Year__c schYear : [ 
+            SELECT  Id, External_Id__c, Name 
+            FROM    School_Year__c WHERE Id IN : ids]) {
+                schoolYears.put(schYear.External_Id__c, schYear);
+        }
+        return schoolYears;
+    }
+
+    public static Map<String, Enrollment_Component__c> getECsById(Set<String> ids)
+    {
+        // collect QuestionGroups        
+        Map<String, Enrollment_Component__c> qgECs = new Map<String, Enrollment_Component__c>();
+        for (Enrollment_Component__c questionGroupEC : [ 
+            SELECT  Id, External_Id__c, Name 
+            FROM    Enrollment_Component__c WHERE   Id IN : ids]) 
+        {
+            qgECs.put(questionGroupEC.External_Id__c, questionGroupEC);
+        }
+        return qgECs;
+    }
+    // Mark Membrino | 12/14/2020 | END...
+
 }

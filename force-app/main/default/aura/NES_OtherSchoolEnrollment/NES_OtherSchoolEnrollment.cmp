@@ -9,7 +9,8 @@
     <aura:attribute name="grades" type="Object" /> 
     <aura:attribute name="selectedStudentId" type="String" />
     <aura:attribute name="selectedStudentName" type="String" />
-    <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" default="false" /> 
+    <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" default="false" />
+    <aura:attribute name="isLoaded" type="Boolean" default="false" /> 
     <aura:attribute name="noSchools" type="Boolean" default="true" />
     <aura:attribute name="noYears" type="Boolean" default="true" />
     <aura:attribute name="noGradeLevel" type="Boolean" default="true" />
@@ -41,6 +42,7 @@
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Other School Enrollment</h2>-->
                     
                 </header> 
+                <aura:if isTrue="{!v.isLoaded}">
                 <!--###### MODAL BOX BODY Part Start######-->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                     <!--<p><b>Harry Potter
@@ -105,6 +107,10 @@
                                           title="Cancel"
                                           onclick="{! c.closeOtherSchoolEnrollmentModel }"/>
                     </footer>-->
+                    <aura:set attribute="else">
+                          LOADING......
+                        </aura:set>
+                </aura:if>
             </div>
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>

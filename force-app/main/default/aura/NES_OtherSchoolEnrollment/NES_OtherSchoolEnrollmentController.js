@@ -7,20 +7,21 @@
             var selectedStudentId = params.selectedStudentId;
             var isOtherSchoolEnrollment = params.isOtherSchoolEnrollment;
             var selectedStudentName = params.selectedStudentName;
-            alert(selectedStudentId + " 888888" + isOtherSchoolEnrollment+'selectedStudentId'+selectedStudentName);
             component.set("v.selectedStudentId",selectedStudentId); 
             component.set("v.selectedStudentName",selectedStudentName);
             component.set("v.isOtherSchoolEnrollment","true");
+            component.set("v.isLoaded","true");
             helper.getSchoolsToAttend(component, event,helper,selectedStudentId);
             
         }
     },
     closeOtherSchoolEnrollmentModel: function(component, event, helper)
     {
-        component.set("v.isOtherSchoolEnrollment",'false');
+        helper.closeOtherSchoolEnrollmentModel(component, event, helper);
     },
     handleEnroll: function(component, event, helper)
     {
+        component.set("v.isLoaded", "false");
          helper.handleEnroll(component, event, helper);
     },
     schoolSelect: function(component, event, helper)
@@ -31,8 +32,9 @@
     },
     schoolYearSelect: function(component, event, helper)
     {
+        alert('jjjjjj'+component.get("v.schoolYear"));
         if(component.get("v.schoolYear")!=null && component.get("v.schoolYear")!=''){
-        helper.getGradeLevels(component, event, helper,component.get("v.School"),component.get("v.schoolYear"));
+        helper.getGradeLevels(component, event, helper);
         }
     }
      

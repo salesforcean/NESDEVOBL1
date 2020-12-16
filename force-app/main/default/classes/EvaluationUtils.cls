@@ -340,7 +340,7 @@ public class EvaluationUtils  {
 
         //Now insert all the Program Enrollment Criteria records.
         list <Program_Enrollment_Criteria__c> pecsToInsert = new list <Program_Enrollment_Criteria__c> ();
-        Set<string> pecAlreadyIncluded = new Set<string> (); //The combination of criteriaid, questiongroup, school year and student or household.
+        Set<String> pecAlreadyIncluded = new Set<String> (); //The combination of criteriaid, questiongroup, school year and student or house
         for (Enrollment_Component_Criteria__c ecc : [
             SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c   
             FROM    Enrollment_Component_Criteria__c 

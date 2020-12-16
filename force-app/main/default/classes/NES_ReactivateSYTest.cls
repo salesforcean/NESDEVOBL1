@@ -214,12 +214,14 @@ public class NES_ReactivateSYTest {
         
         Grade_Level__c gradeLevel=[select id,name from Grade_Level__c where name ='1' limit 1];
         
-        List<School_Year__c> schoolYears = [Select id,name FROM School_Year__c WHERE Name ='Test School' LIMIT 1]; 
+        List<School_Year__c> schoolYears = [Select id,name FROM School_Year__c WHERE Name ='Test School' LIMIT 1];
+        hed__Program_Enrollment__c stdPE=[select id from hed__Program_Enrollment__c limit 1];
+        boolean flag=true;
         
         System.runAs(careTaker) { 
             Test.startTest();
             String callType='community';
-            Peak_Response studentInsertResponse = NES_EnrollmentController.nextYearEnrollment(studentid.Id,academicProgram.Name,schoolYears[0].name,gradeLevel.Name, callType);
+            Peak_Response studentInsertResponse = NES_EnrollmentController.nextYearEnrollment(studentid.Id,academicProgram.Name,schoolYears[0].name,gradeLevel.Name, callType,flag,stdPE.id);
             Test.stopTest();
         }
     }
