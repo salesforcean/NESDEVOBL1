@@ -580,113 +580,11 @@ and using those child components get the required component information
                 List<Enrollment_Component__c> processComponent = NES_ReactivateStdUtils.getProcessEC(academicProgram.Id);
                 List<Enrollment_Component_Relationship__c> relationships  = NES_ReactivateStdUtils.getAllStages(processComponent[0].Id);
                 
-                
-                //Iterate over a list of Question Data to get Enrollment Components
-               // System.debug(questionDataList);
-                Set<id> referencedSchoolYears = new Set<Id>();
-                List<Id> questionIds = new List<Id>();
-              /* for (NES_EvaluateUtil.Question data : questionDataList) {
-                    questionIds.add(data.questionId);
-                    referencedSchoolYears.add(data.schoolYear);
-                } */
-                
-                
-                //build a map of school year ids to the 
-               /* Map<Id, School_Year__c> schoolYearMap = new Map<Id, School_Year__c>();
-                for ( School_Year__c s : [SELECT Id, External_Id__c FROM School_Year__c where id in :referencedSchoolYears] ) 
-                    schoolYearMap.put(s.id, s);  */
+
                 
                 //Hang on to the birth date so we can use it in the hard stop logic at the end of the process.
                 date birthdate;
-             /*  
-                for (NES_EvaluateUtil.Question data : questionDataList) {
-                    System.debug(data);
-                    
-                    //Check for the Component Type
-                    if (String.isNotBlank(data.componentType)) {
-                        System.debug(data.questionTarget);
-                        System.debug(data.targetField);
-                        //Check whether EC record have the Target Field Value (ObjectAPIName.FieldAPIName) and also check whether user has put input or not
-                        if (String.isNotBlank(data.targetField)) {
-                            
-                            //Split the Target field to get the Object and Field API Names
-                            String fieldApiName = data.questionTarget.substring(data.questionTarget.indexOf('.') + 1, data.questionTarget.length());
-                            String objectApiName = data.questionTarget.substring(0, data.questionTarget.indexOf('.'));
-                            
-                            //Build a query string and then query the records from the object obtained form the target field along with API name
-                            // of the field where Program enrollment is same as the Care taker Program Enrollment Id
-                            List<SObject> childRecords = new List<SObject>();
-                            String query;
-                            if (caretakerEnrollmentId.id !=null && data.componentType == 'Household') {
-                                
-                                if (objectApiName == 'Account') {
-                                    query = 'SELECT Id, ' + fieldApiName + ' FROM Account WHERE Id = \'' + caretaker.Contact.AccountId + '\' ';
-                                } else if (objectApiName == 'Contact') {
-                                    query = 'SELECT Id, ' + fieldApiName + ' FROM Contact WHERE Id = \'' + caretaker.Contact + '\' ';
-                                } else if (objectApiName == 'hed__Program_Enrollment__c') {
-                                    query = 'SELECT Id, ' + fieldApiName + ' FROM hed__Program_Enrollment__c WHERE Id = \'' + caretakerEnrollmentId.Id + '\' ';
-                                } else {
-                                    query = 'SELECT Id, ' + fieldApiName + ' FROM ' + objectApiName + ' WHERE Program_Enrollment__c = \'' + caretakerEnrollmentId.Id + '\' ';
-                                }
-                                if (String.isNotBlank(data.schoolYear)) {
-                                    query += ' AND School_Year__c = \'' + data.schoolYear + '\' ';
-                                }
-                                childRecords = Database.query(query);
-                            } else {
-                                
-                                if (objectApiName == 'Account') {
-                                    query = 'SELECT Id, ' + fieldApiName + ' FROM Account WHERE Id = \'' + reactivateStudent.AccountId + '\' ';
-                                } else if (objectApiName == 'Contact') {
-                                    query = 'SELECT Id, ' + fieldApiName + ' FROM Contact WHERE Id = \'' + reactivateStudent.Id + '\' ';
-                                } else if (objectApiName == 'hed__Program_Enrollment__c') {
-                                    query = 'SELECT Id, ' + fieldApiName + ' FROM hed__Program_Enrollment__c WHERE Id = \'' + newStudentEnrollment.Id + '\' ';
-                                } else {
-                                    query = 'SELECT Id, ' + fieldApiName + ' FROM ' + objectApiName + ' WHERE Program_Enrollment__c = \'' + newStudentEnrollment.Id + '\' ';
-                                    if (String.isNotBlank(data.schoolYear)) {
-                                        query += ' AND School_Year__c = \'' + data.schoolYear + '\' ';
-                                    } 
-                                }
-                                System.debug(query);
-                                childRecords = Database.query(query);
-                                System.debug(childRecords);
-                            }
-                            
-                            //If the record exists, update it with value of User Input, else insert a new one related the program enrollment Id
-                            
-                            if (childRecords.size() > 0) {
-                                SObject sObj = NES_EvaluateUtil.updateDataVoid(data.questionType, data.targetField, fieldApiName, childRecords[0]);
-                                update sObj;
-                                //Capture the birtdate for later use in the hard stop logic.
-                                if (fieldApiName == 'Birthdate__c')
-                                    birthdate = ((contact) sObj).Birthdate__c;
-                                
-                            } else {
-                                SObject sObj = Schema.getGlobalDescribe().get(objectApiName).newSObject();
-                                sObj = NES_EvaluateUtil.updateDataVoid(data.questionType, data.targetField, fieldApiName, sObj);
-                                System.debug(data);
-                                if (data.componentType == 'Household') {
-                                    sObj.put('Program_Enrollment__c', caretakerEnrollmentId);
-                                } else {
-                                    sObj.put('Program_Enrollment__c', newStudentEnrollment.Id);
-                                }
-                                if (String.isNotBlank(data.schoolYear)) {
-                                    sObj.put('School_Year__c', data.schoolYear);
-                                }
-                                insert sObj;
-                            }
-                            
-                        }
-                    }
-                    
-                    //In the new ECA model, we don't create questions for Question and Question Groups.
-                    if (academicProgram.Use_Updated_ECA_Process__c == false)  {
-                        Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
-                        affiliationRecord.Enrollment_Component__c = data.questionId;
-                        affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
-                        affiliationRecord.Status__c = 'Complete';
-                        ecAffiliationsToInsert.add(affiliationRecord);
-                    }
-                }*/
+
                 List<Enrollment_Component_Affiliation__c> basicECAsforStage = NES_ReactivateStdUtils.insertAffiliations(processComponent[0].Id, newStudentEnrollment.Id,relationships);
                 ecAffiliationsToInsert.addAll(basicECAsforStage);
                 

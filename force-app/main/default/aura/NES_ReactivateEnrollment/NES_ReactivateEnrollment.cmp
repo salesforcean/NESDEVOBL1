@@ -190,13 +190,11 @@
                                         <p>{!v.studentName + ' has been successfully reactivated.'}</p>
                                     </aura:if>
                                 </div>
-                                
                             </div>
                         </section>
                         <div class="slds-backdrop slds-backdrop_open"></div>
                     </aura:if>
                 </div>
-                
             </div>
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>

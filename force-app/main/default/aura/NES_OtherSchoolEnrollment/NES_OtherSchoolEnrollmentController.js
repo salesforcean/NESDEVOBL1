@@ -1,5 +1,5 @@
 ({
-	
+    
     doInit : function(component, event,helper) {
         //get method paramaters
         var params = event.getParam('arguments');
@@ -15,27 +15,34 @@
             
         }
     },
+    // called when Close Button is clicked
     closeOtherSchoolEnrollmentModel: function(component, event, helper)
     {
         helper.closeOtherSchoolEnrollmentModel(component, event, helper);
     },
+    // called when Enroll Button is clicked
     handleEnroll: function(component, event, helper)
     {
-        component.set("v.isLoaded", "false");
-         helper.handleEnroll(component, event, helper);
+        //component.set("v.isLoaded", "false");
+        helper.handleEnroll(component, event, helper);
     },
+    // called when School is selected
     schoolSelect: function(component, event, helper)
     {
         if(component.get("v.School")!=null && component.get("v.School")!=''){
-        helper.getSchoolYears(component, event, helper,component.get("v.School"));
+            helper.getSchoolYears(component, event, helper,component.get("v.School"));
         }
     },
+    // called when year is selected
     schoolYearSelect: function(component, event, helper)
     {
-        alert('jjjjjj'+component.get("v.schoolYear"));
         if(component.get("v.schoolYear")!=null && component.get("v.schoolYear")!=''){
-        helper.getGradeLevels(component, event, helper);
+            helper.getGradeLevels(component, event, helper);
         }
-    }
-     
+    },
+     closeModal: function (component,event,helper)
+    {
+        component.set('v.isOpen',false);
+    },
+    
 })

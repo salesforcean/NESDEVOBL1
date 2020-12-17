@@ -15,6 +15,7 @@
     closeModal: function (component,event,helper)
     {
         component.set('v.isOpen',false);
+        component.set('v.enrollmentSuccessMessage',false);
     },
     handleSubmit: function (component, event, helper)
     {

@@ -7,10 +7,16 @@
     <aura:attribute name="schoolsToAttend" type="Object" /> 
     <aura:attribute name="schoolYears" type="Object" /> 
     <aura:attribute name="grades" type="Object" /> 
-    <aura:attribute name="selectedStudentId" type="String" />
+    <aura:attribute name="selectedStudentId" type="String" /> 
+    <aura:attribute name="message" type="String" />
     <aura:attribute name="selectedStudentName" type="String" />
     <aura:attribute name="isOtherSchoolEnrollment" type="Boolean" default="false" />
-    <aura:attribute name="isLoaded" type="Boolean" default="false" /> 
+    <aura:attribute name="isLoaded" type="Boolean" default="false" />    
+    
+        <aura:attribute name="success" type="Boolean" default="false" />
+        <aura:attribute name="hasError" type="Boolean" default="false" />
+        <aura:attribute name="isOpen" type="Boolean" default="false" />
+    
     <aura:attribute name="noSchools" type="Boolean" default="true" />
     <aura:attribute name="noYears" type="Boolean" default="true" />
     <aura:attribute name="noGradeLevel" type="Boolean" default="true" />
@@ -37,7 +43,7 @@
                                           onclick="{! c.closeOtherSchoolEnrollmentModel }"
                                           alternativeText="close"
                                           variant="bare-inverse"
-                                          class="slds-modal__close"/>
+                                          class="slds-modal__close" />
                     <!--
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Other School Enrollment</h2>-->
                     
@@ -81,7 +87,7 @@
                         </aura:iteration>
                     </lightning:select>
                     <br/>
-                    <lightning:select aura:id="grade" name="grade" label="Requesting grade"  value="{!v.grade}" required="true" onchange ="{!c.gradeSelect}"  disabled='{!v.noYears}'>
+                    <lightning:select aura:id="grade" name="grade" label="Requesting grade"  value="{!v.grade}" required="true"   disabled='{!v.noYears}'>
                         <option value="">--Select a grade level--</option>
                         <aura:iteration items="{!v.grades}" var="grade">
                             <option value="{!grade.index}">{!grade.Name}</option><br/>
@@ -98,6 +104,30 @@
                         </span>
                     </div>
                     </div>
+                    
+                    
+                    <aura:if isTrue="{!v.isOpen}">
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                <header class="slds-modal__header" style="border:none;padding:0;">
+                                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  onclick="{!c.closeModal}">
+                                        <lightning:icon variant="inverse" size="small" iconName="utility:close" />
+                                        <span class="slds-assistive-text"><c:Peak_Base labelText="Close" /></span>
+                                    </button>
+                                </header>
+                                <div class="slds-modal__content slds-p-around_medium slds-text-align_center" style="border-radius:.25rem;" id="modal-content-id-1">
+                                    <h2 class="slds-text-align_center slds-m-bottom_medium">Other School Enrollment</h2>
+                                    <aura:if isTrue="{!v.hasError}">
+                                        <p class="slds-text-color_error">{!v.message}</p>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.success}">
+                                        <p>Successfully Enrolled for other school.</p>
+                                    </aura:if>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                    </aura:if>
                 </div>
                 <!--###### MODAL BOX FOOTER Part Start ######-->
                 <!--

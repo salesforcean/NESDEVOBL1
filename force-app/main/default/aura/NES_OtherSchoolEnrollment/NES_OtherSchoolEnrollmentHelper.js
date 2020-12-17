@@ -1,7 +1,9 @@
 ({
+    // called from 'handleEnroll' method
     handleEnroll: function(component, event, helper)
     {
-        var action = component.get("c.otherSchoolEnrollment");
+        var action = component.get("c.otherSchoolEnrollment"); // calling 'otherSchoolEnrollment' method
+        // setting parameters for the calling method
         action.setParams({
             studentId:component.get("v.selectedStudentId"),
             instituteNam:component.get("v.School"),
@@ -12,15 +14,37 @@
         });
         action.setCallback(this, function(response){
             var state = response.getState();
+            // checking if the response state is 'SUCCESS'
             if(state === "SUCCESS"){
-                var returnedResponse = response.getReturnValue();
-                
+                var peakResponse = response.getReturnValue();
+                // notifying 'SUCCESS' message 
+                /*
                 component.find('notifLib').showToast({
                     "variant": "SUCCESS",
                     "title": "SUCCESS",
                     "message": "Successfully Enrolled.",
                 });
-                helper.closeOtherSchoolEnrollmentModel(component, event, helper);
+                */
+                console.log(peakResponse);
+                component.set("v.isOpen", true);
+                if(peakResponse.success){
+                    
+                    component.set("v.success", true);
+                    window.setTimeout(
+                        $A.getCallback(function(){
+                            var redirect = $A.get("e.force:navigateToURL");
+                            redirect.setParams({
+                                "url" : "/dashboard"
+                            });
+                            redirect.fire();
+                        }), 3000
+                    );
+                } else {
+                    component.set("v.hasError",true);
+                    component.set("v.message", peakResponse.messages[0]);
+                }
+                //calling 'closeOtherSchoolEnrollmentModel' method
+                //helper.closeOtherSchoolEnrollmentModel(component, event, helper);
             }else {
                 var error = response.getError();
                 console.log("Error: ", error);
@@ -29,7 +53,8 @@
         $A.enqueueAction(action);
         
     },
-        closeOtherSchoolEnrollmentModel: function(component, event, helper)
+    // called from 'closeOtherSchoolEnrollmentModel' method
+    closeOtherSchoolEnrollmentModel: function(component, event, helper)
     {
         component.set("v.isOtherSchoolEnrollment",'false');
         component.set("v.isLoaded",'false');
@@ -45,14 +70,16 @@
         component.set("v.selectedStudentName",'');
         $A.get('e.force:refreshView').fire();
     },
+    // called from 'doInit' method
 	getSchoolsToAttend : function(component, event, helper,selectedStudentId) {
-        var action = component.get("c.getSchoolsToAttend");
-        console.log("*****selectedStudentId  = "+selectedStudentId);
+        var action = component.get("c.getSchoolsToAttend"); // calling 'getSchoolsToAttend' method
+        // setting parameters for the calling method
         action.setParams({
             selectedStudentId:selectedStudentId,  
         });
         action.setCallback(this, function(response){
             var state = response.getState();
+            // checking if the response state is 'SUCCESS'
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
                 //alert(JSON.stringify(returnedResponse));
@@ -60,6 +87,7 @@
                     component.set("v.noSchoolYears", false);
                     component.set("v.schoolsToAttend", returnedResponse);
                 } else{
+                    // notifying 'Warning' message
                     component.find('notifLib').showToast({
                         "variant": "warning",
                         "title": "Warning!",
@@ -74,9 +102,10 @@
         })
         $A.enqueueAction(action);
 	},
+    // called from 'schoolSelect' method
     	getSchoolYears : function(component, event, helper,selectedSchool) {
         var action = component.get("c.getSchoolYears");
-        //alert(JSON.stringify("selectedSchool== "+selectedSchool));
+            
         action.setParams({
             instituteName:selectedSchool,  
         });
@@ -103,7 +132,7 @@
         })
         $A.enqueueAction(action);
 	},
-    
+    // called from 'schoolYearSelect' method
     	getGradeLevels : function(component, event, helper,selectedSchool) {
         var action = component.get("c.getGradeLevels");
             var instituteName= component.get("v.School");
