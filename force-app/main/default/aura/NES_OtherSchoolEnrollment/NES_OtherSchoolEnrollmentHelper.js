@@ -7,7 +7,7 @@
         action.setParams({
             studentId:component.get("v.selectedStudentId"),
             instituteNam:component.get("v.School"),
-            schoolYear:component.get("v.schoolYear"),
+            schoolYear:component.find("Year").get("v.value"),
             gradeLevels:component.get("v.grade"),
             callType:'application',
             enrollFlag:true,
@@ -82,7 +82,6 @@
             // checking if the response state is 'SUCCESS'
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                //alert(JSON.stringify(returnedResponse));
                 if(response.getReturnValue().length > 0){
                     component.set("v.noSchoolYears", false);
                     component.set("v.schoolsToAttend", returnedResponse);
@@ -113,10 +112,11 @@
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                //alert(JSON.stringify(returnedResponse));
                 if(response.getReturnValue().length > 0){
-                    component.set("v.noSchools", false);
                     component.set("v.schoolYears", returnedResponse);
+                    component.find("Year").set("v.value",returnedResponse[0].Name);
+                    component.set("v.noSchools", false);
+                    helper.getGradeLevels(component, event, helper);
                 } else{
                     component.find('notifLib').showToast({
                         "variant": "warning",
@@ -136,9 +136,7 @@
     	getGradeLevels : function(component, event, helper,selectedSchool) {
         var action = component.get("c.getGradeLevels");
             var instituteName= component.get("v.School");
-            var selectedYr= component.get("v.schoolYear")
-            //alert('instituteName== '+instituteName);
-            //alert('selectedYr== '+selectedYr);
+            var selectedYr= component.find("Year").get("v.value");
         action.setParams({
             instituteName:instituteName,
             selectedYr:selectedYr, 
@@ -147,7 +145,6 @@
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                //alert(JSON.stringify(returnedResponse));
                 if(response.getReturnValue().length > 0){returnedResponse.forEach(grade => {
                         if(grade.hasOwnProperty('Name')){
                         

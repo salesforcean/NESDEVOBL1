@@ -6,6 +6,9 @@
 */
 public class ECA_CriteriaEvaluatorHelper {
 
+    public static final String[] DEFAULT_OBJECT_TYPES = new String[]{'Contact', 'Account', 'hed__program_enrollment__c', 
+        'Emergency_Contact__c', 'Annual_Student_Information__c', 'Enrollment_Component_Affiliation__c', 'Prior_School__c', 'Special_Education__c'};
+
     public static Map<Id, Enrollment_Component__c> getECsById(List<Id> ecList) 
     {
         return new Map<Id, Enrollment_Component__c>
@@ -22,7 +25,10 @@ public class ECA_CriteriaEvaluatorHelper {
                                     Criteria_Number__c, 
                                     Criteria__c,
                                     Criteria__r.Name, 
-                                    Criteria__r.Criteria_Field__c
+                                    Criteria__r.Criteria_Field__c,
+                                    Student_or_Household__c,
+                                    School_Year__c,
+                                    Question_Group__c 
                             FROM    Enrollment_Component_Criteria__r
                             ORDER BY Criteria_Number__c ASC
                         )
@@ -42,7 +48,10 @@ public class ECA_CriteriaEvaluatorHelper {
                         Result__c, 
                         Criteria__r.Name, 
                         Criteria__r.Comparison_Field__c, 
-                        Program_Enrollment__c  
+                        Program_Enrollment__c,
+                        Student_or_Household__c,
+                        School_Year__c,
+                        Question_Group__c  
                 FROM    Program_Enrollment_Criteria__c
                 WHERE   Program_Enrollment__c IN : peIds
             ]
@@ -69,37 +78,6 @@ public class ECA_CriteriaEvaluatorHelper {
         ];
     }
 
-    // public static List<Enrollment_Component_Relationship__c> getAllECRsByIds(Set<Id> ecIDs) {
-    //     return 
-    //     [    
-    //         SELECT  Id, 
-    //                 Child_Enrollment_Component__c,
-    //                 Child_Enrollment_Component__r.RecordType.Name,
-    // 			 	Parent_Enrollment_Component__c,
-    // 			 	Parent_Enrollment_Component__r.RecordType.Name,
-    // 			 	Order__c
-    //         FROM    Enrollment_Component_Relationship__c
-    //         WHERE   Child_Enrollment_Component__c IN: ecIDs 
-    //                 OR Parent_Enrollment_Component__c IN: ecIDs
-    //     ];
-    // }
-
-    // public static List<Enrollment_Component_Affiliation__c> getECAsByPEIds(Set<Id> peIDs) {
-    //     return 
-    //     [    
-    //         SELECT  Id, 
-    //                 Order__c,
-    //                 Program_Enrollment__c,
-    //                 Program_Enrollment__r.hed__Account__c,
-    //                 Enrollment_Component__c,
-    //                 Enrollment_Component__r.Recordtype.Name,
-    //                 Enrollment_Component__r.is_Required__c,
-    //                 Status__c
-    //         FROM Enrollment_Component_Affiliation__c 
-    //         WHERE program_enrollment__c in : peIDs
-    //     ];
-    // }
-
     public static List<hed__Program_Enrollment__c> getPEsWithECAs(Set<Id> peIDs) {
         return 
         [   
@@ -115,14 +93,6 @@ public class ECA_CriteriaEvaluatorHelper {
                         Status__c
                     FROM Enrollment_Component_Affiliation__r
                 )
-                // ,
-                // (
-                //     SELECT      Id, StageName
-                //     FROM        Opportunities__r
-                //     WHERE       StageName = 'Open'
-                //     ORDER BY    LastModifiedDate DESC
-                //     LIMIT 1
-                // )
             FROM hed__Program_Enrollment__c
             WHERE Id in : peIDs
         ];
@@ -155,4 +125,62 @@ public class ECA_CriteriaEvaluatorHelper {
             AND Recordtype.Name = 'Process'
         ];
     }
+
+    public static Map<String, School_Year__c> getSchoolYearsByExternalId(Set<String> extIds)
+    {
+        // collect SchoolYears
+        Map<String, School_Year__c> schoolYears = new Map<String, School_Year__c>();
+        for (School_Year__c schYear : [ 
+            SELECT  Id, External_Id__c, Name 
+            FROM    School_Year__c WHERE External_Id__c IN : extIds]) {
+                schoolYears.put(schYear.External_Id__c, schYear);
+        }
+        return schoolYears;
+    }
+
+    public static Map<String, Enrollment_Component__c> getECsByExternalId(Set<String> extIds)
+    {
+        // collect QuestionGroups        
+        Map<String, Enrollment_Component__c> qgECs = new Map<String, Enrollment_Component__c>();
+        for (Enrollment_Component__c questionGroupEC : [ 
+            SELECT  Id, External_Id__c, Name 
+            FROM    Enrollment_Component__c WHERE External_Id__c IN : extIds]) 
+        {
+            qgECs.put(questionGroupEC.External_Id__c, questionGroupEC);
+        }
+        return qgECs;
+    }
+
+    // // verify if a field exists
+    // public static Boolean hasSObjectField(String fieldName, SObject so) {
+    //     fieldName = fieldName.toLowerCase();
+    //     return so.getSObjectType().getDescribe().fields.getMap().keySet().contains(fieldName);
+    // }
+                
+    public static Map<String, Set<String>> objectFieldsMap 
+    {
+        get {
+            
+            if (objectFieldsMap==null) {
+                objectFieldsMap = new Map<String, Set<String>>();
+            }
+            
+            // Make the describe call
+            Schema.DescribeSobjectResult[] results = Schema.describeSObjects(DEFAULT_OBJECT_TYPES);
+            // For each returned result, get some info
+            for(Schema.DescribeSobjectResult res : results) {
+                if (objectFieldsMap.get(res.getName())==null) {
+                    objectFieldsMap.put(res.getName().toLowerCase(), res.fields.getMap().keySet());
+                }
+            }
+            return objectFieldsMap;
+        }
+        set;
+    }
+
+    // System.debug(JSON.serialize(ECA_CriteriaEvaluatorHelper.objectFieldsMap));
+    // System.debug(JSON.serialize(ECA_CriteriaEvaluatorHelper.objectFieldsMap.get('Account').contains('School_Year__c')));
+    // System.debug(JSON.serialize(ECA_CriteriaEvaluatorHelper.objectFieldsMap.get('Account').containsIgnoreCase('Billingstreet')));
+
+
 }

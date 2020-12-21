@@ -31,12 +31,18 @@
     {
         if(component.get("v.School")!=null && component.get("v.School")!=''){
             helper.getSchoolYears(component, event, helper,component.get("v.School"));
+        } else{
+            component.find("Year").set("v.value","");
+            component.find("grade").set("v.value","");
+            component.set("v.noSchools", true); 
+            component.set("v.noYears", true); 
         }
     },
     // called when year is selected
     schoolYearSelect: function(component, event, helper)
     {
-        if(component.get("v.schoolYear")!=null && component.get("v.schoolYear")!=''){
+        var schoolYear = component.find("Year").get("v.value");
+        if(schoolYear!=null && schoolYear!=''){
             helper.getGradeLevels(component, event, helper);
         }
     },
