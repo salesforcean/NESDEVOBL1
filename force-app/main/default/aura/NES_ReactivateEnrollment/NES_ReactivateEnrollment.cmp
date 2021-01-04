@@ -123,7 +123,7 @@
                         </aura:iteration>
                     </lightning:select><br/>
 
-                    <lightning:select aura:id="Grade" name="grades" label="Requesting grade"  value="{!v.gradeLevel}" required="true" disabled="{!v.disableGrade}">
+                    <lightning:select aura:id="Grade" name="grades" label="Requesting grade"  value="{!v.gradeLevel}" required="true" disabled="{!v.disableGrade}" onchange ="{!c.gradeChange}">
                         <option value="">-- select One --</option>
                         <aura:iteration items="{!v.gradeLevels}" var="grade">
                             <option value="{!grade.Name}">{!grade.Name}</option><br/>

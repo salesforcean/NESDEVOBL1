@@ -11,110 +11,6 @@ public class ECA_CriteriaEvaluator {
     public static Map<Id, Enrollment_Component_Affiliation__c> processedECAs { get; private set; } 
     // public static Map<Id, Map<Integer, Id>> mapECtoECCriteria { get; private set; }
     public static Map<Id, Map<Integer, String>> mapECtoECCriteria { get; private set; }
-    
-
-    //  /**
-    //  * Called by TriggerCode
-    //  */
-    // public static void processDirtyECAs(
-    //     List<Enrollment_Component_Affiliation__c> newList, 
-    //     Map<Id, Enrollment_Component_Affiliation__c> newMap, 
-    //     Map<Id, Enrollment_Component_Affiliation__c> oldMap
-    // ) {
-        
-    //     dirtyECAs = new List<Enrollment_Component_Affiliation__c>();
-    //     dirtyECs = new Map<Id, Enrollment_Component__c>();
-    //     dirtyPEIds = new List<Id>();
-
-    //     processedECAs = new Map<Id, Enrollment_Component_Affiliation__c>();
-
-    //     Map<Id, Id> dirtyECtoECAsMap = new Map<Id, Id>();
-    //     Map<Id, Id> dirtyECAtoECsMap = new Map<Id, Id>();
-        
-    //     for (Enrollment_Component_Affiliation__c eca : newList) 
-    //     {
-    //         if (
-    //             (eca.is_Dirty__c) && (
-    //                 oldMap == null || 
-    //                 eca.is_Dirty__c != oldMap.get(eca.Id).is_Dirty__c
-    //             )
-    //         ) {
-
-    //             dirtyECAs.add(eca);
-    //             dirtyPEIds.add(eca.Program_Enrollment__c);
-    //             dirtyECs.put(eca.Enrollment_Component__c, null);
-                
-    //             dirtyECtoECAsMap.put(eca.Enrollment_Component__c, eca.Id);
-    //             dirtyECAtoECsMap.put(eca.Id, eca.Enrollment_Component__c);
-    //         }        
-    //     }
-        
-    //     if (dirtyECAs.size()==0)
-    //         return;
-        
-    //     refreshAll = true;
-        
-    //     // * Fetch ECs & ECCs & Criteria for given ECAs
-    //     dirtyECs = ECA_CriteriaEvaluatorHelper.getECsById(new List<Id>(dirtyECs.keySet()));
-
-    //     // build map of EC => ECCs
-    //     mapECtoECCriteria = getECtoECCriteriaMap(dirtyECs); //Change this to EC => Order => ECC.ID
-        
-    //     // this is a shared Class & is needed to fetchECA children
-    //     ECA_HierarchyStatusUpdate.initialize(newMap);
-
-    //     // temp variables
-    //     Enrollment_Component__c ec;
-    //     // Map<Integer, Id> eccCriteria;
-    //     Map<Integer, String> eccCriteria;
-
-    //     for (Enrollment_Component_Affiliation__c eca : dirtyECAs) 
-    //     {        
-
-    //         ec = dirtyECs.get(eca.Enrollment_Component__c);
-    //         eccCriteria = mapECtoECCriteria.get(ec.Id);
-
-    //         Map<Object, Boolean> expressionData = new Map<Object, Boolean>();
-    //         if (eccCriteria!=null) // populate the criteriaData result field
-    //         { 
-    //             for (Integer key : eccCriteria.keySet()){ 
-    //                 Program_Enrollment_Criteria__c pecTmp = mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key));
-    //                 expressionData.put(key, pecTmp.Result__c);
-    //                 // expressionData.put(key, mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key)).Result__c);
-    //             }
-    //         }            
-    //         Boolean assignmentLogic = (ec.Assignment_Logic__c==null?true:evaluate(ec.Assignment_Logic__c, expressionData));
-    //         String incompleteChildrenStatus = null;
-    //         Boolean completionLogic = false;
-    //         // check if ECA qualifies for Completion logic run
-    //         if (!COMPLETION_LOGIC_BLACK_LIST_TXT.containsIgnoreCase(eca.EC_Record_Type__c) && ECA_HierarchyStatusUpdate.isECAPartOfCurrentStage(eca))
-    //         {   
-    //             completionLogic = (ec.Completion_Logic__c==null?true:evaluate(ec.Completion_Logic__c, expressionData));
-    //             incompleteChildrenStatus = ECA_HierarchyStatusUpdate.getChildrenStatus(eca, true);
-    //             completionLogic = completionLogic && (incompleteChildrenStatus==null || incompleteChildrenStatus.equalsIgnoreCase('Complete'));
-    //         }
-            
-    //         String newStatus; // = getNewECAStatus(eca.Status__c, assignmentLogic, completionLogic);
-    //         // if (eca.Status__c == 'Not Applicable' ) {
-    //         //     // eca.Status__c = 'Not Applicable'
-    //         //     processedECAs.put(eca.Id, eca);
-    //         // }
-    //         // else 
-    //         if (COMPLETION_LOGIC_BLACK_LIST_TXT.containsIgnoreCase(eca.EC_Record_Type__c) && (eca.Status__c == 'Complete' || eca.Status__c == 'Deferred')) {
-    //             processedECAs.put(eca.Id, eca); // do nothing if Section/Document is Complete/Doc-deferred, process its parents.
-    //         }
-    //         else if ((newStatus = getNewECAStatus(eca.Status__c, assignmentLogic, completionLogic)) !=null) {
-    //             eca.Status__c = newStatus;
-    //             processedECAs.put(eca.Id, eca);
-    //         } 
-    //         else if (incompleteChildrenStatus!=null && incompleteChildrenStatus.equalsIgnoreCase('In Progress')) 
-    //         {
-    //             eca.Status__c = 'In Progress';
-    //             processedECAs.put(eca.Id, eca);
-    //         }
-    //         eca.is_Dirty__c = false;
-    //     }
-    // }
 
     /**
      * Called by TriggerCode
@@ -173,6 +69,8 @@ public class ECA_CriteriaEvaluator {
         Enrollment_Component__c ec;
         Map<Integer, String> eccCriteria;
 
+        System.debug('>>>mapPEIdtoPECriteria>>>' + JSON.serialize(mapPEIdtoPECriteria));
+
         for (Enrollment_Component_Affiliation__c eca : dirtyECAs) 
         {        
 
@@ -181,8 +79,11 @@ public class ECA_CriteriaEvaluator {
 
             Map<Object, Boolean> expressionData = new Map<Object, Boolean>();
             if (eccCriteria!=null) // populate the criteriaData result field
-            { 
+            {                 
+                System.debug('>>>mapPEIdtoPECriteria.get(eca.Program_Enrollment__c)>>>' + mapPEIdtoPECriteria.get(eca.Program_Enrollment__c));
+                System.debug('>>>eccCriteria.get(key>>>' + JSON.serialize(eccCriteria));
                 for (Integer key : eccCriteria.keySet()){ 
+                    System.debug('>>>eccCriteria.get(key>>>' + eccCriteria.get(key));
                     Program_Enrollment_Criteria__c pecTmp = mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key));
                     expressionData.put(key, pecTmp.Result__c);
                     // expressionData.put(key, mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key)).Result__c);
@@ -199,12 +100,8 @@ public class ECA_CriteriaEvaluator {
                 completionLogic = completionLogic && (incompleteChildrenStatus==null || incompleteChildrenStatus.equalsIgnoreCase('Complete'));
             }
             
-            String newStatus; // = getNewECAStatus(eca.Status__c, assignmentLogic, completionLogic);
-            // if (eca.Status__c == 'Not Applicable' ) {
-            //     // eca.Status__c = 'Not Applicable'
-            //     processedECAs.put(eca.Id, eca);
-            // }
-            // else 
+            String newStatus;
+           
             if (COMPLETION_LOGIC_BLACK_LIST_TXT.containsIgnoreCase(eca.EC_Record_Type__c) && (eca.Status__c == 'Complete' || eca.Status__c == 'Deferred')) {
                 processedECAs.put(eca.Id, eca); // do nothing if Section/Document is Complete/Doc-deferred, process its parents.
             }
@@ -363,38 +260,6 @@ public class ECA_CriteriaEvaluator {
     @TestVisible
     private static Map<Id, Enrollment_Component__c> dirtyECs { get; set; }
 
-    // 12/18/2020 | Mark Membrino | Backing up... | WIP...
-    // @TestVisible
-    // private static Map<Id, Map<Id, Program_Enrollment_Criteria__c>> mapPEIdtoPECriteria 
-    // {
-    //     get 
-    //     {
-    //         if (refreshAll && dirtyPEIds!=null) {
-
-    //             refreshAll = false;
-    //             mapPEIdtoPECriteria = new Map<Id, Map<Id, Program_Enrollment_Criteria__c>>();
-
-    //             for (Program_Enrollment_Criteria__c result : ECA_CriteriaEvaluatorHelper.getPECriteriaResultsByPEIds(dirtyPEIds))
-    //             {
-
-    //                 if (mapPEIdtoPECriteria.get(result.Program_Enrollment__c) == null)
-    //                     mapPEIdtoPECriteria.put(result.Program_Enrollment__c, new Map<Id, Program_Enrollment_Criteria__c>{result.Criteria__c => result});
-    //                 else
-    //                     mapPEIdtoPECriteria.get(result.Program_Enrollment__c).put(result.Criteria__c, result);
-
-    //             }
-
-    //         }
-
-    //         return mapPEIdtoPECriteria;
-
-    //     } 
-
-    //     set;
-
-    // }
-    
-
     @TestVisible
     private static Map<Id, Map<String, Program_Enrollment_Criteria__c>> mapPEIdtoPECriteria
     {
@@ -428,7 +293,6 @@ public class ECA_CriteriaEvaluator {
 
     }
     
-    // public static Map<Id, Map<Integer, Id>> getECtoECCriteriaMap(Map<Id, Enrollment_Component__c> dirtyECs)
     public static Map<Id, Map<Integer, String>> getECtoECCriteriaMap(Map<Id, Enrollment_Component__c> dirtyECs)
     {
         Map<Id, Map<Integer, String>> mapECtoECCriteria = new Map<Id, Map<Integer, String>>();
@@ -523,49 +387,4 @@ public class ECA_CriteriaEvaluator {
         // if no matches
         return null;
     }
-
 }
-
-
-
-    // public static String getECAChildrenStatus(Enrollment_Component_Affiliation__c parentECA) 
-    // {
-    //     List<Id> childEC_Ids = new List<Id>();
-    //     Id parentECA_EC_ID = parentECA.Enrollment_Component__c; 
-    //     Id parentECA_PE_ID = parentECA.Program_Enrollment__c;
-
-    //     // get children ECA.ECs from ECR
-    //     for (Enrollment_Component_Relationship__c ecr : [SELECT Child_Enrollment_Component__c 
-    //         FROM Enrollment_Component_Relationship__c WHERE Parent_Enrollment_Component__c = :parentECA_EC_ID])
-    //     {
-    //         childEC_Ids.add(ecr.Child_Enrollment_Component__c);
-    //     }
-
-    //     if (childEC_Ids == null || childEC_Ids.size()==0)
-    //         return 'Complete'; // no children found.
-
-    //     Integer completedChildrenCount = 0;
-    //     Integer inProgressChildrenCount = 0;
-    //     Integer restChildrenCount = 0;
-    //     Integer totalCount = 0;
-
-    //     for (Enrollment_Component_Affiliation__c child : [
-    //         SELECT 	Id, Status__c, Enrollment_Component__c
-    //         FROM 	Enrollment_Component_Affiliation__c 
-    //         WHERE 	Program_Enrollment__c = : parentECA.Program_Enrollment__c 
-    //                 AND Status__c != 'Not Applicable'
-    //                 AND Enrollment_Component__c IN :childEC_Ids
-    //     ])
-    //     {
-    //         totalCount++; 
-
-    //         if (child.status__c.equalsIgnoreCase('Complete')) { completedChildrenCount++; }
-    //         else if (child.status__c.equalsIgnoreCase('In Progress')) { completedChildrenCount++; }
-    //         else { restChildrenCount++; }
-    //     }
-
-    //     if (completedChildrenCount == totalCount) { return 'Complete'; } // no incomplete children found
-    //     else if (completedChildrenCount>0 || inProgressChildrenCount>0) { return 'In Progress'; } // found in-progress children
-        
-    //     return 'rest'; // found 'Not Started'/others... children
-    // }

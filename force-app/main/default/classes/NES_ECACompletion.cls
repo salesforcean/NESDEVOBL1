@@ -57,7 +57,7 @@ public without sharing class NES_ECACompletion {
     }
 
     //Evaluate whether to run logic for Contact change
-	//This is the entry point when a record other that a PE was the changed record that may need reassignment
+    //This is the entry point when a record other that a PE was the changed record that may need reassignment
     public static void relatedCompletion(Map<Id, List<String>> changedFields, String objectName, Map<Id, List<Id>> peToObjectMap, List<EvaluationUtils.fieldUpdate> fieldUpdateList) {
         //MM 11/24/2020 Removing the check for should run completion as part of the ECA rewrite.  Added below to only care about this flag when it is the old ECA model
         //if (shouldRunCompletion) {
@@ -65,7 +65,7 @@ public without sharing class NES_ECACompletion {
             Map<Id, hed__Program_Enrollment__c> newECAModelPEs = new Map<Id, hed__Program_Enrollment__c> ();
             Map<Id, hed__Program_Enrollment__c> oldECAModelPEs = new Map<Id, hed__Program_Enrollment__c> ();
 
-            for (hed__Program_Enrollment__c pe : [SELECT Id, hed__Account__c, hed__Contact__c, hed__Contact__r.RecordType.Name, hed__Contact__r.AccountId, Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c, hed__Account__r.Use_Updated_ECA_Process__c FROM hed__Program_Enrollment__c WHERE Id IN :peToObjectMap.keySet()] )
+            for (hed__Program_Enrollment__c pe : [SELECT Id,Enrollment_Type__c, hed__Account__c, hed__Contact__c, hed__Contact__r.RecordType.Name, hed__Contact__r.AccountId, Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c, hed__Account__r.Use_Updated_ECA_Process__c FROM hed__Program_Enrollment__c WHERE Id IN :peToObjectMap.keySet()] )
             {
                 if (pe.hed__Account__r.Use_Updated_ECA_Process__c)
                     newECAModelPEs.put(pe.Id, pe);
@@ -107,13 +107,13 @@ public without sharing class NES_ECACompletion {
     }
 
     //Dispatch the program enrollment completion method
-	//This is the entry point when a PE was the changed record that may need reassignment
+    //This is the entry point when a PE was the changed record that may need reassignment
     public static void programEnrollmentCompletion(Map<Id, List<String>> changedFieldsMap, String objectName) {
         List<hed__Program_Enrollment__c> programEnrollments = [SELECT Id, hed__Account__c, hed__Contact__c, hed__Contact__r.RecordType.Name,
                             Household_Program_Enrollment__c, Household_Program_Enrollment__r.hed__Contact__c, V2_External_ID__c,hed__Contact__r.AccountId,Enrollment_Type__c,Attended_other_school_since_withdrawing__c,
                             hed__Account__r.Use_Updated_ECA_Process__c
-						FROM hed__Program_Enrollment__c 
-						WHERE Id IN :changedFieldsMap.keySet()];
+                        FROM hed__Program_Enrollment__c 
+                        WHERE Id IN :changedFieldsMap.keySet()];
                 
         programEnrollmentCriteria(changedFieldsMap, objectName, programEnrollments);
     }
@@ -128,9 +128,9 @@ public without sharing class NES_ECACompletion {
             List<hed__Program_Enrollment__c> caretakerEnrollments = new List<hed__Program_Enrollment__c>();
             List<hed__Program_Enrollment__c> studentEnrollments = new List<hed__Program_Enrollment__c>();
             map<Id,hed__Program_Enrollment__c> studentEnrollmentsMap = new map<Id,hed__Program_Enrollment__c>();
-			Map<Id,List<Enrollment_Component_Affiliation__c>> progEnrollECAListMap = new Map<Id,List<Enrollment_Component_Affiliation__c>> ();
-			List<Id> allEnrollmentIds = new List<Id> ();
-			Set<Id> acedemicProgramsReferenced = new Set<Id> ();
+            Map<Id,List<Enrollment_Component_Affiliation__c>> progEnrollECAListMap = new Map<Id,List<Enrollment_Component_Affiliation__c>> ();
+            List<Id> allEnrollmentIds = new List<Id> ();
+            Set<Id> acedemicProgramsReferenced = new Set<Id> ();
 
             // Find all the student and caretaker enrollments and split them
             for (hed__Program_Enrollment__c programEnrollment : programEnrollments) {
@@ -139,15 +139,15 @@ public without sharing class NES_ECACompletion {
                     caretakerEnrollments.add(programEnrollment);
                 } else {
                     studentEnrollments.add(programEnrollment);
-					studentEnrollmentsMap.put(programEnrollment.Id, programEnrollment);
+                    studentEnrollmentsMap.put(programEnrollment.Id, programEnrollment);
                 }
-				allEnrollmentIds.add(programEnrollment.Id);
-				acedemicProgramsReferenced.add(programEnrollment.hed__Account__c);
+                allEnrollmentIds.add(programEnrollment.Id);
+                acedemicProgramsReferenced.add(programEnrollment.hed__Account__c);
             }
 
             // if we have caretaker enrollments, we must analyze them
-			map<Id,hed__Program_Enrollment__c> caretakerEnrollmentsMap = new map<Id,hed__Program_Enrollment__c>();
-			List<hed__Program_Enrollment__c> relatedStudentEnrollments = new List<hed__Program_Enrollment__c>();
+            map<Id,hed__Program_Enrollment__c> caretakerEnrollmentsMap = new map<Id,hed__Program_Enrollment__c>();
+            List<hed__Program_Enrollment__c> relatedStudentEnrollments = new List<hed__Program_Enrollment__c>();
             if (caretakerEnrollments.size() > 0) {
 
                 List<Id> caretakerEnrollmentIds = new List<Id>();
@@ -155,48 +155,48 @@ public without sharing class NES_ECACompletion {
                     caretakerEnrollmentIds.add(caretakerEnrollment.Id);
                 }
                 relatedStudentEnrollments = [ 
-						SELECT Id, hed__Account__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, 
-								hed__Contact__r.AccountId,Enrollment_Type__c,V2_External_ID__c, Household_Program_Enrollment__c
+                        SELECT Id, hed__Account__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, 
+                                hed__Contact__r.AccountId,Enrollment_Type__c,V2_External_ID__c, Household_Program_Enrollment__c
                         FROM hed__Program_Enrollment__c
                         WHERE Household_Program_Enrollment__c IN :caretakerEnrollmentIds AND Status__c = 'In Progress'
                 ];
 
 
-				//add a reference to the appropriate fields for the eval to run
+                //add a reference to the appropriate fields for the eval to run
                 for (hed__Program_Enrollment__c studentEnrollment : relatedStudentEnrollments) {
                     List<String> changedFields = changedFieldsMap.get(studentEnrollment.Household_Program_Enrollment__c);
                     changedFieldsMap.put(studentEnrollment.Id, changedFields);
-					caretakerEnrollmentsMap.put(studentEnrollment.Id, studentEnrollment);
-					allEnrollmentIds.add(studentEnrollment.Id);
-					acedemicProgramsReferenced.add(studentEnrollment.hed__Account__c);
+                    caretakerEnrollmentsMap.put(studentEnrollment.Id, studentEnrollment);
+                    allEnrollmentIds.add(studentEnrollment.Id);
+                    acedemicProgramsReferenced.add(studentEnrollment.hed__Account__c);
                 }
             }
 
-			for ( Enrollment_Component_Affiliation__c affiliation : [SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
-																		FROM Enrollment_Component_Affiliation__c
-																		WHERE Program_Enrollment__c in :allEnrollmentIds]) {
-				if (!progEnrollECAListMap.containsKey(affiliation.Program_Enrollment__c)){
-					list <Enrollment_Component_Affiliation__c> ecas = new List<Enrollment_Component_Affiliation__c> ();
-					ecas.add(affiliation);
-					progEnrollECAListMap.put(affiliation.Program_Enrollment__c, ecas);
-				} else
-					progEnrollECAListMap.get(affiliation.Program_Enrollment__c).add(affiliation);
-			}
+            for ( Enrollment_Component_Affiliation__c affiliation : [SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
+                                                                        FROM Enrollment_Component_Affiliation__c
+                                                                        WHERE Program_Enrollment__c in :allEnrollmentIds]) {
+                if (!progEnrollECAListMap.containsKey(affiliation.Program_Enrollment__c)){
+                    list <Enrollment_Component_Affiliation__c> ecas = new List<Enrollment_Component_Affiliation__c> ();
+                    ecas.add(affiliation);
+                    progEnrollECAListMap.put(affiliation.Program_Enrollment__c, ecas);
+                } else
+                    progEnrollECAListMap.get(affiliation.Program_Enrollment__c).add(affiliation);
+            }
 
-			//Build a map between Academic Programs and Process ids.
-			map <Id, Id> academicProgramProcessIdMap = new Map<Id,Id>();
-			for (Enrollment_Component__c e : [SELECT Id, Process_Academic_Program__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :acedemicProgramsReferenced])
-			{
-				academicProgramProcessIdMap.put(e.Process_Academic_Program__c, e.id);
-			}
+            //Build a map between Academic Programs and Process ids.
+            map <Id, Id> academicProgramProcessIdMap = new Map<Id,Id>();
+            for (Enrollment_Component__c e : [SELECT Id, Process_Academic_Program__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :acedemicProgramsReferenced])
+            {
+                academicProgramProcessIdMap.put(e.Process_Academic_Program__c, e.id);
+            }
 
             // Only if there are related student program enrollments do we proceed
-			if (caretakerEnrollmentsMap.size() > 0) {
+            if (caretakerEnrollmentsMap.size() > 0) {
                 Map<Id, List<Id>> peImpactedComponentListAssignment = shouldRun(relatedStudentEnrollments, changedFieldsMap, 'Assignment', objectName, progEnrollECAListMap);
                 fireAssignment(peImpactedComponentListAssignment, caretakerEnrollmentsMap, progEnrollECAListMap, academicProgramProcessIdMap);
                  
                 Map<Id, List<Id>> peImpactedComponentListCompletion = shouldRun(relatedStudentEnrollments, changedFieldsMap, 'Completion', objectName, progEnrollECAListMap);
-				fireCompletion(peImpactedComponentListCompletion, progEnrollECAListMap, caretakerEnrollmentsMap,academicProgramProcessIdMap);
+                fireCompletion(peImpactedComponentListCompletion, progEnrollECAListMap, caretakerEnrollmentsMap,academicProgramProcessIdMap);
             }
 
             if (studentEnrollments.size() > 0) {
@@ -204,7 +204,7 @@ public without sharing class NES_ECACompletion {
                 fireAssignment(peImpactedComponentListAssignment, studentEnrollmentsMap, progEnrollECAListMap, academicProgramProcessIdMap);
 
                 Map<Id, List<Id>> peImpactedComponentListCompletion = shouldRun(studentEnrollments, changedFieldsMap, 'Completion', objectName, progEnrollECAListMap);
-				fireCompletion(peImpactedComponentListCompletion, progEnrollECAListMap, studentEnrollmentsMap,academicProgramProcessIdMap);
+                fireCompletion(peImpactedComponentListCompletion, progEnrollECAListMap, studentEnrollmentsMap,academicProgramProcessIdMap);
             }
         }
     }
@@ -219,19 +219,19 @@ public without sharing class NES_ECACompletion {
         ];
 
         for (Id enrollmentId : completionMap.keySet()) {
-			//If there were any impacted components, the size of the list will be > 0
-			list<Enrollment_Component_Affiliation__c> thisStudentsECAs = new list<Enrollment_Component_Affiliation__c> ();
+            //If there were any impacted components, the size of the list will be > 0
+            list<Enrollment_Component_Affiliation__c> thisStudentsECAs = new list<Enrollment_Component_Affiliation__c> ();
             if (completionMap.get(enrollmentId).size() > 0) {
-				//singleAffiliationMap is a map between a Enrollment Component id and an ECA 
+                //singleAffiliationMap is a map between a Enrollment Component id and an ECA 
                 Map<Id, Enrollment_Component_Affiliation__c> singleAffiliationMap = new Map<Id, Enrollment_Component_Affiliation__c>();
                 for (Enrollment_Component_Affiliation__c studentAffiliation : studentAffiliations) {
                     if (studentAffiliation.Program_Enrollment__c == enrollmentId) {
                         singleAffiliationMap.put(studentAffiliation.Enrollment_Component__c, studentAffiliation);
                         System.debug(studentAffiliation.Enrollment_Component__c + ' : ' + studentAffiliation.Status__c);
-						thisStudentsECAs.add(studentAffiliation);
+                        thisStudentsECAs.add(studentAffiliation);
                     }
                 }
-				id processId = academicProgramProcessIdMap.get(EnrollmentsMap.get(enrollmentId).hed__Account__c);
+                id processId = academicProgramProcessIdMap.get(EnrollmentsMap.get(enrollmentId).hed__Account__c);
                 evaluateCompletion(enrollmentId, processId, null, singleAffiliationMap, thisStudentsECAs, EnrollmentsMap.get(enrollmentId) );
             }
         }
@@ -240,7 +240,7 @@ public without sharing class NES_ECACompletion {
     //fire off assignment
     public static void fireAssignment(Map<Id, List<Id>> completionMap, map<Id,hed__Program_Enrollment__c> EnrollmentsMap, Map<Id,List<Enrollment_Component_Affiliation__c>> progEnrollECAListMap, map <Id, Id> academicProgramProcessIdMap) {
 
-		/* Mark Membrino12/18/2019  Not used, not sure why it was ever calculated.
+        /* Mark Membrino12/18/2019  Not used, not sure why it was ever calculated.
         List<Enrollment_Component_Affiliation__c> studentAffiliations = [
             SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.Assignment_Logic__c,
                     Enrollment_Component__r.Completion_Logic__c, Enrollment_Component__r.RecordType.Name, Enrollment_Component__r.Is_Required__c
@@ -251,7 +251,7 @@ public without sharing class NES_ECACompletion {
         for (Id enrollmentId : completionMap.keySet()) {
 
             /* Mark Membrino12/18/2019  Not used, not sure why it was ever calculated.
-			Map<Id, Enrollment_Component_Affiliation__c> singleAffiliationMap = new Map<Id, Enrollment_Component_Affiliation__c>();
+            Map<Id, Enrollment_Component_Affiliation__c> singleAffiliationMap = new Map<Id, Enrollment_Component_Affiliation__c>();
             for (Enrollment_Component_Affiliation__c studentAffiliation : studentAffiliations) {
                 if (studentAffiliation.Program_Enrollment__c == enrollmentId) {
                     singleAffiliationMap.put(studentAffiliation.Enrollment_Component__c, studentAffiliation);
@@ -259,8 +259,8 @@ public without sharing class NES_ECACompletion {
             } */
 
             if (completionMap.get(enrollmentId).size() > 0) {
-				hed__Program_Enrollment__c thisEnrollment = EnrollmentsMap.get(enrollmentId);
-				id processId = academicProgramProcessIdMap.get(thisEnrollment.hed__Account__c);
+                hed__Program_Enrollment__c thisEnrollment = EnrollmentsMap.get(enrollmentId);
+                id processId = academicProgramProcessIdMap.get(thisEnrollment.hed__Account__c);
                 NES_ECAEvaluation.runAssignment(enrollmentId, completionMap.get(enrollmentId), thisEnrollment, progEnrollECAListMap.get(enrollmentId), processId );
             }
         }
@@ -270,23 +270,23 @@ public without sharing class NES_ECACompletion {
     public static Map<Id, List<Id>> shouldRun(List<hed__Program_Enrollment__c> relatedStudentEnrollments, Map<Id, List<String>> changedFieldsMap, String criteriaType, String objectName, Map<Id,List<Enrollment_Component_Affiliation__c>> progEnrollECAListMap) {
 
         List<Id> studentEnrollmentIds = new List<Id>();
-		List<Enrollment_Component_Affiliation__c> studentAffiliations = new  List<Enrollment_Component_Affiliation__c> ();
+        List<Enrollment_Component_Affiliation__c> studentAffiliations = new  List<Enrollment_Component_Affiliation__c> ();
 
         for (hed__Program_Enrollment__c relatedStudentEnrollment : relatedStudentEnrollments) {
             studentEnrollmentIds.add(relatedStudentEnrollment.Id);
 
-			if (progEnrollECAListMap.containsKey(relatedStudentEnrollment.Id))
-			{
-				List<Enrollment_Component_Affiliation__c> thisPEsListOfECAs = progEnrollECAListMap.get(relatedStudentEnrollment.Id);
-				for (Enrollment_Component_Affiliation__c ECA : thisPEsListOfECAs) {
-					if (ECA.Status__c != 'Complete')
-						studentAffiliations.add(ECA);
-				}
-			}
+            if (progEnrollECAListMap.containsKey(relatedStudentEnrollment.Id))
+            {
+                List<Enrollment_Component_Affiliation__c> thisPEsListOfECAs = progEnrollECAListMap.get(relatedStudentEnrollment.Id);
+                for (Enrollment_Component_Affiliation__c ECA : thisPEsListOfECAs) {
+                    if (ECA.Status__c != 'Complete')
+                        studentAffiliations.add(ECA);
+                }
+            }
         }
 
         // grab all the in progress student enrollment component affiliations
-		/* Mark Membrino 12/20/2019 Removed the SOQL with the code above to reduce SOQL in for loops. 
+        /* Mark Membrino 12/20/2019 Removed the SOQL with the code above to reduce SOQL in for loops. 
         List<Enrollment_Component_Affiliation__c> studentAffiliations = [
                 SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
                 FROM Enrollment_Component_Affiliation__c
@@ -295,7 +295,7 @@ public without sharing class NES_ECACompletion {
 
 
         List<Id> enrollmentComponentIds = new List<Id>();
-		//Program Enrollment to a list of components that are tied to that PE that are not complete
+        //Program Enrollment to a list of components that are tied to that PE that are not complete
         Map<Id, List<Id>> peecMap = new Map<Id, List<Id>>();
         Set<Id> processId = new Set<Id>();
 
@@ -335,14 +335,14 @@ public without sharing class NES_ECACompletion {
                 WHERE Id IN :enrollmentComponentIds
         ];  */
 
-		//Go get all the Enrollment Components from the singleton class
-		NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
+        //Go get all the Enrollment Components from the singleton class
+        NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
 
-		List<Enrollment_Component__c> enrollmentComponents = new List<Enrollment_Component__c> (); 
-		for (id EC : enrollmentComponentIds) {
-			if ( allECData.enrollmentComponentMap.containsKey(EC) )
-				enrollmentComponents.add(allECData.enrollmentComponentMap.get(EC));
-		}
+        List<Enrollment_Component__c> enrollmentComponents = new List<Enrollment_Component__c> (); 
+        for (id EC : enrollmentComponentIds) {
+            if ( allECData.enrollmentComponentMap.containsKey(EC) )
+                enrollmentComponents.add(allECData.enrollmentComponentMap.get(EC));
+        }
 
 
         // for each enrollment component, find all the criteria fields that may change completion/assignment
@@ -373,8 +373,8 @@ public without sharing class NES_ECACompletion {
             }
         }
 
-		//For fun, let's build a list of the components that are impacted.
-		//This data will go in a map that relates Prog Enrollment to a list of impacted components
+        //For fun, let's build a list of the components that are impacted.
+        //This data will go in a map that relates Prog Enrollment to a list of impacted components
         Map<Id, List<Id>> peImpactedComponentList = new Map<Id, List<Id>>();
         List<Id> componentIds = new List<Id>();
         
@@ -383,7 +383,7 @@ public without sharing class NES_ECACompletion {
         for (hed__Program_Enrollment__c programEnrollment : relatedStudentEnrollments) {
 
             Boolean runCompletion = false;
-			List<Id> impactedEnrollmentCompents = new List<Id> ();
+            List<Id> impactedEnrollmentCompents = new List<Id> ();
             if (peecMap.keySet().contains(programEnrollment.Id)) {            
                 if (criteriaType == 'Completion') {
                     componentIds = peecMap.get(programEnrollment.Id);
@@ -411,29 +411,29 @@ public without sharing class NES_ECACompletion {
 
                     if (allTargetFields.contains(changedField)) {
                         runCompletion = true;
-						//This changed field impacts at least one changed one criteria so lets find 
-						//all the impacted Enrollment Components.
-						for (Id componentId : componentIds) {
-							if (targetFieldMap.keySet().contains(componentId)) {
-		                        List<String> targetFields = targetFieldMap.get(componentId);
-								if (targetFields.contains(changedField)) {
-									impactedEnrollmentCompents.add(componentId);
-								}
-							}
-						}
+                        //This changed field impacts at least one changed one criteria so lets find 
+                        //all the impacted Enrollment Components.
+                        for (Id componentId : componentIds) {
+                            if (targetFieldMap.keySet().contains(componentId)) {
+                                List<String> targetFields = targetFieldMap.get(componentId);
+                                if (targetFields.contains(changedField)) {
+                                    impactedEnrollmentCompents.add(componentId);
+                                }
+                            }
+                        }
                     }
                 }
             }
             shouldRunCompletionMap.put(programEnrollment.Id, runCompletion);
-			if(criteriaType == 'Completion'){
-				peImpactedComponentList.put(programEnrollment.Id, componentIds);
-				}
-			else{
-				peImpactedComponentList.put(programEnrollment.Id, impactedEnrollmentCompents);
-			}
+            if(criteriaType == 'Completion'){
+                peImpactedComponentList.put(programEnrollment.Id, componentIds);
+                }
+            else{
+                peImpactedComponentList.put(programEnrollment.Id, impactedEnrollmentCompents);
+            }
         }
         System.debug(shouldRunCompletionMap);
-		System.debug('peImpactedComponentList***'+peImpactedComponentList);
+        System.debug('peImpactedComponentList***'+peImpactedComponentList);
 
         return peImpactedComponentList;
     }
@@ -442,8 +442,8 @@ public without sharing class NES_ECACompletion {
     public static Id grabProcessId(hed__Program_Enrollment__c studentEnrollment) {
         List<Enrollment_Component__c> processComponent = new List<Enrollment_Component__c> ( [SELECT Id FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :studentEnrollment.hed__Account__c LIMIT 1]);
         Id processId;
-		if (processComponent.size() > 0)
-			return processComponent[0].Id;
+        if (processComponent.size() > 0)
+            return processComponent[0].Id;
         return processId;
     }
 
@@ -457,7 +457,7 @@ public without sharing class NES_ECACompletion {
 
         // ALIKM hed__Program_Enrollment__c studentEnrollment = stageRelationships
 
-		/* Mark Membrino 12/23/2019  Passing this now to avoid a SOQL in a for loop.
+        /* Mark Membrino 12/23/2019  Passing this now to avoid a SOQL in a for loop.
         hed__Program_Enrollment__c studentEnrollment = [
                 SELECT Id, hed__Contact__c, hed__Account__c, Household_Program_Enrollment__c, Household_Program_Enrollment__r.hed__Contact__c
                 FROM hed__Program_Enrollment__c
@@ -470,10 +470,10 @@ public without sharing class NES_ECACompletion {
 
         system.debug('processId'+processId);
         // Instantiate new variables for method
-		//Mark Membrino 12/18/2019  Found this relationships variable is populated but never used.  Removing.
+        //Mark Membrino 12/18/2019  Found this relationships variable is populated but never used.  Removing.
         //List<hed__Relationship__c> relationships = new List<hed__Relationship__c>();
         //MM 12/26/2019  Removing this need to get the student.
-		//Contact student = new Contact();
+        //Contact student = new Contact();
         Map<Id, String> completionLogicMap = new Map<Id, String>();
         List<Id> allIds = new List<Id>();
         List<Enrollment_Component_Affiliation__c> affiliations = new List<Enrollment_Component_Affiliation__c>();
@@ -531,7 +531,7 @@ public without sharing class NES_ECACompletion {
         allIds.addAll(formFlagIds);
 
         // Mark Membrino 12/26/2019  Removing this query and replacing it with the for loop below that iterates over the data class
-		//   we built and only grabs the Enrollment Components that it previously collected.
+        //   we built and only grabs the Enrollment Components that it previously collected.
         /*List<Enrollment_Component__c> enrollmentComponents = [
                 SELECT Id, Completion_Logic__c, (
                         SELECT Id, Criteria__c, Student_or_Household__c, Criteria_Number__c, Criteria__r.Criteria_Field__c,
@@ -542,12 +542,12 @@ public without sharing class NES_ECACompletion {
                 WHERE Id IN :allIds
         ]; */
 
-		List<Enrollment_Component__c> enrollmentComponents = new List<Enrollment_Component__c> ();
-		Set<Id> allIdsSet = new Set<Id>(allIds);
-		for ( Enrollment_Component__c ecc: allECData.enrollmentComponentMap.values() ) {
-			if ( allIdsSet.contains(ecc.id) )
-				enrollmentComponents.add(ecc);
-		}
+        List<Enrollment_Component__c> enrollmentComponents = new List<Enrollment_Component__c> ();
+        Set<Id> allIdsSet = new Set<Id>(allIds);
+        for ( Enrollment_Component__c ecc: allECData.enrollmentComponentMap.values() ) {
+            if ( allIdsSet.contains(ecc.id) )
+                enrollmentComponents.add(ecc);
+        }
 
         // Create a map of enrollment component Id to enrollment component for easy access of the data
         Map<Id, Enrollment_Component__c> enrollmentComponentMap = new Map<Id, Enrollment_Component__c>();
@@ -562,31 +562,31 @@ public without sharing class NES_ECACompletion {
         system.debug(enrollmentComponentMap);
         // if there are any completion logic to evaluate, evaluate it
         if (completionLogicMap.size() > 0) {
-			//Mark Membrino 12/26/2019  Removing this SOQL passing the data instead.
+            //Mark Membrino 12/26/2019  Removing this SOQL passing the data instead.
             //student = [SELECT AccountId, Id FROM Contact WHERE Id = :studentEnrollment.hed__Contact__c];
 
-			//MM  Never used, removing.
+            //MM  Never used, removing.
             //relationships = [SELECT hed__Contact__c, hed__RelatedContact__c FROM hed__Relationship__c WHERE hed__Contact__c = :studentEnrollment.hed__Contact__c];
 
-			//Pass an empty list of impacted enrollments. This will force get more to look at all components.
-			List<Id> impactedEnrollmentComponents = new List<Id> ();
+            //Pass an empty list of impacted enrollments. This will force get more to look at all components.
+            List<Id> impactedEnrollmentComponents = new List<Id> ();
 
             // Evaluating criteria, find all components whose completion criteria evaluates to true
             completedComponents = NES_ECAEvaluation.getMoreComponents(studentEnrollment.Id, studentEnrollment.Household_Program_Enrollment__c,
                     studentEnrollment.hed__Contact__c, studentEnrollment.Household_Program_Enrollment__r.hed__Contact__c, studentEnrollment.hed__Contact__r.AccountId, 'Completion', 
-					enrollmentComponentMap, true, impactedEnrollmentComponents, thisStudentsECAs);
+                    enrollmentComponentMap, true, impactedEnrollmentComponents, thisStudentsECAs);
             System.debug(completedComponents.size()); 
         }
 
         // Mark Membrino 12/26/2019  Replacing the soql below with this in-memory process to remove a soql.
-		List<Enrollment_Component_Relationship__c> formRelationships = new List<Enrollment_Component_Relationship__c> ();
+        List<Enrollment_Component_Relationship__c> formRelationships = new List<Enrollment_Component_Relationship__c> ();
 
-		for (Enrollment_Component_Relationship__c r : thisProcessData.sectionRelationships) {
-			if (r.Child_Enrollment_Component__r.RecordType.Name  == NES_DashboardUtilities.SECTION_RT ||
-			          r.Child_Enrollment_Component__r.RecordType.Name  == NES_DashboardUtilities.DOCUMENT_RT)
-				formRelationships.add(r);
+        for (Enrollment_Component_Relationship__c r : thisProcessData.sectionRelationships) {
+            if (r.Child_Enrollment_Component__r.RecordType.Name  == NES_DashboardUtilities.SECTION_RT ||
+                      r.Child_Enrollment_Component__r.RecordType.Name  == NES_DashboardUtilities.DOCUMENT_RT)
+                formRelationships.add(r);
 
-		}
+        }
 
        /* List<Enrollment_Component_Relationship__c> formRelationships = [
                 SELECT Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.Assignment_Logic__c, Child_Enrollment_Component__r.RecordType.Name,
@@ -617,7 +617,7 @@ public without sharing class NES_ECACompletion {
                 Enrollment_Component_Affiliation__c completedAffiliation = studentAffiliationsMap.get(completedId);
                 if(completedAffiliation != null && completedAffiliation.Enrollment_Component__r.RecordType.Name == NES_DashboardUtilities.FLAG_RT || completedAffiliation.Enrollment_Component__r.RecordType.Name == NES_DashboardUtilities.MESSAGE_RT) {
                     if (completedAffiliation.Enrollment_Component__c == 'a0f0n0000003dhHAAQ')
-                        System.debug(':: Ali KM :: Found Marking Status to Complete at: completedAffiliation:: ln 591 :: ' + JSON.serialize(	completedAffiliation ));
+                        System.debug(':: Ali KM :: Found Marking Status to Complete at: completedAffiliation:: ln 591 :: ' + JSON.serialize(    completedAffiliation ));
                     completedAffiliation.Status__c = 'Complete';
                     completedAffiliation.Date_Completed__c = System.now();
                     
@@ -645,7 +645,7 @@ public without sharing class NES_ECACompletion {
                         // if this form has no completion or the completion is true, complete it and move on; else, do nothing else 
                         if (formAffiliation.Status__c != 'Complete'  && (String.isBlank(formAffiliation.Enrollment_Component__r.Completion_Logic__c) || completedComponents.contains(formAffiliation.Enrollment_Component__c) || (completedComponents.indexOf(formAffiliation.Enrollment_Component__c) > -1))) {
                             if (formAffiliation.Enrollment_Component__c == 'a0f0n0000003dhHAAQ')
-                                System.debug(':: Ali KM :: Found Marking Status to Complete at: formAffiliations :: ' + JSON.serialize(	formAffiliation ));
+                                System.debug(':: Ali KM :: Found Marking Status to Complete at: formAffiliations :: ' + JSON.serialize( formAffiliation ));
                             formAffiliation.Status__c = 'Complete';
                             formAffiliation.Date_Completed__c = System.today();
                          
@@ -820,7 +820,7 @@ public without sharing class NES_ECACompletion {
             if (String.isBlank(formAffiliation.Enrollment_Component__r.Completion_Logic__c) || completedComponents.contains(parentFormId)) {
 
                 if (formAffiliation.Enrollment_Component__c == 'a0f0n0000003dhHAAQ')
-                    System.debug(':: Ali KM :: Found Marking Status to Complete at: formAffiliation:: ln 794: ' + JSON.serialize(	formAffiliation ));
+                    System.debug(':: Ali KM :: Found Marking Status to Complete at: formAffiliation:: ln 794: ' + JSON.serialize(   formAffiliation ));
                 formAffiliation.Status__c = 'Complete';
                 affiliations.add(formAffiliation);
 
@@ -839,7 +839,7 @@ public without sharing class NES_ECACompletion {
 
                     if (String.isBlank(stageAffiliation.Enrollment_Component__r.Completion_Logic__c) || completedComponents.contains(parentStageId)) {
                         if (stageAffiliation.Enrollment_Component__c == 'a0f0n0000003dhHAAQ')
-                            System.debug(':: Ali KM :: Found Marking Status to Complete at: stageAffiliation:: ln 813: ' + JSON.serialize(	stageAffiliation ));
+                            System.debug(':: Ali KM :: Found Marking Status to Complete at: stageAffiliation:: ln 813: ' + JSON.serialize(  stageAffiliation ));
                         stageAffiliation.Status__c = 'Complete';
                         affiliations.add(stageAffiliation);
 
@@ -935,7 +935,7 @@ public without sharing class NES_ECACompletion {
         for (Id childId : childIds) {
             if (studentAffiliationMap.containsKey(childId) && studentAffiliationMap.get(childId) <> null && studentAffiliationMap.get(childId).Status__c <> null) {
                 Enrollment_Component_Affiliation__c affiliation = new Enrollment_Component_Affiliation__c();
-				affiliation = studentAffiliationMap.get(childId);
+                affiliation = studentAffiliationMap.get(childId);
                 if ( !(affiliation.Status__c.contains('Complete') || affiliation.Status__c.contains('Deferred') 
                         || affiliation.Status__c.contains('Not Applicable'))) {
                             System.debug(':: inside grabIncompleteBoolean > ECA=::' + JSON.serialize(affiliation)); // ALI KM
@@ -959,13 +959,13 @@ public without sharing class NES_ECACompletion {
 
         //Ali KM 12/16/2019 This calculations was moved to the NES_EnrollmentCompentBuilder
         // NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
-		
-		Set<Id> allIdsSet = new Set<Id>();
-		for (id i: processId) {
-			NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(i);
-			allIdsSet.addall(thisProcessData.allIds);
-		}
-		list<Id> allids =  new List<Id> (allIdsSet);
+        
+        Set<Id> allIdsSet = new Set<Id>();
+        for (id i: processId) {
+            NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(i);
+            allIdsSet.addall(thisProcessData.allIds);
+        }
+        list<Id> allids =  new List<Id> (allIdsSet);
         return allids;
         
         // List<Id> stageIds = new List<Id>();

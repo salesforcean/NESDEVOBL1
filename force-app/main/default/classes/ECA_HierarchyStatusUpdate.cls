@@ -136,10 +136,6 @@ public without sharing class ECA_HierarchyStatusUpdate
             {
                 allNA = false; 
             } 
-            // else if (childStatus == 'In Progress') {
-            //     allNA = false; 
-            //     allComplete = false;
-            // }
         }
         
         //Determine the correct parent status   
@@ -263,12 +259,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                 continue;
 
             String originalStatus = (inFlightParent!=null ? inFlightParent.Status__c : parent.status__c);
-            
-            // // Skip if Stage.Status = Not Applicable, don't need to recalulate its Status.
-            // if (parent.enrollment_component__r.recordtype.name == 'Stage' && originalStatus == 'Not Applicable')
-            //     continue;
 
-            // String updatedStatus = getChildrenStatus(parent, false);
             String updatedStatus = getChildrenStatus(parent, true);
 			
             if(updatedStatus!=null && ((updatedStatus != originalStatus) || (inFlightParent!=null && inFlightParent.Status__c !=  parent.status__c)) ) // parent.status__c)
@@ -329,7 +320,17 @@ public without sharing class ECA_HierarchyStatusUpdate
                     {
                         parent.status__c = originalStatus;
                         parent.Date_Completed__c = null;
-                        updatedStatus = originalStatus;
+                        updatedStatus = originalStatus; 
+                        // forUpdateECAs.put(parent.id, parent); // wip
+                        // continue;
+
+                        Enrollment_Component_Affiliation__c currentStageECA = peData.currentStageECA;
+                        Enrollment_Component_Affiliation__c inFlightStageECA = toProcessECAs.get(currentStageECA.Id);
+                        String originalStageStatus = (inFlightStageECA!=null ? inFlightStageECA.Status__c : currentStageECA.status__c);
+                        if (originalStageStatus == 'In Progress') {
+                            forUpdateECAs.put(parent.id, parent);
+                            continue;
+                        }
                     }
 					
 					//Determine the direction of the stage movement
@@ -337,10 +338,6 @@ public without sharing class ECA_HierarchyStatusUpdate
                     Integer currentOrder = (Integer) parent.Order__c;
 					Integer nextOrder = (isForward?currentOrder+1: currentOrder-1);
                     
-                    // // Get the other stages
-                    // List<Id> stageECs =  acaPgmData.ecParentToChildrenMap.get(acaPgmData.processId);
-                    // System.debug('stageChildren>>' + JSON.serialize(stageChildren));
-
                     String notApplicableStatuses = 'Not Applicable';
                     Boolean isLastStage = (parent.Id == peData.lastStageECA.Id ? true : false); // is current stage the last Stage?
 

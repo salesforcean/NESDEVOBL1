@@ -291,7 +291,8 @@
                                                     <lightning:button variant="brand" disabled="{!v.cameraOpen}" label="Submit" onclick="{!c.handleSubmit}" />
                                                     <span class="slds-form--inline slds-p-horizontal_small docOr"></span>
                                                    <u> <lightning:button class="slds-skip" label="Skip for Now" variant="base" onclick="{!c.openModel}" /> </u>
-                                <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
+
+                               <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
                                <aura:if isTrue="{!v.isModalOpen}">
                                     <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
  
@@ -331,8 +332,12 @@
                                                         <lightning:button variant="brand" disabled="true" label="Submit" onclick="{!c.handleSubmit}" />
                                                         <span class="slds-form--inline slds-p-horizontal_small docOr"></span>
                                                         <!-- modifed by ravi on 07-02-2020-->
-                                                        <u>  <lightning:button class="slds-skip" label="Skip for Now " variant="base" onclick="{!c.openModel}"/></u>                                                        
-                                       <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
+                                                        <u>  <lightning:button class="slds-skip" label="Skip for Now" variant="base" onclick="{!c.openModel}"/></u>                                                        
+                        
+                        <!-- added by Sumanth for US # 334973 -->
+                        <br></br><a href="{! 'https://obl.tfaforms.net/8?prgenrollid='+v.programEnrollmentId}" target="_new">FormAssembly - Family Income Form</a> <br/>
+
+                                      <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
                                       <aura:if isTrue="{!v.isModalOpen}">
                                             <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
  

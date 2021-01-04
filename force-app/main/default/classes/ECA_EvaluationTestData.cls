@@ -61,7 +61,7 @@ public class ECA_EvaluationTestData
         // * Create Program Enrollment Criteria records that will link the PE to the Criterias.
         List<Program_Enrollment_Criteria__c> pecs = new List<Program_Enrollment_Criteria__c>();
         for (Criteria__c c : criterias)
-            pecs.add(createPEC(studPE.Id, c.id, true, SCHOOL_YEAR));
+            pecs.add(createPEC(studPE.Id, c.id, true, schoolYear.Id, 'Student'));
         insert pecs;
 
         // * Create ECA records for the Program Enrollment
@@ -77,11 +77,9 @@ public class ECA_EvaluationTestData
         ecaStatus=(ecaStatus!=null?ecaStatus:DEFAULT_STATUS);
         List<sObject> recsToInsert = new List<sObject>();
         // * Fetch RecordTypes
-        // Map<String, Id> ecRecTypes = getRecordTypeIdName('Enrollment_Component__c', new List<String>{'Process', 'Stage', 'Form', 'Section', 'Document'});
         Map<String, Id> ecRecTypes = EC_RECORD_TYPES;
         
         // * Create ECs
-        // Enrollment_Component__c processEC = createBaseEC(false, 'process1', academicProgram.Id, ecRecTypes.get('Process')); // Level 1 process
         // Stage-4 ECs
         Enrollment_Component__c stage4EC = createBaseEC(false, STAGE_FOUR, academicProgram.Id, ecRecTypes.get('Stage')); // Level 2 stages 
         Enrollment_Component__c stage4FormEC = createBaseEC(false, STAGE_FOUR+'Form', academicProgram.Id, ecRecTypes.get('Form')); // Level 3 forms
@@ -147,6 +145,8 @@ public class ECA_EvaluationTestData
         
         // * Create School Year
         School_Year__c schoolYear = Peak_TestUtils.createSchoolYears(SCHOOL_YEAR, System.today());
+        schoolYear.External_Id__c = SCHOOL_YEAR;
+        update schoolYear;
 
         // * Create Academic Program Account i.e.., Child Account
         Account academicProgram = Peak_TestUtils.createAccountForNewStudentData(institutionAccount.Id, schoolYear.Id);
@@ -156,7 +156,6 @@ public class ECA_EvaluationTestData
         update academicProgram;
         
         // * Fetch RecordTypes
-        // Map<String, Id> ecRecTypes = getRecordTypeIdName('Enrollment_Component__c', new List<String>{'Process', 'Stage', 'Form', 'Section', 'Document'});
         Map<String, Id> ecRecTypes = EC_RECORD_TYPES;
 
         // * Create ECs
@@ -214,6 +213,10 @@ public class ECA_EvaluationTestData
         // * create ECC for stage1SectionWithCriteriaEC
         Enrollment_Component_Criteria__c ecc1 = createECC(false, stage1SectionWithCriteriaEC.Id, 1, criteria1.Id);
         Enrollment_Component_Criteria__c ecc2 = createECC(false, stage1SectionWithCriteriaEC.Id, 2, criteria2.Id);
+        ecc1.School_Year__c = SCHOOL_YEAR;
+        ecc1.Student_or_Household__c = 'Student';
+        ecc2.Student_or_Household__c = 'Student';
+        ecc2.School_Year__c = SCHOOL_YEAR;
         recsToInsert.add(ecc1);
         recsToInsert.add(ecc2);
         insert recsToInsert;
@@ -362,7 +365,7 @@ public class ECA_EvaluationTestData
         return enrollCompCriteria;
     }
 
-    public static Program_Enrollment_Criteria__c createPEC(Id peId, Id criteriaId, Boolean result, String schoolYear) 
+    public static Program_Enrollment_Criteria__c createPEC(Id peId, Id criteriaId, Boolean result, String schoolYear, String peType) 
     {
         return (
             new Program_Enrollment_Criteria__c
@@ -370,7 +373,8 @@ public class ECA_EvaluationTestData
                 Program_Enrollment__c = peId,
                 Criteria__c = criteriaId,
                 Result__c = result,
-                School_Year__c = schoolYear
+                School_Year__c = schoolYear,
+                Student_or_Household__c = peType
             )
         );
     }
@@ -496,7 +500,6 @@ public class ECA_EvaluationTestData
                 this.academicProgram = acc;
         }
     }
-
     public void setECsAndPECs()
     {
         // mapECs = new Map<Id, Enrollment_Component__c>();

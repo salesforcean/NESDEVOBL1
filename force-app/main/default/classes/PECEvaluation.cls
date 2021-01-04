@@ -18,7 +18,7 @@ public class PECEvaluation {
             Map<String, Set<String>> tmpCriteriaObjectFieldsMap = criteriaObjectFieldsMapByPEType.get(ecc.Student_or_Household__c);
             if (tmpCriteriaObjectFieldsMap==null) {
                 tmpCriteriaObjectFieldsMap = new Map<String, Set<String>>();
-                criteriaObjectFieldsMapByPEType.put(ecc.Student_or_Household__c, tmpCriteriaObjectFieldsMap);
+                criteriaObjectFieldsMapByPEType.put(ecc.Student_or_Household__c, tmpCriteriaObjectFieldsMap); // ecc.Student_or_Household__c
             }
             
             Set<String> tmpObjectFields = tmpCriteriaObjectFieldsMap.get(fieldParts[0]);
@@ -43,8 +43,8 @@ public class PECEvaluation {
         //Household or Student, Object, list of records for that object.
         Map<String, Map<String, List<sObject>>> criteriaObjectRecordsMapByPEType = new Map<String, Map<String, List<sObject>>>();
         for (String k : criteriaObjectFieldsMapByPEType.keySet()) {
-            Id enrollmentId = ( (k.endsWithIgnoreCase('Household'))? caretakerEnrollmentId : programEnrollment);
-            Id contactId = ( (k.endsWithIgnoreCase('Household')) ? caretakerContactId : studentContactId );
+            Id enrollmentId = ( (k.equalsIgnoreCase('Household'))? caretakerEnrollmentId : programEnrollment);
+            Id contactId = ( (k.equalsIgnoreCase('Household')) ? caretakerContactId : studentContactId );
 
             //  caretakerMap = getObjectDataList(objectMap, caretakerEnrollmentId, accountId, caretakerContactId);
             criteriaObjectRecordsMapByPEType.put(k, 
@@ -62,22 +62,24 @@ public class PECEvaluation {
                 {
                     for (String field : criteriaObjectFieldsMapByPEType.get(k).get(objName)) // Ex: "waitlistflag__c","date_today__c","LastSchoolType__c","DisciplinaryFlagOverride__c","HomelessRiskFlag__c"
                     {
-                        if (rec.get(field)==null)
-                            continue;
+                        // if (rec.get(field)==null)
+                        //     continue;
                         EvaluationUtils.fieldUpdate fldUpdate = new EvaluationUtils.fieldUpdate();
                         fldUpdate.programEnrollmentId = programEnrollment;
                         fldUpdate.objectAndFieldName = objName + '.' + field; 
                         fldUpdate.newValue = rec.get(field);
                         try {
-                            if (rec.get('School_Year__c')!=null)
-                            fldUpdate.schoolYear = (String) rec.get('School_Year__c');
+                            // if (rec.get('School_Year__c')!=null)
+                            // fldUpdate.schoolYear = (String) rec.get('School_Year__c');
+                            fldUpdate.schoolYear = ((rec.get('School_Year__c')!=null) ? (String) rec.get('School_Year__c') : null);
                         } catch (Exception ex) {
                             // Ignore this one.
                         }
                         
                         try {
-                            if (rec.get('Question_Group__c')!=null)
-                                fldUpdate.questionGroup = (String)  rec.get('Question_Group__c');
+                            // if (rec.get('Question_Group__c')!=null)
+                            //     fldUpdate.questionGroup = (String)  rec.get('Question_Group__c');
+                            fldUpdate.questionGroup = ((rec.get('Question_Group__c')!=null) ? (String) rec.get('Question_Group__c') : null);
                         } catch (Exception ex) {
                             // Ignore this one.
                         }
@@ -104,14 +106,11 @@ public class PECEvaluation {
         ];
     }
 
-
-
-
-
     public static Map<String, List<SObject>> queryRelatedRecords(Map <String, Set<String>> queryMap, Id enrollmentId, Id accountId, Id contactId) {
         Map<String, List<SObject>> newQueryMap = new Map<String, List<SObject>>();
 
         Map<String, Set<String>> objectFieldsMap = ECA_CriteriaEvaluatorHelper.objectFieldsMap;
+        System.debug('>>>objectFieldsMap>>>DEFAULT>>>' + JSON.serialize(objectFieldsMap));
         for (String mapKey : queryMap.keySet()) 
         {
             String objectName = mapKey.toLowerCase();
@@ -131,32 +130,12 @@ public class PECEvaluation {
             }
 
             // Dynamially add SY & QuestionGroup if not part of the fieldList & object contains these fields.
-            String syFieldName = 'School_Year__c';
-            if( !(
-                    queryMap.get(objectName).contains(syFieldName) || 
-                    queryMap.get(objectName).contains(syFieldName.toLowerCase())
-                ) && 
-                (
-                    objectFieldsMap.get(objectName).contains(syFieldName) ||
-                    objectFieldsMap.get(objectName).contains(syFieldName.toLowerCase())
-                ) 
-            ){
-                    queryMap.get(objectName).add(syFieldName);
-            }
-            String questionGroupFieldName = 'Question_Group__c';
-            if( !(
-                    queryMap.get(objectName).contains(questionGroupFieldName) || 
-                    queryMap.get(objectName).contains(questionGroupFieldName.toLowerCase())
-                )  && 
-                (
-                    objectFieldsMap.get(objectName).contains(questionGroupFieldName) ||
-                    objectFieldsMap.get(objectName).contains(questionGroupFieldName.toLowerCase())
-                    
-                ) 
-            ){
-                    queryMap.get(objectName).add(questionGroupFieldName);
-            }
-            // END...
+            String syFieldName = 'school_year__c';
+            if (objectFieldsMap.get(objectName).contains(syFieldName))
+                queryMap.get(objectName).add(syFieldName);
+            String questionGroupFieldName = 'question_group__c';
+            if (objectFieldsMap.get(objectName).contains(questionGroupFieldName))
+                queryMap.get(objectName).add(questionGroupFieldName);                
             List<String> fieldNames = new List<String>(queryMap.get(mapKey));
             
             String query;

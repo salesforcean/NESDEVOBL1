@@ -38,9 +38,9 @@ public class EmergencyContactTriggerHandler
 
     public static void handleAfter() 
     {
-        if (hasRunHandleAfter) { return; }
+ //       if (hasRunHandleAfter) { return; }
 
-        hasRunHandleAfter = true;
+//        hasRunHandleAfter = true;
 
         List<EvaluationUtils.fieldUpdate> fieldUpdateList = new List<EvaluationUtils.fieldUpdate>(); //How we track field changes in the new ECA model.
         Map<String, Object> fieldsToValue;
@@ -68,6 +68,7 @@ public class EmergencyContactTriggerHandler
                     newFieldUpdate.objectAndFieldName = 'Emergency_Contact__c.' + str;
                     newFieldUpdate.newValue = emergencyContact.get(str);
                     newFieldUpdate.studentOrHousehold = (queriedPE.RecordType.Name == 'Student') ? 'Student' : 'Household';
+                    newFieldUpdate.questionGroup =  emergencyContact.Question_Group__c;
                     fieldUpdateList.add(newFieldUpdate);
                 }           
             }

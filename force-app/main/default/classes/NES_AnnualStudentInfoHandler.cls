@@ -49,7 +49,6 @@ public with sharing class NES_AnnualStudentInfoHandler {
                 List<String> changedFields = new List<String> ();
                 for (String str : mapFields.keySet()) {
                     try {
-                      //  if (newInfo.get(str) != null) {
                             changedFields.add(str);
                             
                             //These are for the new ECA processing model.  
@@ -61,7 +60,6 @@ public with sharing class NES_AnnualStudentInfoHandler {
                             newFieldUpdate.studentOrHousehold = 'Student';
 
                             fieldUpdateList.add(newFieldUpdate);
-                     //   }
                     } catch(Exception e) {
                         System.debug('Error: ' + e);
                         logger.logException('handleAfterInsert', e);

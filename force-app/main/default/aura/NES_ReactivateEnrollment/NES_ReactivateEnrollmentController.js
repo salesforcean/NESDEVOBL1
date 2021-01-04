@@ -196,23 +196,25 @@
     reEnrollmentAction : function (component, event, helper){
         helper.getNextYearAvailability(component, event, helper);          
     },
-     // Add by Maddileti for US # 332934 on 12/16/2020 
+    // Add by Maddileti for US # 332934 on 12/16/2020 
     gradeSelect: function (component,event,helper){
+        component.set("v.isError",false);
+        component.set("v.reEnrollmentMessage",false);
         var newSchoolYear=component.find('Year').get('v.value');
         console.log('New School Year :'+newSchoolYear);
         var previousSchoolYear=component.get('v.schoolYeara');
         console.log('previousSchoolYear Selected :'+previousSchoolYear);
         if(component.get("v.enrollFlag")){
-        if(previousSchoolYear==newSchoolYear){ 
-            
-            component.set("v.disableGrade",true);
-        } else if (previousSchoolYear!= newSchoolYear){
-            
-            component.set("v.disableGrade",false);
-            
-            
+            if(previousSchoolYear==newSchoolYear){ 
+                
+                component.set("v.disableGrade",true);
+            } else if (previousSchoolYear!= newSchoolYear){
+                
+                component.set("v.disableGrade",false);
+                
+                
+            }
         }
-         }
         //var newSchoolYear=component.find('Year').get('v.value');
         component.set("v.gradeLevels",[]);
         component.find('Grade').set('v.value','');
@@ -230,7 +232,7 @@
         console.log('New Grade Selected :'+gradeNew);
         var previousSchoolYear=component.get('v.schoolYeara');
         var previousGrade=component.get("v.gradeLevelId");
-  
+        
         if(previousSchoolYear==newSchoolYear){
             
             component.set("v.reEnrollmentMessage",true);
@@ -275,11 +277,25 @@
             });
             $A.enqueueAction(action); 
         }
-
         
-    }
+        
+    } ,
     
     // End by Maddileti for US # 332934 on 12/16/2020
+    // Add by Maddileti for Defect # 345663 on 12/22/2020
+    gradeChange : function (component,event,helper) {
+        
+        var newSchoolYear=component.find('Year').get('v.value');
+        var gradeNew=component.find('Grade').get('v.value');
+        var previousSchoolYear=component.get('v.schoolYeara');
+        var previousGrade=component.get("v.gradeLevelId");
+        
+        if(newSchoolYear == previousSchoolYear && gradeNew == previousGrade){
+            component.set("v.isError",false);
+        } 
+        
+    }
+    // End by Maddileti for Defect # 345663 on 12/22/2020
     
     
 })

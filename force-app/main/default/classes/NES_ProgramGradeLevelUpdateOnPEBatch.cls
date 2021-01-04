@@ -1,7 +1,7 @@
 /**
 * Created by Jagadishbabu on 12/17/20.
 * Created for the US343498. 
-* Test Class : 
+* Test Class : NES_ProgramGradeLevelUpdateOnPEBatchTest
 * Description : This class is used for updating Program Grade Level On Program Enrollment record as per the Annual Student Information Final Grade Level
 * This will be used for Migrated students as Program grade level field in PE not updated from External System
 */
@@ -10,7 +10,7 @@ global class NES_ProgramGradeLevelUpdateOnPEBatch implements DataBase.Batchable<
     public static final String CA_STARTYEAR = '2020-2021'; 
     global Database.QueryLocator start(Database.BatchableContext BC) {
         Id StudentrecTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();        
-        String queryString = 'SELECT Id,Final_Grade_Level__c,hed__Contact__r.CA_StartYear__r.Name,Program_Grade_Level__c,hed__Account__c,V2_External_ID__c,RecordType.Name,(Select Id, Final_Grade_Level__c from Annual_Student_Information__r order by Final_Grade_Level__c DESC NULLS LAST limit 1) FROM hed__Program_Enrollment__c WHERE RecordTypeId=:StudentrecTypeId AND Program_Grade_Level__c = null AND hed__Account__c !=null AND hed__Contact__r.CA_StartYear__r.Name!=:CA_STARTYEAR';
+        String queryString = 'SELECT Id,Final_Grade_Level__c,hed__Contact__r.CA_StartYear__r.Name,Program_Grade_Level__c,hed__Account__c,V2_External_ID__c,RecordType.Name,(Select Id,School_Year__r.Name, Final_Grade_Level__c from Annual_Student_Information__r order by School_Year__r.Name DESC NULLS LAST limit 1) FROM hed__Program_Enrollment__c WHERE RecordTypeId=:StudentrecTypeId AND Program_Grade_Level__c = null AND hed__Account__c !=null AND hed__Contact__r.CA_StartYear__r.Name!=:CA_STARTYEAR';
     	return Database.getQueryLocator(queryString);
     }
     global void execute(Database.BatchableContext BC, List<SObject> scope) {

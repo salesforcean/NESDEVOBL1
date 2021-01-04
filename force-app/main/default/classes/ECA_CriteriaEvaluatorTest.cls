@@ -13,6 +13,21 @@ public class ECA_CriteriaEvaluatorTest
 {
 
     /**
+     * 
+     * CriteriaEvaluatorHelper tests
+     * 
+     */
+    @IsTest
+    static void helperMethodsTest()
+    {
+        Map<String, Set<String>> objFieldsMap = ECA_CriteriaEvaluatorHelper.objectFieldsMap;
+        System.assert(objFieldsMap.size()>0);
+
+        Set<String> extIds = new Set<String>{'NES-QG-01', 'NES-QG-02'};
+        ECA_CriteriaEvaluatorHelper.getECsByExternalId(extIds);
+    }
+
+    /**
      *  Forward Test All Stages completion:  Stage 1 is Complete, Stage 2: Section is marked as 'Complete' from 'Not-Started', Section has only 1 Form, 
      *  so Stage=completed, PE=Completed, Opportunity.Stage=ClosedWon.
      */

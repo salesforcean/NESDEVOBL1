@@ -226,7 +226,6 @@ Change Log:
                          <!--span class="slds-medium-show-only" >&nbsp;&nbsp;&nbsp;&nbsp;</span-->
                          <!--UX change-->
                         <u>  <lightning:button class="slds-skip" label="Skip for Now " variant="base" onclick="{!c.openModel}"/></u>
-                       
                            
                        <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
                             <aura:if isTrue="{!v.isModalOpen}">

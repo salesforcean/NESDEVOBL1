@@ -41,6 +41,7 @@ public class NES_ECAHandler {
                                                                   FROM Enrollment_Component_Affiliation__c
                                                                   WHERE Id IN :ECAIdSet];
         for (Enrollment_Component_Affiliation__c eca : affiliations) {
+            system.debug('added for debuging waitlist defect**********'+eca.Enrollment_Component__r.Name+'****'+eca.Enrollment_Component__r.RecordType.Name+'*****Status****'+eca.Status__c);
             if (eca.Status__c == 'In Progress') {
                 if (eca.Enrollment_Component__r.Waitlist__c) {
                     hed__Program_Enrollment__c PE;

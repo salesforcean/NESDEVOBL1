@@ -150,37 +150,23 @@ public class ECA_CriteriaEvaluatorHelper {
         }
         return qgECs;
     }
-
-    // // verify if a field exists
-    // public static Boolean hasSObjectField(String fieldName, SObject so) {
-    //     fieldName = fieldName.toLowerCase();
-    //     return so.getSObjectType().getDescribe().fields.getMap().keySet().contains(fieldName);
-    // }
                 
     public static Map<String, Set<String>> objectFieldsMap 
     {
         get {
-            
             if (objectFieldsMap==null) {
                 objectFieldsMap = new Map<String, Set<String>>();
-            }
-            
-            // Make the describe call
-            Schema.DescribeSobjectResult[] results = Schema.describeSObjects(DEFAULT_OBJECT_TYPES);
-            // For each returned result, get some info
-            for(Schema.DescribeSobjectResult res : results) {
-                if (objectFieldsMap.get(res.getName())==null) {
-                    objectFieldsMap.put(res.getName().toLowerCase(), res.fields.getMap().keySet());
+                Schema.DescribeSobjectResult[] results = Schema.describeSObjects(DEFAULT_OBJECT_TYPES);
+                // For each returned result, get some info
+                for(Schema.DescribeSobjectResult res : results) {
+                    if (objectFieldsMap.get(res.getName())==null) {
+                        objectFieldsMap.put(res.getName().toLowerCase(), res.fields.getMap().keySet());
+                    }
                 }
             }
+            System.debug('>>>objectFieldsMap>>>DEFAULT>>>' + JSON.serialize(objectFieldsMap));
             return objectFieldsMap;
         }
         set;
     }
-
-    // System.debug(JSON.serialize(ECA_CriteriaEvaluatorHelper.objectFieldsMap));
-    // System.debug(JSON.serialize(ECA_CriteriaEvaluatorHelper.objectFieldsMap.get('Account').contains('School_Year__c')));
-    // System.debug(JSON.serialize(ECA_CriteriaEvaluatorHelper.objectFieldsMap.get('Account').containsIgnoreCase('Billingstreet')));
-
-
 }

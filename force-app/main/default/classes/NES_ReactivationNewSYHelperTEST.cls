@@ -86,7 +86,7 @@ public class NES_ReactivationNewSYHelperTEST {
         List<School_Year__c> syrs = NES_ReactivationNewSYHelper.getSchoolYears(institutionalAccount.Name, schoolYears[0].Id); 
         //List<School_Year__c> syrs2 = NES_ReactivationNewSYHelper.getSchoolYears(institutionalAccount.Name, '');
         List<Grade_Level__c> grdlvs = NES_ReactivationNewSYHelper.getGradeLevels(schoolYears[0].Name,institutionalAccount.Name);
-        Peak_Response resp = NES_ReactivationNewSYHelper.newYearReactivate(studentid.Id,institutionalAccount.Name,schoolYears[0].Name,gradeLevel.Name, 'application');
+        Peak_Response resp = NES_ReactivationNewSYHelper.newYearReactivate(studentid.Id,institutionalAccount.Name,schoolYears[0].Name,gradeLevel.Name, 'application', true, progEnrollment.Id);
         delete oppo;
         NES_ReactivationNewSYHelper.validatePEwrapper studentInsertResponse2 = NES_ReactivationNewSYHelper.validatePE(progEnrollment.Id);
         

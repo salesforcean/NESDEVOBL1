@@ -8,7 +8,6 @@ public without sharing class NES_IntegrationUtils {
     private static Peak_ApexLog logger = new Peak_ApexLog('IntegrationUtils');
 
     public static void savingAnswers(Id programEnrollmentId, Id groupId, Map<String, String> apiMap, Boolean apiValidated) {
-
         System.debug('apiValidated: ' + apiValidated);
 
         //Grab all question affiliations

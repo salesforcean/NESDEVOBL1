@@ -34,6 +34,7 @@
             component.set("v.programEnrollmentId", vars['programEnrollmentId']);
         }
         component.set("v.isInit",true);
+       
     },
     iframeLoaded: function(component,event,helper){
 		var self = this;
