@@ -84,7 +84,6 @@ Change Log:
                     </lightning:layoutItem>
                 </lightning:layout>
                 
-                
                     <!--Added by Ravi-->
                  <div class="slds-grid slds-gutters slds-wrap">
                      <div class="slds-col slds-size_12-of-12">
@@ -104,6 +103,10 @@ Change Log:
                 
                 <lightning:layout class="boxshadow slds-p-around_medium" multipleRows="true">
                     <lightning:layoutItem class="slds-p-left_medium" size="12" mediumDeviceSize="8">
+                     <!-- added by Sumanth for US # 334973 -->
+                            <aura:if isTrue="{! v.sectionName == 'Family Income Form'}">
+                              Thank you for your participation. Please submit a signed copy of the <a href="{! 'https://obl.tfaforms.net/8?prgenrollid='+v.programEnrollmentId}" target="_new">Family Income Form</a> <br/>
+                            </aura:if>
                         
                        <!-- <aura:if isTrue="{! v.sectionName != null}">
                             <h5 class="slds-text-heading_small">{!v.studentName}</h5>
@@ -226,7 +229,9 @@ Change Log:
                          <!--span class="slds-medium-show-only" >&nbsp;&nbsp;&nbsp;&nbsp;</span-->
                          <!--UX change-->
                         <u>  <lightning:button class="slds-skip" label="Skip for Now " variant="base" onclick="{!c.openModel}"/></u>
-                           
+                   
+ 
+                        
                        <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
                             <aura:if isTrue="{!v.isModalOpen}">
                                   <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-dialog" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
@@ -236,7 +241,7 @@ Change Log:
                                          <!--Modal/Popup Box Body Starts here-->
                                            
                                              <div class="slds-modal__content slds-p-around_large" id="modal-content-id-1">
-                                                    
+
                                                  <p><b>Any unsubmitted information will not be saved.<br/></b></p>
                                                     <p><b>Do you wish to skip anyway?<br/><br/><br/>
                                                   </b>
@@ -266,7 +271,7 @@ Change Log:
                          <!--span class="slds-medium-show-only" >&nbsp;&nbsp;&nbsp;&nbsp;</span-->
                          <!--UX change-->
                         <u>  <lightning:button class="slds-skip" label="Skip for Now " variant="base" onclick="{!c.openModel}"/></u>
-                       
+               
                            
                        <!--  added by maddileti for #115213 User Story on 2019-11-12  -->
                             <aura:if isTrue="{!v.isModalOpen}">
