@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Annual_HH_info_Compact_layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Annual_HH_Info_Compact_Layouts_New_Compact_Layout</fullName>
+        <fields>Receive_Equip_Hardship__c</fields>
+        <fields>Technology_Hardship__c</fields>
+        <label>Annual HH Info Compact Layouts New Compact Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>Annual_HH_info_Compact_layout</fullName>
+        <fields>Receive_Equipment__c</fields>
+        <fields>Technology_Hardship__c</fields>
+        <label>Annual HH info Compact layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Household data that is specific to a school year is stored on the Annual Household Information object. All records will include a school year code to indicate what year the record applies for. There may be multiple Annual Household Information records for a single Program Enrollment to track data across multiple years.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Calculator_Hardship__c</fullName>
+        <description>Calculator Hardship Status</description>
+        <externalId>false</externalId>
+        <label>Calculator Hardship</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Approved - Ordered</fullName>
+                    <default>false</default>
+                    <label>Approved - Ordered</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Caretaker_Id__c</fullName>
+        <description>This field is used to capture the Caretaker FirstName and Last Name and used in Form Assembly Form Pre-fill Lookup as part of US # 334973 &amp; 334974</description>
+        <externalId>false</externalId>
+        <formula>Program_Enrollment__r.hed__Contact__r.FirstName &amp; &apos; &apos; &amp; Program_Enrollment__r.hed__Contact__r.LastName</formula>
+        <label>Caretaker Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EU_and_W_Number_Waived_Computers__c</fullName>
+        <description>The number of computers declined int he case of the family is enrolling multiple students and does not want to receive a computer for each student.</description>
+        <externalId>false</externalId>
+        <label>EU and W Number Waived Computers</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Federal_Poverty_Eligibility__c</fullName>
+        <description>Federal Poverty Eligibility</description>
+        <externalId>false</externalId>
+        <label>Federal Poverty Eligibility</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Qualifies at Federal Poverty Level</fullName>
+                    <default>false</default>
+                    <label>Qualifies at Federal Poverty Level</label>
+                </value>
+                <value>
+                    <fullName>Does not qualify at Federal Poverty Level</fullName>
+                    <default>false</default>
+                    <label>Does not qualify at Federal Poverty Level</label>
+                </value>
+                <value>
+                    <fullName>Not enough information</fullName>
+                    <default>false</default>
+                    <label>Not enough information</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Foster_Child_Enrolling__c</fullName>
+        <description>Is the ward of the court or foster child enrolled or enrolling in this school?</description>
+        <externalId>false</externalId>
+        <label>Foster Child Enrolling</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HHFosterChild__c</fullName>
+        <description>Is child a ward of the court or foster child</description>
+        <externalId>false</externalId>
+        <label>Foster child</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Decline to disclose</fullName>
+                    <default>false</default>
+                    <label>Decline to disclose</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HHHasFoodStampCaseNumberc__c</fullName>
+        <description>The SNAP, FDPIR, or TANF case number for the family.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>HH Has Food Stamp Case Number</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HHLast4DigitsSignerSSN__c</fullName>
+        <description>Last four digits of signer’s Social Security Number (SSN)</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>HH_Last_4_Digits_Signer_SSN</label>
+        <length>4</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HHSignerDoesNotHaveSSN__c</fullName>
+        <description>The primary caretaker does not have a Social Security Number</description>
+        <externalId>false</externalId>
+        <label>HH_Signer_Does_Not_Have_SSN</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>I do not have a Social Security Number.</fullName>
+                    <default>false</default>
+                    <label>I do not have a Social Security Number.</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HH_Has_Food_Stamp_Case_Number__c</fullName>
+        <description>The SNAP, FDPIR, or TANF case number for the family.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>HH Has Food Stamp Case Number</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HH_Has_Food_Stamp_Recipient__c</fullName>
+        <description>Does any member of the household receive SNAP, FDPIR, or TANF?</description>
+        <externalId>false</externalId>
+        <label>HH Has Food Stamp Recipient</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Decline to disclose</fullName>
+                    <default>false</default>
+                    <label>Decline to disclose</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HH_Has_Foster_Children__c</fullName>
+        <description>Is one or more student(s) in this household a ward of the court or a foster child?</description>
+        <externalId>false</externalId>
+        <label>HH Has Foster Children</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HH_Income_Foster_Child__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Would the family like to receive a loaned calculator?</description>
+        <externalId>false</externalId>
+        <label>HH Income Foster Child</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HH_Last_4_Digits_Signer_SSN__c</fullName>
+        <description>Last four digits of signer’s Social Security Number (SSN)</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>HH_Last_4_Digits_Signer_SSN</label>
+        <length>4</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HH_Signer_Does_Not_Have_SSN__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>The primary caretaker does not have a Social Security Number</description>
+        <externalId>false</externalId>
+        <label>HH_Signer_Does_Not_Have_SSN</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Household_FARM_Eligibility__c</fullName>
+        <description>Household FARM Eligibility</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Household FARM Eligibility</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Household_FARM_Received__c</fullName>
+        <description>FARM Form Received for Household</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <inlineHelpText>Secondary Priority for Review</inlineHelpText>
+        <label>Household FARM Received</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Income_Form_Submission_Ack__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used to capture Income Form Submission Ack and created as part of US # 334973</description>
+        <externalId>false</externalId>
+        <label>Income Form Submission Ack</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Income_Form_Submission_Ack_old__c</fullName>
+        <description>This field is used to capture Income Form Submission Ack and created as part of US # 334973</description>
+        <externalId>false</externalId>
+        <label>Income Form Submission Ack old</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Income_Form_Submission_Date__c</fullName>
+        <description>This field is used to capture Income Form Submission Date and created as part of US # 334973</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Income Form Submission Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Income_Form_Submitter__c</fullName>
+        <description>This field is used to capture Income Form Submitter and created as part of US # 334973</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Income Form Submitter</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Income_Opt_Out_Options__c</fullName>
+        <description>Indication of participation in the household income survey</description>
+        <externalId>false</externalId>
+        <label>Income Opt Out</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>I certify that our household does not qualify</fullName>
+                    <default>false</default>
+                    <label>I certify that our household does not qualify because our total annual income is above $100,000.</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes - I will submit my household&apos;s information.</label>
+                </value>
+                <value>
+                    <fullName>I choose not to provide my income information</fullName>
+                    <default>false</default>
+                    <label>I choose not to provide my income information. I understand that this decision may impact the Title I funding available for providing additional programs, benefits, and services for my student(s)&apos;s school.</label>
+                </value>
+                <value>
+                    <fullName>I choose not to provide my income information and know this may impact the school’s Title I funding</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>I choose not to provide my income information and know this may impact the school’s Title I funding</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>NumberCalculatorsProvided__c</fullName>
+        <description>Number of calculators provided to the household</description>
+        <externalId>false</externalId>
+        <label>Number_Calculators_Provided</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Number_HH_Adults__c</fullName>
+        <description>Total number of adults in the household</description>
+        <externalId>false</externalId>
+        <label>Number of Household Adults</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_HH_Children__c</fullName>
+        <description>Total number of children in the household</description>
+        <externalId>false</externalId>
+        <label>Number of Household Children</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_HH_Members__c</fullName>
+        <description>Total number of household members, including children.</description>
+        <externalId>false</externalId>
+        <label>Number of Household Members</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ORCAISPRequest__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>The caretaker would like to receive the Internet subsidy payment and will complete any additional steps necessary to confirm that they qualify to receive this payment</description>
+        <externalId>false</externalId>
+        <label>ORCA_ISP_Request</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Program_Enrollment__c</fullName>
+        <externalId>false</externalId>
+        <label>Program Enrollment</label>
+        <referenceTo>hed__Program_Enrollment__c</referenceTo>
+        <relationshipLabel>Annual Household Information</relationshipLabel>
+        <relationshipName>Annual_Household_Information</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Receive_Equip_Hardship__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>The caretaker is requesting that the school provide equipment and will complete any additional steps necessary to confirm that they qualify to receive equipment</description>
+        <externalId>false</externalId>
+        <label>Receive Equip Hardship</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Receive_Equip__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field has been deprecated in favor of Receive_Equipment__c</description>
+        <externalId>false</externalId>
+        <label>zReceive Equip</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Receive_Equipment__c</fullName>
+        <externalId>false</externalId>
+        <label>Receive Equipment</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>I am requesting that my school provide equipment and will complete any additional steps (grades K-5 only) necessary to confirm that I qualify to receive equipment.</fullName>
+                    <default>false</default>
+                    <label>I am requesting that my school provide equipment and will complete any additional steps (grades K-5 only) necessary to confirm that I qualify to receive equipment.</label>
+                </value>
+                <value>
+                    <fullName>I will use my own equipment in order to help my school fund other programs.</fullName>
+                    <default>false</default>
+                    <label>I will use my own equipment in order to help my school fund other programs.</label>
+                </value>
+                <value>
+                    <fullName>I am requesting that my school provide equipment and will complete any additional steps (grades 9-12) necessary to confirm that I qualify to receive equipment.</fullName>
+                    <default>false</default>
+                    <label>I am requesting that my school provide equipment and will complete any additional steps (grades 9-12) necessary to confirm that I qualify to receive equipment.</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>School_Year__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>School Year</label>
+        <referenceTo>School_Year__c</referenceTo>
+        <relationshipLabel>Annual Household Information</relationshipLabel>
+        <relationshipName>Annual_Household_Information</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Student_Act_Status__c</fullName>
+        <description>Program Enrollment record status</description>
+        <externalId>false</externalId>
+        <formula>ISPICKVAL( Program_Enrollment__r.Status__c, &apos;In Progress&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Student Act Status</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Technology_Hardship__c</fullName>
+        <description>Status of family&apos;s technology hardship application</description>
+        <externalId>false</externalId>
+        <label>Technology Hardship</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Approved - Hardship 1819</fullName>
+                    <default>false</default>
+                    <label>Approved - Hardship 1819</label>
+                </value>
+                <value>
+                    <fullName>Approved - ISP only</fullName>
+                    <default>false</default>
+                    <label>Approved - ISP only</label>
+                </value>
+                <value>
+                    <fullName>Approved - Ordered</fullName>
+                    <default>false</default>
+                    <label>Approved - Ordered</label>
+                </value>
+                <value>
+                    <fullName>Approved - Substantiated</fullName>
+                    <default>false</default>
+                    <label>Approved - Substantiated</label>
+                </value>
+                <value>
+                    <fullName>Approved - Substantiated and Ordered</fullName>
+                    <default>false</default>
+                    <label>Approved - Substantiated and Ordered</label>
+                </value>
+                <value>
+                    <fullName>Denied</fullName>
+                    <default>false</default>
+                    <label>Denied</label>
+                </value>
+                <value>
+                    <fullName>Denied - Amounts do not match</fullName>
+                    <default>false</default>
+                    <label>Denied - Amounts do not match</label>
+                </value>
+                <value>
+                    <fullName>Denied - Hardship 1819</fullName>
+                    <default>false</default>
+                    <label>Denied - Hardship 1819</label>
+                </value>
+                <value>
+                    <fullName>Denied - Not Substantiated</fullName>
+                    <default>false</default>
+                    <label>Denied - Not Substantiated</label>
+                </value>
+                <value>
+                    <fullName>Hardship Application Received/Under Review</fullName>
+                    <default>false</default>
+                    <label>Hardship Application Received/Under Review</label>
+                </value>
+                <value>
+                    <fullName>Need Documentation to Substantiate</fullName>
+                    <default>false</default>
+                    <label>Need Documentation to Substantiate</label>
+                </value>
+                <value>
+                    <fullName>Pending-Income form Missing/Invalid</fullName>
+                    <default>false</default>
+                    <label>Pending-Income form Missing/Invalid</label>
+                </value>
+                <value>
+                    <fullName>Technology Hardships Limit Reached</fullName>
+                    <default>false</default>
+                    <label>Technology Hardships Limit Reached</label>
+                </value>
+                <value>
+                    <fullName>Approved - Hardship</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Approved - Hardship</label>
+                </value>
+                <value>
+                    <fullName>Denied - Hardship</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Denied - Hardship</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_Gross_HH_Income__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Gross HH Income</label>
+        <precision>17</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>V2_External_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>V2 External ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>WaiveSomeEquip__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Caretaker wished to decline some of the equipment allotted to your household</description>
+        <externalId>false</externalId>
+        <label>Waive_Some_Equip</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>WhichEquipWaived__c</fullName>
+        <description>Indication of which equipment the caretaker wishes to waive.</description>
+        <externalId>false</externalId>
+        <label>Which_Equip_Waived</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Laptop for my K-8 household</fullName>
+                    <default>false</default>
+                    <label>Laptop for my K-8 household</label>
+                </value>
+                <value>
+                    <fullName>Laptop(s) for my 9-12th grade student(s)</fullName>
+                    <default>false</default>
+                    <label>Laptop(s) for my 9-12th grade student(s)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>testpicklistfield__c</fullName>
+        <externalId>false</externalId>
+        <label>testpicklistfield</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Annual Household Information</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>AHI-{0000}</displayFormat>
+        <label>Annual Household Information Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Annual Household Information</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>

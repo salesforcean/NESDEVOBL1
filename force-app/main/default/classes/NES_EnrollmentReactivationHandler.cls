@@ -24,22 +24,48 @@ public without sharing class NES_EnrollmentReactivationHandler {
         
         Peak_Response peakResponse = new Peak_Response();
         String message;
-
+        
+        hed__Program_Enrollment__c peRecord = [Select Id, Status__c, hed__Contact__c,Enrollment_Type__c,
+                                                (select id,Withdrawal_Category__c from Enrollments__r order by createddate desc)  
+                                                from hed__Program_Enrollment__c where Id =: studPEID limit  1];
+        
+             //Staff End – Full ReActivation button logic is to ensure all the forms related to initial enrollment are displayed 
+             //    when it is clicked for the PE with Status = Inactive and Enrollment type =’Returning Student’. 
+       
         try {
-            //added by Shravani US#389103 7/03/2021 
-            /*           
-            hed__Program_Enrollment__c spe = [Select ID,Enrollment_Type__c,Status__c From hed__Program_Enrollment__c Where Id = :studPEID];
-            
-            if(spe.Status__c=='Inactive' && spe.Enrollment_Type__c=='Returning Student'){
-                spe.Enrollment_Type__c = 'Initial Enrollment';
-                //spe.Enrollment_Type__c = 'Re-enrolling student';
-                update spe; 
+            //Staff End – Full ReActivation button logic is to ensure all the forms related to initial enrollment are displayed 
+            //    when it is clicked for the PE with Status = Inactive and Enrollment type =’Returning Student’
+            if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student' && reactivationType.toUpperCase() == 'FULL'){
+                NES_ReEnrUtilities.reenrollingStudent(peRecord.hed__Contact__c, peRecord.Id);
+                message='Re-enrollment Success: Student was successfully Re-enrolled.';
+                peakResponse.success = true;
             }
-            */
-            NES_EnrollmentReactivationBase process = getProcessInstance(studPEID, reactivationType);
-            process.execute();
-            message='Re-enrollment Success: Student was successfully Re-enrolled.';
-            peakResponse.success = true;
+            else
+            if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student' && reactivationType.toUpperCase() == 'SOFT'){
+                message='Program Enrollment is eligible only for Full ReActivation.';
+                peakResponse.success = true;
+            }
+            //a)PE Status = 'Withdrawn' and the latest Enrollment record's Withdrawal category = 'No Show'
+            else 
+            if(peRecord.Status__c == 'Withdrawn' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' && reactivationType.toUpperCase() == 'RE_ENROLLMENT'){
+                NES_ReEnrUtilities.reenrollingStudent(peRecord.hed__Contact__c, peRecord.Id);
+                message='Re-enrollment Success: Student was successfully Re-enrolled.';
+                peakResponse.success = true;
+            } 
+            //b)PE Status = 'Withdrawn' and the latest Enrollment record's Withdrawal category ='Prior To Engagement' or 'Withdrawal During School Year' --> Same Year Re-Enrollment path
+            if(peRecord.Status__c == 'Withdrawn' && (peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Prior To Engagement' || 
+                                                    peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Withdrawal During School Year')
+                                                                                && reactivationType.toUpperCase() == 'RE_ENROLLMENT'){
+                NES_EnrollmentReactivationBase process = getProcessInstance(studPEID, reactivationType);
+                process.execute();
+                message='Re-enrollment Success: Student was successfully Re-enrolled.';
+            }
+            else{
+                NES_EnrollmentReactivationBase process = getProcessInstance(studPEID, reactivationType);
+                process.execute();
+                message='Re-enrollment Success: Student was successfully Re-enrolled.';
+                peakResponse.success = true;
+            }
 
         } catch (Exception e) {
 

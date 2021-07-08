@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Stores settings for ECA evaluation rewrite.</description>
+    <fields>
+        <fullName>AssignmentLogic__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>AssignmentLogic</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CompletionLogic__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>CompletionLogic</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DebugMode__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Enable logging/printing of certain data in debugMode</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>DebugMode</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Feature_Toggle__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Feature Toggle</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NewStatus__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>NewStatus</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Status</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ECA Status Mapping</fullName>
+                    <default>true</default>
+                    <label>ECA Status Mapping</label>
+                </value>
+                <value>
+                    <fullName>System</fullName>
+                    <default>false</default>
+                    <label>System</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>ECA Evaluation Setting</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Type__c</columns>
+        <columns>DeveloperName</columns>
+        <columns>Status__c</columns>
+        <columns>NewStatus__c</columns>
+        <columns>AssignmentLogic__c</columns>
+        <columns>CompletionLogic__c</columns>
+        <columns>DebugMode__c</columns>
+        <columns>Feature_Toggle__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <pluralLabel>ECA Evaluation Settings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

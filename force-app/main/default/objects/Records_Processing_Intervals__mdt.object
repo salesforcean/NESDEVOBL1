@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is created for User Story No. 164369 (Pls don&apos;t delete). This MDT is for determining how earlier the records should be taken into consideration based on the days, hours, mins for processing. This is being used in determining the timestamp of the Program Enrollment/Relationship object records for the LC Community Access to School relevant Knowledge Articles based on Topics.</description>
+    <fields>
+        <fullName>Batch_Size__c</fullName>
+        <description>User Story #164369.
+This field on the metadata type is meant for defining the batch size for the Program Enrollment Batch Job and Relationships Batch Job execution. This value defines the batch job lot size for processing.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Please enter the Batch Job Lot Size for the batch processing on Program Enrollment records and Relationship records. The value to be keyed should be greater than 0.</inlineHelpText>
+        <label>Batch Size</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Days__c</fullName>
+        <description>User Story # 164369.
+This field is for capturing the No. Of Days that we need to back track to pick records accordingly related to Program Enrollments and Relationships during the respective Batch Job executions.The value must be a negative value to be keyed in this field.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter a negative value say &quot;-1&quot; to pick records updated in the last 1 day&apos;s time. &quot;-2&quot; will imply records that were updated in the last 2 days time interval.</inlineHelpText>
+        <label>Days</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hours__c</fullName>
+        <description>User Story # 164369.
+This field is for capturing the No. Of Hours by which we need to back track to pick records accordingly related to Program Enrollments and Relationships during the respective Batch Job executions. The value must be a negative value to be keyed in this field.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter the hours in negative values like &quot;-3&quot; to consider records that were updated in the last 3 hours accordingly. &quot;-6&quot; will imply records that were updated in the last 6 hours time interval.</inlineHelpText>
+        <label>Hours</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minutes__c</fullName>
+        <description>User Story # 164369.
+This field is for capturing the No. Of Mins by which we need to back track to pick records accordingly related to Program Enrollments and Relationships during the respective Batch Job executions. The value must be a negative value to be keyed in this field.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter the Minutes in negative values like &quot;-30&quot; to consider records that were updated in the last 30 minutes accordingly. &quot;-40&quot; will imply records that were updated in the last 40 minutes time interval.</inlineHelpText>
+        <label>Minutes</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Records Processing Intervals</label>
+    <pluralLabel>Records Processing Intervals</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

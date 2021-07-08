@@ -114,11 +114,20 @@ public without sharing class NES_DashboardHelper {
         try{
         String resultString = 'Contact Us';  
         Date todayDate = date.today();
+        
         //Added by Shravani for US#389103 on 7/04/21 "Button display logic 1"
         //if(!peRecord.Enrollments__r.isEmpty() && !availableAcademicPrograms.isEmpty() && (peRecord.hed__Account__c != availableAcademicPrograms[0].Id || ((peRecord.hed__Account__c == availableAcademicPrograms[0].Id) && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning' )) && (peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS)){
-          if(!peRecord.Enrollments__r.isEmpty() && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning' && peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS){
+        
+        //1)PE Status = Complete and latest Enrollment record's Withdrawal category ='Not Returning' -->Re-enroll is to be displayed.
+        if(!peRecord.Enrollments__r.isEmpty() && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning' && peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS){
             resultString = NES_DashboardUtilities.REENROLL_BTN_LABEL;  
-        } else
+        } else  
+        //Added by Shravani for US#389103 on 7/04/21 "Button display logic 2"
+        if(!peRecord.Enrollments__r.isEmpty() &&  !availableAcademicPrograms.isEmpty() && (peRecord.hed__Account__c != availableAcademicPrograms[0].Id || ((peRecord.hed__Account__c == availableAcademicPrograms[0].Id) && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' )) && (peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS)){
+            //else if(!peRecord.Enrollments__r.isEmpty() && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' && peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS){
+            resultString = NES_DashboardUtilities.REENROLL_BTN_LABEL;            
+        }
+        // 
         if(peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS && ((peRecord.Program_Grade_Level__r.Grade_Level__r.Name == Label.NES_Twelth_Grade && peRecord.ITR_Eligibility_NY__c == 'Yes') || (peRecord.Program_Grade_Level__r.Grade_Level__r.Name != Label.NES_Twelth_Grade && peRecord.ITR_Eligibility_NY__c != 'No')) && ((todayDate >= peRecord.hed__Account__r.ITR_Start_Date__c && todayDate <=peRecord.hed__Account__r.ITR_End_Date__c) || (peRecord.ITR_Exception_Date_NY__c != null && todayDate <= peRecord.ITR_Exception_Date_NY__c))){
             resultString = NES_DashboardUtilities.ITR_BTN_LABEL;           
         } 
@@ -140,18 +149,12 @@ public without sharing class NES_DashboardHelper {
             
         }
             // Added by Shravani for US#389103 on 5/25/21
-            /*
-            else if(peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS &&  (peRecord.WithdrawalCategory__c=='Prior to Engagement' || peRecord.WithdrawalCategory__c=='Withdrawal During School Year')){
-                 resultString = 'Contact Us';     
-            }
-			*/
+            //else if(peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS &&  (peRecord.WithdrawalCategory__c=='Prior to Engagement' || peRecord.WithdrawalCategory__c=='Withdrawal During School Year')){
+                 //resultString = 'Contact Us';     
+            //}
             
-        //Added by Shravani for US#389103 on 7/04/21 "Button display logic 2"
-            else if(!peRecord.Enrollments__r.isEmpty() &&  !availableAcademicPrograms.isEmpty() && (peRecord.hed__Account__c != availableAcademicPrograms[0].Id || ((peRecord.hed__Account__c == availableAcademicPrograms[0].Id) && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' )) && (peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS)){
-            //else if(!peRecord.Enrollments__r.isEmpty() && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' && peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS){
-            resultString = NES_DashboardUtilities.REENROLL_BTN_LABEL;            
-            }
-            // End by Shravani for US#389103 on 7/04/21     
+            // End by Shravani for US#389103 on 7/04/21      
+            
         else if(peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS){
             //added by Sravani for BUG#367727 
             //if(availableAcademicPrograms.size() > 0){
@@ -162,7 +165,7 @@ public without sharing class NES_DashboardHelper {
                     }                                            
                 }
             }
-        }     
+        }      
             
         return resultString;
        }

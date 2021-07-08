@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Stores the Schools and it corresponding Permission sets for the Student and Caretaker for the US # 123096</description>
+    <fields>
+        <fullName>Caretaker_PSet__c</fullName>
+        <description>ADO # 130549 - (Placeholder KBA Scenarios)
+Used to Store the Caretaker Permission Set</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Caretaker PermSet</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>School_Name__c</fullName>
+        <description>ADO # 130549 - (Placeholder KBA Scenarios)
+Used to Store the School Name</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>School Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Student_PSet__c</fullName>
+        <description>ADO # 130549 - (Placeholder KBA Scenarios)
+Used to Store the Student Permission Set</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Student PermSet</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>CS_School_PermissionSet_Mappings</label>
+    <pluralLabel>CS_School_PermissionSet_Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

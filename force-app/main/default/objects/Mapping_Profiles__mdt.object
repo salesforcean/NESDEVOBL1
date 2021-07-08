@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Metadata represents information regarding the profile names of School Counselor, School Principal, School Special Education Director, School Staff Administrator.</description>
+    <fields>
+        <fullName>Profile_Name__c</fullName>
+        <description>US # 123101 - This field holds the value of Non-Community profile names like School Counselor, School Principal, School Special Education Director, School Staff Administrator. This field is set when the batch CS_SSTFPublicGroupUserPermissionBatch is executed.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Profile Name</label>
+        <length>50</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Mapping Profile</label>
+    <pluralLabel>Mapping Profiles</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

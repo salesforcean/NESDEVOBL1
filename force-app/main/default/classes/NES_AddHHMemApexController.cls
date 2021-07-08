@@ -48,7 +48,7 @@ public without sharing class NES_AddHHMemApexController {
         String response=null;
         try{
             //Get LoggedIn User Contact ID
-            User usrContact = [select contactId, contact.AccountId, contact.OwnerID from User where id =:UserInfo.getUserId() limit 1];
+            User usrContact = [select contactId, contact.Email, contact.AccountId, contact.OwnerID from User where id =:UserInfo.getUserId() limit 1];
            		 if(usrContact != null && !String.isBlank(usrContact.ContactId)){
                     AdditionalHouseHoldMembers member=(AdditionalHouseHoldMembers) JSON.deserialize(houseHoldMemberData, AdditionalHouseHoldMembers.class);
                     String memberRTDeveloperName;
@@ -82,6 +82,7 @@ public without sharing class NES_AddHHMemApexController {
                     careTaker.ownerId= usrContact.contact.OwnerId;
                     careTaker.hed__PreferredPhone__c=member.phoneType;
                     careTaker.V2_Role__c = v2Role;
+                    careTaker.Owner_CT_Email__c = usrContact.Contact.Email;
                      
                      if(member.phoneType=='Mobile'){
                          careTaker.Phone =member.phoneNumber;

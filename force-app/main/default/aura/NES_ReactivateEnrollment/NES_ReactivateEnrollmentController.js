@@ -10,6 +10,7 @@
         helper.getGrades(component, event, helper, yearValue);
         helper.getSchoolYears(component, event, helper);
         //helper.InvokeReactive(component,event,helper);
+        helper.getpeEnrollmentType(component, event, helper);
         
     },
     closeModal: function (component,event,helper)
@@ -71,7 +72,7 @@
     // Add by Maddileti for US #335371
     reactivateAction: function (component, event, helper)
     {
-
+        
         var button=event.target.id;
         
         console.log('Button Clicked :'+button);
@@ -112,12 +113,12 @@
         console.log('studentGradeLevel=='+studentGradeLevel);
         component.set('v.gradeLevelId',studentGradeLevel);
         component.set('v.isOpenReactivation', true);
-
+        
         //  component.set('v.enrollFlag',true);
         
         var year=component.find('Year');
         year.set('v.value',component.get('v.schoolYeara'));
-       // alert(component.get('v.schoolYeara'));
+        // alert(component.get('v.schoolYeara'));
         var grade=component.find('Grade');
         grade.set('v.value',component.get('v.gradeLevelId'));
         
@@ -135,71 +136,86 @@
         console.log('New Grade Selected :'+gradeNew);
         var previousSchoolYear=component.get('v.schoolYeara');
         var previousGrade=component.get("v.gradeLevelId");
-
+        
+        //alert('Value of Result1' + component.get("v.peEnrollmentType"));
+        var Result = component.get("v.peEnrollmentType");
+        
+        //alert('Value of Result2' + Result);
+        
         //Added by Ravi # Us345735 on 01/19/2021
         if(newSchoolYear<previousSchoolYear){
             component.set("v.reactivateMessage",true);
         }
-           else if(previousSchoolYear==newSchoolYear){ 
-            if(previousGrade==gradeNew){
-                component.set("v.isError",false);
-                
+        // Ended Here 
+        //TODO:::: PE Status = 'Inactive' and Enrollment type =’Returning Student’ 
+        //else if( Result = 'ReActivation' && previousSchoolYear==newSchoolYear) 
+        
+        else if( Result =='ReActivation' && previousSchoolYear==newSchoolYear) 
+        {
+            //alert('I am here');
+            helper.reactivateORreenrolledSameYear(component,event,helper);  
+        }
+            else if(previousSchoolYear==newSchoolYear){ 
+                if(previousGrade==gradeNew){
+                    component.set("v.isError",false);
+                    
                     //this.handleSubmit(component, event, helper);
                     var a = component.get('c.handleSubmit');
                     $A.enqueueAction(a);
                     helper.InvokeReactive(component,event,helper);
                 }
                 else{
-
-                
-                component.set("v.isError",true);
-            	
+                    
+                    
+                    
+                    component.set("v.isError",true);
+                    
+                }
             }
-        }
-        else{ 
-                      
-                component.set('v.isOpen', true);
-                var stId=component.get('v.studentId');
-                var acName=component.get("v.acadName");
-                var studentName=component.get("v.studentName");
-                console.log('std:'+stId);
-               var action = component.get("c.nextYearEnrollment");
-                action.setParams({
-                    studentId: stId, 
-                    instituteNam:acName,
-                    schoolYear : newSchoolYear,
-                    gradeLevels : gradeNew,
-
-                callType: 'community',
-                enrollFlag: component.get("v.enrollFlag") ,
-                programEnrollmentId: component.get("v.programEnrollmentId") 
-                });
-                action.setCallback(this, function(response){
-                    var peakResponse = response.getReturnValue();
-                    console.log(peakResponse);
-                    if(peakResponse.success){
-                        component.set("v.success", true);
-                        window.setTimeout(
-                            $A.getCallback(function(){
-                                var redirect = $A.get("e.force:navigateToURL");
-                                redirect.setParams({
-                                    "url" : "/dashboard"
-                                });
-                                redirect.fire();
-                            }), 3000
-                        );
+                else{ 
+                    
+                    component.set('v.isOpen', true);
+                    var stId=component.get('v.studentId');
+                    var acName=component.get("v.acadName");
+                    var studentName=component.get("v.studentName");
+                    console.log('std:'+stId);
+                    var action = component.get("c.nextYearEnrollment");
+                    action.setParams({
+                        studentId: stId, 
+                        instituteNam:acName,
+                        schoolYear : newSchoolYear,
+                        gradeLevels : gradeNew,
                         
-                        
-                    } else {
-                        component.set("v.hasError",true);
-                        component.set("v.message", peakResponse.messages[0]);
-                    }
-                });
-                $A.enqueueAction(action);
-            }
-          
+                        callType: 'community',
+                        enrollFlag: component.get("v.enrollFlag") ,
+                        programEnrollmentId: component.get("v.programEnrollmentId") 
+                    });
+                    action.setCallback(this, function(response){
+                        var peakResponse = response.getReturnValue();
+                        console.log(peakResponse);
+                        if(peakResponse.success){
+                            component.set("v.success", true);
+                            window.setTimeout(
+                                $A.getCallback(function(){
+                                    var redirect = $A.get("e.force:navigateToURL");
+                                    redirect.setParams({
+                                        "url" : "/dashboard"
+                                    });
+                                    redirect.fire();
+                                }), 3000
+                            );
+                            
+                            
+                        } else {
+                            component.set("v.hasError",true);
+                            component.set("v.message", peakResponse.messages[0]);
+                        }
+                    });
+                    $A.enqueueAction(action);
+                }
+        
     },
-
+    
     // End by Maddileti for US #335371
     closeModals: function (component,event,helper)
     {
@@ -207,13 +223,14 @@
         
     }, 
     
-  reEnrollmentAction : function (component, event, helper){
+    reEnrollmentAction : function (component, event, helper){
         helper.getNextYearAvailability(component, event, helper);          
     },
-
+    
     // Add by Maddileti for US # 332934 on 12/16/2020 
     gradeSelect: function (component,event,helper){
         component.set("v.isError",false);
+        
         //Added By Ravi # Us345735 on 01/19/2021
         component.set("v.reactivateMessage",false);
         component.set("v.reEnrollmentMessage",false);
@@ -249,12 +266,19 @@
         console.log('New Grade Selected :'+gradeNew);
         var previousSchoolYear=component.get('v.schoolYeara');
         var previousGrade=component.get("v.gradeLevelId");
-
+        var Result = component.get("v.peEnrollmentType"); // added by Maddileti
+        
         // Added by Ravi # Us345735 
         if(newSchoolYear<previousSchoolYear){
-          component.set("v.reactivateMessage",true);  
+            component.set("v.reactivateMessage",true);  
         }
         // Ended Here 
+        //TODO:::: PE Status = 'Withdrawn' and the latest Enrollment record's Withdrawal category = 'No Show')
+        //else if( Result= ReEnrollment && previousSchoolYear==newSchoolYear) 
+        else if( Result == 'ReEnrollment' && previousSchoolYear==newSchoolYear) 
+        {
+            helper.reactivateORreenrolledSameYear(component,event,helper);  
+        }
         else if(previousSchoolYear==newSchoolYear){
             
             component.set("v.reEnrollmentMessage",true);

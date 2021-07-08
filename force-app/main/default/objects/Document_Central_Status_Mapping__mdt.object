@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Document_Type__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Document Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>true</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Reason</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status_Level__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Status Level</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Under Review</fullName>
+                    <default>true</default>
+                    <label>Under Review</label>
+                </value>
+                <value>
+                    <fullName>Needs Attention</fullName>
+                    <default>false</default>
+                    <label>Needs Attention</label>
+                </value>
+                <value>
+                    <fullName>Accepted</fullName>
+                    <default>false</default>
+                    <label>Accepted</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Status</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Reviewed_Further Communication Needed</fullName>
+                    <default>false</default>
+                    <label>Reviewed_Further Communication Needed</label>
+                </value>
+                <value>
+                    <fullName>Default or Requested</fullName>
+                    <default>false</default>
+                    <label>Default or Requested</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing pages or sections</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing pages or sections</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Illegible</fullName>
+                    <default>false</default>
+                    <label>Invalid-Illegible</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Verified</fullName>
+                    <default>false</default>
+                    <label>Verified</label>
+                </value>
+                <value>
+                    <fullName>Verified-No Documentation Available</fullName>
+                    <default>false</default>
+                    <label>Verified-No Documentation Available</label>
+                </value>
+                <value>
+                    <fullName>Default</fullName>
+                    <default>false</default>
+                    <label>Default</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Missing Information</fullName>
+                    <default>false</default>
+                    <label>Invalid-Missing Information</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Missing Signature</fullName>
+                    <default>false</default>
+                    <label>Invalid-Missing Signature</label>
+                </value>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Received</fullName>
+                    <default>false</default>
+                    <label>Received</label>
+                </value>
+                <value>
+                    <fullName>Exemption-MKV</fullName>
+                    <default>false</default>
+                    <label>Exemption-MKV</label>
+                </value>
+                <value>
+                    <fullName>Invalid-File Error</fullName>
+                    <default>false</default>
+                    <label>Invalid-File Error</label>
+                </value>
+                <value>
+                    <fullName>Received-Complete</fullName>
+                    <default>false</default>
+                    <label>Received-Complete</label>
+                </value>
+                <value>
+                    <fullName>Received-Incomplete</fullName>
+                    <default>false</default>
+                    <label>Received-Incomplete</label>
+                </value>
+                <value>
+                    <fullName>Received-No Documentation Available</fullName>
+                    <default>false</default>
+                    <label>Received-No Documentation Available</label>
+                </value>
+                <value>
+                    <fullName>Reviewed-Further Communication Needed</fullName>
+                    <default>false</default>
+                    <label>Reviewed-Further Communication Needed</label>
+                </value>
+                <value>
+                    <fullName>Verified-Complete</fullName>
+                    <default>false</default>
+                    <label>Verified-Complete</label>
+                </value>
+                <value>
+                    <fullName>Verified-Incomplete</fullName>
+                    <default>false</default>
+                    <label>Verified-Incomplete</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Outdated</fullName>
+                    <default>false</default>
+                    <label>Invalid-Outdated</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing information</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing information</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Reenrollment</fullName>
+                    <default>false</default>
+                    <label>Invalid-Reenrollment</label>
+                </value>
+                <value>
+                    <fullName>Invalid</fullName>
+                    <default>false</default>
+                    <label>Invalid</label>
+                </value>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Awaiting IEP</fullName>
+                    <default>false</default>
+                    <label>Awaiting IEP</label>
+                </value>
+                <value>
+                    <fullName>Deferred-Extension Approved by Principal</fullName>
+                    <default>false</default>
+                    <label>Deferred-Extension Approved by Principal</label>
+                </value>
+                <value>
+                    <fullName>Deferred-Incomplete-Allow</fullName>
+                    <default>false</default>
+                    <label>Deferred-Incomplete-Allow</label>
+                </value>
+                <value>
+                    <fullName>Deferred-Non-compliant Allow</fullName>
+                    <default>false</default>
+                    <label>Deferred-Non-compliant Allow</label>
+                </value>
+                <value>
+                    <fullName>Deferred-Verified-In progress</fullName>
+                    <default>false</default>
+                    <label>Deferred-Verified-In progress</label>
+                </value>
+                <value>
+                    <fullName>Exemption-Medical</fullName>
+                    <default>false</default>
+                    <label>Exemption-Medical</label>
+                </value>
+                <value>
+                    <fullName>Exemption-Personal</fullName>
+                    <default>false</default>
+                    <label>Exemption-Personal</label>
+                </value>
+                <value>
+                    <fullName>Exemption-Religious</fullName>
+                    <default>false</default>
+                    <label>Exemption-Religious</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Incomplete Exemption</fullName>
+                    <default>false</default>
+                    <label>Invalid-Incomplete Exemption</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Incomplete-Hold</fullName>
+                    <default>false</default>
+                    <label>Invalid-Incomplete-Hold</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Incorrect Form</fullName>
+                    <default>false</default>
+                    <label>Invalid-Incorrect Form</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Missing Name and/or DOB</fullName>
+                    <default>false</default>
+                    <label>Invalid-Missing Name and/or DOB</label>
+                </value>
+                <value>
+                    <fullName>Invalid-ORCA Exempt - VEC Required</fullName>
+                    <default>false</default>
+                    <label>Invalid-ORCA Exempt - VEC Required</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Provisional Certificate Required</fullName>
+                    <default>false</default>
+                    <label>Invalid-Provisional Certificate Required</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Digital signature</fullName>
+                    <default>false</default>
+                    <label>Invalid-Digital signature</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+                <value>
+                    <fullName>Exemption</fullName>
+                    <default>false</default>
+                    <label>Exemption</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Invalid Form</fullName>
+                    <default>false</default>
+                    <label>Invalid-Invalid Form</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Too old</fullName>
+                    <default>false</default>
+                    <label>Invalid-Too old</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Unacceptable Type</fullName>
+                    <default>false</default>
+                    <label>Invalid-Unacceptable Type</label>
+                </value>
+                <value>
+                    <fullName>Verified-Affidavit</fullName>
+                    <default>false</default>
+                    <label>Verified-Affidavit</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Disconnect Notice</fullName>
+                    <default>false</default>
+                    <label>Invalid-Disconnect Notice</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Incomplete Lease Agreement</fullName>
+                    <default>false</default>
+                    <label>Invalid-Incomplete Lease Agreement</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Mismatch Address</fullName>
+                    <default>false</default>
+                    <label>Invalid-Mismatch Address</label>
+                </value>
+                <value>
+                    <fullName>Invalid-No Service Address</fullName>
+                    <default>false</default>
+                    <label>Invalid-No Service Address</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Not in Caretaker&apos;s Name</fullName>
+                    <default>false</default>
+                    <label>Invalid-Not in Caretaker&apos;s Name</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Outdated Lease Agreement-General</fullName>
+                    <default>false</default>
+                    <label>Invalid-Outdated Lease Agreement-General</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Outdated Lease Agreement-OCA-CaliCA-GLCA</fullName>
+                    <default>false</default>
+                    <label>Invalid-Outdated Lease Agreement-OCA CaliCA GLCA</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Paystub insufficient</fullName>
+                    <default>false</default>
+                    <label>Invalid-Paystub insufficient</label>
+                </value>
+                <value>
+                    <fullName>Invalid-POR-too old-General</fullName>
+                    <default>false</default>
+                    <label>Invalid-POR-too old-General</label>
+                </value>
+                <value>
+                    <fullName>Invalid-POR-too old-OCA-CaliCA-GLCA</fullName>
+                    <default>false</default>
+                    <label>Invalid-POR-too old-OCA CaliCA GLCA</label>
+                </value>
+                <value>
+                    <fullName>Verified-Residency Affidavit</fullName>
+                    <default>false</default>
+                    <label>Verified-Residency Affidavit</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing 1st Quarter Grades</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing 1st Quarter Grades</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing 2nd Quarter Grades</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing 2nd Quarter Grades</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing 3rd Quarter Grades</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing 3rd Quarter Grades</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing 4th Quarter Grades</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing 4th Quarter Grades</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing Final Grades</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing Final Grades</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing Grade Level</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing Grade Level</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing Grading Scale</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing Grading Scale</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing Other Grading Period</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing Other Grading Period</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing Promotion Status</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing Promotion Status</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing School Name</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing School Name</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing School Year</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing School Year</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing Student Name</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing Student Name</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Not Current School Year</fullName>
+                    <default>false</default>
+                    <label>Invalid-Not Current School Year</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing subject area</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing subject area</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing 1st Semester</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing 1st Semester</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing 2nd Semester</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing 2nd Semester</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing credits earned</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing credits earned</label>
+                </value>
+                <value>
+                    <fullName>Incomplete-Missing Previous School Year(s)</fullName>
+                    <default>false</default>
+                    <label>Incomplete-Missing Previous School Year(s)</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Wrong document</fullName>
+                    <default>false</default>
+                    <label>Invalid-Wrong document</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Blank Form</fullName>
+                    <default>false</default>
+                    <label>Invalid-Blank Form</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Case # missing</fullName>
+                    <default>false</default>
+                    <label>Invalid-Case # missing</label>
+                </value>
+                <value>
+                    <fullName>Invalid-No signature</fullName>
+                    <default>false</default>
+                    <label>Invalid-No signature</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Incomplete Missing Tdap</fullName>
+                    <default>false</default>
+                    <label>Invalid-Incomplete Missing Tdap</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Incomplete Missing MCV</fullName>
+                    <default>false</default>
+                    <label>Invalid-Incomplete Missing MCV</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Updated Exemption Required</fullName>
+                    <default>false</default>
+                    <label>Invalid-Updated Exemption Required</label>
+                </value>
+                <value>
+                    <fullName>Incomplete</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Incomplete</label>
+                </value>
+                <value>
+                    <fullName>No Documentation Available</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>No Documentation Available</label>
+                </value>
+                <value>
+                    <fullName>Requested</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Requested</label>
+                </value>
+                <value>
+                    <fullName>Reviewed</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Reviewed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Document Central Status Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>Reason__c</columns>
+        <columns>Status__c</columns>
+        <columns>Status_Level__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <pluralLabel>Document Central Status Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
