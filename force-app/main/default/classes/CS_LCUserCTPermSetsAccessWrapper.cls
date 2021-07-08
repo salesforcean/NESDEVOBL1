@@ -17,7 +17,7 @@ public class CS_LCUserCTPermSetsAccessWrapper {
    public String PEStatus;
    public String PEName;
    public boolean isCTPermSetAccess;
-   public String relationshipStatus; 
+   public String relationshipStatus;
    public String relationshipName;
    public hed__Relationship__c relationshipRecord;
     

@@ -7,7 +7,6 @@
         console.log('<<<<interation>>>');
     },
     handleInit: function(component, event, helper){
-        component.set("v.streetError",false);
         helper.handleInit(component);
         helper.grabQuestionsList(component, event, helper);
     },
@@ -209,6 +208,6 @@
             //inputCmp.focus();                
             return false;
         }
-        
+       
     }
 })

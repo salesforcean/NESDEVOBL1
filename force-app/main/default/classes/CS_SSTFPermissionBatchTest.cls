@@ -64,6 +64,7 @@ private class CS_SSTFPermissionBatchTest {
             test.startTest();
             
             String chron = '0 0 23 * * ?';
+
             CS_SSTF_BatchSchedule sch = new CS_SSTF_BatchSchedule();   
             String jobid = system.schedule('Schoolstaffschedule', chron, sch);
             CronTrigger ct =[Select id,CronJobDetailId,CronExpression,TimesTriggered  from CronTrigger where Id=:jobId  Limit 1];

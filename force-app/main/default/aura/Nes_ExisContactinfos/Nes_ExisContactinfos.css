@@ -1,0 +1,9 @@
+.THIS .slds-grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

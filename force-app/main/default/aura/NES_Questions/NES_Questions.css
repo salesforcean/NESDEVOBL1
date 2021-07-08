@@ -24,9 +24,12 @@
 
 }
 .THIS .slds-button{
-    
-    border-right-width: 50px;
-    border-left-width: 50px;
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    /*border-right-width: 50px;
+    border-left-width: 50px;*/
+    border-right-width: 0px;
+    border-left-width: 0px;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
   	
 
 }
@@ -38,7 +41,9 @@
 }
 .THIS .modal-dialog {width: 100%; }
 .THIS .boxshadow{border-radius:3px;background:#fff;box-shadow:0 0px 1px 0 rgba(0,0,0,.5)}
-.THIS .submit-button{font-size:1.15rem;font-weight:400;line-height:2.75}
+/*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+.THIS .submit-button{font-size:1.15rem;font-weight:400;line-height:2.75;background: #76d5d4; width: 200px; border: none;text-transform: none; color: #000;}
+/*END: Added for US#335191 by Jagadeesh Bokam*/
 .THIS .slds-required.firstAsterisk{margin-left:-.74em}
 /* Removed by Guru
 .THIS .record-label+p{color:#4f5759}
@@ -61,9 +66,12 @@
     text-transform: none;
     padding-left: 10px;
     padding-right: 10px;
-    border-right-width: 25px;
-    border-left-width: 25px;
+    border-right-width: 0px;
+    border-left-width: 0px;
     width: 41%;
+    color: #000;
+   /* background-color: #76d5d4; */
+    border: none;
 } 
 }
 
@@ -77,6 +85,10 @@
 
 .THIS p { hyphens: none !important;} 
 
+/*BEGIN-Added for the Defect #388309 :Jagadeesh Bokam*/
+.THIS a {color: #BF0366;}
+/*END-Added for the Defect #388309 :Jagadeesh Bokam*/
+
 .THIS ul li { list-style-type: disc; margin-left: 20px; padding: 0 0 5px 0; } 
 
 .THIS .extra-info { font-style: italic; display:block;} 
@@ -84,3 +96,23 @@
 .THIS h3 {  padding-bottom: 20px;  } 
 
 .THIS h4 { margin-top: 20px;padding-bottom: 10px; text-transform: uppercase; font-size: 14px !important; color: #666666; }
+.THIS .Fif{
+    color: rgb(194, 57, 52); 
+    font-family: Open Sans;
+        font-size: 12px;
+     font-weight: bold;
+}
+
+/* Added for Submit, Yes Skip 399187 */
+
+.THIS .slds-button_brand{
+    background-color: #76D5D4;
+}
+
+.THIS .submit-button:hover, .THIS .submit-button:focus {
+background-color: #50AAA9;
+border-color: #52d6d5; 
+box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
+}
+
+/* Ended for Submit, Yes Skip 399187 */

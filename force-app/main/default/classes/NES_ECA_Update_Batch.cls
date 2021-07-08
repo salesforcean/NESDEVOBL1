@@ -48,7 +48,6 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
         if(ecas.size() > 0){
             List<Enrollment_Component_Affiliation__c> ecaListToUpdate = new List<Enrollment_Component_Affiliation__c>();
             ecaListToUpdate.addAll(ecas);
-            system.debug('ecaListToUpdate*******'+ecaListToUpdate.size());
             Database.update(ecaListToUpdate, false);
         }       
     }

@@ -29,9 +29,12 @@
                         <aura:if isTrue="{!(empty(v.logoName))}">
                             <lightning:layoutItem flexibility="shrink" class="slds-order_1 slds-medium-order_1">
                                 <aura:if isTrue="{!v.isGuest}">
-                                    <img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" />
+                                      <!--START: Added for US#335191 by Jagadeesh Bokam -->
+                                    <!--<img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" />-->
+                                    <img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" />
+                                    <!--END: Added for US#335191 by Jagadeesh Bokam -->
                                     <aura:set attribute="else">
-                                        <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" /></a>
+                                        <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" /></a>
                                     </aura:set>
                                 </aura:if>
                             </lightning:layoutItem>
@@ -48,7 +51,9 @@
                                     <lightning:button variant="brand" onclick="{!c.handleLogin}" label="Sign In" class="login"/>
                                 </div>
                                 <div class="slds-show_medium slds-m-top_small">
-                                    <span class="slds-m-right_small">ALREADY HAVE AN ACCOUNT?</span>
+                                    <!--START: Added SpanColor for US#335191 by Jagadeesh Bokam -->
+                                    <span class="slds-m-right_small SpanColor">ALREADY HAVE AN ACCOUNT?</span>
+                                    <!--END: Added for US#335191 by Jagadeesh Bokam -->
                                     <lightning:button variant="brand" onclick="{!c.handleLogin}" label="Sign In" class="login"/>
                                 </div>
                             </lightning:layoutItem>

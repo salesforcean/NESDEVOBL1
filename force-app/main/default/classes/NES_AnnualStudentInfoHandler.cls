@@ -57,6 +57,7 @@ public with sharing class NES_AnnualStudentInfoHandler {
                             newFieldUpdate.objectAndFieldName = 'Annual_Student_Information__c.' + str;
                             newFieldUpdate.newValue = newInfo.get(str);
                             newFieldUpdate.schoolYear = newInfo.School_Year__c;
+
                             newFieldUpdate.studentOrHousehold = 'Student';
 
                             fieldUpdateList.add(newFieldUpdate);
@@ -154,6 +155,7 @@ public with sharing class NES_AnnualStudentInfoHandler {
                             newFieldUpdate.objectAndFieldName = 'Annual_Student_Information__c.' + str;
                             newFieldUpdate.newValue =  newInfo.get(str);
                             newFieldUpdate.schoolYear = newInfo.School_Year__c;
+
                             newFieldUpdate.studentOrHousehold = 'Student';
                             fieldUpdateList.add(newFieldUpdate);
 

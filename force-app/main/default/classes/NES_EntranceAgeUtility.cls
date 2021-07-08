@@ -39,6 +39,8 @@ public without sharing class  NES_EntranceAgeUtility {
      * Return Type: void
      * Purpose : Method to calculate Entrance Age Eligibility
     */
+    //
+    
     public static void calculateEntranceAgeEligibility(List<sObject> records){
         /*
  * 12/12/18 - Removed old Age Eligibility Logic US114797 (Andrew Sim)
@@ -181,13 +183,18 @@ public without sharing class  NES_EntranceAgeUtility {
         }
 
         System.debug(contactIds);
-        //Retrieve and populate the related contact information in contactDetailMap
-        Map<Id, Contact> contactDetailMap = new Map<Id, Contact>();
+               
+	  // Added by CS Team Members - Rakesh & Sumanth to test the 101 SOQL Governer Limits work-around.
+       // List<Contact> currentContacts = [SELECT Id, Birthdate__c FROM Contact WHERE Id IN: contactIds];
+       List<Contact> currentContacts = GenericSOQLQueries.contactDetails(contactIds);            
+      // Ended by CS Team Members - Rakesh & Sumanth to test the 101 SOQL Governer Limits work-around.
 
-        List<Contact> currentContacts = [SELECT Id, Birthdate__c FROM Contact WHERE Id IN: contactIds];
-        for(Contact contact1 : currentContacts ){
-            contactDetailMap.put(contact1.Id, contact1);
-        }
+       // Retrieve and populate the related contact information in contactDetailMap
+       Map<Id, Contact> contactDetailMap = new Map<Id,Contact>(); 
+
+       for(Contact contact1 : currentContacts){
+           contactDetailMap.put(contact1.Id, contact1);
+       }
 
         //Retrieve and populate the current year Ids in currentYearIds
         Set<Id> currentYearIds = new Set<Id>();

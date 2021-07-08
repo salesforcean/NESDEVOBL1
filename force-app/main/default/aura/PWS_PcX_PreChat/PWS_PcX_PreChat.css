@@ -8,35 +8,6 @@
     display: none;
 }
 
-/* validation styling */ 
-
-.THIS p#required {
-    font-size: 0.75rem;
-    margin: 0 1.5rem;
-    text-align:left;
-}
-
-.THIS .embeddedServiceSidebarFormField .slds-style-inputtext.error:not(:focus){
-    border-color: red;
-}
-
-.THIS .embeddedServiceSidebarFormField label.error {
-	color:red;
-    font-size: 0.75rem;
-	margin-top: 0.5rem;
-}
-
-/* styling for intro and terms and conditions */
-
-.THIS #introduction {
-    margin: 1rem;
-}
-
-.THIS #termsAndConditions {
-    font-size: 0.75rem;
-    margin: 1rem;
-}
-
 /* chat general styling */
 
 .THIS#pcxPreChat {

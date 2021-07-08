@@ -277,6 +277,7 @@ public class ECA_HierarchyStatusUpdateTest
 
         // * create ECC for stage1SectionWithCriteriaEC
         Enrollment_Component_Criteria__c ecc1 = createECC(false, stage1SectionWithCriteriaEC.Id, 1, criteria1.Id);
+
         ecc1.School_Year__c = SCHOOL_YEAR;
         Enrollment_Component_Criteria__c ecc2 = createECC(false, stage1SectionWithCriteriaEC.Id, 2, criteria2.Id); // need to pass SchoolYear / QuestionGroup as well
         ecc2.School_Year__c = SCHOOL_YEAR;

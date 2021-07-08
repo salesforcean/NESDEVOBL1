@@ -1,0 +1,77 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="NES_AddHHMemApexController" >
+    <aura:attribute name="STExistsForHH" type="Boolean" default = "false"/>
+    <aura:attribute name="modalOpen" type="boolean" default="false"/>
+    
+    
+    To add additional Caretaker or Learning Coach, please use this form to tell us about their relationship with the student(s). 
+    <br/>
+    
+ <!--  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+        <a href="javascript:void(0)" onclick="{!c.checkSTforCT}">
+        
+        Define relationship 
+    </a>
+      
+    
+    <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+    <aura:if isTrue="{!v.modalOpen}">
+        <aura:if isTrue="{!not(v.STExistsForHH) }">            
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <!--section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large"-->
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+           
+                    </header>
+
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b>You must have at least one student registered to add an additional Caretaker or Learning Coach.
+                            </b>
+                        </p>
+                    </div>
+                    
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+        <aura:if isTrue="{!v.STExistsForHH }"> 
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <!--section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large"-->
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ###### -->
+                    <header class="slds-modal__header">
+                        <!--
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+						-->
+           
+                    </header> 
+
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <c:NES_AddHHMemDetails />
+                    </div>
+                    
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+            
+        </aura:if>
+        
+    </aura:if>
+</aura:component>

@@ -1,0 +1,82 @@
+<aura:component implements="lightning:availableForFlowScreens,flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <!--aura:import library="lightningcomponentdemo:mockdataFaker" property="mockdataLibrary"/-->
+			<div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12">
+                        <div class="slds-grid slds-gutters slds-wrap">
+                            <div class="slds-col slds-size_12-of-12">
+                                
+<html>
+<head>
+
+</head>
+<body>
+
+<table id="Additional" Style="border: 10px solid #ddd;  padding: 8px;  width: 50%; ">
+    <tr Style="border: 2px solid #ddd;  padding: 8px; background-color: #020278; color: White; ">
+    <th Style=" color: White;">What educational decisions will you authorize this person to make on behalf of your students(s)? </th>
+    <th Style=" color: White;">Designated Caretaker</th>
+    <th Style=" color: White;">Designated Learning Coach</th>
+  </tr>
+  <tr Style="border: 2px solid #ddd;  padding: 8px;" >
+      
+      <TD >Enroll the student(s)in this school?</TD>
+       <TD >Yes</TD>
+      <TD Style="background-color:#C0C0C0;">No</TD>
+   </tr>
+   <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD> Withdraw the student(s)from this school?</TD>
+       <TD>Yes</TD>
+      <TD Style="background-color:#C0C0C0;">No</TD>
+   </tr>
+    <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD>Make course seletions for the student(s)?</TD>
+       <TD>Yes</TD>
+      <TD Style="background-color:#C0C0C0;">No</TD>
+   </tr >
+    <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD>Sign field trip release forms?</TD>
+       <TD>Yes</TD>
+      <TD Style="background-color:#C0C0C0;">No</TD>
+   </tr>
+    <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD>Responsibility for materials</TD>
+       <TD>Yes</TD>
+      <TD Style="background-color:#C0C0C0;">No</TD>
+   </tr>
+    <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD>Responsibility for making state testing arrangements?</TD>
+       <TD>Yes</TD>
+      <TD Style="background-color:#C0C0C0;">No</TD>
+   </tr>
+    <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD>Communicate with the teachers,administrators,staff and support teams of the student(s)in this household via WebMail? </TD>
+       <TD>Yes</TD>
+        <TD>Yes,<br></br> but limited to feedback or inquiries. No enrollment,Withdrawal, course change/requests,or field trip authorization is premitted. </TD>
+   </tr>
+    <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD>Make changes to student Planner and Scheduler</TD>
+       <TD>Yes </TD>
+      <TD>Yes</TD>
+ </tr>
+    <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD>Manage,track, and mark student attendance? </TD>
+       <TD>Yes</TD>
+      <TD>Yes</TD>
+   </tr>
+    <tr Style="border: 2px solid #ddd;  padding: 8px;">
+      <TD>Access school bulletin boards,clubs,and activities</TD>
+       <TD>Yes</TD>
+      <TD>Yes</TD>
+   </tr>
+  
+</table>
+
+</body>
+</html>
+                            </div></div></div></div>                             
+    
+                                      
+</aura:component>

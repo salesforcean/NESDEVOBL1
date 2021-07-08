@@ -1,6 +1,7 @@
 /**
  * Created by triciaigoe on 1/25/19.
  * 2019-10-07 Added Skip For Now #US108687 (Ali Khan)
+ * 2021-01-08:Sumanth: Added 'getAHISubmitInformation' method for US # 334973 & 334974
  */
 
 public without sharing class NES_QuestionsController {
@@ -71,7 +72,13 @@ public without sharing class NES_QuestionsController {
     public static String getSectionName(Id sectionId){
         return NES_QuestionsHelper.getSectionName(sectionId);
     }
-
+    
+    //Added by Sumanth for US # 334973 & 334974
+    @AuraEnabled
+    public static Date getAHISubmitInformation(Id enrollmentId){
+        return NES_QuestionsHelper.getAHISubmitInformation(enrollmentId);
+    }
+    //end by Sumanth
     @AuraEnabled
     public static String grabNameOfStudent(Id studentId, Id programEnrollmentId) {
         return NES_EnrollmentUtils.getStudentName(studentId, programEnrollmentId);
@@ -82,5 +89,19 @@ public without sharing class NES_QuestionsController {
     public static String getformName(Id sectionId){
         return NES_QuestionsHelper.getformName(sectionId);
     }
-    
+    //Added by Jagadeesh for the Task :341992
+    @AuraEnabled
+      public static Date updateAHIRec(Id programEnrollmentId){
+		List<Annual_Household_Information__c> AHIAckUpdate = new List<Annual_Household_Information__c>();
+        AHIAckUpdate = [select Income_Form_Submission_Ack__c,Income_Form_Submission_Date__c from Annual_Household_Information__c where Program_Enrollment__c in (select Household_Program_Enrollment__c from hed__Program_Enrollment__c where id =: programEnrollmentId)];
+      	if(AHIAckUpdate.size() > 0)
+        {
+            AHIAckUpdate.get(0).Income_Form_Submission_Ack__c = false;
+        	update AHIAckUpdate;
+        	return AHIAckUpdate.get(0).Income_Form_Submission_Date__c;
+        }
+        else
+           return null;
+    }
+    //Ended by Jagadeesh for the Task :341992
 }

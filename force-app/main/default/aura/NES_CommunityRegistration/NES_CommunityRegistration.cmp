@@ -49,7 +49,7 @@
     <!-- Step completion indicators -->
     <aura:attribute name="step1Complete" type="Boolean" default="false" />
     <aura:attribute name="step2Complete" type="Boolean" default="false" />
-     
+    
     <!-- Show password helper pop up-->
     <aura:attribute name="showPasswordPopup" type="Boolean" default="false" />
     
@@ -313,7 +313,8 @@
                                     <lightning:layoutItem size="12"  mediumDeviceSize="5" class="buttonadj_mob">
                                         <!-- Checkusername Button -->
                                         <aura:if isTrue = "{!v.checkUserFlag}">
-                                            <lightning:button class="btn-next usercheckButton fontAdj_mob" disabled="{!!v.step2UsernameCheck}"  variant="brand" label="check username" onclick="{!c.checkUsernameAvailability}" />
+                                            <!--Changed check username to Check Username for US #399848 -->
+                                            <lightning:button class="btn-next usercheckButton fontAdj_mob" disabled="{!!v.step2UsernameCheck}"  variant="brand" label= "Check Username" onclick="{!c.checkUsernameAvailability}" />
                                         </aura:if>
                                         <!-- Spinning Button -->
                                         <aura:if isTrue = "{!v.checkingFlag}" >
@@ -323,18 +324,18 @@
                                         </aura:if>
                                         <!-- Disable Button -->
                                         <aura:if isTrue = "{!v.disableFlag}">
-                                            <lightning:button class="btn-next usercheckButton buttonGrey fontAdj_mob" variant="brand" label="check username" disabled="true" />
+                                            <lightning:button class="btn-next usercheckButton buttonGrey fontAdj_mob" variant="brand" label="Check Username" disabled="true" />
                                         </aura:if>
                                     </lightning:layoutItem>
                                     <!--End:  added for the US166467 : Jagadeesh -->
                                 </lightning:layout>
                                 <lightning:layout multipleRows="true">
                                     <lightning:layoutItem size="12" >
-                     
+                                        
                                         <ui:outputText aura:id="userError" class="slds-hide fail" value="{!v.step2UsernameUnavailableMessage ? v.step2UsernameUnavailableMessage : v.uName + ' is not available'}" />
-
+                                        
                                     </lightning:layoutItem>
-
+                                    
                                     <lightning:layoutItem size="12" mediumDeviceSize= "7">
                                         
                                         <div class="passwordblock passwordblocksub">

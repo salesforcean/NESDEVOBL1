@@ -32,11 +32,13 @@
     <aura:attribute type="Boolean" name="GradeFlag" default="false" />
     <aura:attribute name="disableGrade" type="Boolean" default="false" />
     <aura:attribute name="valuesselect" type="Boolean" default="false" />
+
     <aura:attribute name="enrollFlag" type="Boolean" default="false" />
     <aura:attribute name="reactiveFlag" type="Boolean" default="false" />
     <aura:attribute name="reEnrollmentMessage" type="Boolean" default="false" />
     <aura:attribute name="enrollmentSuccessMessage" type="Boolean" default="false" />
-           
+
+    <aura:attribute name="reactivateMessage" type="Boolean" default="false" />       
 
     <!-- add by Maddileti for US # 335371 on 12/04/2020  -->
     <!--  added by Chinnamanaidu Neerasa -->
@@ -68,6 +70,7 @@
                     <div class="slds-backdrop slds-backdrop_open"></div>
                 </aura:if>
                 <aura:set attribute="else">
+
                     <a href="javascript:void(0)" id="reactive" class="{!v.Type == 'Reactivate' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" onclick="{!c.reactivateAction}">Reactivate</a>   
                     <a href="javascript:void(0)" id="reenroll" class="{!v.Type == 'Re-enroll' ? 'slds-button slds-button_brand slds-button_neutral' : 'slds-hide'}" onclick="{!c.reactivateAction}">Re-Enroll</a>   
                     <aura:if isTrue="{!v.hasError}">
@@ -98,6 +101,7 @@
                     </aura:if>
                 </div>
                 end by Chinnamanaidu Neerasa  for #119347 on 29-11-2019
+
             </div>
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
@@ -145,8 +149,13 @@
                     <aura:if isTrue="{!v.isError}">
                         <div><p> * For the current school year, you must request the same grade. If you would like to request a different grade, please contact support.</p></div>
                     </aura:if>
+
+                    <!-- Added by Ravi for #Us 345735 on 19/01/2021 -->
+                    <aura:if isTrue="{!v.reactivateMessage}">
+                        <div><p> *To continue enrollment for the 20-21 school year, please call support at   {!$Label.c.NES_Email_Ph}.</p></div>
+                    </aura:if>
                     <aura:if isTrue="{!v.reEnrollmentMessage}">
-                        <div><p> * The system cannot process same year re-enrollment. Please contact support at 1-800-xxx-xxxx to proceed.</p></div>
+                        <div><p> * The system cannot process same year re-enrollment. Please contact support at {!$Label.c.NES_Email_Ph} to proceed.</p></div>
                     </aura:if>
                     <aura:if isTrue="{!v.enrollmentSuccessMessage}">
                         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
@@ -165,6 +174,7 @@
                                     <aura:if isTrue="{!v.success}">
                                         <p>{!v.studentName + ' has been successfully re-enrolled.'}</p>
                                     </aura:if>
+
                                 </div>
                                 
                             </div>
@@ -190,10 +200,12 @@
                                         <p>{!v.studentName + ' has been successfully reactivated.'}</p>
                                     </aura:if>
                                 </div>
-                            </div>
-                        </section>
-                        <div class="slds-backdrop slds-backdrop_open"></div>
-                    </aura:if>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+
                 </div>
             </div>
         </section>

@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="NES_AddHHMemApexController" >
+    
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:attribute name="STExists" type="Boolean" default = "false"/>
+    <aura:attribute name="modalOpen" type="boolean" default="false"/>
+    
+   	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    
+    To add additional Caretaker or Learning Coach, please use this form to tell us about their relationship with the student(s). 
+    <br/>
+    
+ <!--  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+        <a href="javascript:void(0)" onclick="{!c.handleShowModal}">        
+        Define relationship 
+    </a>   
+    
+    <!--<lightning:button name = "chk" label ="chk" onclick="{!c.dummyCall}" /> -->
+    
+    
+</aura:component>

@@ -123,6 +123,8 @@ public without sharing class NES_BusinessLogicUtils {
 */
     public void fetchProgramEnrollments(Set<Id> progEnrollmentIds, String ellFlag) {
         
+      
+        
         for (Hed__Program_Enrollment__c progEnrollment : [
             SELECT
             Id,
@@ -940,11 +942,12 @@ progEnrollment.EntAgeEliOvrDate__c = system.today();
                 System.debug('progEnrollCurrentAsiMap+++++' + progEnrollCurrentAsiMap.get(programEnrollment.Id));
                 Annual_Student_Information__c currentASIRecord = progEnrollCurrentAsiMap.get(programEnrollment.Id);
                 
-                if (programEnrollment.Opportunities__r.size() == 0 || (progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '8' ||
+                if (programEnrollment.Opportunities__r.size() == 0 || ( progEnrollCurrentAsiMap.containsKey(programEnrollment.Id) &&
+                                                                       (progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '8' ||
                                                                        progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '7' || progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '6' ||
                                                                        progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '5' || progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '4' ||
                                                                        progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '3' || progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '2' ||
-                                                                       progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '1' || progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == 'K')) {
+                                                                        progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '1' || progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == 'K'))) {
                                                                            currentASIRecord.HS_LTS__c = null;
                                                                            asiListToUpdate.add(currentASIRecord);
                                                                            System.debug('First If');
@@ -1030,7 +1033,12 @@ System.debug('programEnrollment.Opportunities__r.get(0).CreatedDate>>>'+programE
                                                                            }
                                                                            
                                                                            if (progEnrollCurrentAsiMap.size() != 0 && PreviousAsi.size() != 0) {
-                                                                               if ((isMatch(progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c, PreviousAsi.get(programEnrollment.Start_Year__r.Start_Date__c.addYears(-1)).Grade_Level_Requested__c, true)) ||
+                                                                               if ((
+                                                                               progEnrollCurrentAsiMap.containsKey(programEnrollment.Id) &&
+                                                                               (programEnrollment.Start_Year__c != null) && 
+                                                                               (programEnrollment.Start_Year__r.Start_Date__c != null) &&
+                                                                               PreviousAsi.containsKey(programEnrollment.Start_Year__r.Start_Date__c.addYears(-1)) &&        
+                                                                               isMatch(progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c, PreviousAsi.get(programEnrollment.Start_Year__r.Start_Date__c.addYears(-1)).Grade_Level_Requested__c, true)) ||
                                                                                    (progEnrollCurrentAsiMap.get(programEnrollment.Id).Grade_Level_Requested__c == '9' && programEnrollment.First_Yr_Complete_HS_Coursework__c == 'No')) {
                                                                                        currentASIRecord.HS_LTS__c += -6;
                                                                                    }
@@ -1258,14 +1266,14 @@ system.debug('pEntoAHH: ' +pEntoAHH);//Added by Jagadeesh  */
                     
                     //Added By Guru for US# 334259
 
-                       if(annualHHInfoRecord.Total_Gross_HH_Income__c == null ||
+                    if (annualHHInfoRecord.Total_Gross_HH_Income__c == null ||
                         annualHHInfoRecord.Total_Gross_HH_Income__c == 0 ||
                         annualHHInfoRecord.Number_HH_Children__c == null ||
                          annualHHInfoRecord.Number_HH_Adults__c == null) {
 
                              annualHHInfoRecord.Federal_Poverty_Eligibility__c = 'Not enough information';
 
-                        }else if (validateHHFARMEligCalculated != null && validateHHFARMEligCalculated.contains('Qualifies') && Integer.valueof(FedEligIncFreeMlsHHSize1)>0 && Integer.valueof(FedPvrtEligIncAddlPerPrsn)>0 &&
+                         } else if (validateHHFARMEligCalculated != null && validateHHFARMEligCalculated.contains('Qualifies') && Integer.valueof(FedEligIncFreeMlsHHSize1)>0 && Integer.valueof(FedPvrtEligIncAddlPerPrsn)>0 &&
                                     (annualHHInfoRecord.Total_Gross_HH_Income__c <= (FedEligIncFreeMlsHHSize1 + (annualHHInfoRecord.Number_HH_Children__c + annualHHInfoRecord.Number_HH_Adults__c - 1) *FedPvrtEligIncAddlPerPrsn))) {
                                         /* else if (validateHHFARMEligCalculated.contains('Qualifies') &&
 (annualHHInfoRecord.Total_Gross_HH_Income__c <= (12140 + (annualHHInfoRecord.Number_HH_Children__c + annualHHInfoRecord.Number_HH_Adults__c - 1) * 4320))){*/
@@ -1319,9 +1327,9 @@ system.debug('pEntoAHH: ' +pEntoAHH);//Added by Jagadeesh  */
                 Integer numberHHAdults = ahiRecord.Number_HH_Adults__c != null ? Integer.valueOf(ahiRecord.Number_HH_Adults__c) : 0;
                 System.debug('Value::' + 15782 + ((numberHHChildren + numberHHAdults) - 1) * 5616);
                 //if (totalGrossHHIncome <= (15782 + ((numberHHChildren + numberHHAdults) - 1) * 5616)) {
-                   //returnString = 'Qualifies for free';
-              // } else if (totalGrossHHIncome <= (22459 + ((numberHHChildren + numberHHAdults) - 1) * 7992)) {
-                  //  returnString = 'Qualifies for reduced';
+                //    returnString = 'Qualifies for free';
+                //} else if (totalGrossHHIncome <= (22459 + ((numberHHChildren + numberHHAdults) - 1) * 7992)) {
+                //    returnString = 'Qualifies for reduced';
                 if(Integer.valueOf(ahiRecord.Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Free_Meals_Addl_Per_Person__c) > 0 && Integer.valueOf(ahiRecord.Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Red_Meals_Addl_Per_Person__c)> 0 ){
                     if (totalGrossHHIncome <= (ahiRecord.Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Free_Meals_HH_Size_of_1__c + ((numberHHChildren + numberHHAdults) - 1) * ahiRecord.Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Free_Meals_Addl_Per_Person__c)){  //Added by Jagadeesh - User story : 117580
                         returnString = 'Qualifies for free';
@@ -1332,9 +1340,9 @@ system.debug('pEntoAHH: ' +pEntoAHH);//Added by Jagadeesh  */
                     }
                 }
                 else {
-                returnString = 'Family Income Form Incomplete'; 
-            } 
+                returnString = 'Family Income Form Incomplete';
             }
+        }
         }
         return returnString;
     }
@@ -1515,7 +1523,7 @@ in List<NES_DashboardUtilities.StudentInformation>
                 //If yes check for the Annual House Hold Information record that match's the School year on the House Hold Income records. If the record is found update
                 //else create a new Annual House Hold Information record for that House Hold Income record.
                 System.debug('Doing the Total Gross Calculation');
-                ahiInfo.Total_Gross_HH_Income__c = 0; 
+                ahiInfo.Total_Gross_HH_Income__c = 0;
                 for (Household_Income__c incomeRec : allHouseholdIncomesForPE) {
                     if (incomeRec.School_Year__c == ahiInfo.School_Year__c) {
                         System.debug(ahiInfo.Total_Gross_HH_Income__c + getTotalGrossHHIncome(incomeRec));
@@ -2447,7 +2455,7 @@ returnString += '[Proof of Residency]-';
                 
                 if (shouldIncludeSpecialEd) {
                     returnString += '{Special Education}-';
-                } 
+                }
               
             }
             
@@ -2548,7 +2556,7 @@ logger.logException('calculateWhyFlagged', e);
             c.Platform__c = 'Pearson Connexus';
             c.Description = 'ReActivation Case';
             c.Subject = 'ReActivation Case'+ ' ' + '-' + pe.hed__Contact__r.Name;
-            c.RecordTypeId = Schema.SObjectType.case.RecordTypeInfosByName.get('Enrollment Support').RecordTypeId;// Vani- Record Type Update
+            // c.RecordTypeId = r.Id;
             c.Origin = 'Enrollment Community'; //Mohammad Shaik-Based on picklist value api name change for US : 183731
             caselist.add(c);
             

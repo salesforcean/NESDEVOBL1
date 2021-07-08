@@ -1,5 +1,5 @@
 /**
- * Created by Ashish Sharma on 11/14/18.
+ * Created by Ashish Sharma on 11/14/18.  
  * Class Name: NES_DashboardUtilities
  * Test Class Name: NES_DashboardControllerTest
  * Purpose : This class is utilities class for NES_Dashboard controller
@@ -63,11 +63,11 @@ public without sharing class NES_DashboardUtilities{
         public String gradeLevel{get;set;}
         @AuraEnabled
         public Datetime regStart{get;set;}
-        @AuraEnabled 
+        @AuraEnabled
         public Datetime regEnd{get;set;}
         @AuraEnabled
         public List<Enrollment_Component_Affiliation__c> stages{get; set;}*/
-		
+
         public StudentInformation(Id programEnrollmentId, String acadName, String schoolYear, String peStatus, String acadProgram, Id contactId, String ecaStatus, String contactName,String accountId,
                                   List<Enrollment_Component_Affiliation__c> stages, Id relatedProcessId, String grade, Datetime regBegin, Datetime regEnds){
             /*this.programEnrollmentId = programEnrollmentId;
@@ -147,7 +147,7 @@ public without sharing class NES_DashboardUtilities{
 			this.buttonLabel = buttonLabel;
             this.buttonTarget = buttonTarget;
         }
-	}
+    }
 
     /**
      * Created by Ashish Sharma on 11/14/18.
@@ -155,11 +155,11 @@ public without sharing class NES_DashboardUtilities{
     */
     public class Process{
         @AuraEnabled
-        String processName{get;set;}
+       public String processName{get;set;}
         @AuraEnabled
-        String ecaStatus{get;set;}
+       public String ecaStatus{get;set;}
         @AuraEnabled
-        List<Stage> stages{get;set;}
+       public List<Stage> stages{get;set;}
 
         public Process(String name, String ecaStatus, List<Stage> stages){
             this.processName = name;
@@ -174,16 +174,16 @@ public without sharing class NES_DashboardUtilities{
     */
     public class Stage{
         @AuraEnabled
-        String stageName{get;set;}
+        Public String stageName{get;set;}
         @AuraEnabled
-        String ecaStatus{get;set;}
+        Public String ecaStatus{get;set;}
         @AuraEnabled
-        Integer order{get;set;}
+        Public Integer order{get;set;}
 
         public Stage(String stageName, String ecaStatus, Integer order){
             this.stageName = stageName;
             this.ecaStatus = ecaStatus;
-            this.order = order;
+            this.order = order; 
         }
     }
 
@@ -193,15 +193,15 @@ public without sharing class NES_DashboardUtilities{
     */
     public class Form{
         @AuraEnabled
-        String name{get;set;}
+        Public String name{get;set;}
         @AuraEnabled
-        String ecaStatus{get;set;}
+        Public String ecaStatus{get;set;}
         @AuraEnabled
-        String componentMessage{get;set;}
+        Public String componentMessage{get;set;}
         @AuraEnabled
-        String formId {get;set;}
+        Public String formId {get;set;}
         @AuraEnabled
-        Decimal orderNumber {get;set;}
+        public Decimal orderNumber {get;set;}
 
         public Form(String name, String ecaStatus, String componentMessage, String formIdString, Decimal ordering){
             this.name = name;

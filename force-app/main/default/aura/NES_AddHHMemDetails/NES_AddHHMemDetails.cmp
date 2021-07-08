@@ -1,0 +1,356 @@
+<aura:component controller="NES_AddHHMemApexController" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" 
+                access="global">
+    
+    <lightning:navigation aura:id="navService"/>        
+    <aura:attribute name="formData" type="Object" />
+    <aura:attribute name="screen" type="Integer" default="0"/>
+    <aura:attribute name="value" type="String" default="option1" />
+    <aura:attribute name="suffixOptions" type="list" default="[]" />
+    <aura:attribute name="phoneTypeOptions" type="list" default="[]" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="existingRecordType" type="String" default="" />
+    
+    <aura:attribute name="memberRTDeveloperNameOptions" type="List" default="[
+    {'label': 'Parent or Legal guardian', 'value': 'Caretaker_Parent'},
+    {'label': 'Designated Caretaker', 'value': 'Caretaker_Designated'},
+    {'label': 'Learning Coach', 'value': 'Learning_Coach'}]"/> 
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:if isTrue="{!v.showSpinner}">
+      <lightning:spinner alternativeText="Loading" size="large" />
+    </aura:if>
+    <!-- Screen to Enter the Addl HH Member Details -->
+    <aura:if isTrue="{!v.screen == 0}">
+                <div>
+                    <lightning:layout multipleRows="true" horizontalAlign="center">
+                        <lightning:layoutItem size="12">
+                            <div class="slds-grid slds-gutters slds-wrap">
+                            <div class="slds-col slds-size_12-of-12">
+                                <div class="slds-grid slds-gutters slds-wrap">
+                                    <div class="slds-col slds-size_12-of-12">
+                            <div class="slds-page-header">
+                                <div class="slds-grid">
+                                    <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate"  title="Request Additional Caretaker / Learning Coach "><B>Request Additional Caretaker / Learning Coach</B></h1>
+                                </div>
+                            </div>
+                            <div class="slds-text-body_regular"><p>Please enter contact information of the additional household member you would like to request.</p>
+                                
+                            </div>
+                                    <lightning:layout multipleRows="true">
+                                        <lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="3">
+                                            <lightning:input type="text" 
+                                                            name="fName"
+                                                            label="First Name"
+                                                            maxlength="40"
+                                                            value="{!v.formData.fName}"
+                                                            required="true"
+                                                            onchange="{!c.handleInput}" />
+                                        </lightning:layoutItem>
+                                        
+                                        <lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="2">
+                                            <lightning:input type="text"
+                                                            name="mName"
+                                                            label="Middle"
+                                                            placeholder="(Optional)"
+                                                            maxlength="40"
+                                                            value="{!v.formData.mName}"
+                                                            required="false"
+                                                            onchange="{!c.handleInput}" />
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="3">
+                                            <lightning:input type="text"
+                                                            name="lName"
+                                                            label="Last Name"
+                                                            maxlength="40"
+                                                            value="{!v.formData.lName}"
+                                                            required="true"                                                            
+                                                            onchange="{!c.handleInput}" />
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="around-small" size="12" mediumDeviceSize="2">
+                                            <lightning:select aura:id="field" name="suffix" label="Suffix" value="{!v.formData.suffix}" required="false" onchange="{!c.handleInput}"  >
+         
+                                                <aura:iteration items="{!v.suffixOptions}" var="s" >
+                                            		<option value="{!s.value}" >{!s.label}</option>
+                                                    
+                                        </aura:iteration>
+                                            </lightning:select>
+                                        </lightning:layoutItem>
+                                        
+                                    </lightning:layout>
+                                    <lightning:layout class="slds-m-bottom_small">
+                                        <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="6">
+                                        <lightning:layoutItem size="12" padding="horizontal-small">
+                                            </lightning:layoutItem>
+                                            <lightning:input type="email"
+                                                            name="email"
+                                                            label="Email"
+                                                            maxlength="60"
+                                                            value="{!v.formData.email}"
+                                                            placeholder="email@domain.com"
+                                                            required="true"
+                                                            onchange="{!c.handleInput}" />
+                                        </lightning:layoutItem>
+                                    </lightning:layout>
+                            
+                                    <lightning:layout class="slds-m-bottom_small" multipleRows="true">
+                                        <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="2">
+                                            <lightning:select aura:id="field" name="phoneType" label="Phone" value="{!v.formData.phoneType}" required="true" onchange="{!c.handleInput}"> 
+                                                <aura:iteration items="{!v.phoneTypeOptions}" var="s">
+                                                    <option value="{!s.value}" >{!s.label}</option>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem padding="horizontal-small" size="12" mediumDeviceSize="4">
+                                            <!--lightning:input type="tel" label="" name="phoneNumber" placeholder="xxx-xxx-xxxx" value="{!v.formData.phoneNumber}" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}|[0-9]{10}"  onchange="{!c.handleInput}"/-->
+                                       <lightning:input type="tel" label="" name="phoneNumber" required="true" value="{!v.formData.phoneNumber}" placeholder="xxx-xxx-xxxx" />
+                                        </lightning:layoutItem>
+                                    </lightning:layout>
+                                <div class="slds-p-around_medium" type="list">
+                                
+                                <lightning:button aura:id = "Next" variant="brand" label="Next" onclick="{!c.navigatetoNext}"/>&nbsp;
+                                
+                                <u> <lightning:button class="slds-black" variant="base" label="Cancel" onclick="{!c.closeModal}" /></u>    
+                                </div>
+                                </div></div></div></div>
+                        </lightning:layoutItem>
+                    </lightning:layout>	
+                </div>
+    </aura:if>
+    
+    <!-- Screen to Select the Addl HH Member Type -->
+    <aura:if isTrue="{!v.screen == 1}">
+        
+        <div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12">
+                        <div class="slds-grid slds-gutters slds-wrap">
+                            <div class="slds-col slds-size_12-of-12">
+                               
+    <div class="siteforceContentArea">
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12" class="comm-layout-column header">
+    				<div class="slds-page-header">
+  						<div class="slds-grid">
+                            <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate"  title="Caretaker Authorization Decision"><b>Caretaker Authorization Decision</b></h1>
+						</div>
+    				</div>
+                    <br></br>
+    				<div class="slds-text-body_regular">This individual is currently not identified as a Caretaker. We defined a Caretaker as either:
+    					<ul class="slds-list_dotted">
+  							<li>A biological parent that appears on a birth certificate, or</li>
+  							<li>A legal guardian who appears on a legal custodial document.</li>
+  			
+						</ul>  
+    				</div>
+                    <br></br><br></br>
+    					<div class="slds-text-body_regular"> To ensure Success for your student,please review the distinctions between a Caretaker and a 
+        														Learning Coach in the chart below and designate the individual appropriately.  
+    					</div>
+    						<br>
+    						<br></br>
+    						</br>
+    							<div class="slds-text-body_regular"> After your selection is made,both you and the new Caretaker or Learning coach must complete the approptiate
+        																designation agreement forms,which will allow him or her to access connexus with the rights and privileges below.
+    							</div>
+    						<br></br><br></br>
+
+    			</lightning:layoutItem>
+        </lightning:layout>
+</div>
+                      
+<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" aria-label="vertical borders">
+  <thead>
+
+    <tr class="slds-line-height_reset style= background-color: red !important">
+      <th class="" scope="col">
+          <div class="slds-truncate" title="What educational decisions will you authorize this person to make on behalf of your students(s)? ">What educational decisions will you <p>authorize this person to make on behalf</p> of your students(s)? </div>
+      </th>
+      <th class="" scope="col">
+          <div class="slds-truncate" title="Designated Caretaker">Designated <p></p> Caretaker </div>
+      </th>
+      <th class="" scope="col">
+        <div class="slds-truncate" title="Designated Learning Coach">Designated <p></p> Learning Coach</div>
+      </th>
+	</tr>
+      
+  </thead>
+  <tbody>
+    <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+        <div class="slds-truncate" title="Enroll the student(s)in this school?">Enroll the student(s)in this school?</div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="No">No</div>
+      </td>
+     </tr>
+      <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+        <div class="slds-truncate" title="Withdraw the student(s)from this school?">Withdraw the student(s)from this school?</div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="No">No</div>
+      </td>
+     </tr>
+       <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+        <div class="slds-truncate" title="Make course seletions for the student(s)?">Make course seletions for the student(s)?</div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="No">No</div>
+      </td>
+     </tr>
+       <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+        <div class="slds-truncate" title="Sign field trip release forms?">Sign field trip release forms?</div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="No">No</div>
+      </td>
+     </tr>
+       <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+        <div class="slds-truncate" title="Responsibility for materials">Responsibility for materials</div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="No">No</div>
+      </td>
+     </tr>
+       <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+          <div class="slds-truncate" title="Communicate with the teachers,administrators,staff and support teams of the student(s)in this household via WebMail? ">Communicate with the teachers,<p>administrators,staff and support teams of the</p> student(s)in this household via WebMail? </div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="Yes, But limited to feedback or inquiries. No enrollment,Withdrawal, course change/requests,or field trip authorization is premitted.">Yes,<p> But limited to feedback or inquiries. No </p>enrollment,Withdrawal, course change/requests,<p>or field trip authorization is premitted.</p></div>
+      </td>
+     </tr>
+      <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+        <div class="slds-truncate" title="Make changes to student Planner and Scheduler">Make changes to student Planner and Scheduler</div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+     </tr>
+      <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+        <div class="slds-truncate" title="Manage,track, and mark student attendance?">Manage,track, and mark student attendance?</div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+     </tr>
+      <tr class="slds-hint-parent">
+      <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
+        <div class="slds-truncate" title="Access school bulletin boards,clubs,and activities">Access school bulletin boards,clubs,and activities</div>
+      </td>
+      <td data-label="Designated Caretaker">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+      <td data-label="Designated Learning Coach">
+        <div class="slds-truncate" title="Yes">Yes</div>
+      </td>
+     </tr>
+</tbody>
+                                </table>
+                            </div></div></div></div>                             
+    <lightning:radioGroup
+        aura:id="mygroup"
+        label="I have reviewed and understand the information above. Iam authorizing this individual as a:"
+        options="{! v.memberRTDeveloperNameOptions }"
+        value="{! v.formData.memberRTDeveloperName }"         
+        required="true" />
+       
+    <br></br><br></br>
+	<div class="slds-p-around_medium" type="list">
+                            <lightning:button aura:id = "Prev" variant="brand" label="Previous" onclick="{!c.navigatetoNext}" />&nbsp;
+                            <lightning:button aura:id = "Next1" variant="brand" label="Next" onclick="{!c.navigatetoNext}" />&nbsp;
+                            <u> <lightning:button class="slds-black" variant="base" label="Cancel" onclick="{!c.closeModal}" /></u>                            
+                        </div>
+      
+    </aura:if>  
+    
+    <!-- Screen to Show if a Contact already exists with same details -->
+    <aura:if isTrue="{!v.screen == 2}">
+    <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12" class="comm-layout-column header">
+                    <div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12">
+                        <div class="slds-grid slds-gutters slds-wrap">
+                            <div class="slds-col slds-size_12-of-12">
+                    
+                	<div class="slds-page-header">
+  						<div class="slds-grid">
+   							<h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate"  title="Exist Contact Information"><b>Exist Contact Information</b></h1>
+						</div>
+                        <br></br>
+                        <div class="slds-text-body_regular"> The contact information you have entered seems to already exist in your household.  
+    					</div><br></br>
+                        
+                        	<b>
+                                <h3>
+                                 <p>{!v.existingRecordType}</p>
+                                	<p> {!v.formData.fName+' '} {!v.formData.lName} | {!v.formData.email}</p>
+                                </h3>
+                            </b>
+                        <br></br>
+                        <div class="slds-text-body_regular"> Would you like to proceed in creating the new household member with the existing contact information?  
+    					</div>
+                          <br></br><br></br>
+                        <div class="slds-p-around_medium" type="list">
+                            <lightning:button aura:id = "Prev" variant="brand" label="Previous" onclick="{!c.navigatetoNext}" />&nbsp;
+                            <lightning:button aura:id = "Next2" variant="brand" label="Next" onclick="{!c.navigatetoNext}" />&nbsp;
+                            <u> <lightning:button class="slds-black" variant="base" label="Cancel" onclick="{!c.closeModal}" /></u>
+                            
+                        </div>
+    				</div>
+                   
+                            </div></div></div></div>
+                </lightning:layoutItem>
+        </lightning:layout>    
+        
+        </aura:if>
+    <aura:if isTrue="{!v.screen == 3}">
+        <div class="slds-page-header">
+        	<div class="slds-grid">
+            	<h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate"  title="Add Additional Catekaer/Learning Coach"><B>Add Additional Caretaker/Learning Coach</B></h1>
+            </div>
+        </div>
+        
+        <div class="slds-text-body_regular">
+            <p>
+                Your request has been submitted! <br></br>
+            	You should recieve an email from us with additional steps to follow to complete the process. <br></br>
+                <br></br>
+                <br></br>
+                <lightning:button aura:id = "OK" variant="brand" label="OK" onclick="{!c.closeModal}" />&nbsp;
+            </p>                        
+        </div>
+        
+    </aura:if>   
+            
+	
+</aura:component>

@@ -21,6 +21,7 @@ global class CS_AssignPermissionSetToCT_STDBatchJob implements Database.Batchabl
              DateTime dateTimeInterval = system.now().addDays(Integer.valueOf(recordProcessInterval.Days__c)).addHours(Integer.valueOf(recordProcessInterval.Hours__c)).addMinutes(Integer.valueOf(recordProcessInterval.Minutes__c));
              String QueryString;
             if(Test.isRunningTest()){
+
             // QueryString = 'select id,ContactId,ProfileId,Profile.Name from User where (Profile.Name =\'' + CTProfileName + '\' OR Profile.Name =\'' + STDProfileName + '\') AND LastModifiedDate >=: dateTimeInterval  LIMIT 200';
                QueryString = 'select id,ContactId,ProfileId,Profile.Name from User where (Profile.Name =\'' + CTProfileName + '\' OR Profile.Name =\'' + STDProfileName + '\') AND LastModifiedDate >= TODAY LIMIT 100';
              System.debug('QueryString-->'+QueryString);

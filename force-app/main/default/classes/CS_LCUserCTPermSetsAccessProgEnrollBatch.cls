@@ -5,6 +5,7 @@
  *               All the Program Enrollment records will be pulled that were updated on a specific time frame (Historical records processing) and based on that the related Relationships records defined for each Student and Learning Coach,
  *               will be processed to determine whether the LC Community user(s) access should be provisioned or revoked to the School CT permission-set accordingly. This batch chains the invocation of the batch job on the Relationship records 
  *               that will have to be processed subsequently.
+
  * CHANGE-LOG:
  * ==========
  * By Rakesh 2020-06-24: 
@@ -27,6 +28,7 @@ global class CS_LCUserCTPermSetsAccessProgEnrollBatch implements Database.Batcha
         Id recordTypeIdSTD = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_STUDENTS).getRecordTypeId();
         Records_Processing_Intervals__mdt recordProcessInterval = [SELECT Id, Days__c, Hours__c, Minutes__c FROM Records_Processing_Intervals__mdt WHERE DeveloperName = :CS_Constants.LC_KBA_ACCESS_PROGENROLL_RECS_PROCESS];
         DateTime dateTimeInterval = system.now().addDays(Integer.valueOf(recordProcessInterval.Days__c)).addHours(Integer.valueOf(recordProcessInterval.Hours__c)).addMinutes(Integer.valueOf(recordProcessInterval.Minutes__c));       
+
         String batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Account__c, Status__c, Concatenated_Status__c, School_Account_ID__c, School_Name__c FROM hed__Program_Enrollment__c WHERE (Status__c = \''+CS_Constants.PE_WITHDRAWN_STATUS+'\' OR Status__c = \''+CS_Constants.PE_COMPLETE_STATUS+'\' OR Concatenated_Status__c = \''+CS_Constants.PE_COMPLETE_IN_PROGRESS_STATUS+'\') AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND LastModifiedDate >= :dateTimeInterval';
         return Database.getQueryLocator(batchQueryStr);
     }
@@ -39,6 +41,7 @@ global class CS_LCUserCTPermSetsAccessProgEnrollBatch implements Database.Batcha
         }
         
         // Calling the Batch-Apex handler class to process the revoking and provisioning of the CT permission-sets in relation to the Schools that the Learning Coach comes under.
+
         if((studentRecsIdSet != null) && !studentRecsIdSet.isEmpty()){
             CS_LCUserAccessToSchoolCTKBAsHandler handlerObj = new CS_LCUserAccessToSchoolCTKBAsHandler();
             permissionSetsRemovalMap.putAll(handlerObj.LCUserSchoolCTPermSetsAccessProgEnroll(studentRecsIdSet));

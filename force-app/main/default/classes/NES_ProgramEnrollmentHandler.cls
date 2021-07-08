@@ -20,7 +20,12 @@ public class NES_ProgramEnrollmentHandler {
     public static Boolean runCBL = true;
     public static Boolean runPlacement = true;
     static Boolean isFirstTime = true;//added
-   
+    public static Boolean isReenrollment = false; // added by maddileti
+
+
+
+
+
 
     public static void handleBeforeInsert(List<hed__Program_Enrollment__c> newList,List<hed__Program_Enrollment__c> actList) {
         //Mark Membrino 11/5/2019  Per 114797, we are changing the way the age elig overview works and making it a formula.  We no
@@ -256,15 +261,21 @@ public class NES_ProgramEnrollmentHandler {
         /********* End Placement Updates *************/
 		/****Moved over to line number 143 ****/
        NES_Constants.runAssignment = origAssignment;
-       NES_ECACompletion.shouldRunCompletion = origCompletion;
-       
+        NES_ECACompletion.shouldRunCompletion = origCompletion;
+                        
+
        //MM 11/18/2020 Removed for only running for when origRunAssignment is true because in the new ECA model, we always need it to run.         
      //   if (origRunAssignment) {  
             //As part of the ECA reWrite, we need to know which ECA process to use and what type of PE is being updated.
             Map<Id, hed__Program_Enrollment__c> PEMap = new Map<Id, hed__Program_Enrollment__c> ();
-            for (hed__Program_Enrollment__c pe:[select id, hed__Account__r.Use_Updated_ECA_Process__c, recordtype.name from hed__Program_Enrollment__c where id in :allPEIds]) {
+
+        	List<hed__Program_Enrollment__c> PEList = GenericSOQLQueries.programEnrollmentDetails(allPEIds);
+        	for (hed__Program_Enrollment__c pe:PEList) {
                 PEMap.put(pe.Id, pe);
             }
+            /*for (hed__Program_Enrollment__c pe:[select id, hed__Account__r.Use_Updated_ECA_Process__c, recordtype.name from hed__Program_Enrollment__c where id in :allPEIds]) {
+                PEMap.put(pe.Id, pe);
+            }*/
             
             Map<String, Schema.SObjectField> mapFields = Schema.SObjectType.hed__Program_Enrollment__c.fields.getMap();
             Map<Id, List<String>> changedFieldsMap = new Map<Id, List<String>>();
@@ -281,7 +292,8 @@ public class NES_ProgramEnrollmentHandler {
                     try {
                         if (newPERec.get(str) != oldPE.get(str)) {
                             System.debug('changed field: ' + str);
-                            if (thisPEWithDetail.hed__Account__r.Use_Updated_ECA_Process__c) {  //New ECA method.
+
+                            if ((thisPEWithDetail != null) && (thisPEWithDetail.hed__Account__c != null) && thisPEWithDetail.hed__Account__r.Use_Updated_ECA_Process__c) {  //New ECA method.
                                 EvaluationUtils.fieldUpdate newFieldUpdate = new EvaluationUtils.fieldUpdate ();
                                 newFieldUpdate.programEnrollmentId = newPERec.Id;
                                 newFieldUpdate.objectAndFieldName = 'hed__Program_Enrollment__c.' + str;
@@ -291,7 +303,12 @@ public class NES_ProgramEnrollmentHandler {
                                 newFieldUpdate.newValue = newPERec.get(str);
                                 fieldUpdateList.add(newFieldUpdate);
                              } else
+
+                             {//JB/SM:Included defensive coding-374966
+                                 if ((thisPEWithDetail != null) && (thisPEWithDetail.hed__Account__c != null) && !(thisPEWithDetail.hed__Account__r.Use_Updated_ECA_Process__c))
+
                                 changedFields.add(str);
+                        }
                         }
                     } catch (Exception e) {System.debug('Error: ' + e); logger.logException('handleAfterUpdate', e);logger.saveLogs();
                     }
@@ -310,6 +327,7 @@ public class NES_ProgramEnrollmentHandler {
                 NES_ECACompletion.programEnrollmentCompletion(changedFieldsMap, 'hed__Program_Enrollment__c');
                 
             }
+                
 
             if (fieldUpdateList.size() > 0)  //Must be at least one PE in the NEW ECA model that has a changed field so call the new ECA stuff.
                 EvaluationUtils.evaluateChangedFields  (fieldUpdateList);
@@ -329,7 +347,9 @@ public class NES_ProgramEnrollmentHandler {
                 ecaList = [SELECT Id, Name, Order__c, Enrollment_Component__r.Name, Enrollment_Component__r.RecordType.Name, 
                 Enrollment_Component__r.Order__c, Status__c, Program_Enrollment__r.waitlistflag__c, Program_Enrollment__r.Stage__c
                 FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c IN :newMap.values() 
-                AND Program_Enrollment__r.waitlistflag__c = 'Active' AND Enrollment_Component__r.RecordType.Name = 'Stage'];
+
+                AND ((Program_Enrollment__r.waitlistflag__c = 'Active') OR (Program_Enrollment__r.waitlistflag__c = 'Released') OR (Program_Enrollment__r.waitlistflag__c = '')) AND Enrollment_Component__r.RecordType.Name = 'Stage'];
+
                 System.debug('ecaList.size() = '+ecaList.size());
                 List<Enrollment_Component_Affiliation__c> ecaUpdateList = new List<Enrollment_Component_Affiliation__c>();
                 Double waitlistOrder = 0;
@@ -360,6 +380,19 @@ public class NES_ProgramEnrollmentHandler {
                                 eca.Status__c = 'In Progress';
                                 ecaUpdateList.add(eca);
                             }
+
+                            // Code below else-if ladder logic for addressing Bug #. 280977
+							else if(
+                                ((eca.Program_Enrollment__r.waitlistflag__c == 'Released') || 
+                                (eca.Program_Enrollment__r.waitlistflag__c == '')) &&
+                                (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && 
+                                (eca.Order__c >= waitlistOrder) &&
+                                (eca.Program_Enrollment__r.Stage__c == 'Waitlist')
+                               ) {
+                                   eca.Status__c = 'Not Applicable';
+                                   ecaUpdateList.add(eca);
+                            }
+
                         }
                         update ecaUpdateList;
                     }

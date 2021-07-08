@@ -42,8 +42,13 @@
     schoolYearSelect: function(component, event, helper)
     {
         var schoolYear = component.find("Year").get("v.value");
+        console.log('schoolYear=='+schoolYear);
         if(schoolYear!=null && schoolYear!=''){
             helper.getGradeLevels(component, event, helper);
+        } else{
+            component.set("v.noYears", true);
+            component.set("v.grades", "");
+            component.find("grade").set("v.value","");
         }
     },
      closeModal: function (component,event,helper)

@@ -2,14 +2,24 @@
     // called from 'handleEnroll' method
     handleEnroll: function(component, event, helper)
     {
+        var schoolYear = component.find("Year").get("v.value");
+        console.log('schoolYear='+schoolYear);
+        var x = component.get("v.schoolYear");
+        console.log('x=='+x);
+        
+        
+        
         var action = component.get("c.otherSchoolEnrollment"); // calling 'otherSchoolEnrollment' method
         // setting parameters for the calling method
         action.setParams({
             studentId:component.get("v.selectedStudentId"),
             instituteNam:component.get("v.School"),
-            schoolYear:component.find("Year").get("v.value"),
+            //schoolYear:component.find("Year").get("v.value"),
+            schoolYear:component.get("v.schoolYear"),
+            
             gradeLevels:component.get("v.grade"),
-            callType:'application',
+           // callType:'application',   
+            callType:'Household',
             enrollFlag:true,
         });
         action.setCallback(this, function(response){
@@ -71,7 +81,7 @@
         $A.get('e.force:refreshView').fire();
     },
     // called from 'doInit' method
-	getSchoolsToAttend : function(component, event, helper,selectedStudentId) {
+    getSchoolsToAttend : function(component, event, helper,selectedStudentId) {
         var action = component.get("c.getSchoolsToAttend"); // calling 'getSchoolsToAttend' method
         // setting parameters for the calling method
         action.setParams({
@@ -100,11 +110,11 @@
             }
         })
         $A.enqueueAction(action);
-	},
+    },
     // called from 'schoolSelect' method
-    	getSchoolYears : function(component, event, helper,selectedSchool) {
+    getSchoolYears : function(component, event, helper,selectedSchool) {
         var action = component.get("c.getSchoolYears");
-            
+        
         action.setParams({
             instituteName:selectedSchool,  
         });
@@ -112,11 +122,21 @@
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
+                /*
+                var blankVal = {"Id":"","Name":"-- -Select school year- --"};
+                returnedResponse.unshift(blankVal);
+                console.log('returnedResponse====='+JSON.stringify(returnedResponse));
+                */
                 if(response.getReturnValue().length > 0){
                     component.set("v.schoolYears", returnedResponse);
-                    component.find("Year").set("v.value",returnedResponse[0].Name);
+                    //component.find("Year").set("v.value",returnedResponse[returnedResponse.length-1].Name);
+                    //component.find("Year").set("v.value",returnedResponse[0].Name);
+                    
                     component.set("v.noSchools", false);
-                    helper.getGradeLevels(component, event, helper);
+                    
+                    var schoolYear = component.find("Year").get("v.value");
+                    console.log('schoolYear00000=='+schoolYear);
+                    //helper.getGradeLevels(component, event, helper);
                 } else{
                     component.find('notifLib').showToast({
                         "variant": "warning",
@@ -131,12 +151,12 @@
             }
         })
         $A.enqueueAction(action);
-	},
+        },
     // called from 'schoolYearSelect' method
-    	getGradeLevels : function(component, event, helper,selectedSchool) {
+    getGradeLevels : function(component, event, helper,selectedSchool) {
         var action = component.get("c.getGradeLevels");
-            var instituteName= component.get("v.School");
-            var selectedYr= component.find("Year").get("v.value");
+        var instituteName= component.get("v.School");
+        var selectedYr= component.find("Year").get("v.value");
         action.setParams({
             instituteName:instituteName,
             selectedYr:selectedYr, 
@@ -145,48 +165,55 @@
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                if(response.getReturnValue().length > 0){returnedResponse.forEach(grade => {
-                        if(grade.hasOwnProperty('Name')){
+                if(response.getReturnValue().length > 0)
+                {
+                    /*
+                    returnedResponse.forEach(grade => {
+                    if(grade.hasOwnProperty('Name')){
+                    
+                    var studentGradeLevel = null;
+                    switch(grade.Name){
+                    case 'K':
+                    grade.index = '0';
+                    studentGradeLevel = 'Kindergarten';
+                    break;
+                    case '1':
+                    grade.index = grade.Name;
+                    studentGradeLevel = '1st Grade';
+                    break;
+                    case '2':
+                    grade.index = grade.Name;
+                    studentGradeLevel = '2nd Grade';
+                    break;
+                    case '3':
+                    grade.index = grade.Name;
+                    studentGradeLevel = '3rd Grade';
+                    break;
+                    default:
+                    grade.index = grade.Name;
+                    studentGradeLevel = grade.Name + 'th Grade';
+                    break;
                         
-                        var studentGradeLevel = null;
-                        switch(grade.Name){
-                        case 'K':
-                        grade.index = '0';
-                        studentGradeLevel = 'Kindergarten';
-                        break;
-                        case '1':
-                        grade.index = grade.Name;
-                        studentGradeLevel = '1st Grade';
-                        break;
-                        case '2':
-                        grade.index = grade.Name;
-                        studentGradeLevel = '2nd Grade';
-                        break;
-                        case '3':
-                        grade.index = grade.Name;
-                        studentGradeLevel = '3rd Grade';
-                        break;
-                        default:
-                        grade.index = grade.Name;
-                        studentGradeLevel = grade.Name + 'th Grade';
-                        break;
+                   }
+                    grade.Name = studentGradeLevel;
+                                             
                     }
-                                             grade.Name = studentGradeLevel;
-                                             }
-                                             });
+                    });
                     
                     returnedResponse.sort(function(a, b) {
-                        return a.index - b.index;
-                    });
+                                                             return a.index - b.index;
+                                                         });
+                                                         */
                     component.set("v.noYears", false);
                     component.set("v.grades", returnedResponse);
+                     
                 } else{
-                    component.find('notifLib').showToast({
-                        "variant": "warning",
-                        "title": "Warning!",
-                        "message": "There are no grades available for slected school and year."
-                    });
-                }
+                         component.find('notifLib').showToast({
+                                                                "variant": "warning",
+                                                                "title": "Warning!",
+                                                                "message": "There are no grades available for slected school and year."
+                                                            });
+                      }
                 
             } else {
                 var error = response.getError();
@@ -194,6 +221,6 @@
             }
         })
         $A.enqueueAction(action);
-	}
+    }
     
 })

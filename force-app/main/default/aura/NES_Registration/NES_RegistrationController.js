@@ -14,7 +14,7 @@
     {
         helper.isUsernameAvailable(component, event, helper);
     },
-    togglePassword: function(component, event, helper) { 
+    togglePassword: function(component, event, helper) {
         var showPassword = component.get("v.showPassword");
         component.set("v.showPassword", !showPassword);
     },
@@ -41,7 +41,7 @@
             };
         }
         component.set("v.formData", formData);
-       helper.processInput(component, event, helper);
+        helper.processInput(component, event, helper);
     },
     nextStep: function(component, event, helper)
     {
@@ -73,10 +73,4 @@
     navigate: function(component, event, helper){
         helper.goToURL(component, 'dashboard');
     }
-   
-    
-    
-    
-    
-    
 });

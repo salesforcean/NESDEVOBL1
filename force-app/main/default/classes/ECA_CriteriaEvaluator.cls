@@ -47,7 +47,12 @@ public class ECA_CriteriaEvaluator {
                 dirtyECAtoECsMap.put(eca.Id, eca.Enrollment_Component__c);
             }        
         }
-        
+        //Get ProgramEnrollment statuses
+        //Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>([Select Id, Enrollment_Type__c from hed__Program_Enrollment__c where id IN:dirtyPEIds]);
+        // added by maddileti
+        Set<id> allPEIds = new Set<id>(dirtyPEIds);
+	    List<hed__Program_Enrollment__c> PEList = GenericSOQLQueries.programEnrollmentDetails(new Set<id>(dirtyPEIds));
+        Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>(PEList);
         if (dirtyECAs.size()==0)
             return;
         
@@ -73,7 +78,8 @@ public class ECA_CriteriaEvaluator {
 
         for (Enrollment_Component_Affiliation__c eca : dirtyECAs) 
         {        
-
+			system.debug('ECA form Id here*******'+eca.Id);
+            
             ec = dirtyECs.get(eca.Enrollment_Component__c);
             eccCriteria = mapECtoECCriteria.get(ec.Id);
 
@@ -93,6 +99,7 @@ public class ECA_CriteriaEvaluator {
             String incompleteChildrenStatus = null;
             Boolean completionLogic = false;
             // check if ECA qualifies for Completion logic run
+            
             if (!COMPLETION_LOGIC_BLACK_LIST_TXT.containsIgnoreCase(eca.EC_Record_Type__c) && ECA_HierarchyStatusUpdate.isECAPartOfCurrentStage(eca))
             {   
                 completionLogic = (ec.Completion_Logic__c==null?true:evaluate(ec.Completion_Logic__c, expressionData));
@@ -101,19 +108,33 @@ public class ECA_CriteriaEvaluator {
             }
             
             String newStatus;
-           
-            if (COMPLETION_LOGIC_BLACK_LIST_TXT.containsIgnoreCase(eca.EC_Record_Type__c) && (eca.Status__c == 'Complete' || eca.Status__c == 'Deferred')) {
-                processedECAs.put(eca.Id, eca); // do nothing if Section/Document is Complete/Doc-deferred, process its parents.
-            }
-            else if ((newStatus = getNewECAStatus(eca.Status__c, assignmentLogic, completionLogic)) !=null) {
-                eca.Status__c = newStatus;
+            system.debug('Id*******'+eca.Id);
+           system.debug('eca.Status__c*******'+eca.Status__c);
+            system.debug('assignmentLogic*******'+assignmentLogic);
+            //ADDED TESTING
+            
+           if((mapPEWithEnrollmentType.containskey(eca.Program_Enrollment__c) && mapPEWithEnrollmentType.get(eca.Program_Enrollment__c).Enrollment_Type__c == 'Returning Student' && assignmentLogic == false  && eca.Status__c == 'Complete')){
+               eca.Status__c = 'Not Applicable';
                 processedECAs.put(eca.Id, eca);
-            } 
-            else if (incompleteChildrenStatus!=null && incompleteChildrenStatus.equalsIgnoreCase('In Progress')) 
-            {
-                eca.Status__c = 'In Progress';
-                processedECAs.put(eca.Id, eca);
-            }
+           }else{
+               if (COMPLETION_LOGIC_BLACK_LIST_TXT.containsIgnoreCase(eca.EC_Record_Type__c) && (eca.Status__c == 'Complete' || eca.Status__c == 'Deferred'))             
+                {
+                    
+                    processedECAs.put(eca.Id, eca); // do nothing if Section/Document is Complete/Doc-deferred, process its parents.
+                }
+                else if ((newStatus = getNewECAStatus(eca.Status__c, assignmentLogic, completionLogic)) !=null) {
+                    
+                    eca.Status__c = newStatus;
+                    processedECAs.put(eca.Id, eca);
+                } 
+                else if (incompleteChildrenStatus!=null && incompleteChildrenStatus.equalsIgnoreCase('In Progress')) 
+                {
+                    eca.Status__c = 'In Progress';
+                    processedECAs.put(eca.Id, eca);
+                }
+           }
+       	   
+            
             eca.is_Dirty__c = false;
         }
     }
@@ -375,6 +396,11 @@ public class ECA_CriteriaEvaluator {
     {
         for (ECA_Evaluation_Setting__mdt rec : mapECAStatusDecision.values()) 
         {
+            system.debug('rec.Status__c.containsIgnoreCase(ecaStatus)*******'+rec.Status__c.containsIgnoreCase(ecaStatus));
+            system.debug('assignmentLogic*******'+assignmentLogic);
+            system.debug('completionLogic*******'+completionLogic);
+            system.debug('rec.AssignmentLogic__c*******'+rec.AssignmentLogic__c);
+            system.debug('rec.CompletionLogic__c*******'+rec.CompletionLogic__c);           
             if (
                 rec.Status__c.containsIgnoreCase(ecaStatus) && 
                 assignmentLogic == rec.AssignmentLogic__c && 

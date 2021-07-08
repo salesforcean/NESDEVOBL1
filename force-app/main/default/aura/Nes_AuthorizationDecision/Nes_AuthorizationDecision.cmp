@@ -1,0 +1,122 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" access="global">
+    <aura:attribute name="formData" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+
+    <!--aura:import library="lightningcomponentdemo:mockdataFaker" property="mockdataLibrary"/-->
+<div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12">
+                        <div class="slds-grid slds-gutters slds-wrap">
+                            <div class="slds-col slds-size_12-of-12">
+    <div class="siteforceContentArea">
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12" class="comm-layout-column header">
+    				<div class="slds-page-header">
+  						<div class="slds-grid">
+   							<h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate"  title="Caretaker Authorization Decision">Caretaker Authorization Decision</h1>
+						</div>
+    				</div>
+    				<div class="slds-text-body_regular">This individual is currently not identified as a Caretaker. We defined a Caretaker as either:
+    					<ul>
+  							<li>A biological parent that appears on a birth certificate, or</li>
+  							<li>A legal guardian who appearson a legal custodial document.</li>
+  			
+						</ul>  
+    				</div>
+    					<div class="slds-text-body_regular"> To ensure Success for your student,please review the distinctions between a Caretaker and a 
+        														Learning Coach in the chart below and designate the <Br></Br>individual appropriately.  
+    					</div>
+    						<br>
+    						<br></br>
+    						</br>
+    							<div class="slds-text-body_regular"> After your selection is made,both you and the new Caretaker or Learning coach must complete the approptiate
+        																designation agreement forms,which<br></br> will allow him or her to access connexus with the rights and privileges below.
+    							</div>
+    						<br></br><br></br>
+<!--div class="slds-text-body_regular">I have reviewed and understand the information above. Iam authorizing this individual as a:
+   </div-->
+    			</lightning:layoutItem>
+    		</lightning:layout>
+</div>
+<TABLE>
+   <thead>
+   <TR>
+      <TD>What educational decisions will you authorize this person to make on behalf of your students(s)?  </TD>
+      <TD>Designated Caretaker</TD>
+       <TD>Designated Learning Coach </TD>
+   </TR>
+   </thead>
+   <tbody>    
+   <TR>
+      <TD>Enroll the student(s)in this school?</TD>
+       <TD>Yes</TD>
+      <TD>No</TD>
+   </TR>
+   <TR>
+      <TD> Withdraw the student(s)from this school?</TD>
+       <TD>Yes</TD>
+      <TD>No</TD>
+   </TR>
+    <TR>
+      <TD>Make course seletions for the student(s)?</TD>
+       <TD>Yes</TD>
+      <TD>No</TD>
+   </TR>
+    <TR>
+      <TD>Sign field trip release forms?</TD>
+       <TD>Yes</TD>
+      <TD>No</TD>
+   </TR>
+    <TR>
+      <TD>Responsibility for materials</TD>
+       <TD>Yes</TD>
+      <TD>No</TD>
+   </TR>
+    <TR>
+      <TD>Responsibility for making state testing arrangements?</TD>
+       <TD>Yes</TD>
+      <TD>No</TD>
+   </TR>
+    <TR>
+      <TD>Communicate with the teachers,administrators,staff and support teams of the student(s)in this household via WebMail? </TD>
+       <TD>Yes</TD>
+        <TD>Yes,<br></br> but limited to feedback or inquiries. No enrollment,Withdrawal, course change/requests,or field trip authorization is premitted. </TD>
+   </TR>
+    <TR>
+      <TD>Make changes to student Planner and Scheduler</TD>
+       <TD>Yes </TD>
+      <TD>Yes</TD>
+   </TR>
+    <TR>
+      <TD>Manage,track, and mark student attendance? </TD>
+       <TD>Yes</TD>
+      <TD>Yes</TD>
+   </TR>
+    <TR>
+      <TD>Access school bulletin boards,clubs,and activities</TD>
+       <TD>Yes</TD>
+      <TD>Yes</TD>
+   </TR>
+   </tbody>    
+    
+</TABLE>
+                            </div></div></div></div>                             
+    
+        <lightning:radioGroup name="I have reviewed and understand the information above. Iam authorizing this individual as a:"
+                          label="I have reviewed and understand the information above. Iam authorizing this individual as a:"
+                               
+                          type="radio"/>
+    <aura:attribute name="options" type="List" default="[
+    {'label': 'Parent or Legal guardian', 'value': 'option1'},
+    {'label': 'Designated Caretaker', 'value': 'option2'},
+    {'label': 'Learning Coach', 'value': 'option3'}]"/>
+    <br></br><br></br>
+	<div class="slds-p-around_medium" type="list">
+                            <lightning:button variant="brand" label="Previous" onclick="{!c.NavigatetoC5}" />&nbsp;
+                            <lightning:button variant="brand" label="Next" onclick="{!c.NavigatetoC3}" />&nbsp;
+                            <lightning:button variant="base" label="Cancel" />
+                            
+                        </div>
+                          
+</aura:component>

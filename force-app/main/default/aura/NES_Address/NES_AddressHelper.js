@@ -181,6 +181,7 @@
         }
         component.set("v.isManualAddress",true);
         component.set("v.questions", questions);
+        
     },
 
     isOriginalAPIAddress : function(component, event, helper) {
@@ -281,7 +282,11 @@
             return !formItems.get('v.validity').valueMissing
         } else if(formItems === undefined){
             if(allValid === false){
-                console.log('Unable to Submit Form. Please enter an Address');   
+                console.log('Unable to Submit Form. Please enter an Address'); 
+                //START -- Added by Shravani for #135333
+                var searchCmp = component.find('searchField');
+                searchCmp.showHelpMessageIfInvalid();
+                //END -- Added by Shravani for #135333
                 //inputCmp.set("v.errors", [{message:"Unable to Submit Form. Please enter an Address"}]);         
             }            
         }      

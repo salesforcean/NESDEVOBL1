@@ -27,6 +27,9 @@ public with sharing class NES_EnrollmentReactivationTest {
         
         Account account = Peak_TestUtils.createTestAccount();
         School_Year__c currentSchoolYear = Peak_TestUtils.createSchoolYears('2018-2019', Date.parse('11/17/2018'));
+        School_Year__c sy = [SELECT Id,Current_Year__c FROM School_Year__c  LIMIT 1];      
+        sy.Current_Year__c=true;
+        update sy;
         School_Year__c previousSchoolYear = Peak_TestUtils.createSchoolYears('2017-2018', Date.parse('11/17/2017'));
         
         
@@ -135,7 +138,10 @@ public with sharing class NES_EnrollmentReactivationTest {
     
     static testMethod void studReenrollment_Positive() {
         
-        hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c, Status__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];
+        hed__Program_Enrollment__c progEnrollment = [SELECT Id,WithdrawalCategory__c, Start_Year__r.Current_Year__c,hed__Account__r.ParentId, Name, hed__Contact__r.Name,hed__Account__r.Registration_Start_Date__c, hed__Account__r.OwnerId,
+             hed__Account__r.Registration_End_Date__c, hed__Account__r.Confirmation_End_Date__c,hed__Contact__r.AccountId, 
+             AcademicPerformanceEligibility__c, RecordTypeId, RecordType.Name, Status__c, Household_Program_Enrollment__c,
+             (SELECT Id,StageName FROM Opportunities__r) FROM hed__Program_Enrollment__c  LIMIT 1];
         progEnrollment.Status__c = NES_EnrollmentReactivationBase.PE_WITHDRAWAL_STATUS;
         update progEnrollment;
         List<Enrollment_Component__c> lstECs = new List<Enrollment_Component__c>();
@@ -163,9 +169,8 @@ public with sharing class NES_EnrollmentReactivationTest {
         Test.startTest();
         Peak_Response response = NES_EnrollmentReactivationHandler.reactivateStudent(progEnrollment.Id, REACTIVATION_FULL);
         Test.stopTest();
-        System.assertEquals(true,response.success);
-        
-        
+        System.assertEquals(true,response.success); 
+        //System.assertEquals('Re-enrollment Success: Student was successfully Re-enrolled.',response.messages[0]);
     }
     
     
@@ -281,8 +286,34 @@ public with sharing class NES_EnrollmentReactivationTest {
         hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c, Status__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];      
         Test.startTest();
         Peak_Response response = NES_EnrollmentReactivationHandler.reactivateStudent(progEnrollment.Id, STUDENT_RE_ENROLLMENT);
-        NES_StudentReactivation obj = new NES_StudentReactivation(progEnrollment.Id, NES_EnrollmentReactivationBase.Reactivation.RE_ENROLLMENT);
+        
+        try {
+            NES_StudentReactivation obj = new NES_StudentReactivation(progEnrollment.Id, NES_EnrollmentReactivationBase.Reactivation.RE_ENROLLMENT);
         obj.processECAs(STUDENT_RE_ENROLLMENT);
+        }catch(exception e) {
+            System.assertEquals(e.getMessage(),'This Program Enrollment is not eligible; Start Year is Current Year:false, Expected: true');
+        }
         Test.stopTest();
-    }    
+    }  
+    
+    static testMethod void studEnrollmentReactivationSoft_Positive3() {
+        
+        hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c, Status__c,WithdrawalCategory__c,Start_Year__r.Current_Year__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];      
+        School_Year__c sy = [SELECT Id,Current_Year__c FROM School_Year__c where id=:progEnrollment.Start_Year__c LIMIT 1];      
+        sy.Current_Year__c=true;
+        update sy;
+        progEnrollment.Status__c='Inactive';
+        progEnrollment.WithdrawalCategory__c='No Show OR Not Returning';
+        update progEnrollment;
+        Test.startTest();
+        //Peak_Response response = NES_EnrollmentReactivationHandler.reactivateStudent(progEnrollment.Id, STUDENT_RE_ENROLLMENT);
+        
+        try {
+            NES_StudentReactivation obj = new NES_StudentReactivation(progEnrollment.Id, NES_EnrollmentReactivationBase.Reactivation.RE_ENROLLMENT);
+        }catch(exception e) {
+            System.assertEquals('Program Enrollment is eligible only for Full ReActivation',e.getMessage());
+        }
+        Test.stopTest();
+    }
+    
 }

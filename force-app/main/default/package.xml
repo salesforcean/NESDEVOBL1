@@ -26,6 +26,36 @@
     </types>
     <types>
         <members>*</members>
+        <members>Account</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <members>Contact</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <members>Opportunity</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <members>Lead</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <members>Case</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <members>User</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>

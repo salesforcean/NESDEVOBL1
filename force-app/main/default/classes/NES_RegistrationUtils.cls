@@ -157,7 +157,7 @@ public without sharing class NES_RegistrationUtils {
 			newContact.OtherPhone = phone;
 
 		newContact.HasOptedOutOfSMS__c = smsOptOut;
-
+        
         if (recordTypeId != null && recordTypeId != '') {
             newContact.RecordTypeId = recordTypeId;
         }

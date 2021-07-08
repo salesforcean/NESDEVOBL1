@@ -438,5 +438,167 @@ Private class NES_OpportunityTriggerTest {
         System.assertNotEquals(enrollment1.Enrollment_Date__c, progEnrollment2.HouseholdEnrollmentDate__c);
 
     }
+	
+    Static testMethod void houseHoldEnrollmentDateTestCase3() {
+        Test.StartTest();
+        User portuser = [Select Id,ContactId FROM USER Where Username = 'portalUser@gmail.com'];
+        Account account = Peak_TestUtils.createTestAccount();
+        Contact Student1 = Peak_TestUtils.createContact('Stud1', account.Id, 'Students', True);
+        Contact Student2 = Peak_TestUtils.createContact('Stud2', account.Id, 'Students', True);
+        List<hed__Relationship__c> relationList = new List<hed__Relationship__c>();
+        hed__Relationship__c relationship1 = Peak_TestUtils.createRelationship(portuser.contactId, Student1.Id, false);
+        relationship1.hed__Contact__c = portuser.ContactId;
+        Insert relationship1;
+        hed__Relationship__c relationship2 = Peak_TestUtils.createRelationship(portuser.contactId, Student2.Id, false);
+        relationship2.hed__Contact__c = portuser.ContactId;
+        Insert relationship2;
+        NES_LogicFeatureSwitch__c logicSwitch = new NES_LogicFeatureSwitch__c(Name = 'Household Enrollment Date', Active__c = true);
+        insert logicSwitch ;
+        // Create A record for NES_LogicFeatureSwitch__c with  Household Enrollment Date value
+        Boolean eVal = NES_LogicFeatureSwitch__c.getValues('Household Enrollment Date').Active__c;
+        hed__Program_Enrollment__c ProgramEnrollment = [select Id,HouseholdEnrollmentDate__c,hed__Contact__c FROM hed__Program_Enrollment__c LIMIT 1];
+        ProgramEnrollment.hed__Contact__c = Student1.Id;
+        ProgramEnrollment.HouseholdEnrollmentDate__c = System.today();
+        update ProgramEnrollment;
+        School_Year__c schlYear = [select Id FROM School_Year__c LIMIT 1];
+        hed__Program_Enrollment__c progEnrollmentUpdated = [select Id,Enrollment_Type__c,HouseholdEnrollmentDate__c,hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :ProgramEnrollment.Id];
+        Enrollment__c enrollmentTest = Peak_TestUtils.createEnrollmentRecord(progEnrollmentUpdated.Id, schlYear.Id, false);
+        // Negative Testing for Date greater than Program Enrollment Date
+        enrollmentTest.Enrollment_Date__c = Date.newInstance(2019, 9, 15);
+        Insert enrollmentTest;
+        Enrollment__c enrollment1 = [select Id,Enrollment_Date__c FROM Enrollment__c WHERE Id = :enrollmentTest.Id];
 
+        Opportunity oppTest1 = [Select Id,StageName,Program_Enrollment__r.Enrollment_Type__c,Program_Enrollment__c FROM Opportunity WHERE StageName <> 'Closed won' LIMIT 1];
+        oppTest1.Program_Enrollment__c = progEnrollmentUpdated.Id;
+        oppTest1.Caretaker_Id__c = portuser.ContactId;
+        update oppTest1;
+        // update Stage to closed won
+        Opportunity opp1 = [select Id,StageName,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c From Opportunity Where Id = :oppTest1.Id];
+        opp1.StageName = 'Closed Won';
+        update opp1;
+        Test.StopTest();
+        hed__Program_Enrollment__c progEnrollment2 = [select Id,HouseholdEnrollmentDate__c,(Select Id, Enrollment_Type__c from enrollments__r),hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :progEnrollmentUpdated.Id];
+        // HouseholdEnrollmentDate__c of program enrollment shouldnot get updated with Enrollment Date
+        System.assertNotEquals(enrollment1.Enrollment_Date__c, progEnrollment2.HouseholdEnrollmentDate__c);
+        hed__Program_Enrollment__c progEnrollment3 = [select Id,HouseholdEnrollmentDate__c,(Select Id, Enrollment_Type__c from enrollments__r),hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :opp1.Program_Enrollment__c];       
+    }
+     Static testMethod void InitialEnrollmentTestCase4() {
+        Test.StartTest();
+        User portuser = [Select Id,ContactId FROM USER Where Username = 'portalUser@gmail.com'];
+        Account account = Peak_TestUtils.createTestAccount();
+        Contact Student1 = Peak_TestUtils.createContact('Stud1', account.Id, 'Students', True);
+        Contact Student2 = Peak_TestUtils.createContact('Stud2', account.Id, 'Students', True);
+        List<hed__Relationship__c> relationList = new List<hed__Relationship__c>();
+        hed__Relationship__c relationship1 = Peak_TestUtils.createRelationship(portuser.contactId, Student1.Id, false);
+        relationship1.hed__Contact__c = portuser.ContactId;
+        Insert relationship1;
+        hed__Relationship__c relationship2 = Peak_TestUtils.createRelationship(portuser.contactId, Student2.Id, false);
+        relationship2.hed__Contact__c = portuser.ContactId;
+        Insert relationship2;
+        NES_LogicFeatureSwitch__c logicSwitch = new NES_LogicFeatureSwitch__c(Name = 'Household Enrollment Date', Active__c = true);
+        insert logicSwitch ;
+        // Create A record for NES_LogicFeatureSwitch__c with  Household Enrollment Date value
+        Boolean eVal = NES_LogicFeatureSwitch__c.getValues('Household Enrollment Date').Active__c;
+        hed__Program_Enrollment__c ProgramEnrollment = [select Id,HouseholdEnrollmentDate__c,hed__Contact__c FROM hed__Program_Enrollment__c LIMIT 1];
+        ProgramEnrollment.hed__Contact__c = Student1.Id;
+        ProgramEnrollment.HouseholdEnrollmentDate__c = System.today();
+        update ProgramEnrollment;
+        School_Year__c schlYear = [select Id FROM School_Year__c LIMIT 1];
+        hed__Program_Enrollment__c progEnrollmentUpdated = [select Id,Enrollment_Type__c,HouseholdEnrollmentDate__c,hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :ProgramEnrollment.Id];              
+
+        Opportunity oppTest1 = [Select Id,StageName,Program_Enrollment__r.Enrollment_Type__c,Program_Enrollment__c FROM Opportunity WHERE StageName <> 'Closed won' LIMIT 1];
+        oppTest1.Program_Enrollment__c = progEnrollmentUpdated.Id;
+        oppTest1.Caretaker_Id__c = portuser.ContactId;
+        update oppTest1;
+        // update Stage to closed won
+        Opportunity opp1 = [select Id,StageName,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c From Opportunity Where Id = :oppTest1.Id];
+        opp1.StageName = 'Closed Won';
+         opp1.SFDC_Informed__c = 'Test';         
+        update opp1;
+        Test.StopTest();
+        hed__Program_Enrollment__c progEnrollment2 = [select Id,HouseholdEnrollmentDate__c,(Select Id, Enrollment_Type__c from enrollments__r),hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :progEnrollmentUpdated.Id];
+        // HouseholdEnrollmentDate__c of program enrollment shouldnot get updated with Enrollment Date      
+        hed__Program_Enrollment__c progEnrollment3 = [select Id,Enrollment_Type__c,HouseholdEnrollmentDate__c,(Select Id, Enrollment_Type__c from enrollments__r),hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :opp1.Program_Enrollment__c];
+        System.assertEquals(opp1.Program_Enrollment__r.Enrollment_Type__c, progEnrollment3.enrollments__r[0].Enrollment_Type__c);
+    }
+     Static testMethod void reenrollingStudentTestCase5() {
+        Test.StartTest();
+        User portuser = [Select Id,ContactId FROM USER Where Username = 'portalUser@gmail.com'];
+        Account account = Peak_TestUtils.createTestAccount();
+        Contact Student1 = Peak_TestUtils.createContact('Stud1', account.Id, 'Students', True);
+        Contact Student2 = Peak_TestUtils.createContact('Stud2', account.Id, 'Students', True);
+        List<hed__Relationship__c> relationList = new List<hed__Relationship__c>();
+        hed__Relationship__c relationship1 = Peak_TestUtils.createRelationship(portuser.contactId, Student1.Id, false);
+        relationship1.hed__Contact__c = portuser.ContactId;
+        Insert relationship1;
+        hed__Relationship__c relationship2 = Peak_TestUtils.createRelationship(portuser.contactId, Student2.Id, false);
+        relationship2.hed__Contact__c = portuser.ContactId;
+        Insert relationship2;
+        NES_LogicFeatureSwitch__c logicSwitch = new NES_LogicFeatureSwitch__c(Name = 'Household Enrollment Date', Active__c = true);
+        insert logicSwitch ;
+        // Create A record for NES_LogicFeatureSwitch__c with  Household Enrollment Date value
+        Boolean eVal = NES_LogicFeatureSwitch__c.getValues('Household Enrollment Date').Active__c;
+        hed__Program_Enrollment__c ProgramEnrollment = [select Id,HouseholdEnrollmentDate__c,hed__Contact__c FROM hed__Program_Enrollment__c LIMIT 1];
+        ProgramEnrollment.hed__Contact__c = Student1.Id;
+        ProgramEnrollment.Enrollment_Type__c = 'Re-Enrolling Student';
+        ProgramEnrollment.HouseholdEnrollmentDate__c = System.today();
+        update ProgramEnrollment;
+        School_Year__c schlYear = [select Id FROM School_Year__c LIMIT 1];
+        hed__Program_Enrollment__c progEnrollmentUpdated = [select Id,Enrollment_Type__c,HouseholdEnrollmentDate__c,hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :ProgramEnrollment.Id];              
+
+        Opportunity oppTest1 = [Select Id,StageName,Program_Enrollment__r.Enrollment_Type__c,Program_Enrollment__c FROM Opportunity WHERE StageName <> 'Closed won' LIMIT 1];
+        oppTest1.Program_Enrollment__c = progEnrollmentUpdated.Id;
+        oppTest1.Caretaker_Id__c = portuser.ContactId;
+        update oppTest1;
+        // update Stage to closed won
+        Opportunity opp1 = [select Id,StageName,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c From Opportunity Where Id = :oppTest1.Id];
+        opp1.StageName = 'Closed Won';
+         opp1.SFDC_Informed__c = 'Test';         
+        update opp1;
+        Test.StopTest();
+        hed__Program_Enrollment__c progEnrollment2 = [select Id,HouseholdEnrollmentDate__c,(Select Id, Enrollment_Type__c from enrollments__r),hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :progEnrollmentUpdated.Id];
+        // HouseholdEnrollmentDate__c of program enrollment shouldnot get updated with Enrollment Date      
+        hed__Program_Enrollment__c progEnrollment3 = [select Id,Enrollment_Type__c,HouseholdEnrollmentDate__c,(Select Id, Enrollment_Type__c from enrollments__r),hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :opp1.Program_Enrollment__c];
+        System.assertEquals(opp1.Program_Enrollment__r.Enrollment_Type__c, progEnrollment3.enrollments__r[0].Enrollment_Type__c);
+    }
+    Static testMethod void returningStudentTestCase6() {
+        Test.StartTest();
+        User portuser = [Select Id,ContactId FROM USER Where Username = 'portalUser@gmail.com'];
+        Account account = Peak_TestUtils.createTestAccount();
+        Contact Student1 = Peak_TestUtils.createContact('Stud1', account.Id, 'Students', True);
+        Contact Student2 = Peak_TestUtils.createContact('Stud2', account.Id, 'Students', True);
+        List<hed__Relationship__c> relationList = new List<hed__Relationship__c>();
+        hed__Relationship__c relationship1 = Peak_TestUtils.createRelationship(portuser.contactId, Student1.Id, false);
+        relationship1.hed__Contact__c = portuser.ContactId;
+        Insert relationship1;
+        hed__Relationship__c relationship2 = Peak_TestUtils.createRelationship(portuser.contactId, Student2.Id, false);
+        relationship2.hed__Contact__c = portuser.ContactId;
+        Insert relationship2;
+        NES_LogicFeatureSwitch__c logicSwitch = new NES_LogicFeatureSwitch__c(Name = 'Household Enrollment Date', Active__c = true);
+        insert logicSwitch ;
+        // Create A record for NES_LogicFeatureSwitch__c with  Household Enrollment Date value
+        Boolean eVal = NES_LogicFeatureSwitch__c.getValues('Household Enrollment Date').Active__c;
+        hed__Program_Enrollment__c ProgramEnrollment = [select Id,HouseholdEnrollmentDate__c,hed__Contact__c FROM hed__Program_Enrollment__c LIMIT 1];
+        ProgramEnrollment.hed__Contact__c = Student1.Id;
+        ProgramEnrollment.Enrollment_Type__c = 'Returning Student';
+        ProgramEnrollment.HouseholdEnrollmentDate__c = System.today();
+        update ProgramEnrollment;
+        School_Year__c schlYear = [select Id FROM School_Year__c LIMIT 1];
+        hed__Program_Enrollment__c progEnrollmentUpdated = [select Id,Enrollment_Type__c,HouseholdEnrollmentDate__c,hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :ProgramEnrollment.Id];              
+
+        Opportunity oppTest1 = [Select Id,StageName,Program_Enrollment__r.Enrollment_Type__c,Program_Enrollment__c FROM Opportunity WHERE StageName <> 'Closed won' LIMIT 1];
+        oppTest1.Program_Enrollment__c = progEnrollmentUpdated.Id;
+        oppTest1.Caretaker_Id__c = portuser.ContactId;
+        update oppTest1;
+        // update Stage to closed won
+        Opportunity opp1 = [select Id,StageName,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c From Opportunity Where Id = :oppTest1.Id];
+        opp1.StageName = 'Closed Won';
+         opp1.SFDC_Informed__c = 'Test';         
+        update opp1;
+        Test.StopTest();
+        hed__Program_Enrollment__c progEnrollment2 = [select Id,HouseholdEnrollmentDate__c,(Select Id, Enrollment_Type__c from enrollments__r),hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :progEnrollmentUpdated.Id];
+        // HouseholdEnrollmentDate__c of program enrollment shouldnot get updated with Enrollment Date      
+        hed__Program_Enrollment__c progEnrollment3 = [select Id,Enrollment_Type__c,HouseholdEnrollmentDate__c,(Select Id, Enrollment_Type__c from enrollments__r),hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :opp1.Program_Enrollment__c];
+        System.assertEquals(opp1.Program_Enrollment__r.Enrollment_Type__c, progEnrollment3.enrollments__r[0].Enrollment_Type__c);
+    }
 }

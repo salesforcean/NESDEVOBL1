@@ -6,7 +6,7 @@
             CS_AssignPermissionSetToCT_STDBatchJob,
             CS_AssignPermissionSetToCT_STDHandler & 
 
-            CS_CTSTD_USERS_KM_BatchSchedule
+            CS_CTSTD_USERS_KM_BatchSchedule 
 
 * Change Log: 
 */
@@ -27,19 +27,23 @@ private class CS_AssignPermissionSetToCT_STDBatchTest {
         User usr = factoryObj.createNewUser('BAdmn11'+orgId+'@pearson.com', usrRole.Id, 'bAdmin', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', UserInfo.getProfileId(),'LastName','BAdmn11'+orgId+'@pearson.com');
         insert usr;  
+
         System.debug('Print user Id::'+usr.Id);   
         System.runAs(usr)
         {
             Account HHAcc = factoryObj.createNewAccount('HouseHoldAcc',recordTypeIdHH,null,null,null) ; // Household
             insert HHAcc;
+
             Account TNCASchool = factoryObj.createNewAccount('TNCA',recordTypeIdEI,null,null,null);   //Educational Instituation
             insert TNCASchool;
             Account ACASchool = factoryObj.createNewAccount('Arizona Connections Academy',recordTypeIdEI,null,null,null);
             insert ACASchool;
+
             Account TNCAAcademicProgram = factoryObj.createNewAccount('TNCA 2019-2020',recordTypeIdAP,TNCASchool.id,system.today(),null);
             insert TNCAAcademicProgram;
             Account ACAAcademicProgram = factoryObj.createNewAccount('ACA 2019-2020',recordTypeIdAP,ACASchool.id,system.today(),null);
             insert ACAAcademicProgram;
+
             Id recordTypeIdCT = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_CARETAKER).getRecordTypeId();
             Contact CTcon = factoryObj.createNewContact('CTContact',recordTypeIdCT,HHAcc.Id,null); 
             insert CTcon;
@@ -66,6 +70,7 @@ private class CS_AssignPermissionSetToCT_STDBatchTest {
             insert usrList; 
 
             system.debug('Student User:'+STDUsr);
+
             stdContList.get(0).Caretaker_Id__c = CTCon.id;
             stdContList.get(0).Commuity_User__c = STDUsr.id;
             update stdContList.get(0);

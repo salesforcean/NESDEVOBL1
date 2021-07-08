@@ -14,7 +14,8 @@ public without sharing class NES_OpportunityBusinessLogic {
     */
     public static void updateOpportunityConfirmationDate(Map<Id, opportunity>oldMap, List<opportunity>newList) {
         for (Opportunity opportunityRecord : newList) {
-            if (opportunityRecord.StageName == 'Closed Won') {
+            // Lavanya Fix fro Ticket 380682
+            if ((opportunityRecord.StageName == 'Closed Won') && (oldMap.get(opportunityRecord.Id).StageName != 'Closed Won')){
                 opportunityRecord.Confirmation_Date__c = Date.today();
             }
         }
@@ -108,7 +109,7 @@ public without sharing class NES_OpportunityBusinessLogic {
 
         //Iterating on updated opportunity record.
         for (Opportunity opportunityRecord : [
-                SELECT Id,StageName, Program_Enrollment__c,PreferredStartDate__c,Semester_Indicator__c,Program_Enrollment__r.hed__Account__r.PushToSecondSemester__c,
+                SELECT Id,StageName, Program_Enrollment__c,PreferredStartDate__c,Semester_Indicator__c,Program_Enrollment__r.Enrollment_Type__c,Program_Enrollment__r.hed__Account__r.PushToSecondSemester__c,
                         Program_Enrollment__r.hed__Account__r.FirstDaySecondSemester__c,Program_Enrollment__r.hed__Account__r.FirstDayforStudents__c,
                         Program_Enrollment__r.Start_Year__c
                 FROM Opportunity
@@ -171,7 +172,8 @@ public without sharing class NES_OpportunityBusinessLogic {
             //But if enrollment record with populated enrollment date for program enrollment is present then do nothing.
             if (progEnrollMap.get(opportunityRecord.Program_Enrollment__c).size() == 0) {
                 System.debug('Insert of the enrollment Record');
-                Enrollment__c enrollmentRecord = new Enrollment__c(Program_Enrollment__c = opportunityRecord.Program_Enrollment__c, School_Year__c = opportunityRecord.Program_Enrollment__r.Start_Year__c);
+                //Added Enrollment_Type__c population for enrrollment record by Jagadish Babu as part of ITR events US
+                Enrollment__c enrollmentRecord = new Enrollment__c(Program_Enrollment__c = opportunityRecord.Program_Enrollment__c,Enrollment_Type__c= opportunityRecord.Program_Enrollment__r.Enrollment_Type__c, School_Year__c = opportunityRecord.Program_Enrollment__r.Start_Year__c);
                 //Checking for program enrollment associated account FirstDayforStudents__c field greater than opportunity PreferredStartDate__c field & populating Enrollment_Date__c field on basis of whichever is greater.
                 if (opportunityRecord.Program_Enrollment__c <> null && opportunityRecord.Program_Enrollment__r.hed__Account__c <> null && opportunityRecord.Program_Enrollment__r.hed__Account__r.FirstDayforStudents__c > opportunityRecord.PreferredStartDate__c) {
                     //Checking between program enrollment associated account FirstDayforStudents__c & earliestStartDate , populating Enrollment_Date__c with whichever is greater.
@@ -219,7 +221,19 @@ public without sharing class NES_OpportunityBusinessLogic {
         //Upserting the list of new & updated enrollment record.
         System.debug('enrollmentRecordList' + enrollmentRecordList);
         try {
-            upsert enrollmentRecordList;
+            integer i=0;
+                do{
+                    try{
+                       i++;
+                       upsert enrollmentRecordList;                
+                       break;//Breaking the loop as the DML executed and no exceptions
+                }
+                    catch(Exception e){
+                        logger.logException('Retrying a timed out insert', e);
+                        logger.saveLogs();                        
+                    }
+                }while(i<10);
+            //upsert enrollmentRecordList;
         } catch(Exception e) {
             logger.logException('populateEnrollmentDate_Update', e);
             logger.saveLogs();

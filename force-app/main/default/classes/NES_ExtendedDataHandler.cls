@@ -45,6 +45,43 @@ public with sharing class NES_ExtendedDataHandler {
         }
         NES_ECACompletion.relatedCompletion(changedFieldsMap, 'Extended_Data__c', peToObjectMap, fieldUpdateList);
     }
+    
+    // Fix for Defect 410602
+    // Popluate School Year on Extended Data Record if blank from PE Start Year.    
+    public static void updateSchoolYear(list <Extended_Data__c> newRecList){
+        
+        List <String> peIdList = new List <String> ();
+        Map <Id, Extended_Data__c> peToExDtRecMap = new Map <Id, Extended_Data__c> ();
+        Map <Id, Id> peIdToSchYrMap = new Map <Id, Id> ();
+        List <Extended_Data__c> updRecList = new List <Extended_Data__c> ();
+        
+        // Get the Extended Data record Info and prepare the diff maps.
+        for(Extended_Data__c edRec: newRecList){
+            if(edRec.School_Year__c == null){
+                if(String.isNotBlank(edRec.Program_Enrollment__c)){
+                	peIdList.add(edRec.Program_Enrollment__c);
+                	peToExDtRecMap.put(edRec.Program_Enrollment__c, edRec);
+                	updRecList.add(edRec);
+                }
+            }            
+        }
+        
+        // Get the PE Id to PE School Year Map
+        List <hed__Program_Enrollment__c> peList = [Select Id, Start_Year__c from hed__Program_Enrollment__c where Id in : peIdList];
+        for(hed__Program_Enrollment__c pe : peList){
+            if(String.isNotBlank(pe.Start_Year__c)){
+                peIdToSchYrMap.put(pe.Id, pe.Start_Year__c);
+            }
+        }
+        
+        // Start updating the required Extended Data records
+        for( Extended_Data__c edRec : updRecList){
+            if(peIdToSchYrMap.containsKey(edRec.Program_Enrollment__c)){
+            	edRec.School_Year__c = peIdToSchYrMap.get(edRec.Program_Enrollment__c);
+        	}
+        }
+        
+    }
 
     public static void runCompletion(Map<Id, Extended_Data__c> newMap) {
 

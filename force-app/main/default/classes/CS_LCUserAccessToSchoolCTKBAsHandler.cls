@@ -6,6 +6,8 @@
                 1. Batch Job on Program Enrollment - CS_LCUserCTPermSetsAccessProgEnrollBatch.cls
                 2. Batch Job on Relationship -   CS_LCUserCTPermSetsAccessRelnshipBatch.cls   
 
+
+
 * ChangeLog: 
 Sumanth B: 11-May-2020: Included the Program Enrollment Trigger changes as part of Task # 177185 in US # 176990, 
                Added the below 2 methods
@@ -20,6 +22,8 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
 
     // This method is invoked from the Program Enrollment Batch processing job context.
     // This method is invoked from the batch class named - CS_LCUserCTPermSetsAccessProgEnrollBatch.cls
+
+
     public map<String, list<PermissionSetAssignment>> LCUserSchoolCTPermSetsAccessProgEnroll(set<Id> studentRecsIdSet){
         map<String, list<PermissionSetAssignment>> permissionSetsRemovalMap = new map<String, list<PermissionSetAssignment>>();
         map<String, set<Id>> schoolIdAndLCRecIdGivesActiveStudentIdSetMap = new map<String, set<Id>>();
@@ -44,6 +48,8 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
         // We are querying the most recently updated Program Enrollments for a given student across schools.
         // We are processing both the "Withdrawn" and "Complete" Program Enrollments of students to determine which takes precedence in providing access
         // to the LC Community users in association with "Former" or "Current" Relationships that are defined between a Learning Coach and Students.
+
+
          for(hed__Program_Enrollment__c programEnrollObj : [SELECT Id, Name, Concatenated_Status__c, School_Name__c, School_Account_ID__c, hed__Account__c, 
                                                             hed__Contact__c, Status__c, hed__Contact__r.Name,Contact_RecordType__c,
                                                             Enrollment_Type__c,hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id,Old_Status__c
@@ -70,12 +76,15 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
 
            if(!schoolIdSchoolNameMap.containsKey(programEnrollObj.School_Account_ID__c)){
                 schoolIdSchoolNameMap.put(programEnrollObj.School_Account_ID__c, programEnrollObj.School_Name__c);
+
                 System.debug('Printing stdIdschoolIdNameMap with School as key'+schoolIdSchoolNameMap);
            }
                    
            programEnrollsList.add(programEnrollObj);
            
            // Added by Sumanth B to assign/revoke Permissionsets for CT & STD as part of merging the PE trigger code to the Batch
+
+
            if((programEnrollObj.Status__c != null) && (programEnrollObj.Status__c == CS_Constants.PE_COMPLETE_STATUS) && (programEnrollObj.Contact_RecordType__c == 'Students'))
            {
                 if(programEnrollObj.hed__Contact__c <> null && programEnrollObj.School_Name__c <> null)
@@ -83,8 +92,10 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                     stdIdsWithCmpStatus.add(programEnrollObj.hed__Contact__c);
                     schools4CmpStds.add(programEnrollObj.School_Name__c);
                 }
-           }                      
+           }
            else
+
+
            if(                
                     (
                         ( 	
@@ -118,6 +129,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
             // Identifying Relationship records mapping for a given Student and associated Learning Coach
             if(!studentIdAndLCRecIdWithRelationshipsMap.containsKey(String.valueOf(relationRecObj.hed__Contact__c)+'-'+String.valueOf(relationRecObj.hed__RelatedContact__c))){
                 studentIdAndLCRecIdWithRelationshipsMap.put(String.valueOf(relationRecObj.hed__Contact__c)+'-'+String.valueOf(relationRecObj.hed__RelatedContact__c), relationRecObj);
+
                System.debug('Printing studentIdAndLCRecIdWithRelationshipsMap with student as key'+studentIdAndLCRecIdWithRelationshipsMap); 
             }
             
@@ -126,14 +138,15 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                 set<Id> relatedLCRecsIdSet = new set<Id>();
                 relatedLCRecsIdSet.add(relationRecObj.hed__RelatedContact__c);
                 studentIdWithSetOfLCRecIdSetMap.put(relationRecObj.hed__Contact__c, relatedLCRecsIdSet);
-                 
+
             }
             else{
                 set<Id> relatedLCRecsIdSet = studentIdWithSetOfLCRecIdSetMap.get(relationRecObj.hed__Contact__c);
                 relatedLCRecsIdSet.add(relationRecObj.hed__RelatedContact__c);
                 studentIdWithSetOfLCRecIdSetMap.put(relationRecObj.hed__Contact__c, relatedLCRecsIdSet);
-                
+
             }            
+
             System.debug('student with Learning coaches with student as key'+studentIdWithSetOfLCRecIdSetMap);
         }
         
@@ -144,13 +157,14 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
               list<hed__Relationship__c> relationsTempList = new list<hed__Relationship__c>();
               relationsTempList.add(relationRecObj);
               schoolIdAndLCRecIdWithRelationshipsMap.put(String.valueOf(stdIdSchoolIdMap.get(relationRecObj.hed__Contact__c))+'-'+String.valueOf(relationRecObj.hed__RelatedContact__c), relationsTempList);
-              
+
             }
             else{
               list<hed__Relationship__c> relationsTempList = schoolIdAndLCRecIdWithRelationshipsMap.get(String.valueOf(stdIdSchoolIdMap.get(relationRecObj.hed__Contact__c))+'-'+String.valueOf(relationRecObj.hed__RelatedContact__c));
               relationsTempList.add(relationRecObj);
               schoolIdAndLCRecIdWithRelationshipsMap.put(String.valueOf(stdIdSchoolIdMap.get(relationRecObj.hed__Contact__c))+'-'+String.valueOf(relationRecObj.hed__RelatedContact__c), relationsTempList);
             }
+
             System.debug('Identify Learning coach and other Relationshiprecords--->'+schoolIdAndLCRecIdWithRelationshipsMap);
         }                       
         
@@ -172,6 +186,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                     studRecIdWithLCRecIdSet.add(String.valueOf(programEnrollObj.School_Account_ID__c)+'-'+String.valueOf(LCRecId));
                                     schoolIdWithSchoolIdAndLCRecIdMap.put(programEnrollObj.School_Account_ID__c, studRecIdWithLCRecIdSet);
                               } 
+
                             System.debug('Identify Learning coach and other Relationshiprecords--->'+schoolIdWithSchoolIdAndLCRecIdMap);
                              if(!schoolIdAndLCRecIdWithStudsMostRecentPEMapMap.containsKey(String.valueOf(stdIdSchoolIdMap.get(studentRecId))+'-'+String.valueOf(LCRecId))){
                                 map<Id, hed__Program_Enrollment__c> studIdAndProgramEnrollTempMap = new map<Id, hed__Program_Enrollment__c>();
@@ -252,6 +267,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                 // To help determine when access should be provisioned to a Learning Coach Community User to the CT Permission Sets defined for each School in the system.               
                 list<hed__Relationship__c> relationshipRecsList = schoolIdAndLCRecIdWithRelationshipsMap.get(schoolRecIdAndLCRedId);                                
                 map<Id, hed__Program_Enrollment__c> programEnrollMap = schoolIdAndLCRecIdWithStudsMostRecentPEMapMap.get(schoolRecIdAndLCRedId);                
+
                 list<hed__Program_Enrollment__c> programEnrollsTempList = new list<hed__Program_Enrollment__c>();
                 if((programEnrollMap != null) && !programEnrollMap.isEmpty()){
                     programEnrollsTempList =  programEnrollMap.values();      
@@ -283,6 +299,8 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                    break;
                                 }
                              if(
+
+
                                 (
                                     (programEnrollTempObj.Status__c != null) && programEnrollTempObj.Status__c.equals(CS_Constants.PE_COMPLETE_STATUS) && (relationTempObj.hed__Status__c != null) && relationTempObj.hed__Status__c.equals(CS_Constants.RELATIONSHIP_FORMER_STATUS)) ||
                                     (
@@ -336,6 +354,8 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
       permSetAssignTempList = associatePermSetsToLCUsers(CS_Constants.LCUserCTPermSetsProvideAccessWrapperMap);
     }
     
+
+
     list<PermissionSetAssignment> permSetAssignDeleteList = new list<PermissionSetAssignment>();
     // Processing the access removal wrapper map collection to identify those LC Community Users who should not be given the permission-sets access.
     if((CS_Constants.LCUserCTPermSetsRemoveAccessWrapperMap != null) && !CS_Constants.LCUserCTPermSetsRemoveAccessWrapperMap.isEmpty()){
@@ -356,11 +376,15 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
         if(stdIdsWithWDStatus.size() > 0)
             CT_StdRemovePermSets(stdIdsWithWDStatus,stdCTIdAndUsrIds4WDMap,schools4WDStds,WDStdIdAndSchoolMap);    
         
+
+
         return permissionSetsRemovalMap;
   }        
   
     // This method is invoked from the Relationship batch-job processing context.
     // Relationship Batch Class Name - CS_LCUserCTPermSetsAccessRelnshipBatch.cls
+
+
     public map<String, list<PermissionSetAssignment>> processRelationshipRecsForCTPermSetsAccess(map<Id, set<Id>> studentIdWithSetOfLCRecIdSetMap, map<String, hed__Relationship__c> studentIdAndLCRecIdWithRelationshipsMap){
         map<String, list<PermissionSetAssignment>> permissionSetsRemovalMap = new map<String, list<PermissionSetAssignment>>();
         map<String, map<Id, hed__Program_Enrollment__c>> schoolIdAndLCRecIdWithStudsMostRecentPEMapMap = new map<String, map<Id, hed__Program_Enrollment__c>>();
@@ -372,6 +396,8 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
         list<hed__Program_Enrollment__c> programEnrollsList = new list<hed__Program_Enrollment__c>();
 
         for(hed__Program_Enrollment__c programEnrollObj : [SELECT Id, Name, School_Name__c, School_Account_ID__c, hed__Account__c, 
+
+
                                                                          hed__Contact__c, Status__c, hed__Contact__r.Name, Concatenated_Status__c
                                           FROM hed__Program_Enrollment__c 
                                           WHERE hed__Contact__c IN :studentIdWithSetOfLCRecIdSetMap.keySet()                                       
@@ -389,7 +415,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                             )
                                                 ORDER BY LastModifiedDate DESC]
             ){
-                                                               
+                      
           if(!stdIdSchoolIdMap.containsKey(programEnrollObj.hed__Contact__c)){
             stdIdSchoolIdMap.put(programEnrollObj.hed__Contact__c, programEnrollObj.School_Account_ID__c);
           }
@@ -507,6 +533,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                 String LCRecId = schoolRecIdAndLCRedIdArray.get(1);                             
                 list<hed__Relationship__c> relationshipRecsList = schoolIdAndLCRecIdWithRelationshipsMap.get(schoolRecIdAndLCRedId);
                 map<Id, hed__Program_Enrollment__c> programEnrollMap = schoolIdAndLCRecIdWithStudsMostRecentPEMapMap.get(schoolRecIdAndLCRedId);
+
                 list<hed__Program_Enrollment__c> programEnrollsTempList = new list<hed__Program_Enrollment__c>();
                 if((programEnrollMap != null) && !programEnrollMap.isEmpty()){
                	  programEnrollsTempList = programEnrollMap.values();
@@ -535,7 +562,9 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                    }
                                    break;
                                 }
-                             if(
+                               if(
+
+
                                 (
                                     (programEnrollTempObj.Status__c != null) && programEnrollTempObj.Status__c.equals(CS_Constants.PE_COMPLETE_STATUS) && (relationTempObj.hed__Status__c != null) && relationTempObj.hed__Status__c.equals(CS_Constants.RELATIONSHIP_FORMER_STATUS)) ||
                                     (
@@ -561,7 +590,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                     )
                                 )
                              {
-                                 if(schoolIdAndLCRecIdGivesActiveStudentIdSetMap.containsKey(String.valueOf(programEnrollTempObj.School_Account_ID__c)+'-'+String.valueOf(relationTempObj.hed__RelatedContact__c))){
+                  if(schoolIdAndLCRecIdGivesActiveStudentIdSetMap.containsKey(String.valueOf(programEnrollTempObj.School_Account_ID__c)+'-'+String.valueOf(relationTempObj.hed__RelatedContact__c))){
                                          set<Id> activeStudentsIdSet = schoolIdAndLCRecIdGivesActiveStudentIdSetMap.get(String.valueOf(programEnrollTempObj.School_Account_ID__c)+'-'+String.valueOf(relationTempObj.hed__RelatedContact__c));
                                          if(activeStudentsIdSet.isEmpty() || !activeStudentsIdSet.contains(programEnrollTempObj.hed__Contact__c)){
                                             if(!CS_Constants.LCUserCTPermSetsProvideAccessWrapperMap.containsKey(String.valueOf(programEnrollTempObj.School_Account_ID__c)+'-'+String.valueOf(relationTempObj.hed__RelatedContact__c))){
@@ -577,16 +606,20 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                       }                    
                   }
               }
-           }
+          }
         }
       }           
                 
     list<PermissionSetAssignment> permSetAssignTempList = new list<PermissionSetAssignment>();
+    
+
     // Provisioning of Permission-Sets related to KBAs to Learning Coaches is handled here during the Relationships Batch Logic execution.
     if((CS_Constants.LCUserCTPermSetsProvideAccessWrapperMap != null) && !CS_Constants.LCUserCTPermSetsProvideAccessWrapperMap.isEmpty()){
       permSetAssignTempList = associatePermSetsToLCUsers(CS_Constants.LCUserCTPermSetsProvideAccessWrapperMap);
     }
     
+
+
     list<PermissionSetAssignment> permSetAssignDeleteList = new list<PermissionSetAssignment>();
     // Revoking of Permission-Sets related to KBAs to Learning Coaches is handled here during the Relationships Batch Logic execution.
     if((CS_Constants.LCUserCTPermSetsRemoveAccessWrapperMap != null) && !CS_Constants.LCUserCTPermSetsRemoveAccessWrapperMap.isEmpty()){
@@ -595,7 +628,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
     }
 
     return permissionSetsRemovalMap;
-}
+    }
   
   // This method is responsible for the provisioning of permission-sets to the users (Learning Coach).
   public list<PermissionSetAssignment> associatePermSetsToLCUsers(map<String, CS_LCUserCTPermSetsAccessWrapper> LCUserCTPermSetsProvideAccessWrapperMap){
@@ -606,6 +639,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
     map<String, Id> pSetNameIdMap = new Map<String, Id>();
     map<Id,Id> LCContactIdLCUsrIdMap = new map<Id,Id>();
     set<Id> LCRecIdsSet = new set<Id>();
+
     system.debug('LCUserCTPermSetsProvideAccessWrapperMap-->'+LCUserCTPermSetsProvideAccessWrapperMap);
       
     // preparing the association between students and the schools that they represent.
@@ -641,6 +675,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
         {
             LCContactIdLCUsrIdMap.put(usr.ContactId,usr.Id);
         }
+
     system.debug('LCContactIdLCUsrIdMap-->'+LCContactIdLCUsrIdMap);
     list<PermissionSetAssignment> permSetAssignList = new list<PermissionSetAssignment>();
     list<PermissionSetAssignment> permSetAssignTempList = new list<PermissionSetAssignment>();
@@ -696,6 +731,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                 permSetAssignFinalList.add(permSetAssignObj);
             }            
         }
+
     system.debug('permSetAssignFinalList-->'+permSetAssignFinalList);     
     if((permSetAssignFinalList != null) && !permSetAssignFinalList.isEmpty()){
       database.insert(permSetAssignFinalList, false);
@@ -705,10 +741,12 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
   }
   
   // This method is responsible for the revoking of the permission sets where necessary from the users. (Learning Coaches).
+
+
   public list<PermissionSetAssignment> revokePermSetsToLCUsers(map<String, CS_LCUserCTPermSetsAccessWrapper> LCUserCTPermSetsRemoveAccessWrapperMap, list<PermissionSetAssignment> permSetAssignTempList){
   
     map<Id, Id> studIdSchoolIdTempMap = new map<Id, Id>();
-    map<Id, String> studIdSchoolNameTempMap = new map<Id, String>();
+        map<Id, String> studIdSchoolNameTempMap = new map<Id, String>();
     map<String,String> schoolNameCTPermSetMap = new map<String,String>();
     map<String, Id> pSetNameIdMap = new Map<String, Id>();
     map<Id,Id> LCContactIdLCUsrIdMap = new map<Id,Id>();    
@@ -794,6 +832,8 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
       }
     }
     
+
+
     list<PermissionSetAssignment> permsSetAssignDeleteList = new list<PermissionSetAssignment>();
     // Only those permission-sets that were not recently inserted through permission-set assignment on the user will be getting purged.           
     if((finalPermSetsAssignDeleteMap != null) && !finalPermSetsAssignDeleteMap.isEmpty()){
@@ -929,7 +969,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
         Map<String,List<Id>> mapCTSchoolAll = new Map<String,List<Id>>();
         Set<id> OthrStds = new Set<Id>();
         Map<id,String> othrStd_Status = new Map<Id,String>();
-    
+        System.debug('Printing the keyset before query:::'+StdCTIdAndCTUsrIdMap.keyset());
         for(hed__Program_Enrollment__c pe: [select hed__Contact__c,hed__Contact__r.Caretaker_Id__c,
                                             School_Name__c,status__c from hed__Program_Enrollment__c where 
                                             hed__Contact__r.Caretaker_Id__c in: StdCTIdAndCTUsrIdMap.keyset()]){

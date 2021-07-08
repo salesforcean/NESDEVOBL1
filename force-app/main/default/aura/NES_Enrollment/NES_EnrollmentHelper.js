@@ -215,6 +215,7 @@
             var state = response.getState();
             if(state === "SUCCESS") {
                 var returnedResponse = response.getReturnValue();
+                console.log("Returned Response" , returnedResponse);
 
                 var inProgressFound = false;
                 var activeFormId = "";
@@ -223,6 +224,7 @@
             	var activeFormStatus = "";
                 returnedResponse.sort(function(a, b){return a.orderNumber - b.orderNumber});
                 returnedResponse.forEach(function(form, index){
+                    console.log("FORM ECA STATUS" , form.ecaStatus);
                     if((form.ecaStatus == 'In Progress' || form.ecaStatus == 'Not Started') && !inProgressFound) {
                         component.set('v.activeTab', index);
                         activeFormId = form.formId;

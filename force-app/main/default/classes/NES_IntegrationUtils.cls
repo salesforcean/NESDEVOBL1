@@ -188,6 +188,7 @@ public without sharing class NES_IntegrationUtils {
                             Child_Enrollment_Component__r.Component_Type__c, Child_Enrollment_Component__r.Question_School_Year__c
                     FROM Enrollment_Component_Relationship__c
                     WHERE Parent_Enrollment_Component__c = :questionGroupId  AND Child_Enrollment_Component__c IN :questionIds
+
                     order by Order__c, External_Id__c
             ];
         } 
@@ -200,6 +201,7 @@ public without sharing class NES_IntegrationUtils {
                         Child_Enrollment_Component__r.Component_Type__c, Child_Enrollment_Component__r.Question_School_Year__c
                 FROM Enrollment_Component_Relationship__c
                 WHERE Parent_Enrollment_Component__c = :questionGroupId
+
                 order by Order__c, External_Id__c
             ];
         }

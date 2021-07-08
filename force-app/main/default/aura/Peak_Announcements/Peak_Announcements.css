@@ -10,7 +10,7 @@
 .THIS .slick-dots li button:before, .THIS .slick-next:before, .THIS .slick-prev:before{color:token(colorTextLink)}
 .THIS .carousel{visibility:hidden}
 .THIS .carousel.slick-initialized{visibility:visible}
-.THIS .uiMessage.info {background-color:white;border-left:3.5px solid #d86018;border-right:0px;border-top:0px;border-bottom:0px;}
+.THIS .uiMessage.info {background-color:white;border-left:3.5px solid #BF0366 /*#d86018*/;border-right:0px;border-top:0px;border-bottom:0px;}
 .THIS .uiMessage.info h4{color: #bb5215;font-size:1rem!important;font-weight:600!important;line-height:24px;}
 .THIS .uiMessage{
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
@@ -22,5 +22,5 @@
 .THIS .uiMessage.warning h4{color: blue;font-size:1rem!important;font-weight:600!important;line-height:24px;}
 .THIS .uiMessage.error {background-color:white;border-left:3.5px solid red;border-right:0px;border-top:0px;border-bottom:0px;}
 .THIS .uiMessage.error h4{color: red;font-size:1rem!important;font-weight:600!important;line-height:24px;}
-.THIS .slick-dots li button{color:#d86018;font-size:14px;}
+.THIS .slick-dots li button{color:#BF0366/*#d86018*/;font-size:14px;}
 .THIS .slick-arrow {display:none!important;}

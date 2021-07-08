@@ -452,7 +452,7 @@ private class NES_ECACompletionTest {
          Set<Id> formFlagIds = new Set<Id>();
         Id sectionid;
          //Fetch program enrollment
-        hed__Program_Enrollment__c programEnrollment = [SELECT Id,hed__Account__c , hed__Contact__r.AccountId ,hed__Contact__c,hed__Contact__r.RecordType.Name, Household_Program_Enrollment__r.hed__Contact__c, Household_Program_Enrollment__c  FROM hed__Program_Enrollment__c 
+        hed__Program_Enrollment__c programEnrollment = [SELECT Id,hed__Account__c ,Status__c, hed__Contact__r.AccountId ,hed__Contact__c,hed__Contact__r.RecordType.Name, Household_Program_Enrollment__r.hed__Contact__c, Household_Program_Enrollment__c  FROM hed__Program_Enrollment__c 
                                                         WHERE Household_Program_Enrollment__c != NULL LIMIT 1];
         //Fecth Enrollment componet
         Enrollment_Component__c processComponent = [SELECT Id FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :programEnrollment.hed__Account__c LIMIT 1];

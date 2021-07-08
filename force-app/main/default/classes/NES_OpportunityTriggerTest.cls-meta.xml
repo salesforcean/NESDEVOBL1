@@ -3,7 +3,7 @@
     <apiVersion>44.0</apiVersion>
     <packageVersions>
         <majorNumber>1</majorNumber>
-        <minorNumber>89</minorNumber>
+        <minorNumber>111</minorNumber>
         <namespace>hed</namespace>
     </packageVersions>
     <status>Active</status>

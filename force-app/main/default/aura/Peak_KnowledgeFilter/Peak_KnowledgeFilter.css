@@ -17,7 +17,9 @@
 	/*padding: 1.125rem .625rem*/
 }
 .THIS .searchIcon svg{
-    fill:rgb(170, 76, 19);
+    /*fill:rgb(170, 76, 19);*/
+    /*Added by jagadeesh*/
+    fill:#000;
 }
 .THIS .peak_knowledgeFilter__search input::-moz-placeholder,
 .THIS .peak_knowledgeFilter__search input::-webkit-input-placeholder,
@@ -164,6 +166,11 @@
 .THIS .peak_knowledgeFilter__results table.isSearching {
 	border-bottom: 0
 }
+/*added by jagadeesh*/
+.THIS a {
+    color:#BF0366;
+}
+/*added by jagadeesh*/
 .THIS .peak_knowledgeFilter__results .peak_knowledgeFilter_topicsList a {
 	font-size: .75rem;
 	color: black;

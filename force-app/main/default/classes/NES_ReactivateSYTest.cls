@@ -218,11 +218,14 @@ public class NES_ReactivateSYTest {
         List<School_Year__c> schoolYears = [Select id,name FROM School_Year__c WHERE Name ='Test School' LIMIT 1];
         hed__Program_Enrollment__c stdPE=[select id from hed__Program_Enrollment__c WHERE RecordType.Name = 'Student' limit 1];
         boolean flag=true;
-        String callType='community';
+        String callType='Household';
         System.runAs(careTaker) { 
             Test.startTest();
             Peak_Response studentInsertResponse = NES_EnrollmentController.nextYearEnrollment(studentid.Id,academicProgram.Name,schoolYears[0].name,gradeLevel.Name, callType,flag,stdPE.id);
             Test.stopTest();
+            System.assertEquals(true,studentInsertResponse.success);
+        List<Peak_Apex_Log__c> apLogs= [select id from Peak_Apex_Log__c];
+        system.assertEquals(0,apLogs.size());
         }
     }
     

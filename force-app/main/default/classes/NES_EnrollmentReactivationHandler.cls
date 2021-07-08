@@ -26,7 +26,16 @@ public without sharing class NES_EnrollmentReactivationHandler {
         String message;
 
         try {
+            //added by Shravani US#389103 7/03/2021 
+            /*           
+            hed__Program_Enrollment__c spe = [Select ID,Enrollment_Type__c,Status__c From hed__Program_Enrollment__c Where Id = :studPEID];
             
+            if(spe.Status__c=='Inactive' && spe.Enrollment_Type__c=='Returning Student'){
+                spe.Enrollment_Type__c = 'Initial Enrollment';
+                //spe.Enrollment_Type__c = 'Re-enrolling student';
+                update spe; 
+            }
+            */
             NES_EnrollmentReactivationBase process = getProcessInstance(studPEID, reactivationType);
             process.execute();
             message='Re-enrollment Success: Student was successfully Re-enrolled.';

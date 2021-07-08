@@ -76,6 +76,9 @@ public class NES_ReactivationNewSYHelperTEST {
         
         //Create a student enrollment for the CareTaker Contact
         hed__Program_Enrollment__c progEnrollment = Peak_TestUtils.createProgramEnrollment(academicProgram.Id, careTaker.ContactId, schoolYears[0].Id, true);
+
+        progEnrollment.Status__c='Inactive';
+        update progEnrollment;
         hed__Program_Enrollment__c progEnrollment2 = [SELECT id,(SELECT Id,StageName FROM Opportunities__r)
                                                         FROM hed__Program_Enrollment__c WHERE Id = :progEnrollment.Id];
         List<Opportunity> oppo = progEnrollment2.Opportunities__r;
@@ -88,8 +91,15 @@ public class NES_ReactivationNewSYHelperTEST {
         List<Grade_Level__c> grdlvs = NES_ReactivationNewSYHelper.getGradeLevels(schoolYears[0].Name,institutionalAccount.Name);
         Peak_Response resp = NES_ReactivationNewSYHelper.newYearReactivate(studentid.Id,institutionalAccount.Name,schoolYears[0].Name,gradeLevel.Name, 'application', true, progEnrollment.Id);
         delete oppo;
-        NES_ReactivationNewSYHelper.validatePEwrapper studentInsertResponse2 = NES_ReactivationNewSYHelper.validatePE(progEnrollment.Id);
-        
+
+        NES_ReactivationNewSYHelper.validatePEwrapper studentInsertResponse2 = NES_ReactivationNewSYHelper.validatePE(progEnrollment2.Id);
+        System.assertEquals('valid', studentInsertResponse2.isValid);
+        progEnrollment2.Status__c='Withdrawn';
+        update progEnrollment2;
+        NES_ReactivationNewSYHelper.validatePEwrapper studentInsertResponse3 = NES_ReactivationNewSYHelper.validatePE(progEnrollment2.Id);
+        System.assertEquals('valid', studentInsertResponse3.isValid);
+        list<Peak_Apex_Log__c> apLogs= [select id from Peak_Apex_Log__c];
+        system.assertEquals(0,apLogs.size());
         Test.stopTest();
         
     }

@@ -436,6 +436,9 @@ OR Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.MESSA
         if (affiliations.size() > 0) { 
             //Added  condition to exclude ECA insertion for Migrated students who will have external id DEF255843(Jagadish Babu) 
 			if(studentEnrollment.Enrollment_Type__c == 'Re-enrolling student'){					
+
+                System.debug('StudentEnrollmentData Testing==========================>'+studentEnrollment);
+
 				Map<Id, Enrollment_Component__c> ecMap = allECData.enrollmentComponentMap;
 				List<Enrollment_Component_Affiliation__c> lstAffiliations = new List<Enrollment_Component_Affiliation__c>();
 				for(Enrollment_Component_Affiliation__c eca : affiliations){
@@ -445,6 +448,7 @@ OR Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.MESSA
 				}			
 				integer i=0;
 				do{
+
 					try{
 					   i++;
                        if(lstAffiliations.size() > 0)
@@ -467,12 +471,13 @@ OR Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.MESSA
 					do{
 						try{
 						   i++;
+
 						   insert affiliations;                
 						   break;//Breaking the loop as the DML executed and no exceptions
 						}
 						catch(Exception e){
 							//logger.logException('runAssignment', e); 
-							logger.logException('runAssignment retry '+i, e);
+							logger.logException('runAssignment retry '+i, e); 
 							logger.saveLogs();
 						}
 					}while(i<5);
@@ -540,9 +545,11 @@ WHERE Criteria_Type__c = :criteriaType
 AND Enrollment_Component__c IN :ECsToQueryFor
 ];*/
                                                      
-                                                     
-      hed__Program_Enrollment__c progId = [select Id , hed__Account__c from hed__Program_Enrollment__c where id =:studentEnrollmentId];
-      Enrollment_Component__c processComponent = [SELECT Id FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :progId.hed__Account__c LIMIT 1];
+	  Set<Id> allPEIds = new Set<Id>{studentEnrollmentId};
+      List<hed__Program_Enrollment__c> progId = GenericSOQLQueries.programEnrollmentDetails(allPEIds);  
+               Enrollment_Component__c processComponent = [SELECT Id FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :progId[0].hed__Account__c LIMIT 1];
+     // hed__Program_Enrollment__c progId = [select Id , hed__Account__c from hed__Program_Enrollment__c where id =:studentEnrollmentId];
+      //Enrollment_Component__c processComponent = [SELECT Id FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :progId.hed__Account__c LIMIT 1];
      NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processComponent.Id);
                                                      
                for (Enrollment_Component__c ec:allECData.enrollmentComponentMap.values()) {
@@ -849,6 +856,7 @@ AND Enrollment_Component__c IN :ECsToQueryFor
               } else
                    {
                    formAffiliation.Status__c = 'Complete';
+                   formAffiliation.Date_Completed__c = System.today();
               }
                     newAffiliations.add(formAffiliation);
           }

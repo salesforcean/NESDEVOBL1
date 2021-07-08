@@ -33,7 +33,7 @@
                
             <div class="buttonWrapper embeddedServiceSidebarForm" data-aura-class="embeddedServiceSidebarForm">
                 <button aria-live="off" data-aura-class="uiButton--default uiButton embeddedServiceSidebarButton" class="startButton uiButton--default uiButton embeddedServiceSidebarButton" type="button" onclick="{!c.onStartButtonClick}">
-                    <span class="label bBody">LET'S CHAT</span>
+                    <span class="label bBody">Let's Chat</span>
                 </button>			
             </div>
         </div>

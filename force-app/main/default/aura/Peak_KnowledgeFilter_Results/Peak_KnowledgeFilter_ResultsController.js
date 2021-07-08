@@ -3,6 +3,7 @@
  */
 ({
     recordClick: function(component, event, helper) {
+        
         helper.goToRecord(component, event);
     }
 })

@@ -47,8 +47,14 @@
 .THIS .viewButton .slds-button{
     font-size:1rem;
     line-height:2.5;
+    /*Added for the defect#407943 : Jagadeesh Bokam*/
+    text-transform: lowercase;
     display:block;
     letter-spacing:1px
+}
+/*Added for the defect#407943 : Jagadeesh Bokam*/
+.THIS .viewButton .slds-button::first-line {
+  text-transform: capitalize;
 }
 
 
@@ -58,6 +64,11 @@
     text-align:center;
     line-height:2.5;
     margin-top: 10px;
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    background-color:#76d5d4;
+    color: #000;
+    border: none;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
     
     /*padding-left: 8rem;
     padding-right: 8rem;*/
@@ -69,7 +80,7 @@
     padding-right: 100%;*/
     height: 40px;
     /* width: 152px;*/
-    text-transform:uppercase}
+    text-transform:/*uppercase*/none /*399848 - Jagadeesh Bokam*/}
 
 .THIS .slds-button_neutral{
     font-size:1rem;
@@ -88,7 +99,7 @@
     padding-right: 9rem;
     width: 320px;
     */
-    text-transform:uppercase;
+    text-transform:/*uppercase*/none/*399848 - Jagadeesh Bokam*/;
     
 }
 .THIS #studentTiles .viewButton .slds-button.slds-button_neutral{
@@ -251,3 +262,12 @@ width: 190px;
     display: inline-block;
     vertical-align: middle;
 }
+
+/*Added for 399187*/
+.THIS .viewButton .slds-button:hover, .THIS .viewButton .slds-button:focus {
+background-color: #50AAA9;
+border-color: #52d6d5; 
+box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
+}
+
+/*Ended for 399187*/

@@ -15,7 +15,7 @@
                    <apex:outputText styleClass="h2title" value="The link you clicked may be broken or may have been removed.">     
                   </apex:outputText>
                   <br/>
-                  <br/>
+                  <br/>  
                     <apex:outputText styleClass="h3title" value="Please begin on the main page by clicking the link below: "/><br/><br/>
                     <apex:outputLink styleClass="vfcommlink" value="{!$Label.NES_CommBaseurl}s" id="homepage">Home</apex:outputLink>  <br/>
                 </apex:panelGroup>

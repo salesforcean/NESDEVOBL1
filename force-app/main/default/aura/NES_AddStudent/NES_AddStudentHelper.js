@@ -222,7 +222,6 @@
             studentData.gradeLevels = [];
             studentData.schoolYears = [];
         }
-
         var action = component.get("c.createStudent");
         action.setParams({
             studentJSON: JSON.stringify(studentData),

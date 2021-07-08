@@ -4,6 +4,7 @@
  * 2019-04-10 #109932 User Story Task # 111937(Anitha P)
  * 2019-10-07 Added Skip For Now #US108687 (Ali Khan)
  * 2020-02-20 [Prod] Date Regex Validation For Bug #140247 (Krishna Peddanagammol)
+ * 2021-01-08:Sumanth: Added 'getAHIIncomeFormSubmitDate' method for US # 334973 & 334974
  */
 ({
     initiateQuestions: function (component, event, helper) {
@@ -31,7 +32,6 @@
             component.set("v.spinner", false); 
         }
     },
-    
     getNameStudent: function(component, event, helper) {
         
         var action = component.get("c.grabNameOfStudent");
@@ -53,6 +53,9 @@
                     helper.getMessages(component, event, helper);
                     helper.grabLogo(component, event, helper);
                     helper.getSectionName(component, event, helper);
+                    //Added by Sumanth for US # 334973 & 334974
+                    helper.getAHIIncomeFormSubmitDate(component, event, helper);
+                    //end by Sumanth 
                 }
             } else {
                 var error = response.getError();
@@ -79,6 +82,27 @@
         
     },
     
+    //Added by Sumanth for US # 334973 & 334974
+    getAHIIncomeFormSubmitDate: function(component, event, helper) {
+        var action = component.get("c.getAHISubmitInformation");
+        action.setParams({
+            enrollmentId: component.get('v.programEnrollmentId')
+        });
+        action.setCallback(this, function(response){
+            var stateVal = response.getState();
+            if(stateVal === "SUCCESS") {
+                var returnedResponse = response.getReturnValue();
+                console.log("AHIIncomeSubmitDate", returnedResponse);
+                if(returnedResponse) {
+                  	component.set("v.AHIIncomeSubmitDate", returnedResponse); 
+                }
+            } else {
+                var error = response.getError();
+            }
+         });
+        $A.enqueueAction(action);
+    },
+    //end by Sumanth  
     grabLogo: function(component, event, helper) {
         console.log('fire logo');
         var programEnrollmentId = component.get("v.programEnrollmentId");
@@ -188,6 +212,7 @@
                 if(state === "SUCCESS") {
                     var returnedResponse = response.getReturnValue();
                     console.warn('The new questions receiving in QuestionsHelper assignmentEval');
+                    console.log('evaluateQuestion--responseState-->');// #384276
                     console.log(response.getReturnValue());
                     var newQuestions = [];
                     if(returnedResponse) {
@@ -285,7 +310,14 @@
     resetNoRequiredValidationErrorIfNeeded: function(component, event, helper) {
         var numberRequired = component.get("v.numberRequired");
         var fields = component.find('fieldId');
-        
+        console.log('fields===:');
+        // Commented by Shravani for #352280 
+        /*
+       for(var idx = 0; idx < fields.length; idx++){
+            console.log(fields[idx]);
+            console.log(fields[idx].get("v.value"));
+        }
+        */
         if(numberRequired > 0 || fields == null){
             return;
         } else {
@@ -346,7 +378,7 @@
             if(state === "SUCCESS") {
                 var returnedResponse = response.getReturnValue();
                 console.warn('The getQuestions call in QuestionsHelper.js');
-                console.log(returnedResponse);
+                console.log('*** returnedResponse ==> '+returnedResponse);
                 if(returnedResponse) {
                     if(returnedResponse[0].questionId === 'Complete') {
                         component.set("v.alreadyCompleted", true);
@@ -361,7 +393,7 @@
                     for(var i=0;i<returnedResponse.length;i++) {
                         console.log('Getting next question');
                         var question = returnedResponse[i];
-                        console.log(question);
+                        console.log('*** question ==> '+question);
                         console.log('That was the question');
                         if(question.hasOwnProperty('required')) {
                             if(question.required) {
@@ -413,8 +445,9 @@
                         console.log('Just pushed that question');
                     }
                 }
+                console.log('*** numberRequired ==> '+numberRequired);
                 component.set("v.numberRequired", numberRequired);
-                console.log(questions);
+                console.log('*** Question *** '+questions);
                 questions.sort(function(a, b){
                     return a.order - b.order
                 });
@@ -542,23 +575,25 @@
         var appEvent = $A.get("e.c:NES_SubmitQuestionsEvent");
         appEvent.fire();
         var validForm = helper.validateForm(component, event, helper);
-        console.log(validForm);
+        console.log('validForm ==> '+validForm);
         if(!validForm) {
             console.error('This form is not valid');
             component.set("v.spinner", false);
             return;
         }
-        component.set("v.runCompletion", true);
-        console.log('running on');
-        helper.assignmentEvaluation(component, event, helper);
+       component.set("v.runCompletion", true);
+       console.log('running on');
+       helper.assignmentEvaluation(component, event, helper);
     },
     
     validateForm: function (component, event, helper) {
         console.log('in validate');
         var numberRequired = component.get("v.numberRequired");
+       // console.log('*** numberRequired ==> '+numberRequired);
         var formItems = [];
         var fields = component.find('fieldId');
         var errorfocused = false;
+        
         //Check to see if there were only group components in this section
         if(!$A.util.isEmpty(fields)){
             if(!Array.isArray(fields)) {
@@ -566,21 +601,27 @@
             } else {
                 formItems = fields;
             }
-            console.log(formItems);
+            // console.log(' formItems ==> '+formItems);
             var allValid = true;
             
             var newValid = formItems.reduce(
                 function (validSoFar, inputCmp) {
-                    console.log(inputCmp.get('v.value'));
+                    console.log('inputCmp ==> '+inputCmp);
+                    console.log('inputCmp Value ==> '+inputCmp.get('v.value'));
                     //This is needed to deal with a Salesforce bug where old iteration elements are being
                     //returned from component.find
                     
                     console.log('inputCmp: '+ inputCmp);
+                    console.log(' inputCmp.isRendered() == '+inputCmp.isRendered());
                     if(inputCmp.isRendered()){
                         console.log('Checking if rendered');
                         if(typeof inputCmp.showHelpMessageIfInvalid === "function") {
+                            console.log('*** Array.isArray(inputCmp.get("v.value")) ==> '+Array.isArray(inputCmp.get("v.value")));
+                            //console.log('*** inputCmp.get("v.value").length ==> '+inputCmp.get("v.value").length);
+                            //console.log('*** inputCmp.get("v.value")[0] ==> '+inputCmp.get("v.value")[0]);
+                            //console.log('*** inputCmp.get("v.required") ==> '+inputCmp.get("v.required"));
                             if(Array.isArray(inputCmp.get("v.value")) && inputCmp.get("v.value").length == 1 && inputCmp.get("v.value")[0] === "" && inputCmp.get("v.required")){
-                                inputCmp.set("v.value", "");
+                                inputCmp.set("v.value", "");                                
                             }
                             inputCmp.showHelpMessageIfInvalid();
                         }
@@ -595,7 +636,10 @@
                     }
                    //End-User Story Task # 111937(Anitha P)
                     
-                    return validSoFar && inputCmp.get('v.validity').valid && !inputCmp.get('v.validity').valueMissing;
+                 //  console.log('*** validSoFar ==> '+validSoFar);
+                 //  console.log('*** inputCmp.get(\'v.validity\').valid ==> '+inputCmp.get('v.validity').valid);
+                 //  console.log('*** !inputCmp.get(\'v.validity\').valueMissing ==> '+!inputCmp.get('v.validity').valueMissing);
+                   return validSoFar && inputCmp.get('v.validity').valid && !inputCmp.get('v.validity').valueMissing;
                 }, true);
             
             console.log('Before date items');
@@ -634,6 +678,9 @@
                         unfilledOutQuestions++;
                     }
                 }
+
+              //  console.log('*** unfilledOutQuestions ==> '+unfilledOutQuestions);
+             //   alert('*** unfilledOutQuestions ==> '+unfilledOutQuestions);
                 
                 if(unfilledOutQuestions === formItems.length) {
                     allValid = false;
@@ -651,6 +698,8 @@
             }
             
             console.log('through fields');
+        //    console.log('*** allValid ==> '+allValid);
+        //    console.log('*** newValid ==> '+newValid);
             return allValid && newValid;
             
         } else {
@@ -797,5 +846,31 @@
          appEvent.setParams({"careTakerId":component.get("v.caretakerId")}); 
          appEvent.setParams({"timeStamp":today}); 
          appEvent.fire();
-    }   
+    },
+    //Added by Jagadeesh for the Task :341992
+     getAhiAckUpdate: function(component, event, helper) {
+        var action = component.get("c.updateAHIRec");
+                action.setParams({
+            programEnrollmentId : component.get('v.programEnrollmentId')
+        });
+              action.setCallback(this, function(response){
+                  var state = response.getState();
+                  if(state === "SUCCESS") {
+                      var peakResponse = response.getReturnValue();
+                      console.log('getAhiAckUpdate: '+peakResponse);  
+                      $A.get('e.force:refreshView').fire();
+                      if(peakResponse == null)
+                       //   window.open("https://obl.tfaforms.net/8?prgenrollid="+ component.get('v.programEnrollmentId')+'&sectionId='+component.get('v.sectionId'), "_blank");
+                          window.open("https://obl.tfaforms.net/14?prgenrollid="+ component.get('v.programEnrollmentId')+'&sectionId='+component.get('v.sectionId'), "_blank");
+
+                  } else {
+                      var error = response.getError();
+                      console.log("ERROR", error);
+                  }
+              });
+              
+              $A.enqueueAction(action);
+        
+    },
+    //ended by jagdaeesh
 })

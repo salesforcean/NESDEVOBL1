@@ -406,6 +406,9 @@ public without sharing class NES_AddStudentHelper {
     public static Peak_Response insertingStudent(String studentJSON, String questionJSON) {
         Peak_Response peakResponse = new Peak_Response();
         User caretaker = [SELECT Id, AccountId, ContactId, Contact.RecordType.Name,Contact.Account.Family_Enrollment_Counselor__c, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId()];
+        List <Contact> CtList = [Select Id from Contact where AccountId =: caretaker.Contact.AccountId 
+                                 and Recordtype.name != 'Students'];
+        System.debug('NDEBUG: List of Contacts under this HH Acc:::'+CtList);
         System.debug('student data');
         System.debug(studentJSON);
         System.debug('questionJSON' + questionJSON);
@@ -424,7 +427,7 @@ public without sharing class NES_AddStudentHelper {
                 // Deserialize the JSON
                 List<NES_EvaluateUtil.Question> questionDataList = (List<NES_EvaluateUtil.Question>) JSON.deserialize(questionJSON, List<NES_EvaluateUtil.Question>.class);
                 NES_EvaluateUtil.NewStudentData studentData = (NES_EvaluateUtil.NewStudentData) JSON.deserialize(studentJSON, NES_EvaluateUtil.NewStudentData.class);
-                 
+
                 //Insert Contact for the student
                 String firstName = String.isNotBlank(studentData.firstName) ? studentData.firstName : '';
                 String middleName = String.isNotBlank(studentData.middleName) ? studentData.middleName : '';//added for US116612
@@ -436,20 +439,36 @@ public without sharing class NES_AddStudentHelper {
                 Contact newStudent = NES_RegistrationUtils.createContact(caretaker.Contact.AccountId, studentRecordType, firstName, lastName, relation, caretaker.ContactId, '', middleName, suffix, null, null, true, null);//added middle and suffix for US116612
 
                 //Insert relationship between the caretaker and the student
-                hed__Relationship__c relationship = new hed__Relationship__c();
+               /* hed__Relationship__c relationship = new hed__Relationship__c();
                 relationship.hed__Contact__c = newStudent.Id;
                 relationship.hed__Status__c = 'Current';
                 relationship.hed__RelatedContact__c = caretaker.ContactId;
                 relationship.Recalculate_Sharing__c = true;
                 relationship.hed__Type__c = relation;
                 relationship.OwnerId = System.Label.NES_Household_OwnerId;
-                insert relationship;
+                insert relationship; */
+                
+                //Naveen:: Insert relationship between all the caretakers under this HH and the new student
+                List <hed__Relationship__c> relationshipList = new List <hed__Relationship__c> ();                
+                for(Contact c: CtList){
+                    hed__Relationship__c relationship = new hed__Relationship__c();
+                    relationship.hed__Contact__c = newStudent.Id;
+                    relationship.hed__Status__c = 'Current';
+                    relationship.hed__RelatedContact__c = c.Id;
+                    relationship.Recalculate_Sharing__c = true;
+                    relationship.hed__Type__c = relation;
+                    relationship.OwnerId = System.Label.NES_Household_OwnerId;
+                    relationshipList.add(relationship);
+                }
+                System.debug('NDEBUG: List of Relationships:::'+relationshipList);
+                insert relationshipList;
 
 
                 //Get Program Enrollments and insert them.  Also retrieve the field that determines which version of the ECA 
                 Id academicProgramRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
                 Account academicProgram = [
                         SELECT Id, ParentId, RecordTypeId, School_Year__c, OwnerId, Confirmation_End_Date__c, Use_Updated_ECA_Process__c,
+
                                Too_Young_Cutoff__c, Too_Old_Cutoff__c,MaxSpecialEdBirthdate__c
                         FROM Account
                         WHERE ParentId = :studentData.SelectedSchoolId
@@ -724,7 +743,7 @@ public without sharing class NES_AddStudentHelper {
                        i++;
                        insert nonNullInsertingAffiliations;                
                        break;//Breaking the loop as the DML executed and no exceptions
-                    }
+                }
                     catch(Exception e){
                         logger.logException('Retrying a timed out insert', e);
                         logger.saveLogs();                        
@@ -743,11 +762,14 @@ public without sharing class NES_AddStudentHelper {
                    NES_ECAEvaluation.createRemainingAffiliations(caretaker.Contact.AccountId, newStudent.Id, caretaker.ContactId, newStudentEnrollment.Id, caretakerEnrollmentId, relationIds, processComponent[0].Id);
                 } else  {  //Must be using the new ECA process
                     //Call the future method that will create the remaining ECAs and the PE Criteria.
-                    EvaluationUtils.PerformAsyncNewStudentSteps(newStudentEnrollment.Id, processComponent[0].Id, caretakerEnrollmentId);
+
+                    EvaluationUtils.PerformAsyncNewStudentSteps(newStudentEnrollment.Id, processComponent[0].Id, caretakerEnrollmentId,''); 
+
                 }
 
                 //With the ECA rewrite, we changed the hard stop process to only look at dates from the Academic program.
                 Boolean shouldHardStop = false;
+
 				//Replaced with MaxSpecialEdBirthdate__c instead of Too_Old_Cutoff__c in below if condition for 335863
                 if (birthdate < academicProgram.MaxSpecialEdBirthdate__c || birthdate > academicProgram.Too_Young_Cutoff__c)
                     shouldHardStop = true;

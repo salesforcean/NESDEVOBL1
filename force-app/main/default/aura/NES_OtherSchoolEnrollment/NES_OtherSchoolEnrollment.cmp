@@ -73,22 +73,22 @@
                     
                     
                     <br/>
-                    <lightning:select aura:id="School" name="School" label="School to Attend"  value="{!v.School}" required="true" onchange ="{!c.schoolSelect}">
-                        <option value="">--Select school --</option>
+                    <lightning:select aura:id="School"   name="School"   label="School to Attend"  value="{!v.School}" required="true" onchange ="{!c.schoolSelect}">
+                        <option value="" >- Select school -</option>
                         <aura:iteration items="{!v.schoolsToAttend}" var="School">
                             <option value="{!School.Name}" selected ="{!School.name}">{!School.Name}</option><br/>
                         </aura:iteration>
                     </lightning:select><br/>
                     
                     <lightning:select aura:id="Year" name="schoolYear" label="School Year"  value="{!v.schoolYear}" required="true" onchange ="{!c.schoolYearSelect}"  disabled='{!v.noSchools}'>
-                        <option value="">--Select school year --</option>
+                        <option value="" >- Select a School Year -</option>
                         <aura:iteration items="{!v.schoolYears}" var="year">
-                            <option value="{!year.Name}" selected ="{!year.Name}">{!year.Name}</option><br/>
+                            <option value="{!year.Name}" >{!year.Name}</option><br/>
                         </aura:iteration>
                     </lightning:select>
                     <br/>
                     <lightning:select aura:id="grade" name="grade" label="Requesting grade"  value="{!v.grade}" required="true"   disabled='{!v.noYears}'>
-                        <option value="">--Select a grade level--</option>
+                        <option value="">- Select a grade level -</option>
                         <aura:iteration items="{!v.grades}" var="grade">
                             <option value="{!grade.index}">{!grade.Name}</option><br/>
                         </aura:iteration>
@@ -96,12 +96,23 @@
                     
                     <div class="slds-size--2-of-5">
                     <div class="viewButton slds-p-top_Large">
-                        
+                        <!--#XXXXX IF check in below line added by shravani -->
+                        <aura:if isTrue="{!!v.noYears}">
                         <span class="btnblock">
-                            <a href="javascript:void(0)"
+                            <a href="javascript:void(0)" 
                                class="slds-button slds-button_brand"
                                onclick="{!c.handleEnroll}">Enroll</a>
                         </span>
+                            <!-- #XXXXX IF check added by shravani START-->
+                            <aura:set attribute="else">
+                                <span class="btnblock">
+                                    <a href="javascript:void(0)" style="pointer-events: none; background: gainsboro;"
+                                       class="slds-button slds-button_brand"
+                                       onclick="{!c.handleEnroll}">Enroll</a>
+                                </span>
+                            </aura:set>
+                        </aura:if>
+                        <!-- #XXXXX IF check added by shravani END -->
                     </div>
                     </div>
                     

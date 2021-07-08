@@ -716,7 +716,7 @@ public without sharing class NES_DocumentCentralHelper {
                 enrollmentComponentsList = [
                     SELECT Id, Component_Message__c, Order__c
                     FROM Enrollment_Component__c
-                    WHERE Id IN :messageIds 
+                    WHERE Id IN :messageIds
                 ];
                 peakResponse.results = enrollmentComponentsList;
             } */
@@ -877,7 +877,9 @@ This method will create or edit Enrollment Documents and  File References
                     peakResponse.success = FALSE;
                 }
                 else {
+                    System.debug('enrollmentDocument' + enrollmentDocument);
                     insert enrollmentDocument;
+                    System.debug('enrollmentDocument' + enrollmentDocument);
                     fileReference = createFileReferences(documentLink, enrollmentDocument); 
                 }
                 //End code for the bug #147271 on 18/03/2020 

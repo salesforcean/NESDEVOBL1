@@ -1,3 +1,58 @@
 /*Commented by Ravi Bug #135343
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');*/
-.THIS .needHelpBlock{padding:.25rem}.THIS a{position:relative;display:block;padding:1rem;border:1px solid #f3f3f3;border-radius:3px;background:#fff;box-shadow:0 0 .25rem rgba(0,0,0,.05)}.THIS a:hover{text-decoration:none}.THIS a:after{font-size:1.5rem;position:absolute;top:50%;right:1rem;margin-top:-1rem;content:'\203A';color:#a9a9a9}.THIS img{width:auto;max-height:2.5rem;margin-right:.5rem}.THIS .top-line *{display:inline-block;vertical-align:middle}.THIS span,.THIS strong{display:block}.THIS strong{font-size:1rem;font-weight:600;line-height:2;color:token(colorTextLink)}.THIS span{padding-right:1rem;color:token(colorTextLabel)}
+/*updated border,backgroung-color to #76d5d4 for the US#399187*/
+ /* Added here for US # 399187 */
+.THIS .needHelpBlock{padding:.25rem}
+.THIS a{
+    position:relative;
+    display:block;
+    padding:1rem;
+    /*border:1px solid #76d5d4;*/
+    border-radius:3px;
+    background:#76d5d4;
+    /* Added By Ravi Bug#407939*/
+   	border:1px #52d6d5;
+    /*box-shadow:0 0 .25rem rgba(0,0,0,.05)*/
+	/*box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);*/
+}
+/*.THIS a:hover {
+  background-color: #50AAA9;
+    box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
+        text-decoration: none;
+    
+}*/
+.THIS a:hover, .THIS a:focus {
+background-color: #50AAA9;
+border-color: #52d6d5;
+box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
+}
+.THIS a:focus-visible{
+outline: none;
+    }
+
+/* Endded Here For #Bug407939*/
+.THIS a:hover{text-decoration:none}
+.THIS a:after{
+    font-size:1.5rem;
+    position:absolute;
+    top:50%;
+    right:1rem;
+    margin-top:-1rem;
+    content:'\203A';
+    color: /* #a9a9a9 */ #000}
+.THIS img{
+    width:auto;
+    max-height:2.5rem;
+    margin-right:.5rem}
+.THIS .top-line *{display:inline-block;vertical-align:middle}
+.THIS span,
+.THIS strong{display:block}
+.THIS strong{
+    font-size:1rem;
+    font-weight:600;
+    line-height:2;
+    color:black/*token(colorTextLink)*/}
+.THIS span{
+    padding-right:1rem;
+    color:black/*token(colorTextLabel)*/}
+ /* Ended here for US # 399187 */

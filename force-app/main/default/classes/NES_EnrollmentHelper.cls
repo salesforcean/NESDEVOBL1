@@ -62,20 +62,20 @@ and Parent_Enrollment_Component__c objects
             }
         }
         List<Enrollment_Component_Relationship__c> messageRelationships = new List<Enrollment_Component_Relationship__c>();
-         if(affiliationIds.size() > 0){
-			messageRelationships = [SELECT Child_Enrollment_Component__c FROM Enrollment_Component_Relationship__c
-                                                                           WHERE Parent_Enrollment_Component__c =: enrollmentComponentId
-                                                                           AND Child_Enrollment_Component__r.RecordTypeId =: messageRecordTypeId
-                                                                           AND Child_Enrollment_Component__c IN : affiliationIds
-                                                                           ORDER BY Order__c];
-		}
-		else{
-			messageRelationships = [SELECT Child_Enrollment_Component__c FROM Enrollment_Component_Relationship__c
-                                                                           WHERE Parent_Enrollment_Component__c =: enrollmentComponentId
-                                                                           AND Child_Enrollment_Component__r.RecordTypeId =: messageRecordTypeId
-                                                                           ORDER BY Order__c];
-			
-		}
+        if(affiliationIds.size() > 0){
+            messageRelationships = [SELECT Child_Enrollment_Component__c FROM Enrollment_Component_Relationship__c
+                                    WHERE Parent_Enrollment_Component__c =: enrollmentComponentId
+                                    AND Child_Enrollment_Component__r.RecordTypeId =: messageRecordTypeId
+                                    AND Child_Enrollment_Component__c IN : affiliationIds
+                                    ORDER BY Order__c];
+        }
+        else{
+            messageRelationships = [SELECT Child_Enrollment_Component__c FROM Enrollment_Component_Relationship__c
+                                    WHERE Parent_Enrollment_Component__c =: enrollmentComponentId
+                                    AND Child_Enrollment_Component__r.RecordTypeId =: messageRecordTypeId
+                                    ORDER BY Order__c];
+            
+        }
         for(Enrollment_Component_Relationship__c rel : messageRelationships){
             messageIds.add(rel.Child_Enrollment_Component__c);
         }
@@ -200,7 +200,7 @@ and using those child components get the required form information
                                                                 }
                                                             }
                                                         }
-                    
+                    System.debug('Form Being Returned:::' + forms);
                     return forms;
                 }
             }
@@ -463,12 +463,12 @@ and using those child components get the required component information
             
             User caretaker = New User();
             if(callType=='community'){
-               caretaker= NES_ReactivateStdUtils.getCTUser(UserInfo.getUserId());
-            } else if(callType=='application'){
-               caretaker= NES_ReactivateStdUtils.getCTUserFromStudentId(studentId);
+                caretaker= NES_ReactivateStdUtils.getCTUser(UserInfo.getUserId());
+            } else if(callType=='application' || CallType == 'Household'){
+                caretaker= NES_ReactivateStdUtils.getCTUserFromStudentId(studentId);
             } else {
                 System.debug('No callType');
-               return peakResponse;
+                return peakResponse;
             }
             Id studentRecordType = NES_ReactivateStdUtils.getStudentRTId();
             contact reactivateStudent = NES_ReactivateStdUtils.getStudentContact(studentId,studentRecordType);
@@ -476,7 +476,7 @@ and using those child components get the required component information
             Account instituteName = NES_ReactivateStdUtils.getInstitute(instituteNam);
             
             try{
-               
+                
                 //List<NES_EvaluateUtil.Question> questionDataList = NES_AddStudentHelper.grabQuestionsBySchool(instituteName.id,schoolYears.id);
                 //Get Program Enrollments and insert them.  Also retrieve the field that determines which version of the ECA 
                 Id academicProgramRecordTypeId = NES_ReactivateStdUtils.getAcademicRTProgramId();
@@ -489,9 +489,10 @@ and using those child components get the required component information
                     AND School_Year__c= :schoolYears.id
                     LIMIT 1
                 ];
-                
+                //added by Sravani for Defect#356864.
                 List<hed__Program_Enrollment__c> caretakerEnrollments = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c = :caretaker.ContactId AND hed__Account__c = :academicProgram.Id limit 1];
-               // Grade_Level__c grades=[SELECT id,Name FROM Grade_Level__c  where Name =:gradeLevels limit 1];
+                //List<hed__Program_Enrollment__c> caretakerEnrollments = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c = :caretaker.ContactId AND hed__Account__r.ParentId = :academicProgram.ParentId limit 1];
+                // Grade_Level__c grades=[SELECT id,Name FROM Grade_Level__c  where Name =:gradeLevels limit 1];
                 
                 hed__Program_Enrollment__c caretakerEnrollmentId = new hed__Program_Enrollment__c();
                 if (caretakerEnrollments.size() == 0) {
@@ -509,6 +510,9 @@ and using those child components get the required component information
                 
                 
                 Program_Grade_Level__c progGrades =[select id,Grade_Level__r.name from Program_Grade_Level__c where Academic_Program__r.name =:academicProgram.name AND Grade_Level__r.name =:gradeLevels limit 1];
+                hed__Program_Enrollment__c oldPE;
+                if(programEnrollmentId !=null)
+                    oldPE =[select Enrollment_Type__c,Status__c from hed__Program_Enrollment__c where id =:programEnrollmentId limit 1];
                 //Program Enrollment for student
                 hed__Program_Enrollment__c newStudentEnrollment = new hed__Program_Enrollment__c();
                 Id studentEnrollmentTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
@@ -523,31 +527,41 @@ and using those child components get the required component information
                 newStudentEnrollment.Has_Open_Opportunity__c = true;
                 system.debug('enrollFlag=='+enrollFlag);
                 // add by Maddileti for US # 332934 on 12/16/2020 
-               if(enrollFlag){
-                 /*  if (caretakerEnrollments.size() == 0) {
-                       newStudentEnrollment.Enrollment_Type__c = 'Initial Enrollment';
-                   } else{
-                       newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student';
-                   } */
-                   newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student';
-                   
-                } else {
-				   
-				  hed__Program_Enrollment__c oldPE =[select Enrollment_Type__c from hed__Program_Enrollment__c where id =:programEnrollmentId limit 1];
-                  newStudentEnrollment.Enrollment_Type__c =oldPE.Enrollment_Type__c;
+                /*  if(enrollFlag){
+// US 356800 - Sravani Pendyala
+//newStudentEnrollment.Enrollment_Type__c = 'Initial Enrollment';
+
+} else {
+
+// hed__Program_Enrollment__c oldPE =[select Enrollment_Type__c from hed__Program_Enrollment__c where id =:programEnrollmentId limit 1];
+newStudentEnrollment.Enrollment_Type__c =oldPE.Enrollment_Type__c;
+
+} */
+                // Added by Maddileti for bug 369690 on 22/03/2021
+                if(enrollFlag == true && CallType == 'Household'){
                     
-                }   
-               // End by Maddileti for US # 332934 on 12/16/2020 
+                    newStudentEnrollment.Enrollment_Type__c = 'Initial Enrollment';
+                    
+                } else if (enrollFlag == true && oldPE.Status__c =='Withdrawn' ){
+                    
+                    newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student';
+                    
+                } else {
+                    
+                    newStudentEnrollment.Enrollment_Type__c = oldPE.Enrollment_Type__c;
+                }
+                // End by Maddileti for bug 369690 on 22/03/2021
+                // End by Maddileti for US # 332934 on 12/16/2020 
                 string str = Id.valueOf(reactivateStudent.id); 
                 
                 try{
                     
                     insert newStudentEnrollment;
-                    }
-                    catch(Exception e){
-                        logger.logException('Program Enrollment insertion failed for Contact :'+str, e);
-                        logger.saveLogs();                        
-                    }
+                }
+                catch(Exception e){
+                    logger.logException('Program Enrollment insertion failed for Contact :'+str, e);
+                    logger.saveLogs();                        
+                }
                 
                 //Now let's create an Opportunity based on that enrollmentId
                 //Modified the ownerId as per the bug #77521 to match the Academic Program Owner
@@ -564,27 +578,44 @@ and using those child components get the required component information
                 );
                 
                 
-                  string strs = Id.valueOf(reactivateStudent.id); 
+                string strs = Id.valueOf(reactivateStudent.id); 
                 
                 try{
                     
                     insert oppToInsert;
-                    }
-                    catch(Exception e){
-                        logger.logException('Opportunity insertion failed for Contact :'+strs, e);
-                        logger.saveLogs();                        
-                    }
+                }
+                catch(Exception e){
+                    logger.logException('Opportunity insertion failed for Contact :'+strs, e);
+                    logger.saveLogs();                        
+                }
+                // Creating ASI Record for PE
+                Annual_Student_Information__c asRecords = new Annual_Student_Information__c();
+                
+                asRecords.Program_Enrollment__c=newStudentEnrollment.id;
+                asRecords.School_Year__c=schoolYears.id;
+                asRecords.Grade_Level_Requested__c=progGrades.Grade_Level__r.name;
+                
+                
+                string strPE = Id.valueOf(newStudentEnrollment.id); 
+                
+                try{
+                    insert asRecords;
+                }
+                catch(Exception e){
+                    logger.logException('Annual Student Information insertion failed for Program Enrollment :'+strPE, e);
+                    logger.saveLogs();                        
+                }
                 
                 // instantiate affiliations to insert, gather record type ids
                 Set<Enrollment_Component_Affiliation__c> ecAffiliationsToInsert = new Set<Enrollment_Component_Affiliation__c>();
                 List<Enrollment_Component__c> processComponent = NES_ReactivateStdUtils.getProcessEC(academicProgram.Id);
                 List<Enrollment_Component_Relationship__c> relationships  = NES_ReactivateStdUtils.getAllStages(processComponent[0].Id);
                 
-
+                
                 
                 //Hang on to the birth date so we can use it in the hard stop logic at the end of the process.
                 date birthdate;
-
+                
                 List<Enrollment_Component_Affiliation__c> basicECAsforStage = NES_ReactivateStdUtils.insertAffiliations(processComponent[0].Id, newStudentEnrollment.Id,relationships);
                 ecAffiliationsToInsert.addAll(basicECAsforStage);
                 
@@ -615,7 +646,7 @@ and using those child components get the required component information
                     NES_ECAEvaluation.createRemainingAffiliations(caretaker.Contact.AccountId, reactivateStudent.Id, caretaker.ContactId, newStudentEnrollment.Id, caretakerEnrollmentId.id, relationIds, processComponent[0].Id);
                 } else  {  //Must be using the new ECA process
                     //Call the future method that will create the remaining ECAs and the PE Criteria.
-                    EvaluationUtils.PerformAsyncNewStudentSteps(newStudentEnrollment.Id, processComponent[0].Id, caretakerEnrollmentId.id);
+                    EvaluationUtils.PerformAsyncNewStudentSteps(newStudentEnrollment.Id, processComponent[0].Id, caretakerEnrollmentId.id,'');   
                 }
                 
                 //With the ECA rewrite, we changed the hard stop process to only look at dates from the Academic program.

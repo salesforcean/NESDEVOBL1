@@ -8,11 +8,10 @@ trigger NES_RelationshipTrigger on hed__Relationship__c (after insert, after upd
     if(trigger.isAfter){
         if(trigger.isInsert){
             NES_RelationshipTriggerHandler.afterInsert(trigger.new);
-            
         }
 
         if(trigger.isUpdate){
-            NES_RelationshipTriggerHandler.afterUpdate(trigger.new, trigger.oldMap);            
+            NES_RelationshipTriggerHandler.afterUpdate(trigger.new, trigger.oldMap);
         }
     }
 }

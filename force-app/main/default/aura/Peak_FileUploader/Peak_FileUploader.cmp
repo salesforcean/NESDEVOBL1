@@ -6,7 +6,7 @@
  - 2019-10-04 updated skip for now #US108687 (Ali Khan)
  - 2019-11-12 updated for #115213 User Story (Maddileti Boya)
  -  2019-11-21 updated css styles for 119110 bug(#115213 US)  (Maddileti Boya)
- - 2019-12-02 Updated Css Styles and cmp (Ravi)
+ - 2019-12-02 Updated Css Styles and cmp (Ravi)F
 -->
 
 <aura:component description="Peak_FileUploader" access="global" controller="Peak_FileUploadController" extensible="true" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" extends="c:Peak_FileUploadBase">
@@ -46,7 +46,7 @@
     <aura:attribute name="isSupported" type="Boolean" default="false"/>
     <aura:attribute name="attributesToConvert" type="List" default="message,allTypesText,errorSize,errorExt,uploadLabel"/>
     <aura:attribute name="showList" type="Boolean" default="false"/>
-    <aura:attribute name="backButtonLabel" type="String" default="Back to Student Overview"/>
+    <aura:attribute name="backButtonLabel" type="String" default="Back To Student Overview"/>
     <aura:attribute name="cameraBlocked" type="Boolean" default="false"/>
 	<aura:attribute name="docTokenTimeout" type="String" default="{!$Label.c.NES_DocTokenTimeoutMinutes}"/>
 
@@ -114,7 +114,7 @@
             <lightning:layout multipleRows="false">
                 <lightning:layoutItem size="12">
                     <!-- Added By Ravi-->
-                    <lightning:button variant="neutral" class="backtostudent" label="&#60; Back to Student Overview" onclick="{!c.goToOverview}" />
+                    <lightning:button variant="neutral" class="backtostudent" label="&#60; Back To Student Overview" onclick="{!c.goToOverview}" />
                 </lightning:layoutItem>
             </lightning:layout>
         </aura:if>
@@ -305,7 +305,7 @@
                                                   </b>
                                                </p>
                                                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                           <lightning:button variant="brand" label="Yes, skip" onclick="{!c.skipForNow}" class="lower"/>
+                                           <lightning:button variant="brand" label="Yes, Skip" onclick="{!c.skipForNow}" class="lower"/>
                                                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                   <!--lightning:button variant="neutral" label="Cancel" onclick="{! c.closeModel }" class="lower"/-->
                                                  </div>
@@ -349,7 +349,7 @@
                                                </p>
                                               
                                            
-                                            <lightning:button variant="brand" label="Yes, skip" onclick="{!c.skipForNow}" class="lower"/>
+                                            <lightning:button variant="brand" label="Yes, Skip" onclick="{!c.skipForNow}" class="lower"/>
                                                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                   <lightning:button variant="neutral" label="Cancel" onclick="{! c.closeModel }" class="lower"/>
                                                   </div>

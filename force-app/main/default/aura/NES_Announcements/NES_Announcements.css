@@ -3,7 +3,7 @@
  */
 .THIS.documentCentralDetailRow{
     padding: 1rem;
-    border-left: 3px solid #d86018;
+    border-left: 3px solid #BF0366/*#d86018*/;
     border-radius: 3px;
     background: #fff;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
@@ -25,24 +25,29 @@
     height: auto !important;
 }
 .THIS .slds-carousel__panel {
-    border-left: 3.5px solid #d86018;
+    /*border-left: 3.5px solid #d86018;*/
+    border-left: 3.5px solid #BF0366;
 }
 .THIS .slds-carousel__indicator-action.slds-is-active {
-    border-color:#d86018;
-    background:#d86018;
+    border-color:/*#d86018*/#BF0366;
+    background:/*#d86018*/#BF0366;
 }
 .THIS .slds-carousel__indicator-action:focus{
-    border-color:#d86018;
-    background:#d86018;
+   /* border-color:#d86018;
+    background:#d86018;*/
+    border-color:#BF0366;
+    background:#BF0366;
 }
 .THIS .slds-carousel__content-title {
     font-weight: 600 !important;
 }
 .THIS div[data-critical="critical"] {
-    border-color: rgb(214, 60, 38);
+    /*border-color: rgb(214, 60, 38);*/
+    border-color: rgb(191, 3, 102);
 }
 .THIS div[data-critical="critical"] .slds-carousel__content-title {
-    color: rgb(214, 60, 38);
+    /*color: rgb(214, 60, 38);*/
+  color: rgb(191, 3, 102);
 }
 .THIS .slds-carousel__indicator-action{
     width:0.7rem;
@@ -58,10 +63,10 @@
 }
 .THIS h2 {
     font-size:1rem !important;
-    color:#bb5215;
+    color:#BF0366/*#bb5215*/;
 }
 .THIS .linkColor {
-    color:#d86018;
+    color:#BF0366/*#d86018*/;
 }
 
 .THIS .dismissSpinner {

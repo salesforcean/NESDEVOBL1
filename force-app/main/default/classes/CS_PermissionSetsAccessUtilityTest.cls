@@ -14,10 +14,12 @@ public class CS_PermissionSetsAccessUtilityTest {
     @TestSetup
     public static void createTestData(){
      
+
         Id recordTypeIdHH  = Schema.SObjectType.Account.getRecordTypeInfosByName().get(CS_Constants.ACCOUNT_RECTYPE_HOUSEHOLD_ACCOUNT).getRecordTypeId(); 
         
         CS_TestDataFactory factoryObj = new CS_TestDataFactory();
         UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
+
         String orgId = UserInfo.getOrganizationId();
         User usr = factoryObj.createNewUser('BatchAdmin123'+orgId+'@pearson.com.org', usrRole.Id, 'bAdmin', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', UserInfo.getProfileId(),'LastName','BatchAdmin123'+orgId+'@pearson.com.org');
@@ -25,6 +27,7 @@ public class CS_PermissionSetsAccessUtilityTest {
             
         System.runAs(usr) 
         {
+
             Account HHAcc = factoryObj.createNewAccount('HouseHoldAcc',recordTypeIdHH,null,null,null); // Household
             
             insert HHAcc;
@@ -34,6 +37,7 @@ public class CS_PermissionSetsAccessUtilityTest {
             insert CTcon;
        		system.debug('CTCon:--> '+CTCon.id);
             
+
             Id recordTypeIdSTD = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_STUDENTS).getRecordTypeId();
             List<Contact> stdContList = factoryObj.createListOfContacts('StdContact',recordTypeIdSTD,HHAcc.Id,CTcon.id,3);
             insert stdContList;
@@ -54,6 +58,7 @@ public class CS_PermissionSetsAccessUtilityTest {
             update CTcon;
             
             Profile STDProfile = [select id,name from profile where name='Student Community User'];
+
             User STDUsr = factoryObj.createnewPortalUser('STDUser1@pearson.com.org', 'STDUser', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', STDProfile.Id,'LastName','STDUser1@pearson.com.org',stdContList.get(0).id);
         	usrList.add(STDUsr);
@@ -61,6 +66,7 @@ public class CS_PermissionSetsAccessUtilityTest {
             system.debug('Student User:'+STDUsr);
             
           //  Profile STDProfile = [select id,name from profile where name='Student Community User'];
+
             User STDUsr2 = factoryObj.createnewPortalUser('STDUser2@pearson.com.org', 'STDUser', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', STDProfile.Id,'LastName','STDUser2@pearson.com.org',stdContList.get(1).id);
         	usrList.add(STDUsr2);
@@ -83,6 +89,7 @@ public class CS_PermissionSetsAccessUtilityTest {
 
     public static testMethod void PermSetTest(){
          	
+
          Set<Id> CTpermSetIds = new Set<Id>();
          Set<Id> STDpermSetIds = new Set<Id>();
          Map<Id,Set<id>> CTUserPermSetMap = new Map<Id,Set<Id>>();
@@ -93,6 +100,7 @@ public class CS_PermissionSetsAccessUtilityTest {
          User CTUsr = [Select id,name from User where username = 'CTUser1@pearson.com'];
          System.debug('CTUser-->'+ CTUsr);
         
+
          User StdUsr = [Select id,name from User where username = 'STDUser1@pearson.com.org'];
          System.debug('StdUsr-->'+ StdUsr);
         
@@ -122,7 +130,7 @@ public class CS_PermissionSetsAccessUtilityTest {
         
              CS_PermissionSetsAccessUtility.assignPermissionSetToUser(StdUserPermSetMap);
              List<PermissionSetAssignment> stdUsrPsa = [Select AssigneeId,PermissionSetId from PermissionSetAssignment where AssigneeId =: StdUsr.id];
-        	 system.assertNotEquals(null, stdUsrPsa.size());
+             system.assertNotEquals(null, stdUsrPsa.size());
         
 	       	 CS_PermissionSetsAccessUtility.assignPermissionSetToUser(exceptionUserPermSetMap);
         	 List<PermissionSetAssignment> excepUsrPsa = [Select AssigneeId,PermissionSetId from PermissionSetAssignment where AssigneeId =: null];

@@ -1,0 +1,4 @@
+<aura:component >
+    <aura:attribute name="formData" type="object" />
+       <lightning:button variant="brand" label="save" onclick="{!c.saveAlldata}"/>
+	</aura:component>

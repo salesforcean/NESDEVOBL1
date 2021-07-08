@@ -1,0 +1,32 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global">
+<div class="siteforceContentArea">
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12" class="comm-layout-column header">
+                    <div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12">
+                        <div class="slds-grid slds-gutters slds-wrap">
+                            <div class="slds-col slds-size_12-of-12">
+                    <div class="slds-box">
+                	<div class="slds-page-header">
+  						<div class="slds-grid">
+   							<h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate"  title="Exist Contact Information">Exist Contact Information</h1>
+						</div>
+                        <br></br><br></br>
+                        <div class="slds-text-body_regular"> The contact information you have entered seems to already exist in your household.  
+    					</div><br></br><br></br>
+                        <div class="slds-text-body_regular"> Would you like to proceed in creating the new household member with the existing contact information?  
+    					</div>
+                          <br></br><br></br>
+                        <div class="slds-p-around_medium" type="list">
+                            <lightning:button variant="brand" label="Previous" onclick="{!c.NavigatetoC4}" />&nbsp;
+                            <lightning:button variant="brand" label="Next" onclick="{!c.NavigatetoC6}" />&nbsp;
+                            <lightning:button variant="base" label="Cancel" />
+                            
+                        </div>
+    				</div>
+                    </div>
+                            </div></div></div></div>
+                </lightning:layoutItem>
+        </lightning:layout>
+    </div>	
+</aura:component>

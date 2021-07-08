@@ -102,6 +102,8 @@
 
 .THIS div.forceCommunityContactSupportForm .slds-m-top--small {
     max-width: 560px;
+    
+    
 }
 
 .THIS community_article-similar-articles-item {
@@ -165,7 +167,10 @@
     position: relative;
     z-index: 1;
     min-height: 100vh;
-    background-color: #3f3f3f;
+       /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    /*background-color: #3f3f3f;*/
+    background-color: #fafafa;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
 }
 
     .THIS .myAccount, .THIS .profile.uiMenuItem {
@@ -271,6 +276,11 @@
     /* added by ravi*/
         padding-right: 0rem;
         padding-left: 0rem;
+     /*BEGIN: Added for Defect#392129 by Jagadeesh Bokam*/
+   	    padding-top : 10px;
+    	padding-bottom : 10px;
+    
+     /*End: Added for Defect#392129 by Jagadeesh Bokam*/
     }
 
     .THIS .slds-icon_container {
@@ -332,6 +342,9 @@
 
 .THIS .siteforceContentArea h1 {
     font-size: 2rem;
+    /*Begin:Added for #392131 by Jagadeesh Bokam*/
+    margin-top: -35px;
+    /*End:Added for #392131 by Jagadeesh Bokam*/
 }
 
 .THIS .siteforceContentArea h2 {
@@ -357,7 +370,12 @@
 .THIS .slds-button_brand, .THIS .slds-button_neutral {
     font-weight: 600;
     line-height: 3;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    background: #76d5d4;
+    color: #000;
+    border: none;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
 }
 
 .THIS .slds-button_neutral {
@@ -415,7 +433,8 @@
     }
 
     .THIS .signinButtonArea span.slds-m-right_medium {
-        font-size: .5rem;
+        font-size: .25rem;
+        
     }
 }
 
@@ -558,20 +577,31 @@
 .THIS .header {
     padding: 0 .25rem !important;
     /*Added by Ravi*/
-    border-bottom: 5px solid #D86018;
-    background: #fff;
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+   /* border-bottom: 5px solid #D86018;*/
+    border-bottom: 5px solid #D2DB0D; 
+    /*updated*/
+    /*background: #fff;*/
+    background: #722362;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
 }
 
     .THIS .header .logo {
-        max-width: 100%;
+        max-width: 150%;
         height: auto;
+    /* Naveen: 399195 */
+        width: 150px; 
+        padding-top: 5px;
         max-height: 75px;
     }
 
 @media screen and (max-width:47.9375em) {
     .THIS .header .logo {
-        max-height: 40px !important;
-        margin: .5rem !important;
+        /*max-height: 40px !important;
+        margin: .5rem !important;*/
+        /* Naveen: 399195 */
+        width: 150px; 
+        padding-top: 5px
     }
 }
 
@@ -732,6 +762,11 @@
 .THIS .uiOutputRichText{
 padding-left: 30px;
   }
+/*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+.THIS .SpanColor{
+    color: #fff;
+}
+/*END: Added for US#335191 by Jagadeesh Bokam*/
 .THIS .comm-layout-column .mainContentArea .style {
 
     margin-top: 0px; 
@@ -742,3 +777,9 @@ padding-left: 30px;
 /*.THIS .slds-grid_align-center{
     padding: 0 20px;
 }*/
+
+.THIS .slds-button_brand:focus, .THIS .slds-button_neutral:focus, .THIS .slds-button_brand:hover, .THIS .slds-button_neutral:hover {
+    background-color: #3AA19F;
+    border-color: #52d6d5; 
+    box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
+}

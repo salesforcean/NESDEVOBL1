@@ -1,4 +1,6 @@
-/*** Created by ali km on 11/27/2019 for [US 119348]
+/**
+
+    * Created by ali km on 11/27/2019 for [US 119348]
         - This class handles following Enrollment Reactivations
             -> SOFT
             -> FULL
@@ -154,7 +156,8 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
         } else if(!programEnrollment.Opportunities__r.isEmpty() ) {
             for(Opportunity opp:programEnrollment.Opportunities__r) {                
                 
-                if (opp.StageName<>'Closed Lost') {    
+                if (opp.StageName<>'Closed Lost') {
+                    system.debug('in NES_StudentReactivation-->opp.StageBlock-->'+opp.StageName);
                     isInsert = false;
                     break;
                 }

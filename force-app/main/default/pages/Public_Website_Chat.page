@@ -1,7 +1,6 @@
 <apex:page >
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
-
 <style type='text/css'>
     .embeddedServiceHelpButton .helpButton .uiButton {
         background-color: #005290;
@@ -37,17 +36,17 @@
         embedded_svc.settings.entryFeature = 'LiveAgent';
 
         embedded_svc.init(
-            'https://pearsonobl.my.salesforce.com',
-            'https://liveagentsite.secure.force.com/PWSChat',
+            'https://pearsonobl--NESDEVOBL1.my.salesforce.com',
+            'https://nesdevobl1-liveagentsite.cs67.force.com/PWSChat',
             gslbBaseURL,
-            '00D6A0000001VXM',
+            '00D0n0000008qVO',
             'Public_Website_Chat',
             {
-                baseLiveAgentContentURL: 'https://c.la4-c2-ia2.salesforceliveagent.com/content',
-                deploymentId: '5723s000000I9Df',
-                buttonId: '5733s000000cgSN',
-                baseLiveAgentURL: 'https://d.la4-c2-ia2.salesforceliveagent.com/chat',
-                eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I3s000000CdpUEAS_16fd8ffc5fd',
+                baseLiveAgentContentURL: 'https://c.la1-c2cs-iad.salesforceliveagent.com/content',
+                deploymentId: '5726A0000004bxj',
+                buttonId: '5730n00000001g9',
+                baseLiveAgentURL: 'https://d.la1-c2cs-iad.salesforceliveagent.com/chat',
+                eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I0n00000000LxEAI_16f902ffad8',
                 isOfflineSupportEnabled: false
             }
         );
@@ -55,7 +54,7 @@
 
     if (!window.embedded_svc) {
         var s = document.createElement('script');
-        s.setAttribute('src', 'https://pearsonobl.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.setAttribute('src', 'https://pearsonobl--NESDEVOBL1.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function() {
             initESW(null);
         };

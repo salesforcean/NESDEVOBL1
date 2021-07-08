@@ -20,6 +20,7 @@ public class NES_AnnualStudentInfoTriggerTest {
         Account account = Peak_TestUtils.createTestAccount();
 //date.parse('11/17/2018')
         School_Year__c currentSchoolYear = Peak_TestUtils.createSchoolYears('2018-2019',System.today());
+        School_Year__c prevSchoolYear = Peak_TestUtils.createSchoolYears('2017-2018',System.today().addYears(-1));
         system.debug('current sy ' + currentSchoolYear.Name);
 
         Contact contact = Peak_TestUtils.createTestContact('Students', account.Id);
@@ -518,10 +519,72 @@ public class NES_AnnualStudentInfoTriggerTest {
         hed__Program_Enrollment__c progEnrollmentToTest =[SELECT Id,HHPORFlag__c,PORFlag__c,WhyFlagged__c,PlacementFlag__c,CounselingFlag__c,Start_Year__c,
                 PriorWithdrawalFlag__c,WaitlistFlag__c,
                 UserTechnologyFlag__c,DisciplinaryFlagOverride__c,HomelessRiskFlag__c,PrincipalGeneralFlag__c FROM hed__Program_Enrollment__c LIMIT 1];
-        System.assertNotEquals(progEnrollmentToTest.WhyFlagged__c, null);
-        
-
+        System.assertNotEquals(progEnrollmentToTest.WhyFlagged__c, null);        
     }
 
+   /* Created By Rakesh Ramaswamy on 4/30/2021
+    * Purpose: To test method for On update of Program Enrollment Record when scheduled batch jobs (NES_Batch_UpdateHardStopTimeConstraint) or (NES_Batch_SecondSemester) are executed.
+    *          The intention behind this test method is to test the positive scenario of the Grade_Level_Requested__c data element not being null or blank in the Current ASI record as well as the Previous ASI record.
+    *          The Student related Previous ASI record and the Current ASI record are associated to the Student related Program Enrollments.
+    */
+    static testMethod void previousASIAndCurrentASIHaveGradeLevelRequested() {
+          School_Year__c currentSchoolYear = [SELECT Id, Start_Date__c FROM School_Year__c WHERE Name = '2018-2019' limit 1];
+          School_Year__c prevSchoolYear = [Select Id, Start_Date__c FROM School_Year__c WHERE Name = '2017-2018' limit 1];
+          hed__Program_Enrollment__c programEnrollment = [SELECT Id, Start_Year__c, Start_Year__r.Start_Date__c FROM hed__Program_Enrollment__c WHERE Status__c = 'In Progress'  limit 1];
+          Annual_Student_Information__c currentASI = Peak_TestUtils.createAnnualStudentInformation('Current ASI', programEnrollment.Id, currentSchoolYear.Id, true);
+          Annual_Student_Information__c previousASI = Peak_TestUtils.createAnnualStudentInformation('Previous ASI', programEnrollment.Id, prevSchoolYear.Id, true);
+                 
+          currentASI.Grade_Level_Requested__c ='8';
+          update currentASI;
+                
+          previousASI.Grade_Level_Requested__c ='8';
+          update previousASI;
 
+          programEnrollment.Start_Year__c = currentSchoolYear.Id;
+          update programEnrollment;
+
+          system.assert(programEnrollment.Start_Year__c != null); 
+          system.assert(programEnrollment.Start_Year__r.Start_Date__c != null);
+          system.assertEquals(currentASI.Grade_Level_Requested__c, previousASI.Grade_Level_Requested__c);
+          system.assertEquals(programEnrollment.Start_Year__r.Start_Date__c.addYears(-1), prevSchoolYear.Start_Date__c);
+    }
+
+    /* Created By Rakesh Ramaswamy on 4/30/2021
+    * Purpose: To test method for On update of Program Enrollment Record when scheduled batch jobs (NES_Batch_UpdateHardStopTimeConstraint) or (NES_Batch_SecondSemester) are executed.
+    *          The intention behind this test method is to test the negative scenario of the Grade_Level_Requested__c data element not being null or blank in the Current ASI record as well as the Previous ASI record.
+    *          The Student related Previous ASI record and the Current ASI record are associated to the Student related Program Enrollments.
+    */
+    static testMethod void previousASIAndCurrentASINotHaveGradeLevelRequested() {
+        School_Year__c currentSchoolYear = [SELECT Id, Start_Date__c FROM School_Year__c WHERE Name = '2018-2019' LIMIT 1];
+        School_Year__c prevSchoolYear = [SELECT Id, Start_Date__c FROM School_Year__c WHERE Name = '2017-2018' LIMIT 1];
+        hed__Program_Enrollment__c programEnrollment = [SELECT Id, Start_Year__c, Start_Year__r.Start_Date__c FROM hed__Program_Enrollment__c WHERE Status__c = 'In Progress'  LIMIT 1];
+        Annual_Student_Information__c currentASI = Peak_TestUtils.createAnnualStudentInformation('Current ASI', programEnrollment.Id, currentSchoolYear.Id, true);
+        Annual_Student_Information__c previousASI = Peak_TestUtils.createAnnualStudentInformation('Previous ASI', programEnrollment.Id, prevSchoolYear.Id, true);
+        list<School_Year__c> schoolYearList = new list<School_Year__c>();
+       
+        currentASI.Grade_Level_Requested__c = null;
+        update currentASI;
+              
+        previousASI.Grade_Level_Requested__c ='7';
+        update previousASI;
+        
+        programEnrollment.Start_Year__c = null;
+        update programEnrollment;
+
+        system.assert(programEnrollment.Start_Year__c == null);         
+        system.assertNotEquals(currentASI.Grade_Level_Requested__c, previousASI.Grade_Level_Requested__c);
+        
+        currentSchoolYear.Start_Date__c = null;
+        currentSchoolYear.End_Date__c = null;
+        schoolYearList.add(currentSchoolYear);
+        prevSchoolYear.Start_Date__c = Date.today().addDays(-15).addYears(-1);
+        prevSchoolYear.End_Date__c = Date.today().addDays(15).addYears(-1);
+        schoolYearList.add(prevSchoolYear);
+        update schoolYearList;
+
+        programEnrollment.Start_Year__c = currentSchoolYear.Id;
+        update programEnrollment;        
+        system.assertNotEquals(programEnrollment.Start_Year__r.Start_Date__c, null);
+        system.assertNotEquals(programEnrollment.Start_Year__r.Start_Date__c, prevSchoolYear.Start_Date__c);
+    }
 }

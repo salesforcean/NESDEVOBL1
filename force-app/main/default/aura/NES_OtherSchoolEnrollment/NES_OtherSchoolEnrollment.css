@@ -1,2 +1,6 @@
 .THIS {
 }
+
+.THIS .italicText{
+    font-style: italic;
+}

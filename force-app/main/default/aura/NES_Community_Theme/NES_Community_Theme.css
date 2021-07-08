@@ -18,10 +18,10 @@
     background-color: #f3f3f3;
 }
 
-    .THIS .forceTopicFeaturedTopicItem .topicContent:focus, .THIS .forceTopicFeaturedTopicItem .topicContent:hover, .THIS .forceTopicFeaturedTopicItem .topicLink:focus .topicContent {
-        border-bottom: 3px solid;
-        background-color: #fff;
-    }
+.THIS .forceTopicFeaturedTopicItem .topicContent:focus, .THIS .forceTopicFeaturedTopicItem .topicContent:hover, .THIS .forceTopicFeaturedTopicItem .topicLink:focus .topicContent {
+    border-bottom: 3px solid;
+    background-color: #fff;
+}
 
 .THIS .forceRelatedCardContainer .container {
     width: 100%;
@@ -31,9 +31,9 @@
     padding-left: 0;
 }
 
-    .THIS .forceRelatedCardContainer .container .forceCard {
-        margin: 0;
-    }
+.THIS .forceRelatedCardContainer .container .forceCard {
+    margin: 0;
+}
 
 .THIS .topicRelatedArticleList .selfServiceArticleListItem {
     margin: 0;
@@ -60,17 +60,17 @@
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
 }
 
-    .THIS .forceCommunityRecordListCompact .listTitle, .THIS .forceCommunityRecordListStandard .listTitle {
-        display: none;
-    }
+.THIS .forceCommunityRecordListCompact .listTitle, .THIS .forceCommunityRecordListStandard .listTitle {
+    display: none;
+}
 
-    .THIS .forceCommunityRecordListCompact .filterListPlaceholder ul, .THIS .forceCommunityRecordListStandard .filterListPlaceholder ul {
-        color: #000;
-    }
+.THIS .forceCommunityRecordListCompact .filterListPlaceholder ul, .THIS .forceCommunityRecordListStandard .filterListPlaceholder ul {
+    color: #000;
+}
 
-    .THIS .forceCommunityRecordListCompact .viewAllLink, .THIS .forceCommunityRecordListStandard .viewAllLink {
-        padding-bottom: 15px;
-    }
+.THIS .forceCommunityRecordListCompact .viewAllLink, .THIS .forceCommunityRecordListStandard .viewAllLink {
+    padding-bottom: 15px;
+}
 
 .THIS div.forceCommunityContactSupportForm .slds-p-bottom--x-small {
     position: relative;
@@ -99,10 +99,29 @@
 .THIS div.forceCommunityContactSupportForm .forceCommunityContactSupportConfirmation {
     padding-left: 0;
 }
+.THIS div.forceCommunityContactSupportForm .forceCommunityContactSupportConfirmation a {
+    color:#BF0366;    
+}
 
 .THIS div.forceCommunityContactSupportForm .slds-m-top--small {
     max-width: 560px;
 }
+/*BEGIN:Added for the Defect 395157 :Jagadeesh Bokam */
+.THIS div.forceCommunityContactSupportForm .contactSupportButton {
+    background-color : #76D5D4;
+    border-color: #76D5D4;
+    color: #000000; 
+    
+}
+/* END: Added for the Defect 395157 :Jagadeesh Bokam */
+
+/*Added for 399187*/
+.THIS div.forceCommunityContactSupportForm .contactSupportButton:hover, .THIS div.forceCommunityContactSupportForm .contactSupportButton:focus {
+    background-color: #50AAA9;
+    border-color: #52d6d5; 
+    box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
+}
+/*Ended for 399187*/
 
 .THIS community_article-similar-articles-item {
     display: flex;
@@ -122,30 +141,36 @@
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
 }
 
-    .THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a, .THIS community_article-similar-articles-list ul li a, .THIS community_article-topic-trending-articles-list ul li a {
-        position: relative;
-        padding: 1.3em;
-        color: #000;
-    }
+.THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a, .THIS community_article-similar-articles-list ul li a, .THIS community_article-topic-trending-articles-list ul li a {
+    position: relative;
+    padding: 1.3em;
+    color: #000;
+}
 
-        .THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a:hover, .THIS community_article-similar-articles-list ul li a:hover, .THIS community_article-topic-trending-articles-list ul li a:hover {
-            text-decoration: none;
-            color: #d86018;
-        }
+.THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a:hover, .THIS community_article-similar-articles-list ul li a:hover, .THIS community_article-topic-trending-articles-list ul li a:hover {
+    text-decoration: none;
+    /* color: #d86018; */
+    /* Added Here for US #395157*/
+    color: #722362;
+    /* Ended Here for US #395157*/
+}
 
-        .THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a:after, .THIS community_article-similar-articles-list ul li a:after, .THIS community_article-topic-trending-articles-list ul li a:after {
-            font-size: 1.2em;
-            font-weight: 700;
-            position: absolute;
-            top: 15px;
-            right: 16px;
-            content: '>';
-            color: #d86018;
-        }
+.THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a:after, .THIS community_article-similar-articles-list ul li a:after, .THIS community_article-topic-trending-articles-list ul li a:after {
+    font-size: 1.2em;
+    font-weight: 700;
+    position: absolute;
+    top: 15px;
+    right: 16px;
+    content: '>';
+    /* color: #d86018; */
+    /* Added Here for US #395157*/
+    color: #722362;
+    /* Ended Here for US #395157*/
+}
 
-        .THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a span:nth-of-type(2), .THIS community_article-similar-articles-list ul li a span:nth-of-type(2), .THIS community_article-topic-trending-articles-list ul li a span:nth-of-type(2) {
-            display: none;
-        }
+.THIS .forceCommunityRelatedTopics ul.forceTopicTopicList li a span:nth-of-type(2), .THIS community_article-similar-articles-list ul li a span:nth-of-type(2), .THIS community_article-topic-trending-articles-list ul li a span:nth-of-type(2) {
+    display: none;
+}
 
 .THIS h1 {
     font-size: 1.2rem;
@@ -165,117 +190,165 @@
     position: relative;
     z-index: 1;
     min-height: 100vh;
-    background-color: #3f3f3f;
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    /*background-color: #3f3f3f;*/
+    background-color: #fafafa;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
+    
 }
 
-    .THIS .myAccount, .THIS .profile.uiMenuItem {
-        display: none;
-    }
+.THIS .myAccount, .THIS .profile.uiMenuItem {
+    display: none;
+}
 
-    .THIS .not-selected {
-        visibility: hidden;
-    }
+.THIS .not-selected {
+    visibility: hidden;
+}
 
-    .THIS .rowActionsPlaceHolder, .THIS .slds-button-group, .THIS .slds-button_icon-more {
-        display: none;
-    }
+.THIS .rowActionsPlaceHolder, .THIS .slds-button-group, .THIS .slds-button_icon-more {
+    display: none;
+}
 
-    .THIS article.content .forcePageBlockSectionRow:last-of-type {
-        margin-bottom: 2.5em;
-    }
+.THIS article.content .forcePageBlockSectionRow:last-of-type {
+    margin-bottom: 2.5em;
+}
 /* Ravi- US 201136- Commented for KBA Pagelayout Updates
-    .THIS article.content .forcePageBlockSectionRow:first-of-type, .THIS article.content .forcePageBlockSectionRow:nth-of-type(2) {
-        display: none;
-    }*/
+.THIS article.content .forcePageBlockSectionRow:first-of-type, .THIS article.content .forcePageBlockSectionRow:nth-of-type(2) {
+display: none;
+}*/
 
-    .THIS .selfServiceArticleLayout.zoom h1.selfServiceArticleHeaderDetail {
-        font-size: 1.5rem;
-    }
+.THIS .selfServiceArticleLayout.zoom h1.selfServiceArticleHeaderDetail {
+    font-size: 1.5rem;
+}
 
-    .THIS .selfServiceArticleLayout.zoom {
-        display: flex;
-        flex-direction: column;
-        background-color: #fff;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
-    }
+.THIS .selfServiceArticleLayout.zoom {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+}
 /* Ravi- US 201136- Commented for KBA Pagelayout Updates
-        .THIS .selfServiceArticleLayout.zoom .slds-form-element {
-            border: none;
-        }
+.THIS .selfServiceArticleLayout.zoom .slds-form-element {
+border: none;
+}
 
-        .THIS .forceCommunityObjectHome .forceListViewManagerHeader, .THIS .selfServiceArticleLayout.zoom .forcePageBlockSectionRow:last-of-type, .THIS .selfServiceArticleListItem .view-count, .THIS .selfServiceArticleListItem .view-count + .dot {
-            display: none;
-        } */
+.THIS .forceCommunityObjectHome .forceListViewManagerHeader, .THIS .selfServiceArticleLayout.zoom .forcePageBlockSectionRow:last-of-type, .THIS .selfServiceArticleListItem .view-count, .THIS .selfServiceArticleListItem .view-count + .dot {
+display: none;
+} */
 
-    .THIS .login-link {
-        font-size: 1rem;
-        line-height: 2 !important;
-        display: inline-block;
-        padding: .25rem 2rem;
-        border-radius: 3px;
-        background: #C24B14;
-    }
+.THIS .login-link {
+    font-size: 1rem;
+    line-height: 2 !important;
+    display: inline-block;
+    padding: .25rem 2rem;
+    border-radius: 3px;
+    background: #C24B14;
+}
 
-        .THIS .login-link .linkLabel {
-            font-weight: 600 !important;
-            display: inline !important;
-            overflow: visible !important;
-            text-transform: uppercase !important;
-        }
+.THIS .login-link .linkLabel {
+    font-weight: 600 !important;
+    display: inline !important;
+    overflow: visible !important;
+    text-transform: uppercase !important;
+}
 
-    .THIS div[data-region-name=navBar], .THIS div[data-region-name=profileMenu] {
-        margin-top: -.25rem;
-    }
+.THIS div[data-region-name=navBar], .THIS div[data-region-name=profileMenu] {
+    margin-top: -.25rem;
+}
 
-    .THIS .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger {
-        padding-right: 1rem;
-        text-align: right;
-    }
+.THIS .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger .profileIcon {
+    padding-right: 1rem;
+    text-align: right;
+    
+    /* Added for the Defect 388390 : Jagadeesh Bokam*/
+    padding: 21px 20px 24px 34px;
+    background: url('/resource/UserProfileIcon');
+    width:3px;
+    height: 3px;
+    background-repeat : no-repeat;
+    border-radius :0;
+    margin-top: 4px;
+    margin-right: -20px;
+    
+    /* Added for the Defect 388390 : Jagadeesh Bokam*/
+}
 
-    .THIS .helpButtonEnabled .flatButton {
-        background: #C24B14;
-    }
+.THIS .helpButtonEnabled .flatButton {
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    /*background: #C24B14;*/
+    background: #BAEAE9;
+    color: #000;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
+}
 
-    .THIS .helpButtonDisabled .flatButton {
-        pointer-events: none;
-        background: #bbb;
-    }
+.THIS .helpButtonDisabled .flatButton {
+    pointer-events: none;
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    /*background: #bbb;*/
+    background: #BAEAE9;
+    color: #000;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
+}
 
-        .THIS .helpButtonDisabled .flatButton:hover {
-            background: #bbb;
-        }
+.THIS .helpButtonDisabled .flatButton:hover {
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    /* background: #bbb;*/
+    background: #BAEAE9;
+    color: #000;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
+}
 
-    .THIS .waitingCancelChat {
-        border: none !important;
-        border-radius: 3px;
-        background: #C24B14;
-    }
+.THIS .waitingCancelChat {
+    border: none !important;
+    border-radius: 3px;
+    background: #C24B14;
+}
 
-        .THIS .waitingCancelChat .label {
-            text-decoration: none !important;
-            color: #fff !important;
-        }
+.THIS .waitingCancelChat .label {
+    text-decoration: none !important;
+    color: #fff !important;
+}
 
-    .THIS .embeddedServiceSidebarButton, .THIS .embeddedServiceSidebarButton.uiButton--inverse, .THIS .embeddedServiceSidebarButton.uiButton--inverse:disabled {
-        background: #c74b00 !important;
-    }
+.THIS .embeddedServiceSidebarButton, .THIS .embeddedServiceSidebarButton.uiButton--inverse, .THIS .embeddedServiceSidebarButton.uiButton--inverse:disabled {
+    background: #76d5d4 !important;
+    color: #000;
+}
+/*--*/
+.THIS .embeddedServiceSidebarButton .label, .THIS .embeddedServiceSidebarButton:disabled .label{
+    color: #000;
+}
 
-        .THIS .embeddedServiceSidebarButton.uiButton--inverse .label {
-            color: #fff;
-        }
-
-    .THIS .container {
-        width: 1200px;
-        max-width: 100%;
-        margin: 0 auto;
+.THIS .embeddedServiceSidebarButton.uiButton--inverse .label {
+    color: #000;
+}
+/* Added by Ravi Bug #414196 */
+.THIS .slds-order_2 {
+    width: 100px;
+}
+.THIS .container {
+    width: 1200px;
+    max-width: 100%;
+    
+    margin: 0 auto;
     /* added by ravi*/
-        padding-right: 0rem;
-        padding-left: 0rem;
-    }
+    padding-right: 0rem;
+    padding-left: 0rem;
+  
+    
+    /*BEGIN: Added for Defect#392129 by Jagadeesh Bokam*/
+    padding-top : 10px;
+    padding-bottom : 10px;
+    /*End: Added for Defect#392129 by Jagadeesh Bokam*/
+}
+/*Added by jagadeesh*/
+.THIS .slds-form-element__static a {
+    color:#BF0366;
+}
+/*Added by jagadeesh*/
+.THIS .slds-icon_container {
+    vertical-align: sub;
+}
 
-    .THIS .slds-icon_container {
-        vertical-align: sub;
-    }
 
 @media screen and (min-width:47.9375em) {
     .THIS .sm-top-margin-on-desktop {
@@ -317,9 +390,9 @@
     padding-left: 0;
 }
 
-    .THIS .forceRelatedListContainer .container .view-all-label {
-        display: none;
-    }
+.THIS .forceRelatedListContainer .container .view-all-label {
+    display: none;
+}
 
 .THIS .selfServiceCasePublisher .publisherContainer .inputTextContainer {
     width: 100%;
@@ -354,11 +427,31 @@
     font-size: .875rem;
 }
 
+/* Added By Jagadeesh Bokam #388309 */
+.THIS .siteforceContentArea h6 a {
+    color : #BF0366;
+}
+/* Ended By Jagadeesh Bokam #388309 */
+
 .THIS .slds-button_brand, .THIS .slds-button_neutral {
     font-weight: 600;
     line-height: 3;
-    text-transform: uppercase;
+    /*Added by jagadeesh for Camel case*/
+    text-transform: /*uppercase*/none;  
+    /* Added By Mohammad Shaik/Bokam #388982 */	
+    background-color: #76d5d4;	
+    border: #76d5d4;	
+    color: #000;	
+    /* Ended By Mohammad Shaik/Bokam #388982 */  
 }
+
+/*Added for 399187*/
+.THIS .slds-button_brand:hover, .THIS .slds-button_brand:focus {
+    background-color: #50AAA9;
+    border-color: #52d6d5; 
+    box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
+}
+/*Ended for 399187*/
 
 .THIS .slds-button_neutral {
     color: #000;
@@ -366,18 +459,18 @@
     background: #e0e0e0;
 }
 
-    .THIS .slds-button_neutral:hover {
-        background: rgba(0,0,0,.2);
-    }
+.THIS .slds-button_neutral:hover {
+    background: rgba(0,0,0,.2);
+}
 
-    .THIS .slds-button_neutral.add:before {
-        font-size: 1.5rem;
-        font-weight: 400;
-        line-height: 1;
-        margin-right: .5rem;
-        content: '+';
-        vertical-align: middle;
-    }
+.THIS .slds-button_neutral.add:before {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-right: .5rem;
+    content: '+';
+    vertical-align: middle;
+}
 
 @media screen and (max-width:47.9375em) {
     .THIS .slds-button.slds-button_brand, .THIS .slds-button.slds-button_neutral {
@@ -407,14 +500,14 @@
         position: relative;
         margin-bottom: 1rem;
     }
-
+    
     .THIS .signinButtonArea .cNES_Community_Theme .slds-button.slds-button_neutral, .THIS .signinButtonArea .slds-button.slds-button_brand {
         font-size: .5rem !important;
         display: inline-block;
         width: 31%;
         margin-right: 9px;
     }
-
+    
     .THIS .signinButtonArea span.slds-m-right_medium {
         font-size: .5rem;
     }
@@ -424,9 +517,9 @@
     line-height: 3;
 }
 
-    .THIS .slds-input::placeholder {
-        color: #575757;
-    }
+.THIS .slds-input::placeholder {
+    color: #575757;
+}
 
 .THIS .registration.slds-progress {
     width: 90%;
@@ -452,65 +545,65 @@
     margin-top: -.1rem;
 }
 
-    .THIS .registration.slds-progress .slds-progress-bar .slds-progress-bar__value {
-        background-color: #3c8630;
-    }
+.THIS .registration.slds-progress .slds-progress-bar .slds-progress-bar__value {
+    background-color: #3c8630;
+}
 
-    .THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='0'] > span {
-        width: 27% !important;
-    }
+.THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='0'] > span {
+    width: 27% !important;
+}
 
-    .THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='33'] > span {
-        width: 28% !important;
-    }
+.THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='33'] > span {
+    width: 28% !important;
+}
 
-    .THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='66'] > span {
-        width: 50% !important;
-    }
+.THIS .registration.slds-progress .slds-progress-bar[aria-valuenow='66'] > span {
+    width: 50% !important;
+}
 
 .THIS .registration.slds-progress .slds-progress__list .slds-progress__item {
     position: relative;
 }
 
-    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:first-of-type, .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(3), .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4) {
-        width: 28%;
-    }
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item:first-of-type, .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(3), .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4) {
+    width: 28%;
+}
 
-    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(2) {
-        width: 20%;
-    }
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(2) {
+    width: 20%;
+}
 
-    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4) {
-        justify-content: flex-end !important;
-    }
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4) {
+    justify-content: flex-end !important;
+}
 
-        .THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4):before {
-            right: -.2rem;
-        }
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item:nth-of-type(4):before {
+    right: -.2rem;
+}
 
-    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item.slds-is-active .slds-progress__marker, .THIS .registration.slds-progress .slds-progress__list .slds-progress__item.slds-is-completed .slds-progress__marker {
-        color: #3c8630;
-        border-color: #3c8630;
-        background-color: #3c8630;
-    }
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item.slds-is-active .slds-progress__marker, .THIS .registration.slds-progress .slds-progress__list .slds-progress__item.slds-is-completed .slds-progress__marker {
+    color: #3c8630;
+    border-color: #3c8630;
+    background-color: #3c8630;
+}
 
-    .THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker {
-        width: 1.5rem;
-        height: 1.5rem;
-        border-color: #dddbda;
-        box-shadow: none;
-    }
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-color: #dddbda;
+    box-shadow: none;
+}
 
-        .THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker:before {
-            font-weight: 600;
-            line-height: 1;
-            position: absolute;
-            top: -1.75rem;
-            left: -2rem;
-            white-space: nowrap;
-            text-transform: capitalize;
-            color: #555;
-        }
+.THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker:before {
+    font-weight: 600;
+    line-height: 1;
+    position: absolute;
+    top: -1.75rem;
+    left: -2rem;
+    white-space: nowrap;
+    text-transform: capitalize;
+    color: #555;
+}
 
 @media screen and (max-width:47.9375em) {
     .THIS .registration.slds-progress .slds-progress__list .slds-progress__item .slds-progress__marker:before {
@@ -559,102 +652,162 @@
 .THIS .header {
     padding: 0 .25rem !important;
     /*Added by Ravi*/
-    border-bottom: 5px solid #D86018;
-    background: #fff;
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    /*  border-bottom: 5px solid #D86018;*/
+    border-bottom: 5px solid #D2DB0D;
+    /*background: #fff;*/
+    background: #722362;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
 }
 
-    .THIS .header .logo {
-        max-width: 100%;
-        height: auto;
-        max-height: 75px;
-    }
+.THIS .header .logo {
+    /*max-width: 100%;*/
+    /* Added for US #399195 */
+    max-width: 150%;
+    Width:150px;
+    padding-top: 5px;
+    /* Ended for US #399195 */
+    height: auto;
+    max-height: 75px;
+}
 
-@media screen and (max-width:47.9375em) {
+/* Commented by Ravi Defect 414196
+ * @media screen and (max-width:47.9375em) {
     .THIS .header .logo {
         max-height: 40px !important;
         margin: .5rem !important;
     }
+}*/
+
+.THIS .logo:focus-visible{
+outline: none;
+        }
+/* Added here for #411161*/
+.THIS .slds-global-actions__notifications:hover, .THIS .selfServiceProfileMenuTrigger .trigger-link:hover{
+    background-color: rgba(210, 219, 13, 0.35);
+    box-shadow: 0 0 0 1px rgba(210, 219, 13, 0.35);
+    BORDER-RADIUS: 4px; 
+    }
+/*Ended here for #411161*/
+
+/* Added by ravi #408430*/
+.THIS .slds-global-actions__notifications:focus-visible{
+    box-shadow: 0 0 0 1px rgb(210,219,13, 0.35);
+    background-color: rgba(210, 219, 13, 0.35);
+    BORDER-RADIUS: 4px; 
 }
+
+/*Ended here for #408430*/
 
 .THIS .header .menuicon, .THIS .header button[title='Toggle SideBar'] {
-    margin-right: 1rem;
+    margin-right: 0px;
 }
-
-    .THIS .header .menuicon svg, .THIS .header button[title='Toggle SideBar'] svg {
-        width: 1.5rem;
-        height: 1.5rem;
-        fill: #bb5215 !important;
-    }
+.THIS .header .menuicon svg, .THIS .header button[title='Toggle SideBar'] svg {
+    width: 5.5rem;
+    height: 1.5rem;
+    /*
+    fill: #bb5215 !important;*/
+    fill: #ffffff;
+}
 
 .THIS .header .selfServiceCasePublisher .inputTextContainer {
     width: 100%;
 }
+/* Begin : Added by jagadeesh for the Defect #397058*/
+.THIS .selfServiceCasePublisher button:hover, .THIS .selfServiceCasePublisher button:focus{
+    background-color : #50aaa9;
+}
+
+/* End : Added by jagadeesh for the Defect #397058*/
 
 .THIS .header .selfServiceUserProfileMenu {
     margin-top: .75rem;
+    
 }
 
-    .THIS .header .selfServiceUserProfileMenu .profileName {
-        display: none !important;
-    }
+.THIS .header .selfServiceUserProfileMenu .profileName {
+    display: none !important;
+}
 
-    .THIS .header .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger .triggerDownArrow {
-        display: inline-block !important;
-        margin-left: .5em;
-        border: none;
-    }
+.THIS .header .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger .triggerDownArrow {
+    display: inline-block !important;
+    margin-left: .5em;
+    border: none;
+}
 
-        .THIS .header .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger .triggerDownArrow:before {
-            font-family: Open Sans,sans-serif;
-            font-size: 1.25rem;
-            font-weight: 100;
-            position: relative;
-            top: .25rem;
-            left: .25rem;
-            display: block;
-            width: 12px;
-            content: '\203A';
-            transform: rotate(90deg);
-            color: #000;
-            text-shadow: none;
-        }
+.THIS .header .selfServiceUserProfileMenu .selfServiceProfileMenuTrigger .triggerDownArrow:before {
+    font-family: Open Sans,sans-serif;
+    font-size: 1.25rem;
+    font-weight: 100;
+    position: relative;
+    top: .25rem;
+    left: .25rem;
+    display: block;
+    width: 12px;
+    content: '\203A';
+    transform: rotate(90deg);
+    
+    /*color: #000;*/
+    /* BEGIN : Added for the Defect 335191 : Jagadeesh Bokam*/
+    color: #ffffff;
+    margin-bottom: 10px;
+    /* END : Added for the Defect 335191 : Jagadeesh Bokam*/
+    text-shadow: none;
+}
 
+
+
+/* Added for the Defect 388390 : Jagadeesh Bokam*/
+.THIS .unsNotificationsCounter .headerButtonBody{
+    color : white;
+}
+
+/* End for the Defect 388390 : Jagadeesh Bokam*/
 .THIS .header .forceCommunityGlobalNavigation {
     margin-top: .75rem;
     color: #000;
     background: transparent !important;
 }
 
-    .THIS .header .forceCommunityGlobalNavigation .comm-navigation__list a[title=Home], .THIS .header .forceCommunityGlobalNavigation .slds-button.slds-icon-waffle_container {
-        display: none;
-    }
+.THIS .header .forceCommunityGlobalNavigation .comm-navigation__list a[title=Home], .THIS .header .forceCommunityGlobalNavigation .slds-button.slds-icon-waffle_container {
+    display: none;
+}
 
-    .THIS .header .forceCommunityGlobalNavigation .comm-navigation__list {
-        justify-content: flex-end;
-    }
+.THIS .header .forceCommunityGlobalNavigation .comm-navigation__list {
+    justify-content: flex-end;
+}
 
-    .THIS .header .forceCommunityGlobalNavigation .slds-list__item a {
-        font-size: .85rem;
-        font-weight: 600;
-        border-bottom: 2px solid transparent;
-    }
+.THIS .header .forceCommunityGlobalNavigation .slds-list__item a {
+    font-size: .85rem;
+    font-weight: 600;
+    border-bottom: 2px solid transparent /* rgb(210,219,13) */;
+    
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    color: #ffffff;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
+}
 
-        .THIS .header .forceCommunityGlobalNavigation .slds-list__item a.slds-is-active, .THIS .header .forceCommunityGlobalNavigation .slds-list__item a:hover {
-            border-color: #bb5215;
-            background: transparent !important;
-        }
+.THIS .header .forceCommunityGlobalNavigation .slds-list__item a.slds-is-active, .THIS .header .forceCommunityGlobalNavigation .slds-list__item a:hover {
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/      
+    /*border-color: #bb5215;*/
+    border-color: #D2DB0D;
+    
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
+    
+    background: transparent !important;
+}
+.THIS .header .forceCommunityGlobalNavigation .slds-list_vertical {
+    padding-top: 2rem;
+    background-color: #fff;
+}
 
-    .THIS .header .forceCommunityGlobalNavigation .slds-list_vertical {
-        padding-top: 2rem;
-        background-color: #fff;
-    }
 
 @media screen and (max-width:47.9375em) {
     .THIS .header .container {
         padding-right: 0;
         padding-left: 0;
     }
-
+    
     .THIS .header .menuList.visible.positioned {
         width: 50vw;
     }
@@ -666,28 +819,28 @@
     background: #fafafa;
 }
 
-    .THIS .mainContentArea h3 > span {
-        float: right;
-    }
+.THIS .mainContentArea h3 > span {
+    float: right;
+}
 
-    .THIS .mainContentArea .forceCommunityRichText ul {
-        padding-left: 0;
-    }
+.THIS .mainContentArea .forceCommunityRichText ul {
+    padding-left: 0;
+}
 
-        .THIS .mainContentArea .forceCommunityRichText ul li {
-            position: relative;
-            padding-left: 1.5rem;
-        }
+.THIS .mainContentArea .forceCommunityRichText ul li {
+    position: relative;
+    padding-left: 1.5rem;
+}
 
-            .THIS .mainContentArea .forceCommunityRichText ul li:before {
-                font-size: 1.75rem;
-                line-height: 1.25rem;
-                position: absolute;
-                left: 2rem;
-                text-align: center;
-                vertical-align: top;
-                white-space: nowrap;
-            }
+.THIS .mainContentArea .forceCommunityRichText ul li:before {
+    font-size: 1.75rem;
+    line-height: 1.25rem;
+    position: absolute;
+    left: 2rem;
+    text-align: center;
+    vertical-align: top;
+    white-space: nowrap;
+}
 
 .THIS .contextual-help {
     padding: 1.5rem;
@@ -696,17 +849,25 @@
     
 }
 
-    .THIS .contextual-help h5 {
-        font-weight: 600;
-    }
+.THIS .contextual-help h5 {
+    font-weight: 600;
+}
+/* Added By Jagadeesh Bokam #388309 */
+.THIS .contextual-help a {
+    color : #BF0366;
+}
+/* Ended By Jagadeesh Bokam #388309 */
+/*.THIS .slds-button slds-button__icon{
+fill : #722362;
+}*/
 
-    
+
 .THIS .contextual-help ul li {
-            margin: .5rem 0;
+    margin: .5rem 0;
     /*Added for the Bug 336325 by Jagadeesh */
-    		list-style-type: disc;
-    		
-        }
+    list-style-type: disc;
+    
+}
 
 .THIS .footer {
     padding: 0 !important;
@@ -717,43 +878,109 @@
 }
 
 .THIS .slds-button--brand:disabled, .THIS .slds-button--brand[disabled], .THIS .slds-button_brand:disabled, .THIS .slds-button_brand[disabled] {
-    border-color: #666;
-    background: #666;
+    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+    border-color: #666666;
+    background: #666666;
+    /*border-color: rgb(213, 241, 242);
+    background: rgb(213, 241, 242);*/
+    border: none !important;
+    /*END: Added for US#335191 by Jagadeesh Bokam*/
 }
 /*Added by Ravi*/
 .THIS .slds-p-around_small {
-
- padding-left: 0rem;
- padding-right: 0rem;
- }
+    
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+/*added by jagadeesh*/
+.THIS .forceListViewManager a {
+    color: #000000;
+    text-decoration-color:#BF0366;
+    text-decoration-thickness: 2px;
+}
+/*added by jagadeesh */
 
 .THIS .slds-col--padded {
-
- padding-left: 0px;
- padding-right: 0px;
- }
+    
+    padding-left: 0px;
+    padding-right: 0px;
+}
 
 .THIS .uiOutputRichText{
-padding-left: 30px;
-  }
+    padding-left: 30px;
+}
 .THIS .comm-layout-column .mainContentArea .style {
-
+    
     margin-top: 0px; 
     padding-top: 0px; 
     padding-bottom: 0px;
- }
+}
+
 
 /*.THIS .slds-grid {
-    
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-top: 20px;
+
+padding-right: 20px;
+padding-bottom: 20px;
+padding-left: 20px;
+padding-top: 20px;
 
 }
 .THIS .slds-col{
-    
-    padding-right: 20px;
-    padding-left: 20px;
+
+padding-right: 20px;
+padding-left: 20px;
 
 }*/
+/*Added for the US#399159*/
+.THIS .selfServiceProfileMenuTrigger .trigger-link:focus {
+    outline: none;
+}
+
+.THIS .selfServiceProfileMenuTrigger .trigger-link:focus-visible {
+    /*box-shadow: 0 0 0 1px  rgb(210,219,13);*/
+     box-shadow: 0 0 0 1px rgb(210,219,13, 0.35);
+    background-color: rgba(210, 219, 13, 0.35);
+    box-shadow: inherit;
+}
+
+.THIS .unsNotificationsCounter .headerButtonBody:focus-visible{
+    outline: none;
+}
+.THIS .unsNotificationsCounter .headerButtonBody:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px solid transparent   /*rgb(210,219,13)*/;
+} 
+
+.THIS .header .forceCommunityGlobalNavigation .slds-list__item a:focus{
+    border-color: #D2DB0D;
+    outline: none;
+}
+/* Commented by Ravi 408430*/
+.THIS .header .forceCommunityGlobalNavigation .slds-list__item a:focus-visible{
+    /*box-shadow: 0 0 0 1px rgb(210,219,13);*/
+    BORDER-RADIUS: 2px solid transparent;
+     /*border-bottom: 2px  */
+}
+
+/*Added for the defect 407949 */
+.THIS .slds-button_brand[disabled]:hover {
+    box-shadow : none;
+}
+
+
+/*Added for the defect #407947 : Jagadeesh Bokam*/
+
+.THIS .unsNotificationsCounter .counterLabel {
+    line-height: var(--lwc-lineHeightReset,1);
+    width: var(--lwc-squareIconUtilitySmall,1rem);
+    height: var(--lwc-squareIconUtilitySmall,1rem);
+    padding: 0 var(--lwc-spacingXxSmall,0.25rem);
+    color:#000000;
+    font-family: var(--lwc-fontFamily,Open Sans);
+    font-weight: var(--lwc-fontWeightBold,700);
+    font-size: var(--lwc-fontSizeXSmall,0.625rem);
+    vertical-align: middle;
+    display: table-cell;
+    background-color: #77d5d5;
+    border-radius:10px;
+}

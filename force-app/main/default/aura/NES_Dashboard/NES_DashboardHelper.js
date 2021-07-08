@@ -50,8 +50,8 @@
                 $A.util.toggleClass(completedItems[completedItems.length - 1], 'hideItem');
             }
         }
-
-    }
+ 
+    },
     
-
+        
 });

@@ -9,30 +9,41 @@
  * 2020-25-08 Fixed Schooling Info section spins when an option is selected(Re-enrollment) #DEF226838 (Jagadeesh)
  * 2020-28-09 Added V2_external Id field in query line 102 as this field referenced in runAssignment method in NES_ECAEvaluation #DEF255843 (Jagadish Babu)
  * 2020-09-10 Logic for Checking whether all sections completed in a form - Defect-263832 (Krishna Peddanagammol)  
+ * 2021-01-08:Sumanth: Added 'getAHISubmitInformation' method for US # 334973 & 334974
  */
 
 public without sharing class NES_QuestionsHelper { 
 
     private static Peak_ApexLog logger = new Peak_ApexLog('Questions');
-
+    public static Boolean sectionFlag = false; // add by maddi for defect 356968 on 19/04/2021
     // Returns a peak response after saving the user's answers
+
     public static Peak_Response submitQuestions(Id programEnrollmentId, String questionJSON, Id sectionId, Id processId) {
+
         Peak_Response peakResponse = new Peak_Response();
 
-        hed__Program_Enrollment__c programEnrollment = [SELECT Id, hed__Contact__r.Name, Program_Grade_Level__r.Grade_Level__r.Name, hed__Account__r.Use_Updated_ECA_Process__c FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
+        // Naveen: Changes for Bug 375566 | Start
+        //hed__Program_Enrollment__c programEnrollment = [SELECT Id, hed__Contact__r.Name, Program_Grade_Level__r.Grade_Level__r.Name, hed__Account__r.Use_Updated_ECA_Process__c FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
+        
+        List <hed__Program_Enrollment__c> programEnrollmentList = GenericSOQLQueries.programEnrollmentDetails(new Set<Id>{programEnrollmentId});
+        hed__Program_Enrollment__c programEnrollment = getPERecord(programEnrollmentList, programEnrollmentId);
+        // Naveen: Changes for Bug 375566 | End
         
         //Branch based on if this PE is part of the old ECA process or the new ECA process.
         if (programEnrollment.hed__Account__r.Use_Updated_ECA_Process__c) {
             
 
             //Find the section that is getting submitted and mark it as complete.
-            List<Enrollment_Component_Affiliation__c> sectionAffiliation = new List<Enrollment_Component_Affiliation__c> ( [SELECT Id, Enrollment_Component__r.Completion_Logic__c FROM Enrollment_Component_Affiliation__c
+            List<Enrollment_Component_Affiliation__c> sectionAffiliation = new List<Enrollment_Component_Affiliation__c> ( [SELECT Id,Enrollment_Component__r.Name, Enrollment_Component__r.Completion_Logic__c FROM Enrollment_Component_Affiliation__c
                                                 WHERE Program_Enrollment__c = :programEnrollmentId and Enrollment_Component__c = :sectionId ] );
             //We should always find just one section with that id but retrieve as a list to avoid hard crashes.
+			
+             //added condition to prevent 'Change in Plan' section for ITR - Jagadeesh for US 338616
             if (sectionAffiliation.size() > 0) {
-
+				if(sectionAffiliation[0].Enrollment_Component__r.Name != System.Label.NES_Change_in_Plan){
                 sectionAffiliation[0].Status__c = 'Complete';
                 sectionAffiliation[0].Date_Completed__c = System.today();
+				}
                 sectionAffiliation[0].is_Dirty__c = true;
                 update sectionAffiliation[0];
 
@@ -100,14 +111,16 @@ public without sharing class NES_QuestionsHelper {
                 }
             }
 
-
-            hed__Program_Enrollment__c  studentEnrollment = [
+			// Changes Updated By Guru for Defect#375566 -----Start
+            /*hed__Program_Enrollment__c  studentEnrollment = [
                     SELECT Id, hed__Account__c,Enrollment_Type__c,V2_External_ID__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, hed__Contact__r.AccountId
                     FROM hed__Program_Enrollment__c
                     WHERE Id = :programEnrollmentId
-            ];
-       
-        
+            ];*/
+            
+            List <hed__Program_Enrollment__c> studentEnrollmentlist = GenericSOQLQueries.programEnrollmentDetails(new Set<Id>{programEnrollmentId});
+            hed__Program_Enrollment__c studentEnrollment = getPERecord(studentEnrollmentlist, programEnrollmentId);
+             //End 
             try {
                 integer i = 0;
                 do {
@@ -245,11 +258,11 @@ public without sharing class NES_QuestionsHelper {
         // US108687/BUG112394 (Andrew Sim) 
         // US117040 - Added condition for Submit behavior (Krishna Peddanagammol)
         // Defect-263832 - Logic for Checking whether all sections completed in a form (Krishna Peddanagammol)  
-        System.debug('lastSectionId::'+lastSectionId);
-        System.debug('sectionId::'+sectionId);
-        System.debug('allSectionsCompleted::'+allSectionsCompleted);
-        System.debug('formAffiliation.Status__c::'+formAffiliation.Status__c);
-        System.debug('advanceIfComplete::'+advanceIfComplete);
+        //System.debug('lastSectionId::'+lastSectionId);
+        //System.debug('sectionId::'+sectionId);
+        //System.debug('allSectionsCompleted::'+allSectionsCompleted);
+        //System.debug('formAffiliation.Status__c::'+formAffiliation.Status__c);
+        //System.debug('advanceIfComplete::'+advanceIfComplete);
         //Added OR condition formAffiliation.Status__c == 'In Progress' for defect 326821 (Krishna Peddanagammol)
         if ((allSectionsCompleted && (formAffiliation.Status__c == 'Complete' || formAffiliation.Status__c == 'In Progress'))||(!allSectionsCompleted && lastSectionId==sectionId)) {
                 Enrollment_Component_Relationship__c stageRelationship = [
@@ -260,7 +273,7 @@ public without sharing class NES_QuestionsHelper {
                     ORDER BY Order__c ASC
             ];
             Enrollment_Component_Affiliation__c stageAffiliation = affiliationMap.get(stageRelationship.Parent_Enrollment_Component__c);
-            System.debug('stageAffiliation.Status__c::'+stageAffiliation.Status__c);
+            //System.debug('stageAffiliation.Status__c::'+stageAffiliation.Status__c);
             if (stageAffiliation.Status__c == 'Complete') {
                 urlString = System.Label.NES_Community_Stem_Url+'/enrollment?studentId=' + studentId + '&processId=' + processId + '&programEnrollmentId=' + programEnrollmentId + '&caretakerId=' + caretakerId;
                 return urlString;
@@ -288,7 +301,39 @@ public without sharing class NES_QuestionsHelper {
                     formChildren = [SELECT Id, Child_Enrollment_Component__c, Parent_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.Name FROM Enrollment_Component_Relationship__c WHERE Parent_Enrollment_Component__c = :nextFormId AND Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.SECTION_RT AND Child_Enrollment_Component__c IN :affiliationMap.keySet() ORDER BY Order__c ASC];
                 }
                 sectionId = grabNext(formChildren, affiliationMap, null, 'Section');
+                //added by maddi for defect 356968 on 19/04/2021
+                if ((!sectionFlag && sectionId !=null) || test.isRunningTest()){ 
+                   
+                    // get the parent form 
+                    List<Enrollment_Component_Relationship__c> sectionParentRelationshipsList = new List<Enrollment_Component_Relationship__c>();
+                    Enrollment_Component_Relationship__c sectionParentRelationships = new Enrollment_Component_Relationship__c();
+                        sectionParentRelationshipsList= [SELECT Id, Child_Enrollment_Component__c, Parent_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.Name
+                        FROM Enrollment_Component_Relationship__c
+                        WHERE Child_Enrollment_Component__c = :sectionId
+                        AND Parent_Enrollment_Component__c IN :affiliationMap.keySet() ];
+                    if(!sectionParentRelationshipsList.isEmpty() && sectionParentRelationshipsList.size()>0){
+                        sectionParentRelationships=sectionParentRelationshipsList[0];
+                    }
+                    
+                    Id nextFormIds = grabNext(stageChildren, affiliationMap, sectionParentRelationships.Parent_Enrollment_Component__c, 'Form');
+                   
+                    List<Enrollment_Component_Relationship__c> formChildrens = new List<Enrollment_Component_Relationship__c> ();
+                 
+                        formChildrens = [SELECT Id, Child_Enrollment_Component__c, Parent_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.Name
+                                         FROM Enrollment_Component_Relationship__c
+                                         WHERE Parent_Enrollment_Component__c = :nextFormIds
+                                         AND (Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.DOCUMENT_RT
+                                              OR Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.SECTION_RT)
+                                         AND Child_Enrollment_Component__c IN :affiliationMap.keySet()
+                                         ORDER BY Order__c ASC
+                                        ];
+
+                    sectionId = grabNext(formChildrens, affiliationMap, null, 'Section');
+                    //System.debug('sectionIds1'+sectionId);
+                 }  
+                // End by maddi for defect 356968 on 19/04/2021
                 nextSectionAffiliation = affiliationMap.get(sectionId);
+                
             }
 
         } else {
@@ -342,7 +387,7 @@ public without sharing class NES_QuestionsHelper {
                         break;
                     }
                 }
-                System.debug(relationships.size());
+               // System.debug(relationships.size());
                 for (Integer j = marker; j < relationships.size(); j++) {
                     nextComponentId = relationships[j].Child_Enrollment_Component__c;
                     nextAffiliation = affiliationMap.get(nextComponentId);
@@ -405,7 +450,10 @@ public without sharing class NES_QuestionsHelper {
                     nextComponentId = relationships[l].Child_Enrollment_Component__c;
                     nextAffiliation = affiliationMap.get(nextComponentId);
                     // if (nextAffiliation.Status__c != 'Complete' && nextAffiliation.Status__c != 'In Progress' && nextAffiliation.Status__c != 'Deferred') {break;}
-                    if (nextAffiliation.Status__c != 'Not Applicable' && nextAffiliation.Status__c != 'Complete' && nextAffiliation.Status__c != 'In Progress' && nextAffiliation.Status__c != 'Deferred') {break;}
+                    if (nextAffiliation.Status__c != 'Not Applicable' && nextAffiliation.Status__c != 'Complete' && nextAffiliation.Status__c != 'In Progress' && nextAffiliation.Status__c != 'Deferred') {
+                        sectionFlag=true; // add by maddileti for the defect 356968 on 19/04/2021
+                        break;
+                    }
                 }
             }
         }
@@ -417,13 +465,13 @@ public without sharing class NES_QuestionsHelper {
     public static void saveAnswers(Map<String, List<SObject>> studentQueryMap, Map<String, List<SObject>> caretakerQueryMap,
             List<NES_EvaluateUtil.Question> singleQuestions, Id studentEnrollmentId, Id caretakerEnrollmentId) {
 
-        System.debug('studentQueryMap '+ studentQueryMap);
+       /* System.debug('studentQueryMap '+ studentQueryMap);
         System.debug(studentQueryMap);
         System.debug('caretakerQueryMap '+ caretakerQueryMap);
         System.debug(caretakerQueryMap);
         System.debug(studentEnrollmentId);
         System.debug(caretakerEnrollmentId);
-        System.debug(singleQuestions);
+        System.debug(singleQuestions);*/
 
         // turn off assignment and completion to save answers only if not NEW ECA Model
         hed__Program_Enrollment__c studentEnrollment = setStudPE(studentEnrollmentId); //For defect 322617
@@ -432,21 +480,29 @@ public without sharing class NES_QuestionsHelper {
         List<SObject> objectsForUpdate = new List<SObject>();
         Map<Id, SObject> sObjectMap = new Map<Id, SObject>();
 
+        // Added to triage Bug # 400086 by Sumanth - 6/11/2021
+        logger.logError('NES_QuestionsHelper->saveAnswers', 'Entered into saveAnswers method for Bug 400086'); 
+        String sObjectMapText,singleQuestionsText,objectsForUpdateText,PENameText;
+        PENameText = (studentEnrollmentId != null) ? studentEnrollmentId : 'StudentEnrollmentId is null';
+        logger.logError('NES_QuestionsHelper->saveAnswers', 'Std PE Id-->'+PENameText); 
+        singleQuestionsText = (singleQuestions != null && singleQuestions.size() > 0) ? JSON.serialize(singleQuestions) : 'singleQuestions List is null.';
+        logger.logError('NES_QuestionsHelper->saveAnswers', 'singleQuestionsText-->'+singleQuestionsText); 
         // Loop through questions for lists of SObjects
         for (NES_EvaluateUtil.Question singleQuestion : singleQuestions) {
 
             System.debug(singleQuestion);
             System.debug(singleQuestion.questionId);
+           
             if(!singleQuestion.textComponent && !singleQuestion.questionGroup) {
                 //Split the Target field to get the Object and Field API Names
-                System.debug('About to try and grab API name');
-                System.debug(singleQuestion.questionTarget);
+                //System.debug('About to try and grab API name');
+                //System.debug(singleQuestion.questionTarget);
                 String fieldApiName = singleQuestion.questionTarget.substring(singleQuestion.questionTarget.indexOf('.') + 1, singleQuestion.questionTarget.length()).toLowerCase();
                 String objectApiName = singleQuestion.questionTarget.substring(0, singleQuestion.questionTarget.indexOf('.')).toLowerCase();
-                System.debug(singleQuestion.questionTarget);
+                /*System.debug(singleQuestion.questionTarget);
                 System.debug(singleQuestion.componentType);
                 System.debug(singleQuestion.targetField);
-                System.debug(studentQueryMap.keySet());
+                System.debug(studentQueryMap.keySet());*/
                 if (singleQuestion.componentType == 'Student') {
                     sObjectMap = storeData(studentQueryMap, objectApiName, fieldApiName, singleQuestion, studentEnrollmentId, sObjectMap);
                 } else {
@@ -455,16 +511,26 @@ public without sharing class NES_QuestionsHelper {
             }
 
         }
+       // Added to triage Bug # 400086 by Sumanth - 6/11/2021
+        sObjectMapText = (sObjectMap != null) ? JSON.serialize(sObjectMap) : 'sObjectMap map is null.';
+        logger.logError('NES_QuestionsHelper->saveAnswers', 'sObjectMapText-->'+sObjectMapText);
         for (String mapKey : sObjectMap.keySet()) {
             SObject sObj = sObjectMap.get(mapKey);
             objectsForUpdate.add(sObj);
         }
-        
+
+         // Added to triage Bug # 400086 by Sumanth - 6/11/2021               
+        objectsForUpdateText = (objectsForUpdate != null && objectsForUpdate.size() > 0) ? JSON.serialize(objectsForUpdate)+'\n objectsForUpdate size : '+objectsForUpdate.size() : 'objectsForUpdate List is null.';
+        logger.logError('NES_QuestionsHelper->saveAnswers', 'objectsForUpdateText-->'+objectsForUpdateText);
         integer i = 0;
         do {
            try{
                i++;
-               update objectsForUpdate;
+               // Added null pointer check for Bug # 400086 by Sravani
+               logger.logError('NES_QuestionsHelper->saveAnswers', 'Entered into try block');
+               logger.saveLogs();
+               if(!objectsForUpdate.Isempty() && objectsForUpdate.size()>0) 
+                   update objectsForUpdate; 
                break;  //If we make it to this line, the update succeeded. 
            }
            catch(exception ex){logger.logException('Trying to Update from saveAnswers methods', ex); logger.saveLogs(); }
@@ -493,8 +559,8 @@ public without sharing class NES_QuestionsHelper {
                     System.debug(relatedRecord);
 
                     String schoolYearId = String.valueOf((String) relatedRecord.get('School_Year__c'));
-                    System.debug(schoolYearId);
-                    System.debug(singleQuestion.schoolYear);
+                    //System.debug(schoolYearId);
+                    //System.debug(singleQuestion.schoolYear);
                     if (schoolYearId == singleQuestion.schoolYear) {
                         newObjects.add(relatedRecord);
                     }
@@ -517,7 +583,7 @@ public without sharing class NES_QuestionsHelper {
                 } else {
                     toUpdate = newObjects[0];
                 }
-                System.debug(singleQuestion);
+                //System.debug(singleQuestion);
                 SObject sObj = NES_EvaluateUtil.updateDataVoid(singleQuestion.questionType, singleQuestion.targetField, fieldApiName, toUpdate);
                 sObjectMap.put(sObj.Id, sObj);
             } else {
@@ -535,7 +601,7 @@ public without sharing class NES_QuestionsHelper {
                 integer i = 0;
                 do {
                     try {
-                        System.debug(sObj);
+                       // System.debug(sObj);
                         i++;
                         insert sObj;
                         break;  //Update succeeded so break out of the loop
@@ -552,21 +618,28 @@ public without sharing class NES_QuestionsHelper {
                 queryMap.put(objectApiName, brandNewObjects);
             }
         }
+      
         return sObjectMap;
     }
 
     public static hed__Program_Enrollment__c studentEnrollment { get; private set; }
     public static hed__Program_Enrollment__c setStudPE(Id studPEId)
     {
+        Set<Id> allPEIds = new Set<Id>{studPEId};
+        List<hed__Program_Enrollment__c> studentEnrollments = new List<hed__Program_Enrollment__c>();
         if (studentEnrollment==null && studPEId!=null)
         {
-            studentEnrollment = [
-                SELECT  Id, hed__Account__c, hed__Account__r.Use_Updated_ECA_Process__c, hed__Contact__c
+           //Naveen: Changes for Bug 375566 | Start
+           studentEnrollments = GenericSOQLQueries.programEnrollmentDetails(allPEIds);
+            /*studentEnrollment = [
+                SELECT  Id, hed__Account__c,hed__Account__r.ParentId, hed__Account__r.Use_Updated_ECA_Process__c, hed__Contact__c
                 FROM hed__Program_Enrollment__c 
                 WHERE Id = :studPEId
-            ];
+            ];*/
         }
-        return studentEnrollment;
+        return getPERecord(studentEnrollments, studPEId);
+        //Naveen: Changes for Bug 375566 | End
+        //return studentEnrollments[0];
     }
 
 
@@ -577,8 +650,8 @@ public without sharing class NES_QuestionsHelper {
         sectionAffiliation = [SELECT Status__c FROM Enrollment_Component_Affiliation__c WHERE Enrollment_Component__c = :sectionId AND Program_Enrollment__c = :programEnrollmentId];
         List<Enrollment_Component__c> questionType = new List<Enrollment_Component__c>();
         questionType = [SELECT Id, Question_Type__c FROM Enrollment_Component__c WHERE Id = :sectionId];
-        System.debug(questionType);
-        System.debug(sectionId);
+        /*System.debug(questionType);
+        System.debug(sectionId);*/
         List<NES_EvaluateUtil.Question> questions = new List<NES_EvaluateUtil.Question>();
         //Still return questions for MDR even if that one sub-section is complete but the parent one is not
 
@@ -609,7 +682,7 @@ public without sharing class NES_QuestionsHelper {
                  
                 // This may happen if there's only question groups and text components
                 if (questionDataList.size() == 0 && questionJSON != null) {
-                    System.debug('returning that');
+                   // System.debug('returning that');
                     return questionList;
                 }
 
@@ -617,13 +690,29 @@ public without sharing class NES_QuestionsHelper {
                 User caretaker = [SELECT Id, Contact.AccountId, ContactId, Contact.RecordType.Name FROM User WHERE Id = :UserInfo.getUserId()];
                 // hed__Program_Enrollment__c studentEnrollment = [SELECT Id, hed__Account__c, hed__Account__r.Use_Updated_ECA_Process__c, hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
                 hed__Program_Enrollment__c studentEnrollment = setStudPE(programEnrollmentId);
+				
+				// Added by Maddileti for Defect #361441 on 15/02/2021
+
+
+               /* List<hed__Program_Enrollment__c> caretakerEnrollment = [
+                        SELECT Id
+                        FROM hed__Program_Enrollment__c
+                        WHERE hed__Account__r.ParentId = :studentEnrollment.hed__Account__r.ParentId
+                        AND hed__Contact__c = :caretaker.ContactId
+                        LIMIT 1
+                ]; */
                 List<hed__Program_Enrollment__c> caretakerEnrollment = [
                         SELECT Id
                         FROM hed__Program_Enrollment__c
-                        WHERE hed__Account__c = :studentEnrollment.hed__Account__c
+                        WHERE hed__Account__r.id = :studentEnrollment.hed__Account__r.id
                         AND hed__Contact__c = :caretaker.ContactId
                         LIMIT 1
                 ]; 
+				
+				// End by Maddileti for Defect #361441 on 15/02/2021
+				
+             
+
                 // If new ECA Model, set below flag to true
                 if (studentEnrollment.hed__Account__r.Use_Updated_ECA_Process__c)
                     NES_Constants.runAssignment = true; 
@@ -653,7 +742,7 @@ public without sharing class NES_QuestionsHelper {
 
                 //Get all the Questions records using the section Id
                 Set<Id> questionComponentIds = new Set<Id>();
-                System.debug('The enrollment componenet values sectionId are::'+sectionId);
+                //System.debug('The enrollment componenet values sectionId are::'+sectionId);
                 Enrollment_Component__c currentEC = [SELECT Id, Question_Type__c FROM Enrollment_Component__c WHERE Id = :sectionId];
                 System.debug('The enrollment componenet values are::'+currentEC.Question_Type__c);
                 if (String.isNotBlank(sectionId)) {
@@ -696,7 +785,7 @@ public without sharing class NES_QuestionsHelper {
                             questionComponentIds.add(rel.Child_Enrollment_Component__c);
                         }
                     } 
-                   system.debug('groupComponentIds'+groupComponentIds);
+                   //system.debug('groupComponentIds'+groupComponentIds);
                     Map<Id, Id> questionGroupMap = new Map<Id, Id>();
                     Map<Id, List<Id>> groupQuestionsMap = new Map<Id, List<Id>>();
                     List<Enrollment_Component_Relationship__c> groupRelationships;
@@ -717,7 +806,7 @@ public without sharing class NES_QuestionsHelper {
                             ];
                         }
 
-                    system.debug('groupRelationships'+groupRelationships);
+                    //system.debug('groupRelationships'+groupRelationships);
                     Set<Id>childQuestionIds = new Set<Id>();
                      
                     //Looking through all relationships where the parent is one of the question groups
@@ -817,6 +906,7 @@ public without sharing class NES_QuestionsHelper {
                                 criteriaQuestionGroups.put(pec.Question_Group__c, null);
                         }
 
+
                         // query for the QuestionGroup & SchoolYear Ids & build a Map.
                         if (criteriaSchoolYears.size() > 0 ) {
                             criteriaSchoolYears = getSchoolYearsById(criteriaSchoolYears.keySet());
@@ -826,8 +916,8 @@ public without sharing class NES_QuestionsHelper {
                         }
                         // query for the QuestionGroup & SchoolYear Ids & build a Map. END...
 
-                        System.debug( 'criteriaReferenced' + criteriaReferenced);
-                        System.debug( 'criteriaToCurrentResultMap' + criteriaToCurrentResultMap);
+                        //System.debug( 'criteriaReferenced' + criteriaReferenced);
+                        //System.debug( 'criteriaToCurrentResultMap' + criteriaToCurrentResultMap);
 
                         //For each EC that has assignment criteria, call a method that will decide if it meets the assignment criteria.
                         for (Enrollment_Component__c enrollmentComponent : componentChildren) {
@@ -843,12 +933,12 @@ public without sharing class NES_QuestionsHelper {
                                     String key = ecc.Criteria__c + ecc.Student_or_Household__c; 
                                     key += (schoolYear!=null?schoolYear.Id:null); 
                                     key += (questionGroupEC!=null?questionGroupEC.Id:null);
-                                    System.debug('key>>' + key);
+                                    //System.debug('key>>' + key);
                                     criteriaNumberToResultMap.put((integer) ecc.Criteria_Number__c, criteriaToCurrentResultMap.get(key));
                                 }
 
-                                System.debug( 'enrollmentComponent.Assignment_Logic__c:' + enrollmentComponent.Assignment_Logic__c);
-                                System.debug( 'criteriaNumberToResultMap' + criteriaNumberToResultMap);
+                               // System.debug( 'enrollmentComponent.Assignment_Logic__c:' + enrollmentComponent.Assignment_Logic__c);
+                                //System.debug( 'criteriaNumberToResultMap' + criteriaNumberToResultMap);
                                 boolean result = ECA_CriteriaEvaluator.evaluate(enrollmentComponent.Assignment_Logic__c, criteriaNumberToResultMap);
 
                                 if (result)
@@ -926,18 +1016,18 @@ public without sharing class NES_QuestionsHelper {
                     for (Enrollment_Component__c componentChild : componentChildren) {
 
                         Enrollment_Component__c newComponent = enrollmentComponentMap.get(componentChild.Id);
-                        System.debug(newComponent.Id);
+                        /*System.debug(newComponent.Id);
                         System.debug(String.isBlank(componentChild.Assignment_Logic__c));
                         System.debug(componentChild.Id);
-                        System.debug(newQuestionIds.contains(componentChild.Id));
+                        System.debug(newQuestionIds.contains(componentChild.Id));*/
                         Decimal orderDecimal = questionOrderMap.get(componentChild.Id);
                         
                         if(String.isBlank(componentChild.Assignment_Logic__c) || newQuestionIds.contains(componentChild.Id)) {
                             //This means it is a question group.
-                            System.debug(groupQuestionsMap.keySet().contains(componentChild.Id));
+                            //System.debug(groupQuestionsMap.keySet().contains(componentChild.Id));
                             if (groupQuestionsMap.keySet().contains(componentChild.Id)) {
                                 // if it a special address or school search QG it is configured differently
-                                System.debug(newComponent.Question_Type__c);
+                                //System.debug(newComponent.Question_Type__c);
                                 if (newComponent.Question_Type__c == 'Address' || newComponent.Question_Type__c == 'School Search') {
 
                                     NES_EvaluateUtil.Question singleQuestion = new NES_EvaluateUtil.Question();
@@ -951,7 +1041,7 @@ public without sharing class NES_QuestionsHelper {
 
                                 } else {
                                     List<Id> addedQuestionIds = groupQuestionsMap.get(componentChild.Id);
-                                    System.debug(addedQuestionIds);
+                                    //System.debug(addedQuestionIds);
                                     for (Id addedQuestionId : addedQuestionIds) {
                                         if (!returnQuestionIds.contains(addedQuestionId)) {
                                             NES_EvaluateUtil.Question singleQuestion = new NES_EvaluateUtil.Question();
@@ -973,11 +1063,11 @@ public without sharing class NES_QuestionsHelper {
                                 }
                             } else { 
                                     
-                                System.debug(returnQuestionIds);
+                                //System.debug(returnQuestionIds);
                                 if (!returnQuestionIds.contains(componentChild.Id) && !childQuestionIds.contains(componentChild.Id)) {  
                                     NES_EvaluateUtil.Question singleQuestion = new NES_EvaluateUtil.Question();
                                     if (newComponent.Component_Type__c == 'Student') {
-                                        System.debug(studentDataMap2);
+                                        //System.debug(studentDataMap2);
                                         if (questionType[0].Question_Type__c == 'School Search')  //MM 9/10/2020  Added to support a bug with School Search not finding the correct Prior School record.
                                             singleQuestion = NES_EvaluateUtil.configureQuestion(newComponent, optionExclusionMap, studentDataMap2, orderDecimal, false, sectionId, studentCriteriaStrings);
                                         else
@@ -994,8 +1084,8 @@ public without sharing class NES_QuestionsHelper {
 
                     }
                 }
-                System.debug('This is the question list we are returning');
-                System.debug(questionListForReturn);
+                //System.debug('This is the question list we are returning');
+                //System.debug(questionListForReturn);
 
                 return questionListForReturn;
             } catch (Exception e) { logger.logException('getRelatedQuestions', e);  logger.saveLogs(); System.debug(e.getMessage()); System.debug(e.getStackTraceString()); return null;   }
@@ -1113,12 +1203,22 @@ public without sharing class NES_QuestionsHelper {
         return currentSection.Name;
     }
     
+    //Added by Sumanth for US # 334973 & 334974
+    public static Date getAHISubmitInformation(Id programEnrollmentId){
+        List<Annual_Household_Information__c> AHISubmitInfo = new List<Annual_Household_Information__c>();
+        AHISubmitInfo = [select Income_Form_Submission_Date__c,Income_Form_Submitter__c  from Annual_Household_Information__c where Program_Enrollment__c in (select Household_Program_Enrollment__c from hed__Program_Enrollment__c where id =: programEnrollmentId)];
+        if(AHISubmitInfo.size() > 0)  
+       		return AHISubmitInfo.get(0).Income_Form_Submission_Date__c;
+        else
+           return null;
+    }
+    //end by Sumanth 
     //Swapna:For GTM
     public static String getformName(Id sectionId){
         //Conveterd to List as a Fix for issue -  List has more than 1 row for assignment to SObject
         //Encountered while testing  for defect 326821 (Krishna Peddanagammol)
         List<Enrollment_Component__c> currentForm = [select Name from Enrollment_Component__c where Id IN (select Parent_Enrollment_Component__c from Enrollment_Component_Relationship__c where Child_Enrollment_Component__c =: sectionId)];
-        System.debug('currentForm::'+currentForm);
+        //System.debug('currentForm::'+currentForm);
         return currentForm[0].Name;
     }
 
@@ -1148,5 +1248,17 @@ public without sharing class NES_QuestionsHelper {
         return qgECs;
     }
     // Mark Membrino | 12/14/2020 | END...
+    
+    //Naveen : Changes for Bug 375566 | Start
+    public static hed__Program_Enrollment__c getPERecord(List<hed__Program_Enrollment__c> peRecList, Id peRecId){
+        for(hed__Program_Enrollment__c pe: peRecList){
+            if(pe.Id == peRecId){
+                return pe;
+            }
+        }
+        return null;
+    }
+    //Naveen : Changes for Bug 375566 | End
+    
 
 }

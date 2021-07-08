@@ -1,3 +1,3 @@
-<aura:application  >
-	c:NES_DocumentCentral
+<aura:application >
+  <c:NES_AddHHMem/>
 </aura:application>

@@ -76,7 +76,7 @@
              
             <lightning:layoutItem size="12" flexibility="grow"  padding="horizontal-small">
                 <!-- Added by Ravi-->
-                <lightning:button variant="neutral" label="&#60; Back to Dashboard" onclick="{!c.goToDashboard}"/>
+                <lightning:button variant="neutral" label="&#60; Back To Dashboard" onclick="{!c.goToDashboard}"/>
             </lightning:layoutItem>
                   
         </lightning:layout>
@@ -180,11 +180,11 @@
                       </h6>
                       <!-- end here-->
                       <h5 class="{!v.processInformation.ecaStatus == 'Time Expired' ? 'slds-text-color_error' : 'slds-text-color_success'}">{!v.processInformation.ecaStatus}
-                       <aura:if isTrue="{!and(v.studentGrade != 'undefined', v.studentGrade != undefined, v.studentGrade != '', v.studentGrade != null)}">&nbsp;|&nbsp;{!v.studentGrade}</aura:if> 
+                       <aura:if isTrue="{!and(v.studentGrade != 'undefined', v.studentGrade != undefined, v.studentGrade != '', v.studentGrade != null)}">|{!v.studentGrade}</aura:if> 
                         </h5>
                     </lightning:layoutItem>
                     <!-- BELOW IS NOT WORKING FOR iconName="utility:threedots_vertical",  -->
-                    <lightning:layoutItem class="slds-align_absolute-centerMenu slds-order_2 slds-large-order_5">
+                    <lightning:layoutItem class="slds-align_absolute-centerMenu slds-order_6 slds-large-order_5">
                        <!--lightning:icon iconName="utility:apps" alternativeText="Withdraw" size="x-small"/--> 
                         <lightning:buttonMenu aura:id="menu" variant="container" menuAlignment="right" iconName="utility:chevrondown" 
                         onselect="{! c.handleWithdraw}" alternativeText="Show menu" iconSize="x-small">

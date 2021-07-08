@@ -29,9 +29,12 @@
                         <aura:if isTrue="{!(empty(v.logoName))}">
                             <lightning:layoutItem flexibility="shrink" class="slds-order_1 slds-medium-order_1">
                                 <aura:if isTrue="{!v.isGuest}">
-                                    <img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" />
+                                    <!--START: Added for US#335191 by Jagadeesh Bokam -->
+                                    <!--<img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" />-->
+                                    <img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" />
+                                      <!--END: Added for US#335191 by Jagadeesh Bokam -->
                                     <aura:set attribute="else">
-                                        <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" /></a>
+                                        <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" /></a>
                                     </aura:set>
                                 </aura:if>
                             </lightning:layoutItem>
@@ -58,10 +61,13 @@
                                 </lightning:layoutItem>
                                 <!-- Swapna:For notifications-->
                                 <lightning:layoutItem flexibility="shrink" class="slds-order_3 slds-align_absolute-center slds-p-right_small">
+                                                      
                                     <forceCommunity:notifications/>
+                                 
                                 </lightning:layoutItem>
                                 <lightning:layoutItem flexibility="shrink" class="slds-order_3 slds-text-align_right slds-p-right_small sm-top-margin-on-desktop">
                                     {!v.profileMenu}
+
                                 </lightning:layoutItem>
                             </aura:set>
                         </aura:if>

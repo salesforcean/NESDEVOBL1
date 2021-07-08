@@ -1,8 +1,8 @@
 /**
     @class:         ECA_HierarchyStatusUpdate           
-	@description:   Part of rewrite of the ECA assignment and completion logic, runs thru ECA's parent hierarchy & updates ECA.Status field.
-	@author: 		Mark Membrino
-	@createdDate:   8/31/2020
+    @description:   Part of rewrite of the ECA assignment and completion logic, runs thru ECA's parent hierarchy & updates ECA.Status field.
+    @author:        Mark Membrino
+    @createdDate:   8/31/2020
 */
 public without sharing class ECA_HierarchyStatusUpdate
 {
@@ -12,7 +12,9 @@ public without sharing class ECA_HierarchyStatusUpdate
     // Constants...
     private static final String VALID_ECA_STATUS = 'Stage, Document, Section, Flag, Form'; // Question
     private static Boolean initialized = false;
+
     private static boolean allNA { get; set; }
+
     private static Map<Id, Enrollment_Component_Affiliation__c> transactionalECAs { get; set; }
     private static Map<Id, Enrollment_Component_Affiliation__c> toProcessECAs { get; set; } //ECAs received for processing
     private static Map<Id, Enrollment_Component_Affiliation__c> forUpdateECAs { get; set; } //ECAs Status__c to-be-updated 
@@ -91,11 +93,11 @@ public without sharing class ECA_HierarchyStatusUpdate
         {
             if(VALID_ECA_STATUS.containsIgnoreCase(queriedECAs.get(toProcessECA.Id).enrollment_component__r.recordtype.name))
                 updateParentStatus(toProcessECA);
-    	}
-    	
-    	//Update the ECAs if there are any changed statuses
+        }
+        
+        //Update the ECAs if there are any changed statuses
         if(forUpdateECAs.size()>0)
-    		update forUpdateECAs.values();
+            update forUpdateECAs.values();
 
         if(forUpdateSobjects.size()>0)
             update forUpdateSobjects;
@@ -119,8 +121,15 @@ public without sharing class ECA_HierarchyStatusUpdate
         //Evaluate the children's status
         for(Id childEC : childrenECs)
         {
+            if(childEC != null) {
+            
             Enrollment_Component_Affiliation__c childECA = queriedECAs.get(peData.ecToECAMap.get(childEC)); // given EC.Id fetch PE.ECA
-            string childStatus = ((toProcessECAs!=null && toProcessECAs.get(childECA.Id)!=null) ? toProcessECAs.get(childECA.Id).Status__c : childECA.Status__c);
+            
+            System.debug('ChildECA=========>'+childECA);
+            if(childECA != null){
+                string childStatus = ((toProcessECAs!=null && toProcessECAs.get(childECA.Id)!=null) ? toProcessECAs.get(childECA.Id).Status__c : childECA.Status__c);
+                //System.debug('childStatus=============================>'+childStatus);
+
 
             //Check that all required child ECAs are complete
             if( childECA.enrollment_component__r.is_Required__c == true && 
@@ -137,7 +146,10 @@ public without sharing class ECA_HierarchyStatusUpdate
                 allNA = false; 
             } 
         }
+            }
+        }
         
+
         //Determine the correct parent status   
         if(allComplete)
         {
@@ -168,7 +180,7 @@ public without sharing class ECA_HierarchyStatusUpdate
         ProgramEnrollmentDataClass peData; 
         for (hed__Program_Enrollment__c pe : ECA_CriteriaEvaluatorHelper.getPEsWithECAs(peIDs))
         {
-
+            
             mapPEToAcademicProgram.put(pe.Id, pe.hed__Account__c); // pe -> academicProgram map
 
             peData = new ProgramEnrollmentDataClass();
@@ -238,9 +250,10 @@ public without sharing class ECA_HierarchyStatusUpdate
     }
 
     private static void updateParentStatus(Enrollment_Component_Affiliation__c childECA)
-    {	
+    {   
         ProgramEnrollmentDataClass peData = peDataMap.get(childECA.Program_Enrollment__c);
         ecrProcessData acaPgmData = peData.academicProgramData;
+        Enrollment_Component_Affiliation__c ecasStage=peData.currentStageECA; // Added code by Maddileti for the defect 429849 on 21/06/2021
         List<Id> parentECs = acaPgmData.ecChildToParentsMap.get(childECA.Enrollment_Component__c); //Grab the parent(s) of the updated record
 
         // If no Parents return
@@ -261,7 +274,7 @@ public without sharing class ECA_HierarchyStatusUpdate
             String originalStatus = (inFlightParent!=null ? inFlightParent.Status__c : parent.status__c);
 
             String updatedStatus = getChildrenStatus(parent, true);
-			
+            
             if(updatedStatus!=null && ((updatedStatus != originalStatus) || (inFlightParent!=null && inFlightParent.Status__c !=  parent.status__c)) ) // parent.status__c)
             {
                 if (originalStatus != 'Not Applicable') // skip if NA
@@ -270,22 +283,38 @@ public without sharing class ECA_HierarchyStatusUpdate
                     parent.Date_Completed__c = ( parent.status__c == 'Complete' ? System.today() : null );
                     forUpdateECAs.put(parent.id, parent); //add the updated eca to our update list
                 }
-                    
+
+                
 
                 if(parent.enrollment_component__r.recordtype.name != 'Stage')
                 {
                     updateParentStatus(parent); //recurse the function to update the next level parent as needed
-				}
+                }
                 else //Stages need special handling to move the student forward or backwards as needed
                 {   
+                    //System.debug('parent.Id---------------------------------->' +parent.Id);
+                    //System.debug('peData.currentStageECA.Id---------------------------------->' +peData.currentStageECA.Id);
+                   // System.debug('parent.Order__c ---------------------------------->' +parent.Order__c );
+                   // System.debug('peData.currentStageECA.Order__c ---------------------------------->' +peData.currentStageECA.Order__c );
+                    
                     // MM 11/19/2020 | Handle backtracking of stages
-                    if ((updatedStatus.equalsIgnoreCase('In Progress') || updatedStatus.equalsIgnoreCase('Complete')) && 
+                  /*  if ((updatedStatus.equalsIgnoreCase('In Progress') || updatedStatus.equalsIgnoreCase('Complete')) && 
                         parent.Id != peData.currentStageECA.Id  && parent.Order__c > peData.currentStageECA.Order__c) // if stage & updatedStatus is 'In Progress' for not currentStage, set status=Not Started.
                     {
                         parent.status__c = 'Not Started'; // originalStatus;
                         parent.Date_Completed__c = null;
                         continue;
+                    } */
+                    // Commented above code and added below for the defect 429849 on 21/06/2021
+                   if(ecasStage !=null){
+                    if ((updatedStatus.equalsIgnoreCase('In Progress') || updatedStatus.equalsIgnoreCase('Complete')) && 
+                        parent.Id != ecasStage.Id  && parent.Order__c > ecasStage.Order__c) // if stage & updatedStatus is 'In Progress' for not currentStage, set status=Not Started.
+                    {
+                        parent.status__c = 'Not Started'; // originalStatus;
+                        parent.Date_Completed__c = null;
+                        continue;
                     }
+                    } 
 
                     // Get the other stages
                     List<Id> stageECs =  acaPgmData.ecParentToChildrenMap.get(acaPgmData.processId);
@@ -299,8 +328,13 @@ public without sharing class ECA_HierarchyStatusUpdate
                         Id inProgressStage = null;
                         for(Id stageEC : stageECs)
                         {
-                            Enrollment_Component_Affiliation__c stageECA = queriedECAs.get(peData.ecToECAMap.get(stageEC)); // given EC.Id fetch PE.ECA
-                            Enrollment_Component_Affiliation__c inFlightStageECA = toProcessECAs.get(stageECA.Id);
+
+                            
+                            system.debug('stageEC*****'+stageEC);
+                            Enrollment_Component_Affiliation__c stageECA = queriedECAs.get(peData.ecToECAMap.get(stageEC)); // given EC.Id fetch PE.ECA    
+                            if(stageECA != null){
+                                Enrollment_Component_Affiliation__c inFlightStageECA = toProcessECAs.containsKey(stageECA.Id)?toProcessECAs.get(stageECA.Id):null;
+
                             String originalStageStatus = (inFlightStageECA!=null ? inFlightStageECA.Status__c : stageECA.status__c);
 
                             if (originalStageStatus.equalsIgnoreCase('In Progress')) {
@@ -308,6 +342,10 @@ public without sharing class ECA_HierarchyStatusUpdate
                                 break;
                             }
                         }
+
+                            
+                        }
+
                         if (inProgressStage==null || inProgressStage==parent.Id) {
                             parent.status__c = 'In Progress';
                             parent.Date_Completed__c = null;
@@ -320,10 +358,12 @@ public without sharing class ECA_HierarchyStatusUpdate
                     {
                         parent.status__c = originalStatus;
                         parent.Date_Completed__c = null;
-                        updatedStatus = originalStatus; 
+                        updatedStatus = originalStatus;
+
                         // forUpdateECAs.put(parent.id, parent); // wip
                         // continue;
 
+                        
                         Enrollment_Component_Affiliation__c currentStageECA = peData.currentStageECA;
                         Enrollment_Component_Affiliation__c inFlightStageECA = toProcessECAs.get(currentStageECA.Id);
                         String originalStageStatus = (inFlightStageECA!=null ? inFlightStageECA.Status__c : currentStageECA.status__c);
@@ -332,11 +372,11 @@ public without sharing class ECA_HierarchyStatusUpdate
                             continue;
                         }
                     }
-					
-					//Determine the direction of the stage movement
+                    
+                    //Determine the direction of the stage movement
                     Boolean isForward = ( (updatedStatus == 'In Progress' || updatedStatus == 'Not Started') ? false : true );
                     Integer currentOrder = (Integer) parent.Order__c;
-					Integer nextOrder = (isForward?currentOrder+1: currentOrder-1);
+                    Integer nextOrder = (isForward?currentOrder+1: currentOrder-1);
                     
                     String notApplicableStatuses = 'Not Applicable';
                     Boolean isLastStage = (parent.Id == peData.lastStageECA.Id ? true : false); // is current stage the last Stage?
@@ -414,20 +454,23 @@ public without sharing class ECA_HierarchyStatusUpdate
                                 Opportunity studOppty = mapPEToOppty.get(parent.Program_Enrollment__c);
                                 if (studOppty != null) 
                                 {
-                                    studOppty.StageName = 'Closed Won';
+                                    //Naveen: Start: Fix for Bug:369215
+                                    studOppty.StageName='Closed Won';
+                                    update studOppty;                                    
+                                    /*
                                     forUpdateSobjects.add( new Opportunity(
                                         Id = studOppty.Id,
                                         StageName='Closed Won'
-                                    ));
+                                    ));*/
+                                    //Naveen: End: Fix for Bug:369215
                                 }
                             }
                         }
                     }
-				}
-			}
-		}
+                }
+            }
+        }
     }
-
     @TestVisible
     private static Map<Id, Opportunity> mapPEToOppty
     {

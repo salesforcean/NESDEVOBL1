@@ -6,6 +6,7 @@
 */
 public class ECA_CriteriaEvaluatorHelper {
 
+
     public static final String[] DEFAULT_OBJECT_TYPES = new String[]{'Contact', 'Account', 'hed__program_enrollment__c', 
         'Emergency_Contact__c', 'Annual_Student_Information__c', 'Enrollment_Component_Affiliation__c', 'Prior_School__c', 'Special_Education__c'};
 
@@ -25,6 +26,7 @@ public class ECA_CriteriaEvaluatorHelper {
                                     Criteria_Number__c, 
                                     Criteria__c,
                                     Criteria__r.Name, 
+
                                     Criteria__r.Criteria_Field__c,
                                     Student_or_Household__c,
                                     School_Year__c,
@@ -48,6 +50,7 @@ public class ECA_CriteriaEvaluatorHelper {
                         Result__c, 
                         Criteria__r.Name, 
                         Criteria__r.Comparison_Field__c, 
+
                         Program_Enrollment__c,
                         Student_or_Household__c,
                         School_Year__c,
@@ -78,6 +81,7 @@ public class ECA_CriteriaEvaluatorHelper {
         ];
     }
 
+
     public static List<hed__Program_Enrollment__c> getPEsWithECAs(Set<Id> peIDs) {
         return 
         [   
@@ -93,6 +97,7 @@ public class ECA_CriteriaEvaluatorHelper {
                         Status__c
                     FROM Enrollment_Component_Affiliation__r
                 )
+
             FROM hed__Program_Enrollment__c
             WHERE Id in : peIDs
         ];
@@ -125,6 +130,7 @@ public class ECA_CriteriaEvaluatorHelper {
             AND Recordtype.Name = 'Process'
         ];
     }
+
 
     public static Map<String, School_Year__c> getSchoolYearsByExternalId(Set<String> extIds)
     {

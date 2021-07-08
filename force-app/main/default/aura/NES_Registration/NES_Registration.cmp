@@ -47,7 +47,7 @@
                 <lightning:progressIndicator class="registration" currentStep="{!v.currentStep}" type="base" hasError="false" variant="base">
                     <lightning:progressStep label="Get Started" value="1"/>
                     <lightning:progressStep label="Choose Username" value="2"/>
-                    <lightning:progressStep label="Account Created" value="3"/>
+                    <lightning:progressStep label="Confirm Email" value="3"/>
                     <lightning:progressStep label="Begin Enrollment" value="4"/>
                 </lightning:progressIndicator>
             </lightning:layoutItem>
@@ -88,7 +88,6 @@
                         <div class="passwordblock">
                             <div class="showhidepw">
                                 <img src="{!v.showPassword ? $Resource.icons + '/hidepw.png' : $Resource.icons + '/showpw.png'}" alt="{!v.showPassword ? 'Hide Password' : 'Show Password'}" onclick="{!c.togglePassword}" />
-                                <!--img src="{!v.showPassword ? $Resource.icons + '/showpw.png' : $Resource.icons + '/hidepw.png'}" alt="{!v.showPassword ? 'Show Password' : 'Hide Password'}" onclick="{!c.togglePassword}" /-->
                             </div>
 
                             <lightning:input type="{!v.showPassword ? 'text' : 'password'}" name="password" label="Create your Password" value="{!v.password}" onchange="{!c.handleInput}" required="true" />

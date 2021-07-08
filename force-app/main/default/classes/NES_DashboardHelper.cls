@@ -49,9 +49,13 @@ public without sharing class NES_DashboardHelper {
                 }
                 
                 //Below if condition has the preparation of JSON for students along with latest PEs for schools
+                //"WithdrawalCategory__c" field Added by Shravaniin Contact query for US#389103 on 5/25/21
                 if (studentIds.size() > 0) {
                     Date todayDate = date.today();
-                    for(Contact con : [Select Id, firstName, LastName, RecordType.Name, (Select Id,Program_Grade_Level__c,Program_Grade_Level__r.Grade_Level__r.Name,hed__Account__r.Registration_End_Date__c,hed__Account__r.ITR_Start_Date__c,hed__Account__r.ITR_End_Date__c,hed__Account__r.Registration_Start_Date__c,Status__c,hed__Account__r.name, Final_Grade_Level__c, hed__Account__c, hed__Account__r.ParentId,hed__Account__r.Parent.Name,Start_Year__r.Name  from hed__Program_Enrollments__r order by createddate desc) from Contact where Id IN: studentIds]){                    
+                    /// shravani new update 1 
+                       Map<Id,hed__Program_Enrollment__c> PEmap = new  Map<Id,hed__Program_Enrollment__c>([Select Id, WithdrawalCategory__c, Program_Grade_Level__c,Program_Grade_Level__r.Grade_Level__r.Name,ITR_Exception_Date_NY__c,ITR_Eligibility_NY__c,hed__Account__r.Registration_End_Date__c,hed__Account__r.ITR_Start_Date__c,hed__Account__r.ITR_End_Date__c,hed__Account__r.Registration_Start_Date__c,Status__c,hed__Account__r.name, Final_Grade_Level__c, hed__Account__c, hed__Account__r.ParentId,hed__Account__r.Parent.Name,Start_Year__r.Name,(select id,Withdrawal_Category__c from Enrollments__r order by createddate desc)  from hed__Program_Enrollment__c where hed__Contact__c IN:studentIds order by createddate desc]);
+                    /// shravani new update 1 end
+                    for(Contact con : [Select Id, firstName, LastName, RecordType.Name, (Select Id, WithdrawalCategory__c, Program_Grade_Level__c,Program_Grade_Level__r.Grade_Level__r.Name,ITR_Exception_Date_NY__c,ITR_Eligibility_NY__c,hed__Account__r.Registration_End_Date__c,hed__Account__r.ITR_Start_Date__c,hed__Account__r.ITR_End_Date__c,hed__Account__r.Registration_Start_Date__c,Status__c,hed__Account__r.name, Final_Grade_Level__c, hed__Account__c, hed__Account__r.ParentId,hed__Account__r.Parent.Name,Start_Year__r.Name  from hed__Program_Enrollments__r order by createddate desc) from Contact where Id IN: studentIds]){                    
                         Set<String> instituationSet = new Set<String>();
                         if(con.hed__Program_Enrollments__r.size() > 0){
                             NES_DashboardUtilities.studentsInformation studentInfo = new NES_DashboardUtilities.studentsInformation();
@@ -64,7 +68,10 @@ public without sharing class NES_DashboardHelper {
                                     String buttonLabel = '';
                                     String buttonTarget = '';    
                                     List<Account> availablePrograms = mapOfAvailableSchoolYrs.containsKey(peRec.hed__Account__r.ParentId) ? mapOfAvailableSchoolYrs.get(peRec.hed__Account__r.ParentId): null;
-                                    buttonLabel = getButtonLabelName(peRec,availablePrograms);
+                                    ///// shravani new update 2
+                                    buttonLabel = getButtonLabelName(PEmap.get(peRec.id),availablePrograms);
+                                    //buttonLabel = getButtonLabelName(peRec,availablePrograms);
+                                    ///// shravani new update 2 end
                                     if(buttonLabel == 'Continue')
                                         buttonTarget = '/enrollment';
                                     if(buttonLabel == 'Contact Us')
@@ -103,9 +110,16 @@ public without sharing class NES_DashboardHelper {
     
     //Returns button label as per the program enrollment status/ITR Dates and available academic programs as per today's date
     public static String getButtonLabelName(hed__Program_Enrollment__c peRecord, List<Account> availableAcademicPrograms){
+        
+        try{
         String resultString = 'Contact Us';  
         Date todayDate = date.today();
-        if(peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS && todayDate >= peRecord.hed__Account__r.ITR_Start_Date__c && todayDate <=peRecord.hed__Account__r.ITR_End_Date__c){
+        //Added by Shravani for US#389103 on 7/04/21 "Button display logic 1"
+        //if(!peRecord.Enrollments__r.isEmpty() && !availableAcademicPrograms.isEmpty() && (peRecord.hed__Account__c != availableAcademicPrograms[0].Id || ((peRecord.hed__Account__c == availableAcademicPrograms[0].Id) && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning' )) && (peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS)){
+          if(!peRecord.Enrollments__r.isEmpty() && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning' && peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS){
+            resultString = NES_DashboardUtilities.REENROLL_BTN_LABEL;  
+        } else
+        if(peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS && ((peRecord.Program_Grade_Level__r.Grade_Level__r.Name == Label.NES_Twelth_Grade && peRecord.ITR_Eligibility_NY__c == 'Yes') || (peRecord.Program_Grade_Level__r.Grade_Level__r.Name != Label.NES_Twelth_Grade && peRecord.ITR_Eligibility_NY__c != 'No')) && ((todayDate >= peRecord.hed__Account__r.ITR_Start_Date__c && todayDate <=peRecord.hed__Account__r.ITR_End_Date__c) || (peRecord.ITR_Exception_Date_NY__c != null && todayDate <= peRecord.ITR_Exception_Date_NY__c))){
             resultString = NES_DashboardUtilities.ITR_BTN_LABEL;           
         } 
         else if(peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS){
@@ -115,18 +129,48 @@ public without sharing class NES_DashboardHelper {
             resultString = 'Continue';            
         }
         else if(peRecord.Status__c == NES_DashboardUtilities.INACTIVE_STATUS){
-            if(availableAcademicPrograms.size() > 0){
-                resultString = NES_DashboardUtilities.REACTIVATE_BTN_LABEL;                
-            }                                                                                               
+            //added by Sravani for BUG#367727 
+            //if(availableAcademicPrograms.size() > 0){
+            if(availableAcademicPrograms!=null){
+                if((!availableAcademicPrograms.isEmpty())&&(availableAcademicPrograms.size() > 0)){
+                    resultString = NES_DashboardUtilities.REACTIVATE_BTN_LABEL;                
+                }    
+            }
+            
+            
         }
-        else if(peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS){            
-            if(availableAcademicPrograms.size() > 0){
-                if(peRecord.hed__Account__c != availableAcademicPrograms[0].Id){
-                    resultString = NES_DashboardUtilities.REENROLL_BTN_LABEL;                   
-                }                                            
-            }                                        
-        }        
+            // Added by Shravani for US#389103 on 5/25/21
+            /*
+            else if(peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS &&  (peRecord.WithdrawalCategory__c=='Prior to Engagement' || peRecord.WithdrawalCategory__c=='Withdrawal During School Year')){
+                 resultString = 'Contact Us';     
+            }
+			*/
+            
+        //Added by Shravani for US#389103 on 7/04/21 "Button display logic 2"
+            else if(!peRecord.Enrollments__r.isEmpty() &&  !availableAcademicPrograms.isEmpty() && (peRecord.hed__Account__c != availableAcademicPrograms[0].Id || ((peRecord.hed__Account__c == availableAcademicPrograms[0].Id) && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' )) && (peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS)){
+            //else if(!peRecord.Enrollments__r.isEmpty() && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' && peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS){
+            resultString = NES_DashboardUtilities.REENROLL_BTN_LABEL;            
+            }
+            // End by Shravani for US#389103 on 7/04/21     
+        else if(peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS){
+            //added by Sravani for BUG#367727 
+            //if(availableAcademicPrograms.size() > 0){
+            if(availableAcademicPrograms!=null){
+                if((!availableAcademicPrograms.isEmpty())&& (availableAcademicPrograms.size() > 0)){
+                    if(peRecord.hed__Account__c != availableAcademicPrograms[0].Id){
+                        resultString = NES_DashboardUtilities.REENROLL_BTN_LABEL;                   
+                    }                                            
+                }
+            }
+        }     
+            
         return resultString;
+       }
+        catch (Exception e) {
+            logger.logException('getButtonLabelName', e);
+            logger.saveLogs();
+            return null;
+        } 
     }
     
     //Returns available academic programs as per the academic program registration dates

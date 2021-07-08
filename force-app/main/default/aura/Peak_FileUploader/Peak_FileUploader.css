@@ -2,8 +2,8 @@
     padding-bottom:40px;
     padding-top:60px;
 }
-.THIS .lower {
-   width: 35%;
+.THIS .lower {  
+  width: 35%;
   text-transform: none;
 
 }
@@ -88,23 +88,54 @@
 
 .THIS .file-details .file-item {margin:.5rem 0;padding:1rem .5rem 1rem 1rem;border:1px dashed #B0B0B0}
 .THIS .file-details .file-name {font-family: 'Courier New', serif; line-height: 1.5;}
-.THIS .file-delete a, .THIS .file-remove a { background: #C51A1A; color: white !important; text-transform: uppercase; font-weight: 600; padding: 0.5rem 1rem; border-radius: 3px; margin-right: .5em;}
+/*Added here*/
+/*.THIS .file-delete a, .THIS .file-remove a { background: #C51A1A; color: white !important; text-transform: uppercase; font-weight: 600; padding: 0.5rem 1rem; border-radius: 3px; margin-right: .5em;}*/
+.THIS .file-delete a, .THIS .file-remove a { background-color:#76d5d4;border-color: none;color: #000 !important; text-transform: None; font-weight: 600; padding: 0.5rem 1rem; border-radius: 3px; margin-right: .5em;}
+/*Added here*/
 .THIS .file-details .help-icon button{vertical-align:text-bottom;color:currentColor}
 .THIS .file-input,.THIS .spinner-container{position:relative}
-.THIS .slds-file-selector__button {font-size: .9rem; line-height: 2rem; background: #D86018; border: 1px solid #D86018; color: white; text-transform: none !important; padding: 0 1rem; text-align: center; vertical-align: middle; line-height: 1.875rem; max-height: none !important;text-transform: uppercase;}
-.THIS .slds-file-selector__button:hover,.THIS .slds-file-selector__button:focus { background-color: #AA4C13;border-color: #AA4C13;transition: border 0.15s linear 0s; cursor: pointer;}
-.THIS .slds-button_brand { background: #D86018; border: 1px solid #D86018;}
+/*added here*/
+/*.THIS .slds-file-selector__button {font-size: .9rem; line-height: 2rem; background: #D86018; border: 1px solid #D86018; color: white; text-transform: none !important; padding: 0 1rem; text-align: center; vertical-align: middle; line-height: 1.875rem; max-height: none !important;text-transform: uppercase;}
+.THIS .slds-file-selector__button:hover,.THIS .slds-file-selector__button:focus { background-color: #AA4C13;border-color: #AA4C13;transition: border 0.15s linear 0s; cursor: pointer;}*/
+.THIS .slds-file-selector__button {
+    font-size: .9rem; 
+    line-height: 2rem; 
+    background: #7be0df; 
+   	border: none;
+    color: #000000; 
+    text-transform: none !important; 
+    padding: 0 1rem; 
+    text-align: center; 
+    vertical-align: middle; 
+    line-height: 1.875rem; 
+    max-height: none !important;
+    text-transform: uppercase;}
+.THIS .slds-file-selector__button:hover {background-color: #50AAA9;border-color: #52d6d5; box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);}
+.THIS .slds-file-selector__button:focus {background-color: #50AAA9;border-color: #52d6d5; box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);}
+/*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+/*.THIS .slds-button_brand { background: #D86018; border: 1px solid #D86018;}*/
+.THIS .slds-button_brand { background: #7be0df; border: none;color: #000;}
+/*END: Added for US#335191 by Jagadeesh Bokam*/
 .THIS .slds-button_brand[disabled], .THIS .slds-button_brand[disabled]:hover {
-    background: rgb(224, 229, 238);
+    /* Added Mohammad Shaik #392126*/
+    /* background: rgb(224, 229, 238); */
+    background-color: rgb(213,241,242);
+    /* Ended Mohammad Shaik #392126*/
     border-color: rgba(0, 0, 0, 0);
+    
 }
 .THIS .slds-button_brand.lowercase {text-transform: none;}
-.THIS .slds-button.lowercase {text-transform: none;}
-.THIS .slds-button_brand:focus,.THIS .slds-button_brand:hover { background: #AA4C13; border: 1px solid #AA4C13;}
+.THIS .slds-button.lowercase {text-transform: capitalize;}
+/*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+/*.THIS .slds-button_brand:focus,.THIS .slds-button_brand:hover { background: #AA4C13; border: 1px solid #AA4C13;}*/
+.THIS .slds-button_brand:focus, .THIS .slds-button_brand:hover { background-color: #50AAA9;border-color: #52d6d5; box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);}
+/*BEGIN: END for US#335191 by Jagadeesh Bokam*/
 .THIS .slds-file-selector__button svg { display: none;}
-.THIS .slds-file-selector__button:before {content: ''; width: 1.5rem; height: 1.5rem; margin-right: .5rem;}
+ /* Added By Mohammad Shaik/Bokam #392126 'background & background-repeat' */
+.THIS .slds-file-selector__button:before {background: url('/resource/uploadIconNew'); content: ''; width: 1.5rem; height: 1.5rem; margin-right: .5rem; background-repeat: no-repeat;}
 .THIS .picture { font-size: .9rem; line-height: 2rem;}
-.THIS .picture:before {display: inline-block;content: ''; width: 1.5rem; height: 1.5rem;vertical-align: middle; margin-right: .5rem;}
+.THIS .picture:before {background: url('/resource/pictureIconNew'); display: inline-block;content: ''; width: 1.5rem; height: 1.5rem;vertical-align: middle; margin-right: .5rem; background-repeat: no-repeat;}
+ /* Ended By Mohammad Shaik/Bokam #392126 'background & background-repeat' */
 .THIS .file-input .slds-form-element {display: inline-block;vertical-align: middle;}
 .THIS .slds-file-selector__button svg, .THIS .slds-file-selector__text { display: none;}
 .THIS .slds-file-selector__dropzone {border: none;}
@@ -129,6 +160,7 @@
     }
 
     .THIS .slds-modal__container .slds-button.slds-button_brand, .THIS .slds-modal__container .slds-button.slds-button_neutral {
+        
         line-height: 1.3em!important;
         padding: 11.5px;
         margin-left: 0;
@@ -136,10 +168,12 @@
         width: 100%;
         display: block;
         max-width: 100%;
+        
     }
 
     .THIS .slds-modal__container .slds-button.slds-button_neutral {
         margin-bottom: 1.5em;
+        
     }
 }
 
@@ -160,6 +194,7 @@
 
 
 .THIS .slds-button.slds-button_brand, .THIS .slds-button.slds-button_neutral {
+  
   font-size: .9rem;
   line-height: 3;
   padding-right: 1rem;
@@ -169,12 +204,16 @@
 .THIS .boxshadow{border-radius:2px;background:#fff;box-shadow:0 1px 1px 0 rgba(0,0,0,.5)}
 /* Added by Ravi */
 .THIS .slds-size_12-of-12{
-    
-    
-    padding-right: 10px;
-
+  padding-right: 10px;
 }
 /* ended here on 01/01/2020*/
+    
+/* Added By Jagadeesh Bokam #388309 */
+    .THIS .slds-size_12-of-12 a {
+      color : #BF0366;
+      }
+/* Ended By Jagadeesh Bokam #388309 */
+
 /* added by ravi on 07/01/2020 */
 .THIS .slds-skip{
    color: #000000
@@ -183,6 +222,9 @@
 @media (min-width: 1200px) {
   .THIS .modal-dialog {width: 40%; margin: 0px auto; }
      .THIS .lower { 
+    /* Added Mohammad Shaik #392126*/
+    /* background-color: #76d5d4; */
+    /* Ended Mohammad Shaik #392126*/    
     text-transform: none;
     padding-left: 10px;
     padding-right: 10px;
@@ -200,3 +242,12 @@
 .THIS .contextual-ui ol, .THIS .contextual-ui ul{
     list-style: disc;
 }
+
+/*Added for Submit, Yes Skip & Cancel 399187*/
+/* .THIS .lower:hover, .THIS .lower:focus, */
+.THIS .file-delete a:hover, .THIS .file-delete a:focus {
+background-color: #50AAA9;
+border-color: #52d6d5; 
+box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
+}
+/*Ended for Submit, Yes Skip & Cancel 399187*/

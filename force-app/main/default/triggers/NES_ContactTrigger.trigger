@@ -4,7 +4,8 @@ trigger NES_ContactTrigger on Contact(after insert, after update, before insert,
         //  NES_ContactHandler.handleAfterUpdate(Trigger.oldMap, Trigger.newMap);
         //Swapna:Changed the logic to ensure the business and logic is executed for active students
         Set<ID> idsReferenced = Trigger.newMap.keySet();
-        List<hed__Program_Enrollment__c> allRelatedInProgPEs = [select hed__Contact__c from hed__Program_Enrollment__c where Status__c = 'In Progress' and hed__Contact__c IN :idsReferenced];
+        //Enrollment_Type__c field added By Guru for BUG#408684
+        List<hed__Program_Enrollment__c> allRelatedInProgPEs = [select hed__Contact__c,Enrollment_Type__c from hed__Program_Enrollment__c where Status__c = 'In Progress' and hed__Contact__c IN :idsReferenced];
         
         Set<Id> ContactsWithAnInProgPE = new Set<Id> ();
         if (allRelatedInProgPEs.size() > 0)  {

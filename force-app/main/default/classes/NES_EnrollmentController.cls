@@ -51,6 +51,7 @@ and using those child components get the required form information
 */
     @AuraEnabled
     public static List<NES_DashboardUtilities.Form> getRelatedForms(Id stageComponentId, Id enrollmentId){
+        System.debug('NDEBUG Forms from helper::::' + NES_EnrollmentHelper.getRelatedForms(stageComponentId, enrollmentId) );
         return NES_EnrollmentHelper.getRelatedForms(stageComponentId, enrollmentId);
     }
     
@@ -142,35 +143,36 @@ and using those child components get the required component information
         else   
             return false;
     }
-
+    
     @AuraEnabled
     public static List<Grade_Level__c> getGradeLevels(String instituteName,String year) {
         
         Date todayDate  = date.today();
         
-     Account acc=[select id,name,Registration_End_Date__c,Registration_Start_Date__c from Account where RecordType.Name = 'Academic Program' and Parent.Name =:instituteName and School_Year__r.Name=:year limit 1];
+        Account acc=[select id,name,Registration_End_Date__c,Registration_Start_Date__c from Account where RecordType.Name = 'Academic Program' and Parent.Name =:instituteName and School_Year__r.Name=:year limit 1];
         system.debug('acc nname:'+acc.Name);
-    
+        
         
         List<Grade_Level__c> gradeLevels =[SELECT Id, Name FROM Grade_Level__c where Id in (Select Grade_Level__c from Program_Grade_Level__c where Academic_Program__r.name=:acc.name 
                                                                                             AND ((Registration_Start_Date__c <= :todayDate AND Registration_End_Date__c >= :todayDate) OR 
-                                                                                                (Academic_Program__r.Registration_Start_Date__c <= :todayDate AND Academic_Program__r.Registration_End_Date__c >= :todayDate AND Registration_Start_Date__c = null AND Registration_End_Date__c =null))) order by order__c];
-	 
+                                                                                                 (Academic_Program__r.Registration_Start_Date__c <= :todayDate AND Academic_Program__r.Registration_End_Date__c >= :todayDate AND Registration_Start_Date__c = null AND Registration_End_Date__c =null))) order by order__c];
+        
         
         System.debug('grades:'+gradeLevels);
-	   return gradeLevels;
+        return gradeLevels;
         
     } 
-   
- // Add by Maddileti for US 335371 on 12/04/2020   
+    
+    // Add by Maddileti for US 335371 on 12/04/2020   
     @AuraEnabled
     public static List<School_Year__c> getSchoolYears(String instituteName) {
-      
+        
         new List<School_Year__c>();
         //hed__Program_Enrollment__c programEnrollment =[Select id,hed__Account__r.ParentId from hed__Program_Enrollment__c where id=:programEnrollmentId];
         List<School_year__c> schoolYears = new List<School_year__c>();
         Date todayDate  = date.today();
         Set<Id> schoolYrIds = new Set<Id>();
+
         system.debug('instituteName== '+instituteName);
         for(Account academicProgrm : [select Id,Parent.Name,Registration_End_Date__c,Registration_Start_Date__c,School_Year__c from account where recordtype.Name = 'Academic Program' AND Registration_Start_Date__c <= :todayDate AND Registration_End_Date__c >= :todayDate and parent.Name =:instituteName]){
             system.debug('academicProgrm== '+academicProgrm);
@@ -178,12 +180,13 @@ and using those child components get the required component information
         }
         system.debug('schoolYrIds== '+schoolYrIds);
         
-
+        
         schoolYears = [Select Id, Name from School_year__c where Id IN: schoolYrIds];
         
         return schoolYears;
     } 
     @AuraEnabled
+
     public static Peak_Response nextYearEnrollment(Id studentId,String instituteNam,String schoolYear,String gradeLevels, String callType, boolean enrollFlag, Id programEnrollmentId) {
         
         return NES_EnrollmentHelper.nextYearEnrollment(studentId,instituteNam,schoolYear,gradeLevels,callType,enrollFlag,programEnrollmentId); 

@@ -61,21 +61,16 @@ public class NES_ReactivationNewSYHelper {
     @AuraEnabled
     public static validatePEwrapper validatePE(ID programEnrollmentId) {
         String PE_status_Inactive = 'Inactive';
+
+        String PE_status_Withdrawn = 'Withdrawn';// Updated by sravani #361444
         string isValid = 'valid';
-        hed__Program_Enrollment__c programEnrollment = [SELECT id, Start_Year__c,hed__Contact__c,hed__Contact__r.Contact_Record_Type_Text__c,hed__Account__r.Parent.Name,
-                                                        hed__Account__r.Registration_Start_Date__c, hed__Account__r.Registration_End_Date__c, Status__c,
-                                                        (SELECT Id,StageName FROM Opportunities__r)
+        hed__Program_Enrollment__c programEnrollment = [SELECT id, Start_Year__c,hed__Contact__c,hed__Contact__r.Contact_Record_Type_Text__c,hed__Account__r.Parent.Name,Status__c
                                                         FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
         
-        if(programEnrollment.hed__Account__r.Registration_Start_Date__c == null  
-           || programEnrollment.hed__Account__r.Registration_End_Date__c == null ||
-           ! (PE_status_Inactive.containsIgnoreCase(programEnrollment.Status__c)) ||
-           ! (Date.today() >= programEnrollment.hed__Account__r.Registration_Start_Date__c) || ! (Date.today() <= programEnrollment.hed__Account__r.Registration_End_Date__c) ) {
-               isValid = 'PE Registration dates or Status are not valid for the process.';} else if(!programEnrollment.Opportunities__r.isEmpty() ) {for(Opportunity opp:programEnrollment.Opportunities__r) { if (opp.StageName<>'Closed Lost') { isValid = 'PE have non Closed lost Opportunity';break;}      }
-           }
-        else { // if no associated Oppty's found, you can't reactivate.
-            isValid = 'no associated Opportunities found';
-        }
+       
+        if(!(PE_status_Inactive.containsIgnoreCase(programEnrollment.Status__c) || PE_status_Withdrawn.containsIgnoreCase(programEnrollment.Status__c))){           
+               isValid = 'PE Status is not valid for the process.';} 
+     
         validatePEwrapper  vPEw = new validatePEwrapper(programEnrollment,isValid);
         return vPEw;
     }

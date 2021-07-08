@@ -40,7 +40,7 @@
                                     </aura:iteration>
                                 </aura:set>
                             </aura:if>
-                            <lightning:button variant="neutral" label="Invite a Caretaker" />
+                            <!--<lightning:button variant="neutral" label="Invite a Caretaker" />-->
                         </div>
                     </div>
                 </section>

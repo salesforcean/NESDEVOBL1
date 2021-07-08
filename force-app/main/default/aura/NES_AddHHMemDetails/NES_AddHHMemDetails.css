@@ -1,0 +1,79 @@
+/*.THIS .slds-form-element__control {
+    margin-right: 20px;
+
+}*/
+.THIS .slds-black {
+    color: #000000;
+}
+.THIS .slds-page-header{
+    
+   
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+.THIS .table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.THIS .slds-box {
+padding: 0 !important;
+}
+
+@media (min-width: 48em){
+.THIS .slds-modal__container {
+max-width: 60rem !important;
+	}
+}
+.THIS .slds-table_bordered, .THIS .slds-table--bordered {
+
+border-right: inherit;
+border-left: inherit;
+}
+.THIS .slds-head{
+    background-color: red !important;
+}
+
+/* Added By Mohammad Shaik for Tabular Design */
+
+.THIS .slds-table thead th {
+    text-align: center;
+    width: 50%;
+    border: ridge;
+    padding: 5px;
+    background : #063796 !important;
+    color : white;
+    box-shadow: 0px 0px 0px 1px #000 !important;
+}
+
+.THIS .slds-table_cell-buffer tr>th:first-child,
+.THIS .slds-table_cell-buffer tr>td:first-child, 
+.THIS .slds-table--cell-buffer tr>th:first-child, 
+.THIS .slds-table--cell-buffer tr>td:first-child
+ 	{
+    margin: center; 
+    width: 50%;
+    border: ridge;
+    padding: 5px;
+    background : #f0dcdb;
+    box-shadow: 0px 0px 0px 1px #000 !important;
+}
+
+.THIS .slds-table_col-bordered td+td, 
+.THIS .slds-table_col-bordered th+th, 
+.THIS .slds-table_col-bordered th+td, 
+.THIS .slds-table_col-bordered td+th, 
+.THIS .slds-table--col-bordered td+td, 
+.THIS .slds-table--col-bordered th+th, 
+.THIS .slds-table--col-bordered th+td, 
+.THIS .slds-table--col-bordered td+th
+	{
+    text-align: center;
+    width: 50%;
+    border: ridge;
+    padding: 5px;
+    background : #f0dcdb;
+    box-shadow: 0px 0px 0px 1px #000 !important;
+}

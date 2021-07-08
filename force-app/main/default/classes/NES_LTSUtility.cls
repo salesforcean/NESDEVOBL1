@@ -43,9 +43,15 @@ public with sharing class NES_LTSUtility {
             //   contactIds.add(progEnrollment.hed__Contact__c);
 
 
-            Map<Id, Contact> contactMap = new Map<Id, Contact>([Select id, Why_Is_Your_Child_Attending_CA__c, accountId, account.LC_HighestLevelofEducation__c,
+           // Added by CS Team Members - Rakesh & Sumanth to test the 101 SOQL Governer Limits work-around.
+       
+       /*   Map<Id, Contact> contactMap = new Map<Id, Contact>([Select id, Why_Is_Your_Child_Attending_CA__c, accountId, account.LC_HighestLevelofEducation__c,
                     account.Mktg_Customer_Loyalty__c, account.Internet_Connection_Type__c, account.Computer_in_Home__c
-            from Contact where Id in: contactIds]);
+            from Contact where Id in: contactIds]); */
+            
+            List<Contact> contactList = GenericSOQLQueries.contactDetails(contactIds); 
+            Map<Id, Contact> contactMap = new Map<Id,Contact>(contactList);
+         // Ended by CS Team Members - Rakesh & Sumanth to test the 101 SOQL Governer Limits work-around.
 
 
             for(Opportunity opp : [Select id, Program_Enrollment__c, StageName, SFDC_Informed__c, SFDC_Engaged_Grassroots_User__c

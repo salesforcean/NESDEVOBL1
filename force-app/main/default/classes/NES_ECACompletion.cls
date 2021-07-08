@@ -39,7 +39,9 @@ public without sharing class NES_ECACompletion {
     public static void contactCompletion(Map<Id, List<String>> changedFields) {
 
         if (shouldRunCompletion) {
-            List<hed__Program_Enrollment__c> programEnrollments = [SELECT Id, hed__Account__c, hed__Contact__c, hed__Contact__r.RecordType.Name, hed__Contact__r.AccountId, Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c IN :changedFields.keySet()];
+            //JB/SM:Included Where Clause condition-373546/374777
+            //Enrollment_Type__c field added By Guru for BUG#408684
+            List<hed__Program_Enrollment__c> programEnrollments = [SELECT Id, hed__Account__c,Enrollment_Type__c, hed__Contact__c, hed__Contact__r.RecordType.Name, hed__Contact__r.AccountId, Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.Use_Updated_ECA_Process__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c IN :changedFields.keySet() and hed__Account__r.Use_Updated_ECA_Process__c = false];
 
             Map<Id, List<String>> changedFieldsMap = new Map<Id, List<String>>();
             for (Id contactId : changedFields.keySet()) {
@@ -64,7 +66,7 @@ public without sharing class NES_ECACompletion {
             List<hed__Program_Enrollment__c> programEnrollments = new List<hed__Program_Enrollment__c> ();
             Map<Id, hed__Program_Enrollment__c> newECAModelPEs = new Map<Id, hed__Program_Enrollment__c> ();
             Map<Id, hed__Program_Enrollment__c> oldECAModelPEs = new Map<Id, hed__Program_Enrollment__c> ();
-
+			
             for (hed__Program_Enrollment__c pe : [SELECT Id,Enrollment_Type__c, hed__Account__c, hed__Contact__c, hed__Contact__r.RecordType.Name, hed__Contact__r.AccountId, Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c, hed__Account__r.Use_Updated_ECA_Process__c FROM hed__Program_Enrollment__c WHERE Id IN :peToObjectMap.keySet()] )
             {
                 if (pe.hed__Account__r.Use_Updated_ECA_Process__c)
@@ -185,8 +187,8 @@ public without sharing class NES_ECACompletion {
 
             //Build a map between Academic Programs and Process ids.
             map <Id, Id> academicProgramProcessIdMap = new Map<Id,Id>();
-            for (Enrollment_Component__c e : [SELECT Id, Process_Academic_Program__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :acedemicProgramsReferenced])
-            {
+           List<Enrollment_Component__c> enrollmentComList = GenericSOQLQueries.enrollmentDetails(acedemicProgramsReferenced);
+            for (Enrollment_Component__c e : enrollmentComList) {
                 academicProgramProcessIdMap.put(e.Process_Academic_Program__c, e.id);
             }
 
@@ -733,6 +735,8 @@ public without sharing class NES_ECACompletion {
                  system.debug(studentEnrollment);
                 try {
                     update processAffiliation;
+                    //added Status check for the Def #357941 : Jagadeesh Bokam
+                   if(studentEnrollment.Status__c == 'In Progress')
                     update studentEnrollment;
                 } catch(Exception e) {
                     logger.logException('evaluateCompletion', e);
@@ -856,13 +860,14 @@ public without sharing class NES_ECACompletion {
                             processAffiliation.Status__c = 'Complete';
                             affiliations.add(processAffiliation);
                             hed__Program_Enrollment__c studentEnrollment = [SELECT Id FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
-                            studentEnrollment.Status__c = 'Complete';
-                            update studentEnrollment;
                             List<Opportunity> opps = [SELECT Id FROM Opportunity WHERE Program_Enrollment__c = :studentEnrollment.Id AND StageName = 'Open' LIMIT 1];
                             for(Opportunity opp : opps) {
                                 opp.StageName = 'Closed Won';
                                 update opp;
                             }
+                            studentEnrollment.Status__c = 'Complete';
+                            update studentEnrollment;
+                           
                         } else {
                             Boolean updatedStatus = false;
                             for (Integer i=0; i<processRelationships.size();i++) {
@@ -1003,7 +1008,7 @@ public without sharing class NES_ECACompletion {
 
         // return allIds;
 
-        //Ali KM --- END ---    
+        //Ali KM --- END ---   
 
     }
 }
