@@ -458,7 +458,7 @@
         <filters>
             <field>CORE.USERS.ACTIVE</field>
             <operation>equals</operation>
-            <value>0</value>
+            <value>1</value>
         </filters>
         <label>Admin Users</label>
     </listViews>

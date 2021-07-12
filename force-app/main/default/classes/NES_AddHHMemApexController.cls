@@ -12,8 +12,8 @@ public without sharing class NES_AddHHMemApexController {
         
                     
         List <hed__Relationship__c>  relRecList = [SELECT Id, hed__RelatedContact__c FROM hed__Relationship__c
-                    								WHERE hed__RelatedContact__c = : cUsr.ContactId 
-                    								AND hed__Contact__r.RecordTypeId = :studentRecordTypeId];
+                                                    WHERE hed__RelatedContact__c = : cUsr.ContactId 
+                                                    AND hed__Contact__r.RecordTypeId = :studentRecordTypeId];
         
         if(relRecList != null && relRecList.size() >0){
             StPEExist = true;
@@ -51,7 +51,7 @@ public without sharing class NES_AddHHMemApexController {
         try{
             //Get LoggedIn User Contact ID
             User usrContact = [select contactId, contact.Email, contact.AccountId, contact.OwnerID from User where id =:UserInfo.getUserId() limit 1];
-           		 if(usrContact != null && !String.isBlank(usrContact.ContactId)){
+                 if(usrContact != null && !String.isBlank(usrContact.ContactId)){
                     AdditionalHouseHoldMembers member=(AdditionalHouseHoldMembers) JSON.deserialize(houseHoldMemberData, AdditionalHouseHoldMembers.class);
                     String memberRTDeveloperName;
                     String v2Role;
@@ -60,7 +60,7 @@ public without sharing class NES_AddHHMemApexController {
                           String hhTypeVal =member.memberRTDeveloperName.split(':')[0];
                          if(hhTypeVal == 'Learning_Coach'){
                              memberRTDeveloperName =  'Learning_Coach';
-                             v2Role = 'Parent or Legal Guardian';
+                             v2Role = 'Learning Coach';
                          }
                          else if (hhTypeVal == 'Caretaker_Parent'){
                              memberRTDeveloperName =  'Caretaker';
@@ -80,12 +80,12 @@ public without sharing class NES_AddHHMemApexController {
                     careTaker.MiddleName=member.mName;
                     careTaker.lastName=member.lName;
                     careTaker.Suffix=member.suffix;
-                   	careTaker.Email=member.email;
+                    careTaker.Email=member.email;
                     careTaker.ownerId= usrContact.contact.OwnerId;
                     careTaker.hed__PreferredPhone__c=member.phoneType;
                     careTaker.V2_Role__c = v2Role;
                     //careTaker.Owner_CT_Email__c = usrContact.Contact.Email;
-                   	//careTaker.hed__AlternateEmail__c = 'Alternate';
+                    //careTaker.hed__AlternateEmail__c = 'Alternate';
                      
                      if(member.phoneType=='Mobile'){
                          careTaker.Phone =member.phoneNumber;
@@ -101,7 +101,7 @@ public without sharing class NES_AddHHMemApexController {
                     careTaker.AccountId=usrContact.contact.accountId;
                     careTaker.Unverified__c = true;
                
-                	// Naveen
+                    // Naveen
                     Database.SaveResult sr = Database.insert(careTaker, false);
                    
                     
@@ -109,14 +109,14 @@ public without sharing class NES_AddHHMemApexController {
                     // Being done using a flow..
                     if(sr.isSuccess())
                     {
-						// Create the relationship records to associate the Existing students to new CT                        
+                        // Create the relationship records to associate the Existing students to new CT                        
                         Boolean relRecsCreated = createdRelRecords(usrContact.ContactId, sr.getId());
                         if(relRecsCreated){
                            
                            response='New Contact Created'; 
                         }
                         else{
-                        	System.debug('NDEBUG:::: Relationship records Creation Failed');
+                            System.debug('NDEBUG:::: Relationship records Creation Failed');
                             response = 'FAILURE';
                         } 
                           
@@ -146,11 +146,11 @@ public without sharing class NES_AddHHMemApexController {
         public string email;
         public string suffix;
         public string phoneType;
-		public string phoneNumber;
+        public string phoneNumber;
         public String memberRTDeveloperName;
         public String accountId;
     }
-	    
+        
     // Create new hed__Relationship__c records for this new CT contact and existing students
     public static Boolean createdRelRecords(Id oldCtContactId, Id newCtContactId){
         Boolean saveResult = true;
@@ -185,15 +185,15 @@ public without sharing class NES_AddHHMemApexController {
         List<hed__Program_Enrollment__c> newcaretakerEnrollmentList = new List<hed__Program_Enrollment__c> ();
         if(caretakerEnrollmentList != null && caretakerEnrollmentList.size() >0){
             for(hed__Program_Enrollment__c hhPe: caretakerEnrollmentList){
-            	hed__Program_Enrollment__c newCareTakerEnrollment = new hed__Program_Enrollment__c();
-        		newCareTakerEnrollment.hed__Contact__c = newCtContactId;
-        		newCareTakerEnrollment.RecordTypeId = hhPe.RecordTypeId;
-        		newCareTakerEnrollment.OwnerId = hhPe.OwnerId;
-        		if (hhPe.hed__Account__c != null) {
-        			newCareTakerEnrollment.hed__Account__c = hhPe.hed__Account__c;
-        		}
+                hed__Program_Enrollment__c newCareTakerEnrollment = new hed__Program_Enrollment__c();
+                newCareTakerEnrollment.hed__Contact__c = newCtContactId;
+                newCareTakerEnrollment.RecordTypeId = hhPe.RecordTypeId;
+                newCareTakerEnrollment.OwnerId = hhPe.OwnerId;
+                if (hhPe.hed__Account__c != null) {
+                    newCareTakerEnrollment.hed__Account__c = hhPe.hed__Account__c;
+                }
                 newcaretakerEnrollmentList.add(newCareTakerEnrollment);
-        	}
+            }
         }
         Insert newcaretakerEnrollmentList;
         

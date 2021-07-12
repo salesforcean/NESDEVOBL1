@@ -16,9 +16,8 @@
     <!--aura:handler event="c:NES_AddStudentAppEvent2" action="{!c.handleAddStudentAppEvent2}"/-->
 
     <aura:attribute name="loading" type="Boolean" default="false" />
-    <aura:attribute name="ErrorMessage" type="String" default="There are no schools available for the selected state"/>
     <aura:attribute name="email" type="String" />
-    <aura:attribute name="notParentNotice" type="String" default="If you are not a parent or legal guardian of this student, you are not authorized to enroll them in school. For further assistance, contact us at 1 (800) 382-6010." />
+    <aura:attribute name="notParentNotice" type="String" default="If you are not a parent or legal guardian of this student, you are not authorized to enroll them in school. For further assistance, contact us at 1 (800) 382-6010." />
     <aura:attribute name="disclaimerHeading" type="String" default="These preliminary checks help ensure this student is eligible" />
     <!-- Updated default text for the Bug :177563 by Jagadeesh -->
     <aura:attribute name="disclaimerText" type="String" default="NOTE: Passing these preliminary eligibility checks does not guarantee your student's spot in school, but it gets the most important questions out of the way first so you aren't spending more time than necessary." />
@@ -111,7 +110,7 @@
                     <p>{!v.notParentNotice}</p>
                 </lightning:layoutItem>
                 <aura:if isTrue="{!v.newStudentData.relationshipType != 'none'}">
-                   
+                    <div class="unevenFix">
                         <lightning:layoutItem size="12" mediumDeviceSize="6" padding="around-small">
                             <lightning:select aura:id="schoolSelect" name="activeSchools" value="{!v.newStudentData.SelectedSchoolId}" required="true" label="Please confirm the school this student should attend:"
                                               onchange="{!c.handleSchoolSelect}">
@@ -120,24 +119,19 @@
                                     <option value="{!school.Id}">{!school.Name}</option>
                                 </aura:iteration>
                             </lightning:select>
-                       
+                        </lightning:layoutItem>
                         <aura:if isTrue="{!and(v.newStudentData.SelectedSchoolId != null, v.newStudentData.SelectedSchoolId != '')}">
+                            <lightning:layoutItem size="12" mediumDeviceSize="6" padding="around-small">
                                 <lightning:select aura:id="yearSelect" required="true" name="schoolYear" label="Apply for what school year?" onchange="{!c.handleYearSelect}">
                                     <option value="">- select year -</option>
-                                    
                                     <aura:iteration items="{!v.newStudentData.schoolYears}" var="year">
                                         <option value="{!year.Id}">{!year.Name}</option>
                                     </aura:iteration>
                                 </lightning:select>
-                           
-                           <aura:set attribute="else">
-                               <div style="color:Red">
-                                     {!v.ErrorMessage}
-                                </div>
-                            </aura:set> 
+                            </lightning:layoutItem>
+                            
                     </aura:if>
-                             </lightning:layoutItem>
-                   
+                    </div>
                     <aura:if isTrue="{!v.supplementalQuestionsLoaded}">
                         <lightning:layoutItem size="12" class="supplementalQuestions">
                             <lightning:layout multipleRows="true" class="slds-grid_vertical-stretch">
