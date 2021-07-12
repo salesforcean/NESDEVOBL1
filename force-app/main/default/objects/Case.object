@@ -52334,9 +52334,9 @@ ISBLANK(TEXT(School_Service__c)), null)</errorConditionFormula>
     <validationRules>
         <fullName>Staff_Assignee_Validation</fullName>
         <active>true</active>
-        <errorConditionFormula>Contact.RecordType.DeveloperName = &apos;School_Staff&apos;  &amp;&amp; ISBLANK(Staff_Assignee__c) &amp;&amp; $Profile.Name &lt;&gt; &quot;School Staff Community User&quot;</errorConditionFormula>
+        <errorConditionFormula>IF($Profile.Name &lt;&gt; &quot;School Staff Community User&quot;, Contact.RecordType.DeveloperName = &apos;School_Staff&apos;  &amp;&amp; ISBLANK(Staff_Assignee__c), false)</errorConditionFormula>
         <errorDisplayField>Staff_Assignee__c</errorDisplayField>
-        <errorMessage>Please select the Staff Assignee field same as Contact for School Staff Tickets .</errorMessage>
+        <errorMessage>Please select the Staff Assignee field same as Contact for School Staff Tickets -- TEST.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Subject_Validation_Rule</fullName>

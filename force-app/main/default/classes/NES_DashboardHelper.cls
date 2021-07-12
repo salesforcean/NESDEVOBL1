@@ -127,7 +127,7 @@ public without sharing class NES_DashboardHelper {
             //else if(!peRecord.Enrollments__r.isEmpty() && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' && peRecord.Status__c == NES_DashboardUtilities.WITHDRAWN_STATUS){
             resultString = NES_DashboardUtilities.REENROLL_BTN_LABEL;            
         }
-        // 
+        else
         if(peRecord.Status__c == NES_DashboardUtilities.COMPLETE_STATUS && ((peRecord.Program_Grade_Level__r.Grade_Level__r.Name == Label.NES_Twelth_Grade && peRecord.ITR_Eligibility_NY__c == 'Yes') || (peRecord.Program_Grade_Level__r.Grade_Level__r.Name != Label.NES_Twelth_Grade && peRecord.ITR_Eligibility_NY__c != 'No')) && ((todayDate >= peRecord.hed__Account__r.ITR_Start_Date__c && todayDate <=peRecord.hed__Account__r.ITR_End_Date__c) || (peRecord.ITR_Exception_Date_NY__c != null && todayDate <= peRecord.ITR_Exception_Date_NY__c))){
             resultString = NES_DashboardUtilities.ITR_BTN_LABEL;           
         } 

@@ -455,6 +455,11 @@
             <operation>equals</operation>
             <value>System Administrator</value>
         </filters>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
         <label>Admin Users</label>
     </listViews>
     <listViews>

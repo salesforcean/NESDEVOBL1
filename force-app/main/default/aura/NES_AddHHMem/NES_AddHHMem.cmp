@@ -6,7 +6,7 @@
     
    	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
     
-    To add additional Caretaker or Learning Coach, please use this form to tell us about their relationship with the student(s). 
+    To add an additional Caretaker or Learning Coach, please use this form to tell us about their relationship with the student(s). 
     <br/>
     
  <!--  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->

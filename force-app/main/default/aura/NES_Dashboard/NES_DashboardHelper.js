@@ -8,7 +8,7 @@
         var action = component.get("c.getAssociatedStudentsInfo");       
         action.setCallback(this, function(response){
             var students = response.getReturnValue();
-           console.log(students); 
+           console.log("@@@###@@@@"+JSON.stringify(students)); 
             var state = response.getState();
             if(state === "SUCCESS"){
                 if(students !== null && students.length > 0) {

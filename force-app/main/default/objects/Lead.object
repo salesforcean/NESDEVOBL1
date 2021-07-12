@@ -921,6 +921,28 @@ Experiment_ID</description>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Global_Opt_Out__c</fullName>
+        <description>ADO#389940
+Field used by PWS Chat. A &quot;NO&quot; value trigger a &apos;False&apos; value for all 6 opt out  fields</description>
+        <externalId>false</externalId>
+        <label>Global Opt Out</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NO</fullName>
+                    <default>false</default>
+                    <label>NO</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Grade_Going_Into__c</fullName>
         <description>Specific grade level(s) selected by lead</description>
         <encryptionScheme>None</encryptionScheme>
@@ -5269,6 +5291,13 @@ NULL)</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Global_Opt_Out__c</picklist>
+            <values>
+                <fullName>NO</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Industry</picklist>
             <values>
                 <fullName>Agriculture</fullName>
@@ -8202,6 +8231,13 @@ NULL)</formula>
             </values>
             <values>
                 <fullName>WEBREQINFO</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Global_Opt_Out__c</picklist>
+            <values>
+                <fullName>NO</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

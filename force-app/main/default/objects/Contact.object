@@ -5450,17 +5450,6 @@ User Story #111315</description>
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Owner_CT_Email__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Owner CT Email</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Email</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PCx_User_Email__c</fullName>
         <externalId>false</externalId>
         <formula>Commuity_User__r.Email</formula>

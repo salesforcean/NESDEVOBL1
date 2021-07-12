@@ -60,7 +60,7 @@ public abstract class NES_EnrollmentReactivationBase {
         
         // "WithdrawalCategory__c" field Added by Shravaniin studPE for US#389103 on 5/25/21
         studPE =
-            [SELECT Id,WithdrawalCategory__c, Start_Year__r.Current_Year__c,hed__Account__r.ParentId, Name, hed__Contact__r.Name,hed__Account__r.Registration_Start_Date__c, hed__Account__r.OwnerId,
+            [SELECT Id,Enrollment_Type__c, WithdrawalCategory__c, Start_Year__r.Current_Year__c,hed__Account__r.ParentId, Name, hed__Contact__r.Name,hed__Account__r.Registration_Start_Date__c, hed__Account__r.OwnerId,
                 hed__Account__r.Registration_End_Date__c, hed__Account__r.Confirmation_End_Date__c,hed__Contact__r.AccountId, 
                 AcademicPerformanceEligibility__c, RecordTypeId, RecordType.Name, Status__c, Household_Program_Enrollment__c,
                 (SELECT Id,StageName FROM Opportunities__r)
@@ -116,6 +116,8 @@ public abstract class NES_EnrollmentReactivationBase {
             throw new InvalidParameterValue_Exception(
                 'This Program Enrollment is not eligible; Start Year is Current Year:' + studPE.Start_Year__r.Current_Year__c + ', Expected: true');
         }
+        if (type == Reactivation.SOFT && studPE.Status__c == 'Inactive' && (studPE.Enrollment_Type__c== 'Returning Student'))
+            throw new InvalidParameterValue_Exception('Program Enrollment is eligible only for Full ReActivation');
         
         //Added for US#389103 by Shravani Pendyala on 5/25/21
         if(studPE.Status__c=='Inactive' && (studPE.WithdrawalCategory__c=='No Show' || studPE.WithdrawalCategory__c=='Not Returning')){ 

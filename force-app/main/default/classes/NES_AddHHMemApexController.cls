@@ -1,5 +1,7 @@
 public without sharing class NES_AddHHMemApexController {
     
+    private static Peak_ApexLog logger = new Peak_ApexLog('NES_AddHHMemApexController');
+    
     @AuraEnabled
     public static boolean STExistsforCT(){
         
@@ -78,11 +80,12 @@ public without sharing class NES_AddHHMemApexController {
                     careTaker.MiddleName=member.mName;
                     careTaker.lastName=member.lName;
                     careTaker.Suffix=member.suffix;
-                    careTaker.Email=member.email;
+                   	careTaker.Email=member.email;
                     careTaker.ownerId= usrContact.contact.OwnerId;
                     careTaker.hed__PreferredPhone__c=member.phoneType;
                     careTaker.V2_Role__c = v2Role;
-                    careTaker.Owner_CT_Email__c = usrContact.Contact.Email;
+                    //careTaker.Owner_CT_Email__c = usrContact.Contact.Email;
+                   	//careTaker.hed__AlternateEmail__c = 'Alternate';
                      
                      if(member.phoneType=='Mobile'){
                          careTaker.Phone =member.phoneNumber;
@@ -100,7 +103,7 @@ public without sharing class NES_AddHHMemApexController {
                
                 	// Naveen
                     Database.SaveResult sr = Database.insert(careTaker, false);
-                    
+                   
                     
                     // Create the Case/Ticket and Send the Email only if the above Insert is Successful
                     // Being done using a flow..
@@ -120,6 +123,7 @@ public without sharing class NES_AddHHMemApexController {
                     }
                      else{
                          System.debug('NDEBUG:::: Contact Creation Failed');
+                         
                      }
             }else{
                  
@@ -127,6 +131,9 @@ public without sharing class NES_AddHHMemApexController {
             }                   
         }catch(Exception ex){
             system.debug('===>'+ex);
+            logger.logException('Addl HH Member Contact Creation Failed', ex);
+            logger.saveLogs();
+            return null;
         }
         return response;
     }
@@ -190,6 +197,48 @@ public without sharing class NES_AddHHMemApexController {
         }
         Insert newcaretakerEnrollmentList;
         
-        return saveResult;         
+        return saveResult;
+        
+        
+        
     }
+    
+    
+    public class EmailParameters{
+        @InvocableVariable(required=true)
+        public string v2Role;
+        @InvocableVariable(required=true)
+        public contact addlHHMember;
+    }
+    
+    @InvocableMethod(label='Send Agreement Email')
+    public static void sendEmail(EmailParameters [] emailParams){
+        
+               
+        Map <String, String> v2RoleToEmailTempl = new Map <String, String> ();
+        v2RoleToEmailTempl.put('Parent or Legal Guardian', 'Parent_Legal_Guardian_Caretaker_Acknowledgement');
+        v2RoleToEmailTempl.put('Designated Caretaker', 'Caretaker_Designee_Agreement');
+        v2RoleToEmailTempl.put('Learning Coach', 'Designated_Learning_Coach_Agreement');
+        String emailTempl = v2RoleToEmailTempl.get(emailParams[0].v2Role);
+        
+        List<EmailTemplate> lstEmailTemplates = [SELECT Id, Body, Subject from EmailTemplate where DeveloperName =: emailTempl];
+        
+        User  ctContactUser = [Select Id, contactId, contact.Email, contact.hed__AlternateEmail__c from user where Id =: emailParams[0].addlHHMember.CreatedById limit 1];
+        
+        String email;
+        if(Test.isRunningTest()) {
+            email = 'test@test.com';
+        }else{
+            email = ctContactUser.contact.hed__AlternateEmail__c;
+        }
+
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+        mail.setTemplateId(lstEmailTemplates[0].Id);
+        mail.setSaveAsActivity(false);
+        mail.setTargetObjectId(ctContactUser.Id);// Any contact or User id of your record
+        mail.setToAddresses(new list<string>{email});
+        Messaging.SendEmailResult[] resultMail = Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });             
+       
+    }
+
 }
