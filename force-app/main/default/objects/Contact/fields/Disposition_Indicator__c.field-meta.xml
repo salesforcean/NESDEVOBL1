@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disposition_Indicator__c</fullName>
+    <description>Formula Field is creating for the US # 340819, This field will pick the output from &quot;CT Disposition Indicator&quot;. If all the student status is &quot;complete&quot;, then it will stamp as &quot;Enrolled&quot;, And if any one of the student statuses is &quot;other than Complete&quot; then it will stamp as &quot;Applicant&quot;.</description>
+    <externalId>false</externalId>
+    <formula>IF(RecordType.Name=&apos;Caretaker&apos;, CT_Disposition_Indicator__c ,Caretaker_Id__r.CT_Disposition_Indicator__c )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Disposition Indicator</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

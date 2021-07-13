@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OCA_Screening__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the student had hearing, vision, speech/communications and medical screenings by a licensed agency or health care provider</description>
+    <externalId>false</externalId>
+    <label>OCA Screening</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

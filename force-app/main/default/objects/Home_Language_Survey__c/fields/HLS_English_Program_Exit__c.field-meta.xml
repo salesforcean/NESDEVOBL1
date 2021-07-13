@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HLS_English_Program_Exit__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Did the student exit the program</description>
+    <externalId>false</externalId>
+    <label>HLS English Program Exit</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

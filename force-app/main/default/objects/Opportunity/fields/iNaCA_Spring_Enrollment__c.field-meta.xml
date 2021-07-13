@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>iNaCA_Spring_Enrollment__c</fullName>
+    <description>Spring Only Academic Term</description>
+    <externalId>false</externalId>
+    <label>iNaCA Spring Enrollment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Spring 2019</fullName>
+                <default>false</default>
+                <label>Spring 2019</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

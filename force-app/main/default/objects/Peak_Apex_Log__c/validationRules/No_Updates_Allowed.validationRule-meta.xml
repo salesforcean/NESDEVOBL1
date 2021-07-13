@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Updates_Allowed</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISNEW())</errorConditionFormula>
+    <errorMessage>Updates to logs are explicitly disallowed to guarantee log integrity.</errorMessage>
+</ValidationRule>

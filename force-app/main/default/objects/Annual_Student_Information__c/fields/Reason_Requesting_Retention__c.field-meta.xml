@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Requesting_Retention__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason Requesting Retention</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>As the parent or guardian, I do not believe my student is ready to move forward.</fullName>
+                <default>false</default>
+                <label>As the parent or guardian, I do not believe my student is ready to move forward.</label>
+            </value>
+            <value>
+                <fullName>I selected this in error.</fullName>
+                <default>false</default>
+                <label>I selected this in error.</label>
+            </value>
+            <value>
+                <fullName>My student’s previous school recommended retention.</fullName>
+                <default>false</default>
+                <label>My student’s previous school recommended retention.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PE_Record_Type_Text__c</fullName>
+    <description>Program Enrollment Record Type in text format to allow it to be referenced in Flow based Criteria check for &quot;CareTaker&quot; record type, in order to trigger the SIS call-out related Apex class NES_IdamUtilities.cls
+
+User Story #216777</description>
+    <externalId>false</externalId>
+    <formula>RecordType.Name</formula>
+    <label>PE Record Type (Text)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

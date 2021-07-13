@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enrolled_Students_Roll_Up__c</fullName>
+    <externalId>false</externalId>
+    <label>Enrolled Students Roll Up</label>
+    <summarizedField>Cap_Grade_Level__c.Number_of_Enrolled_Students__c</summarizedField>
+    <summaryForeignKey>Cap_Grade_Level__c.Cap__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

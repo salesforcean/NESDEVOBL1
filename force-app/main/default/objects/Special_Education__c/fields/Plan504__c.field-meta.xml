@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Plan504__c</fullName>
+    <description>Students with 504 plans</description>
+    <externalId>false</externalId>
+    <label>Plan504</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>504</fullName>
+                <default>false</default>
+                <label>504</label>
+            </value>
+            <value>
+                <fullName>504 Missing</fullName>
+                <default>false</default>
+                <label>504 Missing</label>
+            </value>
+            <value>
+                <fullName>504-No Documentation Available</fullName>
+                <default>false</default>
+                <label>504-No Documentation Available</label>
+            </value>
+            <value>
+                <fullName>Illegible</fullName>
+                <default>false</default>
+                <label>Illegible</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <label>Received</label>
+            </value>
+            <value>
+                <fullName>Received-No Documentation</fullName>
+                <default>false</default>
+                <label>Received-No Documentation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

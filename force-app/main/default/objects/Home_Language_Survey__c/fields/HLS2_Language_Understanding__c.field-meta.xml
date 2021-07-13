@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HLS2_Language_Understanding__c</fullName>
+    <description>Please describe the language understood by your child</description>
+    <externalId>false</externalId>
+    <label>HLS2 Language Understanding</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Understands mostly English and some of the home language.</fullName>
+                <default>false</default>
+                <label>Understands mostly English and some of the home language.</label>
+            </value>
+            <value>
+                <fullName>Understands mostly the home language and some English.</fullName>
+                <default>false</default>
+                <label>Understands mostly the home language and some English.</label>
+            </value>
+            <value>
+                <fullName>Understands only English.</fullName>
+                <default>false</default>
+                <label>Understands only English.</label>
+            </value>
+            <value>
+                <fullName>Understands only the home language and no English.</fullName>
+                <default>false</default>
+                <label>Understands only the home language and no English.</label>
+            </value>
+            <value>
+                <fullName>Understands the home language and English equally.</fullName>
+                <default>false</default>
+                <label>Understands the home language and English equally.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

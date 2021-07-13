@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School_Year_and_Parent_Account_are_requi</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK(ParentId) &amp;&amp; $RecordType.Name=&quot;Academic Program&quot;  &amp;&amp;  ISBLANK(School_Year__c)</errorConditionFormula>
+    <errorMessage>You must choose a parent account and school year when creating an Academic Program</errorMessage>
+</ValidationRule>

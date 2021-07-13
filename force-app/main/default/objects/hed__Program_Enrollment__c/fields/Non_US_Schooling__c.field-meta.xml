@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_US_Schooling__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the child received schooling outside of the U.S.?</description>
+    <externalId>false</externalId>
+    <label>Non US Schooling</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

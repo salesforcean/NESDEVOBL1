@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Status Reason</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Document_Status_Reason</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>WCA Formal Acknowledgement of Student Handbook</controllingFieldValue>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Report of Health Examination</controllingFieldValue>
+            <controllingFieldValue>Ear, Eye and Dental Certificate (CEED)</controllingFieldValue>
+            <controllingFieldValue>HISD Privacy Code</controllingFieldValue>
+            <controllingFieldValue>Health Record (Massachusetts School Health Record)</controllingFieldValue>
+            <controllingFieldValue>Home Language Survey</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>Affidavit of State of Colorado Residency</controllingFieldValue>
+            <controllingFieldValue>Blood Lead Test Screening</controllingFieldValue>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Dental Examination</controllingFieldValue>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>SSN Waiver</controllingFieldValue>
+            <controllingFieldValue>Student Residency &amp; Assistance Questionnaire</controllingFieldValue>
+            <controllingFieldValue>Title VII Student Certification Form</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <valueName>Invalid-Missing Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>WCA Formal Acknowledgement of Student Handbook</controllingFieldValue>
+            <controllingFieldValue>Re Eval Conference Form</controllingFieldValue>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Report of Health Examination</controllingFieldValue>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Ear, Eye and Dental Certificate (CEED)</controllingFieldValue>
+            <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>HISD Privacy Code</controllingFieldValue>
+            <controllingFieldValue>Health Record (Massachusetts School Health Record)</controllingFieldValue>
+            <controllingFieldValue>Home Language Survey</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Affidavit of State of Colorado Residency</controllingFieldValue>
+            <controllingFieldValue>Blood Lead Test Screening</controllingFieldValue>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Dental Examination</controllingFieldValue>
+            <controllingFieldValue>Dental Examination (ORCA)</controllingFieldValue>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
+            <controllingFieldValue>Minnesota Health Screen Report</controllingFieldValue>
+            <controllingFieldValue>NCCA Health Assessment</controllingFieldValue>
+            <controllingFieldValue>OEA</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Identity</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
+            <controllingFieldValue>SSN Waiver</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <controllingFieldValue>State Test Scores</controllingFieldValue>
+            <controllingFieldValue>Student Residency &amp; Assistance Questionnaire</controllingFieldValue>
+            <controllingFieldValue>Title I Compact</controllingFieldValue>
+            <controllingFieldValue>Title VII Student Certification Form</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <controllingFieldValue>Vision Screening (OKCA)</controllingFieldValue>
+            <controllingFieldValue>Vision Screening (ORCA)</controllingFieldValue>
+            <valueName>Submitted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>WCA Formal Acknowledgement of Student Handbook</controllingFieldValue>
+            <controllingFieldValue>Re Eval Conference Form</controllingFieldValue>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Report of Health Examination</controllingFieldValue>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Ear, Eye and Dental Certificate (CEED)</controllingFieldValue>
+            <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>HISD Privacy Code</controllingFieldValue>
+            <controllingFieldValue>Health Record (Massachusetts School Health Record)</controllingFieldValue>
+            <controllingFieldValue>Home Language Survey</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Affidavit of State of Colorado Residency</controllingFieldValue>
+            <controllingFieldValue>Blood Lead Test Screening</controllingFieldValue>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Dental Examination</controllingFieldValue>
+            <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
+            <controllingFieldValue>Minnesota Health Screen Report</controllingFieldValue>
+            <controllingFieldValue>NCCA Health Assessment</controllingFieldValue>
+            <controllingFieldValue>OEA</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Identity</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
+            <controllingFieldValue>SSN Waiver</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <controllingFieldValue>State Test Scores</controllingFieldValue>
+            <controllingFieldValue>Student Residency &amp; Assistance Questionnaire</controllingFieldValue>
+            <controllingFieldValue>Title I Compact</controllingFieldValue>
+            <controllingFieldValue>Title VII Student Certification Form</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <valueName>Verified</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Re Eval Conference Form</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <valueName>Not Applicable</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <valueName>Incomplete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>Home Language Survey</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <controllingFieldValue>State Test Scores</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <valueName>Invalid-Illegible</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <controllingFieldValue>State Test Scores</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Invalid-Wrong document</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Received</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Received-No Documentation Available</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <controllingFieldValue>State Test Scores</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Requested</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Verified-No Documentation Available</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
+            <valueName>Invalid-Reenrollment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report of Health Examination</controllingFieldValue>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>Blood Lead Test Screening</controllingFieldValue>
+            <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
+            <controllingFieldValue>Minnesota Health Screen Report</controllingFieldValue>
+            <controllingFieldValue>NCCA Health Assessment</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <valueName>Exemption</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report of Health Examination</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Verified-Incomplete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Deferred-Extension Approved by Principal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Deferred-Non-compliant Allow</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Exemption-Medical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Exemption-Personal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Exemption-Religious</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <valueName>Invalid-Incomplete Exemption</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Invalid-Incomplete-Hold</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>Title I Compact</controllingFieldValue>
+            <valueName>Invalid-Incorrect Form</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Invalid-Missing Name and/or DOB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <valueName>Invalid-Incomplete Missing Tdap</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <valueName>Invalid-Incomplete Missing MCV</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <valueName>Invalid-Updated Exemption Required</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Minnesota Health Screen Report</controllingFieldValue>
+            <controllingFieldValue>NCCA Health Assessment</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <valueName>Invalid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <controllingFieldValue>Title I Compact</controllingFieldValue>
+            <valueName>Invalid-Digital signature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <valueName>Invalid-Missing Signature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <valueName>Incomplete-Missing pages or sections</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Invalid-File Error</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <valueName>Invalid-Outdated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Received-Complete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Received-Incomplete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Reviewed</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Reviewed-Further Communication Needed</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Reviewed-Incomplete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <valueName>Verified-Complete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <valueName>Incomplete-Missing information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health Record (Massachusetts School Health Record)</controllingFieldValue>
+            <valueName>Deferred-Missing Screening</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <valueName>Awaiting IEP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Deferred-Incomplete-Allow</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Deferred-Verified-In progress</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Exemption-MKV</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Pending</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Submitted-Under Review</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <valueName>Invalid-Blank Form</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <valueName>Invalid-Case # missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <valueName>Invalid-No signature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Affidavit of State of Colorado Residency</controllingFieldValue>
+            <valueName>Invalid-Photo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Mismatch Address</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <valueName>Invalid-Pending CO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <valueName>Invalid-Pending POR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <valueName>Invalid-Signature Missing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-Denied</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-Incorrect CTR-grade level</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-Incorrect CTR-other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-Incorrect CTR-school level</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-No CTR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Received-Accepted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Received-Transfer Finalized</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dental Examination (ORCA)</controllingFieldValue>
+            <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
+            <valueName>Verified-Burden</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dental Examination (ORCA)</controllingFieldValue>
+            <controllingFieldValue>Vision Screening (ORCA)</controllingFieldValue>
+            <valueName>Verified-Prior Submission</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dental Examination (ORCA)</controllingFieldValue>
+            <controllingFieldValue>Vision Screening (ORCA)</controllingFieldValue>
+            <valueName>Verified-Religious Exemption</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <valueName>Received-District Verified</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <valueName>Received-Received from parent</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <valueName>Received-Sent to District</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
+            <valueName>Verified-Refused</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>OEA</controllingFieldValue>
+            <valueName>Invalid-Not Accepted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <valueName>Deferred</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <valueName>Invalid-Invalid Form</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <valueName>Invalid-Too old</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Identity</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Unacceptable Type</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
+            <valueName>Verified-Affidavit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Disconnect Notice</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Incomplete Lease Agreement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-No Service Address</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Not in Caretaker&apos;s Name</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Outdated Lease Agreement-General</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Outdated Lease Agreement-OCA-CaliCA-GLCA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Paystub insufficient</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-POR-too old-General</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-POR-too old-OCA-CaliCA-GLCA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Verified-Residency Affidavit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing 1st Quarter Grades</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing 2nd Quarter Grades</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing 3rd Quarter Grades</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing 4th Quarter Grades</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing Final Grades</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing Grade Level</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing Grading Scale</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing Other Grading Period</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Incomplete-Missing Promotion Status</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing School Name</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing School Year</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing Student Name</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Invalid-Not Current School Year</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>State Test Scores</controllingFieldValue>
+            <valueName>Incomplete-Missing subject area</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Title VII Student Certification Form</controllingFieldValue>
+            <valueName>Verified-Not Affiliated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing 1st Semester</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing 2nd Semester</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing credits earned</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing Previous School Year(s)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Vision Screening (OKCA)</controllingFieldValue>
+            <valueName>Verified-No Vision Issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Vision Screening (OKCA)</controllingFieldValue>
+            <valueName>Verified-School Review</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Vision Screening (OKCA)</controllingFieldValue>
+            <valueName>Verified-Vision Issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Vision Screening (ORCA)</controllingFieldValue>
+            <valueName>Invalid-Missing screening</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

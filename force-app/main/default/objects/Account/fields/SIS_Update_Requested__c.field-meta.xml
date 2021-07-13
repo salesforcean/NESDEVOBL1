@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIS_Update_Requested__c</fullName>
+    <description>This field was created based on US #. 216768 (PI-03, Sprint-02).The purpose of this field to update the request from SIS system</description>
+    <encryptionScheme>None</encryptionScheme>
+    <externalId>false</externalId>
+    <label>SIS Update Requested</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>DateTime</type>
+</CustomField>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Request_Type__c</fullName>
+    <description>This field was created based on US #. 216768 (PI-03, Sprint-02).,Request Type&apos; used  to capture the  SIS Update Request.</description>
+    <externalId>false</externalId>
+    <label>Request Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Additional Household Member</fullName>
+                <default>false</default>
+                <label>Additional Household Member</label>
+            </value>
+            <value>
+                <fullName>UserInfo Update</fullName>
+                <default>false</default>
+                <label>UserInfo Update</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

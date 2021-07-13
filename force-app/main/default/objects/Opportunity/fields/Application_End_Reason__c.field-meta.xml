@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Application_End_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Application End Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Different/Better Schooling Option</fullName>
+                <default>false</default>
+                <label>Different/Better Schooling Option</label>
+            </value>
+            <value>
+                <fullName>Didn’t Meet Students’ Needs</fullName>
+                <default>false</default>
+                <label>Didn’t Meet Students’ Needs</label>
+            </value>
+            <value>
+                <fullName>Socialization / School Activities</fullName>
+                <default>false</default>
+                <label>Socialization / School Activities</label>
+            </value>
+            <value>
+                <fullName>Wanted part-time rather than full time program</fullName>
+                <default>false</default>
+                <label>Wanted part-time rather than full time program</label>
+            </value>
+            <value>
+                <fullName>Not a good fit</fullName>
+                <default>false</default>
+                <label>Not a good fit</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t remember why we started</fullName>
+                <default>false</default>
+                <label>Don&apos;t remember why we started</label>
+            </value>
+            <value>
+                <fullName>Parent work schedule conflict</fullName>
+                <default>false</default>
+                <label>Parent work schedule conflict</label>
+            </value>
+            <value>
+                <fullName>Need for more socialization</fullName>
+                <default>false</default>
+                <label>Need for more socialization</label>
+            </value>
+            <value>
+                <fullName>Not enough Help support through process</fullName>
+                <default>false</default>
+                <label>Not enough Help support through process</label>
+            </value>
+            <value>
+                <fullName>I don&apos;t confidently feel I can support my child</fullName>
+                <default>false</default>
+                <label>I don&apos;t confidently feel I can support my child</label>
+            </value>
+            <value>
+                <fullName>Time-consuming process</fullName>
+                <default>false</default>
+                <label>Time-consuming process</label>
+            </value>
+            <value>
+                <fullName>Unable to get needed information</fullName>
+                <default>false</default>
+                <label>Unable to get needed information</label>
+            </value>
+            <value>
+                <fullName>Confusing enrollment process</fullName>
+                <default>false</default>
+                <label>Confusing enrollment process</label>
+            </value>
+            <value>
+                <fullName>Applying for next year</fullName>
+                <default>false</default>
+                <label>Applying for next year</label>
+            </value>
+            <value>
+                <fullName>Generally dissatisfied with curriculum/course options</fullName>
+                <default>false</default>
+                <label>Generally dissatisfied with curriculum/course options</label>
+            </value>
+            <value>
+                <fullName>My student wants to return to a traditional school setting for other (non-socialization related) reasons</fullName>
+                <default>false</default>
+                <label>My student wants to return to a traditional school setting for other (non-socialization related) reasons</label>
+            </value>
+            <value>
+                <fullName>My student wants to return to a traditional school setting for socialization reasons</fullName>
+                <default>false</default>
+                <label>My student wants to return to a traditional school setting for socialization reasons</label>
+            </value>
+            <value>
+                <fullName>Technical difficulties</fullName>
+                <default>false</default>
+                <label>Technical difficulties</label>
+            </value>
+            <value>
+                <fullName>The program/schedule is not flexible enough</fullName>
+                <default>false</default>
+                <label>The program/schedule is not flexible enough</label>
+            </value>
+            <value>
+                <fullName>We are moving</fullName>
+                <default>false</default>
+                <label>We are moving</label>
+            </value>
+            <value>
+                <fullName>My student has enrolled in another online school</fullName>
+                <default>false</default>
+                <label>My student has enrolled in another online school</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

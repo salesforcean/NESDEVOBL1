@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_OR_Program_Grade_Level</fullName>
+    <active>true</active>
+    <description>User may only populate the Account OR Program Grade Level, not both</description>
+    <errorConditionFormula>AND(Account__c != NULL, Program_Grade_Level__c != NULL)</errorConditionFormula>
+    <errorMessage>Account and Program Grade Level are both populated, please remove one. Announcements may only be created for either an Account OR a Program Grade Level, not both.</errorMessage>
+</ValidationRule>

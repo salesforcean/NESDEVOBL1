@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIF_EverAuthorizerSD__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the student ever attended a Hillsborough County Public School</description>
+    <externalId>false</externalId>
+    <label>SIF EverAuthorizerSD</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

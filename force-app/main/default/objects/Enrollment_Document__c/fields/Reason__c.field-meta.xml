@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+                <label>Accepted</label>
+            </value>
+            <value>
+                <fullName>Blank Form</fullName>
+                <default>false</default>
+                <label>Blank Form</label>
+            </value>
+            <value>
+                <fullName>Burden</fullName>
+                <default>false</default>
+                <label>Burden</label>
+            </value>
+            <value>
+                <fullName>Case # missing</fullName>
+                <default>false</default>
+                <label>Case # missing</label>
+            </value>
+            <value>
+                <fullName>Denied</fullName>
+                <default>false</default>
+                <label>Denied</label>
+            </value>
+            <value>
+                <fullName>Digital Signature</fullName>
+                <default>false</default>
+                <label>Digital Signature</label>
+            </value>
+            <value>
+                <fullName>Disconnect Notice</fullName>
+                <default>false</default>
+                <label>Disconnect Notice</label>
+            </value>
+            <value>
+                <fullName>District Verified</fullName>
+                <default>false</default>
+                <label>District Verified</label>
+            </value>
+            <value>
+                <fullName>Extension Approved by Principal</fullName>
+                <default>false</default>
+                <label>Extension Approved by Principal</label>
+            </value>
+            <value>
+                <fullName>Illegible</fullName>
+                <default>false</default>
+                <label>Illegible</label>
+            </value>
+            <value>
+                <fullName>Incomplete-Allow</fullName>
+                <default>false</default>
+                <label>Incomplete-Allow</label>
+            </value>
+            <value>
+                <fullName>Incomplete Exemption</fullName>
+                <default>false</default>
+                <label>Incomplete Exemption</label>
+            </value>
+            <value>
+                <fullName>Incomplete-Hold</fullName>
+                <default>false</default>
+                <label>Incomplete-Hold</label>
+            </value>
+            <value>
+                <fullName>Incomplete Lease Agreement</fullName>
+                <default>false</default>
+                <label>Incomplete Lease Agreement</label>
+            </value>
+            <value>
+                <fullName>Incorrect CTR-grade level</fullName>
+                <default>false</default>
+                <label>Incorrect CTR-grade level</label>
+            </value>
+            <value>
+                <fullName>Incorrect CTR-other</fullName>
+                <default>false</default>
+                <label>Incorrect CTR-other</label>
+            </value>
+            <value>
+                <fullName>Incorrect CTR-school level</fullName>
+                <default>false</default>
+                <label>Incorrect CTR-school level</label>
+            </value>
+            <value>
+                <fullName>Incorrect Form</fullName>
+                <default>false</default>
+                <label>Incorrect Form</label>
+            </value>
+            <value>
+                <fullName>Invalid Form</fullName>
+                <default>false</default>
+                <label>Invalid Form</label>
+            </value>
+            <value>
+                <fullName>Medical</fullName>
+                <default>false</default>
+                <label>Medical</label>
+            </value>
+            <value>
+                <fullName>Mismatch Address</fullName>
+                <default>false</default>
+                <label>Mismatch Address</label>
+            </value>
+            <value>
+                <fullName>Missing 1st Quarter Grades</fullName>
+                <default>false</default>
+                <label>Missing 1st Quarter Grades</label>
+            </value>
+            <value>
+                <fullName>Missing 1st Semester</fullName>
+                <default>false</default>
+                <label>Missing 1st Semester</label>
+            </value>
+            <value>
+                <fullName>Missing 2nd Quarter Grades</fullName>
+                <default>false</default>
+                <label>Missing 2nd Quarter Grades</label>
+            </value>
+            <value>
+                <fullName>Missing 2nd Semester</fullName>
+                <default>false</default>
+                <label>Missing 2nd Semester</label>
+            </value>
+            <value>
+                <fullName>Missing 3rd Quarter Grades</fullName>
+                <default>false</default>
+                <label>Missing 3rd Quarter Grades</label>
+            </value>
+            <value>
+                <fullName>Missing 4th Quarter Grades</fullName>
+                <default>false</default>
+                <label>Missing 4th Quarter Grades</label>
+            </value>
+            <value>
+                <fullName>Missing credits earned</fullName>
+                <default>false</default>
+                <label>Missing credits earned</label>
+            </value>
+            <value>
+                <fullName>Missing Final Grades</fullName>
+                <default>false</default>
+                <label>Missing Final Grades</label>
+            </value>
+            <value>
+                <fullName>Missing Grade Level</fullName>
+                <default>false</default>
+                <label>Missing Grade Level</label>
+            </value>
+            <value>
+                <fullName>Missing Grading Scale</fullName>
+                <default>false</default>
+                <label>Missing Grading Scale</label>
+            </value>
+            <value>
+                <fullName>Missing Information</fullName>
+                <default>false</default>
+                <label>Missing Information</label>
+            </value>
+            <value>
+                <fullName>Missing Name and/or DOB</fullName>
+                <default>false</default>
+                <label>Missing Name and/or DOB</label>
+            </value>
+            <value>
+                <fullName>Missing Other Grading Period</fullName>
+                <default>false</default>
+                <label>Missing Other Grading Period</label>
+            </value>
+            <value>
+                <fullName>Missing pages or sections</fullName>
+                <default>false</default>
+                <label>Missing pages or sections</label>
+            </value>
+            <value>
+                <fullName>Missing Previous School Year(s)</fullName>
+                <default>false</default>
+                <label>Missing Previous School Year(s)</label>
+            </value>
+            <value>
+                <fullName>Missing Promotion Status</fullName>
+                <default>false</default>
+                <label>Missing Promotion Status</label>
+            </value>
+            <value>
+                <fullName>Missing School Name</fullName>
+                <default>false</default>
+                <label>Missing School Name</label>
+            </value>
+            <value>
+                <fullName>Missing School Year</fullName>
+                <default>false</default>
+                <label>Missing School Year</label>
+            </value>
+            <value>
+                <fullName>Missing Screening</fullName>
+                <default>false</default>
+                <label>Missing Screening</label>
+            </value>
+            <value>
+                <fullName>Missing Signature</fullName>
+                <default>false</default>
+                <label>Missing Signature</label>
+            </value>
+            <value>
+                <fullName>Missing Student Name</fullName>
+                <default>false</default>
+                <label>Missing Student Name</label>
+            </value>
+            <value>
+                <fullName>Missing subject area</fullName>
+                <default>false</default>
+                <label>Missing subject area</label>
+            </value>
+            <value>
+                <fullName>No CTR</fullName>
+                <default>false</default>
+                <label>No CTR</label>
+            </value>
+            <value>
+                <fullName>Non-compliant Allow</fullName>
+                <default>false</default>
+                <label>Non-compliant Allow</label>
+            </value>
+            <value>
+                <fullName>No Service Address</fullName>
+                <default>false</default>
+                <label>No Service Address</label>
+            </value>
+            <value>
+                <fullName>No signature</fullName>
+                <default>false</default>
+                <label>No signature</label>
+            </value>
+            <value>
+                <fullName>Not Accepted</fullName>
+                <default>false</default>
+                <label>Not Accepted</label>
+            </value>
+            <value>
+                <fullName>Not Affiliated</fullName>
+                <default>false</default>
+                <label>Not Affiliated</label>
+            </value>
+            <value>
+                <fullName>Not Current School Year</fullName>
+                <default>false</default>
+                <label>Not Current School Year</label>
+            </value>
+            <value>
+                <fullName>Not in Caretaker&apos;s Name</fullName>
+                <default>false</default>
+                <label>Not in Caretaker&apos;s Name</label>
+            </value>
+            <value>
+                <fullName>No Vision Issues</fullName>
+                <default>false</default>
+                <label>No Vision Issues</label>
+            </value>
+            <value>
+                <fullName>ORCA Exempt - VEC Required</fullName>
+                <default>false</default>
+                <label>ORCA Exempt - VEC Required</label>
+            </value>
+            <value>
+                <fullName>Outdated</fullName>
+                <default>false</default>
+                <label>Outdated</label>
+            </value>
+            <value>
+                <fullName>Outdated Lease Agreement</fullName>
+                <default>false</default>
+                <label>Outdated Lease Agreement</label>
+            </value>
+            <value>
+                <fullName>Paystub insufficient</fullName>
+                <default>false</default>
+                <label>Paystub insufficient</label>
+            </value>
+            <value>
+                <fullName>Pending CO</fullName>
+                <default>false</default>
+                <label>Pending CO</label>
+            </value>
+            <value>
+                <fullName>Pending POR</fullName>
+                <default>false</default>
+                <label>Pending POR</label>
+            </value>
+            <value>
+                <fullName>Personal</fullName>
+                <default>false</default>
+                <label>Personal</label>
+            </value>
+            <value>
+                <fullName>Photo</fullName>
+                <default>false</default>
+                <label>Photo</label>
+            </value>
+            <value>
+                <fullName>POR-too old</fullName>
+                <default>false</default>
+                <label>POR-too old</label>
+            </value>
+            <value>
+                <fullName>Prior Submission</fullName>
+                <default>false</default>
+                <label>Prior Submission</label>
+            </value>
+            <value>
+                <fullName>Provisional Certificate Required</fullName>
+                <default>false</default>
+                <label>Provisional Certificate Required</label>
+            </value>
+            <value>
+                <fullName>Received from parent</fullName>
+                <default>false</default>
+                <label>Received from parent</label>
+            </value>
+            <value>
+                <fullName>Refused</fullName>
+                <default>false</default>
+                <label>Refused</label>
+            </value>
+            <value>
+                <fullName>Religious</fullName>
+                <default>false</default>
+                <label>Religious</label>
+            </value>
+            <value>
+                <fullName>Religious Exemption</fullName>
+                <default>false</default>
+                <label>Religious Exemption</label>
+            </value>
+            <value>
+                <fullName>School Review</fullName>
+                <default>false</default>
+                <label>School Review</label>
+            </value>
+            <value>
+                <fullName>Sent to District</fullName>
+                <default>false</default>
+                <label>Sent to District</label>
+            </value>
+            <value>
+                <fullName>Signature Missing</fullName>
+                <default>false</default>
+                <label>Signature Missing</label>
+            </value>
+            <value>
+                <fullName>Too old</fullName>
+                <default>false</default>
+                <label>Too old</label>
+            </value>
+            <value>
+                <fullName>Transfer Finalized</fullName>
+                <default>false</default>
+                <label>Transfer Finalized</label>
+            </value>
+            <value>
+                <fullName>Unacceptable Type</fullName>
+                <default>false</default>
+                <label>Unacceptable Type</label>
+            </value>
+            <value>
+                <fullName>Under Review</fullName>
+                <default>false</default>
+                <label>Under Review</label>
+            </value>
+            <value>
+                <fullName>Verified-In progress</fullName>
+                <default>false</default>
+                <label>Verified-In progress</label>
+            </value>
+            <value>
+                <fullName>Vision Issues</fullName>
+                <default>false</default>
+                <label>Vision Issues</label>
+            </value>
+            <value>
+                <fullName>Wrong document</fullName>
+                <default>false</default>
+                <label>Wrong document</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

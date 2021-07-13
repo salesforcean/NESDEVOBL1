@@ -1,0 +1,1465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MVPS_DistrictSchool__c</fullName>
+    <description>District and School</description>
+    <externalId>false</externalId>
+    <label>MVPS DistrictSchool</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ABERDEEN SD~Aberdeen HS</fullName>
+                <default>false</default>
+                <label>ABERDEEN SD~Aberdeen HS</label>
+            </value>
+            <value>
+                <fullName>ABERDEEN SD~Shivers Junior HS</fullName>
+                <default>false</default>
+                <label>ABERDEEN SD~Shivers Junior HS</label>
+            </value>
+            <value>
+                <fullName>ALCORN SD~Alcorn Central HS</fullName>
+                <default>false</default>
+                <label>ALCORN SD~Alcorn Central HS</label>
+            </value>
+            <value>
+                <fullName>ALCORN SD~Biggersville HS</fullName>
+                <default>false</default>
+                <label>ALCORN SD~Biggersville HS</label>
+            </value>
+            <value>
+                <fullName>ALCORN SD~Kossuth HS</fullName>
+                <default>false</default>
+                <label>ALCORN SD~Kossuth HS</label>
+            </value>
+            <value>
+                <fullName>AMITE CO SD~Amite County HS</fullName>
+                <default>false</default>
+                <label>AMITE CO SD~Amite County HS</label>
+            </value>
+            <value>
+                <fullName>AMORY SD~Amory HS</fullName>
+                <default>false</default>
+                <label>AMORY SD~Amory HS</label>
+            </value>
+            <value>
+                <fullName>ATTALA CO SD~Ethel Attendance Center</fullName>
+                <default>false</default>
+                <label>ATTALA CO SD~Ethel Attendance Center</label>
+            </value>
+            <value>
+                <fullName>ATTALA CO SD~McAdams Attendance Center</fullName>
+                <default>false</default>
+                <label>ATTALA CO SD~McAdams Attendance Center</label>
+            </value>
+            <value>
+                <fullName>BALDWYN SD~Baldwyn HS</fullName>
+                <default>false</default>
+                <label>BALDWYN SD~Baldwyn HS</label>
+            </value>
+            <value>
+                <fullName>BAY ST LOUIS WAVELAND SD~Bay HS</fullName>
+                <default>false</default>
+                <label>BAY ST LOUIS WAVELAND SD~Bay HS</label>
+            </value>
+            <value>
+                <fullName>BENOIT SD~Ray Brooks School</fullName>
+                <default>false</default>
+                <label>BENOIT SD~Ray Brooks School</label>
+            </value>
+            <value>
+                <fullName>BENTON CO SD~Ashland HS</fullName>
+                <default>false</default>
+                <label>BENTON CO SD~Ashland HS</label>
+            </value>
+            <value>
+                <fullName>BENTON CO SD~Hickory Flat Attendance Center</fullName>
+                <default>false</default>
+                <label>BENTON CO SD~Hickory Flat Attendance Center</label>
+            </value>
+            <value>
+                <fullName>BILOXI DIOCESES SD~RESURRECTION HS</fullName>
+                <default>false</default>
+                <label>BILOXI DIOCESES SD~RESURRECTION HS</label>
+            </value>
+            <value>
+                <fullName>BILOXI PUBLIC SD~Biloxi HS</fullName>
+                <default>false</default>
+                <label>BILOXI PUBLIC SD~Biloxi HS</label>
+            </value>
+            <value>
+                <fullName>BILOXI PUBLIC SD~Biloxi Junior High</fullName>
+                <default>false</default>
+                <label>BILOXI PUBLIC SD~Biloxi Junior High</label>
+            </value>
+            <value>
+                <fullName>BOONEVILLE SD~Booneville HS/MS</fullName>
+                <default>false</default>
+                <label>BOONEVILLE SD~Booneville HS/MS</label>
+            </value>
+            <value>
+                <fullName>BROOKHAVEN SD~Brookhaven HS</fullName>
+                <default>false</default>
+                <label>BROOKHAVEN SD~Brookhaven HS</label>
+            </value>
+            <value>
+                <fullName>CALHOUN CO SD~Bruce HS</fullName>
+                <default>false</default>
+                <label>CALHOUN CO SD~Bruce HS</label>
+            </value>
+            <value>
+                <fullName>CALHOUN CO SD~Calhoun City HS</fullName>
+                <default>false</default>
+                <label>CALHOUN CO SD~Calhoun City HS</label>
+            </value>
+            <value>
+                <fullName>CALHOUN CO SD~Vardaman HS</fullName>
+                <default>false</default>
+                <label>CALHOUN CO SD~Vardaman HS</label>
+            </value>
+            <value>
+                <fullName>CANTON PUBLIC SD~Canton Public HS</fullName>
+                <default>false</default>
+                <label>CANTON PUBLIC SD~Canton Public HS</label>
+            </value>
+            <value>
+                <fullName>CARROLL COUNTY SD~J Z George HS</fullName>
+                <default>false</default>
+                <label>CARROLL COUNTY SD~J Z George HS</label>
+            </value>
+            <value>
+                <fullName>CHICKASAW CO SD~Houlka Attendance Center</fullName>
+                <default>false</default>
+                <label>CHICKASAW CO SD~Houlka Attendance Center</label>
+            </value>
+            <value>
+                <fullName>CHOCTAW CO SD~Ackerman High</fullName>
+                <default>false</default>
+                <label>CHOCTAW CO SD~Ackerman High</label>
+            </value>
+            <value>
+                <fullName>CHOCTAW CO SD~Choctaw Central HS</fullName>
+                <default>false</default>
+                <label>CHOCTAW CO SD~Choctaw Central HS</label>
+            </value>
+            <value>
+                <fullName>CHOCTAW CO SD~Weir HS</fullName>
+                <default>false</default>
+                <label>CHOCTAW CO SD~Weir HS</label>
+            </value>
+            <value>
+                <fullName>CLAIBORNE CO SD~Port Gibson HS</fullName>
+                <default>false</default>
+                <label>CLAIBORNE CO SD~Port Gibson HS</label>
+            </value>
+            <value>
+                <fullName>CLARKSDALE MUNICIPAL SD~Clarksdale HS</fullName>
+                <default>false</default>
+                <label>CLARKSDALE MUNICIPAL SD~Clarksdale HS</label>
+            </value>
+            <value>
+                <fullName>CLEVELAND SD~Cleveland HS</fullName>
+                <default>false</default>
+                <label>CLEVELAND SD~Cleveland HS</label>
+            </value>
+            <value>
+                <fullName>CLEVELAND SD~East Side HS</fullName>
+                <default>false</default>
+                <label>CLEVELAND SD~East Side HS</label>
+            </value>
+            <value>
+                <fullName>CLINTON PUBLIC SD~Clinton HS</fullName>
+                <default>false</default>
+                <label>CLINTON PUBLIC SD~Clinton HS</label>
+            </value>
+            <value>
+                <fullName>COAHOMA CO AHS~Coahoma Agricultural HS</fullName>
+                <default>false</default>
+                <label>COAHOMA CO AHS~Coahoma Agricultural HS</label>
+            </value>
+            <value>
+                <fullName>COAHOMA COUNTY SD~Coahoma County Jr/Sr HS</fullName>
+                <default>false</default>
+                <label>COAHOMA COUNTY SD~Coahoma County Jr/Sr HS</label>
+            </value>
+            <value>
+                <fullName>COFFEEVILLE SD~Coffeeville HS</fullName>
+                <default>false</default>
+                <label>COFFEEVILLE SD~Coffeeville HS</label>
+            </value>
+            <value>
+                <fullName>COLUMBIA SD~Columbia HS</fullName>
+                <default>false</default>
+                <label>COLUMBIA SD~Columbia HS</label>
+            </value>
+            <value>
+                <fullName>COLUMBUS MUNICIPAL SD~Columbus HS</fullName>
+                <default>false</default>
+                <label>COLUMBUS MUNICIPAL SD~Columbus HS</label>
+            </value>
+            <value>
+                <fullName>COPIAH CO SD~Crystal Springs HS</fullName>
+                <default>false</default>
+                <label>COPIAH CO SD~Crystal Springs HS</label>
+            </value>
+            <value>
+                <fullName>COPIAH CO SD~Wesson Attendance Center</fullName>
+                <default>false</default>
+                <label>COPIAH CO SD~Wesson Attendance Center</label>
+            </value>
+            <value>
+                <fullName>CORINTH SD~Corinth HS</fullName>
+                <default>false</default>
+                <label>CORINTH SD~Corinth HS</label>
+            </value>
+            <value>
+                <fullName>COVINGTON CO SCHOOLS~Collins HS</fullName>
+                <default>false</default>
+                <label>COVINGTON CO SCHOOLS~Collins HS</label>
+            </value>
+            <value>
+                <fullName>COVINGTON CO SCHOOLS~Mount Olive Attendance Center</fullName>
+                <default>false</default>
+                <label>COVINGTON CO SCHOOLS~Mount Olive Attendance Center</label>
+            </value>
+            <value>
+                <fullName>COVINGTON CO SCHOOLS~Seminary Attendance Center</fullName>
+                <default>false</default>
+                <label>COVINGTON CO SCHOOLS~Seminary Attendance Center</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Center Hill HS</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Center Hill HS</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Desoto Central HS</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Desoto Central HS</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Desoto Central Office</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Desoto Central Office</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Hernando HS</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Hernando HS</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Horn Lake High</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Horn Lake High</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Lake Cormorant High</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Lake Cormorant High</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Lewisburg HS</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Lewisburg HS</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Olive Branch HS</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Olive Branch HS</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Southaven HS</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Southaven HS</label>
+            </value>
+            <value>
+                <fullName>DESOTO CO SD~Southaven MS</fullName>
+                <default>false</default>
+                <label>DESOTO CO SD~Southaven MS</label>
+            </value>
+            <value>
+                <fullName>DREW SD~Drew HS</fullName>
+                <default>false</default>
+                <label>DREW SD~Drew HS</label>
+            </value>
+            <value>
+                <fullName>DURANT PUBLIC SD~Durant Public School</fullName>
+                <default>false</default>
+                <label>DURANT PUBLIC SD~Durant Public School</label>
+            </value>
+            <value>
+                <fullName>EAST JASPER CONSOLIDATED SD~Heidelberg HS</fullName>
+                <default>false</default>
+                <label>EAST JASPER CONSOLIDATED SD~Heidelberg HS</label>
+            </value>
+            <value>
+                <fullName>EAST TALLAHATCHIE CONSOL SD~Charleston HS</fullName>
+                <default>false</default>
+                <label>EAST TALLAHATCHIE CONSOL SD~Charleston HS</label>
+            </value>
+            <value>
+                <fullName>ENTERPRISE SD~Enterprise HS</fullName>
+                <default>false</default>
+                <label>ENTERPRISE SD~Enterprise HS</label>
+            </value>
+            <value>
+                <fullName>FOREST MUNICIPAL SD~Forest HS</fullName>
+                <default>false</default>
+                <label>FOREST MUNICIPAL SD~Forest HS</label>
+            </value>
+            <value>
+                <fullName>FORREST COUNTY AG HIGH SCHOOL~Forrest County Agricultural HS</fullName>
+                <default>false</default>
+                <label>FORREST COUNTY AG HIGH SCHOOL~Forrest County Agricultural HS</label>
+            </value>
+            <value>
+                <fullName>FORREST COUNTY SD~North Forrest HS</fullName>
+                <default>false</default>
+                <label>FORREST COUNTY SD~North Forrest HS</label>
+            </value>
+            <value>
+                <fullName>FRANKLIN CO SD~Franklin HS</fullName>
+                <default>false</default>
+                <label>FRANKLIN CO SD~Franklin HS</label>
+            </value>
+            <value>
+                <fullName>GEORGE CO SD~George County HS</fullName>
+                <default>false</default>
+                <label>GEORGE CO SD~George County HS</label>
+            </value>
+            <value>
+                <fullName>GREENE COUNTY SD~Greene County HS</fullName>
+                <default>false</default>
+                <label>GREENE COUNTY SD~Greene County HS</label>
+            </value>
+            <value>
+                <fullName>GREENVILLE PUBLIC SCHOOLS~Greenville Weston HS</fullName>
+                <default>false</default>
+                <label>GREENVILLE PUBLIC SCHOOLS~Greenville Weston HS</label>
+            </value>
+            <value>
+                <fullName>GREENWOOD PUBLIC SD~Greenwood HS</fullName>
+                <default>false</default>
+                <label>GREENWOOD PUBLIC SD~Greenwood HS</label>
+            </value>
+            <value>
+                <fullName>GREENWOOD PUBLIC SD~Greenwood MS</fullName>
+                <default>false</default>
+                <label>GREENWOOD PUBLIC SD~Greenwood MS</label>
+            </value>
+            <value>
+                <fullName>GRENADA SD~Grenada High</fullName>
+                <default>false</default>
+                <label>GRENADA SD~Grenada High</label>
+            </value>
+            <value>
+                <fullName>GULFPORT SD~Gulfport HS</fullName>
+                <default>false</default>
+                <label>GULFPORT SD~Gulfport HS</label>
+            </value>
+            <value>
+                <fullName>HANCOCK CO SD~Hancock HS</fullName>
+                <default>false</default>
+                <label>HANCOCK CO SD~Hancock HS</label>
+            </value>
+            <value>
+                <fullName>HANCOCK CO SD~Hancock MS</fullName>
+                <default>false</default>
+                <label>HANCOCK CO SD~Hancock MS</label>
+            </value>
+            <value>
+                <fullName>HARRISON CO SD~Diberville Senior HS</fullName>
+                <default>false</default>
+                <label>HARRISON CO SD~Diberville Senior HS</label>
+            </value>
+            <value>
+                <fullName>HARRISON CO SD~Harrison Central 9th Grade</fullName>
+                <default>false</default>
+                <label>HARRISON CO SD~Harrison Central 9th Grade</label>
+            </value>
+            <value>
+                <fullName>HARRISON CO SD~Harrison Central HS</fullName>
+                <default>false</default>
+                <label>HARRISON CO SD~Harrison Central HS</label>
+            </value>
+            <value>
+                <fullName>HARRISON CO SD~West Harrison HS</fullName>
+                <default>false</default>
+                <label>HARRISON CO SD~West Harrison HS</label>
+            </value>
+            <value>
+                <fullName>HATTIESBURG PUBLIC SD~Blair Center Hattiesburg High</fullName>
+                <default>false</default>
+                <label>HATTIESBURG PUBLIC SD~Blair Center Hattiesburg High</label>
+            </value>
+            <value>
+                <fullName>HATTIESBURG PUBLIC SD~NR Burger Middle School</fullName>
+                <default>false</default>
+                <label>HATTIESBURG PUBLIC SD~NR Burger Middle School</label>
+            </value>
+            <value>
+                <fullName>HAZLEHURST CITY SD~Hazlehurst HS</fullName>
+                <default>false</default>
+                <label>HAZLEHURST CITY SD~Hazlehurst HS</label>
+            </value>
+            <value>
+                <fullName>HINDS CO AHS~Hinds County Agricultural HS</fullName>
+                <default>false</default>
+                <label>HINDS CO AHS~Hinds County Agricultural HS</label>
+            </value>
+            <value>
+                <fullName>HINDS CO SD~Raymond HS</fullName>
+                <default>false</default>
+                <label>HINDS CO SD~Raymond HS</label>
+            </value>
+            <value>
+                <fullName>HINDS CO SD~Terry HS</fullName>
+                <default>false</default>
+                <label>HINDS CO SD~Terry HS</label>
+            </value>
+            <value>
+                <fullName>HOLLANDALE SD~Simmons HS</fullName>
+                <default>false</default>
+                <label>HOLLANDALE SD~Simmons HS</label>
+            </value>
+            <value>
+                <fullName>HOLLY SPRINGS SD~Holly Springs HS</fullName>
+                <default>false</default>
+                <label>HOLLY SPRINGS SD~Holly Springs HS</label>
+            </value>
+            <value>
+                <fullName>HOLMES CO SD~Holmes County Central HS</fullName>
+                <default>false</default>
+                <label>HOLMES CO SD~Holmes County Central HS</label>
+            </value>
+            <value>
+                <fullName>HOLMES CO SD~J J Mc Clain HS</fullName>
+                <default>false</default>
+                <label>HOLMES CO SD~J J Mc Clain HS</label>
+            </value>
+            <value>
+                <fullName>HOLMES CO SD~J J Mc Clain MS</fullName>
+                <default>false</default>
+                <label>HOLMES CO SD~J J Mc Clain MS</label>
+            </value>
+            <value>
+                <fullName>HOLMES CO SD~S V Marshall HS</fullName>
+                <default>false</default>
+                <label>HOLMES CO SD~S V Marshall HS</label>
+            </value>
+            <value>
+                <fullName>HOLMES CO SD~Williams Sullivan HS</fullName>
+                <default>false</default>
+                <label>HOLMES CO SD~Williams Sullivan HS</label>
+            </value>
+            <value>
+                <fullName>HOUSTON SD~Houston HS</fullName>
+                <default>false</default>
+                <label>HOUSTON SD~Houston HS</label>
+            </value>
+            <value>
+                <fullName>HUMPHREYS CO SD~Humphreys County HS</fullName>
+                <default>false</default>
+                <label>HUMPHREYS CO SD~Humphreys County HS</label>
+            </value>
+            <value>
+                <fullName>INDIANOLA SD~Gentry HS</fullName>
+                <default>false</default>
+                <label>INDIANOLA SD~Gentry HS</label>
+            </value>
+            <value>
+                <fullName>ITAWAMBA CO SD~Itawamba Agricultural HS</fullName>
+                <default>false</default>
+                <label>ITAWAMBA CO SD~Itawamba Agricultural HS</label>
+            </value>
+            <value>
+                <fullName>ITAWAMBA CO SD~Itawamba Attendance Center</fullName>
+                <default>false</default>
+                <label>ITAWAMBA CO SD~Itawamba Attendance Center</label>
+            </value>
+            <value>
+                <fullName>ITAWAMBA CO SD~Mantachie Attendance Center</fullName>
+                <default>false</default>
+                <label>ITAWAMBA CO SD~Mantachie Attendance Center</label>
+            </value>
+            <value>
+                <fullName>ITAWAMBA CO SD~Tremont Attendance Center</fullName>
+                <default>false</default>
+                <label>ITAWAMBA CO SD~Tremont Attendance Center</label>
+            </value>
+            <value>
+                <fullName>JACKSON CO SD~East Central HS</fullName>
+                <default>false</default>
+                <label>JACKSON CO SD~East Central HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON CO SD~St Martin HS</fullName>
+                <default>false</default>
+                <label>JACKSON CO SD~St Martin HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON CO SD~Vancleave HS</fullName>
+                <default>false</default>
+                <label>JACKSON CO SD~Vancleave HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Bailey Magnet School</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Bailey Magnet School</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Callaway HS</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Callaway HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Forest Hill HS</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Forest Hill HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Jim Hill HS</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Jim Hill HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Lanier HS</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Lanier HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Murrah HS</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Murrah HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Northwest MS</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Northwest MS</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Provine HS</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Provine HS</label>
+            </value>
+            <value>
+                <fullName>JACKSON PUBLIC SD~Wingfield HS</fullName>
+                <default>false</default>
+                <label>JACKSON PUBLIC SD~Wingfield HS</label>
+            </value>
+            <value>
+                <fullName>JEFFERSON CO SD~Jefferson Co High</fullName>
+                <default>false</default>
+                <label>JEFFERSON CO SD~Jefferson Co High</label>
+            </value>
+            <value>
+                <fullName>JEFFERSON DAVIS CO SD~Bassfield HS</fullName>
+                <default>false</default>
+                <label>JEFFERSON DAVIS CO SD~Bassfield HS</label>
+            </value>
+            <value>
+                <fullName>JEFFERSON DAVIS CO SD~Jefferson Davis Co HS</fullName>
+                <default>false</default>
+                <label>JEFFERSON DAVIS CO SD~Jefferson Davis Co HS</label>
+            </value>
+            <value>
+                <fullName>JEFFERSON DAVIS CO SD~Prentiss Senior HS</fullName>
+                <default>false</default>
+                <label>JEFFERSON DAVIS CO SD~Prentiss Senior HS</label>
+            </value>
+            <value>
+                <fullName>JONES CO SD~Northeast Jones HS</fullName>
+                <default>false</default>
+                <label>JONES CO SD~Northeast Jones HS</label>
+            </value>
+            <value>
+                <fullName>JONES CO SD~South Jones HS</fullName>
+                <default>false</default>
+                <label>JONES CO SD~South Jones HS</label>
+            </value>
+            <value>
+                <fullName>JONES CO SD~West Jones HS</fullName>
+                <default>false</default>
+                <label>JONES CO SD~West Jones HS</label>
+            </value>
+            <value>
+                <fullName>KEMPER CO SD~Kemper County HS</fullName>
+                <default>false</default>
+                <label>KEMPER CO SD~Kemper County HS</label>
+            </value>
+            <value>
+                <fullName>KOSCIUSKO SD~Kosciusko Senior HS</fullName>
+                <default>false</default>
+                <label>KOSCIUSKO SD~Kosciusko Senior HS</label>
+            </value>
+            <value>
+                <fullName>LAFAYETTE CO SD~Lafayette HS</fullName>
+                <default>false</default>
+                <label>LAFAYETTE CO SD~Lafayette HS</label>
+            </value>
+            <value>
+                <fullName>LAMAR COUNTY SD~Oak Grove HS</fullName>
+                <default>false</default>
+                <label>LAMAR COUNTY SD~Oak Grove HS</label>
+            </value>
+            <value>
+                <fullName>LAMAR COUNTY SD~Purvis HS</fullName>
+                <default>false</default>
+                <label>LAMAR COUNTY SD~Purvis HS</label>
+            </value>
+            <value>
+                <fullName>LAMAR COUNTY SD~Sumrall HS</fullName>
+                <default>false</default>
+                <label>LAMAR COUNTY SD~Sumrall HS</label>
+            </value>
+            <value>
+                <fullName>LAUDERDALE CO SD~Clarkdale Attendance Center</fullName>
+                <default>false</default>
+                <label>LAUDERDALE CO SD~Clarkdale Attendance Center</label>
+            </value>
+            <value>
+                <fullName>LAUDERDALE CO SD~Northeast Lauderdale HS</fullName>
+                <default>false</default>
+                <label>LAUDERDALE CO SD~Northeast Lauderdale HS</label>
+            </value>
+            <value>
+                <fullName>LAUDERDALE CO SD~Southeast HS</fullName>
+                <default>false</default>
+                <label>LAUDERDALE CO SD~Southeast HS</label>
+            </value>
+            <value>
+                <fullName>LAUDERDALE CO SD~West Lauderdale Attendance Center</fullName>
+                <default>false</default>
+                <label>LAUDERDALE CO SD~West Lauderdale Attendance Center</label>
+            </value>
+            <value>
+                <fullName>LAUREL SD~Laurel HS</fullName>
+                <default>false</default>
+                <label>LAUREL SD~Laurel HS</label>
+            </value>
+            <value>
+                <fullName>LAWRENCE CO SD~Lawrence County HS</fullName>
+                <default>false</default>
+                <label>LAWRENCE CO SD~Lawrence County HS</label>
+            </value>
+            <value>
+                <fullName>LEAKE CO SD~Edinburg Attendance Center</fullName>
+                <default>false</default>
+                <label>LEAKE CO SD~Edinburg Attendance Center</label>
+            </value>
+            <value>
+                <fullName>LEAKE CO SD~Leake Central HS</fullName>
+                <default>false</default>
+                <label>LEAKE CO SD~Leake Central HS</label>
+            </value>
+            <value>
+                <fullName>LEAKE CO SD~Leake County HS</fullName>
+                <default>false</default>
+                <label>LEAKE CO SD~Leake County HS</label>
+            </value>
+            <value>
+                <fullName>LEAKE CO SD~South Leake HS</fullName>
+                <default>false</default>
+                <label>LEAKE CO SD~South Leake HS</label>
+            </value>
+            <value>
+                <fullName>LEAKE CO SD~Thomastown Attendance Center</fullName>
+                <default>false</default>
+                <label>LEAKE CO SD~Thomastown Attendance Center</label>
+            </value>
+            <value>
+                <fullName>LEE COUNTY SD~Mooreville HS</fullName>
+                <default>false</default>
+                <label>LEE COUNTY SD~Mooreville HS</label>
+            </value>
+            <value>
+                <fullName>LEE COUNTY SD~Saltillo HS</fullName>
+                <default>false</default>
+                <label>LEE COUNTY SD~Saltillo HS</label>
+            </value>
+            <value>
+                <fullName>LEE COUNTY SD~Shannon HS</fullName>
+                <default>false</default>
+                <label>LEE COUNTY SD~Shannon HS</label>
+            </value>
+            <value>
+                <fullName>LEFLORE CO SD~Amanda Elzy HS</fullName>
+                <default>false</default>
+                <label>LEFLORE CO SD~Amanda Elzy HS</label>
+            </value>
+            <value>
+                <fullName>LEFLORE CO SD~Leflore County HS</fullName>
+                <default>false</default>
+                <label>LEFLORE CO SD~Leflore County HS</label>
+            </value>
+            <value>
+                <fullName>LELAND SD~Leland HS</fullName>
+                <default>false</default>
+                <label>LELAND SD~Leland HS</label>
+            </value>
+            <value>
+                <fullName>LINCOLN CO SD~Bogue Chitto School</fullName>
+                <default>false</default>
+                <label>LINCOLN CO SD~Bogue Chitto School</label>
+            </value>
+            <value>
+                <fullName>LINCOLN CO SD~Enterprise School</fullName>
+                <default>false</default>
+                <label>LINCOLN CO SD~Enterprise School</label>
+            </value>
+            <value>
+                <fullName>LINCOLN CO SD~Loyd Star School</fullName>
+                <default>false</default>
+                <label>LINCOLN CO SD~Loyd Star School</label>
+            </value>
+            <value>
+                <fullName>LINCOLN CO SD~West Lincoln School</fullName>
+                <default>false</default>
+                <label>LINCOLN CO SD~West Lincoln School</label>
+            </value>
+            <value>
+                <fullName>LONG BEACH SD~Long Beach HS</fullName>
+                <default>false</default>
+                <label>LONG BEACH SD~Long Beach HS</label>
+            </value>
+            <value>
+                <fullName>LOUISVILLE MUNICIPAL SD~Louisville HS</fullName>
+                <default>false</default>
+                <label>LOUISVILLE MUNICIPAL SD~Louisville HS</label>
+            </value>
+            <value>
+                <fullName>LOUISVILLE MUNICIPAL SD~Nanih Waiya Attendance Center</fullName>
+                <default>false</default>
+                <label>LOUISVILLE MUNICIPAL SD~Nanih Waiya Attendance Center</label>
+            </value>
+            <value>
+                <fullName>LOUISVILLE MUNICIPAL SD~Noxapater Attendance Center</fullName>
+                <default>false</default>
+                <label>LOUISVILLE MUNICIPAL SD~Noxapater Attendance Center</label>
+            </value>
+            <value>
+                <fullName>LOWNDES CO SD~Caledonia HS</fullName>
+                <default>false</default>
+                <label>LOWNDES CO SD~Caledonia HS</label>
+            </value>
+            <value>
+                <fullName>LOWNDES CO SD~Golden Triangle Early College</fullName>
+                <default>false</default>
+                <label>LOWNDES CO SD~Golden Triangle Early College</label>
+            </value>
+            <value>
+                <fullName>LOWNDES CO SD~New Hope HS</fullName>
+                <default>false</default>
+                <label>LOWNDES CO SD~New Hope HS</label>
+            </value>
+            <value>
+                <fullName>LOWNDES CO SD~West Lowndes HS</fullName>
+                <default>false</default>
+                <label>LOWNDES CO SD~West Lowndes HS</label>
+            </value>
+            <value>
+                <fullName>LUMBERTON PUBLIC SD~Lumberton HS</fullName>
+                <default>false</default>
+                <label>LUMBERTON PUBLIC SD~Lumberton HS</label>
+            </value>
+            <value>
+                <fullName>MADISON CO SD~Madison Central HS</fullName>
+                <default>false</default>
+                <label>MADISON CO SD~Madison Central HS</label>
+            </value>
+            <value>
+                <fullName>MADISON CO SD~Madison Co. Alternative School</fullName>
+                <default>false</default>
+                <label>MADISON CO SD~Madison Co. Alternative School</label>
+            </value>
+            <value>
+                <fullName>MADISON CO SD~Ridgeland HS</fullName>
+                <default>false</default>
+                <label>MADISON CO SD~Ridgeland HS</label>
+            </value>
+            <value>
+                <fullName>MADISON CO SD~Velma Jackson HS</fullName>
+                <default>false</default>
+                <label>MADISON CO SD~Velma Jackson HS</label>
+            </value>
+            <value>
+                <fullName>MAIS SD~Heritage Academy</fullName>
+                <default>false</default>
+                <label>MAIS SD~Heritage Academy</label>
+            </value>
+            <value>
+                <fullName>MARION CO SD~East Marion HS</fullName>
+                <default>false</default>
+                <label>MARION CO SD~East Marion HS</label>
+            </value>
+            <value>
+                <fullName>MARION CO SD~West Marion HS</fullName>
+                <default>false</default>
+                <label>MARION CO SD~West Marion HS</label>
+            </value>
+            <value>
+                <fullName>MARSHALL CO SD~Byhalia HS</fullName>
+                <default>false</default>
+                <label>MARSHALL CO SD~Byhalia HS</label>
+            </value>
+            <value>
+                <fullName>MARSHALL CO SD~H W Byers HS</fullName>
+                <default>false</default>
+                <label>MARSHALL CO SD~H W Byers HS</label>
+            </value>
+            <value>
+                <fullName>MARSHALL CO SD~Potts Camp Attendance Center</fullName>
+                <default>false</default>
+                <label>MARSHALL CO SD~Potts Camp Attendance Center</label>
+            </value>
+            <value>
+                <fullName>MCCOMB SD~Business And Technology Complex</fullName>
+                <default>false</default>
+                <label>MCCOMB SD~Business And Technology Complex</label>
+            </value>
+            <value>
+                <fullName>MCCOMB SD~McComb HS</fullName>
+                <default>false</default>
+                <label>MCCOMB SD~McComb HS</label>
+            </value>
+            <value>
+                <fullName>MDHS DIVISION OF YOUTH SERVICES~Williams School</fullName>
+                <default>false</default>
+                <label>MDHS DIVISION OF YOUTH SERVICES~Williams School</label>
+            </value>
+            <value>
+                <fullName>MERIDIAN PUBLIC SD~Meridian HS</fullName>
+                <default>false</default>
+                <label>MERIDIAN PUBLIC SD~Meridian HS</label>
+            </value>
+            <value>
+                <fullName>MERIDIAN PUBLIC SD~North West Jr High</fullName>
+                <default>false</default>
+                <label>MERIDIAN PUBLIC SD~North West Jr High</label>
+            </value>
+            <value>
+                <fullName>Monroe City School SD~Monroe CO ADV learning</fullName>
+                <default>false</default>
+                <label>Monroe City School SD~Monroe CO ADV learning</label>
+            </value>
+            <value>
+                <fullName>MONROE CO SD~Hamilton HS</fullName>
+                <default>false</default>
+                <label>MONROE CO SD~Hamilton HS</label>
+            </value>
+            <value>
+                <fullName>MONROE CO SD~Hatley HS</fullName>
+                <default>false</default>
+                <label>MONROE CO SD~Hatley HS</label>
+            </value>
+            <value>
+                <fullName>MONROE CO SD~Smithville HS</fullName>
+                <default>false</default>
+                <label>MONROE CO SD~Smithville HS</label>
+            </value>
+            <value>
+                <fullName>MONTGOMERY CO SD~Montgomery County HS</fullName>
+                <default>false</default>
+                <label>MONTGOMERY CO SD~Montgomery County HS</label>
+            </value>
+            <value>
+                <fullName>MOSS POINT SEPARATE SD~Moss Point Alternative School</fullName>
+                <default>false</default>
+                <label>MOSS POINT SEPARATE SD~Moss Point Alternative School</label>
+            </value>
+            <value>
+                <fullName>MOSS POINT SEPARATE SD~Moss Point HS</fullName>
+                <default>false</default>
+                <label>MOSS POINT SEPARATE SD~Moss Point HS</label>
+            </value>
+            <value>
+                <fullName>MOUND BAYOU PUBLIC SCHOOL~John F Kennedy Memorial HS</fullName>
+                <default>false</default>
+                <label>MOUND BAYOU PUBLIC SCHOOL~John F Kennedy Memorial HS</label>
+            </value>
+            <value>
+                <fullName>MS SCHOOL FOR MATH/SCI~MS School for Mathematics and Science</fullName>
+                <default>false</default>
+                <label>MS SCHOOL FOR MATH/SCI~MS School for Mathematics and Science</label>
+            </value>
+            <value>
+                <fullName>MS SCHOOL FOR THE ARTS~MS School For The Arts</fullName>
+                <default>false</default>
+                <label>MS SCHOOL FOR THE ARTS~MS School For The Arts</label>
+            </value>
+            <value>
+                <fullName>MS SCHOOL FOR THE DEAF~MS School For The Deaf Secondary</fullName>
+                <default>false</default>
+                <label>MS SCHOOL FOR THE DEAF~MS School For The Deaf Secondary</label>
+            </value>
+            <value>
+                <fullName>MVPS~Homeschool</fullName>
+                <default>false</default>
+                <label>MVPS~Homeschool</label>
+            </value>
+            <value>
+                <fullName>NATCHEZ-ADAMS SD~Central Alternative School</fullName>
+                <default>false</default>
+                <label>NATCHEZ-ADAMS SD~Central Alternative School</label>
+            </value>
+            <value>
+                <fullName>NATCHEZ-ADAMS SD~Natchez HS</fullName>
+                <default>false</default>
+                <label>NATCHEZ-ADAMS SD~Natchez HS</label>
+            </value>
+            <value>
+                <fullName>NESHOBA COUNTY SD~Neshoba Central HS</fullName>
+                <default>false</default>
+                <label>NESHOBA COUNTY SD~Neshoba Central HS</label>
+            </value>
+            <value>
+                <fullName>NESHOBA COUNTY SD~Neshoba Central MS</fullName>
+                <default>false</default>
+                <label>NESHOBA COUNTY SD~Neshoba Central MS</label>
+            </value>
+            <value>
+                <fullName>NETTLETON SD~Nettleton HS</fullName>
+                <default>false</default>
+                <label>NETTLETON SD~Nettleton HS</label>
+            </value>
+            <value>
+                <fullName>NEW ALBANY PUBLIC SCHOOLS~New Albany HS</fullName>
+                <default>false</default>
+                <label>NEW ALBANY PUBLIC SCHOOLS~New Albany HS</label>
+            </value>
+            <value>
+                <fullName>NEWTON COUNTY SD~Newton County HS</fullName>
+                <default>false</default>
+                <label>NEWTON COUNTY SD~Newton County HS</label>
+            </value>
+            <value>
+                <fullName>NEWTON MUNICIPAL SD~Newton HS</fullName>
+                <default>false</default>
+                <label>NEWTON MUNICIPAL SD~Newton HS</label>
+            </value>
+            <value>
+                <fullName>NORTH BOLIVAR CONSOLIDATED SD~John F Kennedy HS</fullName>
+                <default>false</default>
+                <label>NORTH BOLIVAR CONSOLIDATED SD~John F Kennedy HS</label>
+            </value>
+            <value>
+                <fullName>NORTH BOLIVAR SD~Broad Street HS</fullName>
+                <default>false</default>
+                <label>NORTH BOLIVAR SD~Broad Street HS</label>
+            </value>
+            <value>
+                <fullName>NORTH PANOLA SCHOOLS~North Panola HS</fullName>
+                <default>false</default>
+                <label>NORTH PANOLA SCHOOLS~North Panola HS</label>
+            </value>
+            <value>
+                <fullName>NORTH PIKE SD~North Pike Elementary</fullName>
+                <default>false</default>
+                <label>NORTH PIKE SD~North Pike Elementary</label>
+            </value>
+            <value>
+                <fullName>NORTH PIKE SD~North Pike Senior HS</fullName>
+                <default>false</default>
+                <label>NORTH PIKE SD~North Pike Senior HS</label>
+            </value>
+            <value>
+                <fullName>NORTH TIPPAH SD~Falkner HS</fullName>
+                <default>false</default>
+                <label>NORTH TIPPAH SD~Falkner HS</label>
+            </value>
+            <value>
+                <fullName>NORTH TIPPAH SD~Walnut HS</fullName>
+                <default>false</default>
+                <label>NORTH TIPPAH SD~Walnut HS</label>
+            </value>
+            <value>
+                <fullName>NOXUBEE COUNTY SD~Noxubee County HS</fullName>
+                <default>false</default>
+                <label>NOXUBEE COUNTY SD~Noxubee County HS</label>
+            </value>
+            <value>
+                <fullName>OCEAN SPRINGS SD~Alternative Edu Center</fullName>
+                <default>false</default>
+                <label>OCEAN SPRINGS SD~Alternative Edu Center</label>
+            </value>
+            <value>
+                <fullName>OCEAN SPRINGS SD~Ocean Springs HS</fullName>
+                <default>false</default>
+                <label>OCEAN SPRINGS SD~Ocean Springs HS</label>
+            </value>
+            <value>
+                <fullName>OCEAN SPRINGS SD~Ocean Springs MS</fullName>
+                <default>false</default>
+                <label>OCEAN SPRINGS SD~Ocean Springs MS</label>
+            </value>
+            <value>
+                <fullName>OKOLONA SEPARATE SD~Okolona HS</fullName>
+                <default>false</default>
+                <label>OKOLONA SEPARATE SD~Okolona HS</label>
+            </value>
+            <value>
+                <fullName>OKTIBBEHA COUNTY SD~East Oktibbeha County High</fullName>
+                <default>false</default>
+                <label>OKTIBBEHA COUNTY SD~East Oktibbeha County High</label>
+            </value>
+            <value>
+                <fullName>OKTIBBEHA COUNTY SD~West Oktibbeha County High</fullName>
+                <default>false</default>
+                <label>OKTIBBEHA COUNTY SD~West Oktibbeha County High</label>
+            </value>
+            <value>
+                <fullName>OUR LADY ACADEMY ADMINISTRATION~Our Lady Academy HS</fullName>
+                <default>false</default>
+                <label>OUR LADY ACADEMY ADMINISTRATION~Our Lady Academy HS</label>
+            </value>
+            <value>
+                <fullName>OXFORD SD~Oxford HS</fullName>
+                <default>false</default>
+                <label>OXFORD SD~Oxford HS</label>
+            </value>
+            <value>
+                <fullName>PASCAGOULA SD~Gautier HS</fullName>
+                <default>false</default>
+                <label>PASCAGOULA SD~Gautier HS</label>
+            </value>
+            <value>
+                <fullName>PASCAGOULA SD~Pascagoula HS</fullName>
+                <default>false</default>
+                <label>PASCAGOULA SD~Pascagoula HS</label>
+            </value>
+            <value>
+                <fullName>PASS CHRISTIAN SD~Pass Christian HS</fullName>
+                <default>false</default>
+                <label>PASS CHRISTIAN SD~Pass Christian HS</label>
+            </value>
+            <value>
+                <fullName>PEARL PUBLIC SD~Pearl HS</fullName>
+                <default>false</default>
+                <label>PEARL PUBLIC SD~Pearl HS</label>
+            </value>
+            <value>
+                <fullName>PEARL RIVER CO SD~Pearl River Central HS</fullName>
+                <default>false</default>
+                <label>PEARL RIVER CO SD~Pearl River Central HS</label>
+            </value>
+            <value>
+                <fullName>PERRY CO SD~Perry Central HS</fullName>
+                <default>false</default>
+                <label>PERRY CO SD~Perry Central HS</label>
+            </value>
+            <value>
+                <fullName>PETAL SD~Petal High</fullName>
+                <default>false</default>
+                <label>PETAL SD~Petal High</label>
+            </value>
+            <value>
+                <fullName>PHILADELPHIA PUBLIC SD~Philadelphia HS</fullName>
+                <default>false</default>
+                <label>PHILADELPHIA PUBLIC SD~Philadelphia HS</label>
+            </value>
+            <value>
+                <fullName>PICAYUNE SD~Picayune Memorial HS</fullName>
+                <default>false</default>
+                <label>PICAYUNE SD~Picayune Memorial HS</label>
+            </value>
+            <value>
+                <fullName>PONTOTOC CITY SCHOOLS~Pontotoc HS</fullName>
+                <default>false</default>
+                <label>PONTOTOC CITY SCHOOLS~Pontotoc HS</label>
+            </value>
+            <value>
+                <fullName>PONTOTOC CO SD~North Pontotoc HS</fullName>
+                <default>false</default>
+                <label>PONTOTOC CO SD~North Pontotoc HS</label>
+            </value>
+            <value>
+                <fullName>PONTOTOC CO SD~South Pontotoc HS</fullName>
+                <default>false</default>
+                <label>PONTOTOC CO SD~South Pontotoc HS</label>
+            </value>
+            <value>
+                <fullName>PONTOTOC CO SD~South Pontotoc MS</fullName>
+                <default>false</default>
+                <label>PONTOTOC CO SD~South Pontotoc MS</label>
+            </value>
+            <value>
+                <fullName>POPLARVILLE SEPARATE SD~Poplarville Jr/Sr HS</fullName>
+                <default>false</default>
+                <label>POPLARVILLE SEPARATE SD~Poplarville Jr/Sr HS</label>
+            </value>
+            <value>
+                <fullName>PRENTISS CO SD~Jumpertown HS</fullName>
+                <default>false</default>
+                <label>PRENTISS CO SD~Jumpertown HS</label>
+            </value>
+            <value>
+                <fullName>PRENTISS CO SD~New Site HS</fullName>
+                <default>false</default>
+                <label>PRENTISS CO SD~New Site HS</label>
+            </value>
+            <value>
+                <fullName>PRENTISS CO SD~Thrasher HS</fullName>
+                <default>false</default>
+                <label>PRENTISS CO SD~Thrasher HS</label>
+            </value>
+            <value>
+                <fullName>PRENTISS CO SD~Wheeler HS</fullName>
+                <default>false</default>
+                <label>PRENTISS CO SD~Wheeler HS</label>
+            </value>
+            <value>
+                <fullName>QUITMAN CO SD~M. S. Palmer HS</fullName>
+                <default>false</default>
+                <label>QUITMAN CO SD~M. S. Palmer HS</label>
+            </value>
+            <value>
+                <fullName>QUITMAN SD~Quitman HS</fullName>
+                <default>false</default>
+                <label>QUITMAN SD~Quitman HS</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~Brandon HS</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~Brandon HS</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~Florence HS</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~Florence HS</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~McLaurin Attendance Center</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~McLaurin Attendance Center</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~Northwest Rankin HS</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~Northwest Rankin HS</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~Pelahatchie Attendance Center</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~Pelahatchie Attendance Center</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~Pisgah HS</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~Pisgah HS</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~Puckett Attendance Center</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~Puckett Attendance Center</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~Rankin County Learning Center</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~Rankin County Learning Center</label>
+            </value>
+            <value>
+                <fullName>RANKIN CO SD~Richland HS</fullName>
+                <default>false</default>
+                <label>RANKIN CO SD~Richland HS</label>
+            </value>
+            <value>
+                <fullName>RICHTON SD~Richton HS</fullName>
+                <default>false</default>
+                <label>RICHTON SD~Richton HS</label>
+            </value>
+            <value>
+                <fullName>Saint Joseph Catholic High School</fullName>
+                <default>false</default>
+                <label>Saint Joseph Catholic High School</label>
+            </value>
+            <value>
+                <fullName>SCOTT CO SD~Lake Attendance Center</fullName>
+                <default>false</default>
+                <label>SCOTT CO SD~Lake Attendance Center</label>
+            </value>
+            <value>
+                <fullName>SCOTT CO SD~Morton HS</fullName>
+                <default>false</default>
+                <label>SCOTT CO SD~Morton HS</label>
+            </value>
+            <value>
+                <fullName>SCOTT CO SD~Scott Central Attendance Center</fullName>
+                <default>false</default>
+                <label>SCOTT CO SD~Scott Central Attendance Center</label>
+            </value>
+            <value>
+                <fullName>SENATOBIA MUNICIPAL SD~Senatobia Jr/Sr HS</fullName>
+                <default>false</default>
+                <label>SENATOBIA MUNICIPAL SD~Senatobia Jr/Sr HS</label>
+            </value>
+            <value>
+                <fullName>SHAW SD~Shaw HS</fullName>
+                <default>false</default>
+                <label>SHAW SD~Shaw HS</label>
+            </value>
+            <value>
+                <fullName>SIMPSON CO SD~Magee HS</fullName>
+                <default>false</default>
+                <label>SIMPSON CO SD~Magee HS</label>
+            </value>
+            <value>
+                <fullName>SIMPSON CO SD~Mendenhall HS</fullName>
+                <default>false</default>
+                <label>SIMPSON CO SD~Mendenhall HS</label>
+            </value>
+            <value>
+                <fullName>SMITH CO SD~Mize Attendance Center</fullName>
+                <default>false</default>
+                <label>SMITH CO SD~Mize Attendance Center</label>
+            </value>
+            <value>
+                <fullName>SMITH CO SD~Raleigh HS</fullName>
+                <default>false</default>
+                <label>SMITH CO SD~Raleigh HS</label>
+            </value>
+            <value>
+                <fullName>SMITH CO SD~Taylorsville HS</fullName>
+                <default>false</default>
+                <label>SMITH CO SD~Taylorsville HS</label>
+            </value>
+            <value>
+                <fullName>SOUTH DELTA SD~South Delta HS</fullName>
+                <default>false</default>
+                <label>SOUTH DELTA SD~South Delta HS</label>
+            </value>
+            <value>
+                <fullName>SOUTH PANOLA SD~South Panola High</fullName>
+                <default>false</default>
+                <label>SOUTH PANOLA SD~South Panola High</label>
+            </value>
+            <value>
+                <fullName>SOUTH PIKE SD~South Pike HS</fullName>
+                <default>false</default>
+                <label>SOUTH PIKE SD~South Pike HS</label>
+            </value>
+            <value>
+                <fullName>SOUTH TIPPAH SD~Blue Mountain HS</fullName>
+                <default>false</default>
+                <label>SOUTH TIPPAH SD~Blue Mountain HS</label>
+            </value>
+            <value>
+                <fullName>SOUTH TIPPAH SD~Pine Grove HS</fullName>
+                <default>false</default>
+                <label>SOUTH TIPPAH SD~Pine Grove HS</label>
+            </value>
+            <value>
+                <fullName>SOUTH TIPPAH SD~Ripley HS</fullName>
+                <default>false</default>
+                <label>SOUTH TIPPAH SD~Ripley HS</label>
+            </value>
+            <value>
+                <fullName>STARKVILLE SD~Armstrong MS</fullName>
+                <default>false</default>
+                <label>STARKVILLE SD~Armstrong MS</label>
+            </value>
+            <value>
+                <fullName>STARKVILLE SD~Starkville HS</fullName>
+                <default>false</default>
+                <label>STARKVILLE SD~Starkville HS</label>
+            </value>
+            <value>
+                <fullName>STONE CO SD~Stone HS</fullName>
+                <default>false</default>
+                <label>STONE CO SD~Stone HS</label>
+            </value>
+            <value>
+                <fullName>SUNFLOWER CO SD~Ruleville Central HS</fullName>
+                <default>false</default>
+                <label>SUNFLOWER CO SD~Ruleville Central HS</label>
+            </value>
+            <value>
+                <fullName>SUNFLOWER CONSOLIDATED SD Gentry HS</fullName>
+                <default>false</default>
+                <label>SUNFLOWER CONSOLIDATED SD Gentry HS</label>
+            </value>
+            <value>
+                <fullName>TATE CO SD~Coldwater HS</fullName>
+                <default>false</default>
+                <label>TATE CO SD~Coldwater HS</label>
+            </value>
+            <value>
+                <fullName>TATE CO SD~Independence HS</fullName>
+                <default>false</default>
+                <label>TATE CO SD~Independence HS</label>
+            </value>
+            <value>
+                <fullName>TATE CO SD~Strayhorn HS</fullName>
+                <default>false</default>
+                <label>TATE CO SD~Strayhorn HS</label>
+            </value>
+            <value>
+                <fullName>TISHOMINGO CO SP MUN SD~Belmont HS</fullName>
+                <default>false</default>
+                <label>TISHOMINGO CO SP MUN SD~Belmont HS</label>
+            </value>
+            <value>
+                <fullName>TISHOMINGO CO SP MUN SD~Tishomingo County HS</fullName>
+                <default>false</default>
+                <label>TISHOMINGO CO SP MUN SD~Tishomingo County HS</label>
+            </value>
+            <value>
+                <fullName>TUNICA COUNTY SD~Rosa Fort HS</fullName>
+                <default>false</default>
+                <label>TUNICA COUNTY SD~Rosa Fort HS</label>
+            </value>
+            <value>
+                <fullName>TUPELO PUBLIC SD~Bissell Discipline Center</fullName>
+                <default>false</default>
+                <label>TUPELO PUBLIC SD~Bissell Discipline Center</label>
+            </value>
+            <value>
+                <fullName>TUPELO PUBLIC SD~Tupelo HS</fullName>
+                <default>false</default>
+                <label>TUPELO PUBLIC SD~Tupelo HS</label>
+            </value>
+            <value>
+                <fullName>UNION CO SD~East Union Attendance Center</fullName>
+                <default>false</default>
+                <label>UNION CO SD~East Union Attendance Center</label>
+            </value>
+            <value>
+                <fullName>UNION CO SD~Ingomar Attendance Center</fullName>
+                <default>false</default>
+                <label>UNION CO SD~Ingomar Attendance Center</label>
+            </value>
+            <value>
+                <fullName>UNION CO SD~Myrtle Attendance Center</fullName>
+                <default>false</default>
+                <label>UNION CO SD~Myrtle Attendance Center</label>
+            </value>
+            <value>
+                <fullName>UNION CO SD~West Union Attendance Center</fullName>
+                <default>false</default>
+                <label>UNION CO SD~West Union Attendance Center</label>
+            </value>
+            <value>
+                <fullName>UNION PUBLIC SD~Union HS</fullName>
+                <default>false</default>
+                <label>UNION PUBLIC SD~Union HS</label>
+            </value>
+            <value>
+                <fullName>VICKSBURG WARREN SD~River City Early College HS</fullName>
+                <default>false</default>
+                <label>VICKSBURG WARREN SD~River City Early College HS</label>
+            </value>
+            <value>
+                <fullName>VICKSBURG WARREN SD~Vicksburg HS</fullName>
+                <default>false</default>
+                <label>VICKSBURG WARREN SD~Vicksburg HS</label>
+            </value>
+            <value>
+                <fullName>VICKSBURG WARREN SD~Warren Central HS</fullName>
+                <default>false</default>
+                <label>VICKSBURG WARREN SD~Warren Central HS</label>
+            </value>
+            <value>
+                <fullName>W BOLIVAR CONSOLIDATED SD~W Bolivar County HS</fullName>
+                <default>false</default>
+                <label>W BOLIVAR CONSOLIDATED SD~W Bolivar County HS</label>
+            </value>
+            <value>
+                <fullName>WALTHALL CO SD~Dexter HS</fullName>
+                <default>false</default>
+                <label>WALTHALL CO SD~Dexter HS</label>
+            </value>
+            <value>
+                <fullName>WALTHALL CO SD~Salem HS</fullName>
+                <default>false</default>
+                <label>WALTHALL CO SD~Salem HS</label>
+            </value>
+            <value>
+                <fullName>WALTHALL CO SD~Tylertown HS</fullName>
+                <default>false</default>
+                <label>WALTHALL CO SD~Tylertown HS</label>
+            </value>
+            <value>
+                <fullName>WATER VALLEY SD~Water Valley HS</fullName>
+                <default>false</default>
+                <label>WATER VALLEY SD~Water Valley HS</label>
+            </value>
+            <value>
+                <fullName>WAYNE CO SD~Wayne County HS</fullName>
+                <default>false</default>
+                <label>WAYNE CO SD~Wayne County HS</label>
+            </value>
+            <value>
+                <fullName>WEBSTER CO SD~East Webster HS</fullName>
+                <default>false</default>
+                <label>WEBSTER CO SD~East Webster HS</label>
+            </value>
+            <value>
+                <fullName>WEBSTER CO SD~Eupora HS</fullName>
+                <default>false</default>
+                <label>WEBSTER CO SD~Eupora HS</label>
+            </value>
+            <value>
+                <fullName>WEBSTER CO SD~Webster Co Career Technol Ctr</fullName>
+                <default>false</default>
+                <label>WEBSTER CO SD~Webster Co Career Technol Ctr</label>
+            </value>
+            <value>
+                <fullName>WEST BOLIVAR SD~West Bolivar Dist HS</fullName>
+                <default>false</default>
+                <label>WEST BOLIVAR SD~West Bolivar Dist HS</label>
+            </value>
+            <value>
+                <fullName>WEST JASPER CONSOLIDATED SCHOOLS~Bay Springs HS</fullName>
+                <default>false</default>
+                <label>WEST JASPER CONSOLIDATED SCHOOLS~Bay Springs HS</label>
+            </value>
+            <value>
+                <fullName>WEST JASPER CONSOLIDATED SCHOOLS~Stringer Attendance Center</fullName>
+                <default>false</default>
+                <label>WEST JASPER CONSOLIDATED SCHOOLS~Stringer Attendance Center</label>
+            </value>
+            <value>
+                <fullName>WEST POINT SD~West Point HS</fullName>
+                <default>false</default>
+                <label>WEST POINT SD~West Point HS</label>
+            </value>
+            <value>
+                <fullName>WEST TALLAHATCHIE SD~West Tallahatchie HS</fullName>
+                <default>false</default>
+                <label>WEST TALLAHATCHIE SD~West Tallahatchie HS</label>
+            </value>
+            <value>
+                <fullName>WESTERN LINE SD~Obannon HS</fullName>
+                <default>false</default>
+                <label>WESTERN LINE SD~Obannon HS</label>
+            </value>
+            <value>
+                <fullName>WESTERN LINE SD~Riverside HS</fullName>
+                <default>false</default>
+                <label>WESTERN LINE SD~Riverside HS</label>
+            </value>
+            <value>
+                <fullName>WILKINSON CO SD~Wilkinson County High</fullName>
+                <default>false</default>
+                <label>WILKINSON CO SD~Wilkinson County High</label>
+            </value>
+            <value>
+                <fullName>WINONA SEPARATE SD~Winona Secondary School</fullName>
+                <default>false</default>
+                <label>WINONA SEPARATE SD~Winona Secondary School</label>
+            </value>
+            <value>
+                <fullName>YAZOO CITY MUNICIPAL SD~Yazoo City HS</fullName>
+                <default>false</default>
+                <label>YAZOO CITY MUNICIPAL SD~Yazoo City HS</label>
+            </value>
+            <value>
+                <fullName>YAZOO CO SD~Yazoo County HS</fullName>
+                <default>false</default>
+                <label>YAZOO CO SD~Yazoo County HS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

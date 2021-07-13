@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Family_Relationship_Manager__c</fullName>
+    <description>Family Relationship Manager</description>
+    <externalId>false</externalId>
+    <label>Family Relationship Manager</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ashley Schneider</fullName>
+                <default>false</default>
+                <label>Ashley Schneider</label>
+            </value>
+            <value>
+                <fullName>Charlene Chan</fullName>
+                <default>false</default>
+                <label>Charlene Chan</label>
+            </value>
+            <value>
+                <fullName>Cheltese Shelton-Woodford</fullName>
+                <default>false</default>
+                <label>Cheltese Shelton-Woodford</label>
+            </value>
+            <value>
+                <fullName>Ciarra Roulhac</fullName>
+                <default>false</default>
+                <label>Ciarra Roulhac</label>
+            </value>
+            <value>
+                <fullName>Eileen Milligan</fullName>
+                <default>false</default>
+                <label>Eileen Milligan</label>
+            </value>
+            <value>
+                <fullName>Joshua Adinlewa</fullName>
+                <default>false</default>
+                <label>Joshua Adinlewa</label>
+            </value>
+            <value>
+                <fullName>Kristin Kiel</fullName>
+                <default>false</default>
+                <label>Kristin Kiel</label>
+            </value>
+            <value>
+                <fullName>Mikia Starkey</fullName>
+                <default>false</default>
+                <label>Mikia Starkey</label>
+            </value>
+            <value>
+                <fullName>Reassign</fullName>
+                <default>false</default>
+                <label>Reassign</label>
+            </value>
+            <value>
+                <fullName>Sandy Stein</fullName>
+                <default>false</default>
+                <label>Sandy Stein</label>
+            </value>
+            <value>
+                <fullName>Spencer Pilgrim</fullName>
+                <default>false</default>
+                <label>Spencer Pilgrim</label>
+            </value>
+            <value>
+                <fullName>Steven Smith</fullName>
+                <default>false</default>
+                <label>Steven Smith</label>
+            </value>
+            <value>
+                <fullName>Theresa Deloatch</fullName>
+                <default>false</default>
+                <label>Theresa Deloatch</label>
+            </value>
+            <value>
+                <fullName>Tiffany Simmons</fullName>
+                <default>false</default>
+                <label>Tiffany Simmons</label>
+            </value>
+            <value>
+                <fullName>Tommy Lui</fullName>
+                <default>false</default>
+                <label>Tommy Lui</label>
+            </value>
+            <value>
+                <fullName>Withdrawn</fullName>
+                <default>false</default>
+                <label>Withdrawn</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

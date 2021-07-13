@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CompassScienceInstructionLevel__c</fullName>
+    <description>Compass Science Instructional Level</description>
+    <externalId>false</externalId>
+    <label>Compass Science Instruction Level</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <label>1</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <label>2</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <label>3</label>
+            </value>
+            <value>
+                <fullName>4</fullName>
+                <default>false</default>
+                <label>4</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>5</label>
+            </value>
+            <value>
+                <fullName>6</fullName>
+                <default>false</default>
+                <label>6</label>
+            </value>
+            <value>
+                <fullName>Biology</fullName>
+                <default>false</default>
+                <label>Biology</label>
+            </value>
+            <value>
+                <fullName>Chemistry</fullName>
+                <default>false</default>
+                <label>Chemistry</label>
+            </value>
+            <value>
+                <fullName>Earth/Space Science</fullName>
+                <default>false</default>
+                <label>Earth/Space Science</label>
+            </value>
+            <value>
+                <fullName>K (Not Available)</fullName>
+                <default>false</default>
+                <label>K (Not Available)</label>
+            </value>
+            <value>
+                <fullName>MS Earth and Space Science</fullName>
+                <default>false</default>
+                <label>MS Earth and Space Science</label>
+            </value>
+            <value>
+                <fullName>MS Life Science</fullName>
+                <default>false</default>
+                <label>MS Life Science</label>
+            </value>
+            <value>
+                <fullName>MS Nature of Science</fullName>
+                <default>false</default>
+                <label>MS Nature of Science</label>
+            </value>
+            <value>
+                <fullName>MS Physical Science</fullName>
+                <default>false</default>
+                <label>MS Physical Science</label>
+            </value>
+            <value>
+                <fullName>Physical Science</fullName>
+                <default>false</default>
+                <label>Physical Science</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

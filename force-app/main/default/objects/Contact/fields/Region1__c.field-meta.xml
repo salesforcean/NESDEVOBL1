@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Region1__c</fullName>
+    <description>As per the US#340832, This field is used to capture the Region value from &quot;Custom MetadaType&quot; based on BillingState provided on Account Object and It is referred to in the Region formula field for reducing the character limit.</description>
+    <externalId>false</externalId>
+    <formula>IF(Account.ShippingState = $CustomMetadata.Region_Mappings__mdt.CO.MasterLabel, $CustomMetadata.Region_Mappings__mdt.CO.Region__c,IF(Account.ShippingState = $CustomMetadata.Region_Mappings__mdt.ID.MasterLabel, $CustomMetadata.Region_Mappings__mdt.ID.Region__c,IF(Account.ShippingState = $CustomMetadata.Region_Mappings__mdt.NM.MasterLabel, $CustomMetadata.Region_Mappings__mdt.NM.Region__c, IF(Account.ShippingState=$CustomMetadata.Region_Mappings__mdt.UT.MasterLabel,$CustomMetadata.Region_Mappings__mdt.UT.Region__c,IF(Account.ShippingState = $CustomMetadata.Region_Mappings__mdt.NV.MasterLabel, $CustomMetadata.Region_Mappings__mdt.NV.Region__c,IF(Account.ShippingState = $CustomMetadata.Region_Mappings__mdt.OR.MasterLabel, $CustomMetadata.Region_Mappings__mdt.OR.Region__c,IF(Account.ShippingState = $CustomMetadata.Region_Mappings__mdt.WA.MasterLabel, $CustomMetadata.Region_Mappings__mdt.WA.Region__c,&apos;&apos;)))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Region1</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

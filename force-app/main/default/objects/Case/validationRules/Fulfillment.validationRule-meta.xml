@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfillment</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(AND(ISPICKVAL(Type,&quot;Fulfillment&quot;),CS_SkipProfiles__c =&apos;N&apos;,NOT(ISPICKVAL(Origin,&apos;Community&apos;))),ISBLANK(Asset_Aware__c), null)</errorConditionFormula>
+    <errorMessage>Please enter field value of  Asset Aware.</errorMessage>
+</ValidationRule>

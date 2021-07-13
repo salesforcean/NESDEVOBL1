@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MoreHighSchoolDocumentation__c</fullName>
+    <externalId>false</externalId>
+    <label>More High School Documentation</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Documentation needed</fullName>
+                <default>false</default>
+                <label>Documentation needed</label>
+            </value>
+            <value>
+                <fullName>Documentation not available</fullName>
+                <default>false</default>
+                <label>Documentation not available</label>
+            </value>
+            <value>
+                <fullName>Documentation provided</fullName>
+                <default>false</default>
+                <label>Documentation provided</label>
+            </value>
+            <value>
+                <fullName>Documentation requested</fullName>
+                <default>false</default>
+                <label>Documentation requested</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

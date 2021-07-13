@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INCACareerAreaInterest__c</fullName>
+    <description>the student&apos;s career area of interest</description>
+    <externalId>false</externalId>
+    <label>INCACareerAreaInterest</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Arts - Communications</fullName>
+                <default>false</default>
+                <label>Arts - Communications</label>
+            </value>
+            <value>
+                <fullName>Business - Marketing</fullName>
+                <default>false</default>
+                <label>Business - Marketing</label>
+            </value>
+            <value>
+                <fullName>Health Sciences</fullName>
+                <default>false</default>
+                <label>Health Sciences</label>
+            </value>
+            <value>
+                <fullName>Information Technology</fullName>
+                <default>false</default>
+                <label>Information Technology</label>
+            </value>
+            <value>
+                <fullName>Science Technology - Engineering - Math</fullName>
+                <default>false</default>
+                <label>Science Technology - Engineering - Math</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

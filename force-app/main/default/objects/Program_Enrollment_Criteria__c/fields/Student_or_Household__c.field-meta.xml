@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_or_Household__c</fullName>
+    <description>Within the data model for an enrollment, some objects are used twice, once for the student and once for the caretaker.  When an update occurs to one of those multi use objects, we need to know which criteria may be impacted.  The data in this field acts like a filter criteria to only recalculate Criteria based on where the update happened.</description>
+    <externalId>false</externalId>
+    <label>Student or Household</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Household</fullName>
+                <default>false</default>
+                <label>Household</label>
+            </value>
+            <value>
+                <fullName>Student</fullName>
+                <default>false</default>
+                <label>Student</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STS_CT_Prediction__c</fullName>
+    <externalId>false</externalId>
+    <label>STS CT Prediction</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>My student did not take the state assessment in 2016-2017</fullName>
+                <default>false</default>
+                <label>My student did not take the state assessment in 2016-2017</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>Unsure</fullName>
+                <default>false</default>
+                <label>Unsure</label>
+            </value>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>My student did not take the state assessment in 2017-2018</fullName>
+                <default>false</default>
+                <label>My student did not take the state assessment in 2017-2018</label>
+            </value>
+            <value>
+                <fullName>My student did not take the state assessment in 2018-2019</fullName>
+                <default>false</default>
+                <label>My student did not take the state assessment in 2018-2019</label>
+            </value>
+            <value>
+                <fullName>My student did not take the state assessment last school year</fullName>
+                <default>false</default>
+                <label>My student did not take the state assessment last school year</label>
+            </value>
+            <value>
+                <fullName>My student did not take the state assessment in 2019-2020</fullName>
+                <default>false</default>
+                <label>My student did not take the state assessment in 2019-2020</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WeAreMovingReason_Src__c</fullName>
+    <description>Reason family is moving</description>
+    <externalId>false</externalId>
+    <label>We Are Moving Reason Src</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Out of the country</fullName>
+                <default>false</default>
+                <label>Out of the country</label>
+            </value>
+            <value>
+                <fullName>Out of the school district</fullName>
+                <default>false</default>
+                <label>Out of the school district</label>
+            </value>
+            <value>
+                <fullName>Out of the state</fullName>
+                <default>false</default>
+                <label>Out of the state</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

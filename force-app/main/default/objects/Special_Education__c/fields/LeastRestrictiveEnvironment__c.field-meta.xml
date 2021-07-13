@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LeastRestrictiveEnvironment__c</fullName>
+    <description>Least Restrictive Environment</description>
+    <externalId>false</externalId>
+    <label>Least Restrictive Environment</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>21% to 60% in special education</fullName>
+                <default>false</default>
+                <label>21% to 60% in special education</label>
+            </value>
+            <value>
+                <fullName>80% or more of the day in the regular class</fullName>
+                <default>false</default>
+                <label>80% or more of the day in the regular class</label>
+            </value>
+            <value>
+                <fullName>More than 61% in special education</fullName>
+                <default>false</default>
+                <label>More than 61% in special education</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

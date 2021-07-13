@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Opened_and_unassigned_leads</fullName>
+    <booleanFilter>1 OR (2 AND 3)</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>School_Acronym__c</columns>
+    <columns>LEAD.PHONE</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CORE.USERS.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>CVENT</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>CE Leads Tasks</value>
+    </filters>
+    <filters>
+        <field>LEAD.STATUS</field>
+        <operation>equals</operation>
+        <value>Reinquired</value>
+    </filters>
+    <label>All Opened and Unassigned Leads</label>
+</ListView>

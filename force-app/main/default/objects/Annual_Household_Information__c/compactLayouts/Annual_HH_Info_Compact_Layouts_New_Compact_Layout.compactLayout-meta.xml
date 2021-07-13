@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Annual_HH_Info_Compact_Layouts_New_Compact_Layout</fullName>
+    <fields>Receive_Equip_Hardship__c</fields>
+    <fields>Technology_Hardship__c</fields>
+    <label>Annual HH Info Compact Layouts New Compact Layout</label>
+</CompactLayout>

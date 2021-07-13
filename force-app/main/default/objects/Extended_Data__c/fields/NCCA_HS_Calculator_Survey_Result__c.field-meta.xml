@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NCCA_HS_Calculator_Survey_Result__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Does the student have a TI 84 calculator</description>
+    <externalId>false</externalId>
+    <label>NCCA HS Calculator Survey Result</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>iNaCA_AffiliateSchool__c</fullName>
+    <description>iNaCA Affiliate</description>
+    <externalId>false</externalId>
+    <label>iNaCA AffiliateSchool</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ace Gymnastics (Part Time)</fullName>
+                <default>false</default>
+                <label>Ace Gymnastics (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Advantage Tennis Academy</fullName>
+                <default>false</default>
+                <label>Advantage Tennis Academy</label>
+            </value>
+            <value>
+                <fullName>Advantage Tennis Academy (Part Time)</fullName>
+                <default>false</default>
+                <label>Advantage Tennis Academy (Part Time)</label>
+            </value>
+            <value>
+                <fullName>American Virtual Education</fullName>
+                <default>false</default>
+                <label>American Virtual Education</label>
+            </value>
+            <value>
+                <fullName>American Virtual Education (Part Time)</fullName>
+                <default>false</default>
+                <label>American Virtual Education (Part Time)</label>
+            </value>
+            <value>
+                <fullName>ASBA Turkey (Part Time)</fullName>
+                <default>false</default>
+                <label>ASBA Turkey (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Assure International School</fullName>
+                <default>false</default>
+                <label>Assure International School</label>
+            </value>
+            <value>
+                <fullName>Assure International School (Part Time)</fullName>
+                <default>false</default>
+                <label>Assure International School (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Chico Enrichment Center (Part Time)</fullName>
+                <default>false</default>
+                <label>Chico Enrichment Center (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Chifeng Chris Education Consulting</fullName>
+                <default>false</default>
+                <label>Chifeng Chris Education Consulting</label>
+            </value>
+            <value>
+                <fullName>Chifeng Chris Education Consulting (Part Time)</fullName>
+                <default>false</default>
+                <label>Chifeng Chris Education Consulting (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Colegio Maya (Part Time)</fullName>
+                <default>false</default>
+                <label>Colegio Maya (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Educate Athletes</fullName>
+                <default>false</default>
+                <label>Educate Athletes</label>
+            </value>
+            <value>
+                <fullName>Educate Athletes (Part Time)</fullName>
+                <default>false</default>
+                <label>Educate Athletes (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Edulinx</fullName>
+                <default>false</default>
+                <label>Edulinx</label>
+            </value>
+            <value>
+                <fullName>Edulinx (Part Time)</fullName>
+                <default>false</default>
+                <label>Edulinx (Part Time)</label>
+            </value>
+            <value>
+                <fullName>International Academy of Suriname</fullName>
+                <default>false</default>
+                <label>International Academy of Suriname</label>
+            </value>
+            <value>
+                <fullName>International Academy of Suriname (Part Time)</fullName>
+                <default>false</default>
+                <label>International Academy of Suriname (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Next Gen USA</fullName>
+                <default>false</default>
+                <label>Next Gen USA</label>
+            </value>
+            <value>
+                <fullName>Next Gen USA (Part Time)</fullName>
+                <default>false</default>
+                <label>Next Gen USA (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Pearson Brazil</fullName>
+                <default>false</default>
+                <label>Pearson Brazil</label>
+            </value>
+            <value>
+                <fullName>Pearson India (Part Time)</fullName>
+                <default>false</default>
+                <label>Pearson India (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Pearson Turkey (Part Time)</fullName>
+                <default>false</default>
+                <label>Pearson Turkey (Part Time)</label>
+            </value>
+            <value>
+                <fullName>School Answers</fullName>
+                <default>false</default>
+                <label>School Answers</label>
+            </value>
+            <value>
+                <fullName>School Answers (Part Time)</fullName>
+                <default>false</default>
+                <label>School Answers (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Sterling Education (Part Time)</fullName>
+                <default>false</default>
+                <label>Sterling Education (Part Time)</label>
+            </value>
+            <value>
+                <fullName>The Ingenuity Project (Part Time)</fullName>
+                <default>false</default>
+                <label>The Ingenuity Project (Part Time)</label>
+            </value>
+            <value>
+                <fullName>Total Package Hockey</fullName>
+                <default>false</default>
+                <label>Total Package Hockey</label>
+            </value>
+            <value>
+                <fullName>Total Package Hockey (Part Time)</fullName>
+                <default>false</default>
+                <label>Total Package Hockey (Part Time)</label>
+            </value>
+            <value>
+                <fullName>USademy</fullName>
+                <default>false</default>
+                <label>USademy</label>
+            </value>
+            <value>
+                <fullName>USademy (Part Time)</fullName>
+                <default>false</default>
+                <label>USademy (Part Time)</label>
+            </value>
+            <value>
+                <fullName>XCeed Preparatory Academy</fullName>
+                <default>false</default>
+                <label>XCeed Preparatory Academy</label>
+            </value>
+            <value>
+                <fullName>XCeed Preparatory Academy (Part Time)</fullName>
+                <default>false</default>
+                <label>XCeed Preparatory Academy (Part Time)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

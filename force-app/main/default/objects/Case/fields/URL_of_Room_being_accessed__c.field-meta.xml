@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>URL_of_Room_being_accessed__c</fullName>
+    <description>US # 122484 -Escalated Live Lesson issues require the Application Management Team to replicate the issue in order to do that the URL for the Live Lesson room in which the issue is occuring must be recorded and passed.</description>
+    <encryptionScheme>None</encryptionScheme>
+    <externalId>false</externalId>
+    <label>URL of Room being accessed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

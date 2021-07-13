@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CL_TypeofStudentReenrollment__c</fullName>
+    <description>What type of re-enrollment is this student?</description>
+    <externalId>false</externalId>
+    <label>CL TypeofStudentReenrollment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CCA</fullName>
+                <default>false</default>
+                <label>CCA</label>
+            </value>
+            <value>
+                <fullName>Connections Learning Institution</fullName>
+                <default>false</default>
+                <label>Connections Learning Institution</label>
+            </value>
+            <value>
+                <fullName>External Client</fullName>
+                <default>false</default>
+                <label>External Client</label>
+            </value>
+            <value>
+                <fullName>iNaCA Full Time</fullName>
+                <default>false</default>
+                <label>iNaCA Full Time</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

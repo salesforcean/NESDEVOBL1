@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>hed__All</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>hed__Account__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>PE_Record_Type_Text__c</columns>
+    <columns>hed__Contact__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>PE_Record_Type_Text__c</field>
+        <operation>equals</operation>
+        <value>Caretaker</value>
+    </filters>
+    <filters>
+        <field>PE_Record_Type_Text__c</field>
+        <operation>equals</operation>
+        <value>Student</value>
+    </filters>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OutofStateAcademyc__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is this student enrolling in TEC Connections Academy because they are living in Massachusetts to participate in a program such as a sports training academy or music academy</description>
+    <externalId>false</externalId>
+    <label>OutofStateAcademy__c</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

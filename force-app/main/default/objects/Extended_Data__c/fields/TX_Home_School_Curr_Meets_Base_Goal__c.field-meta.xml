@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TX_Home_School_Curr_Meets_Base_Goal__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Does the curriculum meet the basic educational goals of reading, spelling, grammar, mathematics, and a course in good citizenship</description>
+    <externalId>false</externalId>
+    <label>TX Home School Curr Meets Base Goal</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

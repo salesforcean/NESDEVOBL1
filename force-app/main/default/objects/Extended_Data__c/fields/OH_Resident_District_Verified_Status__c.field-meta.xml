@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OH_Resident_District_Verified_Status__c</fullName>
+    <description>Resident District Verified</description>
+    <externalId>false</externalId>
+    <label>OH Resident District Verified Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Address change</fullName>
+                <default>false</default>
+                <label>Address change</label>
+            </value>
+            <value>
+                <fullName>Verified</fullName>
+                <default>false</default>
+                <label>Verified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

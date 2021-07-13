@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>iNaCAFullYearEnrollment1819c__c</fullName>
+    <description>Full Year Academic Term</description>
+    <externalId>false</externalId>
+    <label>iNaCA Full Year Enrollment 1819</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Fall 2018 &amp; Spring 2019</fullName>
+                <default>false</default>
+                <label>Fall 2018 &amp; Spring 2019</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

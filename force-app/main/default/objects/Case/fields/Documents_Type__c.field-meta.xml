@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Documents_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Documents Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Proof of Residency</fullName>
+                <default>false</default>
+                <label>Proof of Residency</label>
+            </value>
+            <value>
+                <fullName>504 plan</fullName>
+                <default>false</default>
+                <label>504 plan</label>
+            </value>
+            <value>
+                <fullName>Custody Order</fullName>
+                <default>false</default>
+                <label>Custody Order</label>
+            </value>
+            <value>
+                <fullName>Family Income Information</fullName>
+                <default>false</default>
+                <label>Family Income Information</label>
+            </value>
+            <value>
+                <fullName>High School Home School Credit Form</fullName>
+                <default>false</default>
+                <label>High School Home School Credit Form</label>
+            </value>
+            <value>
+                <fullName>Home Language Survey</fullName>
+                <default>false</default>
+                <label>Home Language Survey</label>
+            </value>
+            <value>
+                <fullName>Home School Prior Academic History Form</fullName>
+                <default>false</default>
+                <label>Home School Prior Academic History Form</label>
+            </value>
+            <value>
+                <fullName>IEP Exit Documentation</fullName>
+                <default>false</default>
+                <label>IEP Exit Documentation</label>
+            </value>
+            <value>
+                <fullName>Immunization Records</fullName>
+                <default>false</default>
+                <label>Immunization Records</label>
+            </value>
+            <value>
+                <fullName>Individualized Education Program (IEP)</fullName>
+                <default>false</default>
+                <label>Individualized Education Program (IEP)</label>
+            </value>
+            <value>
+                <fullName>Master Agreement</fullName>
+                <default>false</default>
+                <label>Master Agreement</label>
+            </value>
+            <value>
+                <fullName>Report of Health Examination for School Entry</fullName>
+                <default>false</default>
+                <label>Report of Health Examination for School Entry</label>
+            </value>
+            <value>
+                <fullName>School Handbook Section</fullName>
+                <default>false</default>
+                <label>School Handbook Section</label>
+            </value>
+            <value>
+                <fullName>State Eligibility</fullName>
+                <default>false</default>
+                <label>State Eligibility</label>
+            </value>
+            <value>
+                <fullName>State Test Scores</fullName>
+                <default>false</default>
+                <label>State Test Scores</label>
+            </value>
+            <value>
+                <fullName>Proof of Age</fullName>
+                <default>false</default>
+                <label>Proof of Age</label>
+            </value>
+            <value>
+                <fullName>IEP Document</fullName>
+                <default>false</default>
+                <label>IEP Document</label>
+            </value>
+            <value>
+                <fullName>Get Prepared for Enrollment</fullName>
+                <default>false</default>
+                <label>Get Prepared for Enrollment</label>
+            </value>
+            <value>
+                <fullName>Academic Records</fullName>
+                <default>false</default>
+                <label>Academic Records</label>
+            </value>
+            <value>
+                <fullName>Proof of Health Examination</fullName>
+                <default>false</default>
+                <label>Proof of Health Examination</label>
+            </value>
+            <value>
+                <fullName>504 Special Education doc</fullName>
+                <default>false</default>
+                <label>504 Special Education doc</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

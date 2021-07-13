@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EntranceAgeEligibilityFinal__c</fullName>
+    <description>This is the final value for the entrance age eligibility.</description>
+    <externalId>false</externalId>
+    <formula>IF(NOT(ISBLANK(TEXT(EntranceAgeEligibilityOverride__c))), TEXT(EntranceAgeEligibilityOverride__c),
+IF(ISPICKVAL(Enrollment_Type__c,&apos;Returning Student&apos;),&apos;&apos;,
+IF(TEXT(EntranceAgeEligibilitySystem__c)=&apos;Eligible&apos;, &apos;Eligible&apos;,
+IF(TEXT(EntranceAgeEligibilitySystem__c)=&apos;Too young&apos; || TEXT(EntranceAgeEligibilitySystem__c)=&apos;Too old&apos;, &apos;Ineligible&apos;,
+IF(TEXT(EntranceAgeEligibilitySystem__c)=&apos;Too young - other options&apos; || TEXT(EntranceAgeEligibilitySystem__c)=&apos;Too old - other options&apos;, &apos;Ineligible - Other options&apos;,
+IF(TEXT(EntranceAgeEligibilitySystem__c)=&apos;Pending - More Information Needed&apos;, &apos;Pending - More Information Needed&apos;,
+&apos;Pending Review&apos;))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Entrance Age Eligibility (Final)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

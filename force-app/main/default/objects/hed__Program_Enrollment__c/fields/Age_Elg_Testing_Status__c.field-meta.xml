@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_Elg_Testing_Status__c</fullName>
+    <description>Kindergarten Age Eligibility Testing Status</description>
+    <externalId>false</externalId>
+    <label>Age Elg Testing Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Allowed to enroll</fullName>
+                <default>false</default>
+                <label>Allowed to enroll</label>
+            </value>
+            <value>
+                <fullName>Caretaker requested an exception</fullName>
+                <default>false</default>
+                <label>Caretaker requested an exception</label>
+            </value>
+            <value>
+                <fullName>Ineligible</fullName>
+                <default>false</default>
+                <label>Ineligible</label>
+            </value>
+            <value>
+                <fullName>Provide information to the caretaker about testing</fullName>
+                <default>false</default>
+                <label>Provide information to the caretaker about testing</label>
+            </value>
+            <value>
+                <fullName>Testing in progress</fullName>
+                <default>false</default>
+                <label>Testing in progress</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

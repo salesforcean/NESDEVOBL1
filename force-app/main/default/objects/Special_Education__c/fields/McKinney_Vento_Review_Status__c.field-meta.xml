@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>McKinney_Vento_Review_Status__c</fullName>
+    <description>Status of McKinney Vento Review</description>
+    <externalId>false</externalId>
+    <label>McKinney Vento Review Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Placement Complete</fullName>
+                <default>false</default>
+                <label>Placement Complete</label>
+            </value>
+            <value>
+                <fullName>Ready for Placement</fullName>
+                <default>false</default>
+                <label>Ready for Placement</label>
+            </value>
+            <value>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+                <label>Reviewed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

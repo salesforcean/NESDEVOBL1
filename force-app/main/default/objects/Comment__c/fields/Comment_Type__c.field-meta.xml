@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Comment_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Comment Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Academic Performance Eligibility</fullName>
+                <default>false</default>
+                <label>Academic Performance Eligibility</label>
+            </value>
+            <value>
+                <fullName>Entrance Age Eligibility</fullName>
+                <default>false</default>
+                <label>Entrance Age Eligibility</label>
+            </value>
+            <value>
+                <fullName>Extra Documentation Needed</fullName>
+                <default>false</default>
+                <label>Extra Documentation Needed</label>
+            </value>
+            <value>
+                <fullName>FCC Notes</fullName>
+                <default>false</default>
+                <label>FCC Notes</label>
+            </value>
+            <value>
+                <fullName>General Comments/Notes</fullName>
+                <default>false</default>
+                <label>General Comments/Notes</label>
+            </value>
+            <value>
+                <fullName>Grade Level Eligibility</fullName>
+                <default>false</default>
+                <label>Grade Level Eligibility</label>
+            </value>
+            <value>
+                <fullName>Homeschool Membership Status Eligibility</fullName>
+                <default>false</default>
+                <label>Homeschool Membership Status Eligibility</label>
+            </value>
+            <value>
+                <fullName>Principal Withdrawal Notes</fullName>
+                <default>false</default>
+                <label>Principal Withdrawal Notes</label>
+            </value>
+            <value>
+                <fullName>Prior School Attendance Eligibility</fullName>
+                <default>false</default>
+                <label>Prior School Attendance Eligibility</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

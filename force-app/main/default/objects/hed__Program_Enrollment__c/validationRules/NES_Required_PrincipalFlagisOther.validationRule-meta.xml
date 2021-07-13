@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NES_Required_PrincipalFlagisOther</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+ AND(ISPICKVAL( PrincipalGeneralFlag__c ,&quot;Other&quot;), ISBLANK( PrincipalGeneralFlagDetail__c )),
+ AND(NOT(ISPICKVAL( PrincipalGeneralFlag__c ,&quot;Other&quot;)), NOT(ISBLANK( PrincipalGeneralFlagDetail__c ))))</errorConditionFormula>
+    <errorDisplayField>PrincipalGeneralFlagDetail__c</errorDisplayField>
+    <errorMessage>This field is required when Principal General Flag is &quot;Other&quot;</errorMessage>
+</ValidationRule>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Student_or_Household__c</columns>
+    <columns>Enrollment_Component__c</columns>
+    <columns>Criteria__c</columns>
+    <columns>External_Id__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>External_Id__c</field>
+        <operation>equals</operation>
+        <value>ITR:ALL2122:CC-43</value>
+    </filters>
+    <label>All</label>
+</ListView>

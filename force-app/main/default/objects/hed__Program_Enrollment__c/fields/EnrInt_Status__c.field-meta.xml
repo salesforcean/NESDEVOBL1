@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EnrInt_Status__c</fullName>
+    <description>Engagement Status</description>
+    <externalId>false</externalId>
+    <label>EnrInt Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Active</fullName>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>Deprioritized</fullName>
+                <default>false</default>
+                <label>Deprioritized</label>
+            </value>
+            <value>
+                <fullName>Exclude from export</fullName>
+                <default>false</default>
+                <label>Exclude from export</label>
+            </value>
+            <value>
+                <fullName>Non-Responsive</fullName>
+                <default>false</default>
+                <label>Non-Responsive</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TECCA_Start_Up_Student_504__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Student has the most current IEP/504 uploaded</description>
+    <externalId>false</externalId>
+    <label>TECCA Start Up Student 504</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

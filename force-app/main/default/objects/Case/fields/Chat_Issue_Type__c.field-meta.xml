@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Chat_Issue_Type__c</fullName>
+    <description>Used for Post Enrollment Chat.</description>
+    <externalId>false</externalId>
+    <label>Chat Issue Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>General Questions</fullName>
+                <default>false</default>
+                <label>General Questions</label>
+            </value>
+            <value>
+                <fullName>Contact Information Change</fullName>
+                <default>false</default>
+                <label>Contact Information Change</label>
+            </value>
+            <value>
+                <fullName>Grade Level Placement</fullName>
+                <default>false</default>
+                <label>Grade Level Placement</label>
+            </value>
+            <value>
+                <fullName>Enrollment Assistance</fullName>
+                <default>false</default>
+                <label>Enrollment Assistance</label>
+            </value>
+            <value>
+                <fullName>Technical Support</fullName>
+                <default>false</default>
+                <label>Technical Support</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

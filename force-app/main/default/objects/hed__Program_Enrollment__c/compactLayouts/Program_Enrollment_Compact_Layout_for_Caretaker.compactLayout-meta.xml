@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program_Enrollment_Compact_Layout_for_Caretaker</fullName>
+    <fields>hed__Contact__c</fields>
+    <fields>hed__Account__c</fields>
+    <label>Program Enrollment Compact Layout for Caretaker</label>
+</CompactLayout>

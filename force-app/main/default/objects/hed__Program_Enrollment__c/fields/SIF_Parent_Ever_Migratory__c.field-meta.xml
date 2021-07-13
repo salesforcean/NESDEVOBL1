@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIF_Parent_Ever_Migratory__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Did your family ever travel to look for work on a farm or do paid farm labor</description>
+    <externalId>false</externalId>
+    <label>SIF Parent Ever Migratory</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

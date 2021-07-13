@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course_Requested__c</fullName>
+    <description>Select the elective choice your student is interested in taking</description>
+    <externalId>false</externalId>
+    <label>Course Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Art</fullName>
+                <default>false</default>
+                <label>Art</label>
+            </value>
+            <value>
+                <fullName>Educational Technology and Online Learning</fullName>
+                <default>false</default>
+                <label>Educational Technology and Online Learning</label>
+            </value>
+            <value>
+                <fullName>Music</fullName>
+                <default>false</default>
+                <label>Music</label>
+            </value>
+            <value>
+                <fullName>Spanish</fullName>
+                <default>false</default>
+                <label>Spanish</label>
+            </value>
+            <value>
+                <fullName>Business Keyboarding</fullName>
+                <default>false</default>
+                <label>Business Keyboarding</label>
+            </value>
+            <value>
+                <fullName>Chinese</fullName>
+                <default>false</default>
+                <label>Chinese</label>
+            </value>
+            <value>
+                <fullName>Digital Arts</fullName>
+                <default>false</default>
+                <label>Digital Arts</label>
+            </value>
+            <value>
+                <fullName>Sign Language</fullName>
+                <default>false</default>
+                <label>Sign Language</label>
+            </value>
+            <value>
+                <fullName>Webquest</fullName>
+                <default>false</default>
+                <label>Webquest</label>
+            </value>
+            <value>
+                <fullName>Discovering Music I (3-5)</fullName>
+                <default>false</default>
+                <label>Discovering Music I (3-5)</label>
+            </value>
+            <value>
+                <fullName>Discovering Music II (3-5)</fullName>
+                <default>false</default>
+                <label>Discovering Music II (3-5)</label>
+            </value>
+            <value>
+                <fullName>Discovering Music III (3-5)</fullName>
+                <default>false</default>
+                <label>Discovering Music III (3-5)</label>
+            </value>
+            <value>
+                <fullName>Experiencing Music I (K-2)</fullName>
+                <default>false</default>
+                <label>Experiencing Music I (K-2)</label>
+            </value>
+            <value>
+                <fullName>Experiencing Music II (K-2)</fullName>
+                <default>false</default>
+                <label>Experiencing Music II (K-2)</label>
+            </value>
+            <value>
+                <fullName>Experiencing Music III (K-2)</fullName>
+                <default>false</default>
+                <label>Experiencing Music III (K-2)</label>
+            </value>
+            <value>
+                <fullName>Exploring Music I (6-8)</fullName>
+                <default>false</default>
+                <label>Exploring Music I (6-8)</label>
+            </value>
+            <value>
+                <fullName>Exploring Music II (6-8)</fullName>
+                <default>false</default>
+                <label>Exploring Music II (6-8)</label>
+            </value>
+            <value>
+                <fullName>Exploring Music III (6-8)</fullName>
+                <default>false</default>
+                <label>Exploring Music III (6-8)</label>
+            </value>
+            <value>
+                <fullName>No music course required</fullName>
+                <default>false</default>
+                <label>No music course required</label>
+            </value>
+            <value>
+                <fullName>Art History A</fullName>
+                <default>false</default>
+                <label>Art History A</label>
+            </value>
+            <value>
+                <fullName>Concepts of Engineering and Technology</fullName>
+                <default>false</default>
+                <label>Concepts of Engineering and Technology</label>
+            </value>
+            <value>
+                <fullName>Digital Photography I A</fullName>
+                <default>false</default>
+                <label>Digital Photography I A</label>
+            </value>
+            <value>
+                <fullName>Emergent Computer Technology</fullName>
+                <default>false</default>
+                <label>Emergent Computer Technology</label>
+            </value>
+            <value>
+                <fullName>French I A</fullName>
+                <default>false</default>
+                <label>French I A</label>
+            </value>
+            <value>
+                <fullName>French II A</fullName>
+                <default>false</default>
+                <label>French II A</label>
+            </value>
+            <value>
+                <fullName>French IV A</fullName>
+                <default>false</default>
+                <label>French IV A</label>
+            </value>
+            <value>
+                <fullName>Game Design I A</fullName>
+                <default>false</default>
+                <label>Game Design I A</label>
+            </value>
+            <value>
+                <fullName>German I A</fullName>
+                <default>false</default>
+                <label>German I A</label>
+            </value>
+            <value>
+                <fullName>German II A</fullName>
+                <default>false</default>
+                <label>German II A</label>
+            </value>
+            <value>
+                <fullName>Introduction to Graphic Design A</fullName>
+                <default>false</default>
+                <label>Introduction to Graphic Design A</label>
+            </value>
+            <value>
+                <fullName>Living Music I</fullName>
+                <default>false</default>
+                <label>Living Music I</label>
+            </value>
+            <value>
+                <fullName>Living Music II</fullName>
+                <default>false</default>
+                <label>Living Music II</label>
+            </value>
+            <value>
+                <fullName>Sign Language I A</fullName>
+                <default>false</default>
+                <label>Sign Language I A</label>
+            </value>
+            <value>
+                <fullName>Sign Language II A</fullName>
+                <default>false</default>
+                <label>Sign Language II A</label>
+            </value>
+            <value>
+                <fullName>Spanish I A</fullName>
+                <default>false</default>
+                <label>Spanish I A</label>
+            </value>
+            <value>
+                <fullName>Spanish II A</fullName>
+                <default>false</default>
+                <label>Spanish II A</label>
+            </value>
+            <value>
+                <fullName>Art History B</fullName>
+                <default>false</default>
+                <label>Art History B</label>
+            </value>
+            <value>
+                <fullName>Digital Photography I B</fullName>
+                <default>false</default>
+                <label>Digital Photography I B</label>
+            </value>
+            <value>
+                <fullName>French I B</fullName>
+                <default>false</default>
+                <label>French I B</label>
+            </value>
+            <value>
+                <fullName>French II B</fullName>
+                <default>false</default>
+                <label>French II B</label>
+            </value>
+            <value>
+                <fullName>French IV B</fullName>
+                <default>false</default>
+                <label>French IV B</label>
+            </value>
+            <value>
+                <fullName>Game Design I B</fullName>
+                <default>false</default>
+                <label>Game Design I B</label>
+            </value>
+            <value>
+                <fullName>German I B</fullName>
+                <default>false</default>
+                <label>German I B</label>
+            </value>
+            <value>
+                <fullName>German II B</fullName>
+                <default>false</default>
+                <label>German II B</label>
+            </value>
+            <value>
+                <fullName>Introduction to Graphic Design B</fullName>
+                <default>false</default>
+                <label>Introduction to Graphic Design B</label>
+            </value>
+            <value>
+                <fullName>Sign Language I B</fullName>
+                <default>false</default>
+                <label>Sign Language I B</label>
+            </value>
+            <value>
+                <fullName>Sign Language II B</fullName>
+                <default>false</default>
+                <label>Sign Language II B</label>
+            </value>
+            <value>
+                <fullName>Spanish I B</fullName>
+                <default>false</default>
+                <label>Spanish I B</label>
+            </value>
+            <value>
+                <fullName>Spanish II B</fullName>
+                <default>false</default>
+                <label>Spanish II B</label>
+            </value>
+            <value>
+                <fullName>Exploring Music 1</fullName>
+                <default>false</default>
+                <label>Exploring Music 1</label>
+            </value>
+            <value>
+                <fullName>Exploring Music 2</fullName>
+                <default>false</default>
+                <label>Exploring Music 2</label>
+            </value>
+            <value>
+                <fullName>Exploring Music 3</fullName>
+                <default>false</default>
+                <label>Exploring Music 3</label>
+            </value>
+            <value>
+                <fullName>Middle Spanish 1</fullName>
+                <default>false</default>
+                <label>Middle Spanish 1</label>
+            </value>
+            <value>
+                <fullName>Middle Spanish 2</fullName>
+                <default>false</default>
+                <label>Middle Spanish 2</label>
+            </value>
+            <value>
+                <fullName>Spanish I (high school course)</fullName>
+                <default>false</default>
+                <label>Spanish I (high school course)</label>
+            </value>
+            <value>
+                <fullName>Home Life</fullName>
+                <default>false</default>
+                <label>Home Life</label>
+            </value>
+            <value>
+                <fullName>Middle School Career Exploration</fullName>
+                <default>false</default>
+                <label>Middle School Career Exploration</label>
+            </value>
+            <value>
+                <fullName>Middle School Digital Art and Design</fullName>
+                <default>false</default>
+                <label>Middle School Digital Art and Design</label>
+            </value>
+            <value>
+                <fullName>Middle School Journalism</fullName>
+                <default>false</default>
+                <label>Middle School Journalism</label>
+            </value>
+            <value>
+                <fullName>Middle Sign Language</fullName>
+                <default>false</default>
+                <label>Middle Sign Language</label>
+            </value>
+            <value>
+                <fullName>Theater</fullName>
+                <default>false</default>
+                <label>Theater</label>
+            </value>
+            <value>
+                <fullName>No art course</fullName>
+                <default>false</default>
+                <label>No art course</label>
+            </value>
+            <value>
+                <fullName>Introduction to Computers and Applications (high school course)</fullName>
+                <default>false</default>
+                <label>Introduction to Computers and Applications (high school course)</label>
+            </value>
+            <value>
+                <fullName>No Educational Technology course</fullName>
+                <default>false</default>
+                <label>No Educational Technology course</label>
+            </value>
+            <value>
+                <fullName>Health, Fitness, and Nutrition and Physical Education (high school courses)</fullName>
+                <default>false</default>
+                <label>Health, Fitness, and Nutrition and Physical Education (high school courses)</label>
+            </value>
+            <value>
+                <fullName>Art (Grades K–8)</fullName>
+                <default>false</default>
+                <label>Art (Grades K–8)</label>
+            </value>
+            <value>
+                <fullName>Business Keyboarding (Grades 6–8)</fullName>
+                <default>false</default>
+                <label>Business Keyboarding (Grades 6–8)</label>
+            </value>
+            <value>
+                <fullName>Discovering Music I (Grades 3–5)</fullName>
+                <default>false</default>
+                <label>Discovering Music I (Grades 3–5)</label>
+            </value>
+            <value>
+                <fullName>Discovering Music II (Grades 4–5)</fullName>
+                <default>false</default>
+                <label>Discovering Music II (Grades 4–5)</label>
+            </value>
+            <value>
+                <fullName>Discovering Music III (Grades 3-5)</fullName>
+                <default>false</default>
+                <label>Discovering Music III (Grades 3-5)</label>
+            </value>
+            <value>
+                <fullName>Educational Technology and Online Learning (Grades K–8)</fullName>
+                <default>false</default>
+                <label>Educational Technology and Online Learning (Grades K–8)</label>
+            </value>
+            <value>
+                <fullName>Elementary Chinese I (Grades 3–5)</fullName>
+                <default>false</default>
+                <label>Elementary Chinese I (Grades 3–5)</label>
+            </value>
+            <value>
+                <fullName>Elementary Chinese II (Grades 3–5)</fullName>
+                <default>false</default>
+                <label>Elementary Chinese II (Grades 3–5)</label>
+            </value>
+            <value>
+                <fullName>Elementary Sign Language (Grades K–5)</fullName>
+                <default>false</default>
+                <label>Elementary Sign Language (Grades K–5)</label>
+            </value>
+            <value>
+                <fullName>Elementary Spanish I (Grades 3–5)</fullName>
+                <default>false</default>
+                <label>Elementary Spanish I (Grades 3–5)</label>
+            </value>
+            <value>
+                <fullName>Elementary Spanish II (Grades 3–5)</fullName>
+                <default>false</default>
+                <label>Elementary Spanish II (Grades 3–5)</label>
+            </value>
+            <value>
+                <fullName>Experiencing Music I (Grades K–2)</fullName>
+                <default>false</default>
+                <label>Experiencing Music I (Grades K–2)</label>
+            </value>
+            <value>
+                <fullName>Experiencing Music II (Grades K–2)</fullName>
+                <default>false</default>
+                <label>Experiencing Music II (Grades K–2)</label>
+            </value>
+            <value>
+                <fullName>Experiencing Music III (Grades K-2)</fullName>
+                <default>false</default>
+                <label>Experiencing Music III (Grades K-2)</label>
+            </value>
+            <value>
+                <fullName>Exploring Music I (Grades 6–8)</fullName>
+                <default>false</default>
+                <label>Exploring Music I (Grades 6–8)</label>
+            </value>
+            <value>
+                <fullName>Exploring Music II (Grades 7–8)</fullName>
+                <default>false</default>
+                <label>Exploring Music II (Grades 7–8)</label>
+            </value>
+            <value>
+                <fullName>Exploring Music III (Grades 6-8)</fullName>
+                <default>false</default>
+                <label>Exploring Music III (Grades 6-8)</label>
+            </value>
+            <value>
+                <fullName>Gifted and Talented Literature Study 2 (Grade 2)</fullName>
+                <default>false</default>
+                <label>Gifted and Talented Literature Study 2 (Grade 2)</label>
+            </value>
+            <value>
+                <fullName>Home Life (Grades K–8)</fullName>
+                <default>false</default>
+                <label>Home Life (Grades K–8)</label>
+            </value>
+            <value>
+                <fullName>Middle Chinese I (Grades 6–8)</fullName>
+                <default>false</default>
+                <label>Middle Chinese I (Grades 6–8)</label>
+            </value>
+            <value>
+                <fullName>Middle Chinese II (Grades 6-8)</fullName>
+                <default>false</default>
+                <label>Middle Chinese II (Grades 6-8)</label>
+            </value>
+            <value>
+                <fullName>Middle School Digital Art and Design (Grades 6–8)</fullName>
+                <default>false</default>
+                <label>Middle School Digital Art and Design (Grades 6–8)</label>
+            </value>
+            <value>
+                <fullName>Middle Sign Language (Grades 6–8)</fullName>
+                <default>false</default>
+                <label>Middle Sign Language (Grades 6–8)</label>
+            </value>
+            <value>
+                <fullName>Middle Spanish I (Grades 6–8)</fullName>
+                <default>false</default>
+                <label>Middle Spanish I (Grades 6–8)</label>
+            </value>
+            <value>
+                <fullName>Middle Spanish II (Grades 6–8)</fullName>
+                <default>false</default>
+                <label>Middle Spanish II (Grades 6–8)</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Physical Education (Grades K–8)</fullName>
+                <default>false</default>
+                <label>Physical Education (Grades K–8)</label>
+            </value>
+            <value>
+                <fullName>WebQuest (Grades K–8)</fullName>
+                <default>false</default>
+                <label>WebQuest (Grades K–8)</label>
+            </value>
+            <value>
+                <fullName>Middle School Digital Art and Design(Grades 6–8)</fullName>
+                <default>false</default>
+                <label>Middle School Digital Art and Design(Grades 6–8)</label>
+            </value>
+            <value>
+                <fullName>Algebra 1</fullName>
+                <default>false</default>
+                <label>Algebra 1</label>
+            </value>
+            <value>
+                <fullName>Algebra 2</fullName>
+                <default>false</default>
+                <label>Algebra 2</label>
+            </value>
+            <value>
+                <fullName>Calculus</fullName>
+                <default>false</default>
+                <label>Calculus</label>
+            </value>
+            <value>
+                <fullName>Geometry</fullName>
+                <default>false</default>
+                <label>Geometry</label>
+            </value>
+            <value>
+                <fullName>Math I</fullName>
+                <default>false</default>
+                <label>Math I</label>
+            </value>
+            <value>
+                <fullName>Math II</fullName>
+                <default>false</default>
+                <label>Math II</label>
+            </value>
+            <value>
+                <fullName>Math III</fullName>
+                <default>false</default>
+                <label>Math III</label>
+            </value>
+            <value>
+                <fullName>Other course</fullName>
+                <default>false</default>
+                <label>Other course</label>
+            </value>
+            <value>
+                <fullName>Pre-Algebra</fullName>
+                <default>false</default>
+                <label>Pre-Algebra</label>
+            </value>
+            <value>
+                <fullName>Precalculus</fullName>
+                <default>false</default>
+                <label>Precalculus</label>
+            </value>
+            <value>
+                <fullName>Secondary Math 1</fullName>
+                <default>false</default>
+                <label>Secondary Math 1</label>
+            </value>
+            <value>
+                <fullName>Secondary Math 2</fullName>
+                <default>false</default>
+                <label>Secondary Math 2</label>
+            </value>
+            <value>
+                <fullName>Secondary Math 3</fullName>
+                <default>false</default>
+                <label>Secondary Math 3</label>
+            </value>
+            <value>
+                <fullName>Statistics</fullName>
+                <default>false</default>
+                <label>Statistics</label>
+            </value>
+            <value>
+                <fullName>Middle School Career Exploration I</fullName>
+                <default>false</default>
+                <label>Middle School Career Exploration I</label>
+            </value>
+            <value>
+                <fullName>Middle Spanish</fullName>
+                <default>false</default>
+                <label>Middle Spanish</label>
+            </value>
+            <value>
+                <fullName>Biology</fullName>
+                <default>false</default>
+                <label>Biology</label>
+            </value>
+            <value>
+                <fullName>Chemistry</fullName>
+                <default>false</default>
+                <label>Chemistry</label>
+            </value>
+            <value>
+                <fullName>Earth Science</fullName>
+                <default>false</default>
+                <label>Earth Science</label>
+            </value>
+            <value>
+                <fullName>Physical Science</fullName>
+                <default>false</default>
+                <label>Physical Science</label>
+            </value>
+            <value>
+                <fullName>Physics</fullName>
+                <default>false</default>
+                <label>Physics</label>
+            </value>
+            <value>
+                <fullName>American Government</fullName>
+                <default>false</default>
+                <label>American Government</label>
+            </value>
+            <value>
+                <fullName>Economics</fullName>
+                <default>false</default>
+                <label>Economics</label>
+            </value>
+            <value>
+                <fullName>Geography</fullName>
+                <default>false</default>
+                <label>Geography</label>
+            </value>
+            <value>
+                <fullName>U.S. History</fullName>
+                <default>false</default>
+                <label>U.S. History</label>
+            </value>
+            <value>
+                <fullName>World History</fullName>
+                <default>false</default>
+                <label>World History</label>
+            </value>
+            <value>
+                <fullName>English</fullName>
+                <default>false</default>
+                <label>English</label>
+            </value>
+            <value>
+                <fullName>Business</fullName>
+                <default>false</default>
+                <label>Business</label>
+            </value>
+            <value>
+                <fullName>Computer Technology</fullName>
+                <default>false</default>
+                <label>Computer technology</label>
+            </value>
+            <value>
+                <fullName>French</fullName>
+                <default>false</default>
+                <label>French</label>
+            </value>
+            <value>
+                <fullName>German</fullName>
+                <default>false</default>
+                <label>German</label>
+            </value>
+            <value>
+                <fullName>Fine Arts</fullName>
+                <default>false</default>
+                <label>Fine Arts</label>
+            </value>
+            <value>
+                <fullName>Other foreign language</fullName>
+                <default>false</default>
+                <label>Other foreign language</label>
+            </value>
+            <value>
+                <fullName>Social studies elective</fullName>
+                <default>false</default>
+                <label>Social studies elective</label>
+            </value>
+            <value>
+                <fullName>Science elective</fullName>
+                <default>false</default>
+                <label>Science elective</label>
+            </value>
+            <value>
+                <fullName>Health/P.E</fullName>
+                <default>false</default>
+                <label>Health/P.E</label>
+            </value>
+            <value>
+                <fullName>Math</fullName>
+                <default>false</default>
+                <label>math</label>
+            </value>
+            <value>
+                <fullName>Science</fullName>
+                <default>false</default>
+                <label>Science</label>
+            </value>
+            <value>
+                <fullName>Social Studies</fullName>
+                <default>false</default>
+                <label>Social Studies</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

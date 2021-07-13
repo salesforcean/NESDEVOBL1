@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>How_State_Verified__c</fullName>
+    <description>How was student State Verified</description>
+    <externalId>false</externalId>
+    <label>How State Verified</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Appleton Resident-WI</fullName>
+                <default>false</default>
+                <label>Appleton Resident-WI</label>
+            </value>
+            <value>
+                <fullName>Attended public school in 03-04 for at least 35 school days</fullName>
+                <default>false</default>
+                <label>Attended public school in 03-04 for at least 35 school days</label>
+            </value>
+            <value>
+                <fullName>AZ-20%-Homeschool Eligible</fullName>
+                <default>false</default>
+                <label>AZ-20%-Homeschool Eligible</label>
+            </value>
+            <value>
+                <fullName>AZ-In-State Report Card Verified</fullName>
+                <default>false</default>
+                <label>AZ-In-State Report Card Verified</label>
+            </value>
+            <value>
+                <fullName>AZ-K-Sibling</fullName>
+                <default>false</default>
+                <label>AZ-K-Sibling</label>
+            </value>
+            <value>
+                <fullName>AZ-Out of State Report Card Verified</fullName>
+                <default>false</default>
+                <label>AZ-Out of State Report Card Verified</label>
+            </value>
+            <value>
+                <fullName>AZ-Returning CA Student</fullName>
+                <default>false</default>
+                <label>AZ-Returning CA Student</label>
+            </value>
+            <value>
+                <fullName>AZ-SAIS Verified</fullName>
+                <default>false</default>
+                <label>AZ-SAIS Verified</label>
+            </value>
+            <value>
+                <fullName>AZ-Waiting</fullName>
+                <default>false</default>
+                <label>AZ-Waiting</label>
+            </value>
+            <value>
+                <fullName>California-Zip Code</fullName>
+                <default>false</default>
+                <label>California-Zip Code</label>
+            </value>
+            <value>
+                <fullName>DCA-Parent (Report Card) and District Verified</fullName>
+                <default>false</default>
+                <label>DCA-Parent (Report Card) and District Verified</label>
+            </value>
+            <value>
+                <fullName>DCA-Report Card- Parent Verified</fullName>
+                <default>false</default>
+                <label>DCA-Report Card- Parent Verified</label>
+            </value>
+            <value>
+                <fullName>DCA-Scholarship</fullName>
+                <default>false</default>
+                <label>DCA-Scholarship</label>
+            </value>
+            <value>
+                <fullName>District Resident-CO</fullName>
+                <default>false</default>
+                <label>District Resident-CO</label>
+            </value>
+            <value>
+                <fullName>Exempt</fullName>
+                <default>false</default>
+                <label>Exempt</label>
+            </value>
+            <value>
+                <fullName>Exempt K-1</fullName>
+                <default>false</default>
+                <label>Exempt K-1</label>
+            </value>
+            <value>
+                <fullName>IN-Verified ADM</fullName>
+                <default>false</default>
+                <label>IN-Verified ADM</label>
+            </value>
+            <value>
+                <fullName>IN-Verified Private/Home School</fullName>
+                <default>false</default>
+                <label>IN-Verified Private/Home School</label>
+            </value>
+            <value>
+                <fullName>Littleton Student</fullName>
+                <default>false</default>
+                <label>Littleton Student</label>
+            </value>
+            <value>
+                <fullName>McKinney-Vento Exempt</fullName>
+                <default>false</default>
+                <label>McKinney-Vento Exempt</label>
+            </value>
+            <value>
+                <fullName>OH-Age</fullName>
+                <default>false</default>
+                <label>OH-Age</label>
+            </value>
+            <value>
+                <fullName>OH-Home School</fullName>
+                <default>false</default>
+                <label>OH-Home School</label>
+            </value>
+            <value>
+                <fullName>OH-Residency</fullName>
+                <default>false</default>
+                <label>OH-Residency</label>
+            </value>
+            <value>
+                <fullName>OH-State Test Scores</fullName>
+                <default>false</default>
+                <label>OH-State Test Scores</label>
+            </value>
+            <value>
+                <fullName>OH-State Test Scores from previous year</fullName>
+                <default>false</default>
+                <label>OH-State Test Scores from previous year</label>
+            </value>
+            <value>
+                <fullName>Online Student-CO</fullName>
+                <default>false</default>
+                <label>Online Student-CO</label>
+            </value>
+            <value>
+                <fullName>Open Enrollment Form Submitted-WI</fullName>
+                <default>false</default>
+                <label>Open Enrollment Form Submitted-WI</label>
+            </value>
+            <value>
+                <fullName>Out of State-CO</fullName>
+                <default>false</default>
+                <label>Out of State-CO</label>
+            </value>
+            <value>
+                <fullName>Phone Verification to school</fullName>
+                <default>false</default>
+                <label>Phone Verification to school</label>
+            </value>
+            <value>
+                <fullName>Proof of Residency</fullName>
+                <default>false</default>
+                <label>Proof of Residency</label>
+            </value>
+            <value>
+                <fullName>Sibling</fullName>
+                <default>false</default>
+                <label>Sibling</label>
+            </value>
+            <value>
+                <fullName>Sibling in other Virtual School</fullName>
+                <default>false</default>
+                <label>Sibling in other Virtual School</label>
+            </value>
+            <value>
+                <fullName>State Verified</fullName>
+                <default>false</default>
+                <label>State Verified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

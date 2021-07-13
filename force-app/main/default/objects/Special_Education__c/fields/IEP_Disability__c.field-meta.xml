@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IEP_Disability__c</fullName>
+    <description>Identification of the student&apos;s disabilities.</description>
+    <externalId>false</externalId>
+    <label>IEP Disability</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Allergies</fullName>
+                <default>false</default>
+                <label>Allergies</label>
+            </value>
+            <value>
+                <fullName>Asperger&apos;s syndrome</fullName>
+                <default>false</default>
+                <label>Asperger&apos;s syndrome</label>
+            </value>
+            <value>
+                <fullName>Attention deficit disorder (ADD or ADHD)</fullName>
+                <default>false</default>
+                <label>Attention deficit disorder (ADD or ADHD)</label>
+            </value>
+            <value>
+                <fullName>Autism spectrum disorder</fullName>
+                <default>false</default>
+                <label>Autism spectrum disorder</label>
+            </value>
+            <value>
+                <fullName>Emotional issues</fullName>
+                <default>false</default>
+                <label>Emotional issues</label>
+            </value>
+            <value>
+                <fullName>Gifted</fullName>
+                <default>false</default>
+                <label>Gifted</label>
+            </value>
+            <value>
+                <fullName>Hard of hearing/deaf</fullName>
+                <default>false</default>
+                <label>Hard of hearing/deaf</label>
+            </value>
+            <value>
+                <fullName>Intellectual disability (cognitive impairment)</fullName>
+                <default>false</default>
+                <label>Intellectual disability (cognitive impairment)</label>
+            </value>
+            <value>
+                <fullName>Other health issues</fullName>
+                <default>false</default>
+                <label>Other health issues</label>
+            </value>
+            <value>
+                <fullName>Physical disability</fullName>
+                <default>false</default>
+                <label>Physical disability</label>
+            </value>
+            <value>
+                <fullName>Specific learning disability</fullName>
+                <default>false</default>
+                <label>Specific learning disability</label>
+            </value>
+            <value>
+                <fullName>Speech/language issues</fullName>
+                <default>false</default>
+                <label>Speech/language issues</label>
+            </value>
+            <value>
+                <fullName>Visually impaired/blind</fullName>
+                <default>false</default>
+                <label>Visually impaired/blind</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Unsure</fullName>
+                <default>false</default>
+                <label>Unsure</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

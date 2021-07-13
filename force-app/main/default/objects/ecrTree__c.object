@@ -154,111 +154,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>ecCount__c</fullName>
-        <description>Total no of ECs in the tree</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Total no of ECs in the tree</inlineHelpText>
-        <label>ecCount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ecTreeHeight__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Height of the tree</inlineHelpText>
-        <label>ecTreeHeight</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ecTypes__c</fullName>
-        <description>Types of ECs in the tree, ex: Stage, Process, Form, etc...</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <inlineHelpText>Types of ECs in the tree, ex: Stage, Process, Form, etc...</inlineHelpText>
-        <label>ecTypes</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>isActive__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>isActive</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>parentID__c</fullName>
-        <description>Holds the SFDC ID of the parent record</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>parentID</label>
-        <length>30</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>payload__c</fullName>
-        <description>Holds the JSON format of Academic Program Enrollment Component Tree</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>payload</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>type__c</fullName>
-        <description>Helps identify type of Parent, if its a SUBTREE OR a complete TREE
-Ex: Stage, Process, Form etc....</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>type</label>
-        <length>30</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>version__c</fullName>
-        <description>Version number to track changes to the JSON</description>
-        <externalId>false</externalId>
-        <label>version</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
     <label>ecrTree</label>
-    <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>ECRT-{00000}</displayFormat>
         <label>rootNode ID</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>ecrTree</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <startsWith>Vowel</startsWith>
     <visibility>Public</visibility>

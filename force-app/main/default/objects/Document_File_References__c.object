@@ -153,107 +153,7 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <fields>
-        <fullName>Date_Uploaded__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Date Uploaded</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Document_Link__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Document Link</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Document_Type__c</fullName>
-        <externalId>false</externalId>
-        <formula>text(Enrollment_Document__r.Type__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Document Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Enrollment_Document__c</fullName>
-        <externalId>false</externalId>
-        <label>Enrollment Document</label>
-        <referenceTo>Enrollment_Document__c</referenceTo>
-        <relationshipLabel>Document File References</relationshipLabel>
-        <relationshipName>Document_File_References</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>true</reparentableMasterDetail>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>File_Path__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>File Path</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>V2_External_Id__c</fullName>
-        <description>v2 integration id</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>true</externalId>
-        <label>V2 External Id</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Version__c</fullName>
-        <defaultValue>1</defaultValue>
-        <externalId>false</externalId>
-        <label>Version</label>
-        <precision>2</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
     <label>Document File References</label>
-    <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>New_list</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>File_Path__c</columns>
-        <columns>Date_Uploaded__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>New List</label>
-    </listViews>
     <nameField>
         <displayFormat>DFR-{0000}</displayFormat>
         <label>Name</label>
@@ -261,7 +161,7 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Document File References</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts></searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CaseQueueName__c</fullName>
+    <description>US #168730 - When the OwnerId is blank on the Ticket, this field captures the Queue Name otherwise this field captures the User&apos;s FirstName and LastName.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+ISBLANK(Owner:User.Id),
+Owner:Queue.QueueName,
+Owner:User.FirstName &amp; &quot; &quot; &amp; Owner:User.LastName
+)</formula>
+    <label>CaseQueueName</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

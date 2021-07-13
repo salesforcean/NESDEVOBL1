@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FL_Personal_Learning_Scholarship__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the student received a Personal Learning Scholarship Account (excluding a McKay Scholarship)</description>
+    <externalId>false</externalId>
+    <label>FL Personal Learning Scholarship</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

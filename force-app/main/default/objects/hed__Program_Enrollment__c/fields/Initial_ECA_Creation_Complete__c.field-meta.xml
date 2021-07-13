@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initial_ECA_Creation_Complete__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used by the new student creation process to allow the creation of all the ECAs to be async.  When the Caretaker creates the student this will be false.  An async job that creates the ECAs will mark check this when it completes.</description>
+    <externalId>false</externalId>
+    <label>Initial ECA Creation Complete</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

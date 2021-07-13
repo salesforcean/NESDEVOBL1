@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Household_Compact_Layout</fullName>
+    <fields>hed__Primary_Contact__c</fields>
+    <fields>Household_Pin__c</fields>
+    <fields>Phone</fields>
+    <label>Account Household Compact Layout</label>
+</CompactLayout>

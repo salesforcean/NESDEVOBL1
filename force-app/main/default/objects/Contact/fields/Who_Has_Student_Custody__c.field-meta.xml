@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Who_Has_Student_Custody__c</fullName>
+    <description>How custody is determined</description>
+    <externalId>false</externalId>
+    <label>Who Has Student Custody</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Biological/adoptive parent(s) as identified on the birth certificate</fullName>
+                <default>false</default>
+                <label>Biological/adoptive parent(s) as identified on the birth certificate</label>
+            </value>
+            <value>
+                <fullName>Biological/adoptive parent(s) with legal custody (custody decided by court)</fullName>
+                <default>false</default>
+                <label>Biological/adoptive parent(s) with legal custody (custody decided by court)</label>
+            </value>
+            <value>
+                <fullName>Caretaker with legal guardianship</fullName>
+                <default>false</default>
+                <label>Caretaker with legal guardianship</label>
+            </value>
+            <value>
+                <fullName>Caretaker without legal guardianship</fullName>
+                <default>false</default>
+                <label>Caretaker without legal guardianship</label>
+            </value>
+            <value>
+                <fullName>Emancipated or student is 18 or older</fullName>
+                <default>false</default>
+                <label>Emancipated or student is 18 or older</label>
+            </value>
+            <value>
+                <fullName>Ward of the court</fullName>
+                <default>false</default>
+                <label>Ward of the court</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

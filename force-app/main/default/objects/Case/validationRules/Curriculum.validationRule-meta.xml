@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Curriculum</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(AND(ISPICKVAL(Type, &quot;Curriculum&quot;),CS_SkipProfiles__c =&apos;N&apos;), OR(ISBLANK(Course_Name__c),ISBLANK(Course_ID__c),
+ISBLANK(Unit__c),ISBLANK(Lesson_Assessment_Name__c),ISBLANK(Slide__c),ISBLANK(Full_URL__c),ISBLANK(Steps_to_recreate__c),
+ISBLANK( TEXT(Browsers__c))), null)</errorConditionFormula>
+    <errorMessage>Please enter field values of Actions already taken to resolve, Steps to recreate, Full Course URL, Slide, Lesson/Assessment Name, Unit, Course ID, Course Name and Browsers.</errorMessage>
+</ValidationRule>

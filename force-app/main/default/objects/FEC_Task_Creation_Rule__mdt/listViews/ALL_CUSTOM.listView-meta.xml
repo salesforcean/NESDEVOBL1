@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ALL_CUSTOM</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Order__c</columns>
+    <columns>thresholdPercent__c</columns>
+    <columns>lowerLimitInDays__c</columns>
+    <columns>upperLimitInDays__c</columns>
+    <columns>taskTypeDefault__c</columns>
+    <columns>taskSubTypeDefault__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>ALL_CUSTOM</label>
+</ListView>

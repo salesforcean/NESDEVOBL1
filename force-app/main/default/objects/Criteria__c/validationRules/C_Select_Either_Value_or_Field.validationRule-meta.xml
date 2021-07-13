@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>C_Select_Either_Value_or_Field</fullName>
+    <active>true</active>
+    <description>To ensure that both value and field are not set at the same time.</description>
+    <errorConditionFormula>AND( NOT( ISBLANK( Comparison_Field__c ) ) ,  NOT( ISBLANK( Comparison_Value__c ) )  )</errorConditionFormula>
+    <errorMessage>A Comparison Field and Comparison Value cannot be set at the same time. Please choose one.</errorMessage>
+</ValidationRule>

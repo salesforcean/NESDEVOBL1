@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UserTechFlag_SummerSchool__c</fullName>
+    <description>Student is attending summer school and should have materials for fall semester withheld from being shipped</description>
+    <externalId>false</externalId>
+    <label>User Tech Flag Summer School</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Values to be added</fullName>
+                <default>false</default>
+                <label>Values to be added</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

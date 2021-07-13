@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CL_Statement_Integrity_LA_Test__c</fullName>
+    <description>Statement of Academic Integrity (Language Arts)</description>
+    <externalId>false</externalId>
+    <label>CL Statement Integrity LA Test</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>I confirm that the student completed the Language Arts Assessment independently, that answers are his/her own, and that he/she did not receive any assistance when responding.</fullName>
+                <default>false</default>
+                <label>I confirm that the student completed the Language Arts Assessment independently, that answers are his/her own, and that he/she did not receive any assistance when responding.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

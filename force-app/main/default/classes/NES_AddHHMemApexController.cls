@@ -30,7 +30,10 @@ public without sharing class NES_AddHHMemApexController {
         
         User cUsr = [Select Id, ContactId, Contact.AccountId from User where Id =: UserInfo.getUserId() limit 1];        
         //List <Contact> cntcList = [Select Id, RecordType.Name from Contact where Id !=: cUsr.ContactId and accountId =: cUsr.Contact.AccountId and Firstname =: member.fName and LastName =: member.lName and Email =: member.email]; DEFECT 446508 - Commented and corrected below- DK  
-         List <Contact> cntcList = [Select Id, RecordType.Name from Contact where accountId =: cUsr.Contact.AccountId and Firstname =: member.fName and LastName =: member.lName and Email =: member.email];
+          string finalFirstName = member.fname.trim();
+          string finalLastName = member.lname.trim();
+          string finalEmail = member.email.trim();
+          List <Contact> cntcList = [Select Id, RecordType.Name from Contact where accountId =: cUsr.Contact.AccountId and Firstname =: finalFirstName  and LastName =: finalLastName and Email =:finalEmail];
         if(cntcList != null && cntcList.size() >0){
             respMap.put('status', 'ExistingContact');
             respMap.put('recordType', cntcList[0].RecordType.Name);
@@ -61,7 +64,7 @@ public without sharing class NES_AddHHMemApexController {
                          if(hhTypeVal == 'Learning_Coach'){
                              memberRTDeveloperName =  'Learning_Coach';
                              //v2Role = 'Parent or Legal Guardian';  DEFECT 446510 - Commented and corrected below- DK
-                             	v2Role = 'Learning Coach';
+                                v2Role = 'Learning Coach';
                          }
                          else if (hhTypeVal == 'Caretaker_Parent'){
                              memberRTDeveloperName =  'Caretaker';

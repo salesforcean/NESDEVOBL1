@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Type_Validation</fullName>
+    <active>true</active>
+    <description>Validates if the applicable issue type is selected</description>
+    <errorConditionFormula>OR(AND(RecordType.DeveloperName = &apos;Returns_Fulfillment&apos; , NOT(OR(ISPICKVAL(Type, &apos;Returns&apos;),ISPICKVAL(Type, &apos;Fulfillment&apos;) ))), AND(RecordType.DeveloperName = &apos;FEC_Support&apos; , NOT(OR(ISPICKVAL(Type, &apos;General Questions&apos;),ISPICKVAL(Type, &apos;Enrollment Assistance&apos;),ISPICKVAL(Type, &apos;Grade Level Placement&apos;),ISPICKVAL(Type, &apos;Contact Information Change&apos;)))), AND( OR(RecordType.DeveloperName = &apos;School_Tech_Support&apos;,RecordType.DeveloperName = &apos;Student_Tech_Support&apos;) , NOT(ISPICKVAL(Type, &apos;Technical Support&apos;))),AND(RecordType.DeveloperName = &apos;School_Support&apos; , NOT(ISPICKVAL(Type, &apos;General Questions&apos;))))</errorConditionFormula>
+    <errorDisplayField>Type</errorDisplayField>
+    <errorMessage>Please select Valid Issue Type.</errorMessage>
+</ValidationRule>

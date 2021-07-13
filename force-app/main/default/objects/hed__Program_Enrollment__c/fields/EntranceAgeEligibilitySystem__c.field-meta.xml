@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EntranceAgeEligibilitySystem__c</fullName>
+    <description>This field will be set from code and not set by a user. If a user wants to override this value they will update the Entrance Age Eligibility Override. There will be a formula that will mash these together to give us the final Value.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field will be set from code and not set by a user.</inlineHelpText>
+    <label>Entrance Age Eligibility (System)</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Eligible</fullName>
+                <default>false</default>
+                <label>Eligible</label>
+            </value>
+            <value>
+                <fullName>NOT ELIGIBLE-No Birthdate</fullName>
+                <default>false</default>
+                <label>NOT ELIGIBLE-No Birthdate</label>
+            </value>
+            <value>
+                <fullName>Too young</fullName>
+                <default>false</default>
+                <label>Too young</label>
+            </value>
+            <value>
+                <fullName>Too old</fullName>
+                <default>false</default>
+                <label>Too old</label>
+            </value>
+            <value>
+                <fullName>Too young - other options</fullName>
+                <default>false</default>
+                <label>Too young - other options</label>
+            </value>
+            <value>
+                <fullName>Possibly too old</fullName>
+                <default>false</default>
+                <label>Possibly too old</label>
+            </value>
+            <value>
+                <fullName>Too old - other options</fullName>
+                <default>false</default>
+                <label>Too old - other options</label>
+            </value>
+            <value>
+                <fullName>Pending - More Information Needed</fullName>
+                <default>false</default>
+                <label>Pending - More Information Needed</label>
+            </value>
+            <value>
+                <fullName>Ineligible</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ineligible</label>
+            </value>
+            <value>
+                <fullName>Pending Review</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pending Review</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

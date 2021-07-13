@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ticket_Originated_Validation</fullName>
+    <active>true</active>
+    <description>Validation Rule for Required Ticket Originate When the case is going to Close.</description>
+    <errorConditionFormula>AND( ISPICKVAL(Status,&quot;Closed&quot;),(ISBLANK(TEXT(System_of_Origin__c))))</errorConditionFormula>
+    <errorMessage>Please select a value in System of Origin.</errorMessage>
+</ValidationRule>

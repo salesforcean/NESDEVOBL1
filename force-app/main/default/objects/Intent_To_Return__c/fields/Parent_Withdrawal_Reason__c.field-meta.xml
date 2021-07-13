@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Withdrawal_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Parent Withdrawal Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Enrollment was intended to be short term and is no longer needed for my student</fullName>
+                <default>false</default>
+                <label>Enrollment was intended to be short term and is no longer needed for my student</label>
+            </value>
+            <value>
+                <fullName>Generally dissatisfied with curriculum/course options</fullName>
+                <default>false</default>
+                <label>Generally dissatisfied with curriculum/course options</label>
+            </value>
+            <value>
+                <fullName>My student is pursuing a GED</fullName>
+                <default>false</default>
+                <label>My student is pursuing a GED</label>
+            </value>
+            <value>
+                <fullName>My student wants to return to a traditional school setting for other (non-socialization related) reasons</fullName>
+                <default>false</default>
+                <label>My student wants to return to a traditional school setting for other (non-socialization related) reasons</label>
+            </value>
+            <value>
+                <fullName>My student wants to return to a traditional school setting for socialization reasons</fullName>
+                <default>false</default>
+                <label>My student wants to return to a traditional school setting for socialization reasons</label>
+            </value>
+            <value>
+                <fullName>Technical difficulties</fullName>
+                <default>false</default>
+                <label>Technical difficulties</label>
+            </value>
+            <value>
+                <fullName>The curriculum is too easy</fullName>
+                <default>false</default>
+                <label>The curriculum is too easy</label>
+            </value>
+            <value>
+                <fullName>The curriculum is too hard</fullName>
+                <default>false</default>
+                <label>The curriculum is too hard</label>
+            </value>
+            <value>
+                <fullName>The program takes too much of the Learning Coach’s time</fullName>
+                <default>false</default>
+                <label>The program takes too much of the Learning Coach’s time</label>
+            </value>
+            <value>
+                <fullName>The program takes too much of the student’s time</fullName>
+                <default>false</default>
+                <label>The program takes too much of the student’s time</label>
+            </value>
+            <value>
+                <fullName>The program/schedule is not flexible enough</fullName>
+                <default>false</default>
+                <label>The program/schedule is not flexible enough</label>
+            </value>
+            <value>
+                <fullName>The transition to a virtual school was too difficult</fullName>
+                <default>false</default>
+                <label>The transition to a virtual school was too difficult</label>
+            </value>
+            <value>
+                <fullName>There was not enough help/guidance setting us up in the school</fullName>
+                <default>false</default>
+                <label>There was not enough help/guidance setting us up in the school</label>
+            </value>
+            <value>
+                <fullName>We are moving</fullName>
+                <default>false</default>
+                <label>We are moving</label>
+            </value>
+            <value>
+                <fullName>We are no longer able to provide a Learning Coach to assist our student</fullName>
+                <default>false</default>
+                <label>We are no longer able to provide a Learning Coach to assist our student</label>
+            </value>
+            <value>
+                <fullName>We are not satisfied with our student’s teachers</fullName>
+                <default>false</default>
+                <label>We are not satisfied with our student’s teachers</label>
+            </value>
+            <value>
+                <fullName>We are not satisfied with the school leadership</fullName>
+                <default>false</default>
+                <label>We are not satisfied with the school leadership</label>
+            </value>
+            <value>
+                <fullName>We have chosen to homeschool</fullName>
+                <default>false</default>
+                <label>We have chosen to homeschool</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

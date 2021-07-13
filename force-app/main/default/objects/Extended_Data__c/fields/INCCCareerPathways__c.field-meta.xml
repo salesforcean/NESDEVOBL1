@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INCCCareerPathways__c</fullName>
+    <description>Indiana Connections Career Academy offers coursework and educational activities in five career areas. Which career area is the student interested in</description>
+    <externalId>false</externalId>
+    <label>INCCCareerPathways</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Arts, A/V, and Communication</fullName>
+                <default>false</default>
+                <label>Arts, A/V, and Communication</label>
+            </value>
+            <value>
+                <fullName>Health Science</fullName>
+                <default>false</default>
+                <label>Health Science</label>
+            </value>
+            <value>
+                <fullName>Hospitality and Human Services</fullName>
+                <default>false</default>
+                <label>Hospitality and Human Services</label>
+            </value>
+            <value>
+                <fullName>Information Technology</fullName>
+                <default>false</default>
+                <label>Information Technology</label>
+            </value>
+            <value>
+                <fullName>Manufacturing</fullName>
+                <default>false</default>
+                <label>Manufacturing</label>
+            </value>
+            <value>
+                <fullName>Undecided</fullName>
+                <default>false</default>
+                <label>Undecided</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

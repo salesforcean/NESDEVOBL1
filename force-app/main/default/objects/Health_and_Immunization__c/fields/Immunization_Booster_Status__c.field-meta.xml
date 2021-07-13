@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Immunization_Booster_Status__c</fullName>
+    <description>Immunization Booster Status</description>
+    <externalId>false</externalId>
+    <label>Immunization Booster Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Extension Approved by Principal</fullName>
+                <default>false</default>
+                <label>Extension Approved by Principal</label>
+            </value>
+            <value>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+                <label>Incomplete</label>
+            </value>
+            <value>
+                <fullName>Incomplete - Missing 2nd MCV</fullName>
+                <default>false</default>
+                <label>Incomplete - Missing 2nd MCV</label>
+            </value>
+            <value>
+                <fullName>Incomplete Exemption</fullName>
+                <default>false</default>
+                <label>Incomplete Exemption</label>
+            </value>
+            <value>
+                <fullName>Incomplete Missing MCV</fullName>
+                <default>false</default>
+                <label>Incomplete Missing MCV</label>
+            </value>
+            <value>
+                <fullName>Incomplete Missing Tdap</fullName>
+                <default>false</default>
+                <label>Incomplete Missing Tdap</label>
+            </value>
+            <value>
+                <fullName>Invalid</fullName>
+                <default>false</default>
+                <label>Invalid</label>
+            </value>
+            <value>
+                <fullName>Invalid Form</fullName>
+                <default>false</default>
+                <label>Invalid Form</label>
+            </value>
+            <value>
+                <fullName>Medical Exemption</fullName>
+                <default>false</default>
+                <label>Medical Exemption</label>
+            </value>
+            <value>
+                <fullName>Non-compliant Allow</fullName>
+                <default>false</default>
+                <label>Non-compliant Allow</label>
+            </value>
+            <value>
+                <fullName>ORCA Exempt - VEC Required</fullName>
+                <default>false</default>
+                <label>ORCA Exempt - VEC Required</label>
+            </value>
+            <value>
+                <fullName>ORCA Exempt - VEC Verified</fullName>
+                <default>false</default>
+                <label>ORCA Exempt - VEC Verified</label>
+            </value>
+            <value>
+                <fullName>Pending- IA Review</fullName>
+                <default>false</default>
+                <label>Pending- IA Review</label>
+            </value>
+            <value>
+                <fullName>Personal Exemption</fullName>
+                <default>false</default>
+                <label>Personal Exemption</label>
+            </value>
+            <value>
+                <fullName>Religious Exemption</fullName>
+                <default>false</default>
+                <label>Religious Exemption</label>
+            </value>
+            <value>
+                <fullName>Updated Exemption Required</fullName>
+                <default>false</default>
+                <label>Updated Exemption Required</label>
+            </value>
+            <value>
+                <fullName>Verified</fullName>
+                <default>false</default>
+                <label>Verified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

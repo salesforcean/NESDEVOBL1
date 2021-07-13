@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Process_Academic_Program__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The academic program associated with the component. This is exclusively used by components with a record type of Process to create a relationship between the account entity and it&apos;s required components. As the child components of the process could be used by multiple processes, there is not a direct relationship between them and a specific academic program and those relationships are inferred from their parent process.</description>
+    <externalId>false</externalId>
+    <label>Academic Program</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Account.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Academic Program</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Enrollment Components (Academic Program)</relationshipLabel>
+    <relationshipName>Enrollment_Components</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

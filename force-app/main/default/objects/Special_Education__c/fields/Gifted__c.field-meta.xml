@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gifted__c</fullName>
+    <description>Identifies gifted students</description>
+    <externalId>false</externalId>
+    <label>Gifted</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Documenting</fullName>
+                <default>false</default>
+                <label>Documenting</label>
+            </value>
+            <value>
+                <fullName>Gifted Allow</fullName>
+                <default>false</default>
+                <label>Gifted Allow</label>
+            </value>
+            <value>
+                <fullName>Gifted Allow Continue</fullName>
+                <default>false</default>
+                <label>Gifted Allow Continue</label>
+            </value>
+            <value>
+                <fullName>Gifted Connections Academy Identification</fullName>
+                <default>false</default>
+                <label>Gifted Connections Academy Identification</label>
+            </value>
+            <value>
+                <fullName>Gifted EP - FL</fullName>
+                <default>false</default>
+                <label>Gifted EP - FL</label>
+            </value>
+            <value>
+                <fullName>Gifted IEP</fullName>
+                <default>false</default>
+                <label>Gifted IEP</label>
+            </value>
+            <value>
+                <fullName>Gifted Local School Identification</fullName>
+                <default>false</default>
+                <label>Gifted Local School Identification</label>
+            </value>
+            <value>
+                <fullName>Gifted No Gifted Courses</fullName>
+                <default>false</default>
+                <label>Gifted No Gifted Courses</label>
+            </value>
+            <value>
+                <fullName>Gifted Potential</fullName>
+                <default>false</default>
+                <label>Gifted Potential</label>
+            </value>
+            <value>
+                <fullName>Ineligible</fullName>
+                <default>false</default>
+                <label>Ineligible</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

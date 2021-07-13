@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HLS_Speak_Understand_NE_YN__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Does your child speak or understand a language other than English</description>
+    <externalId>false</externalId>
+    <label>HLS Speak Understand NE YN</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

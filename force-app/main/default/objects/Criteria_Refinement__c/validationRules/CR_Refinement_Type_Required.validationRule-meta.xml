@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CR_Refinement_Type_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL( Refinement_Type__c ,&apos;&apos;), NOT( ISBLANK( Refinement_Value__c ) ) )</errorConditionFormula>
+    <errorDisplayField>Refinement_Type__c</errorDisplayField>
+    <errorMessage>A refinement type must be defined for a Criteria Refinement</errorMessage>
+</ValidationRule>

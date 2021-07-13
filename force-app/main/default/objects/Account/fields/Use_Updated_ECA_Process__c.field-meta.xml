@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_Updated_ECA_Process__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Created by Mark Membrino while rewriting the ECA processing.</description>
+    <externalId>false</externalId>
+    <label>Use Updated ECA Process</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

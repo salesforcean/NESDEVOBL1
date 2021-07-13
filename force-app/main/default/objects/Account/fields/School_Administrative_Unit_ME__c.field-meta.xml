@@ -1,0 +1,1286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School_Administrative_Unit_ME__c</fullName>
+    <description>The School Administrative Unit the household is in. (Maine ONLY)</description>
+    <externalId>false</externalId>
+    <label>School Administrative Unit ME</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Acton Public Schools~2</fullName>
+                <default>false</default>
+                <label>Acton Public Schools~2</label>
+            </value>
+            <value>
+                <fullName>Airline CSD~1038</fullName>
+                <default>false</default>
+                <label>Airline CSD~1038</label>
+            </value>
+            <value>
+                <fullName>Alexander Public Schools~4</fullName>
+                <default>false</default>
+                <label>Alexander Public Schools~4</label>
+            </value>
+            <value>
+                <fullName>Andover Public Schools~1734</fullName>
+                <default>false</default>
+                <label>Andover Public Schools~1734</label>
+            </value>
+            <value>
+                <fullName>Appleton Public Schools~9</fullName>
+                <default>false</default>
+                <label>Appleton Public Schools~9</label>
+            </value>
+            <value>
+                <fullName>Athens Public Schools~1629</fullName>
+                <default>false</default>
+                <label>Athens Public Schools~1629</label>
+            </value>
+            <value>
+                <fullName>Auburn Public Schools~14</fullName>
+                <default>false</default>
+                <label>Auburn Public Schools~14</label>
+            </value>
+            <value>
+                <fullName>Augusta Public Schools~28</fullName>
+                <default>false</default>
+                <label>Augusta Public Schools~28</label>
+            </value>
+            <value>
+                <fullName>Baileyville Public Schools~38</fullName>
+                <default>false</default>
+                <label>Baileyville Public Schools~38</label>
+            </value>
+            <value>
+                <fullName>Bancroft Public Schools~1010</fullName>
+                <default>false</default>
+                <label>Bancroft Public Schools~1010</label>
+            </value>
+            <value>
+                <fullName>Bangor Public Schools~42</fullName>
+                <default>false</default>
+                <label>Bangor Public Schools~42</label>
+            </value>
+            <value>
+                <fullName>Bar Harbor Public Schools~53</fullName>
+                <default>false</default>
+                <label>Bar Harbor Public Schools~53</label>
+            </value>
+            <value>
+                <fullName>Baring Plt Public Schools~547</fullName>
+                <default>false</default>
+                <label>Baring Plt Public Schools~547</label>
+            </value>
+            <value>
+                <fullName>Beals Public Schools~62</fullName>
+                <default>false</default>
+                <label>Beals Public Schools~62</label>
+            </value>
+            <value>
+                <fullName>Beaver Cove Public Schools~550</fullName>
+                <default>false</default>
+                <label>Beaver Cove Public Schools~550</label>
+            </value>
+            <value>
+                <fullName>Beddington Public Schools~64</fullName>
+                <default>false</default>
+                <label>Beddington Public Schools~64</label>
+            </value>
+            <value>
+                <fullName>Biddeford Public Schools~65</fullName>
+                <default>false</default>
+                <label>Biddeford Public Schools~65</label>
+            </value>
+            <value>
+                <fullName>Blue Hill Public Schools~72</fullName>
+                <default>false</default>
+                <label>Blue Hill Public Schools~72</label>
+            </value>
+            <value>
+                <fullName>Boothbay-Boothbay Hbr CSD~1031</fullName>
+                <default>false</default>
+                <label>Boothbay-Boothbay Hbr CSD~1031</label>
+            </value>
+            <value>
+                <fullName>Bowerbank Public Schools~74</fullName>
+                <default>false</default>
+                <label>Bowerbank Public Schools~74</label>
+            </value>
+            <value>
+                <fullName>Bremen Public Schools~77</fullName>
+                <default>false</default>
+                <label>Bremen Public Schools~77</label>
+            </value>
+            <value>
+                <fullName>Brewer Public Schools~78</fullName>
+                <default>false</default>
+                <label>Brewer Public Schools~78</label>
+            </value>
+            <value>
+                <fullName>Bridgewater Public Schools~86</fullName>
+                <default>false</default>
+                <label>Bridgewater Public Schools~86</label>
+            </value>
+            <value>
+                <fullName>Brighton Plt School Department~1633</fullName>
+                <default>false</default>
+                <label>Brighton Plt School Department~1633</label>
+            </value>
+            <value>
+                <fullName>Bristol Public Schools~88</fullName>
+                <default>false</default>
+                <label>Bristol Public Schools~88</label>
+            </value>
+            <value>
+                <fullName>Brooklin Public Schools~90</fullName>
+                <default>false</default>
+                <label>Brooklin Public Schools~90</label>
+            </value>
+            <value>
+                <fullName>Brooksville Public Schools~92</fullName>
+                <default>false</default>
+                <label>Brooksville Public Schools~92</label>
+            </value>
+            <value>
+                <fullName>Brunswick Public Schools~94</fullName>
+                <default>false</default>
+                <label>Brunswick Public Schools~94</label>
+            </value>
+            <value>
+                <fullName>Burlington Public Schools~1824</fullName>
+                <default>false</default>
+                <label>Burlington Public Schools~1824</label>
+            </value>
+            <value>
+                <fullName>Byron Public Schools~1825</fullName>
+                <default>false</default>
+                <label>Byron Public Schools~1825</label>
+            </value>
+            <value>
+                <fullName>Calais Public Schools~108</fullName>
+                <default>false</default>
+                <label>Calais Public Schools~108</label>
+            </value>
+            <value>
+                <fullName>Cape Elizabeth Public Schools~113</fullName>
+                <default>false</default>
+                <label>Cape Elizabeth Public Schools~113</label>
+            </value>
+            <value>
+                <fullName>Caratunk Public Schools~1402</fullName>
+                <default>false</default>
+                <label>Caratunk Public Schools~1402</label>
+            </value>
+            <value>
+                <fullName>Carrabassett Valley Public Schools~549</fullName>
+                <default>false</default>
+                <label>Carrabassett Valley Public Schools~549</label>
+            </value>
+            <value>
+                <fullName>Carroll Plt Public Schools~124</fullName>
+                <default>false</default>
+                <label>Carroll Plt Public Schools~124</label>
+            </value>
+            <value>
+                <fullName>Cary Plantation~1764</fullName>
+                <default>false</default>
+                <label>Cary Plantation~1764</label>
+            </value>
+            <value>
+                <fullName>Castine Public Schools~125</fullName>
+                <default>false</default>
+                <label>Castine Public Schools~125</label>
+            </value>
+            <value>
+                <fullName>Caswell Public Schools~127</fullName>
+                <default>false</default>
+                <label>Caswell Public Schools~127</label>
+            </value>
+            <value>
+                <fullName>Charlotte Public Schools~130</fullName>
+                <default>false</default>
+                <label>Charlotte Public Schools~130</label>
+            </value>
+            <value>
+                <fullName>Chebeague Island Public Schools~1433</fullName>
+                <default>false</default>
+                <label>Chebeague Island Public Schools~1433</label>
+            </value>
+            <value>
+                <fullName>Cherryfield Public Schools~1628</fullName>
+                <default>false</default>
+                <label>Cherryfield Public Schools~1628</label>
+            </value>
+            <value>
+                <fullName>Cooper Public Schools~137</fullName>
+                <default>false</default>
+                <label>Cooper Public Schools~137</label>
+            </value>
+            <value>
+                <fullName>Coplin Plt Public Schools~138</fullName>
+                <default>false</default>
+                <label>Coplin Plt Public Schools~138</label>
+            </value>
+            <value>
+                <fullName>Cranberry Isles Public Schools~139</fullName>
+                <default>false</default>
+                <label>Cranberry Isles Public Schools~139</label>
+            </value>
+            <value>
+                <fullName>Crawford Public Schools~142</fullName>
+                <default>false</default>
+                <label>Crawford Public Schools~142</label>
+            </value>
+            <value>
+                <fullName>Cutler Public Schools~1411</fullName>
+                <default>false</default>
+                <label>Cutler Public Schools~1411</label>
+            </value>
+            <value>
+                <fullName>Damariscotta Public Schools~144</fullName>
+                <default>false</default>
+                <label>Damariscotta Public Schools~144</label>
+            </value>
+            <value>
+                <fullName>Dayton Public Schools~1661</fullName>
+                <default>false</default>
+                <label>Dayton Public Schools~1661</label>
+            </value>
+            <value>
+                <fullName>Deblois Public Schools~147</fullName>
+                <default>false</default>
+                <label>Deblois Public Schools~147</label>
+            </value>
+            <value>
+                <fullName>Dedham Public Schools~148</fullName>
+                <default>false</default>
+                <label>Dedham Public Schools~148</label>
+            </value>
+            <value>
+                <fullName>Deer Isle-Stonington CSD~1049</fullName>
+                <default>false</default>
+                <label>Deer Isle-Stonington CSD~1049</label>
+            </value>
+            <value>
+                <fullName>Dennistown Plt Public Schools~150</fullName>
+                <default>false</default>
+                <label>Dennistown Plt Public Schools~150</label>
+            </value>
+            <value>
+                <fullName>Dennysville Public Schools~151</fullName>
+                <default>false</default>
+                <label>Dennysville Public Schools~151</label>
+            </value>
+            <value>
+                <fullName>Drew Plt Public Schools~154</fullName>
+                <default>false</default>
+                <label>Drew Plt Public Schools~154</label>
+            </value>
+            <value>
+                <fullName>East Machias Public Schools~1400</fullName>
+                <default>false</default>
+                <label>East Machias Public Schools~1400</label>
+            </value>
+            <value>
+                <fullName>East Millinocket Public Schools~157</fullName>
+                <default>false</default>
+                <label>East Millinocket Public Schools~157</label>
+            </value>
+            <value>
+                <fullName>East Range CSD~1047</fullName>
+                <default>false</default>
+                <label>East Range CSD~1047</label>
+            </value>
+            <value>
+                <fullName>Easton Public Schools~160</fullName>
+                <default>false</default>
+                <label>Easton Public Schools~160</label>
+            </value>
+            <value>
+                <fullName>Eastport Public Schools~163</fullName>
+                <default>false</default>
+                <label>Eastport Public Schools~163</label>
+            </value>
+            <value>
+                <fullName>Edgecomb Public Schools~166</fullName>
+                <default>false</default>
+                <label>Edgecomb Public Schools~166</label>
+            </value>
+            <value>
+                <fullName>Education in Unorganized Terr~1002</fullName>
+                <default>false</default>
+                <label>Education in Unorganized Terr~1002</label>
+            </value>
+            <value>
+                <fullName>Ellsworth Public Schools~1663</fullName>
+                <default>false</default>
+                <label>Ellsworth Public Schools~1663</label>
+            </value>
+            <value>
+                <fullName>Eustis Public Schools~1627</fullName>
+                <default>false</default>
+                <label>Eustis Public Schools~1627</label>
+            </value>
+            <value>
+                <fullName>Falmouth Public Schools~174</fullName>
+                <default>false</default>
+                <label>Falmouth Public Schools~174</label>
+            </value>
+            <value>
+                <fullName>Fayette Public Schools~180</fullName>
+                <default>false</default>
+                <label>Fayette Public Schools~180</label>
+            </value>
+            <value>
+                <fullName>Five Town CSD~1065</fullName>
+                <default>false</default>
+                <label>Five Town CSD~1065</label>
+            </value>
+            <value>
+                <fullName>Frenchboro Public Schools~275</fullName>
+                <default>false</default>
+                <label>Frenchboro Public Schools~275</label>
+            </value>
+            <value>
+                <fullName>Georgetown Public Schools~188</fullName>
+                <default>false</default>
+                <label>Georgetown Public Schools~188</label>
+            </value>
+            <value>
+                <fullName>Gilead Public Schools~190</fullName>
+                <default>false</default>
+                <label>Gilead Public Schools~190</label>
+            </value>
+            <value>
+                <fullName>Glenburn Public Schools~191</fullName>
+                <default>false</default>
+                <label>Glenburn Public Schools~191</label>
+            </value>
+            <value>
+                <fullName>Glenwood Plt Public Schools~193</fullName>
+                <default>false</default>
+                <label>Glenwood Plt Public Schools~193</label>
+            </value>
+            <value>
+                <fullName>Gorham Public Schools~194</fullName>
+                <default>false</default>
+                <label>Gorham Public Schools~194</label>
+            </value>
+            <value>
+                <fullName>Grand Isle Public Schools~205</fullName>
+                <default>false</default>
+                <label>Grand Isle Public Schools~205</label>
+            </value>
+            <value>
+                <fullName>Grand Lake Stream Plt School Dept~207</fullName>
+                <default>false</default>
+                <label>Grand Lake Stream Plt School Dept~207</label>
+            </value>
+            <value>
+                <fullName>Great Salt Bay CSD~1054</fullName>
+                <default>false</default>
+                <label>Great Salt Bay CSD~1054</label>
+            </value>
+            <value>
+                <fullName>Greenbush Public Schools~208</fullName>
+                <default>false</default>
+                <label>Greenbush Public Schools~208</label>
+            </value>
+            <value>
+                <fullName>Greenville Public Schools~210</fullName>
+                <default>false</default>
+                <label>Greenville Public Schools~210</label>
+            </value>
+            <value>
+                <fullName>Hancock Public Schools~1664</fullName>
+                <default>false</default>
+                <label>Hancock Public Schools~1664</label>
+            </value>
+            <value>
+                <fullName>Harmony Public Schools~217</fullName>
+                <default>false</default>
+                <label>Harmony Public Schools~217</label>
+            </value>
+            <value>
+                <fullName>Hermon Public Schools~219</fullName>
+                <default>false</default>
+                <label>Hermon Public Schools~219</label>
+            </value>
+            <value>
+                <fullName>Highland Plt Public Schools~224</fullName>
+                <default>false</default>
+                <label>Highland Plt Public Schools~224</label>
+            </value>
+            <value>
+                <fullName>Hope Public Schools~225</fullName>
+                <default>false</default>
+                <label>Hope Public Schools~225</label>
+            </value>
+            <value>
+                <fullName>Indian Island~1009</fullName>
+                <default>false</default>
+                <label>Indian Island~1009</label>
+            </value>
+            <value>
+                <fullName>Indian Township~1011</fullName>
+                <default>false</default>
+                <label>Indian Township~1011</label>
+            </value>
+            <value>
+                <fullName>Isle Au Haut Public Schools~227</fullName>
+                <default>false</default>
+                <label>Isle Au Haut Public Schools~227</label>
+            </value>
+            <value>
+                <fullName>Islesboro Public Schools~229</fullName>
+                <default>false</default>
+                <label>Islesboro Public Schools~229</label>
+            </value>
+            <value>
+                <fullName>Jefferson Public Schools~235</fullName>
+                <default>false</default>
+                <label>Jefferson Public Schools~235</label>
+            </value>
+            <value>
+                <fullName>Jonesboro Public Schools~237</fullName>
+                <default>false</default>
+                <label>Jonesboro Public Schools~237</label>
+            </value>
+            <value>
+                <fullName>Jonesport Public Schools~239</fullName>
+                <default>false</default>
+                <label>Jonesport Public Schools~239</label>
+            </value>
+            <value>
+                <fullName>Kingsbury Plt Public Schools~241</fullName>
+                <default>false</default>
+                <label>Kingsbury Plt Public Schools~241</label>
+            </value>
+            <value>
+                <fullName>Kittery Public Schools~242</fullName>
+                <default>false</default>
+                <label>Kittery Public Schools~242</label>
+            </value>
+            <value>
+                <fullName>Lake View Plt. Public Schools~1351</fullName>
+                <default>false</default>
+                <label>Lake View Plt. Public Schools~1351</label>
+            </value>
+            <value>
+                <fullName>Lakeville Public Schools~247</fullName>
+                <default>false</default>
+                <label>Lakeville Public Schools~247</label>
+            </value>
+            <value>
+                <fullName>Lamoine Public Schools~1665</fullName>
+                <default>false</default>
+                <label>Lamoine Public Schools~1665</label>
+            </value>
+            <value>
+                <fullName>Lewiston School Department~1088</fullName>
+                <default>false</default>
+                <label>Lewiston School Department~1088</label>
+            </value>
+            <value>
+                <fullName>Lincoln Plt Public Schools~263</fullName>
+                <default>false</default>
+                <label>Lincoln Plt Public Schools~263</label>
+            </value>
+            <value>
+                <fullName>Lincolnville Public Schools~264</fullName>
+                <default>false</default>
+                <label>Lincolnville Public Schools~264</label>
+            </value>
+            <value>
+                <fullName>Lisbon Public Schools~266</fullName>
+                <default>false</default>
+                <label>Lisbon Public Schools~266</label>
+            </value>
+            <value>
+                <fullName>Long Island Public Schools~387</fullName>
+                <default>false</default>
+                <label>Long Island Public Schools~387</label>
+            </value>
+            <value>
+                <fullName>Lowell Public Schools~1401</fullName>
+                <default>false</default>
+                <label>Lowell Public Schools~1401</label>
+            </value>
+            <value>
+                <fullName>Machias Public Schools~277</fullName>
+                <default>false</default>
+                <label>Machias Public Schools~277</label>
+            </value>
+            <value>
+                <fullName>Machiasport Public Schools~1412</fullName>
+                <default>false</default>
+                <label>Machiasport Public Schools~1412</label>
+            </value>
+            <value>
+                <fullName>Macwahoc Plt School Dept~281</fullName>
+                <default>false</default>
+                <label>Macwahoc Plt School Dept~281</label>
+            </value>
+            <value>
+                <fullName>Madawaska Public Schools~282</fullName>
+                <default>false</default>
+                <label>Madawaska Public Schools~282</label>
+            </value>
+            <value>
+                <fullName>Marshfield Public Schools~290</fullName>
+                <default>false</default>
+                <label>Marshfield Public Schools~290</label>
+            </value>
+            <value>
+                <fullName>Meddybemps Public Schools~293</fullName>
+                <default>false</default>
+                <label>Meddybemps Public Schools~293</label>
+            </value>
+            <value>
+                <fullName>Medford Public Schools~548</fullName>
+                <default>false</default>
+                <label>Medford Public Schools~548</label>
+            </value>
+            <value>
+                <fullName>Medway Public Schools~294</fullName>
+                <default>false</default>
+                <label>Medway Public Schools~294</label>
+            </value>
+            <value>
+                <fullName>Milford Public Schools~296</fullName>
+                <default>false</default>
+                <label>Milford Public Schools~296</label>
+            </value>
+            <value>
+                <fullName>Millinocket Public Schools~298</fullName>
+                <default>false</default>
+                <label>Millinocket Public Schools~298</label>
+            </value>
+            <value>
+                <fullName>Monhegan Plt School Dept~304</fullName>
+                <default>false</default>
+                <label>Monhegan Plt School Dept~304</label>
+            </value>
+            <value>
+                <fullName>Moosabec CSD~1058</fullName>
+                <default>false</default>
+                <label>Moosabec CSD~1058</label>
+            </value>
+            <value>
+                <fullName>Mount Desert Public Schools~311</fullName>
+                <default>false</default>
+                <label>Mount Desert Public Schools~311</label>
+            </value>
+            <value>
+                <fullName>MSAD 10~616</fullName>
+                <default>false</default>
+                <label>MSAD 10~616</label>
+            </value>
+            <value>
+                <fullName>MSAD 27~696</fullName>
+                <default>false</default>
+                <label>MSAD 27~696</label>
+            </value>
+            <value>
+                <fullName>MSAD 46~798</fullName>
+                <default>false</default>
+                <label>MSAD 46~798</label>
+            </value>
+            <value>
+                <fullName>MSAD 76~994</fullName>
+                <default>false</default>
+                <label>MSAD 76~994</label>
+            </value>
+            <value>
+                <fullName>Mt Desert CSD~1036</fullName>
+                <default>false</default>
+                <label>Mt Desert CSD~1036</label>
+            </value>
+            <value>
+                <fullName>Nashville Plt Public Schools~315</fullName>
+                <default>false</default>
+                <label>Nashville Plt Public Schools~315</label>
+            </value>
+            <value>
+                <fullName>New Sweden Public Schools~317</fullName>
+                <default>false</default>
+                <label>New Sweden Public Schools~317</label>
+            </value>
+            <value>
+                <fullName>Newcastle Public Schools~316</fullName>
+                <default>false</default>
+                <label>Newcastle Public Schools~316</label>
+            </value>
+            <value>
+                <fullName>Nobleboro Public Schools~319</fullName>
+                <default>false</default>
+                <label>Nobleboro Public Schools~319</label>
+            </value>
+            <value>
+                <fullName>Non-Maine SAU~1349</fullName>
+                <default>false</default>
+                <label>Non-Maine SAU~1349</label>
+            </value>
+            <value>
+                <fullName>Northfield Public Schools~321</fullName>
+                <default>false</default>
+                <label>Northfield Public Schools~321</label>
+            </value>
+            <value>
+                <fullName>Northport Public Schools~1735</fullName>
+                <default>false</default>
+                <label>Northport Public Schools~1735</label>
+            </value>
+            <value>
+                <fullName>Orient Public Schools~335</fullName>
+                <default>false</default>
+                <label>Orient Public Schools~335</label>
+            </value>
+            <value>
+                <fullName>Orrington Public Schools~342</fullName>
+                <default>false</default>
+                <label>Orrington Public Schools~342</label>
+            </value>
+            <value>
+                <fullName>Otis Public Schools~345</fullName>
+                <default>false</default>
+                <label>Otis Public Schools~345</label>
+            </value>
+            <value>
+                <fullName>Pembroke Public Schools~349</fullName>
+                <default>false</default>
+                <label>Pembroke Public Schools~349</label>
+            </value>
+            <value>
+                <fullName>Penobscot Public Schools~351</fullName>
+                <default>false</default>
+                <label>Penobscot Public Schools~351</label>
+            </value>
+            <value>
+                <fullName>Perry Public Schools~353</fullName>
+                <default>false</default>
+                <label>Perry Public Schools~353</label>
+            </value>
+            <value>
+                <fullName>Pleasant Point~1013</fullName>
+                <default>false</default>
+                <label>Pleasant Point~1013</label>
+            </value>
+            <value>
+                <fullName>Pleasant Ridge Plt School Dept~359</fullName>
+                <default>false</default>
+                <label>Pleasant Ridge Plt School Dept~359</label>
+            </value>
+            <value>
+                <fullName>Portage Lake Public Schools~1509</fullName>
+                <default>false</default>
+                <label>Portage Lake Public Schools~1509</label>
+            </value>
+            <value>
+                <fullName>Portland Public Schools~364</fullName>
+                <default>false</default>
+                <label>Portland Public Schools~364</label>
+            </value>
+            <value>
+                <fullName>Princeton Public Schools~389</fullName>
+                <default>false</default>
+                <label>Princeton Public Schools~389</label>
+            </value>
+            <value>
+                <fullName>Reed Plt Public Schools~399</fullName>
+                <default>false</default>
+                <label>Reed Plt Public Schools~399</label>
+            </value>
+            <value>
+                <fullName>Robbinston Public Schools~405</fullName>
+                <default>false</default>
+                <label>Robbinston Public Schools~405</label>
+            </value>
+            <value>
+                <fullName>Roque Bluffs Public Schools~408</fullName>
+                <default>false</default>
+                <label>Roque Bluffs Public Schools~408</label>
+            </value>
+            <value>
+                <fullName>RSU 01 - LKRSU~1438</fullName>
+                <default>false</default>
+                <label>RSU 01 - LKRSU~1438</label>
+            </value>
+            <value>
+                <fullName>RSU 02~1445</fullName>
+                <default>false</default>
+                <label>RSU 02~1445</label>
+            </value>
+            <value>
+                <fullName>RSU 03/MSAD 03~561</fullName>
+                <default>false</default>
+                <label>RSU 03/MSAD 03~561</label>
+            </value>
+            <value>
+                <fullName>RSU 04~1446</fullName>
+                <default>false</default>
+                <label>RSU 04~1446</label>
+            </value>
+            <value>
+                <fullName>RSU 05~1449</fullName>
+                <default>false</default>
+                <label>RSU 05~1449</label>
+            </value>
+            <value>
+                <fullName>RSU 06/MSAD 06~587</fullName>
+                <default>false</default>
+                <label>RSU 06/MSAD 06~587</label>
+            </value>
+            <value>
+                <fullName>RSU 07/MSAD 07~601</fullName>
+                <default>false</default>
+                <label>RSU 07/MSAD 07~601</label>
+            </value>
+            <value>
+                <fullName>RSU 08/MSAD 08~603</fullName>
+                <default>false</default>
+                <label>RSU 08/MSAD 08~603</label>
+            </value>
+            <value>
+                <fullName>RSU 09~1508</fullName>
+                <default>false</default>
+                <label>RSU 09~1508</label>
+            </value>
+            <value>
+                <fullName>RSU 10~1450</fullName>
+                <default>false</default>
+                <label>RSU 10~1450</label>
+            </value>
+            <value>
+                <fullName>RSU 11/MSAD 11~617</fullName>
+                <default>false</default>
+                <label>RSU 11/MSAD 11~617</label>
+            </value>
+            <value>
+                <fullName>RSU 12~1451</fullName>
+                <default>false</default>
+                <label>RSU 12~1451</label>
+            </value>
+            <value>
+                <fullName>RSU 13~1452</fullName>
+                <default>false</default>
+                <label>RSU 13~1452</label>
+            </value>
+            <value>
+                <fullName>RSU 14~1455</fullName>
+                <default>false</default>
+                <label>RSU 14~1455</label>
+            </value>
+            <value>
+                <fullName>RSU 15/MSAD 15~635</fullName>
+                <default>false</default>
+                <label>RSU 15/MSAD 15~635</label>
+            </value>
+            <value>
+                <fullName>RSU 16~1456</fullName>
+                <default>false</default>
+                <label>RSU 16~1456</label>
+            </value>
+            <value>
+                <fullName>RSU 17/MSAD 17~646</fullName>
+                <default>false</default>
+                <label>RSU 17/MSAD 17~646</label>
+            </value>
+            <value>
+                <fullName>RSU 18~1457</fullName>
+                <default>false</default>
+                <label>RSU 18~1457</label>
+            </value>
+            <value>
+                <fullName>RSU 19~1458</fullName>
+                <default>false</default>
+                <label>RSU 19~1458</label>
+            </value>
+            <value>
+                <fullName>RSU 20~1459</fullName>
+                <default>false</default>
+                <label>RSU 20~1459</label>
+            </value>
+            <value>
+                <fullName>RSU 21~1460</fullName>
+                <default>false</default>
+                <label>RSU 21~1460</label>
+            </value>
+            <value>
+                <fullName>RSU 22~1615</fullName>
+                <default>false</default>
+                <label>RSU 22~1615</label>
+            </value>
+            <value>
+                <fullName>RSU 23~1461</fullName>
+                <default>false</default>
+                <label>RSU 23~1461</label>
+            </value>
+            <value>
+                <fullName>RSU 24~1462</fullName>
+                <default>false</default>
+                <label>RSU 24~1462</label>
+            </value>
+            <value>
+                <fullName>RSU 25~1464</fullName>
+                <default>false</default>
+                <label>RSU 25~1464</label>
+            </value>
+            <value>
+                <fullName>RSU 26~1465</fullName>
+                <default>false</default>
+                <label>RSU 26~1465</label>
+            </value>
+            <value>
+                <fullName>RSU 28/MSAD 28~703</fullName>
+                <default>false</default>
+                <label>RSU 28/MSAD 28~703</label>
+            </value>
+            <value>
+                <fullName>RSU 29/MSAD 29~707</fullName>
+                <default>false</default>
+                <label>RSU 29/MSAD 29~707</label>
+            </value>
+            <value>
+                <fullName>RSU 30/MSAD 30~713</fullName>
+                <default>false</default>
+                <label>RSU 30/MSAD 30~713</label>
+            </value>
+            <value>
+                <fullName>RSU 31/MSAD 31~718</fullName>
+                <default>false</default>
+                <label>RSU 31/MSAD 31~718</label>
+            </value>
+            <value>
+                <fullName>RSU 32/MSAD 32~722</fullName>
+                <default>false</default>
+                <label>RSU 32/MSAD 32~722</label>
+            </value>
+            <value>
+                <fullName>RSU 33/MSAD 33~726</fullName>
+                <default>false</default>
+                <label>RSU 33/MSAD 33~726</label>
+            </value>
+            <value>
+                <fullName>RSU 34~1466</fullName>
+                <default>false</default>
+                <label>RSU 34~1466</label>
+            </value>
+            <value>
+                <fullName>RSU 35/MSAD 35~743</fullName>
+                <default>false</default>
+                <label>RSU 35/MSAD 35~743</label>
+            </value>
+            <value>
+                <fullName>RSU 37/MSAD 37~753</fullName>
+                <default>false</default>
+                <label>RSU 37/MSAD 37~753</label>
+            </value>
+            <value>
+                <fullName>RSU 38~1467</fullName>
+                <default>false</default>
+                <label>RSU 38~1467</label>
+            </value>
+            <value>
+                <fullName>RSU 39~1468</fullName>
+                <default>false</default>
+                <label>RSU 39~1468</label>
+            </value>
+            <value>
+                <fullName>RSU 40/MSAD 40~765</fullName>
+                <default>false</default>
+                <label>RSU 40/MSAD 40~765</label>
+            </value>
+            <value>
+                <fullName>RSU 41/MSAD 41~774</fullName>
+                <default>false</default>
+                <label>RSU 41/MSAD 41~774</label>
+            </value>
+            <value>
+                <fullName>RSU 42/MSAD 42~780</fullName>
+                <default>false</default>
+                <label>RSU 42/MSAD 42~780</label>
+            </value>
+            <value>
+                <fullName>RSU 44/MSAD 44~789</fullName>
+                <default>false</default>
+                <label>RSU 44/MSAD 44~789</label>
+            </value>
+            <value>
+                <fullName>RSU 45/MSAD 45~795</fullName>
+                <default>false</default>
+                <label>RSU 45/MSAD 45~795</label>
+            </value>
+            <value>
+                <fullName>RSU 49/MSAD 49~826</fullName>
+                <default>false</default>
+                <label>RSU 49/MSAD 49~826</label>
+            </value>
+            <value>
+                <fullName>RSU 50~1500</fullName>
+                <default>false</default>
+                <label>RSU 50~1500</label>
+            </value>
+            <value>
+                <fullName>RSU 51/MSAD 51~839</fullName>
+                <default>false</default>
+                <label>RSU 51/MSAD 51~839</label>
+            </value>
+            <value>
+                <fullName>RSU 52/MSAD 52~847</fullName>
+                <default>false</default>
+                <label>RSU 52/MSAD 52~847</label>
+            </value>
+            <value>
+                <fullName>RSU 53/MSAD 53~854</fullName>
+                <default>false</default>
+                <label>RSU 53/MSAD 53~854</label>
+            </value>
+            <value>
+                <fullName>RSU 54/MSAD 54~860</fullName>
+                <default>false</default>
+                <label>RSU 54/MSAD 54~860</label>
+            </value>
+            <value>
+                <fullName>RSU 55/MSAD 55~874</fullName>
+                <default>false</default>
+                <label>RSU 55/MSAD 55~874</label>
+            </value>
+            <value>
+                <fullName>RSU 56~1826</fullName>
+                <default>false</default>
+                <label>RSU 56~1826</label>
+            </value>
+            <value>
+                <fullName>RSU 57/MSAD 57~888</fullName>
+                <default>false</default>
+                <label>RSU 57/MSAD 57~888</label>
+            </value>
+            <value>
+                <fullName>RSU 58/MSAD 58~898</fullName>
+                <default>false</default>
+                <label>RSU 58/MSAD 58~898</label>
+            </value>
+            <value>
+                <fullName>RSU 59/MSAD 59~905</fullName>
+                <default>false</default>
+                <label>RSU 59/MSAD 59~905</label>
+            </value>
+            <value>
+                <fullName>RSU 60/MSAD 60~913</fullName>
+                <default>false</default>
+                <label>RSU 60/MSAD 60~913</label>
+            </value>
+            <value>
+                <fullName>RSU 61/MSAD 61~922</fullName>
+                <default>false</default>
+                <label>RSU 61/MSAD 61~922</label>
+            </value>
+            <value>
+                <fullName>RSU 63/MSAD 63~932</fullName>
+                <default>false</default>
+                <label>RSU 63/MSAD 63~932</label>
+            </value>
+            <value>
+                <fullName>RSU 64/MSAD 64~936</fullName>
+                <default>false</default>
+                <label>RSU 64/MSAD 64~936</label>
+            </value>
+            <value>
+                <fullName>RSU 65/MSAD 65~944</fullName>
+                <default>false</default>
+                <label>RSU 65/MSAD 65~944</label>
+            </value>
+            <value>
+                <fullName>RSU 67~1469</fullName>
+                <default>false</default>
+                <label>RSU 67~1469</label>
+            </value>
+            <value>
+                <fullName>RSU 68/MSAD 68~951</fullName>
+                <default>false</default>
+                <label>RSU 68/MSAD 68~951</label>
+            </value>
+            <value>
+                <fullName>RSU 70/MSAD 70~957</fullName>
+                <default>false</default>
+                <label>RSU 70/MSAD 70~957</label>
+            </value>
+            <value>
+                <fullName>RSU 71~1733</fullName>
+                <default>false</default>
+                <label>RSU 71~1733</label>
+            </value>
+            <value>
+                <fullName>RSU 72/MSAD 72~969</fullName>
+                <default>false</default>
+                <label>RSU 72/MSAD 72~969</label>
+            </value>
+            <value>
+                <fullName>RSU 73~1498</fullName>
+                <default>false</default>
+                <label>RSU 73~1498</label>
+            </value>
+            <value>
+                <fullName>RSU 74/MSAD 74~976</fullName>
+                <default>false</default>
+                <label>RSU 74/MSAD 74~976</label>
+            </value>
+            <value>
+                <fullName>RSU 75/MSAD 75~984</fullName>
+                <default>false</default>
+                <label>RSU 75/MSAD 75~984</label>
+            </value>
+            <value>
+                <fullName>RSU 78~1480</fullName>
+                <default>false</default>
+                <label>RSU 78~1480</label>
+            </value>
+            <value>
+                <fullName>RSU 79/MSAD 01~551</fullName>
+                <default>false</default>
+                <label>RSU 79/MSAD 01~551</label>
+            </value>
+            <value>
+                <fullName>RSU 80/MSAD 04~570</fullName>
+                <default>false</default>
+                <label>RSU 80/MSAD 04~570</label>
+            </value>
+            <value>
+                <fullName>RSU 82/MSAD 12~626</fullName>
+                <default>false</default>
+                <label>RSU 82/MSAD 12~626</label>
+            </value>
+            <value>
+                <fullName>RSU 83/MSAD 13~628</fullName>
+                <default>false</default>
+                <label>RSU 83/MSAD 13~628</label>
+            </value>
+            <value>
+                <fullName>RSU 84/MSAD 14~633</fullName>
+                <default>false</default>
+                <label>RSU 84/MSAD 14~633</label>
+            </value>
+            <value>
+                <fullName>RSU 85/MSAD 19~662</fullName>
+                <default>false</default>
+                <label>RSU 85/MSAD 19~662</label>
+            </value>
+            <value>
+                <fullName>RSU 86/MSAD 20~664</fullName>
+                <default>false</default>
+                <label>RSU 86/MSAD 20~664</label>
+            </value>
+            <value>
+                <fullName>RSU 87/MSAD 23~681</fullName>
+                <default>false</default>
+                <label>RSU 87/MSAD 23~681</label>
+            </value>
+            <value>
+                <fullName>RSU 88/MSAD 24~685</fullName>
+                <default>false</default>
+                <label>RSU 88/MSAD 24~685</label>
+            </value>
+            <value>
+                <fullName>Saco Public Schools~1662</fullName>
+                <default>false</default>
+                <label>Saco Public Schools~1662</label>
+            </value>
+            <value>
+                <fullName>Sanford Public Schools~416</fullName>
+                <default>false</default>
+                <label>Sanford Public Schools~416</label>
+            </value>
+            <value>
+                <fullName>Scarborough Public Schools~427</fullName>
+                <default>false</default>
+                <label>Scarborough Public Schools~427</label>
+            </value>
+            <value>
+                <fullName>Seboeis Plt Public Schools~1359</fullName>
+                <default>false</default>
+                <label>Seboeis Plt Public Schools~1359</label>
+            </value>
+            <value>
+                <fullName>Sedgwick Public Schools~434</fullName>
+                <default>false</default>
+                <label>Sedgwick Public Schools~434</label>
+            </value>
+            <value>
+                <fullName>Shirley Public Schools~436</fullName>
+                <default>false</default>
+                <label>Shirley Public Schools~436</label>
+            </value>
+            <value>
+                <fullName>South Bristol Public Schools~440</fullName>
+                <default>false</default>
+                <label>South Bristol Public Schools~440</label>
+            </value>
+            <value>
+                <fullName>South Portland Public Schools~444</fullName>
+                <default>false</default>
+                <label>South Portland Public Schools~444</label>
+            </value>
+            <value>
+                <fullName>Southport Public Schools~442</fullName>
+                <default>false</default>
+                <label>Southport Public Schools~442</label>
+            </value>
+            <value>
+                <fullName>Southwest Harbor Public Schools~456</fullName>
+                <default>false</default>
+                <label>Southwest Harbor Public Schools~456</label>
+            </value>
+            <value>
+                <fullName>St George Public Schools~1738</fullName>
+                <default>false</default>
+                <label>St George Public Schools~1738</label>
+            </value>
+            <value>
+                <fullName>Surry Public Schools~462</fullName>
+                <default>false</default>
+                <label>Surry Public Schools~462</label>
+            </value>
+            <value>
+                <fullName>Talmadge Public Schools~464</fullName>
+                <default>false</default>
+                <label>Talmadge Public Schools~464</label>
+            </value>
+            <value>
+                <fullName>The Forks Plt School Dept~465</fullName>
+                <default>false</default>
+                <label>The Forks Plt School Dept~465</label>
+            </value>
+            <value>
+                <fullName>Tremont Public Schools~466</fullName>
+                <default>false</default>
+                <label>Tremont Public Schools~466</label>
+            </value>
+            <value>
+                <fullName>Trenton Public Schools~468</fullName>
+                <default>false</default>
+                <label>Trenton Public Schools~468</label>
+            </value>
+            <value>
+                <fullName>Upton Public Schools~470</fullName>
+                <default>false</default>
+                <label>Upton Public Schools~470</label>
+            </value>
+            <value>
+                <fullName>Vanceboro Public Schools~471</fullName>
+                <default>false</default>
+                <label>Vanceboro Public Schools~471</label>
+            </value>
+            <value>
+                <fullName>Vassalboro Public Schools~473</fullName>
+                <default>false</default>
+                <label>Vassalboro Public Schools~473</label>
+            </value>
+            <value>
+                <fullName>Veazie Public Schools~475</fullName>
+                <default>false</default>
+                <label>Veazie Public Schools~475</label>
+            </value>
+            <value>
+                <fullName>Waite Public Schools~477</fullName>
+                <default>false</default>
+                <label>Waite Public Schools~477</label>
+            </value>
+            <value>
+                <fullName>Waterville Public Schools~480</fullName>
+                <default>false</default>
+                <label>Waterville Public Schools~480</label>
+            </value>
+            <value>
+                <fullName>Wells-Ogunquit CSD~1060</fullName>
+                <default>false</default>
+                <label>Wells-Ogunquit CSD~1060</label>
+            </value>
+            <value>
+                <fullName>Wesley Public Schools~491</fullName>
+                <default>false</default>
+                <label>Wesley Public Schools~491</label>
+            </value>
+            <value>
+                <fullName>West Bath Public Schools~1736</fullName>
+                <default>false</default>
+                <label>West Bath Public Schools~1736</label>
+            </value>
+            <value>
+                <fullName>West Forks Plt Public Schools~1354</fullName>
+                <default>false</default>
+                <label>West Forks Plt Public Schools~1354</label>
+            </value>
+            <value>
+                <fullName>Westbrook Public Schools~495</fullName>
+                <default>false</default>
+                <label>Westbrook Public Schools~495</label>
+            </value>
+            <value>
+                <fullName>Westmanland Public Schools~503</fullName>
+                <default>false</default>
+                <label>Westmanland Public Schools~503</label>
+            </value>
+            <value>
+                <fullName>Whiting Public Schools~1413</fullName>
+                <default>false</default>
+                <label>Whiting Public Schools~1413</label>
+            </value>
+            <value>
+                <fullName>Whitneyville Public Schools~508</fullName>
+                <default>false</default>
+                <label>Whitneyville Public Schools~508</label>
+            </value>
+            <value>
+                <fullName>Willimantic Public Schools~509</fullName>
+                <default>false</default>
+                <label>Willimantic Public Schools~509</label>
+            </value>
+            <value>
+                <fullName>Winslow Schools~518</fullName>
+                <default>false</default>
+                <label>Winslow Schools~518</label>
+            </value>
+            <value>
+                <fullName>Winterville Plt Public Schools~1737</fullName>
+                <default>false</default>
+                <label>Winterville Plt Public Schools~1737</label>
+            </value>
+            <value>
+                <fullName>Winthrop Public Schools~524</fullName>
+                <default>false</default>
+                <label>Winthrop Public Schools~524</label>
+            </value>
+            <value>
+                <fullName>Wiscasset Public Schools~1671</fullName>
+                <default>false</default>
+                <label>Wiscasset Public Schools~1671</label>
+            </value>
+            <value>
+                <fullName>Woodland Public Schools~532</fullName>
+                <default>false</default>
+                <label>Woodland Public Schools~532</label>
+            </value>
+            <value>
+                <fullName>Woodville Public Schools~534</fullName>
+                <default>false</default>
+                <label>Woodville Public Schools~534</label>
+            </value>
+            <value>
+                <fullName>Yarmouth Schools~537</fullName>
+                <default>false</default>
+                <label>Yarmouth Schools~537</label>
+            </value>
+            <value>
+                <fullName>York Public Schools~542</fullName>
+                <default>false</default>
+                <label>York Public Schools~542</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

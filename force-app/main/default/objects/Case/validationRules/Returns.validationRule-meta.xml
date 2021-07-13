@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Returns</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(AND(ISPICKVAL(Type,&quot;Returns&quot;),CS_SkipProfiles__c =&apos;N&apos;),OR(ISBLANK(Asset_Aware__c),ISBLANK(Order_Aware__c),ISBLANK(Withdrawal_Date__c)), null)</errorConditionFormula>
+    <errorMessage>Please enter field values of  Asset Aware, Order Aware and Withdrawal Date.</errorMessage>
+</ValidationRule>

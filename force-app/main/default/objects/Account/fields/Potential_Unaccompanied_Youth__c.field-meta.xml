@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Potential_Unaccompanied_Youth__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicator of whether the student(s) is living with a parent or legal guardian in their current living situation. A false value is an indication that the student(s) may be unaccompanied youth.</description>
+    <externalId>false</externalId>
+    <label>Potential Unaccompanied Youth</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

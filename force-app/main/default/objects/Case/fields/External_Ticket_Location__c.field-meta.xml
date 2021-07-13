@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>External_Ticket_Location__c</fullName>
+    <description>US #181666 - This field indicates the location of the Ticket. This picklist field is associated with the &quot;Escalation&quot; Record Type only.</description>
+    <externalId>false</externalId>
+    <label>External Ticket Location</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Azure Dev Ops</fullName>
+                <default>false</default>
+                <label>Azure Dev Ops</label>
+            </value>
+            <value>
+                <fullName>Issue Aware</fullName>
+                <default>false</default>
+                <label>Issue Aware</label>
+            </value>
+            <value>
+                <fullName>Service Now</fullName>
+                <default>false</default>
+                <label>Service Now</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

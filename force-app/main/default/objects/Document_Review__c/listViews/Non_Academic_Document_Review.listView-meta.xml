@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_Academic_Document_Review</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Non-Academic Documents</label>
+    <queue>Non_Academic</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

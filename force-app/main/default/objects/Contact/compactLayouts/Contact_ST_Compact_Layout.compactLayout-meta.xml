@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_ST_Compact_Layout</fullName>
+    <fields>AccountId</fields>
+    <fields>Phone</fields>
+    <fields>Email</fields>
+    <fields>Birthdate</fields>
+    <fields>Age_Old__c</fields>
+    <label>Contact(ST) Compact Layout</label>
+</CompactLayout>

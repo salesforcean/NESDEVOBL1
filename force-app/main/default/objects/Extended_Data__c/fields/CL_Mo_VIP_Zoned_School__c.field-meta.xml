@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CL_Mo_VIP_Zoned_School__c</fullName>
+    <description>MoVIP-Zoned School</description>
+    <externalId>false</externalId>
+    <label>CL Mo VIP Zoned School</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>MoVIP-ADAIR CO. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-ADAIR CO. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ADAMS ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-ADAMS ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ASH GROVE R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-ASH GROVE R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BABLER ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-BABLER ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BAKERSFIELD R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-BAKERSFIELD R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BALLARD ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-BALLARD ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BALLARD HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-BALLARD HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BARNWELL MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-BARNWELL MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BELTON 124</fullName>
+                <default>false</default>
+                <label>MoVIP-BELTON 124</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BELTON HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-BELTON HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BELTON HIGH- FRESHMAN CTR.</fullName>
+                <default>false</default>
+                <label>MoVIP-BELTON HIGH- FRESHMAN CTR.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BERNARD C. CAMPBELL MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-BERNARD C. CAMPBELL MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BOIS DARC ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-BOIS DARC ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BOLIVAR R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-BOLIVAR R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BORDER STAR MONTESSORI</fullName>
+                <default>false</default>
+                <label>MoVIP-BORDER STAR MONTESSORI</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BRANSON HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-BRANSON HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BRANSON R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-BRANSON R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BRONAUGH ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-BRONAUGH ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BRONAUGH HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-BRONAUGH HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-BUCHANAN CO. R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-BUCHANAN CO. R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Camdenton R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-Camdenton R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-CANTON HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-CANTON HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-CARL JUNCTION PRIMARY 2-3</fullName>
+                <default>false</default>
+                <label>MoVIP-CARL JUNCTION PRIMARY 2-3</label>
+            </value>
+            <value>
+                <fullName>MoVIP-CARL JUNCTION R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-CARL JUNCTION R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-CARNAHAN SCH. OF THE FUTURE</fullName>
+                <default>false</default>
+                <label>MoVIP-CARNAHAN SCH. OF THE FUTURE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-CLAYTON HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-CLAYTON HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-COLUMBIA 93</fullName>
+                <default>false</default>
+                <label>MoVIP-COLUMBIA 93</label>
+            </value>
+            <value>
+                <fullName>MoVIP-CONWAY ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-CONWAY ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-CONWAY HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-CONWAY HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-CRESTVIEW MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-CRESTVIEW MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-DELTA R-V</fullName>
+                <default>false</default>
+                <label>MoVIP-DELTA R-V</label>
+            </value>
+            <value>
+                <fullName>MoVIP-EAST BUCHANAN HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-EAST BUCHANAN HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ELDON R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-ELDON R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ELLISVILLE ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-ELLISVILLE ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-EXCELSIOR SPRINGS MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-EXCELSIOR SPRINGS MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FERGUSON-FLORISSANT R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-FERGUSON-FLORISSANT R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FESTUS ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-FESTUS ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Fox C-6</fullName>
+                <default>false</default>
+                <label>MoVIP-Fox C-6</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FRANCIS HOWELL MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-FRANCIS HOWELL MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FRANCIS HOWELL R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-FRANCIS HOWELL R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FRESHMAN CTR.- G. BAKER BLDG.</fullName>
+                <default>false</default>
+                <label>MoVIP-FRESHMAN CTR.- G. BAKER BLDG.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FT. ZUMWALT R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-FT. ZUMWALT R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FULTON 58</fullName>
+                <default>false</default>
+                <label>MoVIP-FULTON 58</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FULTON MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-FULTON MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-FULTON SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-FULTON SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-GRAIN VALLEY R-V</fullName>
+                <default>false</default>
+                <label>MoVIP-GRAIN VALLEY R-V</label>
+            </value>
+            <value>
+                <fullName>MoVIP-GREENFIELD R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-GREENFIELD R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HALLSVILLE R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-HALLSVILLE R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Hamilton R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-Hamilton R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Hancock Sr. High</fullName>
+                <default>false</default>
+                <label>MoVIP-Hancock Sr. High</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HANNIBAL 60</fullName>
+                <default>false</default>
+                <label>MoVIP-HANNIBAL 60</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HARRISBURG R-VIII</fullName>
+                <default>false</default>
+                <label>MoVIP-HARRISBURG R-VIII</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HARRISONVILLE R-IX</fullName>
+                <default>false</default>
+                <label>MoVIP-HARRISONVILLE R-IX</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HAZELWOOD</fullName>
+                <default>false</default>
+                <label>MoVIP-HAZELWOOD</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HENRY CO. R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-HENRY CO. R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HERMANN HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-HERMANN HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HICKMAN MILLS C-1</fullName>
+                <default>false</default>
+                <label>MoVIP-HICKMAN MILLS C-1</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HIGHLAND ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-HIGHLAND ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HILLSBORO R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-HILLSBORO R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HODGEN ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-HODGEN ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HOLDEN R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-HOLDEN R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HOLLENBECK MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-HOLLENBECK MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Homeschool</fullName>
+                <default>false</default>
+                <label>MoVIP-Homeschool</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HOWELL VALLEY R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-HOWELL VALLEY R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HUMANSVILLE R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-HUMANSVILLE R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-HURLEY R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-HURLEY R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-INDEPENDENCE 30</fullName>
+                <default>false</default>
+                <label>MoVIP-INDEPENDENCE 30</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ISLAMIC SCHOOL OF KC</fullName>
+                <default>false</default>
+                <label>MoVIP-ISLAMIC SCHOOL OF KC</label>
+            </value>
+            <value>
+                <fullName>MoVIP-JASPER CO. R-V</fullName>
+                <default>false</default>
+                <label>MoVIP-JASPER CO. R-V</label>
+            </value>
+            <value>
+                <fullName>MoVIP-JEFFERSON CITY</fullName>
+                <default>false</default>
+                <label>MoVIP-JEFFERSON CITY</label>
+            </value>
+            <value>
+                <fullName>MoVIP-JOPLIN HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-JOPLIN HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-KANSAS CITY 33</fullName>
+                <default>false</default>
+                <label>MoVIP-KANSAS CITY 33</label>
+            </value>
+            <value>
+                <fullName>MoVIP-KEARNEY R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-KEARNEY R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-KENNERLY ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-KENNERLY ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-KENNETT 39</fullName>
+                <default>false</default>
+                <label>MoVIP-KENNETT 39</label>
+            </value>
+            <value>
+                <fullName>MoVIP-KENTUCKY TRAIL ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-KENTUCKY TRAIL ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-KINGSVILLE R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-KINGSVILLE R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-KNOB NOSTER R-VIII</fullName>
+                <default>false</default>
+                <label>MoVIP-KNOB NOSTER R-VIII</label>
+            </value>
+            <value>
+                <fullName>MoVIP-KNOX CO. R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-KNOX CO. R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LACLEDE CO. C-5</fullName>
+                <default>false</default>
+                <label>MoVIP-LACLEDE CO. C-5</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LADUE</fullName>
+                <default>false</default>
+                <label>MoVIP-LADUE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LAFAYETTE CO. C-1</fullName>
+                <default>false</default>
+                <label>MoVIP-LAFAYETTE CO. C-1</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LAFAYETTE SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-LAFAYETTE SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LATHROP R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-LATHROP R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LEES SUMMIT NORTH HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-LEES SUMMIT NORTH HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LEES SUMMIT R-VII</fullName>
+                <default>false</default>
+                <label>MoVIP-LEES SUMMIT R-VII</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LILLIAN SCHUMACHER ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-LILLIAN SCHUMACHER ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LINCOLN R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-LINCOLN R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LINDBERGH SCHOOLS</fullName>
+                <default>false</default>
+                <label>MoVIP-LINDBERGH SCHOOLS</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LINDBERGH SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-LINDBERGH SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LOGAN-ROGERSVILLE HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-LOGAN-ROGERSVILLE HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LOGAN-ROGERSVILLE R-VIII</fullName>
+                <default>false</default>
+                <label>MoVIP-LOGAN-ROGERSVILLE R-VIII</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Lone Jack C-6</fullName>
+                <default>false</default>
+                <label>MoVIP-Lone Jack C-6</label>
+            </value>
+            <value>
+                <fullName>MoVIP-LONG MIDDLE COMMUNITY ED. CTR.</fullName>
+                <default>false</default>
+                <label>MoVIP-LONG MIDDLE COMMUNITY ED. CTR.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MACON CO. ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-MACON CO. ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MALDEN R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-MALDEN R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MARQUETTE SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-MARQUETTE SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MARSHALL</fullName>
+                <default>false</default>
+                <label>MoVIP-MARSHALL</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MARSHFIELD R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-MARSHFIELD R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MCDONALD CO. R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-MCDONALD CO. R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MEADOWS ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-MEADOWS ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MEHLVILLE R-IX</fullName>
+                <default>false</default>
+                <label>MoVIP-MEHLVILLE R-IX</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MEXICO 59</fullName>
+                <default>false</default>
+                <label>MoVIP-MEXICO 59</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MO VIRTUAL INSTRUCTION PROGRAM</fullName>
+                <default>false</default>
+                <label>MoVIP-MO VIRTUAL INSTRUCTION PROGRAM</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MOUND CITY ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-MOUND CITY ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-MT. VERNON HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-MT. VERNON HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-NEOSHO HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-NEOSHO HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-NEOSHO R-V</fullName>
+                <default>false</default>
+                <label>MoVIP-NEOSHO R-V</label>
+            </value>
+            <value>
+                <fullName>MoVIP-North Kansas City</fullName>
+                <default>false</default>
+                <label>MoVIP-North Kansas City</label>
+            </value>
+            <value>
+                <fullName>MoVIP-NORTH KANSAS CITY 74</fullName>
+                <default>false</default>
+                <label>MoVIP-NORTH KANSAS CITY 74</label>
+            </value>
+            <value>
+                <fullName>MoVIP-NORTH NODAWAY JR.-SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-NORTH NODAWAY JR.-SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-NORTHWEST MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-NORTHWEST MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ORCHARD FARM R-V</fullName>
+                <default>false</default>
+                <label>MoVIP-ORCHARD FARM R-V</label>
+            </value>
+            <value>
+                <fullName>MoVIP-OSAGE CO. R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-OSAGE CO. R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-OWENSVILLE ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-OWENSVILLE ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-PARK HILL</fullName>
+                <default>false</default>
+                <label>MoVIP-PARK HILL</label>
+            </value>
+            <value>
+                <fullName>MoVIP-PARKWAY C-2</fullName>
+                <default>false</default>
+                <label>MoVIP-PARKWAY C-2</label>
+            </value>
+            <value>
+                <fullName>MoVIP-PATTONVILLE SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-PATTONVILLE SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-PERRY CO. 32</fullName>
+                <default>false</default>
+                <label>MoVIP-PERRY CO. 32</label>
+            </value>
+            <value>
+                <fullName>MoVIP-PERSHING MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-PERSHING MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-PETTIS CO. ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-PETTIS CO. ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Pleasant Hill High</fullName>
+                <default>false</default>
+                <label>MoVIP-Pleasant Hill High</label>
+            </value>
+            <value>
+                <fullName>MoVIP-PLEASANT HILL R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-PLEASANT HILL R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Poplar Bluff R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-Poplar Bluff R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-POTOSI R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-POTOSI R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Prairie Home High</fullName>
+                <default>false</default>
+                <label>MoVIP-Prairie Home High</label>
+            </value>
+            <value>
+                <fullName>MoVIP-RALLS CO. R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-RALLS CO. R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-RAYMORE-PECULIAR R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-RAYMORE-PECULIAR R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-RAYMORE-PECULIAR SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-RAYMORE-PECULIAR SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-RAYTOWN C-2</fullName>
+                <default>false</default>
+                <label>MoVIP-RAYTOWN C-2</label>
+            </value>
+            <value>
+                <fullName>MoVIP-REPUBLIC R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-REPUBLIC R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Richland R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-Richland R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-RICHMOND R-XVI</fullName>
+                <default>false</default>
+                <label>MoVIP-RICHMOND R-XVI</label>
+            </value>
+            <value>
+                <fullName>MoVIP-RIVERVIEW GARDENS</fullName>
+                <default>false</default>
+                <label>MoVIP-RIVERVIEW GARDENS</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ROCKWOOD R-VI</fullName>
+                <default>false</default>
+                <label>MoVIP-ROCKWOOD R-VI</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Rockwood School District R6</fullName>
+                <default>false</default>
+                <label>MoVIP-Rockwood School District R6</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ROCKWOOD SUMMIT SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-ROCKWOOD SUMMIT SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ROCKWOOD VALLEY MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-ROCKWOOD VALLEY MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ROLLA 31</fullName>
+                <default>false</default>
+                <label>MoVIP-ROLLA 31</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ROLLA JR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-ROLLA JR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ROOSEVELT 9TH GRADE CTR.</fullName>
+                <default>false</default>
+                <label>MoVIP-ROOSEVELT 9TH GRADE CTR.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ROOSEVELT HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-ROOSEVELT HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SALEM SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-SALEM SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SCHOOL OF THE OSAGE</fullName>
+                <default>false</default>
+                <label>MoVIP-SCHOOL OF THE OSAGE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SCOTT ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-SCOTT ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SENECA R-VII</fullName>
+                <default>false</default>
+                <label>MoVIP-SENECA R-VII</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SIKESTON SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-SIKESTON SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SMITHVILLE MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-SMITHVILLE MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-South City Prep</fullName>
+                <default>false</default>
+                <label>MoVIP-South City Prep</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SOUTH MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-SOUTH MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SOUTHERN BOONE ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-SOUTHERN BOONE ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SOUTHERN BOONE HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-SOUTHERN BOONE HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SOUTHERN REYNOLDS CO. R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-SOUTHERN REYNOLDS CO. R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SPRINGFIELD R-XII</fullName>
+                <default>false</default>
+                <label>MoVIP-SPRINGFIELD R-XII</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ST. CHARLES R-VI</fullName>
+                <default>false</default>
+                <label>MoVIP-ST. CHARLES R-VI</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ST. CHARLES WEST HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-ST. CHARLES WEST HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-ST. JOSEPH</fullName>
+                <default>false</default>
+                <label>MoVIP-ST. JOSEPH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-St. Louis City</fullName>
+                <default>false</default>
+                <label>MoVIP-St. Louis City</label>
+            </value>
+            <value>
+                <fullName>MoVIP-State Funded Non-Affiliated</fullName>
+                <default>false</default>
+                <label>MoVIP-State Funded Non-Affiliated</label>
+            </value>
+            <value>
+                <fullName>MoVIP-STE. GENEVIEVE CO. R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-STE. GENEVIEVE CO. R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SULLIVAN SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-SULLIVAN SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-SUMNER HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-SUMNER HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-TARKIO HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-TARKIO HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-THAYER R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-THAYER R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-TROY R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-TROY R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-UNION HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-UNION HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-UNION R-XI</fullName>
+                <default>false</default>
+                <label>MoVIP-UNION R-XI</label>
+            </value>
+            <value>
+                <fullName>MoVIP-VAN-FAR ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-VAN-FAR ELEM.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-VAN-FAR JR./SR. HIGH</fullName>
+                <default>false</default>
+                <label>MoVIP-VAN-FAR JR./SR. HIGH</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WALBRIDGE ELEM. COMMUNITY ED.</fullName>
+                <default>false</default>
+                <label>MoVIP-WALBRIDGE ELEM. COMMUNITY ED.</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WAYNESVILLE R-VI</fullName>
+                <default>false</default>
+                <label>MoVIP-WAYNESVILLE R-VI</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WENTZVILLE R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-WENTZVILLE R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WESTRAN R-I</fullName>
+                <default>false</default>
+                <label>MoVIP-WESTRAN R-I</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WHEATLAND R-II</fullName>
+                <default>false</default>
+                <label>MoVIP-WHEATLAND R-II</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WILDWOOD MIDDLE</fullName>
+                <default>false</default>
+                <label>MoVIP-WILDWOOD MIDDLE</label>
+            </value>
+            <value>
+                <fullName>MoVIP-Willow Springs R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-Willow Springs R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WINFIELD R-IV</fullName>
+                <default>false</default>
+                <label>MoVIP-WINFIELD R-IV</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WINONA R-III</fullName>
+                <default>false</default>
+                <label>MoVIP-WINONA R-III</label>
+            </value>
+            <value>
+                <fullName>MoVIP-WOERNER ELEM.</fullName>
+                <default>false</default>
+                <label>MoVIP-WOERNER ELEM.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

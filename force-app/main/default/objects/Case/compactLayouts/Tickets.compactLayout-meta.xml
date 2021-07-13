@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tickets</fullName>
+    <fields>CaseNumber</fields>
+    <fields>Status</fields>
+    <fields>OwnerId</fields>
+    <fields>ContactPhone</fields>
+    <fields>ContactMobile</fields>
+    <fields>ContactEmail</fields>
+    <label>Tickets</label>
+</CompactLayout>

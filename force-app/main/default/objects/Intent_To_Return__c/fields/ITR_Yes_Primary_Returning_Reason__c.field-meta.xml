@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ITR_Yes_Primary_Returning_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>ITR Yes Primary Returning Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Connections Academy provides our family a flexible schedule</fullName>
+                <default>false</default>
+                <label>Connections Academy provides our family a flexible schedule</label>
+            </value>
+            <value>
+                <fullName>Connections Academy offers a safer learning environment</fullName>
+                <default>false</default>
+                <label>Connections Academy offers a safer learning environment</label>
+            </value>
+            <value>
+                <fullName>My child is succeeding academically with Connections Academy</fullName>
+                <default>false</default>
+                <label>My child is succeeding academically with Connections Academy</label>
+            </value>
+            <value>
+                <fullName>I prefer the curriculum and courses used by Connections Academy to alternatives</fullName>
+                <default>false</default>
+                <label>I prefer the curriculum and courses used by Connections Academy to alternatives</label>
+            </value>
+            <value>
+                <fullName>Connections Academy offers teachers who are highly qualified and dedicated to supporting students</fullName>
+                <default>false</default>
+                <label>Connections Academy offers teachers who are highly qualified and dedicated to supporting students</label>
+            </value>
+            <value>
+                <fullName>Connections Academy accommodates my child’s health issues or special needs</fullName>
+                <default>false</default>
+                <label>Connections Academy accommodates my child’s health issues or special needs</label>
+            </value>
+            <value>
+                <fullName>Connections Academy provides a better school solution as a military family</fullName>
+                <default>false</default>
+                <label>Connections Academy provides a better school solution as a military family</label>
+            </value>
+            <value>
+                <fullName>Connections Academy allows me to be actively involved in my child/children’s education</fullName>
+                <default>false</default>
+                <label>Connections Academy allows me to be actively involved in my child/children’s education</label>
+            </value>
+            <value>
+                <fullName>Connections Academy best prepares my child for college or career opportunities</fullName>
+                <default>false</default>
+                <label>Connections Academy best prepares my child for college or career opportunities</label>
+            </value>
+            <value>
+                <fullName>Online school continues to be the best option for my family during COVID-19</fullName>
+                <default>false</default>
+                <label>Online school continues to be the best option for my family during COVID-19</label>
+            </value>
+            <value>
+                <fullName>My child prefers online learning and wants to continue</fullName>
+                <default>false</default>
+                <label>My child prefers online learning and wants to continue</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

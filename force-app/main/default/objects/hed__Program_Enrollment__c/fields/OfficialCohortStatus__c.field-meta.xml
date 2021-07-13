@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OfficialCohortStatus__c</fullName>
+    <description>The student&apos;s official 4-year cohort status, as confirmed by the state&apos;s DOE</description>
+    <externalId>false</externalId>
+    <label>Official Cohort Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Graduate</fullName>
+                <default>false</default>
+                <label>Graduate</label>
+            </value>
+            <value>
+                <fullName>Non-graduate</fullName>
+                <default>false</default>
+                <label>Non-graduate</label>
+            </value>
+            <value>
+                <fullName>Not in cohort</fullName>
+                <default>false</default>
+                <label>Not in cohort</label>
+            </value>
+            <value>
+                <fullName>Other completer</fullName>
+                <default>false</default>
+                <label>Other completer</label>
+            </value>
+            <value>
+                <fullName>Transfer-out</fullName>
+                <default>false</default>
+                <label>Transfer-out</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

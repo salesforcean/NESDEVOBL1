@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Immunization_Exemption_Year__c</fullName>
+    <description>Year of Immunization Exemption Form</description>
+    <externalId>false</externalId>
+    <label>Immunization Exemption Year</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2016</fullName>
+                <default>false</default>
+                <label>2016</label>
+            </value>
+            <value>
+                <fullName>2017</fullName>
+                <default>false</default>
+                <label>2017</label>
+            </value>
+            <value>
+                <fullName>2018</fullName>
+                <default>false</default>
+                <label>2018</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

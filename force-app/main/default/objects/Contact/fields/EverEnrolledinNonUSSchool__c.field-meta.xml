@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EverEnrolledinNonUSSchool__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has your student ever attended school outside of the U.S.</description>
+    <externalId>false</externalId>
+    <label>Ever Enrolled in Non US School</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

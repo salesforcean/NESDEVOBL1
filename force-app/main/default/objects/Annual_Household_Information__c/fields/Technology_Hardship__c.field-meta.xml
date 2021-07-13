@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Technology_Hardship__c</fullName>
+    <description>Status of family&apos;s technology hardship application</description>
+    <externalId>false</externalId>
+    <label>Technology Hardship</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Approved</fullName>
+                <default>false</default>
+                <label>Approved</label>
+            </value>
+            <value>
+                <fullName>Approved - Hardship 1819</fullName>
+                <default>false</default>
+                <label>Approved - Hardship 1819</label>
+            </value>
+            <value>
+                <fullName>Approved - ISP only</fullName>
+                <default>false</default>
+                <label>Approved - ISP only</label>
+            </value>
+            <value>
+                <fullName>Approved - Ordered</fullName>
+                <default>false</default>
+                <label>Approved - Ordered</label>
+            </value>
+            <value>
+                <fullName>Approved - Substantiated</fullName>
+                <default>false</default>
+                <label>Approved - Substantiated</label>
+            </value>
+            <value>
+                <fullName>Approved - Substantiated and Ordered</fullName>
+                <default>false</default>
+                <label>Approved - Substantiated and Ordered</label>
+            </value>
+            <value>
+                <fullName>Denied</fullName>
+                <default>false</default>
+                <label>Denied</label>
+            </value>
+            <value>
+                <fullName>Denied - Amounts do not match</fullName>
+                <default>false</default>
+                <label>Denied - Amounts do not match</label>
+            </value>
+            <value>
+                <fullName>Denied - Hardship 1819</fullName>
+                <default>false</default>
+                <label>Denied - Hardship 1819</label>
+            </value>
+            <value>
+                <fullName>Denied - Not Substantiated</fullName>
+                <default>false</default>
+                <label>Denied - Not Substantiated</label>
+            </value>
+            <value>
+                <fullName>Hardship Application Received/Under Review</fullName>
+                <default>false</default>
+                <label>Hardship Application Received/Under Review</label>
+            </value>
+            <value>
+                <fullName>Need Documentation to Substantiate</fullName>
+                <default>false</default>
+                <label>Need Documentation to Substantiate</label>
+            </value>
+            <value>
+                <fullName>Pending-Income form Missing/Invalid</fullName>
+                <default>false</default>
+                <label>Pending-Income form Missing/Invalid</label>
+            </value>
+            <value>
+                <fullName>Technology Hardships Limit Reached</fullName>
+                <default>false</default>
+                <label>Technology Hardships Limit Reached</label>
+            </value>
+            <value>
+                <fullName>Approved - Hardship</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Approved - Hardship</label>
+            </value>
+            <value>
+                <fullName>Denied - Hardship</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Denied - Hardship</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

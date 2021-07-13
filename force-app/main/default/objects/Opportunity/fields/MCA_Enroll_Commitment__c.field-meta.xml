@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MCA_Enroll_Commitment__c</fullName>
+    <description>Please make the appropriate selection below to accept or decline this offer</description>
+    <externalId>false</externalId>
+    <label>MCA Enroll Commitment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>I am declining the offer of enrollment for my student.</fullName>
+                <default>false</default>
+                <label>I am declining the offer of enrollment for my student.</label>
+            </value>
+            <value>
+                <fullName>I declare my commitment to enroll for my student for the 2018–19 school year.</fullName>
+                <default>false</default>
+                <label>I declare my commitment to enroll for my student for the 2018–19 school year.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

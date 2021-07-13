@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Autodialer_Opt_Out__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>ADO #217840</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Customer opts out of receiving calls from an automated dialer.</inlineHelpText>
+    <label>Autodialer Opt Out</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

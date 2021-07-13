@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inquiry_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Inquiry Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Enrollment Questions</fullName>
+                <default>false</default>
+                <label>Enrollment Questions</label>
+            </value>
+            <value>
+                <fullName>School Specific Questions</fullName>
+                <default>false</default>
+                <label>School Specific Questions</label>
+            </value>
+            <value>
+                <fullName>Live Event Questions</fullName>
+                <default>false</default>
+                <label>Live Event Questions</label>
+            </value>
+            <value>
+                <fullName>Virtual Info Session Questions</fullName>
+                <default>false</default>
+                <label>Virtual Info Session Questions</label>
+            </value>
+            <value>
+                <fullName>Contact a Parent</fullName>
+                <default>false</default>
+                <label>Contact a Parent</label>
+            </value>
+            <value>
+                <fullName>Contact a Teacher</fullName>
+                <default>false</default>
+                <label>Contact a Teacher</label>
+            </value>
+            <value>
+                <fullName>Technical Issue</fullName>
+                <default>false</default>
+                <label>Technical Issue</label>
+            </value>
+            <value>
+                <fullName>Feedback</fullName>
+                <default>false</default>
+                <label>Feedback</label>
+            </value>
+            <value>
+                <fullName>General Questions</fullName>
+                <default>false</default>
+                <label>General Questions</label>
+            </value>
+            <value>
+                <fullName>Course Placement</fullName>
+                <default>false</default>
+                <label>Course Placement</label>
+            </value>
+            <value>
+                <fullName>Curriculum Questions</fullName>
+                <default>false</default>
+                <label>Curriculum Questions</label>
+            </value>
+            <value>
+                <fullName>Special Education Questions</fullName>
+                <default>false</default>
+                <label>Special Education Questions</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

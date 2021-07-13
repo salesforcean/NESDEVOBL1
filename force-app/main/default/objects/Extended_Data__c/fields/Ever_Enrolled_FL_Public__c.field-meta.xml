@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ever_Enrolled_FL_Public__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the student ever been enrolled in a Florida Public School</description>
+    <externalId>false</externalId>
+    <label>Ever Enrolled FL Public</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

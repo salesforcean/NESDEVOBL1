@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reasons_for_Considering_CA__c</fullName>
+    <description>Lead reason of interest question</description>
+    <externalId>false</externalId>
+    <label>Reasons for Considering CA</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advanced Academically</fullName>
+                <default>false</default>
+                <label>Advanced Academically</label>
+            </value>
+            <value>
+                <fullName>Bullying/Safe Environment</fullName>
+                <default>false</default>
+                <label>Bullying/Safe Environment</label>
+            </value>
+            <value>
+                <fullName>Dissatisfied with School/Teacher</fullName>
+                <default>false</default>
+                <label>Dissatisfied with School/Teacher</label>
+            </value>
+            <value>
+                <fullName>Flexible/Personalized Learning</fullName>
+                <default>false</default>
+                <label>Flexible/Personalized Learning</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Specialized Needs/Health</fullName>
+                <default>false</default>
+                <label>Specialized Needs/Health</label>
+            </value>
+            <value>
+                <fullName>Struggling Academically</fullName>
+                <default>false</default>
+                <label>Struggling Academically</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

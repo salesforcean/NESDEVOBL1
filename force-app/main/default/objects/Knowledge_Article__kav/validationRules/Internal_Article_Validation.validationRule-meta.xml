@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Internal_Article_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(CONTAINS(RecordType.Name, &quot;Internal&quot;), AND(CONTAINS(RecordType.Name, &quot;Internal&quot;),IsVisibleInCsp), AND(CONTAINS(RecordType.Name, &quot;External&quot;),NOT(IsVisibleInCsp)))</errorConditionFormula>
+    <errorMessage>Please update the &apos;Visible to Customer&apos; checkbox to be consistent with the Article Type.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ORCA_CTE_Interest__c</fullName>
+    <description>Area of interest in learning more about the career-focused learning opportunities at ORCA</description>
+    <externalId>false</externalId>
+    <label>ORCA CTE Interest</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Business Management</fullName>
+                <default>false</default>
+                <label>Business Management</label>
+            </value>
+            <value>
+                <fullName>Computer Sciences</fullName>
+                <default>false</default>
+                <label>Computer Sciences</label>
+            </value>
+            <value>
+                <fullName>Health Sciences</fullName>
+                <default>false</default>
+                <label>Health Sciences</label>
+            </value>
+            <value>
+                <fullName>Not interested at this time</fullName>
+                <default>false</default>
+                <label>Not interested at this time</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

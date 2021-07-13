@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Component_Type__c</fullName>
+    <description>Indicator of whether the component relates to student or caretaker (household) program enrollments. This field is used for components of the following types: Flag, Form. All child components of a form should implicitly inherit the type of the form when used in the context of that form.</description>
+    <externalId>false</externalId>
+    <label>Component Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Student</fullName>
+                <default>false</default>
+                <label>Student</label>
+            </value>
+            <value>
+                <fullName>Household</fullName>
+                <default>false</default>
+                <label>Household</label>
+            </value>
+            <value>
+                <fullName>Caretaker</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Caretaker</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

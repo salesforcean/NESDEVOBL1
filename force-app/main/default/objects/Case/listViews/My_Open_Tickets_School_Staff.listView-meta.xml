@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Open_Tickets_School_Staff</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>NAME</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Cases_Created_by_Me_SF_Staff__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>notEqual</operation>
+        <value>Closed,Closed - No Contact Needed,Closed - Unable to Contact</value>
+    </filters>
+    <filters>
+        <field>Internal__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Case_Contact_Record_Type__c</field>
+        <operation>equals</operation>
+        <value>School_Staff</value>
+    </filters>
+    <label>My Open Tickets - School Staff</label>
+    <sharedTo>
+        <group>ACA</group>
+        <group>ARCA</group>
+        <group>CALCACC</group>
+        <group>CALCAMB</group>
+        <group>CALCAN</group>
+        <group>CALCAR</group>
+        <group>CAPOCA</group>
+        <group>CENCA</group>
+        <group>GRCA</group>
+        <group>MYCA</group>
+        <group>TNCA</group>
+        <group>WYCA</group>
+        <role>Pearson_Corporate_Staff</role>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Criteria_Number__c</fullName>
+    <description>The criteria number that will be used to reference it in the logic definition on the Criteria Group. Criteria should be numbered 1 - n, where n is the total number of criteria associated with the Enrollment Component.</description>
+    <externalId>false</externalId>
+    <label>Criteria Number</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

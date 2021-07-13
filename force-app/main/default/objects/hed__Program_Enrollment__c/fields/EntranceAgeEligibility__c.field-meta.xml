@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EntranceAgeEligibility__c</fullName>
+    <description>Entrance Age Eligibility Flag</description>
+    <externalId>false</externalId>
+    <label>Entrance Age Eligibility</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Eligible</fullName>
+                <default>false</default>
+                <label>Eligible</label>
+            </value>
+            <value>
+                <fullName>NOT ELIGIBLE-No Birthdate</fullName>
+                <default>false</default>
+                <label>NOT ELIGIBLE-No Birthdate</label>
+            </value>
+            <value>
+                <fullName>Ineligible</fullName>
+                <default>false</default>
+                <label>Ineligible</label>
+            </value>
+            <value>
+                <fullName>Too young</fullName>
+                <default>false</default>
+                <label>Too young</label>
+            </value>
+            <value>
+                <fullName>Too old</fullName>
+                <default>false</default>
+                <label>Too old</label>
+            </value>
+            <value>
+                <fullName>Too young - other options</fullName>
+                <default>false</default>
+                <label>Too young - other options</label>
+            </value>
+            <value>
+                <fullName>Possibly too old</fullName>
+                <default>false</default>
+                <label>Possibly too old</label>
+            </value>
+            <value>
+                <fullName>Too old - other options</fullName>
+                <default>false</default>
+                <label>Too old - other options</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

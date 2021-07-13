@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PrimaryReasonCounselorReview__c</fullName>
+    <description>Primary Reason for Counselor Review</description>
+    <externalId>false</externalId>
+    <label>Primary Reason Counselor Review</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>9th, 10th, 11th- Counselor Review</fullName>
+                <default>false</default>
+                <label>9th, 10th, 11th- Counselor Review</label>
+            </value>
+            <value>
+                <fullName>Age/lack of credits</fullName>
+                <default>false</default>
+                <label>Age/lack of credits</label>
+            </value>
+            <value>
+                <fullName>Attendance concerns</fullName>
+                <default>false</default>
+                <label>Attendance concerns</label>
+            </value>
+            <value>
+                <fullName>Block schedule/Trimester schedule</fullName>
+                <default>false</default>
+                <label>Block schedule/Trimester schedule</label>
+            </value>
+            <value>
+                <fullName>Complex academic situation</fullName>
+                <default>false</default>
+                <label>Complex academic situation</label>
+            </value>
+            <value>
+                <fullName>Discrepancy in semester start and end dates</fullName>
+                <default>false</default>
+                <label>Discrepancy in semester start and end dates</label>
+            </value>
+            <value>
+                <fullName>Incomplete or no documentation on file</fullName>
+                <default>false</default>
+                <label>Incomplete or no documentation on file</label>
+            </value>
+            <value>
+                <fullName>Request for AP courses/Currently in AP courses</fullName>
+                <default>false</default>
+                <label>Request for AP courses/Currently in AP courses</label>
+            </value>
+            <value>
+                <fullName>Request for Foundations courses/ Currently in Foundations courses</fullName>
+                <default>false</default>
+                <label>Request for Foundations courses/ Currently in Foundations courses</label>
+            </value>
+            <value>
+                <fullName>Returning student</fullName>
+                <default>false</default>
+                <label>Returning student</label>
+            </value>
+            <value>
+                <fullName>Student is failing courses</fullName>
+                <default>false</default>
+                <label>Student is failing courses</label>
+            </value>
+            <value>
+                <fullName>Unidentifiable courses/Courses do not match CE courses</fullName>
+                <default>false</default>
+                <label>Unidentifiable courses/Courses do not match CE courses</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

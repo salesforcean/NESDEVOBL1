@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Post_High_School_Plans_2__c</fullName>
+    <description>After high school, my student&apos;s plans are</description>
+    <externalId>false</externalId>
+    <label>Post High School Plans 2</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>To enroll in a four-year college or university</fullName>
+                <default>false</default>
+                <label>To enroll in a four-year college or university</label>
+            </value>
+            <value>
+                <fullName>To enroll in a trade or vocational school</fullName>
+                <default>false</default>
+                <label>To enroll in a trade or vocational school</label>
+            </value>
+            <value>
+                <fullName>To enroll in a two-year or community college</fullName>
+                <default>false</default>
+                <label>To enroll in a two-year or community college</label>
+            </value>
+            <value>
+                <fullName>To enter the military</fullName>
+                <default>false</default>
+                <label>To enter the military</label>
+            </value>
+            <value>
+                <fullName>To enter the workforce</fullName>
+                <default>false</default>
+                <label>To enter the workforce</label>
+            </value>
+            <value>
+                <fullName>Undecided</fullName>
+                <default>false</default>
+                <label>Undecided</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

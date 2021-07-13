@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_Required_Based_On_Record_Type_Chld</fullName>
+    <active>true</active>
+    <description>Order is required if the Child Component is a Form, Section, Question, Stage, Message, or Document</description>
+    <errorConditionFormula>AND(ISBLANK(Order__c),
+				or( 
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Form&quot;,  
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Section&quot;, 
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Question&quot;,
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Stage&quot;,
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Message&quot;,
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Document&quot;))</errorConditionFormula>
+    <errorMessage>Order is required if the Child Component is a Form, Section, Question, Stage, Message, or Document</errorMessage>
+</ValidationRule>

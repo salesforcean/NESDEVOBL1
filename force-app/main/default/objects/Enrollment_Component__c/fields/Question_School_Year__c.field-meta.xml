@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Question_School_Year__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The school year the question is related to. This can be optionally set to identify question responses as annualized data.</description>
+    <externalId>false</externalId>
+    <label>School Year</label>
+    <referenceTo>School_Year__c</referenceTo>
+    <relationshipLabel>Enrollment Components</relationshipLabel>
+    <relationshipName>Enrollment_Components</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

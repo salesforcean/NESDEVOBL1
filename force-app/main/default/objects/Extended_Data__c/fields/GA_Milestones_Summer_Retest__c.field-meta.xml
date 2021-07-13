@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GA_Milestones_Summer_Retest__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is the student scheduled to take the Georgia Milestones summer retest?</description>
+    <externalId>false</externalId>
+    <label>GA Milestones Summer Retest</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

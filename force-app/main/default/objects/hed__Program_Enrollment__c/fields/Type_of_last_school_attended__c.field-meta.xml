@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_of_last_school_attended__c</fullName>
+    <description>Type of current (most recent) school</description>
+    <externalId>false</externalId>
+    <label>Type of last school attended</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Charter School (Public)</fullName>
+                <default>false</default>
+                <label>Charter School (Public)</label>
+            </value>
+            <value>
+                <fullName>Home School</fullName>
+                <default>false</default>
+                <label>Home School</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Private/Parochial School</fullName>
+                <default>false</default>
+                <label>Private/Parochial School</label>
+            </value>
+            <value>
+                <fullName>Public School</fullName>
+                <default>false</default>
+                <label>Public School</label>
+            </value>
+            <value>
+                <fullName>Virtual School (Public)</fullName>
+                <default>false</default>
+                <label>Virtual School (Public)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

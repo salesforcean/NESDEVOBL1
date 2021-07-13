@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PrimaryReasonPrincipalReview__c</fullName>
+    <description>Primary Reason for Principal Review</description>
+    <externalId>false</externalId>
+    <label>Primary Reason Principal Review</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Attendance concerns</fullName>
+                <default>false</default>
+                <label>Attendance concerns</label>
+            </value>
+            <value>
+                <fullName>Complex academic situation</fullName>
+                <default>false</default>
+                <label>Complex academic situation</label>
+            </value>
+            <value>
+                <fullName>Gifted request</fullName>
+                <default>false</default>
+                <label>Gifted request</label>
+            </value>
+            <value>
+                <fullName>Incomplete or no documentation on file</fullName>
+                <default>false</default>
+                <label>Incomplete or no documentation on file</label>
+            </value>
+            <value>
+                <fullName>Math recommendation</fullName>
+                <default>false</default>
+                <label>Math recommendation</label>
+            </value>
+            <value>
+                <fullName>Promotion status is in question</fullName>
+                <default>false</default>
+                <label>Promotion status is in question</label>
+            </value>
+            <value>
+                <fullName>Request for high school courses</fullName>
+                <default>false</default>
+                <label>Request for high school courses</label>
+            </value>
+            <value>
+                <fullName>Request to skip a grade level</fullName>
+                <default>false</default>
+                <label>Request to skip a grade level</label>
+            </value>
+            <value>
+                <fullName>State test scores/Standardized test scores</fullName>
+                <default>false</default>
+                <label>State test scores/Standardized test scores</label>
+            </value>
+            <value>
+                <fullName>Too young/too old for grade level requested</fullName>
+                <default>false</default>
+                <label>Too young/too old for grade level requested</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Receive_Equip_Hardship__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>The caretaker is requesting that the school provide equipment and will complete any additional steps necessary to confirm that they qualify to receive equipment</description>
+    <externalId>false</externalId>
+    <label>Receive Equip Hardship</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

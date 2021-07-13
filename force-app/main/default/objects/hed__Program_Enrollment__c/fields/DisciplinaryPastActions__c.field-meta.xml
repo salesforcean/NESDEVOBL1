@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DisciplinaryPastActions__c</fullName>
+    <description>Has this student ever been suspended or expelled from any school?</description>
+    <externalId>false</externalId>
+    <label>Disciplinary Past Actions</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>Yes, expelled</fullName>
+                <default>false</default>
+                <label>Yes, expelled</label>
+            </value>
+            <value>
+                <fullName>Yes, in the process of being expelled</fullName>
+                <default>false</default>
+                <label>Yes, in the process of being expelled</label>
+            </value>
+            <value>
+                <fullName>Yes, suspended</fullName>
+                <default>false</default>
+                <label>Yes, suspended</label>
+            </value>
+            <value>
+                <fullName>Yes, suspended and expelled</fullName>
+                <default>false</default>
+                <label>Yes, suspended and expelled</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

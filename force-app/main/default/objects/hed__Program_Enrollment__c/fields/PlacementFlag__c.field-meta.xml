@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PlacementFlag__c</fullName>
+    <externalId>false</externalId>
+    <label>Placement Flag</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Awaiting Communication- More Info</fullName>
+                <default>false</default>
+                <label>Awaiting Communication- More Info</label>
+            </value>
+            <value>
+                <fullName>Awaiting Communication- Retain</fullName>
+                <default>false</default>
+                <label>Awaiting Communication- Retain</label>
+            </value>
+            <value>
+                <fullName>Awaiting Communication- School Counselor</fullName>
+                <default>false</default>
+                <label>Awaiting Communication- School Counselor</label>
+            </value>
+            <value>
+                <fullName>Awaiting Communication- WYCA</fullName>
+                <default>false</default>
+                <label>Awaiting Communication- WYCA</label>
+            </value>
+            <value>
+                <fullName>Counselor Review</fullName>
+                <default>false</default>
+                <label>Counselor Review</label>
+            </value>
+            <value>
+                <fullName>Pending Assessment</fullName>
+                <default>false</default>
+                <label>Pending Assessment</label>
+            </value>
+            <value>
+                <fullName>Pending Secondary Documentation</fullName>
+                <default>false</default>
+                <label>Pending Secondary Documentation</label>
+            </value>
+            <value>
+                <fullName>Principal Review</fullName>
+                <default>false</default>
+                <label>Principal Review</label>
+            </value>
+            <value>
+                <fullName>Principal Review- Awaiting Feedback</fullName>
+                <default>false</default>
+                <label>Principal Review- Awaiting Feedback</label>
+            </value>
+            <value>
+                <fullName>Principal Review- Complete</fullName>
+                <default>false</default>
+                <label>Principal Review- Complete</label>
+            </value>
+            <value>
+                <fullName>Principal Review- Gifted</fullName>
+                <default>false</default>
+                <label>Principal Review- Gifted</label>
+            </value>
+            <value>
+                <fullName>Principal Review- Need Information</fullName>
+                <default>false</default>
+                <label>Principal Review- Need Information</label>
+            </value>
+            <value>
+                <fullName>RC/PAH Not Uploaded</fullName>
+                <default>false</default>
+                <label>RC/PAH Not Uploaded</label>
+            </value>
+            <value>
+                <fullName>Released</fullName>
+                <default>false</default>
+                <label>Released</label>
+            </value>
+            <value>
+                <fullName>Academic Placement Advisor</fullName>
+                <default>false</default>
+                <label>Academic Placement Advisor</label>
+            </value>
+            <value>
+                <fullName>Special Education Director</fullName>
+                <default>false</default>
+                <label>Special Education Director</label>
+            </value>
+            <value>
+                <fullName>11th Grade Counselor Review</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>11th Grade Counselor Review</label>
+            </value>
+            <value>
+                <fullName>Principal Review- Gifted Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Principal Review- Gifted Request</label>
+            </value>
+            <value>
+                <fullName>Special Education Director Review (FLVSFT Only)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Special Education Director Review (FLVSFT Only)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Electives_Exclude_from_Auto_Course_Sel__c</fullName>
+    <description>Electives Exclude from Auto Course Selection</description>
+    <externalId>false</externalId>
+    <label>Electives Exclude from Auto Course Sel</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Art</fullName>
+                <default>false</default>
+                <label>Art</label>
+            </value>
+            <value>
+                <fullName>Educational Technology</fullName>
+                <default>false</default>
+                <label>Educational Technology</label>
+            </value>
+            <value>
+                <fullName>Health and Physical Education 8</fullName>
+                <default>false</default>
+                <label>Health and Physical Education 8</label>
+            </value>
+            <value>
+                <fullName>Home Life</fullName>
+                <default>false</default>
+                <label>Home Life</label>
+            </value>
+            <value>
+                <fullName>Middle School Career Exploration I</fullName>
+                <default>false</default>
+                <label>Middle School Career Exploration I</label>
+            </value>
+            <value>
+                <fullName>Middle School Digital Art and Design</fullName>
+                <default>false</default>
+                <label>Middle School Digital Art and Design</label>
+            </value>
+            <value>
+                <fullName>Middle School Journalism</fullName>
+                <default>false</default>
+                <label>Middle School Journalism</label>
+            </value>
+            <value>
+                <fullName>Middle Sign Language</fullName>
+                <default>false</default>
+                <label>Middle Sign Language</label>
+            </value>
+            <value>
+                <fullName>Middle Spanish</fullName>
+                <default>false</default>
+                <label>Middle Spanish</label>
+            </value>
+            <value>
+                <fullName>Music</fullName>
+                <default>false</default>
+                <label>Music</label>
+            </value>
+            <value>
+                <fullName>Theater</fullName>
+                <default>false</default>
+                <label>Theater</label>
+            </value>
+            <value>
+                <fullName>WebQuest</fullName>
+                <default>false</default>
+                <label>WebQuest</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

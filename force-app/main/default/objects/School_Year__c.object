@@ -153,60 +153,7 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Read</externalSharingModel>
-    <fields>
-        <fullName>Current_Year__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>The current school year</description>
-        <externalId>false</externalId>
-        <label>Current School Year</label>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>End_Date__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>End Date</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>External_Id__c</fullName>
-        <caseSensitive>true</caseSensitive>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>true</externalId>
-        <label>External Id</label>
-        <length>20</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>Start_Date__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Start Date</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
     <label>School Year</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Start_Date__c</columns>
-        <columns>End_Date__c</columns>
-        <columns>External_Id__c</columns>
-        <columns>Current_Year__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>School Year Name</label>

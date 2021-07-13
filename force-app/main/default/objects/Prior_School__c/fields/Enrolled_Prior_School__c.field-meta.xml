@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enrolled_Prior_School__c</fullName>
+    <description>Timeframe student was enrolled</description>
+    <externalId>false</externalId>
+    <label>Enrolled Prior School</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Beginning of the year</fullName>
+                <default>false</default>
+                <label>Beginning of the year</label>
+            </value>
+            <value>
+                <fullName>End of year</fullName>
+                <default>false</default>
+                <label>End of year</label>
+            </value>
+            <value>
+                <fullName>Mid-year</fullName>
+                <default>false</default>
+                <label>Mid-year</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

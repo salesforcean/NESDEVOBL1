@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FLVS_GiftedEP_Past3Years__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the student had an education plan for gifted services in the last three years?</description>
+    <externalId>false</externalId>
+    <label>FLVS GiftedEP Past3Years</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ever_in_OH_Public_School__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the student ever been enrolled in an Ohio public school?</description>
+    <externalId>false</externalId>
+    <label>Ever in OH Public School</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EnrInt_Status_Reasons__c</fullName>
+    <description>Engagement Status Reason(s)</description>
+    <externalId>false</externalId>
+    <label>EnrInt Status Reasons</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Awaiting Documentation</fullName>
+                <default>false</default>
+                <label>Awaiting Documentation</label>
+            </value>
+            <value>
+                <fullName>Incorrect Contact Information</fullName>
+                <default>false</default>
+                <label>Incorrect Contact Information</label>
+            </value>
+            <value>
+                <fullName>Lack of Account Activity</fullName>
+                <default>false</default>
+                <label>Lack of Account Activity</label>
+            </value>
+            <value>
+                <fullName>Language Barrier</fullName>
+                <default>false</default>
+                <label>Language Barrier</label>
+            </value>
+            <value>
+                <fullName>Undecided</fullName>
+                <default>false</default>
+                <label>Undecided</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

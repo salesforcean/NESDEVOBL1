@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Human_Resources_Inquiry</fullName>
+    <active>false</active>
+    <description>Issue Type = Human Resources Inquiry</description>
+    <errorConditionFormula>IF(AND(ISPICKVAL(Type,&quot;Human Resources Inquiry&quot;),
+CS_SkipProfiles__c =&apos;N&apos;),
+ISBLANK(TEXT(School_Service__c)), null)</errorConditionFormula>
+    <errorMessage>Please enter field value of School/Service.</errorMessage>
+</ValidationRule>

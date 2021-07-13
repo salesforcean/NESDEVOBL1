@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TCAH_Pre_Enrollment_Meeting__c</fullName>
+    <description>Pre-Enrollment Meeting Status</description>
+    <externalId>false</externalId>
+    <label>TCAH Pre Enrollment Meeting</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pending</fullName>
+                <default>false</default>
+                <label>Pending</label>
+            </value>
+            <value>
+                <fullName>Released (Attended)</fullName>
+                <default>false</default>
+                <label>Released (Attended)</label>
+            </value>
+            <value>
+                <fullName>Released (Other)</fullName>
+                <default>false</default>
+                <label>Released (Other)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

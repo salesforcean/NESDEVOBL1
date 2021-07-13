@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ECR_Document_Has_Correct_Parent</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(  NOT( Parent_Enrollment_Component__r.RecordType.DeveloperName  = &quot;Form&quot; ) ,  Child_Enrollment_Component__r.RecordType.DeveloperName   =&quot;Document&quot; )</errorConditionFormula>
+    <errorMessage>A component of record type &quot;Document&quot; must have a parent of record type &quot;Form&quot;</errorMessage>
+</ValidationRule>

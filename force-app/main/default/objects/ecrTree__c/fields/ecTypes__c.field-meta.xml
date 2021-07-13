@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ecTypes__c</fullName>
+    <description>Types of ECs in the tree, ex: Stage, Process, Form, etc...</description>
+    <encryptionScheme>None</encryptionScheme>
+    <externalId>false</externalId>
+    <inlineHelpText>Types of ECs in the tree, ex: Stage, Process, Form, etc...</inlineHelpText>
+    <label>ecTypes</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

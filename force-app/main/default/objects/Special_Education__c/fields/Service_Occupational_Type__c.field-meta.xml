@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Occupational_Type__c</fullName>
+    <description>Occupational Therapy Services</description>
+    <externalId>false</externalId>
+    <label>Service Occupational Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Consult</fullName>
+                <default>false</default>
+                <label>Consult</label>
+            </value>
+            <value>
+                <fullName>Consult/Direct</fullName>
+                <default>false</default>
+                <label>Consult/Direct</label>
+            </value>
+            <value>
+                <fullName>Direct</fullName>
+                <default>false</default>
+                <label>Direct</label>
+            </value>
+            <value>
+                <fullName>Virtual</fullName>
+                <default>false</default>
+                <label>Virtual</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

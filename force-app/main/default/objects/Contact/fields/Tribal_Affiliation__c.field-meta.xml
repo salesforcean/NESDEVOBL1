@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tribal_Affiliation__c</fullName>
+    <description>Tribal Affiliation</description>
+    <externalId>false</externalId>
+    <label>Tribal Affiliation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Acoma</fullName>
+                <default>false</default>
+                <label>Acoma</label>
+            </value>
+            <value>
+                <fullName>Cochiti</fullName>
+                <default>false</default>
+                <label>Cochiti</label>
+            </value>
+            <value>
+                <fullName>Isleta</fullName>
+                <default>false</default>
+                <label>Isleta</label>
+            </value>
+            <value>
+                <fullName>Jemez</fullName>
+                <default>false</default>
+                <label>Jemez</label>
+            </value>
+            <value>
+                <fullName>Jicarilla Apache</fullName>
+                <default>false</default>
+                <label>Jicarilla Apache</label>
+            </value>
+            <value>
+                <fullName>Kewa (formerly Santo Domingo)</fullName>
+                <default>false</default>
+                <label>Kewa (formerly Santo Domingo)</label>
+            </value>
+            <value>
+                <fullName>Laguna</fullName>
+                <default>false</default>
+                <label>Laguna</label>
+            </value>
+            <value>
+                <fullName>Mescalero Apache</fullName>
+                <default>false</default>
+                <label>Mescalero Apache</label>
+            </value>
+            <value>
+                <fullName>Nambe</fullName>
+                <default>false</default>
+                <label>Nambe</label>
+            </value>
+            <value>
+                <fullName>Navajo</fullName>
+                <default>false</default>
+                <label>Navajo</label>
+            </value>
+            <value>
+                <fullName>Ohkay Owingeh (formerly San Juan)</fullName>
+                <default>false</default>
+                <label>Ohkay Owingeh (formerly San Juan)</label>
+            </value>
+            <value>
+                <fullName>Picuris</fullName>
+                <default>false</default>
+                <label>Picuris</label>
+            </value>
+            <value>
+                <fullName>Pojoaque</fullName>
+                <default>false</default>
+                <label>Pojoaque</label>
+            </value>
+            <value>
+                <fullName>San Felipe</fullName>
+                <default>false</default>
+                <label>San Felipe</label>
+            </value>
+            <value>
+                <fullName>San Ildefonso</fullName>
+                <default>false</default>
+                <label>San Ildefonso</label>
+            </value>
+            <value>
+                <fullName>Sandia</fullName>
+                <default>false</default>
+                <label>Sandia</label>
+            </value>
+            <value>
+                <fullName>Santa Ana</fullName>
+                <default>false</default>
+                <label>Santa Ana</label>
+            </value>
+            <value>
+                <fullName>Santa Clara</fullName>
+                <default>false</default>
+                <label>Santa Clara</label>
+            </value>
+            <value>
+                <fullName>Taos</fullName>
+                <default>false</default>
+                <label>Taos</label>
+            </value>
+            <value>
+                <fullName>Tesuque</fullName>
+                <default>false</default>
+                <label>Tesuque</label>
+            </value>
+            <value>
+                <fullName>Zia</fullName>
+                <default>false</default>
+                <label>Zia</label>
+            </value>
+            <value>
+                <fullName>Zuni</fullName>
+                <default>false</default>
+                <label>Zuni</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

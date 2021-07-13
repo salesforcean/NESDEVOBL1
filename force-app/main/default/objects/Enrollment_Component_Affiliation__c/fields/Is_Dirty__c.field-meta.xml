@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Dirty__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Added as part of the ECA rewrite.  This checkbox will be marked when criteria is updated that may impact the status of an ECA.  Updated by the trigger on the ProgramEnrollmentCriteria object.</description>
+    <externalId>false</externalId>
+    <label>Is Dirty</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIF_AcademicSupportNeeds__c</fullName>
+    <description>Indicate the areas in which your student needs academic support. (Check all that apply.)</description>
+    <externalId>false</externalId>
+    <label>SIF AcademicSupportNeeds</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Language Arts</fullName>
+                <default>false</default>
+                <label>Language Arts</label>
+            </value>
+            <value>
+                <fullName>Math</fullName>
+                <default>false</default>
+                <label>Math</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Science</fullName>
+                <default>false</default>
+                <label>Science</label>
+            </value>
+            <value>
+                <fullName>Social Studies</fullName>
+                <default>false</default>
+                <label>Social Studies</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

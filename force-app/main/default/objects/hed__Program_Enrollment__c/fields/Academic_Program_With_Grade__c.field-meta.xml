@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Academic_Program_With_Grade__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( AND(RecordType.Name = &apos;Student&apos;,NOT(ISBLANK(Program_Grade_Level__c)),NOT(ISBLANK(hed__Account__c)) ) ,hed__Account__r.Name +&apos;|&apos;+Program_Grade_Level__r.Grade_Level__r.Name, &apos;&apos;)</formula>
+    <label>Academic Program With Grade</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

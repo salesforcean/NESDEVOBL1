@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>McKinney_Ventio_Eligibility__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>McKinney Vento Eligible</description>
+    <externalId>false</externalId>
+    <label>McKinney Ventio Eligibility</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

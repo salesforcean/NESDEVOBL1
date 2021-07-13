@@ -154,71 +154,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <fields>
-        <fullName>Custody_Name__c</fullName>
-        <description>Adoptive father’s name</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Custody Name</label>
-        <length>80</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Custody_Relationship__c</fullName>
-        <externalId>false</externalId>
-        <label>Custody Relationship</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Custody_Relationship</valueSetName>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Program_Enrollment__c</fullName>
-        <description>The Program Enrollment record of the student.</description>
-        <externalId>false</externalId>
-        <label>Program Enrollment</label>
-        <referenceTo>hed__Program_Enrollment__c</referenceTo>
-        <relationshipLabel>Student Custody</relationshipLabel>
-        <relationshipName>Student_Custody</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>Question_Group__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Question Group</label>
-        <referenceTo>Enrollment_Component__c</referenceTo>
-        <relationshipLabel>Student Custody</relationshipLabel>
-        <relationshipName>Student_Custody</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
     <label>Student Custody</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Custody_Relationship__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>SC-{000}</displayFormat>
         <label>Custody Name</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Student Custody</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts></searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

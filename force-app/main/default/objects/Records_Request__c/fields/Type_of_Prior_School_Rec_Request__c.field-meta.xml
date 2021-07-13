@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_of_Prior_School_Rec_Request__c</fullName>
+    <description>Type of Prior School - Records Request</description>
+    <externalId>false</externalId>
+    <label>Type of Prior School Rec Request</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Charter school (public)</fullName>
+                <default>false</default>
+                <label>Charter school (public)</label>
+            </value>
+            <value>
+                <fullName>Homeschool</fullName>
+                <default>false</default>
+                <label>Homeschool</label>
+            </value>
+            <value>
+                <fullName>Online (virtual) public school</fullName>
+                <default>false</default>
+                <label>Online (virtual) public school</label>
+            </value>
+            <value>
+                <fullName>Private/parochial school</fullName>
+                <default>false</default>
+                <label>Private/parochial school</label>
+            </value>
+            <value>
+                <fullName>Public school</fullName>
+                <default>false</default>
+                <label>Public school</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Why_Address_Changed_Records_Request__c</fullName>
+    <description>Why was Records Request changed to different address above</description>
+    <externalId>false</externalId>
+    <label>Why Address Changed Records Request</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1st Notification School Contact informed us SIF data incorrect</fullName>
+                <default>false</default>
+                <label>1st Notification School Contact informed us SIF data incorrect</label>
+            </value>
+            <value>
+                <fullName>Directed to another school for information</fullName>
+                <default>false</default>
+                <label>Directed to another school for information</label>
+            </value>
+            <value>
+                <fullName>Incomplete Information Available</fullName>
+                <default>false</default>
+                <label>Incomplete Information Available</label>
+            </value>
+            <value>
+                <fullName>Records Request Authorization lists different school than info from SIF</fullName>
+                <default>false</default>
+                <label>Records Request Authorization lists different school than info from SIF</label>
+            </value>
+            <value>
+                <fullName>Report Card lists different school than info from SIF</fullName>
+                <default>false</default>
+                <label>Report Card lists different school than info from SIF</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

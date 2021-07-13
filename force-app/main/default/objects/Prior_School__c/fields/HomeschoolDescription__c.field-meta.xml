@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HomeschoolDescription__c</fullName>
+    <description>What best describes the type of homeschooling in which your student participated</description>
+    <externalId>false</externalId>
+    <label>Homeschool Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Family-based homeschool with curriculum selected and delivered by the parent</fullName>
+                <default>false</default>
+                <label>Family-based homeschool with curriculum selected and delivered by the parent</label>
+            </value>
+            <value>
+                <fullName>Family participates in a homeschooling association with other homeschooled families</fullName>
+                <default>false</default>
+                <label>Family participates in a homeschooling association with other homeschooled families</label>
+            </value>
+            <value>
+                <fullName>Online homeschooling with access to curriculum and teachers</fullName>
+                <default>false</default>
+                <label>Online homeschooling with access to curriculum and teachers</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

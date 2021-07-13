@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Article_Content_Type__c</fullName>
+    <description>ADO #123103 - (Create Knowledge base Articles)
+Used to find out the Article Content Type</description>
+    <externalId>false</externalId>
+    <formula>IF(AND($User.Department = &quot;PCx&quot;,LEFT(RecordType.Name,3)= &quot;LCC&quot;), false, true)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Article Content Type</label>
+    <type>Checkbox</type>
+</CustomField>

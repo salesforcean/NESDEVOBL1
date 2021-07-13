@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Privacy_Request_Stage__c</fullName>
+    <description>Stages through which a privacy request goes.</description>
+    <externalId>false</externalId>
+    <label>Privacy Request Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Verify</fullName>
+                <default>false</default>
+                <label>Verify</label>
+            </value>
+            <value>
+                <fullName>Execute</fullName>
+                <default>false</default>
+                <label>Execute</label>
+            </value>
+            <value>
+                <fullName>Deliver</fullName>
+                <default>false</default>
+                <label>Deliver</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

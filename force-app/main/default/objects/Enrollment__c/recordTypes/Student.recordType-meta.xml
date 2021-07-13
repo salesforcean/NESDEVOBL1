@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student</fullName>
+    <active>true</active>
+    <label>Student</label>
+    <picklistValues>
+        <picklist>Enrollment_Type__c</picklist>
+        <values>
+            <fullName>Initial Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Re-enrolling student</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returning Student</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

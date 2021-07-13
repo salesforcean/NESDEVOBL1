@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Contact_RT_Name__c</fullName>
+    <defaultValue>&quot;Caretaker&quot;</defaultValue>
+    <description>The default value this field is &quot;Caretaker&quot; which is the RT name of the contact that should be merged with a matching lead.</description>
+    <encryptionScheme>None</encryptionScheme>
+    <externalId>false</externalId>
+    <label>Lead - Contact RT Name</label>
+    <length>50</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

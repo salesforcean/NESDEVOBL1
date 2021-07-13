@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIF_Student_Is_Parent__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is the student a single parent with either custody or joint custody of a minor child</description>
+    <externalId>false</externalId>
+    <label>SIF Student Is Parent</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

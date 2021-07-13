@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Level_of_Engagement__c</fullName>
+    <description>This will allow the FEC Team to identify if the household is active and they need to continue communicating with the family.</description>
+    <externalId>false</externalId>
+    <label>Level of Engagement</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+                <label>Duplicate</label>
+            </value>
+            <value>
+                <fullName>Closed-No Longer Interested</fullName>
+                <default>false</default>
+                <label>Closed-No Longer Interested</label>
+            </value>
+            <value>
+                <fullName>Closed-Student Created Account</fullName>
+                <default>false</default>
+                <label>Closed-Student Created Account</label>
+            </value>
+            <value>
+                <fullName>Recycled-Max Call Attempt Reached</fullName>
+                <default>false</default>
+                <label>Recycled-Max Call Attempt Reached</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

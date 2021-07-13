@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage__c</fullName>
+    <description>This field used to display in Student program enrollment object, in student program enrollment pagelayout.</description>
+    <externalId>false</externalId>
+    <label>Stage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Eligibility</fullName>
+                <default>false</default>
+                <label>Eligibility</label>
+            </value>
+            <value>
+                <fullName>Tell Us About Your Student</fullName>
+                <default>false</default>
+                <label>Tell Us About Your Student</label>
+            </value>
+            <value>
+                <fullName>Waitlist</fullName>
+                <default>false</default>
+                <label>Waitlist</label>
+            </value>
+            <value>
+                <fullName>Confirmation Of Enrollment</fullName>
+                <default>false</default>
+                <label>Confirmation Of Enrollment</label>
+            </value>
+            <value>
+                <fullName>Intent To Attend</fullName>
+                <default>false</default>
+                <label>Intent To Attend</label>
+            </value>
+            <value>
+                <fullName>Offer Of Enrollment</fullName>
+                <default>false</default>
+                <label>Offer Of Enrollment</label>
+            </value>
+            <value>
+                <fullName>Open Application Period</fullName>
+                <default>false</default>
+                <label>Open Application Period</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

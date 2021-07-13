@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SCCA_HomeSchoolMembershpStatus__c</fullName>
+    <description>Proof of Homeschool Membership Status</description>
+    <externalId>false</externalId>
+    <label>SCCA HomeSchoolMembershpStatus</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Invalid</fullName>
+                <default>false</default>
+                <label>Invalid</label>
+            </value>
+            <value>
+                <fullName>Missing</fullName>
+                <default>false</default>
+                <label>Missing</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <label>Received</label>
+            </value>
+            <value>
+                <fullName>Required</fullName>
+                <default>false</default>
+                <label>Required</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

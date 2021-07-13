@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ECR_Child_Cannot_Be_Parent</fullName>
+    <active>true</active>
+    <description>Validation rule ensuring the child component is not also the parent.</description>
+    <errorConditionFormula>AND(Child_Enrollment_Component__r.Id = Parent_Enrollment_Component__r.Id )</errorConditionFormula>
+    <errorMessage>The Child Enrollment Component cannot also be the Parent Enrollment Component.</errorMessage>
+</ValidationRule>

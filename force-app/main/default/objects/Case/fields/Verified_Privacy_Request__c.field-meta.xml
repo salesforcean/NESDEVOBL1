@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Verified_Privacy_Request__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Check this box if you have verified the consumer&apos;s identity and that they have the right to make the request.</description>
+    <externalId>false</externalId>
+    <label>Verified Privacy Request</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

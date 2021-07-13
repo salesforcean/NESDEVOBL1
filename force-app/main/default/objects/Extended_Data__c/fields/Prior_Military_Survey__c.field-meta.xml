@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prior_Military_Survey__c</fullName>
+    <externalId>false</externalId>
+    <label>Prior Military Survey</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>0 - Neither parent nor guardian is serving in any military service.</fullName>
+                <default>false</default>
+                <label>0 - Neither parent nor guardian is serving in any military service.</label>
+            </value>
+            <value>
+                <fullName>1 - A parent or guardian is serving in the National Guard but is not deployed.</fullName>
+                <default>false</default>
+                <label>1 - A parent or guardian is serving in the National Guard but is not deployed.</label>
+            </value>
+            <value>
+                <fullName>2 - A parent or guardian is serving in the Reserves but is not deployed.</fullName>
+                <default>false</default>
+                <label>2 - A parent or guardian is serving in the Reserves but is not deployed.</label>
+            </value>
+            <value>
+                <fullName>3 - A parent or guardian is serving in the National Guard and is currently deployed.</fullName>
+                <default>false</default>
+                <label>3 - A parent or guardian is serving in the National Guard and is currently deployed.</label>
+            </value>
+            <value>
+                <fullName>4 - A parent or guardian is serving in the Reserves and is currently deployed.</fullName>
+                <default>false</default>
+                <label>4 - A parent or guardian is serving in the Reserves and is currently deployed.</label>
+            </value>
+            <value>
+                <fullName>5 - A parent or guardian is serving in the military on active duty but is not deployed.</fullName>
+                <default>false</default>
+                <label>5 - A parent or guardian is serving in the military on active duty but is not deployed.</label>
+            </value>
+            <value>
+                <fullName>6 - A parent or guardian is serving in the military on active duty and is currently deployed.</fullName>
+                <default>false</default>
+                <label>6 - A parent or guardian is serving in the military on active duty and is currently deployed.</label>
+            </value>
+            <value>
+                <fullName>7 - A parent or guardian died while on active duty within the last year.</fullName>
+                <default>false</default>
+                <label>7 - A parent or guardian died while on active duty within the last year.</label>
+            </value>
+            <value>
+                <fullName>8 - A parent or guardian (veteran) was medically discharged or retired for (1) year.</fullName>
+                <default>false</default>
+                <label>8 - A parent or guardian (veteran) was medically discharged or retired for (1) year.</label>
+            </value>
+            <value>
+                <fullName>9 - Decline to report</fullName>
+                <default>false</default>
+                <label>9 - Decline to report</label>
+            </value>
+            <value>
+                <fullName>Active Duty - US Army</fullName>
+                <default>false</default>
+                <label>Active Duty - US Army</label>
+            </value>
+            <value>
+                <fullName>Active Duty - US Air Force</fullName>
+                <default>false</default>
+                <label>Active Duty - US Air Force</label>
+            </value>
+            <value>
+                <fullName>Active Duty - US Navy</fullName>
+                <default>false</default>
+                <label>Active Duty - US Navy</label>
+            </value>
+            <value>
+                <fullName>Active Duty - US Marines</fullName>
+                <default>false</default>
+                <label>Active Duty - US Marines</label>
+            </value>
+            <value>
+                <fullName>Active Duty - United States Coast Guard</fullName>
+                <default>false</default>
+                <label>Active Duty - United States Coast Guard</label>
+            </value>
+            <value>
+                <fullName>Reserves - US Army</fullName>
+                <default>false</default>
+                <label>Reserves - US Army</label>
+            </value>
+            <value>
+                <fullName>Reserves - US Air Force</fullName>
+                <default>false</default>
+                <label>Reserves - US Air Force</label>
+            </value>
+            <value>
+                <fullName>Reserves - US Navy</fullName>
+                <default>false</default>
+                <label>Reserves - US Navy</label>
+            </value>
+            <value>
+                <fullName>Reserves - US Marines</fullName>
+                <default>false</default>
+                <label>Reserves - US Marines</label>
+            </value>
+            <value>
+                <fullName>National Guard - US Army</fullName>
+                <default>false</default>
+                <label>National Guard - US Army</label>
+            </value>
+            <value>
+                <fullName>National Guard - US Air Force</fullName>
+                <default>false</default>
+                <label>National Guard - US Air Force</label>
+            </value>
+            <value>
+                <fullName>Reserves - Coast Guard</fullName>
+                <default>false</default>
+                <label>Reserves - Coast Guard</label>
+            </value>
+            <value>
+                <fullName>Parents serve in multiple branches</fullName>
+                <default>false</default>
+                <label>Parents serve in multiple branches</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>A3_Cali_Service_Area__c</fullName>
+    <description>Student&apos;s Assigned Service Area</description>
+    <externalId>false</externalId>
+    <label>A3 Cali Service Area</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Fresno</fullName>
+                <default>false</default>
+                <label>Fresno</label>
+            </value>
+            <value>
+                <fullName>Los Angeles</fullName>
+                <default>false</default>
+                <label>Los Angeles</label>
+            </value>
+            <value>
+                <fullName>Merced</fullName>
+                <default>false</default>
+                <label>Merced</label>
+            </value>
+            <value>
+                <fullName>Monterey</fullName>
+                <default>false</default>
+                <label>Monterey</label>
+            </value>
+            <value>
+                <fullName>Northern Scope</fullName>
+                <default>false</default>
+                <label>Northern Scope</label>
+            </value>
+            <value>
+                <fullName>San Diego</fullName>
+                <default>false</default>
+                <label>San Diego</label>
+            </value>
+            <value>
+                <fullName>Santa Barbara</fullName>
+                <default>false</default>
+                <label>Santa Barbara</label>
+            </value>
+            <value>
+                <fullName>Sonoma</fullName>
+                <default>false</default>
+                <label>Sonoma</label>
+            </value>
+            <value>
+                <fullName>Sutter</fullName>
+                <default>false</default>
+                <label>Sutter</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

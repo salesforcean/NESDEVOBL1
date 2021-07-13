@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACC_Too_Young_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Academic_Program&apos;, ISBLANK(Too_Young_Cutoff__c))</errorConditionFormula>
+    <errorDisplayField>Too_Young_Cutoff__c</errorDisplayField>
+    <errorMessage>Too young cutoff is required for an academic program.</errorMessage>
+</ValidationRule>

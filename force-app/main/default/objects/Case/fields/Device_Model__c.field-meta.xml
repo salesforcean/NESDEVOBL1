@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Device_Model__c</fullName>
+    <description>US #122484 -This is a picklist Value STS agents can use to indicate the type of equipment either school provided or personal. This helps with recreating the steps that lead to a given issue.</description>
+    <externalId>false</externalId>
+    <label>Device Model</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Ticket_Device_Model</valueSetName>
+    </valueSet>
+</CustomField>

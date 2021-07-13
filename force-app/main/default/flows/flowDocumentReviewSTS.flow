@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>assignRecords</name>
         <label>assignRecords</label>
@@ -70,6 +71,7 @@
         <name>defaultGLC</name>
         <dataType>String</dataType>
         <displayField>Grade_Level_Completed__c</displayField>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -83,6 +85,7 @@
         <name>defaultGR</name>
         <dataType>String</dataType>
         <displayField>Grade_Level_Requested__c</displayField>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -96,6 +99,7 @@
         <name>defaultPlacement</name>
         <dataType>String</dataType>
         <displayField>PlacementFlag__c</displayField>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

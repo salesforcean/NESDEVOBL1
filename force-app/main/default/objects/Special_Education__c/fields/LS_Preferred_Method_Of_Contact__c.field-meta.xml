@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LS_Preferred_Method_Of_Contact__c</fullName>
+    <description>Preferred method of contact</description>
+    <externalId>false</externalId>
+    <label>LS Preferred Method Of Contact</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Via Phone</fullName>
+                <default>false</default>
+                <label>Via Phone</label>
+            </value>
+            <value>
+                <fullName>Via Text</fullName>
+                <default>false</default>
+                <label>Via Text</label>
+            </value>
+            <value>
+                <fullName>Via WebMail</fullName>
+                <default>false</default>
+                <label>Via WebMail</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

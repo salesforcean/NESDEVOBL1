@@ -7,6 +7,7 @@
         <locationY>407</locationY>
         <actionName>NES_AddHHMemApexController</actionName>
         <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>addlHHMember</name>
             <value>
@@ -20,6 +21,7 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <apiVersion>52.0</apiVersion>
     <constants>
         <description>Account Review value for Ticket Type field of Ticket.</description>
         <name>TicketType</name>
@@ -181,6 +183,7 @@
             </value>
         </inputAssignments>
         <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
         <name>Get_Enrollment_Support_Record_Type</name>
@@ -191,6 +194,7 @@
         <connector>
             <targetReference>Create_Ticket</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
@@ -215,6 +219,7 @@
         <connector>
             <targetReference>Get_Enrollment_Support_Record_Type</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Unverified__c</field>
             <operator>EqualTo</operator>
@@ -223,6 +228,7 @@
             </value>
         </filters>
         <object>Contact</object>
+        <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

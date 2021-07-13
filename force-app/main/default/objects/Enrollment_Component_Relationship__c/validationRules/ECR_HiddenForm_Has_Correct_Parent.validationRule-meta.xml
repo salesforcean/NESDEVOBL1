@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ECR_HiddenForm_Has_Correct_Parent</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(  
+  
+  NOT(
+     OR(Parent_Enrollment_Component__r.RecordType.DeveloperName  
+          = &quot;Section&quot;, 
+        Parent_Enrollment_Component__r.RecordType.DeveloperName  
+          = &quot;Question_Group&quot;)
+     ), Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Hidden_Input&quot; )</errorConditionFormula>
+    <errorDisplayField>Child_Enrollment_Component__c</errorDisplayField>
+    <errorMessage>A component of type &quot;Hidden Value&quot; must have a parent of type  &quot;Section&quot; or &quot;Question_Group&quot;</errorMessage>
+</ValidationRule>

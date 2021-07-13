@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WA_Race_American_Indian__c</fullName>
+    <description>Additional information about the student&apos;s race</description>
+    <externalId>false</externalId>
+    <label>WA Race American Indian</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Alaskan Native</fullName>
+                <default>false</default>
+                <label>Alaskan Native</label>
+            </value>
+            <value>
+                <fullName>Chehalis</fullName>
+                <default>false</default>
+                <label>Chehalis</label>
+            </value>
+            <value>
+                <fullName>Colville</fullName>
+                <default>false</default>
+                <label>Colville</label>
+            </value>
+            <value>
+                <fullName>Cowlitz</fullName>
+                <default>false</default>
+                <label>Cowlitz</label>
+            </value>
+            <value>
+                <fullName>Hoh</fullName>
+                <default>false</default>
+                <label>Hoh</label>
+            </value>
+            <value>
+                <fullName>Jamestown</fullName>
+                <default>false</default>
+                <label>Jamestown</label>
+            </value>
+            <value>
+                <fullName>Kalispell</fullName>
+                <default>false</default>
+                <label>Kalispell</label>
+            </value>
+            <value>
+                <fullName>Lower Elwha</fullName>
+                <default>false</default>
+                <label>Lower Elwha</label>
+            </value>
+            <value>
+                <fullName>Lummi</fullName>
+                <default>false</default>
+                <label>Lummi</label>
+            </value>
+            <value>
+                <fullName>Makah</fullName>
+                <default>false</default>
+                <label>Makah</label>
+            </value>
+            <value>
+                <fullName>Muckleshoot</fullName>
+                <default>false</default>
+                <label>Muckleshoot</label>
+            </value>
+            <value>
+                <fullName>Nisqually</fullName>
+                <default>false</default>
+                <label>Nisqually</label>
+            </value>
+            <value>
+                <fullName>Nooksack</fullName>
+                <default>false</default>
+                <label>Nooksack</label>
+            </value>
+            <value>
+                <fullName>Other American Indian</fullName>
+                <default>false</default>
+                <label>Other American Indian</label>
+            </value>
+            <value>
+                <fullName>Other Washington Indian</fullName>
+                <default>false</default>
+                <label>Other Washington Indian</label>
+            </value>
+            <value>
+                <fullName>Parent refused to report</fullName>
+                <default>false</default>
+                <label>Parent refused to report</label>
+            </value>
+            <value>
+                <fullName>Port Gamble S&apos;Klallam</fullName>
+                <default>false</default>
+                <label>Port Gamble S&apos;Klallam</label>
+            </value>
+            <value>
+                <fullName>Puyallup</fullName>
+                <default>false</default>
+                <label>Puyallup</label>
+            </value>
+            <value>
+                <fullName>Quileute</fullName>
+                <default>false</default>
+                <label>Quileute</label>
+            </value>
+            <value>
+                <fullName>Quinault</fullName>
+                <default>false</default>
+                <label>Quinault</label>
+            </value>
+            <value>
+                <fullName>Samish</fullName>
+                <default>false</default>
+                <label>Samish</label>
+            </value>
+            <value>
+                <fullName>Sauk-Suiattle</fullName>
+                <default>false</default>
+                <label>Sauk-Suiattle</label>
+            </value>
+            <value>
+                <fullName>Shoalwater</fullName>
+                <default>false</default>
+                <label>Shoalwater</label>
+            </value>
+            <value>
+                <fullName>Skokomish</fullName>
+                <default>false</default>
+                <label>Skokomish</label>
+            </value>
+            <value>
+                <fullName>Snoqualmie</fullName>
+                <default>false</default>
+                <label>Snoqualmie</label>
+            </value>
+            <value>
+                <fullName>Spokane</fullName>
+                <default>false</default>
+                <label>Spokane</label>
+            </value>
+            <value>
+                <fullName>Squaxin Island</fullName>
+                <default>false</default>
+                <label>Squaxin Island</label>
+            </value>
+            <value>
+                <fullName>Stillaguamish</fullName>
+                <default>false</default>
+                <label>Stillaguamish</label>
+            </value>
+            <value>
+                <fullName>Suquamish</fullName>
+                <default>false</default>
+                <label>Suquamish</label>
+            </value>
+            <value>
+                <fullName>Swinomish</fullName>
+                <default>false</default>
+                <label>Swinomish</label>
+            </value>
+            <value>
+                <fullName>Tulalip</fullName>
+                <default>false</default>
+                <label>Tulalip</label>
+            </value>
+            <value>
+                <fullName>Upper Skagit</fullName>
+                <default>false</default>
+                <label>Upper Skagit</label>
+            </value>
+            <value>
+                <fullName>Yakama</fullName>
+                <default>false</default>
+                <label>Yakama</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

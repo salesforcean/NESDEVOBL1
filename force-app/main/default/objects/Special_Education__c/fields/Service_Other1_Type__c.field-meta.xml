@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Other1_Type__c</fullName>
+    <description>Other Services</description>
+    <externalId>false</externalId>
+    <label>Service Other1 Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>American Sign Language (ASL)</fullName>
+                <default>false</default>
+                <label>American Sign Language (ASL)</label>
+            </value>
+            <value>
+                <fullName>Assistive Technology</fullName>
+                <default>false</default>
+                <label>Assistive Technology</label>
+            </value>
+            <value>
+                <fullName>Autism Support</fullName>
+                <default>false</default>
+                <label>Autism Support</label>
+            </value>
+            <value>
+                <fullName>Behavior Support</fullName>
+                <default>false</default>
+                <label>Behavior Support</label>
+            </value>
+            <value>
+                <fullName>Behavior Support (Virtual)</fullName>
+                <default>false</default>
+                <label>Behavior Support (Virtual)</label>
+            </value>
+            <value>
+                <fullName>Closed Captioning</fullName>
+                <default>false</default>
+                <label>Closed Captioning</label>
+            </value>
+            <value>
+                <fullName>Consult/Direct—Do not choose</fullName>
+                <default>false</default>
+                <label>Consult/Direct—Do not choose</label>
+            </value>
+            <value>
+                <fullName>Consult—Do not choose</fullName>
+                <default>false</default>
+                <label>Consult—Do not choose</label>
+            </value>
+            <value>
+                <fullName>Counseling</fullName>
+                <default>false</default>
+                <label>Counseling</label>
+            </value>
+            <value>
+                <fullName>Counseling (Virtual)</fullName>
+                <default>false</default>
+                <label>Counseling (Virtual)</label>
+            </value>
+            <value>
+                <fullName>Direct—Do not choose</fullName>
+                <default>false</default>
+                <label>Direct—Do not choose</label>
+            </value>
+            <value>
+                <fullName>Hearing</fullName>
+                <default>false</default>
+                <label>Hearing</label>
+            </value>
+            <value>
+                <fullName>Orientation and Mobility</fullName>
+                <default>false</default>
+                <label>Orientation and Mobility</label>
+            </value>
+            <value>
+                <fullName>Outside Academic Services</fullName>
+                <default>false</default>
+                <label>Outside Academic Services</label>
+            </value>
+            <value>
+                <fullName>Physical Therapy</fullName>
+                <default>false</default>
+                <label>Physical Therapy</label>
+            </value>
+            <value>
+                <fullName>Social Skills</fullName>
+                <default>false</default>
+                <label>Social Skills</label>
+            </value>
+            <value>
+                <fullName>Social Skills/Virtual</fullName>
+                <default>false</default>
+                <label>Social Skills/Virtual</label>
+            </value>
+            <value>
+                <fullName>Social Work</fullName>
+                <default>false</default>
+                <label>Social Work</label>
+            </value>
+            <value>
+                <fullName>Social Work (Virtual)</fullName>
+                <default>false</default>
+                <label>Social Work (Virtual)</label>
+            </value>
+            <value>
+                <fullName>Transition Services</fullName>
+                <default>false</default>
+                <label>Transition Services</label>
+            </value>
+            <value>
+                <fullName>Vision</fullName>
+                <default>false</default>
+                <label>Vision</label>
+            </value>
+            <value>
+                <fullName>Adapted Physical Education (APE)</fullName>
+                <default>false</default>
+                <label>Adapted Physical Education (APE)</label>
+            </value>
+            <value>
+                <fullName>Nursing Services</fullName>
+                <default>false</default>
+                <label>Nursing Services</label>
+            </value>
+            <value>
+                <fullName>Other Service Not Listed</fullName>
+                <default>false</default>
+                <label>Other Service Not Listed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

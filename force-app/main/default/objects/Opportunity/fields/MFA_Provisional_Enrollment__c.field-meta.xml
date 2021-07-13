@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MFA_Provisional_Enrollment__c</fullName>
+    <description>Provisional Enrollment (&quot;Provisionally Enrolled&quot; will set the student to Enrolled)</description>
+    <externalId>false</externalId>
+    <label>MFA Provisional Enrollment</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Provisional Enrollment Lapsed</fullName>
+                <default>false</default>
+                <label>Provisional Enrollment Lapsed</label>
+            </value>
+            <value>
+                <fullName>Provisionally Enrolled</fullName>
+                <default>false</default>
+                <label>Provisionally Enrolled</label>
+            </value>
+            <value>
+                <fullName>Regular Enrollment Tasks Complete</fullName>
+                <default>false</default>
+                <label>Regular Enrollment Tasks Complete</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Browsers__c</fullName>
+    <description>US #122484 , The ability to replicate the conditions under which an error occurred to reproduce the issue this picklist identifies the browser being used when the issue occurred.</description>
+    <externalId>false</externalId>
+    <label>Browsers</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Internet Explorer</fullName>
+                <default>false</default>
+                <label>Internet Explorer</label>
+            </value>
+            <value>
+                <fullName>Firefox</fullName>
+                <default>false</default>
+                <label>Firefox</label>
+            </value>
+            <value>
+                <fullName>Chrome</fullName>
+                <default>false</default>
+                <label>Chrome</label>
+            </value>
+            <value>
+                <fullName>EDGE</fullName>
+                <default>false</default>
+                <label>EDGE</label>
+            </value>
+            <value>
+                <fullName>Safari</fullName>
+                <default>false</default>
+                <label>Safari</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

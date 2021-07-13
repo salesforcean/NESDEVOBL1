@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>iNaCA_School_Year_Status__c</fullName>
+    <description>Please choose the appropriate option</description>
+    <externalId>false</externalId>
+    <label>iNaCA School Year Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>My student is &lt;strong&gt;enrolled in school&lt;/strong&gt; for the 2018-2019 school year.</fullName>
+                <default>false</default>
+                <label>My student is &lt;strong&gt;enrolled in school&lt;/strong&gt; for the 2018-2019 school year.</label>
+            </value>
+            <value>
+                <fullName>The 2018-2019 school year &lt;strong&gt;has not begun&lt;/strong&gt;.</fullName>
+                <default>false</default>
+                <label>The 2018-2019 school year &lt;strong&gt;has not begun&lt;/strong&gt;.</label>
+            </value>
+            <value>
+                <fullName>The 2018-2019 school year has begun, but &lt;strong&gt;my student is not in school&lt;/strong&gt;.</fullName>
+                <default>false</default>
+                <label>The 2018-2019 school year has begun, but &lt;strong&gt;my student is not in school&lt;/strong&gt;.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

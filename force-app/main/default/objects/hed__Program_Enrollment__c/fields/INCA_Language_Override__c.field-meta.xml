@@ -1,0 +1,1766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INCA_Language_Override__c</fullName>
+    <description>INCA_LanguageOverride</description>
+    <externalId>false</externalId>
+    <label>INCA Language Override</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Achinese - 001</fullName>
+                <default>false</default>
+                <label>Achinese - 001</label>
+            </value>
+            <value>
+                <fullName>Adhola/Dhapadhola - 193</fullName>
+                <default>false</default>
+                <label>Adhola/Dhapadhola - 193</label>
+            </value>
+            <value>
+                <fullName>Afar - 005</fullName>
+                <default>false</default>
+                <label>Afar - 005</label>
+            </value>
+            <value>
+                <fullName>Afgan - 007</fullName>
+                <default>false</default>
+                <label>Afgan - 007</label>
+            </value>
+            <value>
+                <fullName>Afrikaans - 010</fullName>
+                <default>false</default>
+                <label>Afrikaans - 010</label>
+            </value>
+            <value>
+                <fullName>Akan - 015</fullName>
+                <default>false</default>
+                <label>Akan - 015</label>
+            </value>
+            <value>
+                <fullName>Albanian - 020</fullName>
+                <default>false</default>
+                <label>Albanian - 020</label>
+            </value>
+            <value>
+                <fullName>Alemannic - 025</fullName>
+                <default>false</default>
+                <label>Alemannic - 025</label>
+            </value>
+            <value>
+                <fullName>Amharic - 030</fullName>
+                <default>false</default>
+                <label>Amharic - 030</label>
+            </value>
+            <value>
+                <fullName>Amoy - 035</fullName>
+                <default>false</default>
+                <label>Amoy - 035</label>
+            </value>
+            <value>
+                <fullName>Another Language</fullName>
+                <default>false</default>
+                <label>Another Language</label>
+            </value>
+            <value>
+                <fullName>Anuak - 037</fullName>
+                <default>false</default>
+                <label>Anuak - 037</label>
+            </value>
+            <value>
+                <fullName>Apache - 038</fullName>
+                <default>false</default>
+                <label>Apache - 038</label>
+            </value>
+            <value>
+                <fullName>Arabic - 040</fullName>
+                <default>false</default>
+                <label>Arabic - 040</label>
+            </value>
+            <value>
+                <fullName>Argentinean - 043</fullName>
+                <default>false</default>
+                <label>Argentinean - 043</label>
+            </value>
+            <value>
+                <fullName>Armenian - 045</fullName>
+                <default>false</default>
+                <label>Armenian - 045</label>
+            </value>
+            <value>
+                <fullName>Assamese - 046</fullName>
+                <default>false</default>
+                <label>Assamese - 046</label>
+            </value>
+            <value>
+                <fullName>Assyrian - 047</fullName>
+                <default>false</default>
+                <label>Assyrian - 047</label>
+            </value>
+            <value>
+                <fullName>Aymara - 050</fullName>
+                <default>false</default>
+                <label>Aymara - 050</label>
+            </value>
+            <value>
+                <fullName>Azerbaijani - 055</fullName>
+                <default>false</default>
+                <label>Azerbaijani - 055</label>
+            </value>
+            <value>
+                <fullName>Bahasa Malay - 060</fullName>
+                <default>false</default>
+                <label>Bahasa Malay - 060</label>
+            </value>
+            <value>
+                <fullName>Baluchi - 065</fullName>
+                <default>false</default>
+                <label>Baluchi - 065</label>
+            </value>
+            <value>
+                <fullName>Bambara - 072</fullName>
+                <default>false</default>
+                <label>Bambara - 072</label>
+            </value>
+            <value>
+                <fullName>Bandi/Bande - 067</fullName>
+                <default>false</default>
+                <label>Bandi/Bande - 067</label>
+            </value>
+            <value>
+                <fullName>Bangladasha - 068</fullName>
+                <default>false</default>
+                <label>Bangladasha - 068</label>
+            </value>
+            <value>
+                <fullName>Bantu - 070</fullName>
+                <default>false</default>
+                <label>Bantu - 070</label>
+            </value>
+            <value>
+                <fullName>Bari - 073</fullName>
+                <default>false</default>
+                <label>Bari - 073</label>
+            </value>
+            <value>
+                <fullName>Basque - 075</fullName>
+                <default>false</default>
+                <label>Basque - 075</label>
+            </value>
+            <value>
+                <fullName>Bassa - 077</fullName>
+                <default>false</default>
+                <label>Bassa - 077</label>
+            </value>
+            <value>
+                <fullName>Batak - 080</fullName>
+                <default>false</default>
+                <label>Batak - 080</label>
+            </value>
+            <value>
+                <fullName>Bemba (Lunda) - 083</fullName>
+                <default>false</default>
+                <label>Bemba (Lunda) - 083</label>
+            </value>
+            <value>
+                <fullName>Bengali - 085</fullName>
+                <default>false</default>
+                <label>Bengali - 085</label>
+            </value>
+            <value>
+                <fullName>Berber - 090</fullName>
+                <default>false</default>
+                <label>Berber - 090</label>
+            </value>
+            <value>
+                <fullName>Bete (Bette) - 091</fullName>
+                <default>false</default>
+                <label>Bete (Bette) - 091</label>
+            </value>
+            <value>
+                <fullName>Bisaya - 092</fullName>
+                <default>false</default>
+                <label>Bisaya - 092</label>
+            </value>
+            <value>
+                <fullName>Bosnian - 093</fullName>
+                <default>false</default>
+                <label>Bosnian - 093</label>
+            </value>
+            <value>
+                <fullName>Breton - 095</fullName>
+                <default>false</default>
+                <label>Breton - 095</label>
+            </value>
+            <value>
+                <fullName>Bugi - 100</fullName>
+                <default>false</default>
+                <label>Bugi - 100</label>
+            </value>
+            <value>
+                <fullName>Bulgarian - 105</fullName>
+                <default>false</default>
+                <label>Bulgarian - 105</label>
+            </value>
+            <value>
+                <fullName>Buli (Panga) - 106</fullName>
+                <default>false</default>
+                <label>Buli (Panga) - 106</label>
+            </value>
+            <value>
+                <fullName>Burmese - 110</fullName>
+                <default>false</default>
+                <label>Burmese - 110</label>
+            </value>
+            <value>
+                <fullName>Burundi - 112</fullName>
+                <default>false</default>
+                <label>Burundi - 112</label>
+            </value>
+            <value>
+                <fullName>Burushaski (Biltum) - 113</fullName>
+                <default>false</default>
+                <label>Burushaski (Biltum) - 113</label>
+            </value>
+            <value>
+                <fullName>Buyi - 115</fullName>
+                <default>false</default>
+                <label>Buyi - 115</label>
+            </value>
+            <value>
+                <fullName>Byelorussian (Belorussian) - 120</fullName>
+                <default>false</default>
+                <label>Byelorussian (Belorussian) - 120</label>
+            </value>
+            <value>
+                <fullName>Cantonese - 125</fullName>
+                <default>false</default>
+                <label>Cantonese - 125</label>
+            </value>
+            <value>
+                <fullName>Castellano - 127</fullName>
+                <default>false</default>
+                <label>Castellano - 127</label>
+            </value>
+            <value>
+                <fullName>Catalan - 130</fullName>
+                <default>false</default>
+                <label>Catalan - 130</label>
+            </value>
+            <value>
+                <fullName>Cebuano - 133</fullName>
+                <default>false</default>
+                <label>Cebuano - 133</label>
+            </value>
+            <value>
+                <fullName>Chaldean - 134</fullName>
+                <default>false</default>
+                <label>Chaldean - 134</label>
+            </value>
+            <value>
+                <fullName>Cham - 135</fullName>
+                <default>false</default>
+                <label>Cham - 135</label>
+            </value>
+            <value>
+                <fullName>Chamorro - 137</fullName>
+                <default>false</default>
+                <label>Chamorro - 137</label>
+            </value>
+            <value>
+                <fullName>Chavacano - 138</fullName>
+                <default>false</default>
+                <label>Chavacano - 138</label>
+            </value>
+            <value>
+                <fullName>Cherokee - 139</fullName>
+                <default>false</default>
+                <label>Cherokee - 139</label>
+            </value>
+            <value>
+                <fullName>Cheyenne - 144</fullName>
+                <default>false</default>
+                <label>Cheyenne - 144</label>
+            </value>
+            <value>
+                <fullName>Chichewa (Chewa) - 140</fullName>
+                <default>false</default>
+                <label>Chichewa (Chewa) - 140</label>
+            </value>
+            <value>
+                <fullName>Chiluba (Tshiluba) - 143</fullName>
+                <default>false</default>
+                <label>Chiluba (Tshiluba) - 143</label>
+            </value>
+            <value>
+                <fullName>Chin - 145</fullName>
+                <default>false</default>
+                <label>Chin - 145</label>
+            </value>
+            <value>
+                <fullName>Chippewa (Ojibwa) - 147</fullName>
+                <default>false</default>
+                <label>Chippewa (Ojibwa) - 147</label>
+            </value>
+            <value>
+                <fullName>Chuang - 150</fullName>
+                <default>false</default>
+                <label>Chuang - 150</label>
+            </value>
+            <value>
+                <fullName>Chui - 152</fullName>
+                <default>false</default>
+                <label>Chui - 152</label>
+            </value>
+            <value>
+                <fullName>Chuuk (Chuukese) - 154</fullName>
+                <default>false</default>
+                <label>Chuuk (Chuukese) - 154</label>
+            </value>
+            <value>
+                <fullName>Chuvash - 155</fullName>
+                <default>false</default>
+                <label>Chuvash - 155</label>
+            </value>
+            <value>
+                <fullName>Creek - 157</fullName>
+                <default>false</default>
+                <label>Creek - 157</label>
+            </value>
+            <value>
+                <fullName>Creole (Patois) - 160</fullName>
+                <default>false</default>
+                <label>Creole (Patois) - 160</label>
+            </value>
+            <value>
+                <fullName>Crioulo - 165</fullName>
+                <default>false</default>
+                <label>Crioulo - 165</label>
+            </value>
+            <value>
+                <fullName>Croatian - 170</fullName>
+                <default>false</default>
+                <label>Croatian - 170</label>
+            </value>
+            <value>
+                <fullName>Crow - 171</fullName>
+                <default>false</default>
+                <label>Crow - 171</label>
+            </value>
+            <value>
+                <fullName>Cutchi - 173</fullName>
+                <default>false</default>
+                <label>Cutchi - 173</label>
+            </value>
+            <value>
+                <fullName>Czech - 175</fullName>
+                <default>false</default>
+                <label>Czech - 175</label>
+            </value>
+            <value>
+                <fullName>Dagaare - 177</fullName>
+                <default>false</default>
+                <label>Dagaare - 177</label>
+            </value>
+            <value>
+                <fullName>Dagbani - 180</fullName>
+                <default>false</default>
+                <label>Dagbani - 180</label>
+            </value>
+            <value>
+                <fullName>Dan (Gio) - 183</fullName>
+                <default>false</default>
+                <label>Dan (Gio) - 183</label>
+            </value>
+            <value>
+                <fullName>Danish - 185</fullName>
+                <default>false</default>
+                <label>Danish - 185</label>
+            </value>
+            <value>
+                <fullName>Dari - 190</fullName>
+                <default>false</default>
+                <label>Dari - 190</label>
+            </value>
+            <value>
+                <fullName>Dhapadhola/Adhola - 193</fullName>
+                <default>false</default>
+                <label>Dhapadhola/Adhola - 193</label>
+            </value>
+            <value>
+                <fullName>Dinka - 194</fullName>
+                <default>false</default>
+                <label>Dinka - 194</label>
+            </value>
+            <value>
+                <fullName>Dioula - 195</fullName>
+                <default>false</default>
+                <label>Dioula - 195</label>
+            </value>
+            <value>
+                <fullName>Djerma - 200</fullName>
+                <default>false</default>
+                <label>Djerma - 200</label>
+            </value>
+            <value>
+                <fullName>Dutch - 205</fullName>
+                <default>false</default>
+                <label>Dutch - 205</label>
+            </value>
+            <value>
+                <fullName>Dzongkha - 210</fullName>
+                <default>false</default>
+                <label>Dzongkha - 210</label>
+            </value>
+            <value>
+                <fullName>Ebira/Egbira - 209</fullName>
+                <default>false</default>
+                <label>Ebira/Egbira - 209</label>
+            </value>
+            <value>
+                <fullName>Edo - 215</fullName>
+                <default>false</default>
+                <label>Edo - 215</label>
+            </value>
+            <value>
+                <fullName>Efik - 217</fullName>
+                <default>false</default>
+                <label>Efik - 217</label>
+            </value>
+            <value>
+                <fullName>English - 211</fullName>
+                <default>false</default>
+                <label>English - 211</label>
+            </value>
+            <value>
+                <fullName>Esan/Ishan - 219</fullName>
+                <default>false</default>
+                <label>Esan/Ishan - 219</label>
+            </value>
+            <value>
+                <fullName>Eskimo - 213</fullName>
+                <default>false</default>
+                <label>Eskimo - 213</label>
+            </value>
+            <value>
+                <fullName>Estonian - 220</fullName>
+                <default>false</default>
+                <label>Estonian - 220</label>
+            </value>
+            <value>
+                <fullName>Ewe - 225</fullName>
+                <default>false</default>
+                <label>Ewe - 225</label>
+            </value>
+            <value>
+                <fullName>Fang - 230</fullName>
+                <default>false</default>
+                <label>Fang - 230</label>
+            </value>
+            <value>
+                <fullName>Fanti (Fante) - 233</fullName>
+                <default>false</default>
+                <label>Fanti (Fante) - 233</label>
+            </value>
+            <value>
+                <fullName>Filoco - 234</fullName>
+                <default>false</default>
+                <label>Filoco - 234</label>
+            </value>
+            <value>
+                <fullName>Finnish - 235</fullName>
+                <default>false</default>
+                <label>Finnish - 235</label>
+            </value>
+            <value>
+                <fullName>Flemish - 240</fullName>
+                <default>false</default>
+                <label>Flemish - 240</label>
+            </value>
+            <value>
+                <fullName>Fon - 245</fullName>
+                <default>false</default>
+                <label>Fon - 245</label>
+            </value>
+            <value>
+                <fullName>French - 250</fullName>
+                <default>false</default>
+                <label>French - 250</label>
+            </value>
+            <value>
+                <fullName>French, Louisiana Creole - 537</fullName>
+                <default>false</default>
+                <label>French, Louisiana Creole - 537</label>
+            </value>
+            <value>
+                <fullName>Frisian - 255</fullName>
+                <default>false</default>
+                <label>Frisian - 255</label>
+            </value>
+            <value>
+                <fullName>Friulian - 260</fullName>
+                <default>false</default>
+                <label>Friulian - 260</label>
+            </value>
+            <value>
+                <fullName>Fukienese - 265</fullName>
+                <default>false</default>
+                <label>Fukienese - 265</label>
+            </value>
+            <value>
+                <fullName>Fula (Fulah or Fulani) - 270</fullName>
+                <default>false</default>
+                <label>Fula (Fulah or Fulani) - 270</label>
+            </value>
+            <value>
+                <fullName>Fulani (Pulaar) - 275</fullName>
+                <default>false</default>
+                <label>Fulani (Pulaar) - 275</label>
+            </value>
+            <value>
+                <fullName>FuZhou - 277</fullName>
+                <default>false</default>
+                <label>FuZhou - 277</label>
+            </value>
+            <value>
+                <fullName>Ga - 279</fullName>
+                <default>false</default>
+                <label>Ga - 279</label>
+            </value>
+            <value>
+                <fullName>Gaelic - 280</fullName>
+                <default>false</default>
+                <label>Gaelic - 280</label>
+            </value>
+            <value>
+                <fullName>Galician - 285</fullName>
+                <default>false</default>
+                <label>Galician - 285</label>
+            </value>
+            <value>
+                <fullName>Gallinya - 290</fullName>
+                <default>false</default>
+                <label>Gallinya - 290</label>
+            </value>
+            <value>
+                <fullName>Ganda - 295</fullName>
+                <default>false</default>
+                <label>Ganda - 295</label>
+            </value>
+            <value>
+                <fullName>Georgian - 298</fullName>
+                <default>false</default>
+                <label>Georgian - 298</label>
+            </value>
+            <value>
+                <fullName>German (Amish/ Pennsylvania Dutch) - 301</fullName>
+                <default>false</default>
+                <label>German (Amish/ Pennsylvania Dutch) - 301</label>
+            </value>
+            <value>
+                <fullName>German - 300</fullName>
+                <default>false</default>
+                <label>German - 300</label>
+            </value>
+            <value>
+                <fullName>Gheg - 305</fullName>
+                <default>false</default>
+                <label>Gheg - 305</label>
+            </value>
+            <value>
+                <fullName>Gitaki - 310</fullName>
+                <default>false</default>
+                <label>Gitaki - 310</label>
+            </value>
+            <value>
+                <fullName>Grebo - 311</fullName>
+                <default>false</default>
+                <label>Grebo - 311</label>
+            </value>
+            <value>
+                <fullName>Greek (Eretria) - 315</fullName>
+                <default>false</default>
+                <label>Greek (Eretria) - 315</label>
+            </value>
+            <value>
+                <fullName>Greenlandic - 317</fullName>
+                <default>false</default>
+                <label>Greenlandic - 317</label>
+            </value>
+            <value>
+                <fullName>Guarani - 320</fullName>
+                <default>false</default>
+                <label>Guarani - 320</label>
+            </value>
+            <value>
+                <fullName>Gujrati - 325</fullName>
+                <default>false</default>
+                <label>Gujrati - 325</label>
+            </value>
+            <value>
+                <fullName>Guyanese Creole English - 326</fullName>
+                <default>false</default>
+                <label>Guyanese Creole English - 326</label>
+            </value>
+            <value>
+                <fullName>Haida - 328</fullName>
+                <default>false</default>
+                <label>Haida - 328</label>
+            </value>
+            <value>
+                <fullName>Haitian Creole - 330</fullName>
+                <default>false</default>
+                <label>Haitian Creole - 330</label>
+            </value>
+            <value>
+                <fullName>Haka/Hakha/Lai - 334</fullName>
+                <default>false</default>
+                <label>Haka/Hakha/Lai - 334</label>
+            </value>
+            <value>
+                <fullName>Hakka - 335</fullName>
+                <default>false</default>
+                <label>Hakka - 335</label>
+            </value>
+            <value>
+                <fullName>Hani - 340</fullName>
+                <default>false</default>
+                <label>Hani - 340</label>
+            </value>
+            <value>
+                <fullName>Hausa - 345</fullName>
+                <default>false</default>
+                <label>Hausa - 345</label>
+            </value>
+            <value>
+                <fullName>Hawaiian Creole (Pidgin) - 347</fullName>
+                <default>false</default>
+                <label>Hawaiian Creole (Pidgin) - 347</label>
+            </value>
+            <value>
+                <fullName>Hebrew - 350</fullName>
+                <default>false</default>
+                <label>Hebrew - 350</label>
+            </value>
+            <value>
+                <fullName>Hindi - 355</fullName>
+                <default>false</default>
+                <label>Hindi - 355</label>
+            </value>
+            <value>
+                <fullName>Hindustani - 360</fullName>
+                <default>false</default>
+                <label>Hindustani - 360</label>
+            </value>
+            <value>
+                <fullName>Hmong - 365</fullName>
+                <default>false</default>
+                <label>Hmong - 365</label>
+            </value>
+            <value>
+                <fullName>Ho-Low - 367</fullName>
+                <default>false</default>
+                <label>Ho-Low - 367</label>
+            </value>
+            <value>
+                <fullName>Hungarian - 370</fullName>
+                <default>false</default>
+                <label>Hungarian - 370</label>
+            </value>
+            <value>
+                <fullName>Iban - 374</fullName>
+                <default>false</default>
+                <label>Iban - 374</label>
+            </value>
+            <value>
+                <fullName>Ibibio - 376</fullName>
+                <default>false</default>
+                <label>Ibibio - 376</label>
+            </value>
+            <value>
+                <fullName>Ibo (Igbo) - 380</fullName>
+                <default>false</default>
+                <label>Ibo (Igbo) - 380</label>
+            </value>
+            <value>
+                <fullName>Icelandic - 385</fullName>
+                <default>false</default>
+                <label>Icelandic - 385</label>
+            </value>
+            <value>
+                <fullName>Idoma - 387</fullName>
+                <default>false</default>
+                <label>Idoma - 387</label>
+            </value>
+            <value>
+                <fullName>Ijaw (Ijo) - 390</fullName>
+                <default>false</default>
+                <label>Ijaw (Ijo) - 390</label>
+            </value>
+            <value>
+                <fullName>Ilocano - 395</fullName>
+                <default>false</default>
+                <label>Ilocano - 395</label>
+            </value>
+            <value>
+                <fullName>Iloko - 400</fullName>
+                <default>false</default>
+                <label>Iloko - 400</label>
+            </value>
+            <value>
+                <fullName>Ilonggo - 401</fullName>
+                <default>false</default>
+                <label>Ilonggo - 401</label>
+            </value>
+            <value>
+                <fullName>Indonesian - 405</fullName>
+                <default>false</default>
+                <label>Indonesian - 405</label>
+            </value>
+            <value>
+                <fullName>Irish - 407</fullName>
+                <default>false</default>
+                <label>Irish - 407</label>
+            </value>
+            <value>
+                <fullName>Iroquois - 408</fullName>
+                <default>false</default>
+                <label>Iroquois - 408</label>
+            </value>
+            <value>
+                <fullName>Italian - 410</fullName>
+                <default>false</default>
+                <label>Italian - 410</label>
+            </value>
+            <value>
+                <fullName>Jacabano - 413</fullName>
+                <default>false</default>
+                <label>Jacabano - 413</label>
+            </value>
+            <value>
+                <fullName>Jamaican Creole - 417</fullName>
+                <default>false</default>
+                <label>Jamaican Creole - 417</label>
+            </value>
+            <value>
+                <fullName>Japanese - 415</fullName>
+                <default>false</default>
+                <label>Japanese - 415</label>
+            </value>
+            <value>
+                <fullName>Kachin - 420</fullName>
+                <default>false</default>
+                <label>Kachin - 420</label>
+            </value>
+            <value>
+                <fullName>Kanarese - 430</fullName>
+                <default>false</default>
+                <label>Kanarese - 430</label>
+            </value>
+            <value>
+                <fullName>Kannada - 425</fullName>
+                <default>false</default>
+                <label>Kannada - 425</label>
+            </value>
+            <value>
+                <fullName>Kanuri - 435</fullName>
+                <default>false</default>
+                <label>Kanuri - 435</label>
+            </value>
+            <value>
+                <fullName>Kaonde - 434</fullName>
+                <default>false</default>
+                <label>Kaonde - 434</label>
+            </value>
+            <value>
+                <fullName>Karakalpak - 436</fullName>
+                <default>false</default>
+                <label>Karakalpak - 436</label>
+            </value>
+            <value>
+                <fullName>Karen - 441</fullName>
+                <default>false</default>
+                <label>Karen - 441</label>
+            </value>
+            <value>
+                <fullName>Kashmiri - 437</fullName>
+                <default>false</default>
+                <label>Kashmiri - 437</label>
+            </value>
+            <value>
+                <fullName>Katchi - 440</fullName>
+                <default>false</default>
+                <label>Katchi - 440</label>
+            </value>
+            <value>
+                <fullName>Kayah, Karenni - 443</fullName>
+                <default>false</default>
+                <label>Kayah, Karenni - 443</label>
+            </value>
+            <value>
+                <fullName>Kazak (Kazakh) - 442</fullName>
+                <default>false</default>
+                <label>Kazak (Kazakh) - 442</label>
+            </value>
+            <value>
+                <fullName>Khana/Ogoni - 444</fullName>
+                <default>false</default>
+                <label>Khana/Ogoni - 444</label>
+            </value>
+            <value>
+                <fullName>Khmer (Cambodian) - 445</fullName>
+                <default>false</default>
+                <label>Khmer (Cambodian) - 445</label>
+            </value>
+            <value>
+                <fullName>Kikongo - 450</fullName>
+                <default>false</default>
+                <label>Kikongo - 450</label>
+            </value>
+            <value>
+                <fullName>Kikuyu - 455</fullName>
+                <default>false</default>
+                <label>Kikuyu - 455</label>
+            </value>
+            <value>
+                <fullName>Kingwana - 460</fullName>
+                <default>false</default>
+                <label>Kingwana - 460</label>
+            </value>
+            <value>
+                <fullName>Kinyarwanda (Ruanda) - 465</fullName>
+                <default>false</default>
+                <label>Kinyarwanda (Ruanda) - 465</label>
+            </value>
+            <value>
+                <fullName>Kira - 472</fullName>
+                <default>false</default>
+                <label>Kira - 472</label>
+            </value>
+            <value>
+                <fullName>Kiribati (Gilbertese) - 470</fullName>
+                <default>false</default>
+                <label>Kiribati (Gilbertese) - 470</label>
+            </value>
+            <value>
+                <fullName>Kirundi - 471</fullName>
+                <default>false</default>
+                <label>Kirundi - 471</label>
+            </value>
+            <value>
+                <fullName>Kissi - 473</fullName>
+                <default>false</default>
+                <label>Kissi - 473</label>
+            </value>
+            <value>
+                <fullName>Kiswahili (Swahili) - 475</fullName>
+                <default>false</default>
+                <label>Kiswahili (Swahili) - 475</label>
+            </value>
+            <value>
+                <fullName>Kizigua - 479</fullName>
+                <default>false</default>
+                <label>Kizigua - 479</label>
+            </value>
+            <value>
+                <fullName>Konkani - 480</fullName>
+                <default>false</default>
+                <label>Konkani - 480</label>
+            </value>
+            <value>
+                <fullName>Korean - 485</fullName>
+                <default>false</default>
+                <label>Korean - 485</label>
+            </value>
+            <value>
+                <fullName>Kosraean - 486</fullName>
+                <default>false</default>
+                <label>Kosraean - 486</label>
+            </value>
+            <value>
+                <fullName>Kpelle - 487</fullName>
+                <default>false</default>
+                <label>Kpelle - 487</label>
+            </value>
+            <value>
+                <fullName>Krahn - 488</fullName>
+                <default>false</default>
+                <label>Krahn - 488</label>
+            </value>
+            <value>
+                <fullName>Krio &amp; Susu - 490</fullName>
+                <default>false</default>
+                <label>Krio &amp; Susu - 490</label>
+            </value>
+            <value>
+                <fullName>Ku (Kung-Ekoka) - 491</fullName>
+                <default>false</default>
+                <label>Ku (Kung-Ekoka) - 491</label>
+            </value>
+            <value>
+                <fullName>Kurdish - 495</fullName>
+                <default>false</default>
+                <label>Kurdish - 495</label>
+            </value>
+            <value>
+                <fullName>Kurukh - 500</fullName>
+                <default>false</default>
+                <label>Kurukh - 500</label>
+            </value>
+            <value>
+                <fullName>Kyrgyz - 502</fullName>
+                <default>false</default>
+                <label>Kyrgyz - 502</label>
+            </value>
+            <value>
+                <fullName>Ladin - 505</fullName>
+                <default>false</default>
+                <label>Ladin - 505</label>
+            </value>
+            <value>
+                <fullName>Lakota (Lakhota) - 506</fullName>
+                <default>false</default>
+                <label>Lakota (Lakhota) - 506</label>
+            </value>
+            <value>
+                <fullName>Lamsa - 503</fullName>
+                <default>false</default>
+                <label>Lamsa - 503</label>
+            </value>
+            <value>
+                <fullName>Lao (Laotian) - 510</fullName>
+                <default>false</default>
+                <label>Lao (Laotian) - 510</label>
+            </value>
+            <value>
+                <fullName>Lappish - 515</fullName>
+                <default>false</default>
+                <label>Lappish - 515</label>
+            </value>
+            <value>
+                <fullName>Latvian - 520</fullName>
+                <default>false</default>
+                <label>Latvian - 520</label>
+            </value>
+            <value>
+                <fullName>Letzeburgish - 525</fullName>
+                <default>false</default>
+                <label>Letzeburgish - 525</label>
+            </value>
+            <value>
+                <fullName>Liberian Pidgin English (Kru) - 718</fullName>
+                <default>false</default>
+                <label>Liberian Pidgin English (Kru) - 718</label>
+            </value>
+            <value>
+                <fullName>Lingala - 530</fullName>
+                <default>false</default>
+                <label>Lingala - 530</label>
+            </value>
+            <value>
+                <fullName>Lisu - 533</fullName>
+                <default>false</default>
+                <label>Lisu - 533</label>
+            </value>
+            <value>
+                <fullName>Lithuanian - 535</fullName>
+                <default>false</default>
+                <label>Lithuanian - 535</label>
+            </value>
+            <value>
+                <fullName>Lorma - 536</fullName>
+                <default>false</default>
+                <label>Lorma - 536</label>
+            </value>
+            <value>
+                <fullName>Louisiana Creole French - 537</fullName>
+                <default>false</default>
+                <label>Louisiana Creole French - 537</label>
+            </value>
+            <value>
+                <fullName>Lozi - 538</fullName>
+                <default>false</default>
+                <label>Lozi - 538</label>
+            </value>
+            <value>
+                <fullName>Luganda - 540</fullName>
+                <default>false</default>
+                <label>Luganda - 540</label>
+            </value>
+            <value>
+                <fullName>Luhya - 545</fullName>
+                <default>false</default>
+                <label>Luhya - 545</label>
+            </value>
+            <value>
+                <fullName>Luo - 550</fullName>
+                <default>false</default>
+                <label>Luo - 550</label>
+            </value>
+            <value>
+                <fullName>Luri - 555</fullName>
+                <default>false</default>
+                <label>Luri - 555</label>
+            </value>
+            <value>
+                <fullName>Maay (MayMay) - 557</fullName>
+                <default>false</default>
+                <label>Maay (MayMay) - 557</label>
+            </value>
+            <value>
+                <fullName>Macedonian - 560</fullName>
+                <default>false</default>
+                <label>Macedonian - 560</label>
+            </value>
+            <value>
+                <fullName>Madurese - 565</fullName>
+                <default>false</default>
+                <label>Madurese - 565</label>
+            </value>
+            <value>
+                <fullName>Maithili - 567</fullName>
+                <default>false</default>
+                <label>Maithili - 567</label>
+            </value>
+            <value>
+                <fullName>Makua - 570</fullName>
+                <default>false</default>
+                <label>Makua - 570</label>
+            </value>
+            <value>
+                <fullName>Malagasy (Malgache) - 575</fullName>
+                <default>false</default>
+                <label>Malagasy (Malgache) - 575</label>
+            </value>
+            <value>
+                <fullName>Malay - 579</fullName>
+                <default>false</default>
+                <label>Malay - 579</label>
+            </value>
+            <value>
+                <fullName>Malayalam - 580</fullName>
+                <default>false</default>
+                <label>Malayalam - 580</label>
+            </value>
+            <value>
+                <fullName>Maltese - 595</fullName>
+                <default>false</default>
+                <label>Maltese - 595</label>
+            </value>
+            <value>
+                <fullName>Mandarin (Sichuanese) - 600</fullName>
+                <default>false</default>
+                <label>Mandarin (Sichuanese) - 600</label>
+            </value>
+            <value>
+                <fullName>Mandinka (Mandingo) - 601</fullName>
+                <default>false</default>
+                <label>Mandinka (Mandingo) - 601</label>
+            </value>
+            <value>
+                <fullName>Mangyan - 613</fullName>
+                <default>false</default>
+                <label>Mangyan - 613</label>
+            </value>
+            <value>
+                <fullName>Maninka - 614</fullName>
+                <default>false</default>
+                <label>Maninka - 614</label>
+            </value>
+            <value>
+                <fullName>Mann/Mano - 604</fullName>
+                <default>false</default>
+                <label>Mann/Mano - 604</label>
+            </value>
+            <value>
+                <fullName>Maori - 612</fullName>
+                <default>false</default>
+                <label>Maori - 612</label>
+            </value>
+            <value>
+                <fullName>Marathi - 605</fullName>
+                <default>false</default>
+                <label>Marathi - 605</label>
+            </value>
+            <value>
+                <fullName>Marshallese - 607</fullName>
+                <default>false</default>
+                <label>Marshallese - 607</label>
+            </value>
+            <value>
+                <fullName>Massa - 610</fullName>
+                <default>false</default>
+                <label>Massa - 610</label>
+            </value>
+            <value>
+                <fullName>Maya - 615</fullName>
+                <default>false</default>
+                <label>Maya - 615</label>
+            </value>
+            <value>
+                <fullName>Mende - 620</fullName>
+                <default>false</default>
+                <label>Mende - 620</label>
+            </value>
+            <value>
+                <fullName>Miami/Myaamia - 622</fullName>
+                <default>false</default>
+                <label>Miami/Myaamia - 622</label>
+            </value>
+            <value>
+                <fullName>Micronesia - 621</fullName>
+                <default>false</default>
+                <label>Micronesia - 621</label>
+            </value>
+            <value>
+                <fullName>Min (Hokkien) - 625</fullName>
+                <default>false</default>
+                <label>Min (Hokkien) - 625</label>
+            </value>
+            <value>
+                <fullName>Mina - 630</fullName>
+                <default>false</default>
+                <label>Mina - 630</label>
+            </value>
+            <value>
+                <fullName>Mizo - 632</fullName>
+                <default>false</default>
+                <label>Mizo - 632</label>
+            </value>
+            <value>
+                <fullName>Moldavian - 635</fullName>
+                <default>false</default>
+                <label>Moldavian - 635</label>
+            </value>
+            <value>
+                <fullName>Mon - 637</fullName>
+                <default>false</default>
+                <label>Mon - 637</label>
+            </value>
+            <value>
+                <fullName>Mongolian - 640</fullName>
+                <default>false</default>
+                <label>Mongolian - 640</label>
+            </value>
+            <value>
+                <fullName>Montagnard - 645</fullName>
+                <default>false</default>
+                <label>Montagnard - 645</label>
+            </value>
+            <value>
+                <fullName>Montonese - 618</fullName>
+                <default>false</default>
+                <label>Montonese - 618</label>
+            </value>
+            <value>
+                <fullName>Mossi (Moore) - 650</fullName>
+                <default>false</default>
+                <label>Mossi (Moore) - 650</label>
+            </value>
+            <value>
+                <fullName>Motu - 655</fullName>
+                <default>false</default>
+                <label>Motu - 655</label>
+            </value>
+            <value>
+                <fullName>Nahuati - 660</fullName>
+                <default>false</default>
+                <label>Nahuati - 660</label>
+            </value>
+            <value>
+                <fullName>Navajo - 663</fullName>
+                <default>false</default>
+                <label>Navajo - 663</label>
+            </value>
+            <value>
+                <fullName>Ndebele - 665</fullName>
+                <default>false</default>
+                <label>Ndebele - 665</label>
+            </value>
+            <value>
+                <fullName>Ndongo - 670</fullName>
+                <default>false</default>
+                <label>Ndongo - 670</label>
+            </value>
+            <value>
+                <fullName>Nepali - 675</fullName>
+                <default>false</default>
+                <label>Nepali - 675</label>
+            </value>
+            <value>
+                <fullName>Newari - 680</fullName>
+                <default>false</default>
+                <label>Newari - 680</label>
+            </value>
+            <value>
+                <fullName>Ngala - 685</fullName>
+                <default>false</default>
+                <label>Ngala - 685</label>
+            </value>
+            <value>
+                <fullName>Ngoni - 690</fullName>
+                <default>false</default>
+                <label>Ngoni - 690</label>
+            </value>
+            <value>
+                <fullName>Ningbo - 692</fullName>
+                <default>false</default>
+                <label>Ningbo - 692</label>
+            </value>
+            <value>
+                <fullName>Norwegian - 695</fullName>
+                <default>false</default>
+                <label>Norwegian - 695</label>
+            </value>
+            <value>
+                <fullName>Nuer - 702</fullName>
+                <default>false</default>
+                <label>Nuer - 702</label>
+            </value>
+            <value>
+                <fullName>Nyanja (Chinyanja) - 700</fullName>
+                <default>false</default>
+                <label>Nyanja (Chinyanja) - 700</label>
+            </value>
+            <value>
+                <fullName>Nzema - 703</fullName>
+                <default>false</default>
+                <label>Nzema - 703</label>
+            </value>
+            <value>
+                <fullName>Ogoni – See Khana/Ogoni - 444</fullName>
+                <default>false</default>
+                <label>Ogoni – See Khana/Ogoni - 444</label>
+            </value>
+            <value>
+                <fullName>Oriya - 705</fullName>
+                <default>false</default>
+                <label>Oriya - 705</label>
+            </value>
+            <value>
+                <fullName>Oromiffa - 709</fullName>
+                <default>false</default>
+                <label>Oromiffa - 709</label>
+            </value>
+            <value>
+                <fullName>Oromo - 710</fullName>
+                <default>false</default>
+                <label>Oromo - 710</label>
+            </value>
+            <value>
+                <fullName>Ottawa - 713</fullName>
+                <default>false</default>
+                <label>Ottawa - 713</label>
+            </value>
+            <value>
+                <fullName>Palau - 714</fullName>
+                <default>false</default>
+                <label>Palau - 714</label>
+            </value>
+            <value>
+                <fullName>Persian (Farsi) - 715</fullName>
+                <default>false</default>
+                <label>Persian (Farsi) - 715</label>
+            </value>
+            <value>
+                <fullName>Polish - 720</fullName>
+                <default>false</default>
+                <label>Polish - 720</label>
+            </value>
+            <value>
+                <fullName>Ponape (Pohnpeian) - 721</fullName>
+                <default>false</default>
+                <label>Ponape (Pohnpeian) - 721</label>
+            </value>
+            <value>
+                <fullName>Portuguese - 725</fullName>
+                <default>false</default>
+                <label>Portuguese - 725</label>
+            </value>
+            <value>
+                <fullName>Potawatomi - 727</fullName>
+                <default>false</default>
+                <label>Potawatomi - 727</label>
+            </value>
+            <value>
+                <fullName>Pulaar - 729</fullName>
+                <default>false</default>
+                <label>Pulaar - 729</label>
+            </value>
+            <value>
+                <fullName>Punjabi - 730</fullName>
+                <default>false</default>
+                <label>Punjabi - 730</label>
+            </value>
+            <value>
+                <fullName>Pushtu (Pashto) - 733</fullName>
+                <default>false</default>
+                <label>Pushtu (Pashto) - 733</label>
+            </value>
+            <value>
+                <fullName>Quechua (Kechua) - 735</fullName>
+                <default>false</default>
+                <label>Quechua (Kechua) - 735</label>
+            </value>
+            <value>
+                <fullName>Ramjaki - 737</fullName>
+                <default>false</default>
+                <label>Ramjaki - 737</label>
+            </value>
+            <value>
+                <fullName>Romansch - 745</fullName>
+                <default>false</default>
+                <label>Romansch - 745</label>
+            </value>
+            <value>
+                <fullName>Romany - 747</fullName>
+                <default>false</default>
+                <label>Romany - 747</label>
+            </value>
+            <value>
+                <fullName>Rongmei - 748</fullName>
+                <default>false</default>
+                <label>Rongmei - 748</label>
+            </value>
+            <value>
+                <fullName>Rumanian (Romanian) - 740</fullName>
+                <default>false</default>
+                <label>Rumanian (Romanian) - 740</label>
+            </value>
+            <value>
+                <fullName>Rundi - 755</fullName>
+                <default>false</default>
+                <label>Rundi - 755</label>
+            </value>
+            <value>
+                <fullName>Runyoro - 753</fullName>
+                <default>false</default>
+                <label>Runyoro - 753</label>
+            </value>
+            <value>
+                <fullName>Russian - 760</fullName>
+                <default>false</default>
+                <label>Russian - 760</label>
+            </value>
+            <value>
+                <fullName>Rutooro/Tooro - 761</fullName>
+                <default>false</default>
+                <label>Rutooro/Tooro - 761</label>
+            </value>
+            <value>
+                <fullName>Rwanda - 750</fullName>
+                <default>false</default>
+                <label>Rwanda - 750</label>
+            </value>
+            <value>
+                <fullName>Samoan - 763</fullName>
+                <default>false</default>
+                <label>Samoan - 763</label>
+            </value>
+            <value>
+                <fullName>Sango - 765</fullName>
+                <default>false</default>
+                <label>Sango - 765</label>
+            </value>
+            <value>
+                <fullName>Santali - 768</fullName>
+                <default>false</default>
+                <label>Santali - 768</label>
+            </value>
+            <value>
+                <fullName>Sapo (Sarpo/Southern Krahn) - 767</fullName>
+                <default>false</default>
+                <label>Sapo (Sarpo/Southern Krahn) - 767</label>
+            </value>
+            <value>
+                <fullName>Seneca - 769</fullName>
+                <default>false</default>
+                <label>Seneca - 769</label>
+            </value>
+            <value>
+                <fullName>Serbian - 770</fullName>
+                <default>false</default>
+                <label>Serbian - 770</label>
+            </value>
+            <value>
+                <fullName>Serbo-Croatian - 775</fullName>
+                <default>false</default>
+                <label>Serbo-Croatian - 775</label>
+            </value>
+            <value>
+                <fullName>Sesotho - 780</fullName>
+                <default>false</default>
+                <label>Sesotho - 780</label>
+            </value>
+            <value>
+                <fullName>Setswana (Tswana) - 785</fullName>
+                <default>false</default>
+                <label>Setswana (Tswana) - 785</label>
+            </value>
+            <value>
+                <fullName>Shan - 790</fullName>
+                <default>false</default>
+                <label>Shan - 790</label>
+            </value>
+            <value>
+                <fullName>Shangzhai - 795</fullName>
+                <default>false</default>
+                <label>Shangzhai - 795</label>
+            </value>
+            <value>
+                <fullName>Shona - 800</fullName>
+                <default>false</default>
+                <label>Shona - 800</label>
+            </value>
+            <value>
+                <fullName>Shoshone - 802</fullName>
+                <default>false</default>
+                <label>Shoshone - 802</label>
+            </value>
+            <value>
+                <fullName>Shughni - 801</fullName>
+                <default>false</default>
+                <label>Shughni - 801</label>
+            </value>
+            <value>
+                <fullName>Siamese - 805</fullName>
+                <default>false</default>
+                <label>Siamese - 805</label>
+            </value>
+            <value>
+                <fullName>Sindhi - 810</fullName>
+                <default>false</default>
+                <label>Sindhi - 810</label>
+            </value>
+            <value>
+                <fullName>Sinhalese/Sinhala - 815</fullName>
+                <default>false</default>
+                <label>Sinhalese/Sinhala - 815</label>
+            </value>
+            <value>
+                <fullName>Sioux - 817</fullName>
+                <default>false</default>
+                <label>Sioux - 817</label>
+            </value>
+            <value>
+                <fullName>Slovak - 820</fullName>
+                <default>false</default>
+                <label>Slovak - 820</label>
+            </value>
+            <value>
+                <fullName>Slovenian - 823</fullName>
+                <default>false</default>
+                <label>Slovenian - 823</label>
+            </value>
+            <value>
+                <fullName>Somali - 825</fullName>
+                <default>false</default>
+                <label>Somali - 825</label>
+            </value>
+            <value>
+                <fullName>Songhay - 830</fullName>
+                <default>false</default>
+                <label>Songhay - 830</label>
+            </value>
+            <value>
+                <fullName>Soninke - 832</fullName>
+                <default>false</default>
+                <label>Soninke - 832</label>
+            </value>
+            <value>
+                <fullName>Spanish - 835</fullName>
+                <default>false</default>
+                <label>Spanish - 835</label>
+            </value>
+            <value>
+                <fullName>Supan - 837</fullName>
+                <default>false</default>
+                <label>Supan - 837</label>
+            </value>
+            <value>
+                <fullName>Susu &amp; Krio - 490</fullName>
+                <default>false</default>
+                <label>Susu &amp; Krio - 490</label>
+            </value>
+            <value>
+                <fullName>Swahili - 840</fullName>
+                <default>false</default>
+                <label>Swahili - 840</label>
+            </value>
+            <value>
+                <fullName>Swazi (Siswati) - 843</fullName>
+                <default>false</default>
+                <label>Swazi (Siswati) - 843</label>
+            </value>
+            <value>
+                <fullName>Swedish - 845</fullName>
+                <default>false</default>
+                <label>Swedish - 845</label>
+            </value>
+            <value>
+                <fullName>Tagalog/Filipino/Pilipino - 850</fullName>
+                <default>false</default>
+                <label>Tagalog/Filipino/Pilipino - 850</label>
+            </value>
+            <value>
+                <fullName>Taiwanese - 853</fullName>
+                <default>false</default>
+                <label>Taiwanese - 853</label>
+            </value>
+            <value>
+                <fullName>Tajik/Tajiki/Tadzhik - 847</fullName>
+                <default>false</default>
+                <label>Tajik/Tajiki/Tadzhik - 847</label>
+            </value>
+            <value>
+                <fullName>Taki Taki - 855</fullName>
+                <default>false</default>
+                <label>Taki Taki - 855</label>
+            </value>
+            <value>
+                <fullName>Tamashek - 860</fullName>
+                <default>false</default>
+                <label>Tamashek - 860</label>
+            </value>
+            <value>
+                <fullName>Tamil - 865</fullName>
+                <default>false</default>
+                <label>Tamil - 865</label>
+            </value>
+            <value>
+                <fullName>Tangga - 857</fullName>
+                <default>false</default>
+                <label>Tangga - 857</label>
+            </value>
+            <value>
+                <fullName>Tatar (Tartar) - 870</fullName>
+                <default>false</default>
+                <label>Tatar (Tartar) - 870</label>
+            </value>
+            <value>
+                <fullName>Tegina - 873</fullName>
+                <default>false</default>
+                <label>Tegina - 873</label>
+            </value>
+            <value>
+                <fullName>Telugu - 875</fullName>
+                <default>false</default>
+                <label>Telugu - 875</label>
+            </value>
+            <value>
+                <fullName>Thai - 880</fullName>
+                <default>false</default>
+                <label>Thai - 880</label>
+            </value>
+            <value>
+                <fullName>Tibetan - 885</fullName>
+                <default>false</default>
+                <label>Tibetan - 885</label>
+            </value>
+            <value>
+                <fullName>Tigrinya - 890</fullName>
+                <default>false</default>
+                <label>Tigrinya - 890</label>
+            </value>
+            <value>
+                <fullName>Tiv - 895</fullName>
+                <default>false</default>
+                <label>Tiv - 895</label>
+            </value>
+            <value>
+                <fullName>Tongan - 897</fullName>
+                <default>false</default>
+                <label>Tongan - 897</label>
+            </value>
+            <value>
+                <fullName>Tooro/Rutooro - 761</fullName>
+                <default>false</default>
+                <label>Tooro/Rutooro - 761</label>
+            </value>
+            <value>
+                <fullName>Tosk - 900</fullName>
+                <default>false</default>
+                <label>Tosk - 900</label>
+            </value>
+            <value>
+                <fullName>Trinidad English - 893</fullName>
+                <default>false</default>
+                <label>Trinidad English - 893</label>
+            </value>
+            <value>
+                <fullName>Trique - 898</fullName>
+                <default>false</default>
+                <label>Trique - 898</label>
+            </value>
+            <value>
+                <fullName>Tshiluba - 904</fullName>
+                <default>false</default>
+                <label>Tshiluba - 904</label>
+            </value>
+            <value>
+                <fullName>Tsonga/Shangan - 902</fullName>
+                <default>false</default>
+                <label>Tsonga/Shangan - 902</label>
+            </value>
+            <value>
+                <fullName>Tswana - 905</fullName>
+                <default>false</default>
+                <label>Tswana - 905</label>
+            </value>
+            <value>
+                <fullName>Tulu - 910</fullName>
+                <default>false</default>
+                <label>Tulu - 910</label>
+            </value>
+            <value>
+                <fullName>Tumbuka - 915</fullName>
+                <default>false</default>
+                <label>Tumbuka - 915</label>
+            </value>
+            <value>
+                <fullName>Turkish - 920</fullName>
+                <default>false</default>
+                <label>Turkish - 920</label>
+            </value>
+            <value>
+                <fullName>Twi (Twi-Fante, Ashanti) - 923</fullName>
+                <default>false</default>
+                <label>Twi (Twi-Fante, Ashanti) - 923</label>
+            </value>
+            <value>
+                <fullName>Ukrainian - 930</fullName>
+                <default>false</default>
+                <label>Ukrainian - 930</label>
+            </value>
+            <value>
+                <fullName>Ukrur - 931</fullName>
+                <default>false</default>
+                <label>Ukrur - 931</label>
+            </value>
+            <value>
+                <fullName>Urdu - 935</fullName>
+                <default>false</default>
+                <label>Urdu - 935</label>
+            </value>
+            <value>
+                <fullName>Urhobo - 932</fullName>
+                <default>false</default>
+                <label>Urhobo - 932</label>
+            </value>
+            <value>
+                <fullName>Uyghur - 937</fullName>
+                <default>false</default>
+                <label>Uyghur - 937</label>
+            </value>
+            <value>
+                <fullName>Uzbek - 940</fullName>
+                <default>false</default>
+                <label>Uzbek - 940</label>
+            </value>
+            <value>
+                <fullName>Vai - 943</fullName>
+                <default>false</default>
+                <label>Vai - 943</label>
+            </value>
+            <value>
+                <fullName>Vietnamese - 945</fullName>
+                <default>false</default>
+                <label>Vietnamese - 945</label>
+            </value>
+            <value>
+                <fullName>Visayan - 950</fullName>
+                <default>false</default>
+                <label>Visayan - 950</label>
+            </value>
+            <value>
+                <fullName>Waray-Waray/Waray - 952</fullName>
+                <default>false</default>
+                <label>Waray-Waray/Waray - 952</label>
+            </value>
+            <value>
+                <fullName>Welsh - 955</fullName>
+                <default>false</default>
+                <label>Welsh - 955</label>
+            </value>
+            <value>
+                <fullName>Wolof - 960</fullName>
+                <default>false</default>
+                <label>Wolof - 960</label>
+            </value>
+            <value>
+                <fullName>Wu - 965</fullName>
+                <default>false</default>
+                <label>Wu - 965</label>
+            </value>
+            <value>
+                <fullName>Xhosa - 970</fullName>
+                <default>false</default>
+                <label>Xhosa - 970</label>
+            </value>
+            <value>
+                <fullName>Xiang - 971</fullName>
+                <default>false</default>
+                <label>Xiang - 971</label>
+            </value>
+            <value>
+                <fullName>Yao - 975</fullName>
+                <default>false</default>
+                <label>Yao - 975</label>
+            </value>
+            <value>
+                <fullName>Yi - 980</fullName>
+                <default>false</default>
+                <label>Yi - 980</label>
+            </value>
+            <value>
+                <fullName>Yiddish - 985</fullName>
+                <default>false</default>
+                <label>Yiddish - 985</label>
+            </value>
+            <value>
+                <fullName>Yocal - 987</fullName>
+                <default>false</default>
+                <label>Yocal - 987</label>
+            </value>
+            <value>
+                <fullName>Yoruba - 990</fullName>
+                <default>false</default>
+                <label>Yoruba - 990</label>
+            </value>
+            <value>
+                <fullName>Zaghawa - 991</fullName>
+                <default>false</default>
+                <label>Zaghawa - 991</label>
+            </value>
+            <value>
+                <fullName>Zarma (Djerma/Zarna) - 992</fullName>
+                <default>false</default>
+                <label>Zarma (Djerma/Zarna) - 992</label>
+            </value>
+            <value>
+                <fullName>Zhuang - 995</fullName>
+                <default>false</default>
+                <label>Zhuang - 995</label>
+            </value>
+            <value>
+                <fullName>Zophei/Zyphe - 996</fullName>
+                <default>false</default>
+                <label>Zophei/Zyphe - 996</label>
+            </value>
+            <value>
+                <fullName>Zulu - 997</fullName>
+                <default>false</default>
+                <label>Zulu - 997</label>
+            </value>
+            <value>
+                <fullName>Zuni - 998</fullName>
+                <default>false</default>
+                <label>Zuni - 998</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

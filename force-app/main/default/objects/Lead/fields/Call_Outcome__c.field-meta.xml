@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Outcome__c</fullName>
+    <description>Lead Status detail. The values of this fields are controlled by the lead status field</description>
+    <externalId>false</externalId>
+    <label>Call Outcome</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Answered-Sold</fullName>
+                <default>false</default>
+                <label>Answered-Sold</label>
+            </value>
+            <value>
+                <fullName>Answering Machine</fullName>
+                <default>false</default>
+                <label>Answering Machine</label>
+            </value>
+            <value>
+                <fullName>Busy</fullName>
+                <default>false</default>
+                <label>Busy</label>
+            </value>
+            <value>
+                <fullName>Callback - RPC Unavailable</fullName>
+                <default>false</default>
+                <label>Callback - RPC Unavailable</label>
+            </value>
+            <value>
+                <fullName>Closed - Bad Number</fullName>
+                <default>false</default>
+                <label>Closed - Bad Number</label>
+            </value>
+            <value>
+                <fullName>Closed - Contact did not inquire</fullName>
+                <default>false</default>
+                <label>Closed - Contact did not inquire</label>
+            </value>
+            <value>
+                <fullName>Closed - Do not contact</fullName>
+                <default>false</default>
+                <label>Closed - Do not contact</label>
+            </value>
+            <value>
+                <fullName>Closed - Enrolling in other online school-K12</fullName>
+                <default>false</default>
+                <label>Closed - Enrolling in other online school-K12</label>
+            </value>
+            <value>
+                <fullName>Closed - Enrolling in other online school-other/unknown</fullName>
+                <default>false</default>
+                <label>Closed - Enrolling in other online school-other/unknown</label>
+            </value>
+            <value>
+                <fullName>Closed - Institutional Inquiry</fullName>
+                <default>false</default>
+                <label>Closed - Institutional Inquiry</label>
+            </value>
+            <value>
+                <fullName>Closed - Interested in Homeschool</fullName>
+                <default>false</default>
+                <label>Closed - Interested in Homeschool</label>
+            </value>
+            <value>
+                <fullName>Closed - Not Interested</fullName>
+                <default>false</default>
+                <label>Closed - Not Interested</label>
+            </value>
+            <value>
+                <fullName>Closed - Not Parent/Legal Guardian</fullName>
+                <default>false</default>
+                <label>Closed - Not Parent/Legal Guardian</label>
+            </value>
+            <value>
+                <fullName>Closed - Returning to public school</fullName>
+                <default>false</default>
+                <label>Closed - Returning to public school</label>
+            </value>
+            <value>
+                <fullName>Closed - Seeking GED</fullName>
+                <default>false</default>
+                <label>Closed - Seeking GED</label>
+            </value>
+            <value>
+                <fullName>Closed - Summer school desired</fullName>
+                <default>false</default>
+                <label>Closed - Summer school desired</label>
+            </value>
+            <value>
+                <fullName>Contacted-Callback</fullName>
+                <default>false</default>
+                <label>Contacted-Callback</label>
+            </value>
+            <value>
+                <fullName>Disconnected Number</fullName>
+                <default>false</default>
+                <label>Disconnected Number</label>
+            </value>
+            <value>
+                <fullName>Hang Up</fullName>
+                <default>false</default>
+                <label>Hang Up</label>
+            </value>
+            <value>
+                <fullName>Hang Up-Right Party Contact</fullName>
+                <default>false</default>
+                <label>Hang Up-Right Party Contact</label>
+            </value>
+            <value>
+                <fullName>Invalid Number</fullName>
+                <default>false</default>
+                <label>Invalid Number</label>
+            </value>
+            <value>
+                <fullName>Maxed Call Attempt Reached</fullName>
+                <default>false</default>
+                <label>Maxed Call Attempt Reached</label>
+            </value>
+            <value>
+                <fullName>No Answer/VM not setup/VM Full</fullName>
+                <default>false</default>
+                <label>No Answer/VM not setup/VM Full</label>
+            </value>
+            <value>
+                <fullName>NQ - Due to age-Too old</fullName>
+                <default>false</default>
+                <label>NQ - Due to age-Too old</label>
+            </value>
+            <value>
+                <fullName>NQ - Due to age-Too young</fullName>
+                <default>false</default>
+                <label>NQ - Due to age-Too young</label>
+            </value>
+            <value>
+                <fullName>NQ - Due to location</fullName>
+                <default>false</default>
+                <label>NQ - Due to location</label>
+            </value>
+            <value>
+                <fullName>NQ - Due to regulations</fullName>
+                <default>false</default>
+                <label>NQ - Due to regulations</label>
+            </value>
+            <value>
+                <fullName>NQ - Grade Not Offered</fullName>
+                <default>false</default>
+                <label>NQ - Grade Not Offered</label>
+            </value>
+            <value>
+                <fullName>Registered for Info Session</fullName>
+                <default>false</default>
+                <label>Registered for Info Session</label>
+            </value>
+            <value>
+                <fullName>Scheduled Callback</fullName>
+                <default>false</default>
+                <label>Scheduled Callback</label>
+            </value>
+            <value>
+                <fullName>Scheduled Callback End of School Year</fullName>
+                <default>false</default>
+                <label>Scheduled Callback End of School Year</label>
+            </value>
+            <value>
+                <fullName>Scheduled Callback Second Semester</fullName>
+                <default>false</default>
+                <label>Scheduled Callback Second Semester</label>
+            </value>
+            <value>
+                <fullName>School Cap Met</fullName>
+                <default>false</default>
+                <label>School Cap Met</label>
+            </value>
+            <value>
+                <fullName>Transfer to CC</fullName>
+                <default>false</default>
+                <label>Transfer to CC</label>
+            </value>
+            <value>
+                <fullName>Undecided</fullName>
+                <default>false</default>
+                <label>Undecided</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

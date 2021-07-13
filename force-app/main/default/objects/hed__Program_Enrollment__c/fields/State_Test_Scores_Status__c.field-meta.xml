@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>State_Test_Scores_Status__c</fullName>
+    <description>Status of State Test Scores</description>
+    <externalId>false</externalId>
+    <label>State Test Scores Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+                <label>Incomplete</label>
+            </value>
+            <value>
+                <fullName>Invalid</fullName>
+                <default>false</default>
+                <label>Invalid</label>
+            </value>
+            <value>
+                <fullName>Missing</fullName>
+                <default>false</default>
+                <label>Missing</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Optional</fullName>
+                <default>false</default>
+                <label>Optional</label>
+            </value>
+            <value>
+                <fullName>Received</fullName>
+                <default>false</default>
+                <label>Received</label>
+            </value>
+            <value>
+                <fullName>Received Optional</fullName>
+                <default>false</default>
+                <label>Received Optional</label>
+            </value>
+            <value>
+                <fullName>Requested</fullName>
+                <default>false</default>
+                <label>Requested</label>
+            </value>
+            <value>
+                <fullName>Required for Enrollment</fullName>
+                <default>false</default>
+                <label>Required for Enrollment</label>
+            </value>
+            <value>
+                <fullName>Required for Placement</fullName>
+                <default>false</default>
+                <label>Required for Placement</label>
+            </value>
+            <value>
+                <fullName>Verified</fullName>
+                <default>false</default>
+                <label>Verified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

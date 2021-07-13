@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CL_VHS_Zoned_School__c</fullName>
+    <description>VHS-Zoned School</description>
+    <externalId>false</externalId>
+    <label>CL VHS Zoned School</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>VHS-Archbishop Williams High School</fullName>
+                <default>false</default>
+                <label>VHS-Archbishop Williams High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Ashland High School</fullName>
+                <default>false</default>
+                <label>VHS-Ashland High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Auburn High School</fullName>
+                <default>false</default>
+                <label>VHS-Auburn High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Avon High School</fullName>
+                <default>false</default>
+                <label>VHS-Avon High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Ballard High School</fullName>
+                <default>false</default>
+                <label>VHS-Ballard High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Bellows Free Academy Saint Albans</fullName>
+                <default>false</default>
+                <label>VHS-Bellows Free Academy Saint Albans</label>
+            </value>
+            <value>
+                <fullName>VHS-Bergen Catholic HS</fullName>
+                <default>false</default>
+                <label>VHS-Bergen Catholic HS</label>
+            </value>
+            <value>
+                <fullName>VHS-Berks Catholic High School</fullName>
+                <default>false</default>
+                <label>VHS-Berks Catholic High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Big Walnut High School</fullName>
+                <default>false</default>
+                <label>VHS-Big Walnut High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Blacklick Valley JSHS</fullName>
+                <default>false</default>
+                <label>VHS-Blacklick Valley JSHS</label>
+            </value>
+            <value>
+                <fullName>VHS-Camden County</fullName>
+                <default>false</default>
+                <label>VHS-Camden County</label>
+            </value>
+            <value>
+                <fullName>VHS-Canton High School</fullName>
+                <default>false</default>
+                <label>VHS-Canton High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Carver High School</fullName>
+                <default>false</default>
+                <label>VHS-Carver High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Cary Academy</fullName>
+                <default>false</default>
+                <label>VHS-Cary Academy</label>
+            </value>
+            <value>
+                <fullName>VHS-Catholic Memorial</fullName>
+                <default>false</default>
+                <label>VHS-Catholic Memorial</label>
+            </value>
+            <value>
+                <fullName>VHS-Central Wisconsin Christian</fullName>
+                <default>false</default>
+                <label>VHS-Central Wisconsin Christian</label>
+            </value>
+            <value>
+                <fullName>VHS-Classical Christian Academy</fullName>
+                <default>false</default>
+                <label>VHS-Classical Christian Academy</label>
+            </value>
+            <value>
+                <fullName>VHS-Coventry High School</fullName>
+                <default>false</default>
+                <label>VHS-Coventry High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Cromwell High School</fullName>
+                <default>false</default>
+                <label>VHS-Cromwell High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Croton-Harmon HS</fullName>
+                <default>false</default>
+                <label>VHS-Croton-Harmon HS</label>
+            </value>
+            <value>
+                <fullName>VHS-David Prouty High School</fullName>
+                <default>false</default>
+                <label>VHS-David Prouty High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Dunn School</fullName>
+                <default>false</default>
+                <label>VHS-Dunn School</label>
+            </value>
+            <value>
+                <fullName>VHS-Eastconn/ ACT Magnet High School</fullName>
+                <default>false</default>
+                <label>VHS-Eastconn/ ACT Magnet High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Fishers Island School</fullName>
+                <default>false</default>
+                <label>VHS-Fishers Island School</label>
+            </value>
+            <value>
+                <fullName>VHS-Four Rivers Charter Public School</fullName>
+                <default>false</default>
+                <label>VHS-Four Rivers Charter Public School</label>
+            </value>
+            <value>
+                <fullName>VHS-Foxcroft Academy</fullName>
+                <default>false</default>
+                <label>VHS-Foxcroft Academy</label>
+            </value>
+            <value>
+                <fullName>VHS-Gateway Regional High School</fullName>
+                <default>false</default>
+                <label>VHS-Gateway Regional High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Glen Ridge High School</fullName>
+                <default>false</default>
+                <label>VHS-Glen Ridge High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Granby Jr Sr High School</fullName>
+                <default>false</default>
+                <label>VHS-Granby Jr Sr High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Greater New Bedford Voc-Tech</fullName>
+                <default>false</default>
+                <label>VHS-Greater New Bedford Voc-Tech</label>
+            </value>
+            <value>
+                <fullName>VHS-Greenwich High School</fullName>
+                <default>false</default>
+                <label>VHS-Greenwich High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Hampshire Regional HS</fullName>
+                <default>false</default>
+                <label>VHS-Hampshire Regional HS</label>
+            </value>
+            <value>
+                <fullName>VHS-Hanover High School</fullName>
+                <default>false</default>
+                <label>VHS-Hanover High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Hanscom Middle School</fullName>
+                <default>false</default>
+                <label>VHS-Hanscom Middle School</label>
+            </value>
+            <value>
+                <fullName>VHS-Holy Name Jr. Sr. High School</fullName>
+                <default>false</default>
+                <label>VHS-Holy Name Jr. Sr. High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Homeschool</fullName>
+                <default>false</default>
+                <label>VHS-Homeschool</label>
+            </value>
+            <value>
+                <fullName>VHS-Hull Hill School</fullName>
+                <default>false</default>
+                <label>VHS-Hull Hill School</label>
+            </value>
+            <value>
+                <fullName>VHS-Hyde</fullName>
+                <default>false</default>
+                <label>VHS-Hyde</label>
+            </value>
+            <value>
+                <fullName>VHS-Islesboro Central School</fullName>
+                <default>false</default>
+                <label>VHS-Islesboro Central School</label>
+            </value>
+            <value>
+                <fullName>VHS-Jonathan Alder High School</fullName>
+                <default>false</default>
+                <label>VHS-Jonathan Alder High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Liberty High School</fullName>
+                <default>false</default>
+                <label>VHS-Liberty High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Lincoln School</fullName>
+                <default>false</default>
+                <label>VHS-Lincoln School</label>
+            </value>
+            <value>
+                <fullName>VHS-Los Gatos High School</fullName>
+                <default>false</default>
+                <label>VHS-Los Gatos High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Malden Catholic High School</fullName>
+                <default>false</default>
+                <label>VHS-Malden Catholic High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Marian Catholic High School</fullName>
+                <default>false</default>
+                <label>VHS-Marian Catholic High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Marshall School</fullName>
+                <default>false</default>
+                <label>VHS-Marshall School</label>
+            </value>
+            <value>
+                <fullName>VHS-Massachusetts Mayflower Academy</fullName>
+                <default>false</default>
+                <label>VHS-Massachusetts Mayflower Academy</label>
+            </value>
+            <value>
+                <fullName>VHS-Medway High School</fullName>
+                <default>false</default>
+                <label>VHS-Medway High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Memphis University School</fullName>
+                <default>false</default>
+                <label>VHS-Memphis University School</label>
+            </value>
+            <value>
+                <fullName>VHS-Mount Abraham Union High School</fullName>
+                <default>false</default>
+                <label>VHS-Mount Abraham Union High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Nauset Regional High School</fullName>
+                <default>false</default>
+                <label>VHS-Nauset Regional High School</label>
+            </value>
+            <value>
+                <fullName>VHS-New Mexico School for the Arts</fullName>
+                <default>false</default>
+                <label>VHS-New Mexico School for the Arts</label>
+            </value>
+            <value>
+                <fullName>VHS-New Milford High School</fullName>
+                <default>false</default>
+                <label>VHS-New Milford High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Norristown Area High School</fullName>
+                <default>false</default>
+                <label>VHS-Norristown Area High School</label>
+            </value>
+            <value>
+                <fullName>VHS-North Kingstown HS</fullName>
+                <default>false</default>
+                <label>VHS-North Kingstown HS</label>
+            </value>
+            <value>
+                <fullName>VHS-Northland Christian School</fullName>
+                <default>false</default>
+                <label>VHS-Northland Christian School</label>
+            </value>
+            <value>
+                <fullName>VHS-Notre Dame High School</fullName>
+                <default>false</default>
+                <label>VHS-Notre Dame High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Old Lyme High School</fullName>
+                <default>false</default>
+                <label>VHS-Old Lyme High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Old Saybrook High School</fullName>
+                <default>false</default>
+                <label>VHS-Old Saybrook High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Pathways Academy of Technology and Design</fullName>
+                <default>false</default>
+                <label>VHS-Pathways Academy of Technology and Design</label>
+            </value>
+            <value>
+                <fullName>VHS-Peoples Academy</fullName>
+                <default>false</default>
+                <label>VHS-Peoples Academy</label>
+            </value>
+            <value>
+                <fullName>VHS-Petersburg High School</fullName>
+                <default>false</default>
+                <label>VHS-Petersburg High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Pinecrest Academy</fullName>
+                <default>false</default>
+                <label>VHS-Pinecrest Academy</label>
+            </value>
+            <value>
+                <fullName>VHS-Portsmouth High School</fullName>
+                <default>false</default>
+                <label>VHS-Portsmouth High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Private School</fullName>
+                <default>false</default>
+                <label>VHS-Private School</label>
+            </value>
+            <value>
+                <fullName>VHS-Reading Memorial High School</fullName>
+                <default>false</default>
+                <label>VHS-Reading Memorial High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Richland High School</fullName>
+                <default>false</default>
+                <label>VHS-Richland High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Saigon South International School</fullName>
+                <default>false</default>
+                <label>VHS-Saigon South International School</label>
+            </value>
+            <value>
+                <fullName>VHS-Sequoyah High School</fullName>
+                <default>false</default>
+                <label>VHS-Sequoyah High School</label>
+            </value>
+            <value>
+                <fullName>VHS-South Portland High School</fullName>
+                <default>false</default>
+                <label>VHS-South Portland High School</label>
+            </value>
+            <value>
+                <fullName>VHS-St Xavier Catholic High School</fullName>
+                <default>false</default>
+                <label>VHS-St Xavier Catholic High School</label>
+            </value>
+            <value>
+                <fullName>VHS-St. Bernard School</fullName>
+                <default>false</default>
+                <label>VHS-St. Bernard School</label>
+            </value>
+            <value>
+                <fullName>VHS-St. Joseph Central High School</fullName>
+                <default>false</default>
+                <label>VHS-St. Joseph Central High School</label>
+            </value>
+            <value>
+                <fullName>VHS-St. Mary Academy Bay View</fullName>
+                <default>false</default>
+                <label>VHS-St. Mary Academy Bay View</label>
+            </value>
+            <value>
+                <fullName>VHS-St. Peter-Marian</fullName>
+                <default>false</default>
+                <label>VHS-St. Peter-Marian</label>
+            </value>
+            <value>
+                <fullName>VHS-Swampscott High School</fullName>
+                <default>false</default>
+                <label>VHS-Swampscott High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Tahanto Regional Middle High School</fullName>
+                <default>false</default>
+                <label>VHS-Tahanto Regional Middle High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Telos Academy</fullName>
+                <default>false</default>
+                <label>VHS-Telos Academy</label>
+            </value>
+            <value>
+                <fullName>VHS-The Bromfield School</fullName>
+                <default>false</default>
+                <label>VHS-The Bromfield School</label>
+            </value>
+            <value>
+                <fullName>VHS-The Ogburn School</fullName>
+                <default>false</default>
+                <label>VHS-The Ogburn School</label>
+            </value>
+            <value>
+                <fullName>VHS-Traip Academy</fullName>
+                <default>false</default>
+                <label>VHS-Traip Academy</label>
+            </value>
+            <value>
+                <fullName>VHS-Trinity School of Durham and Chapel Hill</fullName>
+                <default>false</default>
+                <label>VHS-Trinity School of Durham and Chapel Hill</label>
+            </value>
+            <value>
+                <fullName>VHS-Trinity Valley School</fullName>
+                <default>false</default>
+                <label>VHS-Trinity Valley School</label>
+            </value>
+            <value>
+                <fullName>VHS-Twin Valley Middle High School</fullName>
+                <default>false</default>
+                <label>VHS-Twin Valley Middle High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Union Catholic Regional High School</fullName>
+                <default>false</default>
+                <label>VHS-Union Catholic Regional High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Wellesley High School</fullName>
+                <default>false</default>
+                <label>VHS-Wellesley High School</label>
+            </value>
+            <value>
+                <fullName>VHS-West High School</fullName>
+                <default>false</default>
+                <label>VHS-West High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Westerly High School</fullName>
+                <default>false</default>
+                <label>VHS-Westerly High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Whitefish High School</fullName>
+                <default>false</default>
+                <label>VHS-Whitefish High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Wilmington High School</fullName>
+                <default>false</default>
+                <label>VHS-Wilmington High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Woodstock Union High School</fullName>
+                <default>false</default>
+                <label>VHS-Woodstock Union High School</label>
+            </value>
+            <value>
+                <fullName>VHS-Zurich International School</fullName>
+                <default>false</default>
+                <label>VHS-Zurich International School</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

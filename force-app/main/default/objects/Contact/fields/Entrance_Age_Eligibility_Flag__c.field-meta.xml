@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Entrance_Age_Eligibility_Flag__c</fullName>
+    <externalId>false</externalId>
+    <label>Entrance Age Eligibility Flag</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Eligible</fullName>
+                <default>false</default>
+                <label>Eligible</label>
+            </value>
+            <value>
+                <fullName>Too Young</fullName>
+                <default>false</default>
+                <label>Too Young</label>
+            </value>
+            <value>
+                <fullName>Too young- other options</fullName>
+                <default>false</default>
+                <label>Too young- other options</label>
+            </value>
+            <value>
+                <fullName>Possibly too old</fullName>
+                <default>false</default>
+                <label>Possibly too old</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

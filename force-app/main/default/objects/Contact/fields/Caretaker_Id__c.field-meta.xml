@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Caretaker_Id__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>It is a lookup to the Contact records with the Caretaker Record type.It is being used by the student Record Types of Contact</description>
+    <externalId>false</externalId>
+    <label>Caretaker Id</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contact.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>Caretaker</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Contacts</relationshipLabel>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

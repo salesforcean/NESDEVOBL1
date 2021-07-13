@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>iNaCA_Release_Directory_HS__c</fullName>
+    <description>This student is in high school, and I wish to deny the release of Directory Information as follows</description>
+    <externalId>false</externalId>
+    <label>iNaCA Release Directory HS</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Do not release this information to any agencies, organizations, or third parties EXCEPT the military</fullName>
+                <default>false</default>
+                <label>Do not release this information to any agencies, organizations, or third parties EXCEPT the military</label>
+            </value>
+            <value>
+                <fullName>Do not release this information to any agencies, organizations, or third parties INCLUDING the military.</fullName>
+                <default>false</default>
+                <label>Do not release this information to any agencies, organizations, or third parties INCLUDING the military.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

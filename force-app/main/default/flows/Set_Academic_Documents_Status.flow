@@ -54,6 +54,7 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <apiVersion>49.0</apiVersion>
     <decisions>
         <name>invocableContextCheckDecision</name>
         <label>Context Check Decision</label>
@@ -177,6 +178,7 @@
         <connector>
             <targetReference>invocableContextCheckDecision</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -221,6 +223,7 @@
         <connector>
             <targetReference>myRule_1_A2</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -399,6 +402,7 @@
         <label>Update Transcripts</label>
         <locationX>100</locationX>
         <locationY>300</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>

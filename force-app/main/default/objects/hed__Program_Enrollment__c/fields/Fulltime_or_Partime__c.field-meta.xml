@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulltime_or_Partime__c</fullName>
+    <description>Is this student Full Time or Part Time</description>
+    <externalId>false</externalId>
+    <label>Fulltime or Partime</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Full-Time Student</fullName>
+                <default>false</default>
+                <label>Full-Time Student</label>
+            </value>
+            <value>
+                <fullName>Part-Time Student</fullName>
+                <default>false</default>
+                <label>Part-Time Student</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

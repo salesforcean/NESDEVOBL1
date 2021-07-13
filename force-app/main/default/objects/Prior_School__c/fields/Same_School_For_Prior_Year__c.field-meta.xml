@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Same_School_For_Prior_Year__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is this the same school your student attended for the entire 2016-2017 school year</description>
+    <externalId>false</externalId>
+    <label>Same School For Prior Year</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

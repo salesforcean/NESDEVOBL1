@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Group_Type__c</fullName>
+    <defaultValue>IF( $RecordType.DeveloperName == &apos;Pre_Screen&apos;, &apos;Hard Stop&apos;, &apos;&apos;)</defaultValue>
+    <description>Is this group a hard stop or soft stop for the user? This is used exlusively for groups of eligibility criteria and is not valid for other situations.</description>
+    <externalId>false</externalId>
+    <label>Group Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hard Stop</fullName>
+                <default>false</default>
+                <label>Hard Stop</label>
+            </value>
+            <value>
+                <fullName>Soft Stop</fullName>
+                <default>false</default>
+                <label>Soft Stop</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

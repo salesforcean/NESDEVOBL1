@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School_Name__c</fullName>
+    <description>ADO# 361757</description>
+    <externalId>false</externalId>
+    <formula>CASE( School_ID_Location__c ,
+
+&quot;149&quot;, &quot;Arizona Connections Academy&quot;,
+&quot;619011&quot;, &quot;Arkansas Connections Academy&quot;,
+&quot;899477&quot;, &quot;California Connections Academy Central Coast&quot;,
+&quot;1058761&quot;, &quot;California Connections Academy Monterey Bay&quot;,
+&quot;392307&quot;, &quot;California Connections Academy North Bay&quot;,
+&quot;206409&quot;, &quot;California Connections Academy Ripon&quot;,
+&quot;4952&quot;, &quot;California Connections Academy Southern California&quot;,
+&quot;18934&quot;, &quot;California Connections Academy Central&quot;,
+&quot;73229&quot;, &quot;Wyoming Connections Academy&quot;,
+
+
+
+NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>School Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OCA_Computer_Usage_Info__c</fullName>
+    <description>Please select the option below that indicates the computer selection for your student for the 2018-2019 school year</description>
+    <externalId>false</externalId>
+    <label>OCA Computer Usage Info</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1: Connections Academy Computer / Temporary Use of Another Computer</fullName>
+                <default>false</default>
+                <label>1: Connections Academy Computer / Temporary Use of Another Computer</label>
+            </value>
+            <value>
+                <fullName>2: Connections Academy Computer</fullName>
+                <default>false</default>
+                <label>2: Connections Academy Computer</label>
+            </value>
+            <value>
+                <fullName>3: Shared Connections Academy Computer</fullName>
+                <default>false</default>
+                <label>3: Shared Connections Academy Computer</label>
+            </value>
+            <value>
+                <fullName>4: Family-owned Home Computer</fullName>
+                <default>false</default>
+                <label>4: Family-owned Home Computer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

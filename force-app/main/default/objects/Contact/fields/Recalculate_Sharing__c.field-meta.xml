@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recalculate_Sharing__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Signifies if this records needs to be shared with school staff members</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Signifies if this records needs to be shared with school staff members</inlineHelpText>
+    <label>Recalculate Sharing</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

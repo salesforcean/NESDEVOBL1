@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IN_Career_Academy_Interest__c</fullName>
+    <description>Are you interested in learning more about the career focused learning opportunities at Indiana Connections Career Academy</description>
+    <externalId>false</externalId>
+    <label>IN Career Academy Interest</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>I am interested in speaking to a counselor about the opportunity to enroll my student in Indiana Connections Career Academy</fullName>
+                <default>false</default>
+                <label>I am interested in speaking to a counselor about the opportunity to enroll my student in Indiana Connections Career Academy</label>
+            </value>
+            <value>
+                <fullName>I am not interested</fullName>
+                <default>false</default>
+                <label>I am not interested</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

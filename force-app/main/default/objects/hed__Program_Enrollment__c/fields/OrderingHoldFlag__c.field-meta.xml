@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderingHoldFlag__c</fullName>
+    <description>Hold equipment orders until a specified date</description>
+    <externalId>false</externalId>
+    <label>Ordering Hold Flag</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hold Equipment Orders</fullName>
+                <default>false</default>
+                <label>Hold Equipment Orders</label>
+            </value>
+            <value>
+                <fullName>Withdrawal Process</fullName>
+                <default>false</default>
+                <label>Withdrawal Process</label>
+            </value>
+            <value>
+                <fullName>Alternate Shipping</fullName>
+                <default>false</default>
+                <label>Alternate Shipping</label>
+            </value>
+            <value>
+                <fullName>Not Default Household</fullName>
+                <default>false</default>
+                <label>Not Default Household</label>
+            </value>
+            <value>
+                <fullName>POR</fullName>
+                <default>false</default>
+                <label>POR</label>
+            </value>
+            <value>
+                <fullName>Summer School</fullName>
+                <default>false</default>
+                <label>Summer School</label>
+            </value>
+            <value>
+                <fullName>Private Address</fullName>
+                <default>false</default>
+                <label>Private Address</label>
+            </value>
+            <value>
+                <fullName>Tech Invoice</fullName>
+                <default>false</default>
+                <label>Tech Invoice</label>
+            </value>
+            <value>
+                <fullName>Materials Flag</fullName>
+                <default>false</default>
+                <label>Materials Flag</label>
+            </value>
+            <value>
+                <fullName>Vacation/Delay Shipment</fullName>
+                <default>false</default>
+                <label>Vacation/Delay Shipment</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

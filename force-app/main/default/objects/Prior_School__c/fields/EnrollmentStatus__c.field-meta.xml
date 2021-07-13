@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EnrollmentStatus__c</fullName>
+    <externalId>false</externalId>
+    <label>Enrollment Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Completed the school year</fullName>
+                <default>false</default>
+                <label>Completed the school year</label>
+            </value>
+            <value>
+                <fullName>Still enrolled</fullName>
+                <default>false</default>
+                <label>Still enrolled</label>
+            </value>
+            <value>
+                <fullName>Withdrew from the school before the end of the school year</fullName>
+                <default>false</default>
+                <label>Withdrew from the school before the end of the school year</label>
+            </value>
+            <value>
+                <fullName>Enrolled</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Enrolled</label>
+            </value>
+            <value>
+                <fullName>Withdrawn beginning of the year</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Withdrawn beginning of the year</label>
+            </value>
+            <value>
+                <fullName>Withdrawn end of year</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Withdrawn end of year</label>
+            </value>
+            <value>
+                <fullName>Withdrawn mid-year</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Withdrawn mid-year</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

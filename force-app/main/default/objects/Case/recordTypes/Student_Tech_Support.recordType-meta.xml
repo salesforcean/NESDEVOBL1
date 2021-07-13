@@ -1,0 +1,2625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_Tech_Support</fullName>
+    <active>true</active>
+    <businessProcess>Support Process</businessProcess>
+    <compactLayoutAssignment>Tickets</compactLayoutAssignment>
+    <label>Student Tech Support</label>
+    <picklistValues>
+        <picklist>Browser__c</picklist>
+        <values>
+            <fullName>Google Chrome</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet Explorer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mozilla Firefox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safari</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Browsers__c</picklist>
+        <values>
+            <fullName>Chrome</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EDGE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Firefox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet Explorer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safari</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Case_Initiator__c</picklist>
+        <values>
+            <fullName>Caretaker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Category__c</picklist>
+        <values>
+            <fullName>Customer support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech support</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Chat_Issue_Type_SSTF__c</picklist>
+        <values>
+            <fullName>General Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical Support</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Chat_Issue_Type__c</picklist>
+        <values>
+            <fullName>Contact Information Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment Assistance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grade Level Placement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical Support</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Current_Grade__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>k</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Data_Privacy_OBL_Systems__c</picklist>
+        <values>
+            <fullName>CE Salesforce %28Leads%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connexus V2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Family Analytics Files</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National Student Clearinghouse Files</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PCx Salesforce %28Enrollment Contacts%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PCx Salesforce %28Leads%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Device_Model__c</picklist>
+        <values>
+            <fullName>Monitor-ViewSonic Monitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Desktop-DeskPro 405</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Desktop-DeskPro 6000</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Desktop-DeskPro 6005p</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Desktop-DeskPro DX2400</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Desktop-Deskpro P3000M</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-Chromebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 450G1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 450G2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 450G3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 450G4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 450G5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 6545b</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 6555b</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 6570b</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP 6735b</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop-HP6560b</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Device_Type__c</picklist>
+        <values>
+            <fullName>Personal Computer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Desktop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Laptop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided Monitor</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Documents_Type__c</picklist>
+        <values>
+            <fullName>504 Special Education doc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>504 plan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Academic Records</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Custody Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Family Income Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Get Prepared for Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High School Home School Credit Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Home Language Survey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Home School Prior Academic History Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IEP Document</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IEP Exit Documentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immunization Records</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Individualized Education Program %28IEP%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof of Age</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof of Health Examination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof of Residency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Report of Health Examination for School Entry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Handbook Section</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>State Eligibility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>State Test Scores</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Equipment_Info__c</picklist>
+        <values>
+            <fullName>Personal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Provided</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>External_Ticket_Location__c</picklist>
+        <values>
+            <fullName>Azure Dev Ops</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Issue Aware</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Now</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Inquiry_Category__c</picklist>
+        <values>
+            <fullName>Contact a Parent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact a Teacher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Course Placement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Curriculum Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Feedback</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Live Event Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Specific Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special Education Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Info Session Questions</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Invalid_Reason__c</picklist>
+        <values>
+            <fullName>Incorrect document uploaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uploaded document is invalid</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Operating_System__c</picklist>
+        <values>
+            <fullName>Chrome OS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mac OS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Windows 10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Windows 7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Windows 8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Windows Vista</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Windows XP</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Customer Support Community</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment Community</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment Community Chat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inbound Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound Phone</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Platform__c</picklist>
+        <values>
+            <fullName>Connexus v2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pearson Connexus</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Privacy_Request_Stage__c</picklist>
+        <values>
+            <fullName>Deliver</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Execute</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verify</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Privacy_Request_Type__c</picklist>
+        <values>
+            <fullName>Deletion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Sell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information Categories</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information Report</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>Complex functionality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructions not clear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User didn%27t attend training</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Relationship_to_Subject__c</picklist>
+        <values>
+            <fullName>Authorized Agent of Consumer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consumer</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Report_Delivery_Format__c</picklist>
+        <values>
+            <fullName>Electronic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Physical Mail</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Requested_Grade__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>13</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>k</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>School_Service__c</picklist>
+        <values>
+            <fullName>ACA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ARCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CalCA%28All California Schools%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sub Staffing Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TNCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Teaching Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Therapy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tutoring Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WACA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WYCA%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>School__c</picklist>
+        <values>
+            <fullName>ACA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ARCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CalCA Central</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CalCA Central Coast</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CalCA Monterey Bay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CalCA North Bay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CalCA Ripon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CalCA SoCal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MyCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TNCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WYCA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stage__c</picklist>
+        <values>
+            <fullName>Applicant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Archived</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrolled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Withdrawn</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Category__c</picklist>
+        <values>
+            <fullName>Account Registration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change of Address%2FPOR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Custody Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Document Follow-up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment Push</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extension%2FException Requests</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Final Confirmation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Log In Access</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Log in Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NES Guidance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Applicant Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outreach and Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Re-enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reactivation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Update Contact Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Withdrawal DEP</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>System_of_Origin__c</picklist>
+        <values>
+            <fullName>Customer Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Enrollment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ticket_Sub_Type__c</picklist>
+        <values>
+            <fullName>3rd Party Vendor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ABBI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AD Name Changes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AD Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ADA Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALICE - Cheshire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALICE - Course Syncing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALICE - LTI Provider Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALICE - PCx Provisioning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALICE - V2 Provisioning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALICE - Vega Viewer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access Denied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access%2FPW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accessibility - Caretaker Accessibility Needs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accessibility - Caretaker%2FStudent Access Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Creation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Updates - Add%2FRemove User</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Updates - Data Correction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Updates - IR Follow-up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Updates - Move to Another CA School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Updates - Name Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Account Updates - Possible iNaCA%2FCA Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active%2FInactive Accounts - No Show Reactivations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active%2FInactive Accounts - Re-Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active%2FInactive Accounts - Reactivation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active%2FInactive Accounts - Withdraw Student - Not Yet Enrolled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adapter %2F Battery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Add to Domain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Add%2FMove%2FChange</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Address Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Address%2FPOR - Change of Address</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Address%2FPOR - Private%2FConfidential Address</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agency Temp or Student Teacher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alternate Shipping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assessments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assistance with Performance Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audio %2F Headset Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audio - Headset %2F Microphone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audio - Performance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bitlocker - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Boot Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Browser - Needs Assistance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Browser Issue- Google Chrome</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Browser Issue- Internet Explorer %2811%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Browser Issue- Internet Explorer %288%2F9%2F10%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Browser Issue- Microsoft Edge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Browser Issue- Mozilla Firefox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buzz Hosted %28Migrated Content%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAST</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CT%2FST Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>California POR County Eligibility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call dropped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Central Authorization Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Changes in SPED Status</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CheckMyWork</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cleaned</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clubs %2F Electives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clubs and Activities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communication - Connexus Mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communication - Contact List</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communication - Office 365</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communication - PCx Chat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communication Log %28team use only%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Computer locked</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concierge - General Question</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concierge - Referred to Pearson Support%2FFacilities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concur%2FExpense Reimbursement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conference Call Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Configuration Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Configuration%2FError</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity - Dialup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity - Wired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connexus Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connexus mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Course</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Course Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Custodial - Custody Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Custodial - Noncustodial Access</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Support NES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cybersitter Install</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cybersitter Performance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DNN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DNS%2FDomain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Damaged</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dashboards</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Migration - Assessments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Migration - Courses</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Migration - Customers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Migration - Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dead Air%2FNo Answer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Document Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Document Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Document Storage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Domain%2FNetwork</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dropbox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS - Assessment Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS - Attendance Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS - Course Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS - Dropbox Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS - General Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS - Lesson %2F Instructional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS - Lesson Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS - Scheduler Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMS- Webmail Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email - Mobile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email - Spam Filter %28QMS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enable Bitlocker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Document Verification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Enrollment Assist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Enrollment Status</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Final Confirmation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Info Sessions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Login Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Placement Questions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Program Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment-Tech Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment - Damaged</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment - Loaner Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment - Performance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment - Testing%2FQC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escalated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Excel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FAQs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FTP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>File Access%2FPermissions %E2%80%93 Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>File Access%2FPermissions %E2%80%93 Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>File Access%2FPermissions - Remove</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Firewall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow-up - Communication Follow-up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow-up - Eligibility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow-up - Final Confirmation Follow-up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow-up - Principal Flag Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow-up - School Counselor Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fulfillment Question</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gifted and Talented</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Apps - Calendar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Apps - Docs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Apps - Drive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Apps - Gmail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Apps - Hangouts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Apps - Voice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grade Book</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gradebook Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Groups and Permissions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HH Member Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hardware - Desktop - Boot Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Help</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>How to obtain Assistive Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ID Mapper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDAM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IEP - Dragon Naturally Speaking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IEP - Natural Reader</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IEP%2F504</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IEP%2F504%2FAccessibility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Imagine Math</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Install%2FAdd Printer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructional Reporting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integrations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intent to Return%2FEOY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet Connectivity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet Filtering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet Subsidy Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invalid Document Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jive - Access%2FConfiguration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jive - Audio%2FQuality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jive Support Escalations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>K9 Install</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>K9 Performance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEAP - Access Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEAP - General Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Learnosity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lesson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Licenses</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Link issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Linked Content</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LiveLesson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LiveLesson - Content Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LiveLesson - Microphone Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LiveLesson - Webcam Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Local Computer Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Location Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Log</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Login Assistance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Login%2FAccess Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loss%2FDamaged%2FStolen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lost%2FDamaged%2FStolen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lost%2FStolen-Police report req</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Math-Whizz%C2%AE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MathXL%C2%AE %28Algebra 1%2C Geometry%2C Algebra 2%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multimedia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>My Benefits</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>My PTO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>My Paycheck</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MyPortal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MySites</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MyTuition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mycal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Need assistance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Network Connectivity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Network Resource Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Computer Setup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Hire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Library %2FList %2F Calendar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Site %2FPage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Closed Captioning on Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Robust Transcripts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Notes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER -  Bad Call %2F Wrong Number</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER - Accounting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER - DO NOT CONTACT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER - HR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER - Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER - Partner Programs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER - Sales %2F Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER - Specific Extension %2F Person</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER - iNaCA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Office Build%2FRelocation%2FExpansion - Project</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OpenDNS Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ordering Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ordering and Shipping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Orientation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Orientation - Access Denied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Orientation - Performance Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Orientation - Questionnaire Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parent Initiated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Password Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Password Reset - Avaya VoiceMail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Password Reset - Connexus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payroll%2FBenefits%2FEmployement Verify</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Performance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Performance Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peripherals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Permissions%2FRoles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Hardware%2FApplication - Avaya OneX Agent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Hardware%2FApplication - Avaya OneX Communicat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Hardware%2FApplication - CMS Supervisor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Hardware%2FApplication - IP Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Hardware%2FApplication - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Hardware%2FApplication - Standard Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Hardware%2FApplication - VPN Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Hardware%2FApplication - Verint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - Academic Documentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - Alternative Curriculum Requests</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - Change in Special Education Status</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - Change to End of Year Placement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - End of Year Placement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - General Placement Change Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - High School Grade Level Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - Initial Placement Concern</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Changes - Need Materials Returned</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Recommendation Needed - Grades 6-8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Recommendation Needed - Grades K-5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Position Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Possible Problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PowerPoint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print Devices%2FScan Folders</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printer %2F Scanner - Ink Replacement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printer %2F Scanner - Install</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printer %2F Scanner - Instructional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printer %2F Scanner - Network Printers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printer %2F Scanner - Troubleshooting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Printer%2FScanner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private Folder Access</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Programs - Clubs and Activities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Programs - Speciality Academies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Programs - Supplemental Instructional Support Programs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Progression Planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Project Creation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Projects%28Team Use Only%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reading Eggs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reading Eggspress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reading Plus%C2%AE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reference Check</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to Pearson Support - Concierge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to Pearson Support - Google Apps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to Pearson Support - MyCloud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to Pearson Support - MyHelp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to Pearson Support - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refresh</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reimage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Repair%2FReplace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Report Cards</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reporting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reports</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Representative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requested Equipment Not Processed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resource Hub</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returns</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Review and Respond</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Room Creation%2FRemoval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCH - School contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SISP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SISPs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SSL Certificate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scantron</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Counselor Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Initiated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Staff%2FStudent PC Imaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Use - Change Enrollment Date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Use - Lottery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Use - Records Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Use - Summer School Ordering Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Schools Telecom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SharePoint %28Team Use Only%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sharepoint - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipment Status</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Site Down</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Site Locked</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special Education - Initial Gifted Placement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special Education - Special Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special Education- Change in Special Education Status</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Speech Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staffing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>State Testing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Streaming Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Student Information - Alma SIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Student Information - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Student in Distress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Study Island%C2%AE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supervisor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supplemental Tech Points</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>System Check</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TCP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech Hardship</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech Request %2F Waiver Change</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology Hardship</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Test Nav Assessments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Text to Speech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Third Party Software Issue - Error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Third Party Software Issue - Install</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Third Party Software Issue - Instructional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training%2FCourses</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transcripts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transfer Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Troubleshooting Peripheral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ultipro Help</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ultipro Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unable to upload documents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsupported Browser</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User Creation%2FRemoval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User Management%28or Creation%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Users</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VPN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VPN %E2%80%93 Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VPN - Access Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VPN - Configuration%2FError</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VPN - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vega Viewer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verint - Access Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verint - Install</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verint - Troubleshooting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video - Access Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video - Performance Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virus %2F Spyware - 1st offense</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virus %2F Spyware - 2nd offense</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virus %2F Spyware - 3rd offense</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virus %2F Spyware - More than 3 offenses</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virus %2F Spyware - Warning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virus%2FSpyware - Reimage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waived</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Walk Up - Equipment Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Walk Up - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Walk Up - Question</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web-Filtering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Windows Boot Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wireless Laptop Connectivity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Withdrawals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Word</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work Location</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>an Application</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>eBook - Cannot Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>eFax</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ticket_Type__c</picklist>
+        <values>
+            <fullName>Accessibility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Formative Assessments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hardware</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet Filtering%2FSecurity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Learning Management System</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LiveLesson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Login</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Office 365</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other%2FMisc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Software</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Technical Support</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>hed__Category__c</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Code of Conduct</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Violation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>State Offense</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>hed__Location__c</picklist>
+        <values>
+            <fullName>Off Campus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Campus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

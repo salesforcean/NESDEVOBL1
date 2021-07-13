@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program_Enrollment__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Program Enrollment</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <filterItems>
+            <field>hed__Program_Enrollment__c.hed__Contact__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.ContactId</valueField>
+        </filterItems>
+        <filterItems>
+            <field>hed__Program_Enrollment__c.hed__Account__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.AccountId</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>hed__Program_Enrollment__c</referenceTo>
+    <relationshipLabel>Tickets</relationshipLabel>
+    <relationshipName>Tickets</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

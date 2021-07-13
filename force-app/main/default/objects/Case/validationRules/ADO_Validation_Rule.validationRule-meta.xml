@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ADO_Validation_Rule</fullName>
+    <active>true</active>
+    <description>Validation rule to fire when the user saves the ticket with selecting &apos;Sent to ADO&apos;, then user must select Status (&apos;Incident triage&apos;) &amp; Issue Type (&apos;Incident triage team&apos;).</description>
+    <errorConditionFormula>OR
+	(
+	   AND
+		(
+			RecordType.DeveloperName = &apos;Escalation&apos;,
+			Sent_to_ADO__c = true,
+			NOT(ISPICKVAL(Status,&apos;Incident Triage&apos;)),
+			NOT(ISPICKVAL(Type,&apos;Incident Triage Team&apos;))		
+		),  
+	   AND
+		(
+			RecordType.DeveloperName = &apos;Escalation&apos;,
+			Sent_to_ADO__c = false,
+			ISPICKVAL(Status,&apos;Incident Triage&apos;),
+			NOT(ISPICKVAL(Type,&apos;Incident Triage Team&apos;))		
+		),
+	   AND
+		(
+			RecordType.DeveloperName = &apos;Escalation&apos;,
+			Sent_to_ADO__c = false,
+			NOT(ISPICKVAL(Status,&apos;Incident Triage&apos;)),
+			ISPICKVAL(Type,&apos;Incident Triage Team&apos;)		
+		),
+		AND
+		(
+			RecordType.DeveloperName = &apos;Escalation&apos;,
+			Sent_to_ADO__c = false,
+			ISPICKVAL(Status,&apos;Incident Triage&apos;),
+			ISPICKVAL(Type,&apos;Incident Triage Team&apos;)		
+		),
+		AND
+		(
+			RecordType.DeveloperName = &apos;Escalation&apos;,
+			Sent_to_ADO__c = true,
+			ISPICKVAL(Status,&apos;Incident Triage&apos;),
+			NOT(ISPICKVAL(Type,&apos;Incident Triage Team&apos;))		
+		),
+		AND
+		(
+			RecordType.DeveloperName = &apos;Escalation&apos;,
+			Sent_to_ADO__c = true,
+			NOT(ISPICKVAL(Status,&apos;Incident Triage&apos;)),
+			ISPICKVAL(Type,&apos;Incident Triage Team&apos;)
+		)		
+	 )</errorConditionFormula>
+    <errorMessage>If escalating to Incident Triage please make sure to check the &quot;Sent to ADO&quot; Checkbox, the issue type to &quot;Incident Triage Team&quot;, and Status to &quot;Incident Triage&quot; to proceed.</errorMessage>
+</ValidationRule>

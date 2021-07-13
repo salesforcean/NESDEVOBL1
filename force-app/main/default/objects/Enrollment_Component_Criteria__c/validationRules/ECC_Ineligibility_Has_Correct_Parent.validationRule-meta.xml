@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ECC_Ineligibility_Has_Correct_Parent</fullName>
+    <active>true</active>
+    <description>To ensure that proper structure is present</description>
+    <errorConditionFormula>AND(  ISPICKVAL(Criteria_Type__c, &quot;Ineligibility&quot;) ,  NOT(  Enrollment_Component__r.RecordType.DeveloperName = &quot;Process&quot;))</errorConditionFormula>
+    <errorMessage>A criteria of type &quot;Ineligibility&quot; must have a parent enrollment component of type  &quot;Process&quot;</errorMessage>
+</ValidationRule>

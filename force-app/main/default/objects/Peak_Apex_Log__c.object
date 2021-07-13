@@ -154,124 +154,15 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>Class__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <inlineHelpText>Class or process, matching the Name of a record in the custom metadata type Apex Log Class Manager</inlineHelpText>
-        <label>Class</label>
-        <length>255</length>
-        <required>true</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Content__c</fullName>
-        <encryptionScheme>ProbabilisticEncryption</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Content</label>
-        <length>131072</length>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>5</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Log_Level__c</fullName>
-        <externalId>false</externalId>
-        <label>Log Level</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>ERROR</fullName>
-                    <default>false</default>
-                    <label>ERROR</label>
-                </value>
-                <value>
-                    <fullName>WARNING</fullName>
-                    <default>false</default>
-                    <label>WARNING</label>
-                </value>
-                <value>
-                    <fullName>INFO</fullName>
-                    <default>false</default>
-                    <label>INFO</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Method__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Method</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Apex Log</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Class__c</columns>
-        <columns>Content__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Errors</fullName>
-        <columns>NAME</columns>
-        <columns>Log_Level__c</columns>
-        <columns>Class__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Content__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Log_Level__c</field>
-            <operation>equals</operation>
-            <value>ERROR</value>
-        </filters>
-        <label>Errors</label>
-    </listViews>
-    <listViews>
-        <fullName>Registration</fullName>
-        <columns>NAME</columns>
-        <columns>Class__c</columns>
-        <columns>Log_Level__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Class__c</field>
-            <operation>equals</operation>
-            <value>Registration</value>
-        </filters>
-        <label>Registration</label>
-    </listViews>
     <nameField>
         <displayFormat>L-{0}</displayFormat>
         <label>Apex Log Name</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Apex Logs</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts></searchLayouts>
     <sharingModel>Private</sharingModel>
     <startsWith>Vowel</startsWith>
-    <validationRules>
-        <fullName>No_Updates_Allowed</fullName>
-        <active>true</active>
-        <errorConditionFormula>NOT(ISNEW())</errorConditionFormula>
-        <errorMessage>Updates to logs are explicitly disallowed to guarantee log integrity.</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

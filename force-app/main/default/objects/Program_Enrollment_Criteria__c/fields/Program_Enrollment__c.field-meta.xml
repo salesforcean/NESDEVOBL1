@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program_Enrollment__c</fullName>
+    <description>The PE this criteria is tied to.</description>
+    <externalId>false</externalId>
+    <label>Program Enrollment</label>
+    <referenceTo>hed__Program_Enrollment__c</referenceTo>
+    <relationshipLabel>Program Enrollment Criteria</relationshipLabel>
+    <relationshipName>Program_Enrollment_Criteria</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIF_Student_Ever_DiscCharge__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the student ever been expelled, arrested resulting in a charge, or had juvenile justice actions</description>
+    <externalId>false</externalId>
+    <label>SIF Student Ever DiscCharge</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

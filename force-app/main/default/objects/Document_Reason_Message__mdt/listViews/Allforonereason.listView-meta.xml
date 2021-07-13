@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allforonereason</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>Message__c</columns>
+    <columns>Document_Type__c</columns>
+    <columns>Enrollment_Document_Reason__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Document_Type__c</field>
+        <operation>equals</operation>
+        <value>Proof of Residence</value>
+    </filters>
+    <label>All for one reason</label>
+</ListView>

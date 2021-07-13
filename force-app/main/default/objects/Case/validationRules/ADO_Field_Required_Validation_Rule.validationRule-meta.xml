@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ADO_Field_Required_Validation_Rule</fullName>
+    <active>true</active>
+    <description>Validation rule to fire when the user saves the ticket with selecting &apos;Sent to ADO&apos;, then user must select Steps to recreate, Applicable Error Messages, Priority, Browsers, and either Full Course URL or URL of Room being accessed.</description>
+    <errorConditionFormula>IF(Sent_to_ADO__c = True,
+ OR(
+      ISBLANK(Steps_to_recreate__c),
+      ISBLANK(Applicable_Error_Messages__c), 
+      ISBLANK(TEXT( Browsers__c )),
+      ISBLANK(TEXT( Priority )),
+      AND(ISBLANK( Full_URL__c),
+      ISBLANK(URL_of_Room_being_accessed__c))
+     
+), false)</errorConditionFormula>
+    <errorMessage>Please make sure to fill out the Steps to recreate, Applicable Error Messages, Priority, Browsers, and either Full Course URL or URL of Room being accessed.</errorMessage>
+</ValidationRule>

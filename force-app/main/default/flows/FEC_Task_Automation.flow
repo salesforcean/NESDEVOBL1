@@ -107,6 +107,7 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <apiVersion>49.0</apiVersion>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -2495,6 +2496,7 @@ NOT (ISBLANK({!myVariable_current.Completion_DateTime__c} ) )
         <connector>
             <targetReference>myDecision12</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -2676,6 +2678,7 @@ NOT (ISBLANK({!myVariable_current.Completion_DateTime__c} ) )
         <connector>
             <targetReference>myDecision14</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -2759,6 +2762,7 @@ NOT (ISBLANK({!myVariable_current.Completion_DateTime__c} ) )
         <connector>
             <targetReference>myDecision21</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -2891,6 +2895,7 @@ NOT (ISBLANK({!myVariable_current.Completion_DateTime__c} ) )
         <connector>
             <targetReference>myDecision7</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -2974,6 +2979,7 @@ NOT (ISBLANK({!myVariable_current.Completion_DateTime__c} ) )
         <connector>
             <targetReference>myDecision9</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>

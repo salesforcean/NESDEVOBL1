@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NaCA_DEP_WD_Reason__c</fullName>
+    <description>Reason for the During Enrollment Process Withdrawal</description>
+    <externalId>false</externalId>
+    <label>NaCA DEP WD Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Duplicate student</fullName>
+                <default>false</default>
+                <label>Duplicate student</label>
+            </value>
+            <value>
+                <fullName>Student did not enroll</fullName>
+                <default>false</default>
+                <label>Student did not enroll</label>
+            </value>
+            <value>
+                <fullName>Student did not re-enroll</fullName>
+                <default>false</default>
+                <label>Student did not re-enroll</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

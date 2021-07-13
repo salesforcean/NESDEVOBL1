@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transcript_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Transcript Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Verified Unofficial Transcript</fullName>
+                <default>false</default>
+                <label>Verified Unofficial Transcript</label>
+            </value>
+            <value>
+                <fullName>Verified Official Transcript</fullName>
+                <default>false</default>
+                <label>Verified Official Transcript</label>
+            </value>
+            <value>
+                <fullName>Verified Homeschool</fullName>
+                <default>false</default>
+                <label>Verified Homeschool</label>
+            </value>
+            <value>
+                <fullName>Verified Enrolled in 9th</fullName>
+                <default>false</default>
+                <label>Verified Enrolled in 9th</label>
+            </value>
+            <value>
+                <fullName>Verified Unverifiable</fullName>
+                <default>false</default>
+                <label>Verified Unverifiable</label>
+            </value>
+            <value>
+                <fullName>Transcript Received</fullName>
+                <default>false</default>
+                <label>Transcript Received</label>
+            </value>
+            <value>
+                <fullName>New Homeschool</fullName>
+                <default>false</default>
+                <label>New Homeschool</label>
+            </value>
+            <value>
+                <fullName>Counselor Override-Stop Promotion</fullName>
+                <default>false</default>
+                <label>Counselor Override-Stop Promotion</label>
+            </value>
+            <value>
+                <fullName>Counselor Override-Early Graduation</fullName>
+                <default>false</default>
+                <label>Counselor Override-Early Graduation</label>
+            </value>
+            <value>
+                <fullName>Counselor Override-IEP</fullName>
+                <default>false</default>
+                <label>Counselor Override-IEP</label>
+            </value>
+            <value>
+                <fullName>Counselor Override-State Testing</fullName>
+                <default>false</default>
+                <label>Counselor Override-State Testing</label>
+            </value>
+            <value>
+                <fullName>Counselor Override-Non-graduating Senior</fullName>
+                <default>false</default>
+                <label>Counselor Override-Non-graduating Senior</label>
+            </value>
+            <value>
+                <fullName>Counselor Override-Miscellaneous</fullName>
+                <default>false</default>
+                <label>Counselor Override-Miscellaneous</label>
+            </value>
+            <value>
+                <fullName>Counselor Override-Senior Cohort short&lt;1 credit</fullName>
+                <default>false</default>
+                <label>Counselor Override-Senior Cohort short&lt;1 credit</label>
+            </value>
+            <value>
+                <fullName>Documents reviewed-Partial or missing transcript</fullName>
+                <default>false</default>
+                <label>Documents reviewed-Partial or missing transcript</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

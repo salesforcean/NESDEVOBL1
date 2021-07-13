@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Internet_Connection_Type__c</fullName>
+    <description>Internet connection type for the household.</description>
+    <externalId>false</externalId>
+    <label>Internet Connection Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cable</fullName>
+                <default>false</default>
+                <label>Cable</label>
+            </value>
+            <value>
+                <fullName>Dial-up</fullName>
+                <default>false</default>
+                <label>Dial-up</label>
+            </value>
+            <value>
+                <fullName>DSL</fullName>
+                <default>false</default>
+                <label>DSL</label>
+            </value>
+            <value>
+                <fullName>Mobile hotspot</fullName>
+                <default>false</default>
+                <label>Mobile hotspot</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Other - High Speed</fullName>
+                <default>false</default>
+                <label>Other - High Speed</label>
+            </value>
+            <value>
+                <fullName>Satellite</fullName>
+                <default>false</default>
+                <label>Satellite</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

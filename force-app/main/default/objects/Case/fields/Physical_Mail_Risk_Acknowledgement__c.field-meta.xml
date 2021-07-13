@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Physical_Mail_Risk_Acknowledgement__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>I acknowledge that transmitting personal information via mail comes with inherent risks including the risk that the information will be exposed to unauthorized individuals. I understand the risks associated with my chosen method for receiving information pertaining to my request and accept responsibility for any unauthorized access occurring after Pearson Online &amp; Blending Learning sends my information in the chosen method.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Consumer acknowledges risks inherent in choosing to have their information report delivered via physical mail</inlineHelpText>
+    <label>Physical Mail Risk Acknowledgement</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

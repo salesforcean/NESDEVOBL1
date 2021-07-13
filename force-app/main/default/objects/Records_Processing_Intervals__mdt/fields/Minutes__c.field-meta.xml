@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Minutes__c</fullName>
+    <description>User Story # 164369.
+This field is for capturing the No. Of Mins by which we need to back track to pick records accordingly related to Program Enrollments and Relationships during the respective Batch Job executions. The value must be a negative value to be keyed in this field.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter the Minutes in negative values like &quot;-30&quot; to consider records that were updated in the last 30 minutes accordingly. &quot;-40&quot; will imply records that were updated in the last 40 minutes time interval.</inlineHelpText>
+    <label>Minutes</label>
+    <precision>10</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

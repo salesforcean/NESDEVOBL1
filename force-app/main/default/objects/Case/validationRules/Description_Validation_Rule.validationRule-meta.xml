@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Description_Validation_Rule</fullName>
+    <active>true</active>
+    <description>Please Enter Minimum 10 Characters</description>
+    <errorConditionFormula>AND(
+NOT(OR(ISPICKVAL( Origin , &quot;Enrollment Community Chat&quot;),ISPICKVAL( Origin , &quot;Customer Support Community Chat&quot;), ISPICKVAL( Origin , &quot;Data Privacy Form&quot;), ISPICKVAL( Origin , &quot;Data Privacy Phone&quot;))),
+LEN( Description ) &lt; 10
+)</errorConditionFormula>
+    <errorDisplayField>Description</errorDisplayField>
+    <errorMessage>Please Enter Minimum 10 Characters</errorMessage>
+</ValidationRule>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_to_App_Less_than_2_Days__c</fullName>
+    <externalId>false</externalId>
+    <label>Lead to App Less than 2 Days</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>TBD</fullName>
+                <default>false</default>
+                <label>TBD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

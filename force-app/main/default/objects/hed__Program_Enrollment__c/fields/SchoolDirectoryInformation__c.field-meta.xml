@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SchoolDirectoryInformation__c</fullName>
+    <description>If yes, indicate which information in addition to the student and parent/legal guardian names should be included</description>
+    <externalId>false</externalId>
+    <label>School Directory Information</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>City</fullName>
+                <default>false</default>
+                <label>City</label>
+            </value>
+            <value>
+                <fullName>Country</fullName>
+                <default>false</default>
+                <label>Country</label>
+            </value>
+            <value>
+                <fullName>Grade</fullName>
+                <default>false</default>
+                <label>Grade</label>
+            </value>
+            <value>
+                <fullName>Interested in meeting up with other families*</fullName>
+                <default>false</default>
+                <label>Interested in meeting up with other families*</label>
+            </value>
+            <value>
+                <fullName>State/Region</fullName>
+                <default>false</default>
+                <label>State/Region</label>
+            </value>
+            <value>
+                <fullName>WebMail address</fullName>
+                <default>false</default>
+                <label>WebMail address</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

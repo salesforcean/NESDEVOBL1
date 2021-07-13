@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>How_Student_Was_Reactivated__c</fullName>
+    <description>How was this student reactivated</description>
+    <externalId>false</externalId>
+    <label>How Student Was Reactivated</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Caretaker</fullName>
+                <default>false</default>
+                <label>Caretaker</label>
+            </value>
+            <value>
+                <fullName>Staff</fullName>
+                <default>false</default>
+                <label>Staff</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Migratory_Type_Of_Work__c</fullName>
+    <externalId>false</externalId>
+    <label>Migratory Type Of Work</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Agriculture - Planting/picking Vegetables Or Fruits Such As Tomatoes, Squash, Grapes, Onions, Etc.</fullName>
+                <default>false</default>
+                <label>Agriculture - Planting/picking Vegetables Or Fruits Such As Tomatoes, Squash, Grapes, Onions, Etc.</label>
+            </value>
+            <value>
+                <fullName>Dairy/Poultry/Livestock</fullName>
+                <default>false</default>
+                <label>Dairy/Poultry/Livestock</label>
+            </value>
+            <value>
+                <fullName>Detassel Corn</fullName>
+                <default>false</default>
+                <label>Detassel Corn</label>
+            </value>
+            <value>
+                <fullName>Fishing or fish farms</fullName>
+                <default>false</default>
+                <label>Fishing or fish farms</label>
+            </value>
+            <value>
+                <fullName>Flora culture/gladiola farm</fullName>
+                <default>false</default>
+                <label>Flora culture/gladiola farm</label>
+            </value>
+            <value>
+                <fullName>Green house or plant nursery</fullName>
+                <default>false</default>
+                <label>Green house or plant nursery</label>
+            </value>
+            <value>
+                <fullName>Meatpacking/Meat processing/Seafood</fullName>
+                <default>false</default>
+                <label>Meatpacking/Meat processing/Seafood</label>
+            </value>
+            <value>
+                <fullName>Planting, growing, or cutting trees (pulpwood)/raking pine straw</fullName>
+                <default>false</default>
+                <label>Planting, growing, or cutting trees (pulpwood)/raking pine straw</label>
+            </value>
+            <value>
+                <fullName>Processing/packing agricultural products</fullName>
+                <default>false</default>
+                <label>Processing/packing agricultural products</label>
+            </value>
+            <value>
+                <fullName>Sod farm</fullName>
+                <default>false</default>
+                <label>Sod farm</label>
+            </value>
+            <value>
+                <fullName>Tobacco farm</fullName>
+                <default>false</default>
+                <label>Tobacco farm</label>
+            </value>
+            <value>
+                <fullName>Aquaculture/fish hatcheries</fullName>
+                <default>false</default>
+                <label>Aquaculture/fish hatcheries</label>
+            </value>
+            <value>
+                <fullName>Canning vegetables or fruits</fullName>
+                <default>false</default>
+                <label>Canning vegetables or fruits</label>
+            </value>
+            <value>
+                <fullName>Dairy farm</fullName>
+                <default>false</default>
+                <label>Dairy farm</label>
+            </value>
+            <value>
+                <fullName>Duck, turkey, chicken, pork or beef processing plant</fullName>
+                <default>false</default>
+                <label>Duck, turkey, chicken, pork or beef processing plant</label>
+            </value>
+            <value>
+                <fullName>Plant or harvest vegetables or fruits</fullName>
+                <default>false</default>
+                <label>Plant or harvest vegetables or fruits</label>
+            </value>
+            <value>
+                <fullName>Planting, pruning or cutting trees</fullName>
+                <default>false</default>
+                <label>Planting, pruning or cutting trees</label>
+            </value>
+            <value>
+                <fullName>Poultry and/or egg farm</fullName>
+                <default>false</default>
+                <label>Poultry and/or egg farm</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

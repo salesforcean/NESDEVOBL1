@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StudentSchoolUniqueId__c</fullName>
+    <description>This field will act as a concatenated field to help identify Student PE records uniquely.</description>
+    <externalId>false</externalId>
+    <formula>CASESAFEID(hed__Contact__c) &amp; School_Account_ID__c</formula>
+    <label>StudentSchoolUniqueId</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

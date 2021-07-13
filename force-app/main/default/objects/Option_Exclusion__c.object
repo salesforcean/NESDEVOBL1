@@ -153,60 +153,7 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <fields>
-        <fullName>Academic_Program__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>The academic program the option will be excluded for.</description>
-        <externalId>false</externalId>
-        <label>Academic Program</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Account.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Academic Program</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Option Exclusions</relationshipLabel>
-        <relationshipName>Option_Exclusions</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>External_Id__c</fullName>
-        <caseSensitive>false</caseSensitive>
-        <description>used for external id identification for deployments</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>true</externalId>
-        <label>External Id</label>
-        <length>18</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>Option__c</fullName>
-        <externalId>false</externalId>
-        <label>Option</label>
-        <referenceTo>Enrollment_Component_Picklist_Option__c</referenceTo>
-        <relationshipLabel>Option Exclusions</relationshipLabel>
-        <relationshipName>Option_Exclusions</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
     <label>Option Exclusion</label>
-    <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>OE-{0}</displayFormat>
         <label>Option Exclusion Name</label>

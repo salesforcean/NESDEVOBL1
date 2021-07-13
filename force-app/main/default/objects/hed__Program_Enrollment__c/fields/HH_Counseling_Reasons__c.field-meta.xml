@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HH_Counseling_Reasons__c</fullName>
+    <description>Reasons there are program fit concerns (household)</description>
+    <externalId>false</externalId>
+    <label>HH Counseling Reasons</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Academic Concerns</fullName>
+                <default>false</default>
+                <label>Academic Concerns</label>
+            </value>
+            <value>
+                <fullName>Attended Multiple Schools in Past</fullName>
+                <default>false</default>
+                <label>Attended Multiple Schools in Past</label>
+            </value>
+            <value>
+                <fullName>Difficult to Contact</fullName>
+                <default>false</default>
+                <label>Difficult to Contact</label>
+            </value>
+            <value>
+                <fullName>Family Stress Factors</fullName>
+                <default>false</default>
+                <label>Family Stress Factors</label>
+            </value>
+            <value>
+                <fullName>Learning Coach - Limited Availability</fullName>
+                <default>false</default>
+                <label>Learning Coach - Limited Availability</label>
+            </value>
+            <value>
+                <fullName>Learning Coach Language Issues</fullName>
+                <default>false</default>
+                <label>Learning Coach Language Issues</label>
+            </value>
+            <value>
+                <fullName>Learning Coach Skills</fullName>
+                <default>false</default>
+                <label>Learning Coach Skills</label>
+            </value>
+            <value>
+                <fullName>Misguided Expectations</fullName>
+                <default>false</default>
+                <label>Misguided Expectations</label>
+            </value>
+            <value>
+                <fullName>Multiple Students Schooling at Home</fullName>
+                <default>false</default>
+                <label>Multiple Students Schooling at Home</label>
+            </value>
+            <value>
+                <fullName>Negative School Experience</fullName>
+                <default>false</default>
+                <label>Negative School Experience</label>
+            </value>
+            <value>
+                <fullName>Previous Curriculum Questionable</fullName>
+                <default>false</default>
+                <label>Previous Curriculum Questionable</label>
+            </value>
+            <value>
+                <fullName>Previous Disenrollment from CA</fullName>
+                <default>false</default>
+                <label>Previous Disenrollment from CA</label>
+            </value>
+            <value>
+                <fullName>Previous School Attendance/Discipline Issues</fullName>
+                <default>false</default>
+                <label>Previous School Attendance/Discipline Issues</label>
+            </value>
+            <value>
+                <fullName>Single Parent Family</fullName>
+                <default>false</default>
+                <label>Single Parent Family</label>
+            </value>
+            <value>
+                <fullName>Technology Challenged</fullName>
+                <default>false</default>
+                <label>Technology Challenged</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

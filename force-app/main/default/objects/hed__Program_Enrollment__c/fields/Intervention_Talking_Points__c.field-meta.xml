@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Intervention_Talking_Points__c</fullName>
+    <description>Talking Points</description>
+    <externalId>false</externalId>
+    <label>Intervention Talking Points</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Awards and Parent Satisfaction</fullName>
+                <default>false</default>
+                <label>Awards and Parent Satisfaction</label>
+            </value>
+            <value>
+                <fullName>High School Curricular Options (Advanced Placement, Honors, and/or Career Technical Courses)</fullName>
+                <default>false</default>
+                <label>High School Curricular Options (Advanced Placement, Honors, and/or Career Technical Courses)</label>
+            </value>
+            <value>
+                <fullName>Information Sessions (Learning Coach LiveLessons, Social Events, and/or Parent-to-Parent)</fullName>
+                <default>false</default>
+                <label>Information Sessions (Learning Coach LiveLessons, Social Events, and/or Parent-to-Parent)</label>
+            </value>
+            <value>
+                <fullName>K-8 Curriculum (Sample Lessons, Electives, and/or Online Support)</fullName>
+                <default>false</default>
+                <label>K-8 Curriculum (Sample Lessons, Electives, and/or Online Support)</label>
+            </value>
+            <value>
+                <fullName>Program Flexibility and Personalized Learning</fullName>
+                <default>false</default>
+                <label>Program Flexibility and Personalized Learning</label>
+            </value>
+            <value>
+                <fullName>Social Media (Facebook, Pinterest, and/or CA Blog)</fullName>
+                <default>false</default>
+                <label>Social Media (Facebook, Pinterest, and/or CA Blog)</label>
+            </value>
+            <value>
+                <fullName>Socialization (LiveLessons, Field Trips, and/or Clubs &amp; Activities)</fullName>
+                <default>false</default>
+                <label>Socialization (LiveLessons, Field Trips, and/or Clubs &amp; Activities)</label>
+            </value>
+            <value>
+                <fullName>Talent Networks (Visual and Performing Arts, Science and Technology, and/or Sports)</fullName>
+                <default>false</default>
+                <label>Talent Networks (Visual and Performing Arts, Science and Technology, and/or Sports)</label>
+            </value>
+            <value>
+                <fullName>Tour of Connexus</fullName>
+                <default>false</default>
+                <label>Tour of Connexus</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

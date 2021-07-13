@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IEPStateTestingParticipation__c</fullName>
+    <description>How will the student participate in state testing?</description>
+    <externalId>false</externalId>
+    <label>IEP State Testing Participation</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>State test not given at student&apos;s current grade level</fullName>
+                <default>false</default>
+                <label>State test not given at student&apos;s current grade level</label>
+            </value>
+            <value>
+                <fullName>Student will take alternative assessment</fullName>
+                <default>false</default>
+                <label>Student will take alternative assessment</label>
+            </value>
+            <value>
+                <fullName>Student will take modified assessment</fullName>
+                <default>false</default>
+                <label>Student will take modified assessment</label>
+            </value>
+            <value>
+                <fullName>Student will take state test with accommodations</fullName>
+                <default>false</default>
+                <label>Student will take state test with accommodations</label>
+            </value>
+            <value>
+                <fullName>Student will take state test without accommodations</fullName>
+                <default>false</default>
+                <label>Student will take state test without accommodations</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

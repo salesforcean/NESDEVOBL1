@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HLS_Ever_Spoken_Not_English_YN__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Has the child ever spoken a language &lt;em&gt;other than English&lt;/em&gt;</description>
+    <externalId>false</externalId>
+    <label>HLS Ever Spoken Not English YN</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

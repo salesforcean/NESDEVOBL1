@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_Program_SIS_Restrict__c</fullName>
+    <description>Created this formula field for referring the RestrictToSIS (Checkbox) on Account Object and its being referred in &apos;CS_PushEnrollmentDocumentUpdatesToSISSystem&apos; &amp; &apos;CS_PushProgramEnrollmentUpdatesToSISSystem&apos; Process Flows as per ADO US # 298396</description>
+    <externalId>false</externalId>
+    <formula>hed__Account__r.Restrict_to_SIS__c</formula>
+    <label>Student Program SIS Restrict</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

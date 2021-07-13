@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Photo_Video_Release__c</fullName>
+    <description>Authorization for use of student work, images, video, interviews, quotes, etc.</description>
+    <externalId>false</externalId>
+    <label>Photo Video Release</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No, I have read and do not agree with the statement above regarding iNaCA Media Property.</fullName>
+                <default>false</default>
+                <label>No, I have read and do not agree with the statement above regarding iNaCA Media Property.</label>
+            </value>
+            <value>
+                <fullName>Yes, I have read and agree to the statement above regarding iNaCA Media Property.</fullName>
+                <default>false</default>
+                <label>Yes, I have read and agree to the statement above regarding iNaCA Media Property.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

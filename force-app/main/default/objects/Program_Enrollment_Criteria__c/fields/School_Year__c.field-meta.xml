@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School_Year__c</fullName>
+    <description>Within the enrollment model, some objects are a one to many off of the Program Enrollment.  For example, ASI (Annual Student Information).  In those cases, we need to know which Criteria record need recalculating. This field will store the school year that this criteria is related to.</description>
+    <encryptionScheme>None</encryptionScheme>
+    <externalId>false</externalId>
+    <label>School Year</label>
+    <length>25</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HowStudentPlacementCompleted__c</fullName>
+    <externalId>false</externalId>
+    <label>Student&apos;s Placement was Completed</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CCA Expedited Auto-Placement Process</fullName>
+                <default>false</default>
+                <label>CCA Expedited Auto-Placement Process</label>
+            </value>
+            <value>
+                <fullName>CCA Expedited Manual Process</fullName>
+                <default>false</default>
+                <label>CCA Expedited Manual Process</label>
+            </value>
+            <value>
+                <fullName>Modified Auto-Placement Process</fullName>
+                <default>false</default>
+                <label>Modified Auto-Placement Process</label>
+            </value>
+            <value>
+                <fullName>School Recommended Auto-Placement Process</fullName>
+                <default>false</default>
+                <label>School Recommended Auto-Placement Process</label>
+            </value>
+            <value>
+                <fullName>Standard Auto-Placement Process</fullName>
+                <default>false</default>
+                <label>Standard Auto-Placement Process</label>
+            </value>
+            <value>
+                <fullName>Standard Manual Process</fullName>
+                <default>false</default>
+                <label>Standard Manual Process</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

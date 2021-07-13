@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Privacy_OBL_Systems__c</fullName>
+    <description>ADO #118561 / 121562 - Checklist of systems to check for CCPA data privacy data disclosure / DNS requests.</description>
+    <externalId>false</externalId>
+    <label>Data Privacy - OBL Systems</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Data_Privacy_OBL_Systems</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

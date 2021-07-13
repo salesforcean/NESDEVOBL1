@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Previously_Enrolled_in_CA_School2__c</fullName>
+    <description>The Connections Academy School the student attended</description>
+    <externalId>false</externalId>
+    <label>Previously Enrolled in CA School2</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Alabama Connections Academy</fullName>
+                <default>false</default>
+                <label>Alabama Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Arizona Connections Academy</fullName>
+                <default>false</default>
+                <label>Arizona Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Arkansas Connections Academy</fullName>
+                <default>false</default>
+                <label>Arkansas Connections Academy</label>
+            </value>
+            <value>
+                <fullName>California Connections Academy at North Bay</fullName>
+                <default>false</default>
+                <label>California Connections Academy at North Bay</label>
+            </value>
+            <value>
+                <fullName>California Connections Academy at Ripon</fullName>
+                <default>false</default>
+                <label>California Connections Academy at Ripon</label>
+            </value>
+            <value>
+                <fullName>Capistrano Connections Academy</fullName>
+                <default>false</default>
+                <label>Capistrano Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Central California Connections Academy</fullName>
+                <default>false</default>
+                <label>Central California Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Colorado Connections Academy at Durago</fullName>
+                <default>false</default>
+                <label>Colorado Connections Academy at Durago</label>
+            </value>
+            <value>
+                <fullName>Colorado Connections Academy at Mapleton</fullName>
+                <default>false</default>
+                <label>Colorado Connections Academy at Mapleton</label>
+            </value>
+            <value>
+                <fullName>Commonwealth Connections Academy</fullName>
+                <default>false</default>
+                <label>Commonwealth Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Connections Academy school attended is not listed</fullName>
+                <default>false</default>
+                <label>Connections Academy school attended is not listed</label>
+            </value>
+            <value>
+                <fullName>Florida Virtual School Full Time Home Ed</fullName>
+                <default>false</default>
+                <label>Florida Virtual School Full Time Home Ed</label>
+            </value>
+            <value>
+                <fullName>Florida Virtual School Full Time Public</fullName>
+                <default>false</default>
+                <label>Florida Virtual School Full Time Public</label>
+            </value>
+            <value>
+                <fullName>Georgia Connections Academy</fullName>
+                <default>false</default>
+                <label>Georgia Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Great Lakes Cyber Academy</fullName>
+                <default>false</default>
+                <label>Great Lakes Cyber Academy</label>
+            </value>
+            <value>
+                <fullName>Indiana Connections Academy</fullName>
+                <default>false</default>
+                <label>Indiana Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Indiana Connections Career Academy</fullName>
+                <default>false</default>
+                <label>Indiana Connections Career Academy</label>
+            </value>
+            <value>
+                <fullName>INSPIRE Connections Academy</fullName>
+                <default>false</default>
+                <label>INSPIRE Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Iowa Connections Academy</fullName>
+                <default>false</default>
+                <label>Iowa Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Kansas Connections Academy</fullName>
+                <default>false</default>
+                <label>Kansas Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Louisiana Connections Academy</fullName>
+                <default>false</default>
+                <label>Louisiana Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Maine Connections Academy</fullName>
+                <default>false</default>
+                <label>Maine Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Michigan Connections Academy</fullName>
+                <default>false</default>
+                <label>Michigan Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Minnesota Connections Academy</fullName>
+                <default>false</default>
+                <label>Minnesota Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Nevada Connections Academy</fullName>
+                <default>false</default>
+                <label>Nevada Connections Academy</label>
+            </value>
+            <value>
+                <fullName>New Mexico Connections Academy</fullName>
+                <default>false</default>
+                <label>New Mexico Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Ohio Connections Academy</fullName>
+                <default>false</default>
+                <label>Ohio Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Oklahoma Connections Academy</fullName>
+                <default>false</default>
+                <label>Oklahoma Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Oregon Connections Academy</fullName>
+                <default>false</default>
+                <label>Oregon Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Pecos Connections Academy</fullName>
+                <default>false</default>
+                <label>Pecos Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Reach Cyber Charter School</fullName>
+                <default>false</default>
+                <label>Reach Cyber Charter School</label>
+            </value>
+            <value>
+                <fullName>South Carolina Connections Academy</fullName>
+                <default>false</default>
+                <label>South Carolina Connections Academy</label>
+            </value>
+            <value>
+                <fullName>TECCA Connections Academy</fullName>
+                <default>false</default>
+                <label>TECCA Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Texas Connections Academy at Houston</fullName>
+                <default>false</default>
+                <label>Texas Connections Academy at Houston</label>
+            </value>
+            <value>
+                <fullName>Utah Connections Academy</fullName>
+                <default>false</default>
+                <label>Utah Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Wisconsin Connections Academy</fullName>
+                <default>false</default>
+                <label>Wisconsin Connections Academy</label>
+            </value>
+            <value>
+                <fullName>Wyoming Connections Academy</fullName>
+                <default>false</default>
+                <label>Wyoming Connections Academy</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

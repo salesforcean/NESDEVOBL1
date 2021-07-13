@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Math_Placement_Level__c</fullName>
+    <externalId>false</externalId>
+    <label>Math Placement Level</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <label>1</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <label>2</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <label>3</label>
+            </value>
+            <value>
+                <fullName>4</fullName>
+                <default>false</default>
+                <label>4</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>5</label>
+            </value>
+            <value>
+                <fullName>6</fullName>
+                <default>false</default>
+                <label>6</label>
+            </value>
+            <value>
+                <fullName>7</fullName>
+                <default>false</default>
+                <label>7</label>
+            </value>
+            <value>
+                <fullName>Algebra 1</fullName>
+                <default>false</default>
+                <label>Algebra 1</label>
+            </value>
+            <value>
+                <fullName>Algebra 1 A Parts ½</fullName>
+                <default>false</default>
+                <label>Algebra 1 A Parts ½</label>
+            </value>
+            <value>
+                <fullName>Algebra 1 B Parts ½</fullName>
+                <default>false</default>
+                <label>Algebra 1 B Parts ½</label>
+            </value>
+            <value>
+                <fullName>Algebra 1 Foundations</fullName>
+                <default>false</default>
+                <label>Algebra 1 Foundations</label>
+            </value>
+            <value>
+                <fullName>Algebra 2</fullName>
+                <default>false</default>
+                <label>Algebra 2</label>
+            </value>
+            <value>
+                <fullName>Algebra 2 Foundations</fullName>
+                <default>false</default>
+                <label>Algebra 2 Foundations</label>
+            </value>
+            <value>
+                <fullName>Algebra Readiness</fullName>
+                <default>false</default>
+                <label>Algebra Readiness</label>
+            </value>
+            <value>
+                <fullName>Compass Math (Special Education Only)</fullName>
+                <default>false</default>
+                <label>Compass Math (Special Education Only)</label>
+            </value>
+            <value>
+                <fullName>Connected Math</fullName>
+                <default>false</default>
+                <label>Connected Math</label>
+            </value>
+            <value>
+                <fullName>Essential Algebra Readiness</fullName>
+                <default>false</default>
+                <label>Essential Algebra Readiness</label>
+            </value>
+            <value>
+                <fullName>Essential Math 3</fullName>
+                <default>false</default>
+                <label>Essential Math 3</label>
+            </value>
+            <value>
+                <fullName>Essential Math 4</fullName>
+                <default>false</default>
+                <label>Essential Math 4</label>
+            </value>
+            <value>
+                <fullName>Essential Math 5</fullName>
+                <default>false</default>
+                <label>Essential Math 5</label>
+            </value>
+            <value>
+                <fullName>Essential Math 6</fullName>
+                <default>false</default>
+                <label>Essential Math 6</label>
+            </value>
+            <value>
+                <fullName>Essential Math 7</fullName>
+                <default>false</default>
+                <label>Essential Math 7</label>
+            </value>
+            <value>
+                <fullName>Extended Math</fullName>
+                <default>false</default>
+                <label>Extended Math</label>
+            </value>
+            <value>
+                <fullName>Geometry</fullName>
+                <default>false</default>
+                <label>Geometry</label>
+            </value>
+            <value>
+                <fullName>Geometry Foundations</fullName>
+                <default>false</default>
+                <label>Geometry Foundations</label>
+            </value>
+            <value>
+                <fullName>Gifted Math 3 (Math 3 &amp; 4)</fullName>
+                <default>false</default>
+                <label>Gifted Math 3 (Math 3 &amp; 4)</label>
+            </value>
+            <value>
+                <fullName>Gifted Math 4 (Math 5)</fullName>
+                <default>false</default>
+                <label>Gifted Math 4 (Math 5)</label>
+            </value>
+            <value>
+                <fullName>Gifted Math 5 (Math 7)</fullName>
+                <default>false</default>
+                <label>Gifted Math 5 (Math 7)</label>
+            </value>
+            <value>
+                <fullName>Gifted Math 6 (Algebra Readiness)</fullName>
+                <default>false</default>
+                <label>Gifted Math 6 (Algebra Readiness)</label>
+            </value>
+            <value>
+                <fullName>Gifted Math 7 (Algebra 1)</fullName>
+                <default>false</default>
+                <label>Gifted Math 7 (Algebra 1)</label>
+            </value>
+            <value>
+                <fullName>Gifted Math 8 (Geometry)</fullName>
+                <default>false</default>
+                <label>Gifted Math 8 (Geometry)</label>
+            </value>
+            <value>
+                <fullName>High School Math</fullName>
+                <default>false</default>
+                <label>High School Math</label>
+            </value>
+            <value>
+                <fullName>Honors Algebra 1</fullName>
+                <default>false</default>
+                <label>Honors Algebra 1</label>
+            </value>
+            <value>
+                <fullName>Honors Algebra 2</fullName>
+                <default>false</default>
+                <label>Honors Algebra 2</label>
+            </value>
+            <value>
+                <fullName>Honors Geometry</fullName>
+                <default>false</default>
+                <label>Honors Geometry</label>
+            </value>
+            <value>
+                <fullName>K</fullName>
+                <default>false</default>
+                <label>K</label>
+            </value>
+            <value>
+                <fullName>Linear Algebra</fullName>
+                <default>false</default>
+                <label>Linear Algebra</label>
+            </value>
+            <value>
+                <fullName>Transitional K</fullName>
+                <default>false</default>
+                <label>Transitional K</label>
+            </value>
+            <value>
+                <fullName>Alternative Math</fullName>
+                <default>false</default>
+                <label>Alternative Math</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

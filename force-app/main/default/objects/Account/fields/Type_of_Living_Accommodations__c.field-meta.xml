@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_of_Living_Accommodations__c</fullName>
+    <description>The type of living situation the student(s) has at the primary nighttime residence.</description>
+    <externalId>false</externalId>
+    <label>Type of Living Accommodations</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>In a shelter</fullName>
+                <default>false</default>
+                <label>In a shelter</label>
+            </value>
+            <value>
+                <fullName>Awaiting foster care placement</fullName>
+                <default>false</default>
+                <label>Awaiting foster care placement</label>
+            </value>
+            <value>
+                <fullName>In a hotel or motel</fullName>
+                <default>false</default>
+                <label>In a hotel or motel</label>
+            </value>
+            <value>
+                <fullName>In a temporary trailer, campground, car, or park due to the lack of alternative accommodations</fullName>
+                <default>false</default>
+                <label>In a temporary trailer, campground, car, or park due to the lack of alternative accommodations</label>
+            </value>
+            <value>
+                <fullName>None of the above</fullName>
+                <default>false</default>
+                <label>None of the above</label>
+            </value>
+            <value>
+                <fullName>With more than one family in a house or an apartment NOT due to loss of housing or economic hardship</fullName>
+                <default>false</default>
+                <label>With more than one family in a house or an apartment NOT due to loss of housing or economic hardship</label>
+            </value>
+            <value>
+                <fullName>With More Than One Family In A House, An Apartment Or Other Transitional Housing Due To Loss Of Housing Or Economic Hardship</fullName>
+                <default>false</default>
+                <label>With More Than One Family In A House, An Apartment Or Other Transitional Housing Due To Loss Of Housing Or Economic Hardship</label>
+            </value>
+            <value>
+                <fullName>In a shelter or transitional housing</fullName>
+                <default>false</default>
+                <label>In a shelter or transitional housing</label>
+            </value>
+            <value>
+                <fullName>With more than one family in a house or an apartment due to loss of housing or economic hardship</fullName>
+                <default>false</default>
+                <label>With more than one family in a house or an apartment due to loss of housing or economic hardship</label>
+            </value>
+            <value>
+                <fullName>2+ Families In A Shared Living Situation Due To Loss Of Housing Or Economic Hardship</fullName>
+                <default>false</default>
+                <label>2+ Families In A Shared Living Situation Due To Loss Of Housing Or Economic Hardship</label>
+            </value>
+            <value>
+                <fullName>House, apartment, or mobile home</fullName>
+                <default>false</default>
+                <label>House, apartment, or mobile home</label>
+            </value>
+            <value>
+                <fullName>Motel, car, or campsite</fullName>
+                <default>false</default>
+                <label>Motel, car, or campsite</label>
+            </value>
+            <value>
+                <fullName>Travel/Live in motor home</fullName>
+                <default>false</default>
+                <label>Travel/Live in motor home</label>
+            </value>
+            <value>
+                <fullName>A Primary Nighttime Residence Not Designed For Regular Sleeping Accommodations</fullName>
+                <default>false</default>
+                <label>A Primary Nighttime Residence Not Designed For Regular Sleeping Accommodations</label>
+            </value>
+            <value>
+                <fullName>A primary nighttime residence that is a public or private place not designed for or ordinarily used</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>A primary nighttime residence that is a public or private place not designed for or ordinarily used</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

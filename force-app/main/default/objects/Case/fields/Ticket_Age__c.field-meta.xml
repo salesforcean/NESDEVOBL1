@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ticket_Age__c</fullName>
+    <description>Created to display the Ticket Age (Current Date - Ticket&apos;s Created Date) and using in the Reports as part of US # 168922</description>
+    <externalId>false</externalId>
+    <formula>VALUE(IF(OR(ISPICKVAL(Status, &quot;Closed&quot;),ISPICKVAL(Status, &quot;Closed - No Contact Needed&quot;),ISPICKVAL(Status, &quot;Closed - Unable to Contact&quot;)), &quot;&quot;, TEXT(NOW()- CreatedDate)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Ticket Age</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deletion_Irreversible_Acknowledgement__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If the consumer requests deletion of their personal information in the initial request, they acknowledge that said operation is permanent and cannot be reversed. We must separately re-confirm after identify verification that they still want to delete. That is not the purpose of this checkbox.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If the consumer requests deletion of their personal information in the initial request, they acknowledge that said operation is permanent and cannot be reversed. We must separately re-confirm after identify verification that they still want to delete.</inlineHelpText>
+    <label>Deletion Irreversible Acknowledgement</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

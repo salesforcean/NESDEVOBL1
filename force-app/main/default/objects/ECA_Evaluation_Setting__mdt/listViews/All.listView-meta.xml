@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Type__c</columns>
+    <columns>DeveloperName</columns>
+    <columns>Status__c</columns>
+    <columns>NewStatus__c</columns>
+    <columns>AssignmentLogic__c</columns>
+    <columns>CompletionLogic__c</columns>
+    <columns>DebugMode__c</columns>
+    <columns>Feature_Toggle__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>iNaCA_Regist_All_Yr_Payment__c</fullName>
+    <description>Full Year Payment</description>
+    <externalId>false</externalId>
+    <label>iNaCA Regist All Yr Payment</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>APU Dual Degree 12th grade</fullName>
+                <default>false</default>
+                <label>APU Dual Degree 12th grade</label>
+            </value>
+            <value>
+                <fullName>iNaCA Scholarship</fullName>
+                <default>false</default>
+                <label>iNaCA Scholarship</label>
+            </value>
+            <value>
+                <fullName>Scholarship - Barbara Dreyer</fullName>
+                <default>false</default>
+                <label>Scholarship - Barbara Dreyer</label>
+            </value>
+            <value>
+                <fullName>Scholarship - CL Marketing</fullName>
+                <default>false</default>
+                <label>Scholarship - CL Marketing</label>
+            </value>
+            <value>
+                <fullName>Scholarship - Other</fullName>
+                <default>false</default>
+                <label>Scholarship - Other</label>
+            </value>
+            <value>
+                <fullName>Scholarship - State Relations</fullName>
+                <default>false</default>
+                <label>Scholarship - State Relations</label>
+            </value>
+            <value>
+                <fullName>Yes-PIF</fullName>
+                <default>false</default>
+                <label>Yes-PIF</label>
+            </value>
+            <value>
+                <fullName>Yes-PP</fullName>
+                <default>false</default>
+                <label>Yes-PP</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

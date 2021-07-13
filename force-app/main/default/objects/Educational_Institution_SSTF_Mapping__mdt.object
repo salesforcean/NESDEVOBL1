@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>This custom metadata is used to Assign Permission Set to School staff Community User (US#123101 - Task# 160180, 159334 &amp; 158397).</description>
-    <fields>
-        <fullName>Group_Name__c</fullName>
-        <description>US #123101 - This field is set with the Public Group Name belonging to the Internal Staff users. This field gets set when the Batch Job named CS_SSTFPublicGroupUserPermissionBatch is executed.</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Group Name</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Permission_Set_Name__c</fullName>
-        <description>US #123101 - This field is used to capture the associated permission set name belonging to the Internal Staff users. This field gets set when the Batch Job named CS_SSTFPublicGroupUserPermissionBatch is executed.</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Permission Set Name</label>
-        <length>255</length>
-        <required>true</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>School__c</fullName>
-        <description>US #123101 - This field is used to capture the associated school name(Educational Institutions Account ) belonging to the School Staff Community users. This field gets set when the Batch Job named CS_SSTFpermissionBatch is executed.</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>School</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>User_Profile__c</fullName>
-        <description>US #123101 - This field captures the community user profile names. This field gets set when the Batch Job named CS_SSTFpermissionBatch is executed.</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>User Profile</label>
-        <length>255</length>
-        <required>true</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Educational Institution_SSTF_Mapping</label>
     <pluralLabel>Educational Institution_SSTF_Mappings</pluralLabel>
     <visibility>Public</visibility>

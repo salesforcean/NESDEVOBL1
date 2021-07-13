@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LA_Placement_Level__c</fullName>
+    <externalId>false</externalId>
+    <label>Language Arts Placement Level</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>K</fullName>
+                <default>false</default>
+                <label>K</label>
+            </value>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <label>1</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <label>2</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <label>3</label>
+            </value>
+            <value>
+                <fullName>4</fullName>
+                <default>false</default>
+                <label>4</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>5</label>
+            </value>
+            <value>
+                <fullName>6</fullName>
+                <default>false</default>
+                <label>6</label>
+            </value>
+            <value>
+                <fullName>7</fullName>
+                <default>false</default>
+                <label>7</label>
+            </value>
+            <value>
+                <fullName>8</fullName>
+                <default>false</default>
+                <label>8</label>
+            </value>
+            <value>
+                <fullName>9</fullName>
+                <default>false</default>
+                <label>9</label>
+            </value>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>10</label>
+            </value>
+            <value>
+                <fullName>11</fullName>
+                <default>false</default>
+                <label>11</label>
+            </value>
+            <value>
+                <fullName>12</fullName>
+                <default>false</default>
+                <label>12</label>
+            </value>
+            <value>
+                <fullName>-1</fullName>
+                <default>false</default>
+                <label>-1</label>
+            </value>
+            <value>
+                <fullName>Gifted Language Arts 3</fullName>
+                <default>false</default>
+                <label>Gifted Language Arts 3</label>
+            </value>
+            <value>
+                <fullName>Gifted Language Arts 4</fullName>
+                <default>false</default>
+                <label>Gifted Language Arts 4</label>
+            </value>
+            <value>
+                <fullName>Gifted Language Arts 5</fullName>
+                <default>false</default>
+                <label>Gifted Language Arts 5</label>
+            </value>
+            <value>
+                <fullName>Gifted Language Arts 6</fullName>
+                <default>false</default>
+                <label>Gifted Language Arts 6</label>
+            </value>
+            <value>
+                <fullName>Gifted Language Arts 7</fullName>
+                <default>false</default>
+                <label>Gifted Language Arts 7</label>
+            </value>
+            <value>
+                <fullName>Gifted Language Arts 8</fullName>
+                <default>false</default>
+                <label>Gifted Language Arts 8</label>
+            </value>
+            <value>
+                <fullName>Compass Language Arts</fullName>
+                <default>false</default>
+                <label>Compass Language Arts</label>
+            </value>
+            <value>
+                <fullName>HS Compass Language Arts</fullName>
+                <default>false</default>
+                <label>HS Compass Language Arts</label>
+            </value>
+            <value>
+                <fullName>Connected Language Arts</fullName>
+                <default>false</default>
+                <label>Connected Language Arts</label>
+            </value>
+            <value>
+                <fullName>Extended Language Arts</fullName>
+                <default>false</default>
+                <label>Extended Language Arts</label>
+            </value>
+            <value>
+                <fullName>Transitional K</fullName>
+                <default>false</default>
+                <label>Transitional K</label>
+            </value>
+            <value>
+                <fullName>Alternative Language Arts</fullName>
+                <default>false</default>
+                <label>Alternative Language Arts</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

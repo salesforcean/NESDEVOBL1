@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Processed_in_V2__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is added as part of US:265237 (Task:281091)</description>
+    <externalId>false</externalId>
+    <label>Processed in V2</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

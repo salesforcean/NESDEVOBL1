@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Staff_Assignee_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF($Profile.Name &lt;&gt; &quot;School Staff Community User&quot;, Contact.RecordType.DeveloperName = &apos;School_Staff&apos;  &amp;&amp; ISBLANK(Staff_Assignee__c), false)</errorConditionFormula>
+    <errorDisplayField>Staff_Assignee__c</errorDisplayField>
+    <errorMessage>Please select the Staff Assignee field same as Contact for School Staff Tickets -- TEST.</errorMessage>
+</ValidationRule>

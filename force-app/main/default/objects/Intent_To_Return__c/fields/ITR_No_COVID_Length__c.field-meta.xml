@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ITR_No_COVID_Length__c</fullName>
+    <externalId>false</externalId>
+    <label>ITR No COVID Length</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Until our local school opens for in-person class</fullName>
+                <default>false</default>
+                <label>Until our local school opens for in-person class</label>
+            </value>
+            <value>
+                <fullName>Until COVID-19 cases were more under control</fullName>
+                <default>false</default>
+                <label>Until COVID-19 cases were more under control</label>
+            </value>
+            <value>
+                <fullName>Until there was a COVID-19 vaccine</fullName>
+                <default>false</default>
+                <label>Until there was a COVID-19 vaccine</label>
+            </value>
+            <value>
+                <fullName>Until I/we had to go back to working outside the home</fullName>
+                <default>false</default>
+                <label>Until I/we had to go back to working outside the home</label>
+            </value>
+            <value>
+                <fullName>For 1 year</fullName>
+                <default>false</default>
+                <label>For 1 year</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

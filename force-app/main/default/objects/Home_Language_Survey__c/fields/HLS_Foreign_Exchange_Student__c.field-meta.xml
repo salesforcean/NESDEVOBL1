@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HLS_Foreign_Exchange_Student__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is the student attending the school as a foreign exchange student</description>
+    <externalId>false</externalId>
+    <label>HLS Foreign Exchange Student</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

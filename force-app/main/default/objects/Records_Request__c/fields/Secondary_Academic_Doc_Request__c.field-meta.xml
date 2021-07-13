@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Secondary_Academic_Doc_Request__c</fullName>
+    <description>Secondary RC/PAH Request</description>
+    <externalId>false</externalId>
+    <label>Secondary Academic Doc Request</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>Illegible Academic Documentation</fullName>
+                <default>false</default>
+                <label>Illegible Academic Documentation</label>
+            </value>
+            <value>
+                <fullName>Incomplete - HSCF</fullName>
+                <default>false</default>
+                <label>Incomplete - HSCF</label>
+            </value>
+            <value>
+                <fullName>Incomplete - PAH</fullName>
+                <default>false</default>
+                <label>Incomplete - PAH</label>
+            </value>
+            <value>
+                <fullName>Incomplete - Report Card</fullName>
+                <default>false</default>
+                <label>Incomplete - Report Card</label>
+            </value>
+            <value>
+                <fullName>Incomplete - Transcript</fullName>
+                <default>false</default>
+                <label>Incomplete - Transcript</label>
+            </value>
+            <value>
+                <fullName>Invalid - HSCF</fullName>
+                <default>false</default>
+                <label>Invalid - HSCF</label>
+            </value>
+            <value>
+                <fullName>Invalid - PAH</fullName>
+                <default>false</default>
+                <label>Invalid - PAH</label>
+            </value>
+            <value>
+                <fullName>Invalid - Report Card (Need Current)</fullName>
+                <default>false</default>
+                <label>Invalid - Report Card (Need Current)</label>
+            </value>
+            <value>
+                <fullName>Invalid - Report Card (Need EOY)</fullName>
+                <default>false</default>
+                <label>Invalid - Report Card (Need EOY)</label>
+            </value>
+            <value>
+                <fullName>Invalid - Transcript</fullName>
+                <default>false</default>
+                <label>Invalid - Transcript</label>
+            </value>
+            <value>
+                <fullName>Invalid- Past Deadline</fullName>
+                <default>false</default>
+                <label>Invalid- Past Deadline</label>
+            </value>
+            <value>
+                <fullName>Invalid-Report Card (Need Other)</fullName>
+                <default>false</default>
+                <label>Invalid-Report Card (Need Other)</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Received - Enrollment Letter/Schedule</fullName>
+                <default>false</default>
+                <label>Received - Enrollment Letter/Schedule</label>
+            </value>
+            <value>
+                <fullName>Received - Grading Scale</fullName>
+                <default>false</default>
+                <label>Received - Grading Scale</label>
+            </value>
+            <value>
+                <fullName>Received - HSCF</fullName>
+                <default>false</default>
+                <label>Received - HSCF</label>
+            </value>
+            <value>
+                <fullName>Received - PAH</fullName>
+                <default>false</default>
+                <label>Received - PAH</label>
+            </value>
+            <value>
+                <fullName>Received - Report Card</fullName>
+                <default>false</default>
+                <label>Received - Report Card</label>
+            </value>
+            <value>
+                <fullName>Received - Transcript</fullName>
+                <default>false</default>
+                <label>Received - Transcript</label>
+            </value>
+            <value>
+                <fullName>Requested - Enrollment Letter/Schedule</fullName>
+                <default>false</default>
+                <label>Requested - Enrollment Letter/Schedule</label>
+            </value>
+            <value>
+                <fullName>Requested - Grading Scale</fullName>
+                <default>false</default>
+                <label>Requested - Grading Scale</label>
+            </value>
+            <value>
+                <fullName>Requested - HSCF</fullName>
+                <default>false</default>
+                <label>Requested - HSCF</label>
+            </value>
+            <value>
+                <fullName>Requested - PAH</fullName>
+                <default>false</default>
+                <label>Requested - PAH</label>
+            </value>
+            <value>
+                <fullName>Requested - Report Card (Current)</fullName>
+                <default>false</default>
+                <label>Requested - Report Card (Current)</label>
+            </value>
+            <value>
+                <fullName>Requested - Report Card (EOY)</fullName>
+                <default>false</default>
+                <label>Requested - Report Card (EOY)</label>
+            </value>
+            <value>
+                <fullName>Requested - Summer School Report Card</fullName>
+                <default>false</default>
+                <label>Requested - Summer School Report Card</label>
+            </value>
+            <value>
+                <fullName>Requested - Transcript</fullName>
+                <default>false</default>
+                <label>Requested - Transcript</label>
+            </value>
+            <value>
+                <fullName>Requested- Report Card (Need Other)</fullName>
+                <default>false</default>
+                <label>Requested- Report Card (Need Other)</label>
+            </value>
+            <value>
+                <fullName>Verified - Enrollment Letter</fullName>
+                <default>false</default>
+                <label>Verified - Enrollment Letter</label>
+            </value>
+            <value>
+                <fullName>Verified - Grading Scale</fullName>
+                <default>false</default>
+                <label>Verified - Grading Scale</label>
+            </value>
+            <value>
+                <fullName>Verified - HSCF</fullName>
+                <default>false</default>
+                <label>Verified - HSCF</label>
+            </value>
+            <value>
+                <fullName>Verified - PAH</fullName>
+                <default>false</default>
+                <label>Verified - PAH</label>
+            </value>
+            <value>
+                <fullName>Verified - Report Card</fullName>
+                <default>false</default>
+                <label>Verified - Report Card</label>
+            </value>
+            <value>
+                <fullName>Verified - Transcript</fullName>
+                <default>false</default>
+                <label>Verified - Transcript</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

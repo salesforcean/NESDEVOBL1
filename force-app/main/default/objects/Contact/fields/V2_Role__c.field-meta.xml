@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>V2_Role__c</fullName>
+    <externalId>false</externalId>
+    <label>V2 Role</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Parent or Legal Guardian</fullName>
+                <default>false</default>
+                <label>Parent or Legal Guardian</label>
+            </value>
+            <value>
+                <fullName>Designated Caretaker</fullName>
+                <default>false</default>
+                <label>Designated Caretaker</label>
+            </value>
+            <value>
+                <fullName>Learning Coach</fullName>
+                <default>false</default>
+                <label>Learning Coach</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

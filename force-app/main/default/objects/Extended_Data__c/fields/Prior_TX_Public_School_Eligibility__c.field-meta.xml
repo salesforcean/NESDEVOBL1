@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prior_TX_Public_School_Eligibility__c</fullName>
+    <description>Prior TX Public School Eligibility</description>
+    <externalId>false</externalId>
+    <label>Prior TX Public School Eligibility</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Did Not Attend TX Public School in Prior School Year</fullName>
+                <default>false</default>
+                <label>Did Not Attend TX Public School in Prior School Year</label>
+            </value>
+            <value>
+                <fullName>DO NOT USE - Exception-Previously attended a TX high school</fullName>
+                <default>false</default>
+                <label>DO NOT USE - Exception-Previously attended a TX high school</label>
+            </value>
+            <value>
+                <fullName>Exception-Fostercare</fullName>
+                <default>false</default>
+                <label>Exception-Fostercare</label>
+            </value>
+            <value>
+                <fullName>Exception-Military</fullName>
+                <default>false</default>
+                <label>Exception-Military</label>
+            </value>
+            <value>
+                <fullName>Not Found in State System-Family plans to register in TX public school for next/current school year</fullName>
+                <default>false</default>
+                <label>Not Found in State System-Family plans to register in TX public school for next/current school year</label>
+            </value>
+            <value>
+                <fullName>Not Found in State System-Parent submitting proof of eligibility</fullName>
+                <default>false</default>
+                <label>Not Found in State System-Parent submitting proof of eligibility</label>
+            </value>
+            <value>
+                <fullName>Prior TX Public Schooling Verified</fullName>
+                <default>false</default>
+                <label>Prior TX Public Schooling Verified</label>
+            </value>
+            <value>
+                <fullName>Prior TX Public Summer Schooling Verified</fullName>
+                <default>false</default>
+                <label>Prior TX Public Summer Schooling Verified</label>
+            </value>
+            <value>
+                <fullName>Texas Tech Univ/Univ of TX Verified</fullName>
+                <default>false</default>
+                <label>Texas Tech Univ/Univ of TX Verified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

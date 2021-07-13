@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ApplicationManagement</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(AND(ISPICKVAL(Type, &quot;Application Management&quot;),CS_SkipProfiles__c =&apos;N&apos;), OR(ISBLANK(URL_of_Room_being_accessed__c),
+ISBLANK(Internet_connection__c),
+ISBLANK(Software_updates__c)), null)</errorConditionFormula>
+    <errorMessage>Please enter field values of URL of Room being accessed, Internet connection and Software updates.</errorMessage>
+</ValidationRule>

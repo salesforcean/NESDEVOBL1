@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CL_MVPS_County__c</fullName>
+    <description>MVPS County Listing</description>
+    <externalId>false</externalId>
+    <label>CL MVPS County</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Adams County</fullName>
+                <default>false</default>
+                <label>Adams County</label>
+            </value>
+            <value>
+                <fullName>Alcorn County</fullName>
+                <default>false</default>
+                <label>Alcorn County</label>
+            </value>
+            <value>
+                <fullName>Amite County</fullName>
+                <default>false</default>
+                <label>Amite County</label>
+            </value>
+            <value>
+                <fullName>Attala County</fullName>
+                <default>false</default>
+                <label>Attala County</label>
+            </value>
+            <value>
+                <fullName>Benton County</fullName>
+                <default>false</default>
+                <label>Benton County</label>
+            </value>
+            <value>
+                <fullName>Bolivar County</fullName>
+                <default>false</default>
+                <label>Bolivar County</label>
+            </value>
+            <value>
+                <fullName>Calhoun County</fullName>
+                <default>false</default>
+                <label>Calhoun County</label>
+            </value>
+            <value>
+                <fullName>Carroll County</fullName>
+                <default>false</default>
+                <label>Carroll County</label>
+            </value>
+            <value>
+                <fullName>Chickasaw County</fullName>
+                <default>false</default>
+                <label>Chickasaw County</label>
+            </value>
+            <value>
+                <fullName>Choctaw County</fullName>
+                <default>false</default>
+                <label>Choctaw County</label>
+            </value>
+            <value>
+                <fullName>Claiborne County</fullName>
+                <default>false</default>
+                <label>Claiborne County</label>
+            </value>
+            <value>
+                <fullName>Clarke County</fullName>
+                <default>false</default>
+                <label>Clarke County</label>
+            </value>
+            <value>
+                <fullName>Clay County</fullName>
+                <default>false</default>
+                <label>Clay County</label>
+            </value>
+            <value>
+                <fullName>Coahoma County</fullName>
+                <default>false</default>
+                <label>Coahoma County</label>
+            </value>
+            <value>
+                <fullName>Copiah County</fullName>
+                <default>false</default>
+                <label>Copiah County</label>
+            </value>
+            <value>
+                <fullName>Covington County</fullName>
+                <default>false</default>
+                <label>Covington County</label>
+            </value>
+            <value>
+                <fullName>DeSoto County</fullName>
+                <default>false</default>
+                <label>DeSoto County</label>
+            </value>
+            <value>
+                <fullName>Forrest County</fullName>
+                <default>false</default>
+                <label>Forrest County</label>
+            </value>
+            <value>
+                <fullName>Franklin County</fullName>
+                <default>false</default>
+                <label>Franklin County</label>
+            </value>
+            <value>
+                <fullName>George County</fullName>
+                <default>false</default>
+                <label>George County</label>
+            </value>
+            <value>
+                <fullName>Greene County</fullName>
+                <default>false</default>
+                <label>Greene County</label>
+            </value>
+            <value>
+                <fullName>Grenada County</fullName>
+                <default>false</default>
+                <label>Grenada County</label>
+            </value>
+            <value>
+                <fullName>Hancock County</fullName>
+                <default>false</default>
+                <label>Hancock County</label>
+            </value>
+            <value>
+                <fullName>Harrison County</fullName>
+                <default>false</default>
+                <label>Harrison County</label>
+            </value>
+            <value>
+                <fullName>Hinds County</fullName>
+                <default>false</default>
+                <label>Hinds County</label>
+            </value>
+            <value>
+                <fullName>Holmes County</fullName>
+                <default>false</default>
+                <label>Holmes County</label>
+            </value>
+            <value>
+                <fullName>Humphreys County</fullName>
+                <default>false</default>
+                <label>Humphreys County</label>
+            </value>
+            <value>
+                <fullName>Issaquena County</fullName>
+                <default>false</default>
+                <label>Issaquena County</label>
+            </value>
+            <value>
+                <fullName>Itawamba County</fullName>
+                <default>false</default>
+                <label>Itawamba County</label>
+            </value>
+            <value>
+                <fullName>Jackson County</fullName>
+                <default>false</default>
+                <label>Jackson County</label>
+            </value>
+            <value>
+                <fullName>Jasper County</fullName>
+                <default>false</default>
+                <label>Jasper County</label>
+            </value>
+            <value>
+                <fullName>Jefferson County</fullName>
+                <default>false</default>
+                <label>Jefferson County</label>
+            </value>
+            <value>
+                <fullName>Jefferson Davis County</fullName>
+                <default>false</default>
+                <label>Jefferson Davis County</label>
+            </value>
+            <value>
+                <fullName>Jones County</fullName>
+                <default>false</default>
+                <label>Jones County</label>
+            </value>
+            <value>
+                <fullName>Kemper County</fullName>
+                <default>false</default>
+                <label>Kemper County</label>
+            </value>
+            <value>
+                <fullName>Lafayette County</fullName>
+                <default>false</default>
+                <label>Lafayette County</label>
+            </value>
+            <value>
+                <fullName>Lamar County</fullName>
+                <default>false</default>
+                <label>Lamar County</label>
+            </value>
+            <value>
+                <fullName>Lauderdale County</fullName>
+                <default>false</default>
+                <label>Lauderdale County</label>
+            </value>
+            <value>
+                <fullName>Lawrence County</fullName>
+                <default>false</default>
+                <label>Lawrence County</label>
+            </value>
+            <value>
+                <fullName>Leake County</fullName>
+                <default>false</default>
+                <label>Leake County</label>
+            </value>
+            <value>
+                <fullName>Lee County</fullName>
+                <default>false</default>
+                <label>Lee County</label>
+            </value>
+            <value>
+                <fullName>Leflore County</fullName>
+                <default>false</default>
+                <label>Leflore County</label>
+            </value>
+            <value>
+                <fullName>Lincoln County</fullName>
+                <default>false</default>
+                <label>Lincoln County</label>
+            </value>
+            <value>
+                <fullName>Lowndes County</fullName>
+                <default>false</default>
+                <label>Lowndes County</label>
+            </value>
+            <value>
+                <fullName>Madison County</fullName>
+                <default>false</default>
+                <label>Madison County</label>
+            </value>
+            <value>
+                <fullName>Marion County</fullName>
+                <default>false</default>
+                <label>Marion County</label>
+            </value>
+            <value>
+                <fullName>Marshall County</fullName>
+                <default>false</default>
+                <label>Marshall County</label>
+            </value>
+            <value>
+                <fullName>Monroe County</fullName>
+                <default>false</default>
+                <label>Monroe County</label>
+            </value>
+            <value>
+                <fullName>Montgomery County</fullName>
+                <default>false</default>
+                <label>Montgomery County</label>
+            </value>
+            <value>
+                <fullName>Neshoba County</fullName>
+                <default>false</default>
+                <label>Neshoba County</label>
+            </value>
+            <value>
+                <fullName>Newton County</fullName>
+                <default>false</default>
+                <label>Newton County</label>
+            </value>
+            <value>
+                <fullName>Noxubee County</fullName>
+                <default>false</default>
+                <label>Noxubee County</label>
+            </value>
+            <value>
+                <fullName>Oktibbeha County</fullName>
+                <default>false</default>
+                <label>Oktibbeha County</label>
+            </value>
+            <value>
+                <fullName>Panola County</fullName>
+                <default>false</default>
+                <label>Panola County</label>
+            </value>
+            <value>
+                <fullName>Pearl River County</fullName>
+                <default>false</default>
+                <label>Pearl River County</label>
+            </value>
+            <value>
+                <fullName>Perry County</fullName>
+                <default>false</default>
+                <label>Perry County</label>
+            </value>
+            <value>
+                <fullName>Pike County</fullName>
+                <default>false</default>
+                <label>Pike County</label>
+            </value>
+            <value>
+                <fullName>Pontotoc County</fullName>
+                <default>false</default>
+                <label>Pontotoc County</label>
+            </value>
+            <value>
+                <fullName>Prentiss County</fullName>
+                <default>false</default>
+                <label>Prentiss County</label>
+            </value>
+            <value>
+                <fullName>Quitman County</fullName>
+                <default>false</default>
+                <label>Quitman County</label>
+            </value>
+            <value>
+                <fullName>Rankin County</fullName>
+                <default>false</default>
+                <label>Rankin County</label>
+            </value>
+            <value>
+                <fullName>Scott County</fullName>
+                <default>false</default>
+                <label>Scott County</label>
+            </value>
+            <value>
+                <fullName>Sharkey County</fullName>
+                <default>false</default>
+                <label>Sharkey County</label>
+            </value>
+            <value>
+                <fullName>Simpson County</fullName>
+                <default>false</default>
+                <label>Simpson County</label>
+            </value>
+            <value>
+                <fullName>Smith County</fullName>
+                <default>false</default>
+                <label>Smith County</label>
+            </value>
+            <value>
+                <fullName>Stone County</fullName>
+                <default>false</default>
+                <label>Stone County</label>
+            </value>
+            <value>
+                <fullName>Sunflower County</fullName>
+                <default>false</default>
+                <label>Sunflower County</label>
+            </value>
+            <value>
+                <fullName>Tallahatchie County</fullName>
+                <default>false</default>
+                <label>Tallahatchie County</label>
+            </value>
+            <value>
+                <fullName>Tate County</fullName>
+                <default>false</default>
+                <label>Tate County</label>
+            </value>
+            <value>
+                <fullName>Tippah County</fullName>
+                <default>false</default>
+                <label>Tippah County</label>
+            </value>
+            <value>
+                <fullName>Tishomingo County</fullName>
+                <default>false</default>
+                <label>Tishomingo County</label>
+            </value>
+            <value>
+                <fullName>Tunica County</fullName>
+                <default>false</default>
+                <label>Tunica County</label>
+            </value>
+            <value>
+                <fullName>Union County</fullName>
+                <default>false</default>
+                <label>Union County</label>
+            </value>
+            <value>
+                <fullName>Walthall County</fullName>
+                <default>false</default>
+                <label>Walthall County</label>
+            </value>
+            <value>
+                <fullName>Warren County</fullName>
+                <default>false</default>
+                <label>Warren County</label>
+            </value>
+            <value>
+                <fullName>Washington County</fullName>
+                <default>false</default>
+                <label>Washington County</label>
+            </value>
+            <value>
+                <fullName>Wayne County</fullName>
+                <default>false</default>
+                <label>Wayne County</label>
+            </value>
+            <value>
+                <fullName>Webster County</fullName>
+                <default>false</default>
+                <label>Webster County</label>
+            </value>
+            <value>
+                <fullName>Wilkinson County</fullName>
+                <default>false</default>
+                <label>Wilkinson County</label>
+            </value>
+            <value>
+                <fullName>Winston County</fullName>
+                <default>false</default>
+                <label>Winston County</label>
+            </value>
+            <value>
+                <fullName>Yalobusha County</fullName>
+                <default>false</default>
+                <label>Yalobusha County</label>
+            </value>
+            <value>
+                <fullName>Yazoo County</fullName>
+                <default>false</default>
+                <label>Yazoo County</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

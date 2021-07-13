@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course_Format__c</fullName>
+    <externalId>false</externalId>
+    <label>Course Format</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Textbook</fullName>
+                <default>false</default>
+                <label>Textbook</label>
+            </value>
+            <value>
+                <fullName>Workbook</fullName>
+                <default>false</default>
+                <label>Workbook</label>
+            </value>
+            <value>
+                <fullName>Online</fullName>
+                <default>false</default>
+                <label>Online</label>
+            </value>
+            <value>
+                <fullName>Co-op</fullName>
+                <default>false</default>
+                <label>Co-op</label>
+            </value>
+            <value>
+                <fullName>In Person</fullName>
+                <default>false</default>
+                <label>In Person</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Final_Confirmation_Checklist__c</fullName>
+    <description>FinalConfirmationChecklist1718</description>
+    <externalId>false</externalId>
+    <label>Final Confirmation Checklist</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>I have read and agree to the Conditions of Enrollment listed above.</fullName>
+                <default>false</default>
+                <label>I have read and agree to the Conditions of Enrollment listed above.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>What_could_we_have_done_differently__c</fullName>
+    <externalId>false</externalId>
+    <label>What could we have done differently</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Learning Platform could be more user-friendly</fullName>
+                <default>false</default>
+                <label>Learning Platform could be more user-friendly</label>
+            </value>
+            <value>
+                <fullName>We experienced technical issues with the learning platform</fullName>
+                <default>false</default>
+                <label>We experienced technical issues with the learning platform</label>
+            </value>
+            <value>
+                <fullName>Curriculum is too easy for my student</fullName>
+                <default>false</default>
+                <label>Curriculum is too easy for my student</label>
+            </value>
+            <value>
+                <fullName>Curriculum is too hard for my student</fullName>
+                <default>false</default>
+                <label>Curriculum is too hard for my student</label>
+            </value>
+            <value>
+                <fullName>The teachers do not communicate enough with students</fullName>
+                <default>false</default>
+                <label>The teachers do not communicate enough with students</label>
+            </value>
+            <value>
+                <fullName>The school team does not communicate enough with Learning Coaches</fullName>
+                <default>false</default>
+                <label>The school team does not communicate enough with Learning Coaches</label>
+            </value>
+            <value>
+                <fullName>I could use additional support or training as a Learning Coach</fullName>
+                <default>false</default>
+                <label>I could use additional support or training as a Learning Coach</label>
+            </value>
+            <value>
+                <fullName>The extracurricular activities do not meet the interests or needs of my student</fullName>
+                <default>false</default>
+                <label>The extracurricular activities do not meet the interests or needs of my student</label>
+            </value>
+            <value>
+                <fullName>My student needs more engagement with other students academically or socially</fullName>
+                <default>false</default>
+                <label>My student needs more engagement with other students academically or socially</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

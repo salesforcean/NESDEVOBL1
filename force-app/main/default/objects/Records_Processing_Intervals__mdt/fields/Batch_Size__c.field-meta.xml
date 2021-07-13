@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Batch_Size__c</fullName>
+    <description>User Story #164369.
+This field on the metadata type is meant for defining the batch size for the Program Enrollment Batch Job and Relationships Batch Job execution. This value defines the batch job lot size for processing.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Please enter the Batch Job Lot Size for the batch processing on Program Enrollment records and Relationship records. The value to be keyed should be greater than 0.</inlineHelpText>
+    <label>Batch Size</label>
+    <precision>10</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

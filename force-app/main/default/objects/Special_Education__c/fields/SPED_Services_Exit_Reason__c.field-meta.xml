@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SPED_Services_Exit_Reason__c</fullName>
+    <description>The reason the student no longer receives Special Services</description>
+    <externalId>false</externalId>
+    <label>SPED Services Exit Reason</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aged out of Special Education</fullName>
+                <default>false</default>
+                <label>Aged out of Special Education</label>
+            </value>
+            <value>
+                <fullName>Evaluation is out of date</fullName>
+                <default>false</default>
+                <label>Evaluation is out of date</label>
+            </value>
+            <value>
+                <fullName>Evaluation no longer supports a disability</fullName>
+                <default>false</default>
+                <label>Evaluation no longer supports a disability</label>
+            </value>
+            <value>
+                <fullName>Graduated or exited High School</fullName>
+                <default>false</default>
+                <label>Graduated or exited High School</label>
+            </value>
+            <value>
+                <fullName>IEP not needed in this setting</fullName>
+                <default>false</default>
+                <label>IEP not needed in this setting</label>
+            </value>
+            <value>
+                <fullName>Parent request</fullName>
+                <default>false</default>
+                <label>Parent request</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

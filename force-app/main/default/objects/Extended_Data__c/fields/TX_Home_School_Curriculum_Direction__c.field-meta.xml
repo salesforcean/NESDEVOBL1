@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TX_Home_School_Curriculum_Direction__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is the student pursuing the curriculum in a bona fide manner under the direction of a parent or parents or one standing in parental authority</description>
+    <externalId>false</externalId>
+    <label>TX Home School Curriculum Direction</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

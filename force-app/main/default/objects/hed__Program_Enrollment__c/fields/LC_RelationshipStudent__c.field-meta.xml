@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LC_RelationshipStudent__c</fullName>
+    <externalId>false</externalId>
+    <label>LC Relationship To Student</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Caretaker (parent/legal guardian)</fullName>
+                <default>false</default>
+                <label>Caretaker (parent/legal guardian)</label>
+            </value>
+            <value>
+                <fullName>College graduate (Bachelor&apos;s degree)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>College graduate (Bachelor&apos;s degree)</label>
+            </value>
+            <value>
+                <fullName>Graduate school / Post-graduate training</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Graduate school / Post-graduate training</label>
+            </value>
+            <value>
+                <fullName>High school graduate</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>High school graduate</label>
+            </value>
+            <value>
+                <fullName>I decline to state</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I decline to state</label>
+            </value>
+            <value>
+                <fullName>Not a high school graduate</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not a high school graduate</label>
+            </value>
+            <value>
+                <fullName>Some college or associate&apos;s degree</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Some college or associate&apos;s degree</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Why_Is_Your_Child_Attending_CA__c</fullName>
+    <description>What are the primary reasons the caretaker would like the child to attend Connections Academy?</description>
+    <externalId>false</externalId>
+    <label>Why Is Your Child Attending CA</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>For various reasons, we are dissatisfied with our local public school</fullName>
+                <default>false</default>
+                <label>For various reasons, we are dissatisfied with our local public school</label>
+            </value>
+            <value>
+                <fullName>Student did not receive adequate attention from the teacher</fullName>
+                <default>false</default>
+                <label>Student did not receive adequate attention from the teacher</label>
+            </value>
+            <value>
+                <fullName>Student has or had mental health concerns</fullName>
+                <default>false</default>
+                <label>Student has or had mental health concerns</label>
+            </value>
+            <value>
+                <fullName>Student has or had physical health concerns</fullName>
+                <default>false</default>
+                <label>Student has or had physical health concerns</label>
+            </value>
+            <value>
+                <fullName>Student needs a flexible schedule</fullName>
+                <default>false</default>
+                <label>Student needs a flexible schedule</label>
+            </value>
+            <value>
+                <fullName>Student was ahead academically</fullName>
+                <default>false</default>
+                <label>Student was ahead academically</label>
+            </value>
+            <value>
+                <fullName>Student was bullied</fullName>
+                <default>false</default>
+                <label>Student was bullied</label>
+            </value>
+            <value>
+                <fullName>Student was recommended/referred to us by prior school</fullName>
+                <default>false</default>
+                <label>Student was recommended/referred to us by prior school</label>
+            </value>
+            <value>
+                <fullName>Student was struggling academically</fullName>
+                <default>false</default>
+                <label>Student was struggling academically</label>
+            </value>
+            <value>
+                <fullName>Student was suspended or expelled</fullName>
+                <default>false</default>
+                <label>Student was suspended or expelled</label>
+            </value>
+            <value>
+                <fullName>Virtual school will enable me to be more involved with my student&apos;s learning</fullName>
+                <default>false</default>
+                <label>Virtual school will enable me to be more involved with my student&apos;s learning</label>
+            </value>
+            <value>
+                <fullName>I am concerned about my child&apos;s safety at their current school</fullName>
+                <default>false</default>
+                <label>I am concerned about my child&apos;s safety at their current school</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

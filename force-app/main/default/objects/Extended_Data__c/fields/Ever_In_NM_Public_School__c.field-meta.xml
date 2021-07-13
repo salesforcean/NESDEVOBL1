@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ever_In_NM_Public_School__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Did the student ever attend a public school in the state of New Mexico?</description>
+    <externalId>false</externalId>
+    <label>Ever In NM Public School</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

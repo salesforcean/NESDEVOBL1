@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage</fullName>
+    <active>true</active>
+    <label>Stage</label>
+    <picklistValues>
+        <picklist>Component_Type__c</picklist>
+        <values>
+            <fullName>Household</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Student</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Data_type_of_operation__c</picklist>
+        <values>
+            <fullName>%21%3D</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%3C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%3C%3D</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%3D</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%3E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%3E%3D</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Document_File_Formats__c</picklist>
+        <values>
+            <fullName>%2Egif</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2Ejpeg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2Ejpg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2Epdf</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2Epng</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2Etif</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%2Etxt</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Document_Type__c</picklist>
+        <values>
+            <fullName>504 Plan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Affidavit of State of Colorado Residency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blood Lead Test Screening</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Charter School Notification Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Choice Transfer Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Custody Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dental Examination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dental Examination %28ORCA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>District Notice of Intent to Enroll</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ear%2C Eye and Dental Certificate %28CEED%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment Notification %26 Request for Records</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Evaluation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gifted Documentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HISD Privacy Code</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Health Record %28Massachusetts School Health Record%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Home Language Survey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Home School Prior Academic History</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IEP Exit Documentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immunization Records</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Income Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Individualized Education Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Enrollment Prior Participation Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical Emergency Authorization Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Minnesota Health Screen Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NCCA Health Assessment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OEA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PHLOTE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Physical Examination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof of Age</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof of Identity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proof of Residence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Re-Enrollment Report Card test</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Report Card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SSN Waiver</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secondary Evaluation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>State Test Scores</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Student Residency %26 Assistance Questionnaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Title I Compact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Title VII Student Certification Form</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unofficial Transcript</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vision Screening</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vision Screening %28OKCA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vision Screening %28ORCA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WCA Formal Acknowledgement of Student Handbook</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Question_Type__c</picklist>
+        <values>
+            <fullName>Boolean</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Checkbox Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Date%2FTime</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Number</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Radio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Text</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reactivation_Status__c</picklist>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Complete</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

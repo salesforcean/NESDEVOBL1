@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ConnectedProgramRequests__c</fullName>
+    <description>Additional Approved Connected Courses</description>
+    <externalId>false</externalId>
+    <label>Connected Program Requests</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Science</fullName>
+                <default>false</default>
+                <label>Science</label>
+            </value>
+            <value>
+                <fullName>Social Studies</fullName>
+                <default>false</default>
+                <label>Social Studies</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

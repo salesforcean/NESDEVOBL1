@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ASI_SchoolYearBlank</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK( School_Year__c )</errorConditionFormula>
+    <errorMessage>School year is required for Annual Student Information.</errorMessage>
+</ValidationRule>

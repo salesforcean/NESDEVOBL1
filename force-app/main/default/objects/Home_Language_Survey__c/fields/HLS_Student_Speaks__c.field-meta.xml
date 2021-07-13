@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HLS_Student_Speaks__c</fullName>
+    <description>My student speaks</description>
+    <externalId>false</externalId>
+    <label>HLS Student Speaks</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>English and language(s) other than English</fullName>
+                <default>false</default>
+                <label>English and language(s) other than English</label>
+            </value>
+            <value>
+                <fullName>Language(s) other than English</fullName>
+                <default>false</default>
+                <label>Language(s) other than English</label>
+            </value>
+            <value>
+                <fullName>Only English</fullName>
+                <default>false</default>
+                <label>Only English</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EntranceAgeEligibilityOverride__c</fullName>
+    <description>Entrance Age Eligibility Override</description>
+    <externalId>false</externalId>
+    <label>Entrance Age Eligibility (Override)</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ineligible</fullName>
+                <default>false</default>
+                <label>Ineligible</label>
+            </value>
+            <value>
+                <fullName>Pending Review</fullName>
+                <default>false</default>
+                <label>Pending Review</label>
+            </value>
+            <value>
+                <fullName>Eligible</fullName>
+                <default>false</default>
+                <label>Eligible</label>
+            </value>
+            <value>
+                <fullName>Ineligible- Other options</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ineligible- Other options</label>
+            </value>
+            <value>
+                <fullName>Released</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Released</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>taskSubTypeDefault__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>taskSubTypeDefault</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Less than 10% within 3 days</fullName>
+                <default>true</default>
+                <label>Less than 10% within 3 days</label>
+            </value>
+            <value>
+                <fullName>Less than 33% within 5 days</fullName>
+                <default>false</default>
+                <label>Less than 33% within 5 days</label>
+            </value>
+            <value>
+                <fullName>Less than 45% within 7 days</fullName>
+                <default>false</default>
+                <label>Less than 45% within 7 days</label>
+            </value>
+            <value>
+                <fullName>Less than 75% within 10 days</fullName>
+                <default>false</default>
+                <label>Less than 75% within 10 days</label>
+            </value>
+            <value>
+                <fullName>Less than 90% within 21 days</fullName>
+                <default>false</default>
+                <label>Less than 90% within 21 days</label>
+            </value>
+            <value>
+                <fullName>Initial Call</fullName>
+                <default>false</default>
+                <label>Initial Call</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

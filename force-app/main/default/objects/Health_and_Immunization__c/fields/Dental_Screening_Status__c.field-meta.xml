@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dental_Screening_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Dental Screening Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Invalid</fullName>
+                <default>false</default>
+                <label>Invalid</label>
+            </value>
+            <value>
+                <fullName>Missing</fullName>
+                <default>false</default>
+                <label>Missing</label>
+            </value>
+            <value>
+                <fullName>ORCA-Burden</fullName>
+                <default>false</default>
+                <label>ORCA-Burden</label>
+            </value>
+            <value>
+                <fullName>ORCA-Prior Submission</fullName>
+                <default>false</default>
+                <label>ORCA-Prior Submission</label>
+            </value>
+            <value>
+                <fullName>ORCA-Religious Exemption</fullName>
+                <default>false</default>
+                <label>ORCA-Religious Exemption</label>
+            </value>
+            <value>
+                <fullName>Principal Extension Approved</fullName>
+                <default>false</default>
+                <label>Principal Extension Approved</label>
+            </value>
+            <value>
+                <fullName>Verified</fullName>
+                <default>false</default>
+                <label>Verified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

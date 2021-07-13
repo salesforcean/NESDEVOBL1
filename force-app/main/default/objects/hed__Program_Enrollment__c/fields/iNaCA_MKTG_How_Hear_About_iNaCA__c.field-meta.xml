@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>iNaCA_MKTG_How_Hear_About_iNaCA__c</fullName>
+    <description>How did you hear about International Connections Academy</description>
+    <externalId>false</externalId>
+    <label>iNaCA MKTG How Hear About iNaCA</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Connections Academy blog</fullName>
+                <default>false</default>
+                <label>Connections Academy blog</label>
+            </value>
+            <value>
+                <fullName>Connections Academy radio advertisement</fullName>
+                <default>false</default>
+                <label>Connections Academy radio advertisement</label>
+            </value>
+            <value>
+                <fullName>Connections Academy TV advertisement</fullName>
+                <default>false</default>
+                <label>Connections Academy TV advertisement</label>
+            </value>
+            <value>
+                <fullName>Connections Academy website</fullName>
+                <default>false</default>
+                <label>Connections Academy website</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>Internet search (e.g. Google, Bing, MSN, etc.)</fullName>
+                <default>false</default>
+                <label>Internet search (e.g. Google, Bing, MSN, etc.)</label>
+            </value>
+            <value>
+                <fullName>Newspaper article</fullName>
+                <default>false</default>
+                <label>Newspaper article</label>
+            </value>
+            <value>
+                <fullName>Online advertisement</fullName>
+                <default>false</default>
+                <label>Online advertisement</label>
+            </value>
+            <value>
+                <fullName>Postcard</fullName>
+                <default>false</default>
+                <label>Postcard</label>
+            </value>
+            <value>
+                <fullName>Poster or flyer</fullName>
+                <default>false</default>
+                <label>Poster or flyer</label>
+            </value>
+            <value>
+                <fullName>Referred by a non-enrolled friend/family</fullName>
+                <default>false</default>
+                <label>Referred by a non-enrolled friend/family</label>
+            </value>
+            <value>
+                <fullName>Referred by an enrolled friend/family</fullName>
+                <default>false</default>
+                <label>Referred by an enrolled friend/family</label>
+            </value>
+            <value>
+                <fullName>Social media (e.g. Facebook, Instagram, Twitter, Pinterest, YouTube,etc.)</fullName>
+                <default>false</default>
+                <label>Social media (e.g. Facebook, Instagram, Twitter, Pinterest, YouTube,etc.)</label>
+            </value>
+            <value>
+                <fullName>Teacher/counselor</fullName>
+                <default>false</default>
+                <label>Teacher/counselor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

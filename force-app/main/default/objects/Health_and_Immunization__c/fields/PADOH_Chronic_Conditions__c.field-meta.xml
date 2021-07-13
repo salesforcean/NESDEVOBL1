@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PADOH_Chronic_Conditions__c</fullName>
+    <description>Chronic Conditions</description>
+    <externalId>false</externalId>
+    <label>PADOH Chronic Conditions</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Arthritis/Rheumatic disease&lt;sup&gt;1&lt;/sup&gt;</fullName>
+                <default>false</default>
+                <label>Arthritis/Rheumatic disease&lt;sup&gt;1&lt;/sup&gt;</label>
+            </value>
+            <value>
+                <fullName>Asthma</fullName>
+                <default>false</default>
+                <label>Asthma</label>
+            </value>
+            <value>
+                <fullName>Attention deficit disorder/Hyperactivity (ADD/ADHD)</fullName>
+                <default>false</default>
+                <label>Attention deficit disorder/Hyperactivity (ADD/ADHD)</label>
+            </value>
+            <value>
+                <fullName>Bleeding disorder and Cooley&apos;s anemia&lt;sup&gt;2&lt;/sup&gt;</fullName>
+                <default>false</default>
+                <label>Bleeding disorder and Cooley&apos;s anemia&lt;sup&gt;2&lt;/sup&gt;</label>
+            </value>
+            <value>
+                <fullName>Cardiovascular condition&lt;sup&gt;3&lt;/sup&gt;</fullName>
+                <default>false</default>
+                <label>Cardiovascular condition&lt;sup&gt;3&lt;/sup&gt;</label>
+            </value>
+            <value>
+                <fullName>Cerebral palsy</fullName>
+                <default>false</default>
+                <label>Cerebral palsy</label>
+            </value>
+            <value>
+                <fullName>Cystic fibrosis</fullName>
+                <default>false</default>
+                <label>Cystic fibrosis</label>
+            </value>
+            <value>
+                <fullName>Diabetes type 1&lt;sup&gt;4&lt;/sup&gt;</fullName>
+                <default>false</default>
+                <label>Diabetes type 1&lt;sup&gt;4&lt;/sup&gt;</label>
+            </value>
+            <value>
+                <fullName>Diabetes type 2&lt;sup&gt;5&lt;/sup&gt;</fullName>
+                <default>false</default>
+                <label>Diabetes type 2&lt;sup&gt;5&lt;/sup&gt;</label>
+            </value>
+            <value>
+                <fullName>Epilepsy and other seizure disorders&lt;sup&gt;6&lt;/sup&gt;</fullName>
+                <default>false</default>
+                <label>Epilepsy and other seizure disorders&lt;sup&gt;6&lt;/sup&gt;</label>
+            </value>
+            <value>
+                <fullName>Life-threatening food allergies&lt;sup&gt;7&lt;/sup&gt;</fullName>
+                <default>false</default>
+                <label>Life-threatening food allergies&lt;sup&gt;7&lt;/sup&gt;</label>
+            </value>
+            <value>
+                <fullName>Sickle cell disease&lt;sup&gt;8&lt;/sup&gt;</fullName>
+                <default>false</default>
+                <label>Sickle cell disease&lt;sup&gt;8&lt;/sup&gt;</label>
+            </value>
+            <value>
+                <fullName>Spina bifida</fullName>
+                <default>false</default>
+                <label>Spina bifida</label>
+            </value>
+            <value>
+                <fullName>Tourette&apos;s syndrome</fullName>
+                <default>false</default>
+                <label>Tourette&apos;s syndrome</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

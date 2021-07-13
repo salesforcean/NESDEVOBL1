@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Level_Requested__c</fullName>
+    <description>English level</description>
+    <externalId>false</externalId>
+    <label>Course Level</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advanced</fullName>
+                <default>false</default>
+                <label>Advanced</label>
+            </value>
+            <value>
+                <fullName>Advanced Placement</fullName>
+                <default>false</default>
+                <label>Advanced Placement</label>
+            </value>
+            <value>
+                <fullName>Honors</fullName>
+                <default>false</default>
+                <label>Honors</label>
+            </value>
+            <value>
+                <fullName>Standard</fullName>
+                <default>false</default>
+                <label>Standard</label>
+            </value>
+            <value>
+                <fullName>Dual Diploma</fullName>
+                <default>false</default>
+                <label>Dual Diploma</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SCCA_Disciplinary_Past_Actions__c</fullName>
+    <description>Has this student ever been suspended, expelled from school or assigned to an alternative school?</description>
+    <externalId>false</externalId>
+    <label>SCCA Disciplinary Past Actions</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Assigned to an alternative school instead of expulsion</fullName>
+                <default>false</default>
+                <label>Assigned to an alternative school instead of expulsion</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>Yes, expelled</fullName>
+                <default>false</default>
+                <label>Yes, expelled</label>
+            </value>
+            <value>
+                <fullName>Yes, suspended</fullName>
+                <default>false</default>
+                <label>Yes, suspended</label>
+            </value>
+            <value>
+                <fullName>Yes, suspended and expelled</fullName>
+                <default>false</default>
+                <label>Yes, suspended and expelled</label>
+            </value>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

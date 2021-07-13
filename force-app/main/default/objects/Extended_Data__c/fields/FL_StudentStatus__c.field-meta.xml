@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FL_StudentStatus__c</fullName>
+    <description>The statement t that most accurately reflects the student’s status in regards to preferential treatment in the event of a lottery for enrollment</description>
+    <externalId>false</externalId>
+    <label>FL StudentStatus</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>My child is a resident of the Hillsborough School District.</fullName>
+                <default>false</default>
+                <label>My child is a resident of the Hillsborough School District.</label>
+            </value>
+            <value>
+                <fullName>My child is enrolling in the school because of a relocation due to a foster care placement in a different school zone.</fullName>
+                <default>false</default>
+                <label>My child is enrolling in the school because of a relocation due to a foster care placement in a different school zone.</label>
+            </value>
+            <value>
+                <fullName>My student attended or was assigned to a failing school pursuant to s. 1002.38.</fullName>
+                <default>false</default>
+                <label>My student attended or was assigned to a failing school pursuant to s. 1002.38.</label>
+            </value>
+            <value>
+                <fullName>My student is a dependent child of active duty military personnel of any branch of the United States Armed Forces (includes students that moved to Florida as a result of military orders).</fullName>
+                <default>false</default>
+                <label>My student is a dependent child of active duty military personnel of any branch of the United States Armed Forces (includes students that moved to Florida as a result of military orders).</label>
+            </value>
+            <value>
+                <fullName>My student is applying because of a move due to a court ordered change in custody relating to separation or divorce, or the serious illness or death of a custodial parent.</fullName>
+                <default>false</default>
+                <label>My student is applying because of a move due to a court ordered change in custody relating to separation or divorce, or the serious illness or death of a custodial parent.</label>
+            </value>
+            <value>
+                <fullName>My student is the child of a member of the governing board of Florida Connections Academy.</fullName>
+                <default>false</default>
+                <label>My student is the child of a member of the governing board of Florida Connections Academy.</label>
+            </value>
+            <value>
+                <fullName>My student is the child of an employee of Florida Connections Academy.</fullName>
+                <default>false</default>
+                <label>My student is the child of an employee of Florida Connections Academy.</label>
+            </value>
+            <value>
+                <fullName>None of these situations apply to my student.</fullName>
+                <default>false</default>
+                <label>None of these situations apply to my student.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

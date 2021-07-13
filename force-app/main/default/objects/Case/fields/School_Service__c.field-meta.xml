@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School_Service__c</fullName>
+    <description>ADO #147629 - (Page Layouts for Case Management and Validation Rules)
+School/Service Picklist</description>
+    <externalId>false</externalId>
+    <label>School/Service</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ACA</fullName>
+                <default>false</default>
+                <label>ACA</label>
+            </value>
+            <value>
+                <fullName>ARCA</fullName>
+                <default>false</default>
+                <label>ARCA</label>
+            </value>
+            <value>
+                <fullName>CalCA(All California Schools)</fullName>
+                <default>false</default>
+                <label>CalCA(All California Schools)</label>
+            </value>
+            <value>
+                <fullName>GRCA</fullName>
+                <default>false</default>
+                <label>GRCA</label>
+            </value>
+            <value>
+                <fullName>Sub Staffing Services</fullName>
+                <default>false</default>
+                <label>Sub Staffing Services</label>
+            </value>
+            <value>
+                <fullName>Teaching Services</fullName>
+                <default>false</default>
+                <label>Teaching Services</label>
+            </value>
+            <value>
+                <fullName>Therapy</fullName>
+                <default>false</default>
+                <label>Therapy</label>
+            </value>
+            <value>
+                <fullName>TNCA</fullName>
+                <default>false</default>
+                <label>TNCA</label>
+            </value>
+            <value>
+                <fullName>Tutoring Services</fullName>
+                <default>false</default>
+                <label>Tutoring Services</label>
+            </value>
+            <value>
+                <fullName>WACA</fullName>
+                <default>false</default>
+                <label>WACA</label>
+            </value>
+            <value>
+                <fullName>WYCA.</fullName>
+                <default>false</default>
+                <label>WYCA.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

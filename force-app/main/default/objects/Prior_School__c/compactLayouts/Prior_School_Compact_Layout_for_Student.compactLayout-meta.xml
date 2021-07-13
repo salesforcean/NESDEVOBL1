@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prior_School_Compact_Layout_for_Student</fullName>
+    <fields>Name</fields>
+    <fields>SchoolType__c</fields>
+    <fields>SchoolName__c</fields>
+    <fields>EnrollmentStatus__c</fields>
+    <label>Prior School Compact Layout for Student</label>
+</CompactLayout>

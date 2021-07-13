@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Why_Flagged_Principal_Response__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE (CounselingFlag__c, &quot;Stop&quot;, &quot;Program Fit; &quot;, &quot;Warning&quot;, &quot;Program Fit; &quot;, &quot; &quot;) &amp; 
+CASE (DisciplinaryFlagOverride__c, &quot;Pending Review&quot;, &quot;Disciplinary History; &quot;, &quot; &quot;) &amp; 
+CASE (HomelessRiskFlag__c, &quot;Potential Homeless&quot;, &quot;Potential Homeless; &quot;, &quot; &quot;) &amp; 
+CASE (AcademicPerformanceEligibility__c, &quot;Pending Review&quot;, &quot;Academic Performance Eligibility; &quot;, &quot; &quot;) &amp; 
+IF   (CONTAINS(EntranceAgeEligibilityFinal__c, &quot;Pending Review&quot;), &quot;Age Eligibility; &quot;, &quot; &quot;) &amp; 
+CASE (PlacementFlag__c, &quot;Principal Review&quot;, &quot;Principal Review;&quot;, &quot;Principal Review- Gifted&quot;, &quot;Principal Review;&quot;, &quot; &quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Why Flagged Principal Response</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

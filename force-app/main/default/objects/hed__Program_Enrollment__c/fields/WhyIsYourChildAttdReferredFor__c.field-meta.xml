@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WhyIsYourChildAttdReferredFor__c</fullName>
+    <description>What were the reasons given by the prior school for the recommendation?  &lt;em&gt;Please select as many as apply&lt;/em&gt;</description>
+    <externalId>false</externalId>
+    <label>Why Is Your Child Attd Referred For</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Student is advanced academically based on student’s current grade level and age</fullName>
+                <default>false</default>
+                <label>Student is advanced academically based on student’s current grade level and age</label>
+            </value>
+            <value>
+                <fullName>Student is behind academically based on student’s current grade level and age</fullName>
+                <default>false</default>
+                <label>Student is behind academically based on student’s current grade level and age</label>
+            </value>
+            <value>
+                <fullName>Student is experiencing physical or medical difficulty/limitations</fullName>
+                <default>false</default>
+                <label>Student is experiencing physical or medical difficulty/limitations</label>
+            </value>
+            <value>
+                <fullName>Student is experiencing social/emotional difficulties</fullName>
+                <default>false</default>
+                <label>Student is experiencing social/emotional difficulties</label>
+            </value>
+            <value>
+                <fullName>Student is looking to take courses that are not offered at the local school (GT, Honors, AP, etc.)</fullName>
+                <default>false</default>
+                <label>Student is looking to take courses that are not offered at the local school (GT, Honors, AP, etc.)</label>
+            </value>
+            <value>
+                <fullName>Student participates in extracurricular activities that require a flexible school schedule</fullName>
+                <default>false</default>
+                <label>Student participates in extracurricular activities that require a flexible school schedule</label>
+            </value>
+            <value>
+                <fullName>Student works at faster pace than his/her fellow students</fullName>
+                <default>false</default>
+                <label>Student works at faster pace than his/her fellow students</label>
+            </value>
+            <value>
+                <fullName>Student works at slower pace than his/her fellow students</fullName>
+                <default>false</default>
+                <label>Student works at slower pace than his/her fellow students</label>
+            </value>
+            <value>
+                <fullName>Student would benefit from having more control in setting his/her daily schedule</fullName>
+                <default>false</default>
+                <label>Student would benefit from having more control in setting his/her daily schedule</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

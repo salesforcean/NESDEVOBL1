@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Criteria__c</fullName>
+    <description>The parent criteria the refinement record will be applied to.</description>
+    <externalId>false</externalId>
+    <label>Criteria</label>
+    <referenceTo>Criteria__c</referenceTo>
+    <relationshipLabel>Criteria Refinements</relationshipLabel>
+    <relationshipName>Criteria_Refinements</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

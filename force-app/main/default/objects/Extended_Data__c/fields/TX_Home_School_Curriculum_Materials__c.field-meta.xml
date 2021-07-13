@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TX_Home_School_Curriculum_Materials__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is there a curriculum consisting of books, workbooks or other written materials</description>
+    <externalId>false</externalId>
+    <label>TX Home School Curriculum Materials</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

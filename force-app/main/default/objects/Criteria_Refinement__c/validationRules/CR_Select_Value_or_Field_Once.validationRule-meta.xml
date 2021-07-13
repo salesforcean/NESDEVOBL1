@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CR_Select_Value_or_Field_Once</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISBLANK( Refinement_Field_Right__c ) , ISBLANK( Refinement_Value__c ))</errorConditionFormula>
+    <errorMessage>Both Refinement Field (right) &amp; Refinement Value (right) can&apos;t be empty at once.</errorMessage>
+</ValidationRule>

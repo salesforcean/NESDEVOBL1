@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HasOptedOutOfSMS__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>ADO#149664</description>
+    <externalId>false</externalId>
+    <label>SMS Opt Out</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

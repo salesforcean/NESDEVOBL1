@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReasonUTIncomplete__c</fullName>
+    <description>Incomplete Unofficial Transcript Reasons</description>
+    <externalId>false</externalId>
+    <label>Reason UT Incomplete</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Documentation from the school (handwritten documentation cannot be accepted)</fullName>
+                <default>false</default>
+                <label>Documentation from the school (handwritten documentation cannot be accepted)</label>
+            </value>
+            <value>
+                <fullName>End of year/final grades and credits</fullName>
+                <default>false</default>
+                <label>End of year/final grades and credits</label>
+            </value>
+            <value>
+                <fullName>English/Language Arts coursework</fullName>
+                <default>false</default>
+                <label>English/Language Arts coursework</label>
+            </value>
+            <value>
+                <fullName>Grading scale</fullName>
+                <default>false</default>
+                <label>Grading scale</label>
+            </value>
+            <value>
+                <fullName>Mathematics coursework</fullName>
+                <default>false</default>
+                <label>Mathematics coursework</label>
+            </value>
+            <value>
+                <fullName>Missing pages</fullName>
+                <default>false</default>
+                <label>Missing pages</label>
+            </value>
+            <value>
+                <fullName>Previous school years’ coursework and credits</fullName>
+                <default>false</default>
+                <label>Previous school years’ coursework and credits</label>
+            </value>
+            <value>
+                <fullName>Promotion status</fullName>
+                <default>false</default>
+                <label>Promotion status</label>
+            </value>
+            <value>
+                <fullName>Quarter 1 grades</fullName>
+                <default>false</default>
+                <label>Quarter 1 grades</label>
+            </value>
+            <value>
+                <fullName>Quarter 2 grades</fullName>
+                <default>false</default>
+                <label>Quarter 2 grades</label>
+            </value>
+            <value>
+                <fullName>Quarter 3 grades</fullName>
+                <default>false</default>
+                <label>Quarter 3 grades</label>
+            </value>
+            <value>
+                <fullName>School year</fullName>
+                <default>false</default>
+                <label>School year</label>
+            </value>
+            <value>
+                <fullName>School’s name</fullName>
+                <default>false</default>
+                <label>School’s name</label>
+            </value>
+            <value>
+                <fullName>Science coursework</fullName>
+                <default>false</default>
+                <label>Science coursework</label>
+            </value>
+            <value>
+                <fullName>Semester 1 coursework and credits</fullName>
+                <default>false</default>
+                <label>Semester 1 coursework and credits</label>
+            </value>
+            <value>
+                <fullName>Semester 1 grades</fullName>
+                <default>false</default>
+                <label>Semester 1 grades</label>
+            </value>
+            <value>
+                <fullName>Social Studies coursework</fullName>
+                <default>false</default>
+                <label>Social Studies coursework</label>
+            </value>
+            <value>
+                <fullName>Student’s grade level</fullName>
+                <default>false</default>
+                <label>Student’s grade level</label>
+            </value>
+            <value>
+                <fullName>Student’s name</fullName>
+                <default>false</default>
+                <label>Student’s name</label>
+            </value>
+            <value>
+                <fullName>Summer school documentation</fullName>
+                <default>false</default>
+                <label>Summer school documentation</label>
+            </value>
+            <value>
+                <fullName>Translated copy</fullName>
+                <default>false</default>
+                <label>Translated copy</label>
+            </value>
+            <value>
+                <fullName>Trimester 1 grades</fullName>
+                <default>false</default>
+                <label>Trimester 1 grades</label>
+            </value>
+            <value>
+                <fullName>Trimester 2 grades</fullName>
+                <default>false</default>
+                <label>Trimester 2 grades</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

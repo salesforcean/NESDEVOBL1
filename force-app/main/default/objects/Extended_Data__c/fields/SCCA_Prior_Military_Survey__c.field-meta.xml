@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SCCA_Prior_Military_Survey__c</fullName>
+    <description>What is the current U.S. military status of the student&apos;s parent or guardian</description>
+    <externalId>false</externalId>
+    <label>SCCA Prior Military Survey</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>01 - A Parent or Guardian is serving in the National Guard but is not deployed.</fullName>
+                <default>false</default>
+                <label>01 - A Parent or Guardian is serving in the National Guard but is not deployed.</label>
+            </value>
+            <value>
+                <fullName>02 - A Parent or Guardian is serving in the Reserves but is not deployed.</fullName>
+                <default>false</default>
+                <label>02 - A Parent or Guardian is serving in the Reserves but is not deployed.</label>
+            </value>
+            <value>
+                <fullName>03 - A Parent or Guardian is serving in the National Guard and is currently deployed.</fullName>
+                <default>false</default>
+                <label>03 - A Parent or Guardian is serving in the National Guard and is currently deployed.</label>
+            </value>
+            <value>
+                <fullName>04 - A Parent or Guardian is serving in the Reserves and is currently deployed.</fullName>
+                <default>false</default>
+                <label>04 - A Parent or Guardian is serving in the Reserves and is currently deployed.</label>
+            </value>
+            <value>
+                <fullName>05 - A Parent or Guardian is serving in the military on active duty but is not deployed.</fullName>
+                <default>false</default>
+                <label>05 - A Parent or Guardian is serving in the military on active duty but is not deployed.</label>
+            </value>
+            <value>
+                <fullName>06 - A Parent or Guardian is serving in the military on active duty and is currently deployed.</fullName>
+                <default>false</default>
+                <label>06 - A Parent or Guardian is serving in the military on active duty and is currently deployed.</label>
+            </value>
+            <value>
+                <fullName>07 - The student&apos;s Parent or Guardian died while on active duty within the last year.</fullName>
+                <default>false</default>
+                <label>07 - The student&apos;s Parent or Guardian died while on active duty within the last year.</label>
+            </value>
+            <value>
+                <fullName>08 - The student&apos;s Parent or Guardian was wounded while on active duty within the last year.</fullName>
+                <default>false</default>
+                <label>08 - The student&apos;s Parent or Guardian was wounded while on active duty within the last year.</label>
+            </value>
+            <value>
+                <fullName>09 Decline to report</fullName>
+                <default>false</default>
+                <label>09 Decline to report</label>
+            </value>
+            <value>
+                <fullName>Neither Parent nor Guardian is serving in any military service.</fullName>
+                <default>false</default>
+                <label>Neither Parent nor Guardian is serving in any military service.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

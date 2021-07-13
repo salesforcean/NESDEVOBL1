@@ -153,75 +153,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>Academic_Program__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>The Academic Program for the Cap</description>
-        <externalId>false</externalId>
-        <label>Academic Program</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Account.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Academic Program</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Caps</relationshipLabel>
-        <relationshipName>Caps</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Cap__c</fullName>
-        <description>The enrollment cap</description>
-        <externalId>false</externalId>
-        <label>Cap</label>
-        <precision>5</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Enrolled_Students_Roll_Up__c</fullName>
-        <externalId>false</externalId>
-        <label>Enrolled Students Roll Up</label>
-        <summarizedField>Cap_Grade_Level__c.Number_of_Enrolled_Students__c</summarizedField>
-        <summaryForeignKey>Cap_Grade_Level__c.Cap__c</summaryForeignKey>
-        <summaryOperation>sum</summaryOperation>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>External_Id__c</fullName>
-        <caseSensitive>true</caseSensitive>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>true</externalId>
-        <label>External Id</label>
-        <length>20</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
     <label>Cap</label>
-    <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>Cap Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>Caps</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts></searchLayouts>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

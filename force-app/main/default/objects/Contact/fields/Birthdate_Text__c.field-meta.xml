@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Birthdate_Text__c</fullName>
+    <description>User Story 111315 - Identify and review ST Contact Dupes (across Accounts); requires non-date field version of the birthdate to determine ST contact record matches</description>
+    <encryptionScheme>CaseInsensitiveDeterministicEncryption</encryptionScheme>
+    <externalId>false</externalId>
+    <label>Birthdate (Text)</label>
+    <length>10</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

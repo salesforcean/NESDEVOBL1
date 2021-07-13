@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ORCA_Language_Understanding__c</fullName>
+    <description>Describe the language(s) your child understands</description>
+    <externalId>false</externalId>
+    <label>ORCA Language Understanding</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>English and another language equally</fullName>
+                <default>false</default>
+                <label>English and another language equally</label>
+            </value>
+            <value>
+                <fullName>Mostly English and some of another language</fullName>
+                <default>false</default>
+                <label>Mostly English and some of another language</label>
+            </value>
+            <value>
+                <fullName>No English and only another language</fullName>
+                <default>false</default>
+                <label>No English and only another language</label>
+            </value>
+            <value>
+                <fullName>Only English</fullName>
+                <default>false</default>
+                <label>Only English</label>
+            </value>
+            <value>
+                <fullName>Some English and mostly another language</fullName>
+                <default>false</default>
+                <label>Some English and mostly another language</label>
+            </value>
+            <value>
+                <fullName>Tribal or Native Language</fullName>
+                <default>false</default>
+                <label>Tribal or Native Language</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

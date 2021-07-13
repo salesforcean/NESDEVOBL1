@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PCx_CorrelationId__c</fullName>
+    <description>This field returns the EnrollmentId+Current Date Time as a GUID and being used in &apos;CS_EventNotification2V2Systems&apos; flow as part of ADO US # 334984</description>
+    <externalId>false</externalId>
+    <formula>Id + TEXT(MONTH(TODAY())) + TEXT(DAY(TODAY())) + TEXT(HOUR(TIMENOW())) + TEXT(MINUTE(TIMENOW())) + TEXT(SECOND(TIMENOW())) + TEXT(MILLISECOND(TIMENOW()))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>PCx CorrelationId</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

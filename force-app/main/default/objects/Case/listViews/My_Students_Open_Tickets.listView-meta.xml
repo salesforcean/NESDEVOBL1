@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Students_Open_Tickets</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>Contact_Formula__c</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+    <columns>CASES.STATUS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>notEqual</operation>
+        <value>Closed,Closed - No Contact Needed,Closed - Unable to Contact</value>
+    </filters>
+    <filters>
+        <field>Internal__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>My Students Open Tickets</label>
+</ListView>

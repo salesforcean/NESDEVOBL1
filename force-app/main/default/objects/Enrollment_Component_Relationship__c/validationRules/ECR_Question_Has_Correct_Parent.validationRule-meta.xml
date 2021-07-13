@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ECR_Question_Has_Correct_Parent</fullName>
+    <active>true</active>
+    <description>To ensure that proper structure is present</description>
+    <errorConditionFormula>AND(  
+				NOT( 
+								OR(AND(Parent_Enrollment_Component__r.Order__c = 1, Parent_Enrollment_Component__r.RecordType.DeveloperName  =  &quot;Process&quot;),   Parent_Enrollment_Component__r.RecordType.DeveloperName  =  &quot;Form&quot;,  Parent_Enrollment_Component__r.RecordType.DeveloperName = &quot;Section&quot;,  Parent_Enrollment_Component__r.RecordType.DeveloperName = &quot;Question_Group&quot; )),  Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Question&quot; )</errorConditionFormula>
+    <errorMessage>A component of type &quot;Question&quot; must have a parent of type either &quot;Form&quot;, &quot;Section&quot;, or &quot;Question Group&quot;.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_to_SIS__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Created for Story 265237.  Some Program Enrollments should not be sent to SIS if their Academic Program is marked to exclude from sending.</description>
+    <externalId>false</externalId>
+    <label>Restrict to SIS</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

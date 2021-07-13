@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReasonPAHIncomplete__c</fullName>
+    <description>Incomplete Prior Academic History Options</description>
+    <externalId>false</externalId>
+    <label>Reason PAH Incomplete</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>English/Language Arts coursework</fullName>
+                <default>false</default>
+                <label>English/Language Arts coursework</label>
+            </value>
+            <value>
+                <fullName>Mathematics coursework</fullName>
+                <default>false</default>
+                <label>Mathematics coursework</label>
+            </value>
+            <value>
+                <fullName>Previous school years&apos; coursework</fullName>
+                <default>false</default>
+                <label>Previous school years&apos; coursework</label>
+            </value>
+            <value>
+                <fullName>Science coursework</fullName>
+                <default>false</default>
+                <label>Science coursework</label>
+            </value>
+            <value>
+                <fullName>Social Studies coursework</fullName>
+                <default>false</default>
+                <label>Social Studies coursework</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

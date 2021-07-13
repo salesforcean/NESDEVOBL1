@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MN_Open_Application_Status__c</fullName>
+    <description>Open Application Status</description>
+    <externalId>false</externalId>
+    <label>MN Open Application Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Approved - Achievement Integration</fullName>
+                <default>false</default>
+                <label>Approved - Achievement Integration</label>
+            </value>
+            <value>
+                <fullName>Approved - Moved After December 1</fullName>
+                <default>false</default>
+                <label>Approved - Moved After December 1</label>
+            </value>
+            <value>
+                <fullName>Approved - Nonresident Agreement Required</fullName>
+                <default>false</default>
+                <label>Approved - Nonresident Agreement Required</label>
+            </value>
+            <value>
+                <fullName>Approved - Wabasha-Kellogg Student</fullName>
+                <default>false</default>
+                <label>Approved - Wabasha-Kellogg Student</label>
+            </value>
+            <value>
+                <fullName>Denied</fullName>
+                <default>false</default>
+                <label>Denied</label>
+            </value>
+            <value>
+                <fullName>Updated Form Required</fullName>
+                <default>false</default>
+                <label>Updated Form Required</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

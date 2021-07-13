@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EC_Record_Type__c</fullName>
+    <description>Initially added to calculate the % complete on the PR</description>
+    <externalId>false</externalId>
+    <label>EC Record Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Question</fullName>
+                <default>false</default>
+                <label>Question</label>
+            </value>
+            <value>
+                <fullName>Question Group</fullName>
+                <default>false</default>
+                <label>Question Group</label>
+            </value>
+            <value>
+                <fullName>Section</fullName>
+                <default>false</default>
+                <label>Section</label>
+            </value>
+            <value>
+                <fullName>Form</fullName>
+                <default>false</default>
+                <label>Form</label>
+            </value>
+            <value>
+                <fullName>Stage</fullName>
+                <default>false</default>
+                <label>Stage</label>
+            </value>
+            <value>
+                <fullName>Process</fullName>
+                <default>false</default>
+                <label>Process</label>
+            </value>
+            <value>
+                <fullName>Document</fullName>
+                <default>false</default>
+                <label>Document</label>
+            </value>
+            <value>
+                <fullName>Flag</fullName>
+                <default>false</default>
+                <label>Flag</label>
+            </value>
+            <value>
+                <fullName>Message</fullName>
+                <default>false</default>
+                <label>Message</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

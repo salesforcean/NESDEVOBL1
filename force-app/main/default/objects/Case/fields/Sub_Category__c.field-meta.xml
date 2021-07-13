@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <controllingField>Stage__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New Applicant Call</fullName>
+                <default>false</default>
+                <label>New Applicant Call</label>
+            </value>
+            <value>
+                <fullName>Enrollment Push</fullName>
+                <default>false</default>
+                <label>Enrollment Push</label>
+            </value>
+            <value>
+                <fullName>Withdrawal DEP</fullName>
+                <default>false</default>
+                <label>Withdrawal DEP</label>
+            </value>
+            <value>
+                <fullName>Document Follow-up</fullName>
+                <default>false</default>
+                <label>Document Follow-up</label>
+            </value>
+            <value>
+                <fullName>Final Confirmation</fullName>
+                <default>false</default>
+                <label>Final Confirmation</label>
+            </value>
+            <value>
+                <fullName>Change of Address/POR</fullName>
+                <default>false</default>
+                <label>Change of Address/POR</label>
+            </value>
+            <value>
+                <fullName>Custody Issue</fullName>
+                <default>false</default>
+                <label>Custody Issue</label>
+            </value>
+            <value>
+                <fullName>Extension/Exception Requests</fullName>
+                <default>false</default>
+                <label>Extension/Exception Requests</label>
+            </value>
+            <value>
+                <fullName>Re-enrollment</fullName>
+                <default>false</default>
+                <label>Re-enrollment</label>
+            </value>
+            <value>
+                <fullName>Account Registration</fullName>
+                <default>false</default>
+                <label>Account Registration</label>
+            </value>
+            <value>
+                <fullName>Outreach and Marketing</fullName>
+                <default>false</default>
+                <label>Outreach and Marketing</label>
+            </value>
+            <value>
+                <fullName>Log In Access</fullName>
+                <default>false</default>
+                <label>Log In Access</label>
+            </value>
+            <value>
+                <fullName>NES Guidance</fullName>
+                <default>false</default>
+                <label>NES Guidance</label>
+            </value>
+            <value>
+                <fullName>Update Contact Information</fullName>
+                <default>false</default>
+                <label>Update Contact Information</label>
+            </value>
+            <value>
+                <fullName>Reactivation</fullName>
+                <default>false</default>
+                <label>Reactivation</label>
+            </value>
+            <value>
+                <fullName>Technical</fullName>
+                <default>false</default>
+                <label>Technical</label>
+            </value>
+            <value>
+                <fullName>Log in Issue</fullName>
+                <default>false</default>
+                <label>Log in Issue</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <valueName>New Applicant Call</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <valueName>Enrollment Push</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <controllingFieldValue>Approved</controllingFieldValue>
+            <valueName>Withdrawal DEP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <valueName>Document Follow-up</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <valueName>Account Registration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <valueName>Outreach and Marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <controllingFieldValue>Approved</controllingFieldValue>
+            <controllingFieldValue>Enrolled</controllingFieldValue>
+            <controllingFieldValue>Withdrawn</controllingFieldValue>
+            <controllingFieldValue>Archived</controllingFieldValue>
+            <valueName>Log In Access</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <controllingFieldValue>Approved</controllingFieldValue>
+            <controllingFieldValue>Enrolled</controllingFieldValue>
+            <controllingFieldValue>Withdrawn</controllingFieldValue>
+            <controllingFieldValue>Archived</controllingFieldValue>
+            <valueName>NES Guidance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <controllingFieldValue>Approved</controllingFieldValue>
+            <controllingFieldValue>Enrolled</controllingFieldValue>
+            <valueName>Update Contact Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <controllingFieldValue>Approved</controllingFieldValue>
+            <controllingFieldValue>Enrolled</controllingFieldValue>
+            <controllingFieldValue>Withdrawn</controllingFieldValue>
+            <controllingFieldValue>Archived</controllingFieldValue>
+            <valueName>Technical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Applicant</controllingFieldValue>
+            <controllingFieldValue>Pre-Approved</controllingFieldValue>
+            <controllingFieldValue>Approved</controllingFieldValue>
+            <controllingFieldValue>Enrolled</controllingFieldValue>
+            <controllingFieldValue>Withdrawn</controllingFieldValue>
+            <controllingFieldValue>Archived</controllingFieldValue>
+            <valueName>Log in Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Approved</controllingFieldValue>
+            <valueName>Final Confirmation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enrolled</controllingFieldValue>
+            <valueName>Change of Address/POR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enrolled</controllingFieldValue>
+            <valueName>Custody Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enrolled</controllingFieldValue>
+            <valueName>Extension/Exception Requests</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Withdrawn</controllingFieldValue>
+            <controllingFieldValue>Archived</controllingFieldValue>
+            <valueName>Re-enrollment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Withdrawn</controllingFieldValue>
+            <controllingFieldValue>Archived</controllingFieldValue>
+            <valueName>Reactivation</valueName>
+        </valueSettings>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

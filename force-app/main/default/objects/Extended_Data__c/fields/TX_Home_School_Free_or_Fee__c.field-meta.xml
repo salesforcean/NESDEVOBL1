@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TX_Home_School_Free_or_Fee__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is the student enrolled in a tuition-based diploma program</description>
+    <externalId>false</externalId>
+    <label>TX Home School Free or Fee</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

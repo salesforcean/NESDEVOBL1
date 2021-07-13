@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reactivation_Whitelist__c</fullName>
+    <description>Holds comma separated list of Profile Names having access to Full/Soft Reactivation button.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Comma separated list of Profile Names having access to Full/Soft Reactivation button.</inlineHelpText>
+    <label>Reactivation Whitelist</label>
+    <required>false</required>
+    <type>TextArea</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Comment_Added__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>US # 217816  used for checking case comments updated by the Caretaker Community User and added into the all Ticket list view.</description>
+    <externalId>false</externalId>
+    <label>New Comment Added</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>
