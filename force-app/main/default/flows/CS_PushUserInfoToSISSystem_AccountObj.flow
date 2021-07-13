@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Invokes the NES_IdamUtilities</description>
+        <name>UserInfoToSIS</name>
+        <label>UserInfoToSIS</label>
+        <locationX>676</locationX>
+        <locationY>116</locationY>
+        <actionName>NES_IdamUtilities</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <name>eventTriggeredFieldLabel</name>
+            <value>
+                <stringValue>Request Type</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>eventTriggeredFieldValue</name>
+            <value>
+                <elementReference>$Record.Request_Type__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>eventType</name>
+            <value>
+                <elementReference>$Record.Request_Type__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>householdId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <decisions>
+        <description>Check Record Type and Request Type</description>
+        <name>Check_Record_Type</name>
+        <label>Check Record Type</label>
+        <locationX>454</locationX>
+        <locationY>118</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>RecordTypeCheck</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account_Record_Type_Text__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Household</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Request_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Address Change</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UserInfoToSIS</targetReference>
+            </connector>
+            <label>RecordTypeCheck</label>
+        </rules>
+    </decisions>
+    <description>The Flow is being triggered When Account is created/updated as per the Requirement (ADO US # 216772)</description>
+    <interviewLabel>CS_PushUserInfoToSISSystem_AccountObj {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CS_PushUserInfoToSISSystem_AccountObj</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Check_Record_Type</targetReference>
+        </connector>
+        <object>Account</object>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>IdamResponse</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

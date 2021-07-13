@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Agreement_Email</name>
+        <label>Send Agreement Email</label>
+        <locationX>377</locationX>
+        <locationY>407</locationY>
+        <actionName>NES_AddHHMemApexController</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <name>addlHHMember</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>v2Role</name>
+            <value>
+                <elementReference>$Record.V2_Role__c</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <constants>
+        <description>Account Review value for Ticket Type field of Ticket.</description>
+        <name>TicketType</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Account Review</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check the V2 Role of Addl HH Member Contact Record.</description>
+        <name>Check_Contact_V2_Role</name>
+        <label>Check Contact V2 Role</label>
+        <locationX>676</locationX>
+        <locationY>148</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Learning_Coach</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.V2_Role__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Learning Coach</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Learning Coach??</label>
+        </rules>
+        <rules>
+            <name>Caretaker</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.V2_Role__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Caretaker</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Caretaker??</label>
+        </rules>
+        <rules>
+            <name>Guardian</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.V2_Role__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Parent or Legal Guardian</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Guardian??</label>
+        </rules>
+    </decisions>
+    <description>This flow will be triggered for Addl HH Members being created from Portal.</description>
+    <formulas>
+        <description>Contact Name</description>
+        <name>ContactName</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.FirstName}  + {!$Record.LastName}</expression>
+    </formulas>
+    <formulas>
+        <name>Description</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.FirstName}&amp; &quot; &quot; &amp;{!$Record.LastName} &amp; &quot;, &quot; &amp;{!$Record.Email} &amp; &quot;, &quot; &amp;{!$Record.RecordType.Name}</expression>
+    </formulas>
+    <interviewLabel>Addl HH Member Contact Process after Creation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Addl HH Member Contact Process after Creation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create Ticket and associate it to Addl HH Member Contact being created.</description>
+        <name>Create_Ticket</name>
+        <label>Create Ticket</label>
+        <locationX>486</locationX>
+        <locationY>147</locationY>
+        <connector>
+            <targetReference>Send_Agreement_Email</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>Description</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Internal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Enrollment_Support_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Working</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Request to Add new Caretaker/Household Member/Learning Coach</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject_Name__c</field>
+            <value>
+                <elementReference>ContactName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>System_of_Origin__c</field>
+            <value>
+                <stringValue>New Enrollment</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ticket_Sub_Type__c</field>
+            <value>
+                <stringValue>Account Access Requests / Changes</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ticket_Type__c</field>
+            <value>
+                <stringValue>Account Review</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Enrollment Assistance</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Enrollment_Support_Record_Type</name>
+        <label>Get Enrollment Support Record Type</label>
+        <locationX>122</locationX>
+        <locationY>371</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Ticket</targetReference>
+        </connector>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Enrollment_Support</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Get_Enrollment_Support_Record_Type</targetReference>
+        </connector>
+        <filters>
+            <field>Unverified__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

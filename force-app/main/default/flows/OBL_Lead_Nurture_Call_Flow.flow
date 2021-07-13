@@ -1,0 +1,1569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <choices>
+        <name>ch_Additional_Questions_Tell_me_more_Register</name>
+        <choiceText>Additional Questions / Tell me more /Register</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_AdvancedAcademically</name>
+        <choiceText>Advanced Academically</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_AlreadyRegistered</name>
+        <choiceText>Already Registered</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_Answered</name>
+        <choiceText>Answered</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>ch_BeginEnrollmentProcess</name>
+        <choiceText>Begin Enrollment Process</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_Bullying_SafeEnvironment</name>
+        <choiceText>Bullying/Safe Environment</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_ContactisUnavailable</name>
+        <choiceText>Contact is unavailable</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_CThasConcernstoAddress</name>
+        <choiceText>CT has Concerns to Address</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_DissatisfiedwithSchool_Teacher</name>
+        <choiceText>DissatisfiedwithSchool/Teacher</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_EmancipatedMinor</name>
+        <choiceText>Emancipated Minor</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_Flexible_PersonalizedLearning</name>
+        <choiceText>Flexible/Personalized Learning</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_InboundCall</name>
+        <choiceText>Inbound Call</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>ch_LanguageAssistanceRequired</name>
+        <choiceText>Language Assistance Required</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_NoneoftheAbove</name>
+        <choiceText>None of the Above</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_NotInterested</name>
+        <choiceText>Not Interested</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_Other</name>
+        <choiceText>Other</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_OutboundCall</name>
+        <choiceText>Outbound Call</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>ch_Parent_LegalGuardian</name>
+        <choiceText>Parent/Legal Guardian</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_RegistrationNo</name>
+        <choiceText>No</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_RegistrationYes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_SchoolNo</name>
+        <choiceText>No</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_SchoolYes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_SpecializedNeeds_Health</name>
+        <choiceText>Specialized Needs/Health</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_StrugglingAcademically</name>
+        <choiceText>Struggling Academically</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_StudentofAge_18orolder</name>
+        <choiceText>Student of Age (18 or older)</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_Undecided</name>
+        <choiceText>Undecided</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_UndecidedorNotInterested</name>
+        <choiceText>Undecided or Not Interested</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>ch_Voicemail</name>
+        <choiceText>Voicemail</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>ch_Yes</name>
+        <choiceText>Yes, This is {!Get_Lead_Record.Name}</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <decisions>
+        <name>Decision_Answered_Status</name>
+        <label>Decision Answered Status</label>
+        <locationX>1004</locationX>
+        <locationY>553</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_Yes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Yes</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+        <rules>
+            <name>Contact_is_unavailable</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_ContactisUnavailable</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Contact_is_unavailable</targetReference>
+            </connector>
+            <label>Contact is unavailable</label>
+        </rules>
+        <rules>
+            <name>Already_Registered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_AlreadyRegistered</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Already_Registered</targetReference>
+            </connector>
+            <label>Already Registered</label>
+        </rules>
+        <rules>
+            <name>Language_Assistance_Required</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_LanguageAssistanceRequired</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Language_Assistance_Required</targetReference>
+            </connector>
+            <label>Language Assistance Required</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Call_Status</name>
+        <label>Decision Call Status</label>
+        <locationX>630</locationX>
+        <locationY>547</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Answered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_Answered</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Answered</targetReference>
+            </connector>
+            <label>Answered</label>
+        </rules>
+        <rules>
+            <name>Voicemail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_Voicemail</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Voicemail</targetReference>
+            </connector>
+            <label>Voicemail</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Call_Status_0</name>
+        <label>Decision Call Status</label>
+        <locationX>114</locationX>
+        <locationY>1249</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Additional_Questions_Tell_me_more_Register</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_Additional_Questions_Tell_me_more_Register</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Yes</targetReference>
+            </connector>
+            <label>Additional Questions / Tell me more /Register</label>
+        </rules>
+        <rules>
+            <name>Already_Registered_100</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_AlreadyRegistered</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Already_Registered</targetReference>
+            </connector>
+            <label>Already Registered</label>
+        </rules>
+        <rules>
+            <name>Language_Assistance_Required_78</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_LanguageAssistanceRequired</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Language_Assistance_Required</targetReference>
+            </connector>
+            <label>Language Assistance Required</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Call_Type</name>
+        <label>Decision Call Type</label>
+        <locationX>305</locationX>
+        <locationY>855</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Inbound_Call</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_InboundCall</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IB_Screen_1</targetReference>
+            </connector>
+            <label>Inbound Call</label>
+        </rules>
+        <rules>
+            <name>Outbound_Call</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_OutboundCall</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outbound_Call_Type</targetReference>
+            </connector>
+            <label>Outbound Call</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Student_Eligibility</name>
+        <label>Decision Student Eligibility</label>
+        <locationX>1399</locationX>
+        <locationY>648</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_SchoolYes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ch_RegistrationYes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Yes_Yes</targetReference>
+            </connector>
+            <label>Yes &amp; Yes</label>
+        </rules>
+        <rules>
+            <name>Yes_No</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_SchoolYes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ch_RegistrationNo</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Yes_No</targetReference>
+            </connector>
+            <label>Yes &amp; No</label>
+        </rules>
+        <rules>
+            <name>No_No_No_Yes</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_SchoolNo</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ch_RegistrationYes</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ch_RegistrationNo</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_No_No</targetReference>
+            </connector>
+            <label>No No &amp; No Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Student_Eligibility_0</name>
+        <label>Decision Student Eligibility</label>
+        <locationX>2152</locationX>
+        <locationY>827</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Begin_Enrollment_Process</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_BeginEnrollmentProcess</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Begin_Enrollment_Process_123</targetReference>
+            </connector>
+            <label>Begin Enrollment Process</label>
+        </rules>
+        <rules>
+            <name>Undecided</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_Undecided</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Undecided_Not_Interested</targetReference>
+            </connector>
+            <label>Undecided</label>
+        </rules>
+        <rules>
+            <name>Not_Interested</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_NotInterested</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Undecided_Not_Interested</targetReference>
+            </connector>
+            <label>Not Interested</label>
+        </rules>
+        <rules>
+            <name>CT_has_Concerns_to_Address</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_CThasConcernstoAddress</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_CT_has_concerns_to_address</targetReference>
+            </connector>
+            <label>CT has Concerns to Address</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Student_Eligibility_0_0</name>
+        <label>Decision Student Eligibility_1</label>
+        <locationX>2360</locationX>
+        <locationY>596</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Begin_Enrollment_Process_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_BeginEnrollmentProcess</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Begin_Enrollment_Process_123</targetReference>
+            </connector>
+            <label>Begin Enrollment Process</label>
+        </rules>
+        <rules>
+            <name>Undecided_Or_Not_Interested</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_UndecidedorNotInterested</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Undecided_Not_Interested_12</targetReference>
+            </connector>
+            <label>Undecided Or Not Interested</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Student_Eligibility_0_0_0</name>
+        <label>Decision Student Eligibility_2</label>
+        <locationX>2332</locationX>
+        <locationY>1085</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Begin_Enrollment_Process_0_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_BeginEnrollmentProcess</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Begin_Enrollment_Process_123</targetReference>
+            </connector>
+            <label>Begin Enrollment Process</label>
+        </rules>
+        <rules>
+            <name>Undecided_Or_Not_Interested_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_UndecidedorNotInterested</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Undecided_Not_Interested_12</targetReference>
+            </connector>
+            <label>Undecided Or Not Interested</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Student_Eligibility_0_0_0_0</name>
+        <label>Decision Student Eligibility_3</label>
+        <locationX>2556</locationX>
+        <locationY>900</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Parent_Legal_Guardian</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_Parent_LegalGuardian</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Other_Than_None_Of_The_Above</targetReference>
+            </connector>
+            <label>Parent/Legal Guardian</label>
+        </rules>
+        <rules>
+            <name>Student_of_Age_18_or_older</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_StudentofAge_18orolder</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Other_Than_None_Of_The_Above</targetReference>
+            </connector>
+            <label>Student of Age (18 or older)</label>
+        </rules>
+        <rules>
+            <name>Emancipated_Minor</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_EmancipatedMinor</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_Other_Than_None_Of_The_Above</targetReference>
+            </connector>
+            <label>Emancipated Minor</label>
+        </rules>
+        <rules>
+            <name>None_of_the_Above</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ch_NoneoftheAbove</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DT_None_Of_The_Above</targetReference>
+            </connector>
+            <label>None of the Above</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>IC_Dialer_Call_Direction</name>
+        <label>IC Dialer Call Direction</label>
+        <locationX>213</locationX>
+        <locationY>545</locationY>
+        <defaultConnector>
+            <targetReference>OBL_Lead_Nurture_Call_Flow</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Inbound</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_Call_Direction</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Inbound</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>IB_Screen_1</targetReference>
+            </connector>
+            <label>Inbound</label>
+        </rules>
+        <rules>
+            <name>Outbound</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_Call_Direction</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Outbound</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outbound_Call_Type</targetReference>
+            </connector>
+            <label>Outbound</label>
+        </rules>
+    </decisions>
+    <description>ADO# 383446
+Added link on OBLN - 030 page</description>
+    <dynamicChoiceSets>
+        <name>ReasonForConsidering</name>
+        <dataType>Multipicklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Reasons_for_Considering_CA__c</picklistField>
+        <picklistObject>Lead</picklistObject>
+    </dynamicChoiceSets>
+    <formulas>
+        <name>UserID</name>
+        <dataType>String</dataType>
+        <expression>{!$user.Id}</expression>
+    </formulas>
+    <interviewLabel>OBL Lead Nurture Call Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>OBL Lead Nurture Call Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Lead_Record</name>
+        <label>Get Lead Record</label>
+        <locationX>263</locationX>
+        <locationY>302</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_User_Record</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>v_Lead_ID</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_User_Record</name>
+        <label>Get User Record</label>
+        <locationX>258</locationX>
+        <locationY>429</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>IC_Dialer_Call_Direction</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Lead_Record</name>
+        <label>Update_Lead_Record</label>
+        <locationX>1682</locationX>
+        <locationY>445</locationY>
+        <connector>
+            <targetReference>DT_Yes_Yes_2</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Lead_Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Reasons_for_Considering_CA__c</field>
+            <value>
+                <elementReference>Reason_For_Considering</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <screens>
+        <name>DT_Already_Registered</name>
+        <label>DT_Already Registered</label>
+        <locationX>860</locationX>
+        <locationY>1046</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Page_015</name>
+            <fieldText>&lt;p&gt;OBLN - 015&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Already_Registered_12</name>
+            <fieldText>&lt;p&gt;&lt;b&gt;Dialer:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;I&apos;m glad to hear you have already started the enrollment process. A Family Enrollment Counselor would be better to assist you, they can be reached by calling 800-221-2720. &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Serenova:&lt;/b&gt; &lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 11px;&quot;&gt;&lt;i&gt;I&apos;m glad to hear you have already started the enrollment process. A Family Enrollment Counselor would be better to assist you, they can be reached by calling 800-221-2720&lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;&lt;i&gt;. &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 11px;&quot;&gt;&lt;i&gt;I can transfer you there now. &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(234, 17, 17);&quot;&gt;&lt;i&gt;Transfer caller to PCx Region 1 queue.&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Answered</name>
+        <label>DT_Answered</label>
+        <locationX>860</locationX>
+        <locationY>551</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Decision_Answered_Status</targetReference>
+        </connector>
+        <fields>
+            <name>Page_013</name>
+            <fieldText>&lt;p&gt;OBLN - 013&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Answered_0</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Good morning/afternoon/evening, may I please speak with {!Get_Lead_Record.Name}?&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 14px; color: rgb(8, 7, 7);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Confirm you are speaking to the right party.&lt;/b&gt;&lt;span style=&quot;font-size: 14px; color: rgb(8, 7, 7);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Hi &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;&lt;i&gt;{!Get_Lead_Record.Name}&lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;, this is {!Get_User_Record.Name} an Enrollment Representative with &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.School_Name__c} &lt;/b&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;, all calls are monitored and recorded for quality assurance and training purposes.&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;If the caller STOPS you and states that s/he does not want to continue the conversation on a recorded line, please respond as follows:&lt;/b&gt;&lt;span style=&quot;font-size: 14px; color: rgb(8, 7, 7);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;We record calls for quality assurance and training purposes, but please give me a moment while I stop recording.&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 14px; color: rgb(8, 7, 7);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;*Select STOP RECORDING in icdial.&lt;/b&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 14px; color: rgb(194, 57, 52);&quot;&gt; *&lt;/b&gt;&lt;b style=&quot;font-size: 14px; color: rgb(62, 62, 60);&quot;&gt;Please select&lt;/b&gt;&lt;span style=&quot;font-size: 14px; color: rgb(62, 62, 60);&quot;&gt; :﻿&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Yes_0</name>
+            <choiceReferences>ch_Yes</choiceReferences>
+            <choiceReferences>ch_ContactisUnavailable</choiceReferences>
+            <choiceReferences>ch_AlreadyRegistered</choiceReferences>
+            <choiceReferences>ch_LanguageAssistanceRequired</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Begin_Enrollment_Process_123</name>
+        <label>DT_Begin_Enrollment_Process_123</label>
+        <locationX>2386</locationX>
+        <locationY>814</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Decision_Student_Eligibility_0_0_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_028</name>
+            <fieldText>&lt;p&gt;OBLN - 028&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>DT_Begin_Enrollment_Process</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;Before starting a new registration confirm if the caller is the parent/legal guardian of the student(s) or student is of age (18 or older) or is an emancipated minor. If the caller is NOT the parent/legal guardian please request to speak with parent/legal guardian if available. If caller is parent/legal guardian, proceed with the registration. &lt;/b&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(22, 50, 92); font-size: 10px;&quot;&gt;&lt;i&gt;﻿&lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Are you the parent, legal guardian, or a student of age?&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(107, 109, 112); font-size: 12px;&quot;&gt;Select one:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Select_One_0_0</name>
+            <choiceReferences>ch_Parent_LegalGuardian</choiceReferences>
+            <choiceReferences>ch_StudentofAge_18orolder</choiceReferences>
+            <choiceReferences>ch_EmancipatedMinor</choiceReferences>
+            <choiceReferences>ch_NoneoftheAbove</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Contact_is_unavailable</name>
+        <label>DT_Contact is unavailable</label>
+        <locationX>1003</locationX>
+        <locationY>325</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Page_014</name>
+            <fieldText>&lt;p&gt;OBLN - 014&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Contact_is_unavailable_1</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;When is a better time to reach &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;&lt;i&gt;{!Get_Lead_Record.FirstName} &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;? &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Make note of the time and date to schedule the callback. &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Thank you, we will try reaching &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;&lt;i&gt;{!Get_Lead_Record.FirstName}&lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt; at that time. &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_CT_has_concerns_to_address</name>
+        <label>DT CT has concerns to address</label>
+        <locationX>2179</locationX>
+        <locationY>595</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Decision_Student_Eligibility_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_027</name>
+            <fieldText>&lt;p&gt;OBLN - 027&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>CT_has_Concerns_to_address_12</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Cushion&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;“I understand...”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;“That is a valid concern...”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;“I see your point...”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;“I hear what you’re saying...”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Clarify&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;“Can you please tell me a bit more about your concern with&lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;&lt;i&gt;xyz&lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;?”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;“Can you please explain what you mean when you say,&lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;&lt;i&gt;xyz&lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;:”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;“What is it specifically that you are concerned about?”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;“So that I can make sure I provide you with the right solution, can you please explain it to me in a little more detail?”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Restating &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;So what you are saying is...”&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt; &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Respond....followed by a Trial Close. &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;If I have addressed all of your concerns, I will be happy to start the enrollment process for you.&amp;nbsp;&amp;nbsp;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(194, 57, 52);&quot;&gt;*&lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(107, 109, 112);&quot;&gt;Please select&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Select_One_0_0_0</name>
+            <choiceReferences>ch_BeginEnrollmentProcess</choiceReferences>
+            <choiceReferences>ch_UndecidedorNotInterested</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Language_Assistance_Required</name>
+        <label>DT_Language Assistance Required</label>
+        <locationX>1050</locationX>
+        <locationY>1271</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Language_Assistance_Required_13</targetReference>
+        </connector>
+        <fields>
+            <name>Page_016</name>
+            <fieldText>&lt;p&gt;OBLN - 016&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Language_Assistance_Required_12</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;&amp;nbsp;Confirm if there is a CT in the household that speaks English. &lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;(Click &apos;Previous&apos; if an English speaking CT is available) &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;If there is no English Speaking CT click next to continue to use Language Line. &lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(107, 109, 112);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Language_Assistance_Required_13</name>
+        <label>DT_Language Assistance Required_1</label>
+        <locationX>1246</locationX>
+        <locationY>1276</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Yes</targetReference>
+        </connector>
+        <fields>
+            <name>Page_017</name>
+            <fieldText>&lt;p&gt;OBLN - 017&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Language_Assistance_Required_12_1</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Please bear with me while I get an interpreter on the line.&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt; &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;Language Line Instructions :&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;1. Use the conference feature on your phone to make a 3-way call, and follow the instructions below to connect to an interpreter.&lt;/span&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;2. Press the conference option on your phone, when you hear the dial tone dial the number below:&lt;/span&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;DIAL:&lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 205); font-size: 12px;&quot;&gt;&lt;u&gt;1-866-874-3972&lt;/u&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt; : Provide your Client ID –&lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 205); font-size: 12px;&quot;&gt;530759&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt; :. Indicate the language you need, press: 1 for Spanish - 2for all other languages and state the name of the language you need 0 for assistance if you don’t know what language you need – if asked for your Client ID, provide 530759 &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;3. Wait for the interpreter to answer. The interpreter who will provide his/her name and ID number which you can document for reference. Summarize what you wish to accomplish and give any special instructions.&lt;/span&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;4. Press the conference button again to join all three parties on the call (Caller, Agent, Interpreter)&lt;/span&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_No_No</name>
+        <label>DT No No</label>
+        <locationX>1531</locationX>
+        <locationY>1049</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Page_021</name>
+            <fieldText>&lt;p&gt;OBLN - 021&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>No_No_12_0</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Thank you for that. Your student is not eligible for &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px; background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.School_Name__c}&lt;i&gt; &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;. &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(8, 7, 7); font-size: 12px;&quot;&gt;Check CA website and if there is a CA school in their state, transfer to V2 campaign. If there is not a CA school in their state and the student is under the age of 21, offer Pearson Online Academy. www.pearsononlineacademy.com 1-888-260-4159. &lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_None_Of_The_Above</name>
+        <label>DT None Of The Above</label>
+        <locationX>2571</locationX>
+        <locationY>661</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Page_029</name>
+            <fieldText>&lt;p&gt;OBLN - 029&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>None_Of_The_Above_4</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Registration for a student must be started and completed by the student&apos;s parent or legal guardian. Please have the parent or legal guardian contact us at 800-221-2720 to get started!&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Other_Than_None_Of_The_Above</name>
+        <label>DT Other Than None Of The Above</label>
+        <locationX>2783</locationX>
+        <locationY>860</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Other_Than_None_Of_The_Above_12</targetReference>
+        </connector>
+        <fields>
+            <name>Page_030</name>
+            <fieldText>&lt;p&gt;OBLN - 030&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Other_Than_None_Of_The_Above_4_0</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Thank you! One moment while I access the registration form. &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt;Open new tab or session in browser and open the registration form. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://enroll.connectionsacademy.com/s/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px;&quot;&gt;https://enroll.connectionsacademy.com/s/&lt;/a&gt;&lt;span style=&quot;font-size: 12px; font-family: &amp;quot;Segoe UI VSS (Regular)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; color: rgba(0, 0, 0, 0.9); background-color: rgb(255, 255, 255);&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Verify information below is accurate. If information below is incorrect, please pull up lead and update incorrect information and use correct information on registration form. &lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(25, 150, 125);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;First Name: {!Get_Lead_Record.FirstName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Last Name:&lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.LastName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Phone: &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.Phone}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Email: &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.Email}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Address Street: &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.Street}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Address State: &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.State}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Address City :{!Get_Lead_Record.City}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Address Zipcode: &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.PostalCode}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Enter verified information on registration form and select Continue Registration. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Other_Than_None_Of_The_Above_12</name>
+        <label>DT Other Than None Of The Above 12</label>
+        <locationX>2924</locationX>
+        <locationY>873</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Other_Than_None_Of_The_Above_2_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_031</name>
+            <fieldText>&lt;p&gt;OBLN - 031&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Other_Than_None_Of_The_Above_12_0_0</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Set username as CT FirstNameLastName. If username is already taken, add a number to the end. &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Example: StanSmith1&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;  Set password as Password1.&amp;nbsp;Do NOT provide this password to CT, this is for your use only.&amp;nbsp;CT will have to later go in and select &apos;forgot password&apos; to setup their own personal password.&amp;nbsp;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;&amp;nbsp;Thank you for your patience. Your account has been created and your username is ______.&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Login as CT. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt; &lt;/i&gt;Now I would like to add your first student. Can you verify the name and spelling of the first student you would like added? &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Enter legal name of student. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Select the appropriate definition of caller and student relationship. &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Select correct school and school year applying for. &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Read disclaimer statement to CT. &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;These preliminary checks help ensure this student is eligible. Passing these preliminary eligibility checks does not guarantee your student&apos;s spot in school, but it gets the most important questions out of the way first so you aren&apos;t spending more time than necessary. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Select grade level of student and enter student date of birth. &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt; &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;If the CT has additional students to add, you may add them for the CT. &lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Other_Than_None_Of_The_Above_2_0</name>
+        <label>DT Other Than None Of The Above 2</label>
+        <locationX>3074</locationX>
+        <locationY>863</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Undecided_Not_Interested_12</targetReference>
+        </connector>
+        <fields>
+            <name>Page_032</name>
+            <fieldText>&lt;p&gt;OBLN - 032&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Other_Than_None_Of_The_Above_2_0_0_0</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;Go to login page and enter CT username, then click forgot password. Advise CT to check email for link to reset their password and login. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;The next step is to login and complete the Tell Us About Your Student form. &lt;/b&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt; &lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;Can you get to a computer now to ensure you are able to login? Would you be able to complete the forms in the next 3 days? &lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;If Yes&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Great!&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;If No&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;When would you be able to complete it?&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;(build urgency based on response, ie: caps, waitlists, close dates, pause/freeze dates) &lt;/span&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;&lt;i&gt; &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;i style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt;Outline next steps of the enrollment process. &lt;/i&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;&lt;i&gt; &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Undecided_Not_Interested</name>
+        <label>DT Undecided Not Interested</label>
+        <locationX>2158</locationX>
+        <locationY>1104</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Decision_Student_Eligibility_0_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_026</name>
+            <fieldText>&lt;p&gt;OBLN - 026&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Undecided_NotInterested</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Objection Response (still researching, talking to family):&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Are you sure you do not want access to our enrollment portal? It will give you everything you need as you (research, talk to family) and it’s free. You get access to school handbooks, policies, procedures, etc.&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Mr./Mrs. {!Get_Lead_Record.LastName}, I can call you back at a later date when it is more convenient for you. What time would be good for you?&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Make note of the time and date to schedule the callback.&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(194, 57, 52);&quot;&gt;*&lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(107, 109, 112);&quot;&gt;Please select&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Select_One_0</name>
+            <choiceReferences>ch_BeginEnrollmentProcess</choiceReferences>
+            <choiceReferences>ch_UndecidedorNotInterested</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Undecided_Not_Interested_12</name>
+        <label>DT Undecided Not Interested</label>
+        <locationX>4019</locationX>
+        <locationY>864</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Undecided_Not_Interested_2_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_033</name>
+            <fieldText>&lt;p&gt;OBLN - 033&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Undecided_Not_Interested</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;There are several great ways you can learn more about our program. We have several online events available. &lt;/i&gt;In our &lt;i&gt;Talk to an Enrolled Family &lt;/i&gt;Webinar, a high school family from one of the many Connections Academy schools throughout the U.S shares how online school transformed learning for their student. In our&lt;i&gt; Online Information Session,&lt;/i&gt; you will learn more about Connections Academy in a short presentation then your local Connections Academy school staff will host a Q&amp;amp;A session and share insights about our online school that can help your child succeed. We also offer &lt;i&gt;The Role of the Learning Coach &lt;/i&gt;session where you can learn more about the roles and responsibilities of the learning coach and get to hear from our learning coach support staff.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Priority 1:&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Encourage family to attend a Scheduled Info Session/Webinar:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.connectionsacademy.com/arizona-online-school/learn-more/events&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px; color: rgb(0, 109, 204);&quot;&gt;&lt;b&gt;&lt;u&gt;Click here&amp;nbsp;for ACA events&amp;nbsp;&lt;/u&gt;&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.connectionsacademy.com/arkansas-virtual-school/learn-more/events&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px; color: rgb(0, 109, 204);&quot;&gt;&lt;b&gt;&lt;u&gt;Click here&amp;nbsp;for ARCA events&amp;nbsp;&lt;/u&gt;&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.connectionsacademy.com/california-online-school/learn-more/events&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px; color: rgb(0, 109, 204);&quot;&gt;&lt;b&gt;&lt;u&gt;Click here&amp;nbsp;for CalCA events&amp;nbsp;&lt;/u&gt;&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.connectionsacademy.com/wyoming-virtual-school/learn-more/events&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px; color: rgb(0, 109, 204);&quot;&gt;&lt;b&gt;&lt;u&gt;Click here&amp;nbsp;for WYCA events&amp;nbsp;&lt;/u&gt;&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;(Review upcoming events and offer to register CT.)&amp;nbsp;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Please verify CT information used for event registration.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Priority 2:&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Offer to send link to Sneak Peek video&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;In addition, I would like to send you a Sneak Peek video that you can watch at your convenience. The presentation will provide a detailed overview about our school.&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Please send the &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(131, 65, 135);&quot;&gt;CA Call More Info Follow-up HTML &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;email template through the lead in SalesForce&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt;. &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt; &lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Undecided_Not_Interested_2_0</name>
+        <label>DT Undecided Not Interested 2</label>
+        <locationX>4196</locationX>
+        <locationY>844</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Page_034</name>
+            <fieldText>&lt;p&gt;OBLN - 034&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Undecided_Not_Interested_2</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Thank you for your time today. Before we end this call, are there any other questions you have? &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;&lt;i&gt;If applicable: &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Now that you have started the enrollment process, you will receive a call soon from a Family Enrollment Counselor. Feel free to call and speak to a Family Enrollment Counselor by calling 800-221-2720 . &lt;/i&gt; &lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Voicemail</name>
+        <label>DT_Voicemail</label>
+        <locationX>631</locationX>
+        <locationY>361</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Page_012</name>
+            <fieldText>&lt;p&gt;OBLN - 012&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Voiocemail</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;Press &quot;Send to VM&quot; button in icdial just after you hear the beep on the answering machine/voicemail. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;Option 1:&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Hello, this is &lt;/b&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_User_Record.FirstName}&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt; from &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.School_Name__c} &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;calling to follow up on your request for more information. I&apos;m sorry we missed you. Please call us back at &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;866-679-4947&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;, Monday through Friday 9am to 11:30pm, Saturday 9:30am to 6pm or Sun 10:30am-7pm eastern standard time. Thank you for your interest in Connections Academy.&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;Option 2:&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Hello, I am &lt;/b&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_User_Record.FirstName}&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;, an enrollment representative calling from &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.School_Name__c} &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;, following up on your request for information. My role is to partner with you, inform you about our school and ensure this is a good fit. Please call us back at 866-679-4947 to learn more about Connections Academy. We look forward to speaking with you.&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(62, 62, 60);&quot;&gt;  &lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Yes</name>
+        <label>DT_Yes</label>
+        <locationX>1221</locationX>
+        <locationY>866</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Decision_Student_Eligibility</targetReference>
+        </connector>
+        <fields>
+            <name>Page_018</name>
+            <fieldText>&lt;p&gt;OBLN - 018&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Yes_12</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Hi {!Get_Lead_Record.Name}, my role is to partner with you to ensure &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.School_Name__c} &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt; is a good fit, inform you about our school, and help you prepare for the enrollment process. Before I do that, I just want to verify your student is eligible for our school. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;Verify student(s) eligibility: In notes box collect&lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt; &lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;student(s)&lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt; first name&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;, &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;grade level&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;, and&lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt; state &lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;of residence. If grade interested in grades K,1,9,10,11,or 12, collect &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;age &lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt;of student. Check for other school specific eligibility requirements. Review registration and enrollment open/close dates, deadlines and Cap/WL information. &lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>ACA_LINKS</name>
+            <fieldText>&lt;p&gt;Arizona School Links :&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pearsonobl.lightning.force.com/lightning/r/Knowledge_Article__kav/ka04o000000mNALAA2/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193);&quot;&gt;&lt;u&gt;ACA Stage Page&amp;nbsp;&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.connectionsacademy.com/arizona-online-school/enrollment&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193);&quot;&gt;&lt;u&gt;ACA Website - Enrollment&amp;nbsp;&lt;/u&gt;&lt;/a&gt;&lt;u style=&quot;color: rgb(5, 99, 193);&quot;&gt;&amp;nbsp;&lt;/u&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>ARCA_Links</name>
+            <fieldText>&lt;p&gt;Arkansas School Links :&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pearsonobl.lightning.force.com/lightning/r/Knowledge_Article__kav/ka04o000000mNOmAAM/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193);&quot;&gt;&lt;u&gt;ARCA Stage Page&amp;nbsp;&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://www.connectionsacademy.com/arkansas-virtual-school/enrollment&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193);&quot;&gt;&lt;u&gt;ARCA Website - Enrollment&amp;nbsp;&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>California_Links</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: black;&quot;&gt;California &lt;/span&gt;School Links :&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pearsonobl.lightning.force.com/lightning/r/Knowledge_Article__kav/ka04o000000mNQ4AAM/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193);&quot;&gt;&lt;u&gt;CalCa State Page&amp;nbsp;&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt; &lt;a href=&quot;https://www.connectionsacademy.com/california-online-school/enrollment&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193);&quot;&gt;&lt;u&gt;CalCa Website - Enrollment&amp;nbsp;&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Wyoming_Links</name>
+            <fieldText>&lt;p&gt;Wyoming&lt;span style=&quot;color: black;&quot;&gt; &lt;/span&gt;School Links :&lt;/p&gt;&lt;p&gt; &lt;a href=&quot;https://pearsonobl.lightning.force.com/lightning/r/Knowledge_Article__kav/ka04o000000mNb2AAE/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193);&quot;&gt;&lt;u&gt;WYCA State Page&amp;nbsp;&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt; &lt;a href=&quot;https://www.connectionsacademy.com/wyoming-virtual-school/enrollment&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(5, 99, 193);&quot;&gt;&lt;u&gt;WYCA Website - Enrollment&amp;nbsp;&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Choices</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;*&lt;/b&gt;&lt;b style=&quot;color: rgb(107, 109, 112); font-size: 12px;&quot;&gt;Does student meet school eligibility?&amp;nbsp;&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>SchoolOptions</name>
+            <choiceReferences>ch_SchoolYes</choiceReferences>
+            <choiceReferences>ch_SchoolNo</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Registration</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;*&lt;/b&gt;&lt;b style=&quot;color: rgb(107, 109, 112); font-size: 12px;&quot;&gt;If student is eligible, Is registration currently open?&amp;nbsp;&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>RegistrationOptions</name>
+            <choiceReferences>ch_RegistrationYes</choiceReferences>
+            <choiceReferences>ch_RegistrationNo</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Yes_No</name>
+        <label>DT Yes No</label>
+        <locationX>1391</locationX>
+        <locationY>1040</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Page_020</name>
+            <fieldText>&lt;p&gt;OBLN - 020&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Yes_No_12</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Thank you for that. Your student is eligible for &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px; background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Lead_Record.School_Name__c}&lt;i&gt; &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;, however enrollment is not open at this time. &lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(8, 7, 7); font-size: 12px;&quot;&gt;Offer next semester/school year enrollment and schedule callback if possible. Offer Pearson Online Academy if requesting immediate enrollment. www.pearsononlineacademy.com 1-888-260-4159.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Yes_Yes</name>
+        <label>DT Yes Yes</label>
+        <locationX>1422</locationX>
+        <locationY>442</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_Lead_Record</targetReference>
+        </connector>
+        <fields>
+            <name>Page_019</name>
+            <fieldText>&lt;p&gt;OBLN - 019&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Yes_Yes_12_0</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(8, 7, 7);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Thank you for that. Your student is eligible to enroll into {!Get_Lead_Record.School_Name__c} for the (fall/spring) semester, which is a tuition-free, fully accredited, online public school.&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;We’ve received some great feedback from our families on how the school has helped students succeed, both academically and emotionally. I want to make sure I share the information that’s most important to you.&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;P-&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Let’s use this call to make sure you have what you need to make an informed decision.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;O-&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;In order to do that, I’d like to:&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Learn a little more about your interest in our school and goals for &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;(student name)&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;,&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;talk a bit about their background and current situation&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt;, &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;go over details about our school and the enrollment process and if it looks like a good fit, we can talk about the next steps and jump start the enrollment process.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;IN-&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Does that sound okay?&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;What else do you want to make sure we cover today?&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;T-&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Great. So tell me what has you wanting to explore &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;&lt;i&gt;{!Get_Lead_Record.School_Name__c} &lt;/i&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;?&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>select_reason</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(194, 57, 52);&quot;&gt;*&lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(94, 94, 94);&quot;&gt;Select &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(94, 94, 94);&quot;&gt;Re&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(107, 109, 112);&quot;&gt;asons for Considering CA&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Reason_For_Considering</name>
+            <choiceReferences>ReasonForConsidering</choiceReferences>
+            <dataType>String</dataType>
+            <fieldType>MultiSelectPicklist</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Yes_Yes_2</name>
+        <label>DT Yes Yes</label>
+        <locationX>1678</locationX>
+        <locationY>606</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Yes_Yes_3_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_022</name>
+            <fieldText>&lt;p&gt;OBLN - 022&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Yes_Yes_12_0_0</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Ask additional open ended BIG questions and “Double Click” questions to find out more about the current situation and desired situation for the family.&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;Examples:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Tell me about…, Help me understand…, or Tell me more...&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt;REMINDER: Ask Open Ended Questions &amp;amp; Take Notes &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Possible Questions:&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;What has you interested in &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);&quot;&gt;&lt;i&gt;{!Get_Lead_Record.School_Name__c}  &lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;for your child? &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;How do you think your child will benefit from our program? &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;Tell me about your child’s current school situation. &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;What is important to you in choosing a school?&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt; What type of special services are you looking for?&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt; What computer experience does your child have?&lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt; &lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Yes_Yes_3_0</name>
+        <label>DT Yes Yes</label>
+        <locationX>1675</locationX>
+        <locationY>839</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Yes_Yes_4_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_023</name>
+            <fieldText>&lt;p&gt;OBLN - 023&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Yes_Yes_13_0_0_0</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Thank you for sharing the information about your family. Let’s review what we talked about to make sure I’ve got it all.&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;We discussed….&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;Use your notes from family discovery to review the current situation and desired situation (what solution they are seeking, their needs, values and goals).&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Does that sum things up?&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Did I miss anything?&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;&lt;i&gt;Great, let’s take a closer look at Connections Academy and the learning experience.&lt;/i&gt; &lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Yes_Yes_4_0_0</name>
+        <label>DT Yes Yes</label>
+        <locationX>1844</locationX>
+        <locationY>834</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DT_Yes_Yes_5_0_0_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_024</name>
+            <fieldText>&lt;p&gt;OBLN - 024&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Yes_Yes_14_0_0_0_0</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0); font-size: 12px;&quot;&gt;Review learning coach and student roles and responsibilities with caller.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(0, 0, 255); font-size: 12px;&quot;&gt;Let&apos;s talk a little bit about the Learning Coach and student responsibilities&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt;Learning Coach Responsibilities&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt;K-5&lt;/b&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt;- Expected to devote about 5 hours per day &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt;6-8&lt;/b&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt;- Expected to devote about 2-3 hours per day &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt;9-12&lt;/b&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt;- Expected to devote about 1-2 hours per day &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt;Student Responsibilities&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(22, 50, 92); font-size: 12px;&quot;&gt; Review school specific time requirements with CT.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pearsoneducationinc-my.sharepoint.com/:w:/g/personal/darlena_harding_pearson_com/EdswA2j1BItKv1IW2UxAbygBCW-wFJH0JvbTYASJYtfSzw&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Caretaker &amp;amp; Learning Coach - Roles/Responsibilities&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pearsoneducationinc-my.sharepoint.com/:w:/g/personal/darlena_harding_pearson_com/EcF5THpn81BOip_JRutfO2YBdtHSu-lLWWA9eaP6cC8p8A&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Student Responsibilities&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>DT_Yes_Yes_5_0_0_0</name>
+        <label>DT Yes Yes</label>
+        <locationX>1998</locationX>
+        <locationY>808</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Decision_Student_Eligibility_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_025</name>
+            <fieldText>&lt;p&gt;OBLN - 025&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Yes_Yes_15_0_0_0_0_0</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;LINK ….&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;Earlier you mentioned that...&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;FEATURE….&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;One of the great things about Connections Academy is XYZ...&lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;BRIDGE…&lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;This is helpful for you…&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px; color: rgb(22, 50, 92);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(255, 0, 0);&quot;&gt;BENEFIT…. (Highlight the value they will receive, relate it to their situation, needs and goals) &lt;/b&gt;&lt;b style=&quot;font-size: 12px; color: rgb(0, 0, 255);&quot;&gt;&lt;i&gt;How do you feel about moving forward? &lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 12px; color: rgb(25, 150, 125);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 10px; color: rgb(25, 150, 125);&quot;&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 12px; color: rgb(194, 57, 52);&quot;&gt; *&lt;/span&gt;&lt;b style=&quot;font-size: 12px; color: rgb(107, 109, 112);&quot;&gt;Please select&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Select_One</name>
+            <choiceReferences>ch_BeginEnrollmentProcess</choiceReferences>
+            <choiceReferences>ch_Undecided</choiceReferences>
+            <choiceReferences>ch_NotInterested</choiceReferences>
+            <choiceReferences>ch_CThasConcernstoAddress</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>IB_Screen_1</name>
+        <label>IB Screen 1</label>
+        <locationX>124</locationX>
+        <locationY>863</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Decision_Call_Status_0</targetReference>
+        </connector>
+        <fields>
+            <name>Page_035</name>
+            <fieldText>&lt;p&gt;OBLN - 035&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>DT_IB_Call</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;Thank you for calling Connections Academy, this is {!Get_User_Record.FirstName}, all calls are monitored and recorded for quality assurance and training purposes. May I ask who I am speaking with? Great, how may I help you?&lt;/b&gt;&lt;span style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;After learning how you can help the customer, make sure you take notes and address their reason for calling before you get off the call. Go right into the agenda below&lt;/b&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;If the caller STOPS you and states that s/he does not want to continue the conversation on a recorded line, please respond as follows:&lt;/b&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;We record calls for quality assurance and training purposes, but please give me a moment while I stop recording.&lt;/b&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;*Select STOP RECORDING in icdial. &lt;/b&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 14px; color: rgb(194, 57, 52);&quot;&gt;﻿*&lt;/b&gt;&lt;b style=&quot;font-size: 14px; color: rgb(0, 0, 0);&quot;&gt;Please select&lt;/b&gt;&lt;span style=&quot;font-size: 14px; color: rgb(62, 62, 60);&quot;&gt; &lt;/span&gt;&lt;b style=&quot;font-size: 14px; color: rgb(62, 62, 60);&quot;&gt;:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>IB_Options</name>
+            <choiceReferences>ch_Additional_Questions_Tell_me_more_Register</choiceReferences>
+            <choiceReferences>ch_AlreadyRegistered</choiceReferences>
+            <choiceReferences>ch_LanguageAssistanceRequired</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Lead_ID</name>
+        <label>Lead ID</label>
+        <locationX>523</locationX>
+        <locationY>185</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>LeadID</name>
+            <dataType>String</dataType>
+            <fieldText>Lead ID</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>OBL_Lead_Nurture_Call_Flow</name>
+        <label>OBL Lead Nurture Call Flow</label>
+        <locationX>315</locationX>
+        <locationY>720</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Decision_Call_Type</targetReference>
+        </connector>
+        <fields>
+            <name>Page_010</name>
+            <fieldText>&lt;p&gt;OBLN - 010&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>OBL_LN_Call_Type</name>
+            <choiceReferences>ch_InboundCall</choiceReferences>
+            <choiceReferences>ch_OutboundCall</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>OBL LN Call Type</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Outbound_Call_Type</name>
+        <label>Outbound Call Type</label>
+        <locationX>502</locationX>
+        <locationY>635</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Decision_Call_Status</targetReference>
+        </connector>
+        <fields>
+            <name>Page_011</name>
+            <fieldText>&lt;p&gt;OBLN - 011&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>dt_ob_call_status</name>
+            <fieldText>&lt;p&gt;&lt;b&gt;What is the status of the call?&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>CallStatus</name>
+            <choiceReferences>ch_Answered</choiceReferences>
+            <choiceReferences>ch_Voicemail</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>126</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Get_Lead_Record</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>v_Call_Direction</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_First_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_Last_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_Lead_ID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>v_school_Acronym</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

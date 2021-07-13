@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <description>Assignment logic to capture the Student ID with the School ID uniquely</description>
+        <name>Assign_All_Student_And_School_Unique_IDs</name>
+        <label>Assign All Student And School Unique IDs</label>
+        <locationX>1054</locationX>
+        <locationY>50</locationY>
+        <assignmentItems>
+            <assignToReference>AllCompleteStudPEsStudentSchoolUniqueIDList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_And_Fetch_All_Student_And_School_Unique_IDs.StudentSchoolUniqueId__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_And_Fetch_All_Student_And_School_Unique_IDs</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>To calculate the size of the collection. The collection comprising of multiple unique IDs i.e. Student ID And School Account ID.</description>
+        <name>Calculate_Collection_Size_Of_Unique_ID_List</name>
+        <label>Calculate Collection Size Of Unique ID List</label>
+        <locationX>812</locationX>
+        <locationY>404</locationY>
+        <assignmentItems>
+            <assignToReference>LatestPEsCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>StudRecAndSchoolRecUniqueID</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_No_Of_Completed_Student_PEs_At_Caretaker_PE_Rollup</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Uniquely stamping the Student PE Record ID and the School Account ID (Educational Institution). Since this combination will give rise to unique no of records.</description>
+        <name>Populate_Student_PE_ID_And_School_Account_ID</name>
+        <label>Populate Student PE ID And School Account ID</label>
+        <locationX>1191</locationX>
+        <locationY>390</locationY>
+        <assignmentItems>
+            <assignToReference>StudRecAndSchoolRecUniqueID</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Iterate_Through_To_Check_For_Each_Unique_ID</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Through_To_Check_For_Each_Unique_ID</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Count of final set of PE records under the same Educational Institution.</description>
+        <name>Student_Complete_PEs</name>
+        <label>#Student Complete PEs</label>
+        <locationX>556</locationX>
+        <locationY>163</locationY>
+        <assignmentItems>
+            <assignToReference>NoOfCompletedStudentPEs</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>CompletedStudentPERecs</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Complete_Students_PE_s_Count</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>To Check Whether Student ID And School ID Uniquely Exist In Collection variable in the process flow.</description>
+        <name>Check_Whether_Student_ID_And_School_ID_Uniquely_Exist_In_Collection</name>
+        <label>Check Whether Student ID And School ID Uniquely Exist In Collection</label>
+        <locationX>1466</locationX>
+        <locationY>162</locationY>
+        <defaultConnector>
+            <targetReference>Populate_Student_PE_ID_And_School_Account_ID</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Unique_ID_Already_Is_Present_In_Flow_Collection</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>StudRecAndSchoolRecUniqueID</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>Iterate_Through_To_Check_For_Each_Unique_ID</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Iterate_Through_To_Check_For_Each_Unique_ID</targetReference>
+            </connector>
+            <label>Unique ID Already Is Present In Flow Collection</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Complete_Students_PE_s_Count</name>
+        <label>Complete Students PE&apos;s Count ?</label>
+        <locationX>666</locationX>
+        <locationY>165</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>NoOfCompletedStudentPEs</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_And_Fetch_All_Student_And_School_Unique_IDs</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>This flow is responsible for calculating the unique number of Students who have completely enrolled for a given Educational Institution such that even the Caretaker belongs to the same Educational Institution.</description>
+    <interviewLabel>CS_TotalCountOfCompleteEnrolledStudentPERecs {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CS_TotalCountOfCompleteEnrolledStudentPERecs</label>
+    <loops>
+        <description>This loop logic is for processing each Student PE record that is in Completed status and to aid in counting the no of Student PE records that have been completed under the same school.</description>
+        <name>Iterate_Through_To_Check_For_Each_Unique_ID</name>
+        <label>Iterate Through To Check For Each Unique ID</label>
+        <locationX>1191</locationX>
+        <locationY>170</locationY>
+        <collectionReference>AllCompleteStudPEsStudentSchoolUniqueIDList</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Check_Whether_Student_ID_And_School_ID_Uniquely_Exist_In_Collection</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Calculate_Collection_Size_Of_Unique_ID_List</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Loop And Fetch All Student And School Unique IDs</description>
+        <name>Loop_And_Fetch_All_Student_And_School_Unique_IDs</name>
+        <label>Loop And Fetch All Student And School Unique IDs</label>
+        <locationX>807</locationX>
+        <locationY>161</locationY>
+        <collectionReference>CompletedStudentPERecs</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_All_Student_And_School_Unique_IDs</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Iterate_Through_To_Check_For_Each_Unique_ID</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>We are using this to fetch all the Completed Student PEs Under Caretaker PE for a given school.</description>
+        <name>Get_Completed_Student_PEs_Under_Caretaker_PE</name>
+        <label>Get Completed Student PEs Under Caretaker PE</label>
+        <locationX>438</locationX>
+        <locationY>164</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Student_Complete_PEs</targetReference>
+        </connector>
+        <filters>
+            <field>Household_Program_Enrollment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>StudentProgramEnrollment.Household_Program_Enrollment__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PE_Record_Type_Text__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Student</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>School_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>StudentProgramEnrollment.Household_Program_Enrollment__r.School_Name__c</elementReference>
+            </value>
+        </filters>
+        <object>hed__Program_Enrollment__c</object>
+        <outputReference>CompletedStudentPERecs</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>School_Name__c</queriedFields>
+        <queriedFields>Household_Program_Enrollment__c</queriedFields>
+        <queriedFields>hed__Contact__c</queriedFields>
+        <queriedFields>Status__c</queriedFields>
+        <queriedFields>StudentSchoolUniqueId__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+    </recordLookups>
+    <recordUpdates>
+        <description>This DML update will update the Caretaker PE with the total no of completed student PE records under a caretaker PE record irrespective of the matching Educational Institution between the individual student PE records and the Caretaker PE record.</description>
+        <name>Update_No_Of_Completed_Student_PEs_At_Caretaker_PE_Rollup</name>
+        <label>Update No Of Completed Student PEs At Caretaker PE Rollup</label>
+        <locationX>812</locationX>
+        <locationY>577</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>StudentProgramEnrollment.Household_Program_Enrollment__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Total_Count_of_Enrolled_Students__c</field>
+            <value>
+                <elementReference>LatestPEsCount</elementReference>
+            </value>
+        </inputAssignments>
+        <object>hed__Program_Enrollment__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>69</locationX>
+        <locationY>145</locationY>
+        <connector>
+            <targetReference>Get_Completed_Student_PEs_Under_Caretaker_PE</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <description>List collection to hold the Student Contact ID concatenated with the School Account ID.</description>
+        <name>AllCompleteStudPEsStudentSchoolUniqueIDList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Variable collection to store all the  Completed Student PE Records.</description>
+        <name>CompletedStudentPERecs</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>hed__Program_Enrollment__c</objectType>
+    </variables>
+    <variables>
+        <name>LatestPEsCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <description>This variable holds the value of Number of Completed Student PEs</description>
+        <name>NoOfCompletedStudentPEs</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <description>This will be a collection to capture the most recent student record</description>
+        <name>StudentPERecentCompleteRecs</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>hed__Program_Enrollment__c</objectType>
+    </variables>
+    <variables>
+        <description>This variable is used to capture a Student Program Enrollment record that is updated</description>
+        <name>StudentProgramEnrollment</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>hed__Program_Enrollment__c</objectType>
+    </variables>
+    <variables>
+        <description>Helps to capture a unique ID by the combination of the record Id of the Student Contact Record and the School Account Id.</description>
+        <name>StudRecAndSchoolRecUniqueID</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
