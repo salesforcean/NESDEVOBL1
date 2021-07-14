@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Send_Agreement_Email</name>
         <label>Send Agreement Email</label>
-        <locationX>377</locationX>
-        <locationY>407</locationY>
+        <locationX>691</locationX>
+        <locationY>373</locationY>
         <actionName>NES_AddHHMemApexController</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -23,6 +23,13 @@
     </actionCalls>
     <apiVersion>52.0</apiVersion>
     <constants>
+        <name>QueueName</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Enrollment_Support_Queue</stringValue>
+        </value>
+    </constants>
+    <constants>
         <description>Account Review value for Ticket Type field of Ticket.</description>
         <name>TicketType</name>
         <dataType>String</dataType>
@@ -30,50 +37,6 @@
             <stringValue>Account Review</stringValue>
         </value>
     </constants>
-    <decisions>
-        <description>Check the V2 Role of Addl HH Member Contact Record.</description>
-        <name>Check_Contact_V2_Role</name>
-        <label>Check Contact V2 Role</label>
-        <locationX>676</locationX>
-        <locationY>148</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Learning_Coach</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.V2_Role__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Learning Coach</stringValue>
-                </rightValue>
-            </conditions>
-            <label>Learning Coach??</label>
-        </rules>
-        <rules>
-            <name>Caretaker</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.V2_Role__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Caretaker</stringValue>
-                </rightValue>
-            </conditions>
-            <label>Caretaker??</label>
-        </rules>
-        <rules>
-            <name>Guardian</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.V2_Role__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Parent or Legal Guardian</stringValue>
-                </rightValue>
-            </conditions>
-            <label>Guardian??</label>
-        </rules>
-    </decisions>
     <description>This flow will be triggered for Addl HH Members being created from Portal.</description>
     <formulas>
         <description>Contact Name</description>
@@ -84,7 +47,7 @@
     <formulas>
         <name>Description</name>
         <dataType>String</dataType>
-        <expression>{!$Record.FirstName}&amp; &quot; &quot; &amp;{!$Record.LastName} &amp; &quot;, &quot; &amp;{!$Record.Email} &amp; &quot;, &quot; &amp;{!$Record.RecordType.Name}</expression>
+        <expression>{!$Record.FirstName}&amp; &quot; &quot; &amp;{!$Record.LastName} &amp; &quot;, &quot; &amp;{!$Record.Email} &amp; &quot;,&quot; &amp;{!$Record.HomePhone}&amp; &quot; &quot; &amp;{!$Record.hed__WorkPhone__c}&amp; &quot; &quot; &amp;{!$Record.MobilePhone}&amp; &quot; &quot; &amp;{!$Record.OtherPhone}&amp; &quot;,&quot; &amp;{!$Record.RecordType.Name}</expression>
     </formulas>
     <interviewLabel>Addl HH Member Contact Process after Creation {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Addl HH Member Contact Process after Creation</label>
@@ -111,8 +74,8 @@
         <description>Create Ticket and associate it to Addl HH Member Contact being created.</description>
         <name>Create_Ticket</name>
         <label>Create Ticket</label>
-        <locationX>487</locationX>
-        <locationY>146</locationY>
+        <locationX>484</locationX>
+        <locationY>334</locationY>
         <connector>
             <targetReference>Send_Agreement_Email</targetReference>
         </connector>
@@ -137,7 +100,7 @@
         <inputAssignments>
             <field>OwnerId</field>
             <value>
-                <stringValue>Enrollment_Support_Queue</stringValue>
+                <elementReference>Get_Queue_Name.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -155,7 +118,7 @@
         <inputAssignments>
             <field>Subject</field>
             <value>
-                <stringValue>Request to Add new Caretaker/Household Member/Learning Coach</stringValue>
+                <stringValue>Request to add a Household Member</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -194,11 +157,11 @@
     <recordLookups>
         <name>Get_Enrollment_Support_Record_Type</name>
         <label>Get Enrollment Support Record Type</label>
-        <locationX>122</locationX>
-        <locationY>371</locationY>
+        <locationX>192</locationX>
+        <locationY>366</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Create_Ticket</targetReference>
+            <targetReference>Get_Queue_Name</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -219,6 +182,34 @@
         <object>RecordType</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Queue_Name</name>
+        <label>Get Queue Name</label>
+        <locationX>350</locationX>
+        <locationY>365</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Ticket</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Queue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>QueueName</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
         <locationX>50</locationX>
         <locationY>50</locationY>
@@ -237,5 +228,5 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>

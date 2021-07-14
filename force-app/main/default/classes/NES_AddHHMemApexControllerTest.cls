@@ -81,10 +81,10 @@ public class NES_AddHHMemApexControllerTest {
         } 
     }
     static testMethod void LCTest(){
-        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];	
+        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];  
         Account institutionAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
         //Contact careTakerContact=[select id, RecordTypeId from Contact where RecordType.Name='Caretaker' Limit 1];
-        Contact careTakerContact=[select id, RecordTypeId from Contact where Id =: careTaker.ContactId Limit 1];
+        Contact careTakerContact=[select id,AccountId,RecordTypeId from Contact where Id =: careTaker.ContactId Limit 1];
         
         Account institutionalAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
         List<School_Year__c> schoolYears = [SELECT Id FROM School_Year__c WHERE Name = 'Test School Year' LIMIT 1];
@@ -151,7 +151,7 @@ Peak_Response studentInsertResponse = NES_AddStudentController.createStudent(stu
         
         //Check whether Case has been created with correct parameters
         List<Case> tickets=[select id,Description,Origin,Status,Subject,Subject_Name__c,System_of_Origin__c,Ticket_Sub_Type__c,Ticket_Type__c,Type
-                            from Case where ContactId=: careTakerContact.Id limit 1];
+                            from Case where AccountId=:careTakerContact.AccountId limit 1];
         System.assertEquals(1,tickets.size());
         
         // Check the record type of the contact which has been created
@@ -164,10 +164,10 @@ Peak_Response studentInsertResponse = NES_AddStudentController.createStudent(stu
     
     
     static testMethod void CTGaurdianest(){
-        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];	
+        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];  
         Account institutionAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
         //Contact careTakerContact=[select id, RecordTypeId from Contact where RecordType.Name='Caretaker' Limit 1];
-        Contact careTakerContact=[select id, RecordTypeId from Contact where Id =: careTaker.ContactId Limit 1];
+        Contact careTakerContact=[select id,AccountId,RecordTypeId from Contact where Id =: careTaker.ContactId Limit 1];
         
         System.runAs(careTaker) {  
             Test.startTest();
@@ -193,7 +193,7 @@ Peak_Response studentInsertResponse = NES_AddStudentController.createStudent(stu
             Test.stopTest();
             //Check whether Case has been created with correct parameters
             List<Case> tickets=[select id,Description,Origin,Status,Subject,Subject_Name__c,System_of_Origin__c,Ticket_Sub_Type__c,Ticket_Type__c,Type
-                                from Case where ContactId=: careTakerContact.Id limit 1];
+                                from Case where AccountId=:careTakerContact.AccountId limit 1];
             System.assertEquals(1,tickets.size());
             
         }
@@ -205,10 +205,10 @@ Peak_Response studentInsertResponse = NES_AddStudentController.createStudent(stu
     }
     
     static testMethod void CTParentest(){
-        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];	
+        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];  
         Account institutionAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
         //Contact careTakerContact=[select id, RecordTypeId from Contact where RecordType.Name='Caretaker' Limit 1];
-        Contact careTakerContact=[select id, RecordTypeId from Contact where Id =: careTaker.ContactId Limit 1];
+        Contact careTakerContact=[select id,AccountId,RecordTypeId from Contact where Id =: careTaker.ContactId Limit 1];
         
         
         System.runAs(careTaker) {
@@ -236,7 +236,7 @@ Peak_Response studentInsertResponse = NES_AddStudentController.createStudent(stu
             
             //Check whether Case has been created with correct parameters
             List<Case> tickets=[select id,Description,Origin,Status,Subject,Subject_Name__c,System_of_Origin__c,Ticket_Sub_Type__c,Ticket_Type__c,Type
-                                from Case where ContactId=: careTakerContact.Id limit 1];
+                                from Case where AccountId=:careTakerContact.AccountId limit 1];
             System.assertEquals(1,tickets.size());
             
             

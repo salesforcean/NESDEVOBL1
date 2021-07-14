@@ -196,13 +196,13 @@
         <name>Already_Unverified_false</name>
         <label>Already Unverified false</label>
         <locationX>830</locationX>
-        <locationY>290</locationY>
+        <locationY>289</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>Unverifiedfalse</name>
-            <fieldText>&lt;p&gt;This Additional Household Member Has Already Been Verified.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Applicable only for Unverified Contacts.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
