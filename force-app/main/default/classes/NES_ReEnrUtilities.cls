@@ -56,12 +56,22 @@ public class NES_ReEnrUtilities {
             if(oldHmLangSRec != null && oldHmLangSRec.size()>0)
                 delete oldHmLangSRec;
             
-            /*
+            
             // Delete the old PECs attached
             List <Program_Enrollment_Criteria__c> oldPecRecs = [Select Id from Program_Enrollment_Criteria__c where Program_Enrollment__c =: studentPERecord.Id];
             if(oldPecRecs != null && oldPecRecs.size()>0)
                 delete oldPecRecs;
-            */
+            // Delete the old EDs
+            List<Enrollment_Document__c> enrollmentDocuments=[SELECT Enrollment_Component_Affiliation__c,Id,Name,Program_Enrollment__c,Status_Reason__c FROM Enrollment_Document__c where Program_Enrollment__c =: studentPERecord.id ];
+
+            if(enrollmentDocuments != null && enrollmentDocuments.size()>0)
+                delete enrollmentDocuments;
+            
+            List<Enrollment_Document__c> caretakerDocuments=[SELECT Enrollment_Component_Affiliation__c,Id,Name,Program_Enrollment__c,Status_Reason__c FROM Enrollment_Document__c where Program_Enrollment__c =: caretakerEnrollment[0].id ];
+
+            if(caretakerDocuments != null && caretakerDocuments.size()>0)
+                delete caretakerDocuments;
+            // 
             
             //Now let's create an Opportunity based on that enrollmentId
             Opportunity oppToInsert = new Opportunity(
@@ -385,17 +395,19 @@ public class NES_ReEnrUtilities {
 
         if (pecsToInsert.size() > 0)
             insert pecsToInsert;
-
-        //Call a method that will set the initial values for PE Criteria based on current data.
-        if (eccs.size()>0) 
-            EvaluationUtils.evaluatePECs(eccs, programEnrollment);
-
+        
         //Mark the PE as ready to be shown to the caretaker in the community.
         hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id = programEnrollment,
                                                                         Enrollment_Type__c = 'Re-enrolling student',
                                                                         Status__c = 'In Progress',
                                                                         Initial_ECA_Creation_Complete__c = true);
         update pe;
+
+        //Call a method that will set the initial values for PE Criteria based on current data.
+        if (eccs.size()>0) 
+            EvaluationUtils.evaluatePECs(eccs, programEnrollment);
+
+        
 
         /*
         if(EnrollmentType == 'Returning Student'){

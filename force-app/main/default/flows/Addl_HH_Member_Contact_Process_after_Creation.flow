@@ -111,8 +111,8 @@
         <description>Create Ticket and associate it to Addl HH Member Contact being created.</description>
         <name>Create_Ticket</name>
         <label>Create Ticket</label>
-        <locationX>486</locationX>
-        <locationY>147</locationY>
+        <locationX>487</locationX>
+        <locationY>146</locationY>
         <connector>
             <targetReference>Send_Agreement_Email</targetReference>
         </connector>
@@ -132,6 +132,12 @@
             <field>Origin</field>
             <value>
                 <stringValue>Internal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>Enrollment_Support_Queue</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -231,5 +237,5 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>
