@@ -1,4 +1,4 @@
- window._snapinsSnippetSettingsFile = (function() {
+window._snapinsSnippetSettingsFile = (function() {
 //Swapna:For Customer Support Chat
 embedded_svc.snippetSettingsFile.directToButtonRouting = function(prechatFormData) {
 
@@ -16,7 +16,6 @@ embedded_svc.snippetSettingsFile.fallbackRouting = ['USERIDHERE', 'BUTTONIDHERE'
 embedded_svc.snippetSettingsFile.extraPrechatInfo = [{
 "entityName": "Contact",
 "linkToEntityName": "Case",
-"linkToEntityField": "Staff_Assignee__c",
 "linkToEntityField": "ContactId",
 "saveToTranscript": "ContactId",
 "entityFieldMaps" : [{
