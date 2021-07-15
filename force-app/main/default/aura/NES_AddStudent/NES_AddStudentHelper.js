@@ -121,10 +121,10 @@
             if(peakResponse.success){
                 
                 studentData.schoolYears = peakResponse.results;
-                if(studentData.schoolYears == '' || studentData.schoolYears ==  null)
-                {
-                    component.set("v.message", 'The school you have selected does not have any school years available');
-                }
+                //if(studentData.schoolYears == '' || studentData.schoolYears ==  null)
+                //{
+                  //  component.set("v.message", 'The school you have selected does not have any school years available');
+              //  }
                 studentData.SelectedSchoolId = schoolId
                 studentData.schoolYears.sort(function(a,b){
                     if(a.Name < b.Name){

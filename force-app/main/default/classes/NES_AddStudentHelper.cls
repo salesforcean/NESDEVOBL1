@@ -407,7 +407,7 @@ public without sharing class NES_AddStudentHelper {
         Peak_Response peakResponse = new Peak_Response();
         User caretaker = [SELECT Id, AccountId, ContactId, Contact.RecordType.Name,Contact.Account.Family_Enrollment_Counselor__c, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId()];
         List <Contact> CtList = [Select Id from Contact where AccountId =: caretaker.Contact.AccountId 
-                                 and Recordtype.name != 'Students'];
+                                 and Recordtype.name != 'Students' and Unverified__c =: true];
         System.debug('NDEBUG: List of Contacts under this HH Acc:::'+CtList);
         System.debug('student data');
         System.debug(studentJSON);

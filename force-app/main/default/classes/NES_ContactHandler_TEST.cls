@@ -15,6 +15,15 @@ private class NES_ContactHandler_TEST {
     
     @TestSetup
     private static void createData(){
+        CS_TestDataFactory factoryObj = new CS_TestDataFactory();
+        UserRole usrRoles = factoryObj.fetchUserRole('Pearson Community Role');
+        User STDUsr;
+        String orgId = UserInfo.getOrganizationId();
+        User usr = factoryObj.createNewUser('BAdmn11'+orgId+'@pearson.com', usrRoles.Id, 'bAdmin', 'America/Los_Angeles', 'en_US', 
+                                            'en_US','UTF-8','United States', UserInfo.getProfileId(),'LastName','BAdmn11'+orgId+'@pearson.com');
+        insert usr;  
+        
+        System.runAs(usr){
         Id p = [select id from profile where name='School Staff Community User'].id;
         Account institutionAccount = Peak_TestUtils.createEducationalInstitutionAccount();
         Account institutionAccount1 = Peak_TestUtils.createEducationalInstitutionAccount();
@@ -50,6 +59,7 @@ private class NES_ContactHandler_TEST {
 
         // Create a Contact with 'Students' record type
         Contact student = Peak_TestUtils.createTestContact('Students', institutionAccount.Id);
+    }
     }
     static TestMethod void updatePS(){
         Account acc= [Select id,Name from account limit 1];

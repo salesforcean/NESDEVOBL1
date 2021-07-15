@@ -7,5 +7,5 @@ NOT(OR(ISPICKVAL( Origin , &quot;Customer Support Community Chat&quot;))),
 Contact.RecordType.DeveloperName = &apos;School_Staff&apos;  &amp;&amp; ISBLANK(Staff_Assignee__c)
 )</errorConditionFormula>
     <errorDisplayField>Staff_Assignee__c</errorDisplayField>
-    <errorMessage>Please select the Staff Assignee field same as Contact for School Staff Tickets -- TEST.</errorMessage>
+    <errorMessage>Please select the Staff Assignee field same as Contact for School Staff Tickets.</errorMessage>
 </ValidationRule>

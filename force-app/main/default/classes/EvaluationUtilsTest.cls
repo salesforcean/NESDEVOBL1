@@ -497,7 +497,4 @@ public class EvaluationUtilsTest  {
         //This test confirms that when the the school year is used and they DON'T match, the criteria is NOT updated.
         System.assertEquals(false, afterEvaluate[0].Result__c);
     }
-        static testMethod void testPassingFieldsUpdatesPECriteria34(){
-        EvaluationUtils.testCoveragePaddingMethod();
-        } 
 }
