@@ -111,7 +111,7 @@
                 </lightning:layoutItem>
                 <aura:if isTrue="{!v.newStudentData.relationshipType != 'none'}">
                     <div class="unevenFix">
-                        <!-- Naveen -->
+                        
                         
                         
                         <!-- <aura:if isTrue="{!and(v.newStudentData.activeSchools != null, v.newStudentData.activeSchools != '')}"> -->
@@ -131,22 +131,25 @@
   						</aura:set>
  						</aura:if>
                         
-                        <!-- Naveen -->
-                        <!--aura:if isTrue="{!not(empty(v.v.newStudentData.schoolYears))}" -->
+                        
+                        
                         <aura:if isTrue="{!and(v.newStudentData.SelectedSchoolId != null, v.newStudentData.SelectedSchoolId != '')}">
+                            <!--aura:if isTrue="{!not(empty(v.v.newStudentData.schoolYears))}"-->
                             <lightning:layoutItem size="12" mediumDeviceSize="6" padding="around-small">
-                                <lightning:select aura:id="yearSelect" required="true" name="schoolYear" label="Apply for what school year?" onchange="{!c.handleYearSelect}">
+                                <lightning:select aura:id="yearSelect" required="true" name="schoolYear"  label="Apply for what school year?" onchange="{!c.handleYearSelect}">
                                     <option value="">- select year -</option>
                                     <aura:iteration items="{!v.newStudentData.schoolYears}" var="year">
                                         <option value="{!year.Id}">{!year.Name}</option>
                                     </aura:iteration>
                                 </lightning:select>
                             </lightning:layoutItem>
-                             </aura:if>
+                           
                             <!--aura:set attribute="else">
-  						 There are no schools available for the Year.
-  						</aura:set>
- 						</aura:if-->
+                                <div style="color:Red">
+  						 The school you have selected does not have any school years available.
+                                </div>
+  						</aura:set-->
+ 						</aura:if>
                     </div>
                     <aura:if isTrue="{!v.supplementalQuestionsLoaded}">
                         <lightning:layoutItem size="12" class="supplementalQuestions">

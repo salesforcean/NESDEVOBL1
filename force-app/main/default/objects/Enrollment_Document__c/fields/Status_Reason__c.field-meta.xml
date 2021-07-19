@@ -309,9 +309,12 @@
         <valueSettings>
             <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
             <controllingFieldValue>Minnesota Health Screen Report</controllingFieldValue>
             <controllingFieldValue>NCCA Health Assessment</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
             <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
             <valueName>Invalid</valueName>
         </valueSettings>
         <valueSettings>

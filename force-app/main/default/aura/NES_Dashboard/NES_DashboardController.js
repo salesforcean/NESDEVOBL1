@@ -85,6 +85,7 @@
                 //added for the US 335364 by Jagadish babu : End    
                 var url = event.currentTarget.dataset.link;
                 var userId = $A.get("$SObjectType.CurrentUser.Id");
+                //alert(url);
                 if(url === '/enrollment') {
                     var dataset = event.currentTarget.dataset;
                     /**

@@ -113,21 +113,10 @@ public without sharing class NES_AddHHMemApexController {
                     // Being done using a flow..
                     if(sr.isSuccess())
                     {
-                        // Create the relationship records to associate the Existing students to new CT                        
-                        Boolean relRecsCreated = createdRelRecords(usrContact.ContactId, sr.getId());
-                        if(relRecsCreated){
-                           
-                           response='New Contact Created'; 
-                        }
-                        else{
-                            System.debug('NDEBUG:::: Relationship records Creation Failed');
-                            response = 'FAILURE';
-                        } 
-                          
+                        response='New Contact Created'; 
                     }
                      else{
                          System.debug('NDEBUG:::: Contact Creation Failed');
-                         
                      }
             }else{
                  
@@ -156,8 +145,10 @@ public without sharing class NES_AddHHMemApexController {
     }
         
     // Create new hed__Relationship__c records for this new CT contact and existing students
-    public static Boolean createdRelRecords(Id oldCtContactId, Id newCtContactId){
+    public static Boolean createdRelRecords(FlowParams [] flowParams){
         Boolean saveResult = true;
+        Id oldCtContactId = [Select Id, contactId from user where Id =: flowParams[0].addlHHMember.CreatedById limit 1].contactId;
+        Id newCtContactId = flowParams[0].addlHHMember.Id;
         
         //Student Record Type Id
         Id studentRecordTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(NES_DashboardUtilities.STUDENT_RT).getRecordTypeId();
@@ -199,35 +190,45 @@ public without sharing class NES_AddHHMemApexController {
                 newcaretakerEnrollmentList.add(newCareTakerEnrollment);
             }
         }
-        Insert newcaretakerEnrollmentList;
-        
+        Insert newcaretakerEnrollmentList;        
         return saveResult;
-        
-        
-        
     }
     
     
-    public class EmailParameters{
+    public class FlowParams{
+        @InvocableVariable
+        public String v2Role;
+        @InvocableVariable
+        public Contact addlHHMember;
         @InvocableVariable(required=true)
-        public string v2Role;
-        @InvocableVariable(required=true)
-        public contact addlHHMember;
+        public String action;
     }
     
-    @InvocableMethod(label='Send Agreement Email')
-    public static void sendEmail(EmailParameters [] emailParams){
+    @InvocableMethod(label='Call Apex Methods')
+    public static void callApexMethods(FlowParams [] flowParams){
+        System.debug('NDEBUG Apex Method::::' + flowParams[0].action);
+        if(flowParams[0].action == 'Send Agreement Email'){
+            sendAgreementEmail(flowParams);
+        }
+        else if(flowParams[0].action == 'Create Related Records'){
+            createdRelRecords(flowParams);
+        }
+    }
+    
+    
+    
+    public static void sendAgreementEmail(FlowParams [] flowParams){
         
                
         Map <String, String> v2RoleToEmailTempl = new Map <String, String> ();
         v2RoleToEmailTempl.put('Parent or Legal Guardian', 'Parent_Legal_Guardian_Caretaker_Acknowledgement');
         v2RoleToEmailTempl.put('Designated Caretaker', 'Caretaker_Designee_Agreement');
         v2RoleToEmailTempl.put('Learning Coach', 'Designated_Learning_Coach_Agreement');
-        String emailTempl = v2RoleToEmailTempl.get(emailParams[0].v2Role);
+        String emailTempl = v2RoleToEmailTempl.get(flowParams[0].v2Role);
         
         List<EmailTemplate> lstEmailTemplates = [SELECT Id, Body, Subject from EmailTemplate where DeveloperName =: emailTempl];
         
-        User  ctContactUser = [Select Id, contactId, contact.Email, contact.hed__AlternateEmail__c from user where Id =: emailParams[0].addlHHMember.CreatedById limit 1];
+        User  ctContactUser = [Select Id, contactId, contact.Email, contact.hed__AlternateEmail__c from user where Id =: flowParams[0].addlHHMember.CreatedById limit 1];
         
         String email;
         if(Test.isRunningTest()) {

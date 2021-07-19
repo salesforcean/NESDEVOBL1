@@ -111,6 +111,7 @@
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
                 console.log('getreeess:'+returnedResponse);
+                alert(returnedResponse);
                 component.set("v.peEnrollmentType", returnedResponse);
                 
             } else {

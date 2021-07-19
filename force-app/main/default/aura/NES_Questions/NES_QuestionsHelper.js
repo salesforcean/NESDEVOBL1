@@ -366,6 +366,11 @@
     getQuestions: function (component, event, helper) {
         var sectionId = component.get("v.sectionId");
         var programEnrollmentId = component.get("v.programEnrollmentId");
+        //console.log('Section Id' + sectionId);
+        //console.log('PE Id' + programEnrollmentId);
+        //alert('I am Here');
+        //alert(sectionId);
+        //alert(programEnrollmentId);
         var action = component.get("c.getRelatedQuestions2");
         action.setParams({
             sectionComponentId : sectionId,

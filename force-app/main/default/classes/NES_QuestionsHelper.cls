@@ -701,6 +701,8 @@ public without sharing class NES_QuestionsHelper {
                         AND hed__Contact__c = :caretaker.ContactId
                         LIMIT 1
                 ]; */
+                
+                // Get the Caretaker PE which is linked to the Academic Program
                 List<hed__Program_Enrollment__c> caretakerEnrollment = [
                         SELECT Id
                         FROM hed__Program_Enrollment__c
@@ -708,6 +710,7 @@ public without sharing class NES_QuestionsHelper {
                         AND hed__Contact__c = :caretaker.ContactId
                         LIMIT 1
                 ]; 
+                
 				
 				// End by Maddileti for Defect #361441 on 15/02/2021
 				

@@ -16,6 +16,7 @@ public without sharing class NES_EnrollmentHelper {
 Using Enrollment_Component_Affiliation__c object here as this is defining the relationship between Enrollment_Component__c
 and Program_Enrollment__c objects
 */
+    @AuraEnabled
     public static List<Enrollment_Component_Affiliation__c> getRelatedStages(Id programEnrollmentId){
         try{
             /*
@@ -32,7 +33,7 @@ and Program_Enrollment__c objects
                                                                AND status__c <> 'Not Applicable']){
                                                                    enrollmentComponents.add(eca);
                                                                }
-                
+                System.debug('NDEBUG  ECAs are :::::' + enrollmentComponents);
                 return enrollmentComponents;
             }
             
@@ -233,7 +234,7 @@ and using those child components get the required component information
                                                                                        Program_Enrollment__r.hed__Account__r.Document_Start_Date__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c,
                                                                                        Program_Enrollment__r.hed__Account__r.Document_End_Date__c, Program_Enrollment__r.hed__Contact__r.Account.Document_Extension_Date__c,
                                                                                        Program_Enrollment__r.hed__Contact__r.Document_Extension_Date__c, Program_Enrollment__r.Program_Grade_Level__r.Grade_Level__r.Name,
-                                                                                       (SELECT Id, Status_Reason__c FROM Enrollment_Documents__r)
+                                                                                       (SELECT Id, Status_Reason__c FROM Enrollment_Documents__r Where Status_Reason__c != 'Invalid')
                                                                                        FROM Enrollment_Component_Affiliation__c
                                                                                        WHERE Program_Enrollment__c =: programEnrollmentId
                                                                                        AND Enrollment_Component__c IN : relatedComponentIds];
@@ -265,8 +266,7 @@ and using those child components get the required component information
                         // Added by Maddileti for #124409 bug  
                         else if(eca.Status__c == 'Complete') {
                             docStatus = 'Complete';
-                        }
-                        
+                        }                       
                         // end by Maddileti for #124409 bug
                         else if(eca.Enrollment_Documents__r.size() > 0) { docStatus = 'Submitted';  }
                         
@@ -494,9 +494,30 @@ and using those child components get the required component information
                 //List<hed__Program_Enrollment__c> caretakerEnrollments = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c = :caretaker.ContactId AND hed__Account__r.ParentId = :academicProgram.ParentId limit 1];
                 // Grade_Level__c grades=[SELECT id,Name FROM Grade_Level__c  where Name =:gradeLevels limit 1];
                 
+                // Added by Naveen for Defect#447458
+                List <Contact> CtList = [Select Id, Unverified__c from Contact where AccountId =: caretaker.Contact.AccountId 
+                                 and Recordtype.name != 'Students' Order by createddate asc];
+                List <hed__Program_Enrollment__c> newCareTakerEnrollmentList = new List <hed__Program_Enrollment__c> ();
+                
                 hed__Program_Enrollment__c caretakerEnrollmentId = new hed__Program_Enrollment__c();
                 if (caretakerEnrollments.size() == 0) {
                     Id caretakerEnrollmentTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Caretaker').getRecordTypeId();
+                    
+                    for(Contact ct: CtList){
+                        if(!ct.Unverified__c){
+                            caretakerEnrollmentId = new hed__Program_Enrollment__c();
+                            caretakerEnrollmentId.hed__Contact__c = ct.Id;
+                            caretakerEnrollmentId.RecordTypeId = caretakerEnrollmentTypeId;
+                            caretakerEnrollmentId.OwnerId = academicProgram.OwnerId;
+                            if (academicProgram != null) {
+                                caretakerEnrollmentId.hed__Account__c = academicProgram.Id;
+                            }
+                            newCareTakerEnrollmentList.add(caretakerEnrollmentId);
+                         }
+                    }                        
+                    insert newCareTakerEnrollmentList;
+                    caretakerEnrollmentId = newCareTakerEnrollmentList[0];
+                    /*
                     caretakerEnrollmentId.hed__Contact__c = caretaker.ContactId;
                     caretakerEnrollmentId.RecordTypeId = caretakerEnrollmentTypeId;
                     caretakerEnrollmentId.OwnerId = academicProgram.OwnerId;
@@ -504,6 +525,7 @@ and using those child components get the required component information
                         caretakerEnrollmentId.hed__Account__c = academicProgram.Id;
                     }
                     insert caretakerEnrollmentId;
+					*/
                 } else {
                     caretakerEnrollmentId = caretakerEnrollments[0];
                 }

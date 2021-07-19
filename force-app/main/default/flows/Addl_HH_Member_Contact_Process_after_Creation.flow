@@ -9,6 +9,12 @@
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
+            <name>action</name>
+            <value>
+                <elementReference>ActionType</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
             <name>addlHHMember</name>
             <value>
                 <elementReference>$Record</elementReference>
@@ -22,6 +28,13 @@
         </inputParameters>
     </actionCalls>
     <apiVersion>52.0</apiVersion>
+    <constants>
+        <name>ActionType</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Send Agreement Email</stringValue>
+        </value>
+    </constants>
     <constants>
         <name>QueueName</name>
         <dataType>String</dataType>

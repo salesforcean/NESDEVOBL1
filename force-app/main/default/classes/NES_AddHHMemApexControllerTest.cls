@@ -248,6 +248,50 @@ Peak_Response studentInsertResponse = NES_AddStudentController.createStudent(stu
         System.assertEquals(caretakerRecordTypeId, contacts[0].RecordTypeId);
     }
     
-    
+    static testMethod void testcreatedRelRecords(){
+        List<NES_AddHHMemApexController.FlowParams>  fParams= new List<NES_AddHHMemApexController.FlowParams>();
+        NES_AddHHMemApexController.FlowParams param=new NES_AddHHMemApexController.FlowParams();
+        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];  
+        Account institutionAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
+        
+        Contact careTakerContact=[select id,AccountId,RecordTypeId,CreatedById from Contact where Id =: careTaker.ContactId Limit 1];
+        param.addlHHMember=careTakerContact;
+        hed__Program_Enrollment__c enrollment=new hed__Program_Enrollment__c();
+        
+        enrollment.hed__Contact__c = careTakerContact.Id;
+         Account Academic_Program = [SELECT Id FROM Account WHERE RecordType.Name = 'Academic Program' LIMIT 1];
+        
+         enrollment.hed__Account__c = Academic_Program.Id;
+        enrollment.Status__c = 'In Progress';
+            
+            insert enrollment;
+        fParams.add(param);
+        NES_AddHHMemApexController.createdRelRecords(fParams);
+    }
+    static testMethod void testCallApexMethods(){
+        List<NES_AddHHMemApexController.FlowParams>  fParams= new List<NES_AddHHMemApexController.FlowParams>();
+        NES_AddHHMemApexController.FlowParams param=new NES_AddHHMemApexController.FlowParams();
+        param.action='Send Agreement Email';
+        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];  
+        Account institutionAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
+        
+        Contact careTakerContact=[select id,AccountId,RecordTypeId,CreatedById from Contact where Id =: careTaker.ContactId Limit 1];
+        param.addlHHMember=careTakerContact;
+        param.v2Role='Learning Coach';
+        fParams.add(param);
+        NES_AddHHMemApexController.callApexMethods(fParams); 
+    }
+    static testMethod void testCallApexMethods2(){
+        List<NES_AddHHMemApexController.FlowParams>  fParams= new List<NES_AddHHMemApexController.FlowParams>();
+        NES_AddHHMemApexController.FlowParams param=new NES_AddHHMemApexController.FlowParams();
+        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];  
+        Account institutionAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
+        
+        Contact careTakerContact=[select id,AccountId,RecordTypeId,CreatedById from Contact where Id =: careTaker.ContactId Limit 1];
+        param.addlHHMember=careTakerContact;
+        param.action='Create Related Records';
+        fParams.add(param);
+        NES_AddHHMemApexController.callApexMethods(fParams); 
+    }
     
 }

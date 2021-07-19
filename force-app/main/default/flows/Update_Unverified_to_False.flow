@@ -9,7 +9,7 @@
         <actionName>Contact.Additional_Household_Member_Approved_Alert</actionName>
         <actionType>emailAlert</actionType>
         <connector>
-            <targetReference>Thank_you_Message</targetReference>
+            <targetReference>Create_Related_Records</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -19,7 +19,38 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <actionCalls>
+        <name>Create_Related_Records</name>
+        <label>Create Related Records</label>
+        <locationX>644</locationX>
+        <locationY>442</locationY>
+        <actionName>NES_AddHHMemApexController</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Thank_you_Message</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>action</name>
+            <value>
+                <elementReference>ApexAction</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>addlHHMember</name>
+            <value>
+                <elementReference>Get_Record_from_contact</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <apiVersion>52.0</apiVersion>
+    <constants>
+        <name>ApexAction</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Create Related Records</stringValue>
+        </value>
+    </constants>
     <decisions>
         <name>Check_unverified</name>
         <label>Check unverified</label>
@@ -212,7 +243,7 @@
         <name>Thank_you_Message</name>
         <label>Thank you Message</label>
         <locationX>454</locationX>
-        <locationY>440</locationY>
+        <locationY>444</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>

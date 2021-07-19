@@ -63,12 +63,15 @@ public class NES_ReactivationNewSYHelper {
         String PE_status_Inactive = 'Inactive';
 
         String PE_status_Withdrawn = 'Withdrawn';// Updated by sravani #361444
+        String PE_status_Complete = 'Complete';
         string isValid = 'valid';
-        hed__Program_Enrollment__c programEnrollment = [SELECT id, Start_Year__c,hed__Contact__c,hed__Contact__r.Contact_Record_Type_Text__c,hed__Account__r.Parent.Name,Status__c
-                                                        FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
+        hed__Program_Enrollment__c programEnrollment = [SELECT id, Start_Year__c,hed__Contact__c,hed__Contact__r.Contact_Record_Type_Text__c,hed__Account__r.Parent.Name,Status__c,
+                                                        (select id,Withdrawal_Category__c from Enrollments__r order by createddate desc) FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
         
        
-        if(!(PE_status_Inactive.containsIgnoreCase(programEnrollment.Status__c) || PE_status_Withdrawn.containsIgnoreCase(programEnrollment.Status__c))){           
+        if(!(PE_status_Inactive.containsIgnoreCase(programEnrollment.Status__c) 
+             || PE_status_Withdrawn.containsIgnoreCase(programEnrollment.Status__c)
+            || (PE_status_Complete.containsIgnoreCase(programEnrollment.Status__c) && (!programEnrollment.Enrollments__r.isEmpty()) && (programEnrollment.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning' ) ) )){           
                isValid = 'PE Status is not valid for the process.';} 
      
         validatePEwrapper  vPEw = new validatePEwrapper(programEnrollment,isValid);

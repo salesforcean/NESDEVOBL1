@@ -204,6 +204,7 @@
     getEnrollmentForms: function(component, event, helper)
     {
         var stageId = component.get("v.currentStageId");
+        //alert('Stage Id' +stageId);
         var programEnrollmentId = component.get("v.programEnrollmentId");
         var action = component.get("c.getRelatedForms");
         action.setParams({
@@ -363,6 +364,7 @@
     getProcessStages:  function(component, event, helper)
     {
         var programEnrollmentId = component.get("v.programEnrollmentId");
+        alert(programEnrollmentId);
         var action = component.get("c.getRelatedStages");
         action.setParams({
             programEnrollmentId : programEnrollmentId
@@ -381,7 +383,8 @@
                     returnedResponse.sort(function(a, b){
                         return a.Order__c - b.Order__c
                     });
-
+	
+                    console.log('#### Returned Response' + returnedResponse);
                     for(var i=0;i<returnedResponse.length; i++) {
                         if(returnedResponse[i].Order__c != null) {
                             stages[i] = returnedResponse[i];

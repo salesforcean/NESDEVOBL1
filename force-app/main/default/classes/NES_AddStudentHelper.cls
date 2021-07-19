@@ -406,8 +406,8 @@ public without sharing class NES_AddStudentHelper {
     public static Peak_Response insertingStudent(String studentJSON, String questionJSON) {
         Peak_Response peakResponse = new Peak_Response();
         User caretaker = [SELECT Id, AccountId, ContactId, Contact.RecordType.Name,Contact.Account.Family_Enrollment_Counselor__c, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId()];
-        List <Contact> CtList = [Select Id from Contact where AccountId =: caretaker.Contact.AccountId 
-                                 and Recordtype.name != 'Students' and Unverified__c =: true];
+        List <Contact> CtList = [Select Id, Unverified__c from Contact where AccountId =: caretaker.Contact.AccountId 
+                                 and Recordtype.name != 'Students' Order by createddate asc];
         System.debug('NDEBUG: List of Contacts under this HH Acc:::'+CtList);
         System.debug('student data');
         System.debug(studentJSON);
@@ -448,17 +448,19 @@ public without sharing class NES_AddStudentHelper {
                 relationship.OwnerId = System.Label.NES_Household_OwnerId;
                 insert relationship; */
                 
-                //Naveen:: Insert relationship between all the caretakers under this HH and the new student
+                //Naveen:: Insert relationship between all the Verified caretakers under this HH and the new student
                 List <hed__Relationship__c> relationshipList = new List <hed__Relationship__c> ();                
                 for(Contact c: CtList){
-                    hed__Relationship__c relationship = new hed__Relationship__c();
-                    relationship.hed__Contact__c = newStudent.Id;
-                    relationship.hed__Status__c = 'Current';
-                    relationship.hed__RelatedContact__c = c.Id;
-                    relationship.Recalculate_Sharing__c = true;
-                    relationship.hed__Type__c = relation;
-                    relationship.OwnerId = System.Label.NES_Household_OwnerId;
-                    relationshipList.add(relationship);
+                    if(c.Unverified__c == false){
+                        hed__Relationship__c relationship = new hed__Relationship__c();
+                        relationship.hed__Contact__c = newStudent.Id;
+                        relationship.hed__Status__c = 'Current';
+                        relationship.hed__RelatedContact__c = c.Id;
+                        relationship.Recalculate_Sharing__c = true;
+                        relationship.hed__Type__c = relation;
+                        relationship.OwnerId = System.Label.NES_Household_OwnerId;
+                        relationshipList.add(relationship);
+                    }
                 }
                 System.debug('NDEBUG: List of Relationships:::'+relationshipList);
                 insert relationshipList;
@@ -479,19 +481,27 @@ public without sharing class NES_AddStudentHelper {
 
                 List<hed__Program_Enrollment__c> caretakerEnrollment = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c = :caretaker.ContactId AND hed__Account__c = :academicProgram.Id];
 
-                //Check Whether Program Enrollment already exist or not for the caretaker if it is not present then insert it
+                // Added by Naveen for Defect#447458
+                //Check Whether Program Enrollment already exists for the Verified caretakers if it not then insert it
                 Id caretakerEnrollmentId;
                 hed__Program_Enrollment__c newCareTakerEnrollment = new hed__Program_Enrollment__c();
+                List <hed__Program_Enrollment__c> newCareTakerEnrollmentList = new List <hed__Program_Enrollment__c> ();
                 if (caretakerEnrollment.size() == 0) {
                     Id caretakerEnrollmentTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Caretaker').getRecordTypeId();
-                    newCareTakerEnrollment.hed__Contact__c = caretaker.ContactId;
-                    newCareTakerEnrollment.RecordTypeId = caretakerEnrollmentTypeId;
-                    newCareTakerEnrollment.OwnerId = academicProgram.OwnerId;
-                    if (academicProgram != null) {
-                        newCareTakerEnrollment.hed__Account__c = academicProgram.Id;
-                    }
-                    insert newCareTakerEnrollment;
-                    caretakerEnrollmentId = newCareTakerEnrollment.Id;
+                    for(Contact ct: CtList){
+                        if(!ct.Unverified__c){
+                            newCareTakerEnrollment = new hed__Program_Enrollment__c();
+                            newCareTakerEnrollment.hed__Contact__c = ct.Id;
+                            newCareTakerEnrollment.RecordTypeId = caretakerEnrollmentTypeId;
+                            newCareTakerEnrollment.OwnerId = academicProgram.OwnerId;
+                            if (academicProgram != null) {
+                                newCareTakerEnrollment.hed__Account__c = academicProgram.Id;
+                            }
+                            newCareTakerEnrollmentList.add(newCareTakerEnrollment);
+                         }
+                    }                        
+                    insert newCareTakerEnrollmentList;
+                    caretakerEnrollmentId = newCareTakerEnrollmentList[0].Id;
                 } else {
                     newCareTakerEnrollment = caretakerEnrollment[0];
                     caretakerEnrollmentId = caretakerEnrollment[0].Id;

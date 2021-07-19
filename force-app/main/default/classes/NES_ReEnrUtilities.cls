@@ -6,11 +6,13 @@ public class NES_ReEnrUtilities {
         
         try{
         
+            
             // Make sure that completion logic is not evaluated now through triggers
             NES_ECACompletion.shouldRunCompletion = false;
             NES_Constants.runAssignment = false;
             NES_LTSUtility.runLTSFlag = false;
             NES_ProgramEnrollmentHandler.runCBL = false;
+
             
             
             // Get the Student Contact
@@ -28,50 +30,10 @@ public class NES_ReEnrUtilities {
             
             // Get the Caretaker PE Record
             List<hed__Program_Enrollment__c> caretakerEnrollment = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c 
-                                                                    WHERE Id = :studentPERecord.Household_Program_Enrollment__c ];
+                                                                    WHERE Id = : studentPERecord.Household_Program_Enrollment__c ];
             
             // Get the Caretaker User Record
             User careTaker = [SELECT Id, AccountId, ContactId, Contact.RecordType.Name,Contact.Account.Family_Enrollment_Counselor__c, Contact.AccountId FROM User WHERE ContactId = :caretakerEnrollment[0].hed__Contact__c];
-            
-            
-            
-            // Delete the existing ECAs for this PE
-            List <Enrollment_Component_Affiliation__c> oldEcalist = [Select Id, Program_Enrollment__c, Order__c, Status__c from Enrollment_Component_Affiliation__c where 
-                                   Program_Enrollment__c =: studentPERecord.Id];
-            if(oldEcalist != null && oldEcalist.size()>0)
-                delete oldEcalist;
-            
-            // Delete the Prior School Record attached to this PE
-            List <Prior_School__c> oldPrScRec = [Select Id from Prior_School__c where Program_Enrollment__c =: studentPERecord.Id];
-            if(oldPrScRec != null && oldPrScRec.size()>0)
-                delete oldPrScRec;
-            
-            // Delete the Special Education Record
-            List <Special_Education__c> oldSpEdRec = [select Id from Special_Education__c where Program_Enrollment__c =: studentPERecord.Id];
-            if(oldSpEdRec != null && oldSpEdRec.size()>0)
-                delete oldSpEdRec;
-            
-            // Delete the Home Language Survey Record
-            List <Home_Language_Survey__c> oldHmLangSRec = [select Id from Home_Language_Survey__c where Program_Enrollment__c =: studentPERecord.Id];
-            if(oldHmLangSRec != null && oldHmLangSRec.size()>0)
-                delete oldHmLangSRec;
-            
-            
-            // Delete the old PECs attached
-            List <Program_Enrollment_Criteria__c> oldPecRecs = [Select Id from Program_Enrollment_Criteria__c where Program_Enrollment__c =: studentPERecord.Id];
-            if(oldPecRecs != null && oldPecRecs.size()>0)
-                delete oldPecRecs;
-            // Delete the old EDs
-            List<Enrollment_Document__c> enrollmentDocuments=[SELECT Enrollment_Component_Affiliation__c,Id,Name,Program_Enrollment__c,Status_Reason__c FROM Enrollment_Document__c where Program_Enrollment__c =: studentPERecord.id ];
-
-            if(enrollmentDocuments != null && enrollmentDocuments.size()>0)
-                delete enrollmentDocuments;
-            
-            List<Enrollment_Document__c> caretakerDocuments=[SELECT Enrollment_Component_Affiliation__c,Id,Name,Program_Enrollment__c,Status_Reason__c FROM Enrollment_Document__c where Program_Enrollment__c =: caretakerEnrollment[0].id ];
-
-            if(caretakerDocuments != null && caretakerDocuments.size()>0)
-                delete caretakerDocuments;
-            // 
             
             //Now let's create an Opportunity based on that enrollmentId
             Opportunity oppToInsert = new Opportunity(
@@ -86,9 +48,6 @@ public class NES_ReEnrUtilities {
             );        
             Insert oppToInsert;
             
-            // instantiate affiliations to insert, gather record type ids
-            Set<Enrollment_Component_Affiliation__c> ecAffiliationsToInsert = new Set<Enrollment_Component_Affiliation__c>();
-            
             List<Enrollment_Component__c> processComponent = [
                 SELECT Id, Assignment_Logic__c
                 FROM Enrollment_Component__c
@@ -97,120 +56,133 @@ public class NES_ReEnrUtilities {
                 LIMIT 1
             ];
             
-            //Get all the stages
-            List<Enrollment_Component_Relationship__c> relationships = [
-                SELECT Child_Enrollment_Component__c, Id, Order__c, Parent_Enrollment_Component__c,
-                Child_Enrollment_Component__r.Assignment_Logic__c, Child_Enrollment_Component__r.Component_Type__c
-                FROM Enrollment_Component_Relationship__c
-                WHERE Parent_Enrollment_Component__c IN :processComponent
-                AND Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.STAGE_RT
-                ORDER BY Order__c ASC
-            ];
-            
-            // Add process affiliation
-            Enrollment_Component_Affiliation__c affiliationRecord1 = new Enrollment_Component_Affiliation__c();
-            affiliationRecord1.Enrollment_Component__c = processComponent[0].Id;
-            affiliationRecord1.Program_Enrollment__c = studentPERecord.Id;
-            affiliationRecord1.Status__c = 'In Progress';
-            ecAffiliationsToInsert.add(affiliationRecord1);
-            
-            // add stage 1 affiliation
-            Enrollment_Component_Affiliation__c affiliationRecord2 = new Enrollment_Component_Affiliation__c();
-            affiliationRecord2.Enrollment_Component__c = relationships[0].Child_Enrollment_Component__c;
-            affiliationRecord2.Program_Enrollment__c = studentPERecord.Id;
-            affiliationRecord2.Status__c = 'Complete';
-            affiliationRecord2.Order__c = relationships[0].Order__c;
-            ecAffiliationsToInsert.add(affiliationRecord2);
-    
-            //Add the rest of the stages that have no assignment logic.
-            for (Integer i = 1; i < relationships.size(); i++) {
-                if (String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {                
-                    Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
-                    affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
-                    affiliationRecord.Program_Enrollment__c = studentPERecord.Id;
-                    affiliationRecord.Order__c = relationships[i].Order__c;
-                    //The second stage should be in progress all others not started.
-                    if (i == 1)
-                        affiliationRecord.Status__c = 'In Progress';
-                    else
-                        affiliationRecord.Status__c = 'Not Started';
-                    ecAffiliationsToInsert.add(affiliationRecord);
-                }
-            } 
-            
-            //add forms affiliation for the forms under stage 1 that have no assignment logic
-            List<Enrollment_Component_Relationship__c> formRelationships = [
-                SELECT Child_Enrollment_Component__c, Id, Order__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.Assignment_Logic__c
-                FROM Enrollment_Component_Relationship__c
-                WHERE Parent_Enrollment_Component__c = :relationships[0].Child_Enrollment_Component__c
-                AND Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.FORM_RT
-                ORDER BY Order__c
-            ];
-            System.debug(formRelationships);
-            List<Id> formRelationshipIds = new List<Id>();
-            for (Enrollment_Component_Relationship__c formRelationship : formRelationships) {
-                if (String.isBlank(formRelationship.Child_Enrollment_Component__r.Assignment_Logic__c)) {
-                    Enrollment_Component_Affiliation__c affiliationRecord3 = new Enrollment_Component_Affiliation__c();
-                    affiliationRecord3.Enrollment_Component__c = formRelationship.Child_Enrollment_Component__c;
-                    affiliationRecord3.Program_Enrollment__c = studentPERecord.Id;
-                    affiliationRecord3.Status__c = 'Complete';
-                    affiliationRecord3.Order__c = formRelationship.Order__c;
-                    ecAffiliationsToInsert.add(affiliationRecord3);
-                    formRelationshipIds.add(formRelationship.Child_Enrollment_Component__c);
-                }
-            }
-            
-            //add section affiliations that have assignment criteria that were added in the previous section.
-            List<Enrollment_Component_Relationship__c> sectionRelationships = [
-                SELECT Child_Enrollment_Component__c, Id, Order__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.Assignment_Logic__c
-                FROM Enrollment_Component_Relationship__c
-                WHERE Parent_Enrollment_Component__c IN :formRelationshipIds
-                AND Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.SECTION_RT
-            ];
-            System.debug(sectionRelationships);
-            for (Enrollment_Component_Relationship__c sectionRelationship : sectionRelationships) {
-                if (String.isBlank(sectionRelationship.Child_Enrollment_Component__r.Assignment_Logic__c)) {
-                    Enrollment_Component_Affiliation__c affiliationRecord3 = new Enrollment_Component_Affiliation__c();
-                    affiliationRecord3.Enrollment_Component__c = sectionRelationship.Child_Enrollment_Component__c;
-                    affiliationRecord3.Program_Enrollment__c = studentPERecord.Id;
-                    affiliationRecord3.Status__c = 'Complete';
-                    affiliationRecord3.Order__c = sectionRelationship.Order__c;
-                    ecAffiliationsToInsert.add(affiliationRecord3);
+            // Start updating the ECAs
+            List<Enrollment_Component_Affiliation__c> ecaList = new List<Enrollment_Component_Affiliation__c>([
+                    SELECT  Id, SystemModstamp, Enrollment_Component__c,Status__c,Order__c,
+                            Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c,
+                            Enrollment_Component__r.Needed_for_Re_enrollment__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.Name,
+                            Enrollment_Component__r.RecordTypeId, Enrollment_Component__r.Component_Type__c
+                    FROM    Enrollment_Component_Affiliation__c 
+                    WHERE   
+                        Program_Enrollment__c =: studentPERecord.Id
+                     AND 
+                        ( 
+                            (
+                                ( 
+                                    Status__c = 'Complete' 
+                                    AND 
+									Enrollment_Component__r.Component_Type__c != : 'Household'
+									AND
+                                    Enrollment_Component__r.RecordType.Name 
+                                        IN ('Section', 'Form', 'Question', 'Question Group', 'Document', 'Flag', 'Message', 'Text') 
+                                )
+                                OR 
+                                ( 
+                                    (  
+                                        Status__c IN ('In Progress', 'Complete')
+                                        AND 
+                                        (	
+                                            Enrollment_Component__r.RecordType.Name = 'Stage' 
+                                            AND 
+                                            Order__c != 1
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                ]);
+
+		List<Enrollment_Component_Affiliation__c> ecaToUpdate = new List<Enrollment_Component_Affiliation__c>();
+        //Added for testing
+       List<Enrollment_Component_Affiliation__c> StageEcaToUpdate = new List<Enrollment_Component_Affiliation__c>();
+       Set<Id> StageECASet = new Set<Id>();
+        //Added for testing
+
+        //Fix for Bug #195463 on 2020-06-25 (Krishna Peddanagammol)
+        //Added Else If condition for defect #210102
+
+        Set<Id> ECAsOfTypeDocument = new Set<Id>();
+        Set<Id> ECsOfTypeDocument = new Set<Id>();
+        
+        for (Enrollment_Component_Affiliation__c eca : ecaList) {
+            System.debug('my list-----'+eca);
+            if((eca.Enrollment_Component__r.RecordType.Name != 'Stage') && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')) {
+				if(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)){
+					eca.Status__c = 'Not Started';
+				}
+				else{
+					eca.Status__c = 'Not Applicable';
+				}
+            }else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
+                if(eca.Order__c == 2){
+                    eca.Status__c = 'In Progress';
+                }else if(eca.Order__c > 2){
+					if(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)){
+						eca.Status__c = 'Not Started';
+					}
+					else{
+						eca.Status__c = 'Not Applicable';
+					}
                 }
             }
+                // Added for testing
+               if(!StageECASet.Contains(eca.Id))
+               {
+                StageEcaToUpdate.add(eca); 	
+                StageECASet.add(eca.Id);
+               }
+                 
             
-            List<Enrollment_Component_Affiliation__c> nonNullInsertingAffiliations = new List<Enrollment_Component_Affiliation__c>();
-            for (Enrollment_Component_Affiliation__c eca : ecAffiliationsToInsert) {
-                if (eca <> null && eca.Enrollment_Component__c <> null && eca.Program_Enrollment__c <> null)
-                    nonNullInsertingAffiliations.add(eca);
+            //store the ECAs of document
+            if (eca.Enrollment_Component__r.RecordType.Name == 'Document') {
+                System.debug('Document ECA name' + eca.Enrollment_Component__r.Name);
+                System.debug('Document ECA Status' + eca.Status__c);
+                ECAsOfTypeDocument.add(eca.id);       
+                ECsOfTypeDocument.add(eca.Enrollment_Component__c);                   
             }
-                    //Commented the below try catch and implemented retry logic to fix issue reported by Perf Team for BUG217916
-                    /*try {
-                        insert nonNullInsertingAffiliations;
-                    } catch (Exception e) {
-                        //Try again if it failed.
-                        logger.logException('Retrying a timed out insert', e);
-                        logger.saveLogs();
-                        insert nonNullInsertingAffiliations;
-                    }*/
-            integer i=0;
-            do{
-                try{
-                    i++;
-                    insert nonNullInsertingAffiliations;                
-                    break;//Breaking the loop as the DML executed and no exceptions
-                }
-                catch(Exception e){
-                    logger.logException('Retrying a timed out insert', e);
-                    logger.saveLogs();                        
-                }
-            }while(i<5);
+            //added for testing
+                
+        }
+        
+        
+        
+        
+        
+           
+               //Mark any Enrollment document that is tied to any ECA we are opening as Invalid.
+               Set<id> EDsAlreadyAdded = new Set<Id> ();
+               List<Enrollment_Document__c> allEDsToUpdate = new List<Enrollment_Document__c> ();
+              for (Enrollment_Document__c ed : [select id, Enrollment_Component_Affiliation__c, Status_Reason__c from Enrollment_Document__c where Enrollment_Component_Affiliation__c in : ECAsOfTypeDocument]) {
+                   System.debug('NDEBUG ED ID:::' + ed.Id);
+                   System.debug('NDEBUG ED Status_Reason__c:::' + ed.Status_Reason__c);
+                   ed.Status_Reason__c = 'Invalid';
+                   //ed.Enrollment_Component_Affiliation__c = null;
+                   EDsAlreadyAdded.add(ed.id);
+                   allEDsToUpdate.add(ed);
+               } 
+
+               //MM 10/5/2020 We need to find the house docs that might be tied to a different ECA.
+               List<Enrollment_Document__c> allHouseholdEDsToUpdate = new List<Enrollment_Document__c> ([select id, Status_Reason__c 
+                                                                                from Enrollment_Document__c 
+                                                                                where Program_Enrollment__c =: studentPERecord.Household_Program_Enrollment__c
+                                                                                and Enrollment_Component_Affiliation__r.Enrollment_Component__c in :ECsOfTypeDocument ]);
+               for (Enrollment_Document__c ed : allHouseholdEDsToUpdate) {
+                   ed.Status_Reason__c = 'Invalid';
+                   if (!EDsAlreadyAdded.contains(ed.id))
+                       allEDsToUpdate.add(ed);
+               }
+
+               if (allEDsToUpdate.size() > 0)
+                   update allEDsToUpdate;
             
+            if(StageEcaToUpdate.Size()>0)
+            	update StageEcaToUpdate;
             
             //Determine which version of the ECA process we are using.       
             //Call the future method that will create the remaining ECAs and the PE Criteria.            
-            PerformAsyncNewStudentSteps(studentPERecord.Id, processComponent[0].Id, caretakerEnrollment[0].Id,''); 
-            
+            PerformAsyncNewStudentSteps(studentPERecord.Id, processComponent[0].Id, caretakerEnrollment[0].Id); 
+
+                     
             //The case creation is now seperated out to a queable.
             System.enqueueJob(new NES_AddStudentCaseQueueable(caretaker,studentPERecord.Id,studentContact[0]));
             peakResponse.success = true;  
@@ -229,10 +201,10 @@ public class NES_ReEnrUtilities {
     }
     
     
-    @future 
+   @future 
     public static void 
 
-    PerformAsyncNewStudentSteps( id programEnrollment,  Id processId, id caretakerEnrollmentId, String EnrollmentType)
+    PerformAsyncNewStudentSteps( Id programEnrollment,  Id processId, id caretakerEnrollmentId)
 
     {
         //This method is called from Add a student process. Runs as a future method.  Will create the remaining ECAs and all the PE Criteria Records.
@@ -270,30 +242,7 @@ public class NES_ReEnrUtilities {
                 ecr.Child_Enrollment_Component__r.RecordType.Name == NES_DashboardUtilities.HIDDEN_INPUT ||
                 ecr.Child_Enrollment_Component__r.RecordType.Name == NES_DashboardUtilities.TEXT_RT ||
                 ecr.Child_Enrollment_Component__r.RecordType.Name == NES_DashboardUtilities.QUESTIONGROUP_RT )
-                    ECANotNeededForThisRecType = true;
-
-            //Started the loop by Jagadish Babu for ITR
-            if(EnrollmentType == 'Returning Student' ){
-                if (!ECsAlreadyAddedToPE.contains(ecr.Child_Enrollment_Component__c) && !ECANotNeededForThisRecType){ // && ecr.Child_Enrollment_Component__r.RecordType.Name != 'Stage') {
-                    if(ecr.Child_Enrollment_Component__r.Needed_For_ITR__c == true){
-                        Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
-                        affiliationRecord.Enrollment_Component__c = ecr.Child_Enrollment_Component__c;
-                        affiliationRecord.Program_Enrollment__c = programEnrollment;
-                        affiliationRecord.Order__c = ecr.Order__c;
-                        affiliationRecord.EC_Record_Type__c = ecr.Child_Enrollment_Component__r.RecordType.Name;
-                       if (String.isBlank(ecr.Child_Enrollment_Component__r.Assignment_Logic__c) ) {
-                            affiliationRecord.Status__c = 'Not Started';                           
-                        }                            
-                        else{
-                            affiliationRecord.Status__c = 'Not Applicable';                           
-                        } 
-                        newAffiliations.add(affiliationRecord);
-                        system.debug('Affiliations*********'+affiliationRecord);
-                    }  
-                }
-                
-                
-            }else{
+                    ECANotNeededForThisRecType = true;            
 
             if (!ECsAlreadyAddedToPE.contains(ecr.Child_Enrollment_Component__c) && !ECANotNeededForThisRecType) {
                 Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
@@ -310,7 +259,7 @@ public class NES_ReEnrUtilities {
                 newAffiliations.add(affiliationRecord);
             }
 
-            }//Ended loop Jagadish Babu
+            
 
             //While we are looping over the ECRs, collect all the ECs for this process so we can retrieve all the required criteria.
             allECs.add(ecr.Child_Enrollment_Component__c);
@@ -339,6 +288,17 @@ public class NES_ReEnrUtilities {
         //Now insert all the Program Enrollment Criteria records.
         list <Program_Enrollment_Criteria__c> pecsToInsert = new list <Program_Enrollment_Criteria__c> ();
         Set<String> pecAlreadyIncluded = new Set<String> (); //The combination of criteriaid, questiongroup, school year and student or house
+        
+        // Get the Existing PECs        
+        for (Program_Enrollment_Criteria__c pec : [
+            SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c   
+            FROM    Program_Enrollment_Criteria__c 
+            WHERE   Program_Enrollment__c =: programEnrollment ]) 
+        {
+            pecAlreadyIncluded.add(pec.Criteria__c + pec.Student_or_Household__c + pec.Question_Group__c + pec.School_Year__c);
+        }
+        
+        // Get the ECCs and create corresponding PECs if required
         for (Enrollment_Component_Criteria__c ecc : [
             SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c   
             FROM    Enrollment_Component_Criteria__c 
@@ -403,26 +363,11 @@ public class NES_ReEnrUtilities {
                                                                         Initial_ECA_Creation_Complete__c = true);
         update pe;
 
+        /*
         //Call a method that will set the initial values for PE Criteria based on current data.
         if (eccs.size()>0) 
             EvaluationUtils.evaluatePECs(eccs, programEnrollment);
-
-        
-
-        /*
-        if(EnrollmentType == 'Returning Student'){
-             List<hed__Program_Enrollment__c> programEnrollments = [
-                SELECT Id, hed__Contact__c, Start_Year__c, hed__Account__c, Final_Grade_Level__c, EntranceAgeEligibilityOverride__c,
-                    EntranceAgeEligibilitySystem__c, EntranceAgeEligibilityFinal__c,
-                    (SELECT Id, Final_Grade_Level__c, Grade_Level_Requested__c, Program_Enrollment__c FROM Annual_Student_Information__r)
-                FROM hed__Program_Enrollment__c
-                WHERE Id = : programEnrollment];
-        NES_AnnualStudentInfoBusinessLogic.populateProgramGradeLevel(programEnrollments[0].Annual_Student_Information__r, null);
-        }
-        else{
-           System.enqueueJob(new NES_AddStudentCBLQueueable(programEnrollment)); 
-        }
-        */       
+        */
     }
     
     public class ReEnrResults{

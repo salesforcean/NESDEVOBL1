@@ -262,11 +262,12 @@
         
         var newSchoolYear=component.find('Year').get('v.value');
         var gradeNew=component.find('Grade').get('v.value');
-        console.log('New School Year :'+newSchoolYear);
-        console.log('New Grade Selected :'+gradeNew);
+        console.log('ReEnroll New School Year :'+newSchoolYear);
+        console.log('ReEnroll New Grade Selected :'+gradeNew);
         var previousSchoolYear=component.get('v.schoolYeara');
         var previousGrade=component.get("v.gradeLevelId");
         var Result = component.get("v.peEnrollmentType"); // added by Maddileti
+        alert(Result);
         
         // Added by Ravi # Us345735 
         if(newSchoolYear<previousSchoolYear){
