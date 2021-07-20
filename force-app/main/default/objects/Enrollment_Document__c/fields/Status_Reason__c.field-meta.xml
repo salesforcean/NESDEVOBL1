@@ -217,8 +217,10 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
             <controllingFieldValue>Master Agreement</controllingFieldValue>
             <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
             <controllingFieldValue>Proof of Residence</controllingFieldValue>
             <controllingFieldValue>Report Card</controllingFieldValue>
             <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
@@ -310,6 +312,7 @@
             <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
             <controllingFieldValue>Minnesota Health Screen Report</controllingFieldValue>
             <controllingFieldValue>NCCA Health Assessment</controllingFieldValue>
             <controllingFieldValue>PHLOTE</controllingFieldValue>

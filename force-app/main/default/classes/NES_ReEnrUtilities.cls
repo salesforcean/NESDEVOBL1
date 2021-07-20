@@ -1,4 +1,4 @@
-public class NES_ReEnrUtilities {
+public without Sharing class NES_ReEnrUtilities {
     private static Peak_ApexLog logger = new Peak_ApexLog('NES_ReEnrUtilities');
     
     public static ReEnrResults reenrollingStudent(Id studentContactId, Id studentPEId){
@@ -13,6 +13,7 @@ public class NES_ReEnrUtilities {
             NES_LTSUtility.runLTSFlag = false;
             NES_ProgramEnrollmentHandler.runCBL = false;
 
+            //System.debug('Contact Id' + studentContactId);
             
             
             // Get the Student Contact
@@ -35,18 +36,7 @@ public class NES_ReEnrUtilities {
             // Get the Caretaker User Record
             User careTaker = [SELECT Id, AccountId, ContactId, Contact.RecordType.Name,Contact.Account.Family_Enrollment_Counselor__c, Contact.AccountId FROM User WHERE ContactId = :caretakerEnrollment[0].hed__Contact__c];
             
-            //Now let's create an Opportunity based on that enrollmentId
-            Opportunity oppToInsert = new Opportunity(
-                Name = studentContact[0].FirstName + ' ' + studentContact[0].LastName + ' Opportunity',
-                OwnerId = AcademicProgram[0].OwnerId,
-                Caretaker_Id__c = studentContact[0].Caretaker_Id__c,
-                Student_Id__c = studentContact[0].Id,
-                AccountId = studentContact[0].AccountId,
-                Program_Enrollment__c = studentPERecord.Id,
-                StageName = 'Open',
-                CloseDate = AcademicProgram[0].Confirmation_End_Date__c == null ? Date.today() : AcademicProgram[0].Confirmation_End_Date__c.date()
-            );        
-            Insert oppToInsert;
+            
             
             List<Enrollment_Component__c> processComponent = [
                 SELECT Id, Assignment_Logic__c
@@ -107,7 +97,7 @@ public class NES_ReEnrUtilities {
         for (Enrollment_Component_Affiliation__c eca : ecaList) {
             System.debug('my list-----'+eca);
             if((eca.Enrollment_Component__r.RecordType.Name != 'Stage') && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')) {
-				if(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)){
+                if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) || (eca.Enrollment_Component__r.Needed_for_Re_enrollment__c)){
 					eca.Status__c = 'Not Started';
 				}
 				else{
@@ -155,7 +145,7 @@ public class NES_ReEnrUtilities {
               for (Enrollment_Document__c ed : [select id, Enrollment_Component_Affiliation__c, Status_Reason__c from Enrollment_Document__c where Enrollment_Component_Affiliation__c in : ECAsOfTypeDocument]) {
                    System.debug('NDEBUG ED ID:::' + ed.Id);
                    System.debug('NDEBUG ED Status_Reason__c:::' + ed.Status_Reason__c);
-                   ed.Status_Reason__c = 'Invalid';
+                   ed.Status_Reason__c = 'Invalid-Reenrollment';
                    //ed.Enrollment_Component_Affiliation__c = null;
                    EDsAlreadyAdded.add(ed.id);
                    allEDsToUpdate.add(ed);
@@ -186,6 +176,20 @@ public class NES_ReEnrUtilities {
             //The case creation is now seperated out to a queable.
             System.enqueueJob(new NES_AddStudentCaseQueueable(caretaker,studentPERecord.Id,studentContact[0]));
             peakResponse.success = true;  
+            
+            //Now let's create an Opportunity based on that enrollmentId
+            Opportunity oppToInsert = new Opportunity(
+                Name = studentContact[0].FirstName + ' ' + studentContact[0].LastName + ' Opportunity',
+                OwnerId = AcademicProgram[0].OwnerId,
+                Caretaker_Id__c = studentContact[0].Caretaker_Id__c,
+                Student_Id__c = studentContact[0].Id,
+                AccountId = studentContact[0].AccountId,
+                Program_Enrollment__c = studentPERecord.Id,
+                StageName = 'Open',
+                CloseDate = AcademicProgram[0].Confirmation_End_Date__c == null ? Date.today() : AcademicProgram[0].Confirmation_End_Date__c.date()
+            );        
+            Insert oppToInsert;
+            
             String gradeLevel = studentPERecord?.Program_Grade_Level__r?.Grade_Level__r?.Name;
             ReEnrResults result = new ReEnrResults(studentPERecord.id , processComponent[0].Id, gradelevel, true);
             return result;

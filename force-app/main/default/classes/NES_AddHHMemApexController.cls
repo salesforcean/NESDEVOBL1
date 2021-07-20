@@ -163,6 +163,7 @@ public without sharing class NES_AddHHMemApexController {
                     relationship.hed__RelatedContact__c =  rel.hed__RelatedContact__c;
                     relationship.Recalculate_Sharing__c = true;
                    // TODO:: relationship.hed__Type__c = relation;
+                    relationship.hed__Type__c = flowParams[0].addlHHMember.V2_Role__c == 'Parent or Legal Guardian'? 'Parent' : ( flowParams[0].addlHHMember.V2_Role__c == 'Designated Caretaker'? 'Legal Guardian' : (flowParams[0].addlHHMember.V2_Role__c == 'Learning Coach' ? 'Learning Coach' :''));
                     relationship.OwnerId = System.Label.NES_Household_OwnerId;
                     relationshipList.add(relationship);
                 }

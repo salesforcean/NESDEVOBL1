@@ -111,7 +111,7 @@
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
                 console.log('getreeess:'+returnedResponse);
-                alert(returnedResponse);
+                //alert(returnedResponse);
                 component.set("v.peEnrollmentType", returnedResponse);
                 
             } else {
@@ -123,7 +123,7 @@
         
     } ,
     reactivateORreenrolledSameYear : function(component, event, helper){
-        alert('In reactivateORreenrolledSameYear');
+        alert('NES_ReactivateEnrollmentHelper In reactivateORreenrolledSameYear');
         
         var stId=component.get("v.studentId");
         var programEnrollmentId = component.get("v.programEnrollmentId");

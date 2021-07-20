@@ -267,7 +267,7 @@
         var previousSchoolYear=component.get('v.schoolYeara');
         var previousGrade=component.get("v.gradeLevelId");
         var Result = component.get("v.peEnrollmentType"); // added by Maddileti
-        alert(Result);
+        //alert(Result);
         
         // Added by Ravi # Us345735 
         if(newSchoolYear<previousSchoolYear){

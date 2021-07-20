@@ -234,7 +234,7 @@ and using those child components get the required component information
                                                                                        Program_Enrollment__r.hed__Account__r.Document_Start_Date__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c,
                                                                                        Program_Enrollment__r.hed__Account__r.Document_End_Date__c, Program_Enrollment__r.hed__Contact__r.Account.Document_Extension_Date__c,
                                                                                        Program_Enrollment__r.hed__Contact__r.Document_Extension_Date__c, Program_Enrollment__r.Program_Grade_Level__r.Grade_Level__r.Name,
-                                                                                       (SELECT Id, Status_Reason__c FROM Enrollment_Documents__r Where Status_Reason__c != 'Invalid')
+                                                                                       (SELECT Id, Status_Reason__c FROM Enrollment_Documents__r)
                                                                                        FROM Enrollment_Component_Affiliation__c
                                                                                        WHERE Program_Enrollment__c =: programEnrollmentId
                                                                                        AND Enrollment_Component__c IN : relatedComponentIds];
