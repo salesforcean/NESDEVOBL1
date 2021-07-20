@@ -496,7 +496,7 @@ and using those child components get the required component information
                 
                 // Added by Naveen for Defect#447458
                 List <Contact> CtList = [Select Id, Unverified__c from Contact where AccountId =: caretaker.Contact.AccountId 
-                                 and Recordtype.name != 'Students' Order by createddate asc];
+                                         and Recordtype.name != 'Students' Order by createddate asc];
                 List <hed__Program_Enrollment__c> newCareTakerEnrollmentList = new List <hed__Program_Enrollment__c> ();
                 
                 hed__Program_Enrollment__c caretakerEnrollmentId = new hed__Program_Enrollment__c();
@@ -513,19 +513,19 @@ and using those child components get the required component information
                                 caretakerEnrollmentId.hed__Account__c = academicProgram.Id;
                             }
                             newCareTakerEnrollmentList.add(caretakerEnrollmentId);
-                         }
+                        }
                     }                        
                     insert newCareTakerEnrollmentList;
                     caretakerEnrollmentId = newCareTakerEnrollmentList[0];
                     /*
-                    caretakerEnrollmentId.hed__Contact__c = caretaker.ContactId;
-                    caretakerEnrollmentId.RecordTypeId = caretakerEnrollmentTypeId;
-                    caretakerEnrollmentId.OwnerId = academicProgram.OwnerId;
-                    if (academicProgram != null) {
-                        caretakerEnrollmentId.hed__Account__c = academicProgram.Id;
-                    }
-                    insert caretakerEnrollmentId;
-					*/
+caretakerEnrollmentId.hed__Contact__c = caretaker.ContactId;
+caretakerEnrollmentId.RecordTypeId = caretakerEnrollmentTypeId;
+caretakerEnrollmentId.OwnerId = academicProgram.OwnerId;
+if (academicProgram != null) {
+caretakerEnrollmentId.hed__Account__c = academicProgram.Id;
+}
+insert caretakerEnrollmentId;
+*/
                 } else {
                     caretakerEnrollmentId = caretakerEnrollments[0];
                 }
@@ -534,7 +534,9 @@ and using those child components get the required component information
                 Program_Grade_Level__c progGrades =[select id,Grade_Level__r.name from Program_Grade_Level__c where Academic_Program__r.name =:academicProgram.name AND Grade_Level__r.name =:gradeLevels limit 1];
                 hed__Program_Enrollment__c oldPE;
                 if(programEnrollmentId !=null)
-                    oldPE =[select Enrollment_Type__c,Status__c from hed__Program_Enrollment__c where id =:programEnrollmentId limit 1];
+                    oldPE =[Select Id,Status__c,hed__Contact__c,Enrollment_Type__c,
+                                                (select id,Withdrawal_Category__c from Enrollments__r order by createddate desc)  
+                                                from hed__Program_Enrollment__c where id =:programEnrollmentId limit 1];
                 //Program Enrollment for student
                 hed__Program_Enrollment__c newStudentEnrollment = new hed__Program_Enrollment__c();
                 Id studentEnrollmentTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
@@ -568,7 +570,11 @@ newStudentEnrollment.Enrollment_Type__c =oldPE.Enrollment_Type__c;
                     
                     newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student';
                     
-                } else {
+                } else if(!oldPE.Enrollments__r.isEmpty() && oldPE.Status__c == 'Complete' && oldPE.Enrollments__r[0].Withdrawal_Category__c == 'Not returning' && enrollFlag == true){
+                    
+                    newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student'; // Added by Maddileti for defect 450088 on 20/07/2021
+                } 
+                else {
                     
                     newStudentEnrollment.Enrollment_Type__c = oldPE.Enrollment_Type__c;
                 }

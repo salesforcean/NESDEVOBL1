@@ -45,14 +45,21 @@ public class NES_ReEnrUtilitiesTest {
         
         //Create a student enrollment
         Id studentEnrollmentType = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
-        hed__Program_Enrollment__c studentEnrollment = Peak_TestUtils.createProgramEnrollment(academicProgram.Id, student.Id, schoolYear.Id, false);
+        hed__Program_Enrollment__c studentEnrollment = Peak_TestUtils.createProgramEnrollment(academicProgram.Id, student.Id, schoolYear.Id, true);
         studentEnrollment.RecordTypeId = studentEnrollmentType;
         studentEnrollment.Program_Enrollment__c = careTakerEnrollment.Id;
         studentEnrollment.Household_Program_Enrollment__c=careTakerEnrollment.id;
-        insert studentEnrollment;
-        //
+        update studentEnrollment;
+        
+        Contact TestContact = Peak_TestUtils.createTestContact();
+        
+        hed__Program_Enrollment__c ProgramEnrollmentTest = Peak_TestUtils.createProgramEnrollment(academicProgram.Id, TestContact.Id, schoolYear.Id, true);
+        Enrollment_Document__c enrollmentDocument1 = Peak_TestUtils.createEnrollmentDocumentRecord(ProgramEnrollmentTest.id);
+        enrollmentDocument1.Type__c = 'Proof of Age';
+        enrollmentDocument1.Status_Reason__c = 'Submitted';
+        update enrollmentDocument1;
+        
         Enrollment__c enrollmentId=Peak_TestUtils.createEnrollmentRecord(studentEnrollment.id,schoolYear.id,true);
-        //
         Grade_Level__c gradeLevel2 = Peak_TestUtils.createGradeLevel('1',true);
         
         Program_Grade_Level__c programGradeLevel1 = Peak_TestUtils.createProgramGradeLevel('Test PGL1', academicProgram.Id,gradeLevel2.Id,System.today().addDays(50),true);
@@ -83,6 +90,12 @@ public class NES_ReEnrUtilitiesTest {
         sectionComponent_With_No_Logic.Assignment_Logic__c = null;
         sectionComponent_With_No_Logic.Needed_for_ITR__c = true;
         
+        //
+        Enrollment_Component__c stageComponentss = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Document', false);
+        stageComponentss.Assignment_Logic__c = '';
+        stageComponentss.Needed_for_ITR__c = true;
+        //
+        
         Enrollment_Component__c questionGroupComponent = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Question_Group', false);
         questionGroupComponent.Needed_for_ITR__c = true;
         
@@ -110,6 +123,7 @@ public class NES_ReEnrUtilitiesTest {
         componentList.add(questionGroupComponent_With_No_Logic);
         componentList.add(questionComponent);
         componentList.add(questionComponent_With_No_Logic);
+        componentList.add(stageComponentss);
         
         
         Enrollment_Component__c secComplete = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Section', false);
@@ -168,6 +182,28 @@ public class NES_ReEnrUtilitiesTest {
         
         insert EnrollmentCompCriteriaList;
         
+        // create Enrollment Component Affiliations with different parent Enrollment Components.
+        List<Enrollment_Component_Affiliation__c> enrollmentComponentAffiliations = new List<Enrollment_Component_Affiliation__c>();
+        Enrollment_Component_Affiliation__c affiliationStage = Peak_TestUtils.createEnrollmentComponentAffiliation(studentEnrollment.Id, stageComponent.Id, false);
+        affiliationStage.Status__c = 'In Progress';
+        enrollmentComponentAffiliations.add(affiliationStage);
+        
+        Enrollment_Component_Affiliation__c affiliationStage2 = Peak_TestUtils.createEnrollmentComponentAffiliation(careTakerEnrollment.Id, processComponent.Id, false);
+        affiliationStage2.Status__c = 'Not Started';
+        enrollmentComponentAffiliations.add(affiliationStage2);
+        
+        Enrollment_Component_Affiliation__c affiliationDocument = Peak_TestUtils.createEnrollmentComponentAffiliation(studentEnrollment.Id, stageComponentss.Id, false);
+        affiliationDocument.Status__c = 'In Progress';
+        enrollmentComponentAffiliations.add(affiliationDocument);
+        
+        insert enrollmentComponentAffiliations;
+        // Create Enrollment Documents
+        Enrollment_Document__c enrollmentDocument2 = Peak_TestUtils.createEnrollmentDocumentRecord(ProgramEnrollmentTest.id);
+        enrollmentDocument2.Type__c = 'Immunization Records';
+        enrollmentDocument2.Enrollment_Component_Affiliation__c = affiliationStage.Id;
+        update enrollmentDocument2;
+        // 
+        
     } 
     static testMethod void pesTest(){
         //User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'portalUser@gmail.com'];
@@ -177,6 +213,10 @@ public class NES_ReEnrUtilitiesTest {
         Account academicProgram = [SELECT Id,name, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c FROM Account WHERE RecordType.Name = 'Academic Program' LIMIT 1];
         
         hed__Program_Enrollment__c stdPE=[select id,Enrollment_Type__c,Household_Program_Enrollment__c from hed__Program_Enrollment__c WHERE RecordType.Name = 'Student' limit 1];
+        
+        Enrollment_Component_Affiliation__c ecaList=[SELECT Id,Enrollment_Component__c,Status__c,Order__c,Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c =: stdPE.id AND Enrollment_Component__r.RecordType.Name ='Document' Limit 1];
+        ecaList.Status__c='Complete';
+        update ecaList;
         
         Test.startTest();
         NES_ReEnrUtilities.ReEnrResults response = NES_EnrollmentController.doReEnrollment(studentid.id,stdPE.id);
@@ -199,7 +239,7 @@ public class NES_ReEnrUtilitiesTest {
         List<Enrollment_Component__c> processComponent = [SELECT Id, Assignment_Logic__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :academicProgram.id AND RecordType.Name = :NES_DashboardUtilities.PROCESS_RT Limit 1];
         
         Test.startTest();
-        NES_ReEnrUtilities.PerformAsyncNewStudentSteps(studentPe.Id,processComponent[0].Id,caretakerEnrollment.Id,studentPe.Enrollment_Type__c);
+        NES_ReEnrUtilities.PerformAsyncNewStudentSteps(studentPe.Id,processComponent[0].Id,caretakerEnrollment.Id);
         Test.stopTest(); 
         system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());
     }

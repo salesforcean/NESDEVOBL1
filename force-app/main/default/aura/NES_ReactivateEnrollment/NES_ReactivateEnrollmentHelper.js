@@ -98,7 +98,7 @@
         
         
     },
-    // Added by Maddileti
+    // Added by Maddileti for US 389103 on 16/07/2021
     getpeEnrollmentType: function (component, event, helper){     
         var programEnrollmentId = component.get("v.programEnrollmentId");
         console.log('programEnrollmentId123:'+programEnrollmentId);
@@ -123,7 +123,7 @@
         
     } ,
     reactivateORreenrolledSameYear : function(component, event, helper){
-        alert('NES_ReactivateEnrollmentHelper In reactivateORreenrolledSameYear');
+        //alert('NES_ReactivateEnrollmentHelper In reactivateORreenrolledSameYear');
         
         var stId=component.get("v.studentId");
         var programEnrollmentId = component.get("v.programEnrollmentId");
@@ -135,7 +135,7 @@
         });
         action.setCallback(this, function(response){
             var peakResponse = response.getReturnValue();
-            alert('Response from Apex Controller '+ peakResponse.success);
+            //alert('Response from Apex Controller '+ peakResponse.success);
             console.log(peakResponse);
             if(peakResponse.success){
                 component.set("v.success", true);
@@ -157,5 +157,6 @@
         });
         $A.enqueueAction(action);
     }
+    // End by Maddileti for US 389103 on 16/07/2021
     
 })
