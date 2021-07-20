@@ -228,7 +228,7 @@ and using those child components get the required component information
             	result = 'ReActivation';
             }
             else            
-            if(!peRecord.Enrollments__r.isEmpty() && peRecord.Status__c == 'Withdrawn' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show')
+            if((!peRecord.Enrollments__r.isEmpty()) && ((peRecord.Status__c == 'Withdrawn' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show') || (peRecord.Status__c == 'Complete' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning')))
             {
                 result = 'ReEnrollment';               
             }
