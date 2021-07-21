@@ -1,14 +1,14 @@
 ({
     /**
-	 * Create an HTML input element, set necessary attributes, add the element to the DOM
-	 *
-	 * @param fields - pre-chat fields object with attributes needed to render
-	 */
+     * Create an HTML input element, set necessary attributes, add the element to the DOM
+     *
+     * @param fields - pre-chat fields object with attributes needed to render
+     */
     renderFields: function (helper, fields) {
-       	//keep track of school code during the loop
+        //keep track of school code during the loop
         //because some school codes require additional fields
         var schoolCode;
-        
+
         // default to true
         window.zipCodeLookupRequired = true;
 
@@ -41,12 +41,12 @@
 
             // Set general attributes
             input.className = field.className;
-            input.placeholder = field.label + (field.required ? " *" : "");            
-            
+            input.placeholder = field.label + (field.required ? " *" : "");
+
             // set value if not null
             if (field.value != null) {
                 input.value = field.value;
-                if (field.name === "School_ID_Location__c") {                    
+                if (field.name === "School_ID_Location__c") {
                     schoolCode = field.value;
                 }
             }
@@ -75,6 +75,10 @@
                 input.placeholder = "Zip Code *";
                 window.zipCodeLookupRequired = true;
                 input.setAttribute("type", "");
+            } else if (field.name === "Global_Opt_Out__c") {
+                // Manually set the Global Opt Out field to "NO"
+                input.value = field.value = "NO";
+                input.maxLength = field.maxLength = 2;
             }
 
             div.appendChild(input);
@@ -110,7 +114,7 @@
         return true;
     },
     /**
-	 * jQuery validation of field formatting.
+     * jQuery validation of field formatting.
      */
     enableFieldValidation: function () {
         if (window.$) {
@@ -146,9 +150,6 @@
     performZipCodeLookup: function (helper, startChatMethod, preChatInfo) {
         if (window.$) {
             const zipCodeValue = $("input[name='Chat_Zip_Code__c']").val();
-            
-            console.log('Inside ZipCodeLookup(), with zip: ' + zipCodeValue);
-            
 
             if (zipCodeValue.length === 5) {
                 const parameters = {
@@ -164,7 +165,7 @@
 
                 $.getJSON("https://" + window.zipCodeLookupDomain + "/API/FindByZip/locations/getLocationByZipCode", parameters)
                     .done(function (data) {
-                        console.log('Finished API call. ' + data);
+
                         const schoolJson = JSON.parse(data);
                         const $schoolIdHiddenField = $("input[name='School_ID_Location__c']");
                         if (schoolJson && schoolJson.idLocation) {
@@ -172,7 +173,7 @@
                             // replace school id with value returned from API unless it's iNaCA
                             idLocation === iNaCaSchoolId ? $schoolIdHiddenField.val("") : $schoolIdHiddenField.val(idLocation);
                             // form values have changed so regenerate prechatInfo object
-                            console.log("IdLocation from json response: " + idLocation);
+
                             preChatInfo = helper.createStartChatDataArray();
                         } else {
                             // invalid zip or error on API call
@@ -193,13 +194,17 @@
         }
     },
     /**
-    * Gets HTML input type of field based on criteria
-    *
-    * @param field - form field object
-    * @param schoolCode - school code where chat was initiated
-    */
+     * Gets HTML input type of field based on criteria
+     *
+     * @param {string} field Form field object
+     * @param {number} schoolCode School code where chat was initiated
+     */
     getInputType: function (field, schoolCode) {
-        const hiddenFields = ["School ID Location", "Mktg_LeadSourceCode", "Chat Zip Code", "Channel Type", "Lead Source", "Company"];
+        const hiddenFields = [
+            "School ID Location", "Mktg_LeadSourceCode", "Chat Zip Code",
+            "Company", "Channel Type", "Lead Source",
+            "GA Click ID", "GA Client ID", "GA Device", "GA Exp ID", "GA Medium", "GA Source"
+        ];
         const schoolCodesToDisplayZipCode = [91, 4950];
 
         if (field.type === "inputEmail") {
@@ -214,13 +219,15 @@
             return "text";
         }
 
-        if (hiddenFields.includes(field.label))
+        // Hide hidden fields and the Global Opt Out field
+        if (hiddenFields.includes(field.label) || field.name === "Global_Opt_Out__c") {
             return "hidden";
+        }
 
         return "text";
     },
     /**
-	 * Create an array of data to pass to the prechatAPI component's startChat function
+     * Create an array of data to pass to the prechatAPI component's startChat function
      */
     createStartChatDataArray: function () {
         var inputs = document.querySelectorAll(".fieldList input");

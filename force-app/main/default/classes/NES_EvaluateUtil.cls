@@ -45,10 +45,10 @@ public without sharing class NES_EvaluateUtil {
             Map<String, List<String>> objectMap = fieldsMap.get(studentHousehold);
             if (studentHousehold == 'Student' && String.isNotBlank(newStudentId)) {
                 studentMap = getObjectDataList(objectMap, studentEnrollmentId, accountId, newStudentId);
-                System.debug(studentMap);
+                System.debug('rctesting------------------->' + studentMap);
             } else {
                 caretakerMap = getObjectDataList(objectMap, caretakerEnrollmentId, accountId, caretakerId);
-                System.debug(caretakerMap);
+                System.debug('Rctesting----------->'+caretakerMap);
             }
         }
         resultMap = grabCriteriaResultMap(componentCriteriaMap, studentMap, caretakerMap);
@@ -1054,8 +1054,8 @@ public without sharing class NES_EvaluateUtil {
             } else if (String.isNotBlank(enrollmentId)) {
                 query = 'SELECT id, ' + fieldStrings + ' FROM ' + objectName + ' WHERE program_enrollment__c = \'' + enrollmentId + '\' ';
             }
-
-            System.debug(query);
+				
+            System.debug('testingrc-------->'+ query);
             if (String.isNotBlank(query)) {
                 query.remove('(');
                 query.remove(')');
