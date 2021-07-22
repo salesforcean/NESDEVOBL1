@@ -65,7 +65,7 @@ public abstract class NES_EnrollmentReactivationBase {
                 AcademicPerformanceEligibility__c, RecordTypeId, RecordType.Name, Status__c, Household_Program_Enrollment__c,
                 (SELECT Id,StageName FROM Opportunities__r)
               FROM hed__Program_Enrollment__c WHERE Id = :stud_PEID];
-
+System.debug('TEst15--------'+studPE);
         preValidatePE(); // validate the stud_PE rec
 
     }
@@ -128,7 +128,7 @@ public abstract class NES_EnrollmentReactivationBase {
 
     // move to implementing child class...
     @TestVisible protected Opportunity getNewOpportunity() { // template to initialize the Oppty & return
-
+System.debug('test5------------');
         hed__Program_Enrollment__c progEnrollment = studPE;
         ReactivatedBy userType =  
             (currentUserProfile.Name.Contains(COMMUNITY_USER_PROFILE_PREFIX)) ? ReactivatedBy.Caretaker : ReactivatedBy.Staff;
@@ -149,7 +149,7 @@ public abstract class NES_EnrollmentReactivationBase {
 
 
     @TestVisible protected void processECAs(String enrollmentType) {
-        
+        System.debug('test4----------------');
         List<Enrollment_Component_Affiliation__c> ecaToUpdate = new List<Enrollment_Component_Affiliation__c>();
         //Added for testing
        List<Enrollment_Component_Affiliation__c> StageEcaToUpdate = new List<Enrollment_Component_Affiliation__c>();

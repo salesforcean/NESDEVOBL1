@@ -133,12 +133,7 @@ public without Sharing class NES_ReEnrUtilities {
             //added for testing
                 
         }
-        
-        
-        
-        
-        
-           
+            
                //Mark any Enrollment document that is tied to any ECA we are opening as Invalid.
                Set<id> EDsAlreadyAdded = new Set<Id> ();
                List<Enrollment_Document__c> allEDsToUpdate = new List<Enrollment_Document__c> ();

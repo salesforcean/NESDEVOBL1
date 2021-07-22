@@ -10,8 +10,7 @@
         helper.getGrades(component, event, helper, yearValue);
         helper.getSchoolYears(component, event, helper);
         //helper.InvokeReactive(component,event,helper);
-        helper.getpeEnrollmentType(component, event, helper);
-        
+        helper.getpeEnrollmentType(component, event, helper);        
     },
     closeModal: function (component,event,helper)
     {
@@ -323,10 +322,9 @@
                 }
             });
             $A.enqueueAction(action); 
-        }
+        }       
         
-        
-    } ,
+    },
     
     // End by Maddileti for US # 332934 on 12/16/2020
     // Add by Maddileti for Defect # 345663 on 12/22/2020
@@ -339,8 +337,7 @@
         
         if(newSchoolYear == previousSchoolYear && gradeNew == previousGrade){
             component.set("v.isError",false);
-        } 
-        
+        }         
     }
     // End by Maddileti for Defect # 345663 on 12/22/2020
     

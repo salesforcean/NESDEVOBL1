@@ -62,6 +62,7 @@ public without sharing class NES_EnrollmentReactivationHandler {
             }
             else{
                 NES_EnrollmentReactivationBase process = getProcessInstance(studPEID, reactivationType);
+                System.debug('test11-----------'+process);
                 process.execute();
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';
                 peakResponse.success = true;
@@ -96,6 +97,7 @@ public without sharing class NES_EnrollmentReactivationHandler {
             }
             when 'RE_ENROLLMENT' {
                 instance = new NES_StudentReenrollment(studPEID, NES_EnrollmentReactivationBase.Reactivation.RE_ENROLLMENT);
+                System.debug('test10---------');
             }
             when else {
                  throw new NES_EnrollmentReactivationBase.EnrollmentReactivation_Exception(

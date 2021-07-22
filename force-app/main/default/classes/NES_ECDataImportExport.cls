@@ -178,6 +178,8 @@ public with sharing class NES_ECDataImportExport {
      * // ideally this should return just 1 Active record
      */
     private static List<ecrTree__c> getECRTreeByParentIDs(Set<Id> ecTreeParentIDs, String type) {
+        System.debug('NDEBUG :: ECTREEPARENTID' + ecTreeParentIDs);
+        System.debug('NDEBUG :: TYPE' + type);
 
         return [SELECT  Id, 
                         name, 
