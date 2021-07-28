@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <description>This email will be sent out once the Addl HH Member Contact is verified.</description>
-        <name>Additional_Household_Member_Approved</name>
-        <label>Additional Household Member Approved</label>
-        <locationX>864</locationX>
-        <locationY>441</locationY>
-        <actionName>Contact.Additional_Household_Member_Approved_Alert</actionName>
-        <actionType>emailAlert</actionType>
-        <connector>
-            <targetReference>Create_Related_Records</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>SObjectRowId</name>
-            <value>
-                <elementReference>Get_Record_from_contact.Id</elementReference>
-            </value>
-        </inputParameters>
-    </actionCalls>
-    <actionCalls>
         <name>Create_Related_Records</name>
         <label>Create Related Records</label>
         <locationX>644</locationX>
@@ -125,7 +106,7 @@
         <locationX>1189</locationX>
         <locationY>443</locationY>
         <connector>
-            <targetReference>Additional_Household_Member_Approved</targetReference>
+            <targetReference>Create_Related_Records</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>

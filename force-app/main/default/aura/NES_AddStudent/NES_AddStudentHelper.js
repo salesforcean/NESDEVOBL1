@@ -245,6 +245,7 @@
                 component.set("v.addStudentActive", false);
                 component.set("v.loading", false);
                 component.set("v.supplementalQuestions", null);
+                //location.reload(true);
             } else {
                 component.set("v.message", "Sorry, we were unable to add your student. Please try again. If the problem persists please contact us.");
                 if(peakResponse != null) {

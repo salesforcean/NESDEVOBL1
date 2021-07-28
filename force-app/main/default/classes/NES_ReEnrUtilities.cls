@@ -1,7 +1,7 @@
 public without Sharing class NES_ReEnrUtilities {
     private static Peak_ApexLog logger = new Peak_ApexLog('NES_ReEnrUtilities');
     
-    public static ReEnrResults reenrollingStudent(Id studentContactId, Id studentPEId){
+    public static ReEnrResults reenrollingStudent(Id studentContactId, Id studentPEId,String callType){
         Peak_Response peakResponse = new Peak_Response();
         
         try{
@@ -46,11 +46,13 @@ public without Sharing class NES_ReEnrUtilities {
                 LIMIT 1
             ];
             
+            List <Id> ecIdList = new List <Id> ();
+            
             // Start updating the ECAs
             List<Enrollment_Component_Affiliation__c> ecaList = new List<Enrollment_Component_Affiliation__c>([
                     SELECT  Id, SystemModstamp, Enrollment_Component__c,Status__c,Order__c,
                             Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c,
-                            Enrollment_Component__r.Needed_for_Re_enrollment__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.Name,
+                            Enrollment_Component__r.Needed_for_Re_enrollment__c,Enrollment_Component__r.Needed_for_ITR__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.Name,
                             Enrollment_Component__r.RecordTypeId, Enrollment_Component__r.Component_Type__c
                     FROM    Enrollment_Component_Affiliation__c 
                     WHERE   
@@ -81,6 +83,20 @@ public without Sharing class NES_ReEnrUtilities {
                             )
                         )
                 ]);
+            for(Enrollment_Component_Affiliation__c eca : ecaList){
+                ecIdList.add(eca.Enrollment_Component__c);
+            }
+            
+            List <Enrollment_Component_Relationship__c> ecrList = [Select Id, Parent_Enrollment_Component__c, Parent_Enrollment_Component__r.Name, Parent_Enrollment_Component__r.Order__c, 
+                                                     Parent_Enrollment_Component__r.RecordType.Name, Child_Enrollment_Component__c
+                                                     from Enrollment_Component_Relationship__c where Child_Enrollment_Component__c in: ecIdList];
+            
+            
+            Map <Id, Enrollment_Component_Relationship__c> ecIdToECRMap = new Map <Id, Enrollment_Component_Relationship__c> ();
+            for(Enrollment_Component_Relationship__c ecr: ecrList){
+                ecIdToECRMap.put(ecr.Child_Enrollment_Component__c, ecr);
+            }
+            
 
 		List<Enrollment_Component_Affiliation__c> ecaToUpdate = new List<Enrollment_Component_Affiliation__c>();
         //Added for testing
@@ -97,7 +113,13 @@ public without Sharing class NES_ReEnrUtilities {
         for (Enrollment_Component_Affiliation__c eca : ecaList) {
             System.debug('my list-----'+eca);
             if((eca.Enrollment_Component__r.RecordType.Name != 'Stage') && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')) {
-                if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) || (eca.Enrollment_Component__r.Needed_for_Re_enrollment__c)){
+                //if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) || (eca.Enrollment_Component__r.Needed_for_Re_enrollment__c)){
+                if(ecIdToECRMap.get(eca.Enrollment_Component__c).Parent_Enrollment_Component__r.Name == 'Tell us About your Student' &&
+                   ecIdToECRMap.get(eca.Enrollment_Component__c).Parent_Enrollment_Component__r.RecordType.Name == 'Stage' && eca.Enrollment_Component__r.RecordType.Name == 'Form'){
+                   eca.Status__c = 'Not Started';
+                }
+                else
+                if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c))){
 					eca.Status__c = 'Not Started';
 				}
 				else{
@@ -133,7 +155,12 @@ public without Sharing class NES_ReEnrUtilities {
             //added for testing
                 
         }
-            
+        
+        
+        
+        
+        
+           
                //Mark any Enrollment document that is tied to any ECA we are opening as Invalid.
                Set<id> EDsAlreadyAdded = new Set<Id> ();
                List<Enrollment_Document__c> allEDsToUpdate = new List<Enrollment_Document__c> ();
@@ -182,7 +209,19 @@ public without Sharing class NES_ReEnrUtilities {
                 Program_Enrollment__c = studentPERecord.Id,
                 StageName = 'Open',
                 CloseDate = AcademicProgram[0].Confirmation_End_Date__c == null ? Date.today() : AcademicProgram[0].Confirmation_End_Date__c.date()
-            );        
+            );
+            // Added by Maddileti for defect 452181 on 26/07/2021
+            if(callType=='Full'){
+            oppToInsert.How_Student_Was_Reactivated__c='Staff';
+            oppToInsert.Full_Reactivation_Date__c = Date.today();
+            oppToInsert.Full_Reactivation_User__c = UserInfo.getUserId(); 
+            } else
+            if(callType=='ReActivation'){
+            oppToInsert.How_Student_Was_Reactivated__c='Caretaker';
+            oppToInsert.Full_Reactivation_Date__c = Date.today();
+            oppToInsert.Full_Reactivation_User__c = UserInfo.getUserId(); 
+            }
+            // End by Maddileti for defect 452181 on 26/07/2021
             Insert oppToInsert;
             
             String gradeLevel = studentPERecord?.Program_Grade_Level__r?.Grade_Level__r?.Name;
@@ -354,6 +393,13 @@ public without Sharing class NES_ReEnrUtilities {
 
         if (pecsToInsert.size() > 0)
             insert pecsToInsert;
+        
+        
+        //Call a method that will set the initial values for PE Criteria based on current data.
+        if (eccs.size()>0) 
+            EvaluationUtils.evaluatePECs(eccs, programEnrollment);
+        
+        
         
         //Mark the PE as ready to be shown to the caretaker in the community.
         hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id = programEnrollment,

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is created for User Story No. 164369 (Pls don&apos;t delete). This MDT is for determining how earlier the records should be taken into consideration based on the days, hours, mins for processing. This is being used in determining the timestamp of the Program Enrollment/Relationship object records for the LC Community Access to School relevant Knowledge Articles based on Topics.</description>
+    <label>Records Processing Intervals</label>
+    <pluralLabel>Records Processing Intervals</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Metadata represents information regarding the profile names of School Counselor, School Principal, School Special Education Director, School Staff Administrator.</description>
+    <label>Mapping Profile</label>
+    <pluralLabel>Mapping Profiles</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

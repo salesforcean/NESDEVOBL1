@@ -185,7 +185,7 @@ public class NES_ReEnrUtilitiesTest {
         // create Enrollment Component Affiliations with different parent Enrollment Components.
         List<Enrollment_Component_Affiliation__c> enrollmentComponentAffiliations = new List<Enrollment_Component_Affiliation__c>();
         Enrollment_Component_Affiliation__c affiliationStage = Peak_TestUtils.createEnrollmentComponentAffiliation(studentEnrollment.Id, stageComponent.Id, false);
-        affiliationStage.Status__c = 'In Progress';
+        affiliationStage.Status__c = 'Complete';
         enrollmentComponentAffiliations.add(affiliationStage);
         
         Enrollment_Component_Affiliation__c affiliationStage2 = Peak_TestUtils.createEnrollmentComponentAffiliation(careTakerEnrollment.Id, processComponent.Id, false);
@@ -215,11 +215,11 @@ public class NES_ReEnrUtilitiesTest {
         hed__Program_Enrollment__c stdPE=[select id,Enrollment_Type__c,Household_Program_Enrollment__c from hed__Program_Enrollment__c WHERE RecordType.Name = 'Student' limit 1];
         
         Enrollment_Component_Affiliation__c ecaList=[SELECT Id,Enrollment_Component__c,Status__c,Order__c,Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c =: stdPE.id AND Enrollment_Component__r.RecordType.Name ='Document' Limit 1];
-        ecaList.Status__c='Complete';
-        update ecaList;
-        
+        //ecaList.Status__c='Complete';
+        //update ecaList;
+        String callType='ReActivation';
         Test.startTest();
-        NES_ReEnrUtilities.ReEnrResults response = NES_EnrollmentController.doReEnrollment(studentid.id,stdPE.id);
+        NES_ReEnrUtilities.ReEnrResults response = NES_EnrollmentController.doReEnrollment(studentid.id,stdPE.id,callType);
         Test.stopTest();
         system.assertEquals(true,response.success);
         system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());

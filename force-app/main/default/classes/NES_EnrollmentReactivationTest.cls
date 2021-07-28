@@ -49,8 +49,9 @@ public with sharing class NES_EnrollmentReactivationTest {
         hed__Program_Enrollment__c progEnrollment = Peak_TestUtils.createProgramEnrollment(academicProgram.Id, contact.Id, currentSchoolYear.Id, false);
         progEnrollment.Status__c='Inactive';
         insert progEnrollment;
-        
-        
+        // Create Enrollment record for PE
+        Enrollment__c enrollmentId=Peak_TestUtils.createEnrollmentRecord(progEnrollment.id,currentSchoolYear.id,true);
+
         // NOT SURE WHY WE NEED Relationship
         User u = [SELECT Id,ContactId FROM User WHERE ContactId != NULL AND IsActive = TRUE LIMIT 1];
         hed__Relationship__c  relationship = Peak_TestUtils.createRelationship(u.ContactId, contact.Id, true);
@@ -144,6 +145,9 @@ public with sharing class NES_EnrollmentReactivationTest {
              (SELECT Id,StageName FROM Opportunities__r) FROM hed__Program_Enrollment__c  LIMIT 1];
         progEnrollment.Status__c = NES_EnrollmentReactivationBase.PE_WITHDRAWAL_STATUS;
         update progEnrollment;
+        Enrollment__c enrollmentId=[SELECT Id,Program_Enrollment__c,Withdrawal_Category__c FROM Enrollment__c where Program_Enrollment__c =: progEnrollment.id Limit 1];    
+        enrollmentId.Withdrawal_Category__c='No Show';
+        update enrollmentId;
         List<Enrollment_Component__c> lstECs = new List<Enrollment_Component__c>();
         for(Enrollment_Component__c EC : [Select Id,RecordType.Name, Needed_For_Re_Enrollment__c from Enrollment_Component__c]){
             lstECs.add(new Enrollment_Component__c(Id=EC.Id, Needed_For_Re_Enrollment__c = true));
@@ -223,6 +227,9 @@ public with sharing class NES_EnrollmentReactivationTest {
         progEnrollment.V2_External_ID__c  = 'Test Migrated';
         progEnrollment.Status__c = NES_EnrollmentReactivationBase.PE_WITHDRAWAL_STATUS;
         update progEnrollment;
+        Enrollment__c enrollmentId=[SELECT Id,Program_Enrollment__c,Withdrawal_Category__c FROM Enrollment__c where Program_Enrollment__c =: progEnrollment.id Limit 1];    
+        enrollmentId.Withdrawal_Category__c='Prior To Engagement';
+        update enrollmentId;
         List<Enrollment_Component_Affiliation__c> ecaList = [Select Id,Program_Enrollment__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c =: progEnrollment.Id];
         delete ecaList;
         List<Enrollment_Component__c> ecList = new List<Enrollment_Component__c>();

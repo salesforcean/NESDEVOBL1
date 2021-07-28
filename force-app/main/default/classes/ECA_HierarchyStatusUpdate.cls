@@ -25,8 +25,7 @@ public without sharing class ECA_HierarchyStatusUpdate
 
     public static Boolean isECAPartOfCurrentStage( Enrollment_Component_Affiliation__c eca )
     {   
-
-        if (peDataMap.get(eca.Program_Enrollment__c)==null || peDataMap.get(eca.Program_Enrollment__c).currentStageChildECs==null)
+            if (peDataMap.get(eca.Program_Enrollment__c)==null || peDataMap.get(eca.Program_Enrollment__c).currentStageChildECs==null)
             return false;
         
         return (peDataMap.get(eca.Program_Enrollment__c).currentStageChildECs.contains(eca.Enrollment_Component__c));
@@ -77,9 +76,11 @@ public without sharing class ECA_HierarchyStatusUpdate
     // * kick-off here...
     public static void run(Map<Id, Enrollment_Component_Affiliation__c> ecas) 
     {
+     
+        system.debug('ecas'+ecas); 
         if (ecas==null || !shouldRunStatusUpdate)
             return;
-
+          system.debug('initialized'+initialized);   
         if (!initialized) // if not run earlier, then only initialize data...
             initialize(ecas); // set-all-the-data-that-we-need
 
@@ -89,9 +90,13 @@ public without sharing class ECA_HierarchyStatusUpdate
         forUpdateECAs = new Map<Id,Enrollment_Component_Affiliation__c>();
 
         /* We now have maps describing all of the child and parent ECAs for our students. We can begin evaluating what impact our updated ECAs had on those */        
+         system.debug('queriedECAs'+queriedECAs);
         for(Enrollment_Component_Affiliation__c toProcessECA : toProcessECAs.values())
         {
-            if(VALID_ECA_STATUS.containsIgnoreCase(queriedECAs.get(toProcessECA.Id).enrollment_component__r.recordtype.name))
+         system.debug('@@@@@toProcessECA'+toProcessECA);
+           //if(VALID_ECA_STATUS.containsIgnoreCase(queriedECAs.get(toProcessECA.Id).enrollment_component__r.recordtype.name)) DEFECT 447458 - Commented and corrected below- DK  
+            if(queriedECAs.get(toProcessECA.Id)!=null && queriedECAs.get(toProcessECA.Id).enrollment_component__c !=null && VALID_ECA_STATUS.containsIgnoreCase(queriedECAs.get(toProcessECA.Id).enrollment_component__r.recordtype.name))         
+                
                 updateParentStatus(toProcessECA);
         }
         

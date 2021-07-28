@@ -1,4 +1,5 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
-	You must have at least one student registered to add an additional Caretaker or Learning Coach.
+	
+    You must have at least one student registered to add an additional Caretaker or Learning Coach.
  <!--<lightning:button variant="brand" label="Close" title="Close" onclick="{! c.handleClose }" /> -->
 </aura:component>

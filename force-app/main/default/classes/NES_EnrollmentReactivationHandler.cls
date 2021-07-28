@@ -36,7 +36,7 @@ public without sharing class NES_EnrollmentReactivationHandler {
             //Staff End – Full ReActivation button logic is to ensure all the forms related to initial enrollment are displayed 
             //    when it is clicked for the PE with Status = Inactive and Enrollment type =’Returning Student’
             if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student' && reactivationType.toUpperCase() == 'FULL'){
-                NES_ReEnrUtilities.reenrollingStudent(peRecord.hed__Contact__c, peRecord.Id);
+                NES_ReEnrUtilities.reenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,reactivationType.toUpperCase());
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';
                 peakResponse.success = true;
             }
@@ -48,7 +48,7 @@ public without sharing class NES_EnrollmentReactivationHandler {
             //a)PE Status = 'Withdrawn' and the latest Enrollment record's Withdrawal category = 'No Show'
             else 
             if(peRecord.Status__c == 'Withdrawn' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' && reactivationType.toUpperCase() == 'RE_ENROLLMENT'){
-                NES_ReEnrUtilities.reenrollingStudent(peRecord.hed__Contact__c, peRecord.Id);
+                NES_ReEnrUtilities.reenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,reactivationType.toUpperCase());
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';
                 peakResponse.success = true;
             } 

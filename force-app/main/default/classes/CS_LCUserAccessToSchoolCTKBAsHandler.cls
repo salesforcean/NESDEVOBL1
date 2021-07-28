@@ -14,7 +14,7 @@ Sumanth B: 11-May-2020: Included the Program Enrollment Trigger changes as part 
                -> CT_StdAssociatePermSets
                -> CT_StdRemovePermSets
 Sumanth B/Rakesh R: 16-June-2020: Added Concatenated Status field condition to consider only Complete To Withdrawn records for processing 
-								in Batchjob as per US # 186957 (Task# 195460, 195459) 
+                                in Batchjob as per US # 186957 (Task# 195460, 195459) 
 
  */
 
@@ -98,8 +98,8 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
 
            if(                
                     (
-                        ( 	
-                            (programEnrollObj.Status__c != null) &&	
+                        (   
+                            (programEnrollObj.Status__c != null) && 
                             (programEnrollObj.Status__c == CS_Constants.PE_WITHDRAWN_STATUS) &&                             
                             (programEnrollObj.Concatenated_Status__c == CS_Constants.PE_COMPLETE_WITHDRAWN_STATUS)                            
                         ) ||
@@ -307,7 +307,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                         (
                                             (
                                                 (programEnrollTempObj.Status__c != null) && 
-                                                (programEnrollTempObj.Status__c.equals(CS_Constants.PE_WITHDRAWN_STATUS)) &&                                                                                     		                                                                                                                                                     
+                                                (programEnrollTempObj.Status__c.equals(CS_Constants.PE_WITHDRAWN_STATUS)) &&                                                                                                                                                                                                                                                 
                                                 (programEnrollTempObj.Concatenated_Status__c == CS_Constants.PE_COMPLETE_WITHDRAWN_STATUS)                                                   
                                             ) ||
                                             (
@@ -536,7 +536,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
 
                 list<hed__Program_Enrollment__c> programEnrollsTempList = new list<hed__Program_Enrollment__c>();
                 if((programEnrollMap != null) && !programEnrollMap.isEmpty()){
-               	  programEnrollsTempList = programEnrollMap.values();
+                  programEnrollsTempList = programEnrollMap.values();
                 }
              if((relationshipRecsList != null) && (programEnrollsTempList != null)){                               
                     for(hed__Relationship__c relationTempObj : relationshipRecsList){                       
@@ -571,7 +571,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                         (
                                             (
                                                 (programEnrollTempObj.Status__c != null) && 
-                                                (programEnrollTempObj.Status__c.equals(CS_Constants.PE_WITHDRAWN_STATUS)) &&                                                                                     		                                                                                                                                                     
+                                                (programEnrollTempObj.Status__c.equals(CS_Constants.PE_WITHDRAWN_STATUS)) &&                                                                                                                                                                                                                                                 
                                                 (programEnrollTempObj.Concatenated_Status__c == CS_Constants.PE_COMPLETE_WITHDRAWN_STATUS)                                                   
                                             ) ||
                                             (
@@ -875,11 +875,14 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
         
         for(hed__Program_Enrollment__c pe : [select hed__Contact__c,hed__Contact__r.Commuity_User__c,
                                                  School_Name__c,Status__c,
-                                                 hed__Contact__r.Caretaker_Id__c,
+                                                 hed__Contact__r.Caretaker_Id__c,hed__Contact__r.Caretaker_Id__r.Accountid,
                                                  hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id
                                                  from hed__Program_Enrollment__c where School_Name__c <> null       
                                                  AND hed__Contact__c in : StdIds order by LastModifiedDate desc])
         {
+        
+          for(contact allrelctContacts: [Select id,Commuity_User__c,AccountId from Contact where AccountId=:pe.hed__Contact__r.Caretaker_Id__r.accountid and Recordtype.name='Caretaker'])
+          {
                 if(pe.hed__Contact__r.Commuity_User__c <> null)            // Student UserId, Permission Set Id
                 {
                     Set<Id> IdList; 
@@ -897,18 +900,18 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                         }
                     }
                 }
-                
-                if(pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id <> null)     // CT UserId, Permission Set Id
+                //Addition of other related Caretakers based on Primary Caretaker Account
+                if( allrelctContacts.Commuity_User__c <> null)    //pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id <> null)     // CT UserId, Permission Set Id
                 {
                     Set<id> PsIdList;
                    // Id CTPsetIdVal;
-                    if(!CTUserAndPsIdsMap.containsKey(pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id))
+                    if(!CTUserAndPsIdsMap.containsKey(allrelctContacts.Commuity_User__c))// pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id))
                     {
                         PsIdList = new Set<id>();
                     }
                     else
                     {
-                        PsIdList = CTUserAndPsIdsMap.get(pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id);
+                        PsIdList = CTUserAndPsIdsMap.get(allrelctContacts.Commuity_User__c); //pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id);
                     }
                    // CTPsetIdVal = PermSetNameAndIdMap.get(CTPermissionSetsMap.get(pe.School_Name__c));
                    // if(CTPsetIdVal <> null)
@@ -916,9 +919,11 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                     {
                         //PsIdList.add(CTPsetIdVal);
                         PsIdList.add(PermSetNameAndIdMap.get(CTPermissionSetsMap.get(pe.School_Name__c)));
-                        CTUserAndPsIdsMap.put(pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id,PsIdList); 
+                        //CTUserAndPsIdsMap.put(pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id,PsIdList); 
+                        CTUserAndPsIdsMap.put(allrelctContacts.Commuity_User__c,PsIdList); 
                     }
                 }
+              }
         }
         system.debug('StdUserAndPsIdMap-->: '+StdUserAndPsIdMap);
         system.debug('CTUserAndPsIdsMap-->: '+CTUserAndPsIdsMap);

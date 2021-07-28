@@ -406,7 +406,7 @@ public without sharing class NES_AddStudentHelper {
     public static Peak_Response insertingStudent(String studentJSON, String questionJSON) {
         Peak_Response peakResponse = new Peak_Response();
         User caretaker = [SELECT Id, AccountId, ContactId, Contact.RecordType.Name,Contact.Account.Family_Enrollment_Counselor__c, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId()];
-        List <Contact> CtList = [Select Id, Unverified__c from Contact where AccountId =: caretaker.Contact.AccountId 
+        List <Contact> CtList = [Select Id, V2_Role__c, Unverified__c from Contact where AccountId =: caretaker.Contact.AccountId 
                                  and Recordtype.name != 'Students' Order by createddate asc];
         System.debug('NDEBUG: List of Contacts under this HH Acc:::'+CtList);
         System.debug('student data');
@@ -457,7 +457,8 @@ public without sharing class NES_AddStudentHelper {
                         relationship.hed__Status__c = 'Current';
                         relationship.hed__RelatedContact__c = c.Id;
                         relationship.Recalculate_Sharing__c = true;
-                        relationship.hed__Type__c = relation;
+                        //relationship.hed__Type__c = relation;
+                        relationship.hed__Type__c = c.V2_Role__c == 'Parent or Legal Guardian'? 'Parent' : ( c.V2_Role__c == 'Designated Caretaker'? 'Legal Guardian' : (c.V2_Role__c == 'Learning Coach' ? 'Learning Coach' :'Parent'));
                         relationship.OwnerId = System.Label.NES_Household_OwnerId;
                         relationshipList.add(relationship);
                     }

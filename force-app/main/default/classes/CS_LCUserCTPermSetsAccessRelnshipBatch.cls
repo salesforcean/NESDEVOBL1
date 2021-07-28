@@ -6,6 +6,7 @@
  *               will be processed to determine whether the LC Community user(s) access should be provisioned or revoked to the School CT permission-set accordingly. This batch chains the invocation of the batch job on the Program Enrollment
  *               records that will have to be processed subsequently (Lines of code commented out currently as Program Enrollment batch has chaining effect on the Relationship batch job.)
 
+
  * CHANGE-LOG:
  * ==========
  * By Rakesh 2020-06-24: 
@@ -33,9 +34,12 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
         String batchQueryStr;
         if((studRecsIdSet == null) || studRecsIdSet.isEmpty()){
             batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Status__c, hed__RelatedContact__c, hed__RelatedContact__r.Name FROM hed__Relationship__c WHERE hed__Type__c = \''+CS_Constants.LEARNING_COACH_TYPE+'\' AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND hed__RelatedContact__r.RecordTypeId = :recordTypeIdLC AND LastModifiedDate >= :dateTimeInterval';
+            
          }
         else {
-            batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Status__c, hed__RelatedContact__c, hed__RelatedContact__r.Name FROM hed__Relationship__c WHERE hed__Contact__c = :studRecsIdSet AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND hed__RelatedContact__r.RecordTypeId = :recordTypeIdLC AND hed__Type__c = \''+CS_Constants.LEARNING_COACH_TYPE+'\'';            
+          batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Status__c, hed__RelatedContact__c, hed__RelatedContact__r.Name FROM hed__Relationship__c WHERE hed__Contact__c = :studRecsIdSet AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND hed__RelatedContact__r.RecordTypeId = :recordTypeIdLC AND hed__Type__c = \''+CS_Constants.LEARNING_COACH_TYPE+'\'';            
+          
+        
         }
 
 
@@ -68,6 +72,7 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
         if(!studentIdWithSetOfLCRecIdSetMap.isEmpty() && !studentIdAndLCRecIdWithRelationshipsMap.isEmpty()){
             CS_LCUserAccessToSchoolCTKBAsHandler handlerObj = new CS_LCUserAccessToSchoolCTKBAsHandler();            
 
+
             permissionSetsRemovalMap.putAll(handlerObj.processRelationshipRecsForCTPermSetsAccess(studentIdWithSetOfLCRecIdSetMap, studentIdAndLCRecIdWithRelationshipsMap));            
         }
     }        
@@ -86,5 +91,15 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
        if(CS_Constants.permsSetAssignFinalDeleteMap != null && !CS_Constants.permsSetAssignFinalDeleteMap.isEmpty()){
           database.delete(CS_Constants.permsSetAssignFinalDeleteMap.values(), false); 
        }
+        
+        // Chaining call to the Relationship Batch Apex process
+       // To handle provisioning and revoking of the CT Permission-Sets for the Learning Coach Community Users.
+       Records_Processing_Intervals__mdt recordProcessInterval = [SELECT Batch_Size__c FROM Records_Processing_Intervals__mdt WHERE DeveloperName = :CS_Constants.LC_KBA_ACCESS_RELNSHIP_RECS_PROCESS_INTERVAL];
+       Integer batchSize = 200;
+       if((recordProcessInterval.Batch_Size__c != null) && (recordProcessInterval.Batch_Size__c > 0)){
+           batchSize = Integer.valueOf(recordProcessInterval.Batch_Size__c);
+       }
+       CS_CTAddHhldPermSetsAccessRelnshipBatch batchTempObjone = new CS_CTAddHhldPermSetsAccessRelnshipBatch();
+       database.executeBatch(batchTempObjone, batchSize);
     }
 }

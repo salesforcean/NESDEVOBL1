@@ -208,8 +208,8 @@ and using those child components get the required component information
     
     
    @AuraEnabled
-    public static NES_ReEnrUtilities.ReEnrResults doReEnrollment(Id studentContactId,Id studentPeId){
-    	return	NES_ReEnrUtilities.reenrollingStudent(studentContactId,studentPeId);       
+    public static NES_ReEnrUtilities.ReEnrResults doReEnrollment(Id studentContactId,Id studentPeId,String callType){
+    	return	NES_ReEnrUtilities.reenrollingStudent(studentContactId,studentPeId,callType);       
     } 
 	
     

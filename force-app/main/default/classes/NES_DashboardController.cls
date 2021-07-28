@@ -30,5 +30,12 @@ type Enrollment components and related ECAs. Return this information after addin
         return NES_ITRUtilities.createReturningStudentPE(studentId, programEnrollmentId);
 	}
 
-
+ /**
+    * Created by Sravani on 07/07/21.
+    * Purpose : This is to create ITR spectific records.
+    */
+	/*@AuraEnabled
+    public static NES_ReEnrUtilities.ReEnrResults processReEnrasInEnr(Id studentId, Id programEnrollmentId){
+        return NES_ReEnrUtilities.reenrollingStudent(studentId, programEnrollmentId);
+	} */
 }

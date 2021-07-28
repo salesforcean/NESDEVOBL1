@@ -123,19 +123,21 @@
         
     } ,
     reactivateORreenrolledSameYear : function(component, event, helper){
-        //alert('NES_ReactivateEnrollmentHelper In reactivateORreenrolledSameYear');
+        alert('NES_ReactivateEnrollmentHelper In reactivateORreenrolledSameYear');
         
         var stId=component.get("v.studentId");
         var programEnrollmentId = component.get("v.programEnrollmentId");
+        var callType=component.get("v.peEnrollmentType");
         
         var action = component.get("c.doReEnrollment");
         action.setParams({
             studentContactId: stId, 
-            studentPeId: programEnrollmentId
+            studentPeId: programEnrollmentId,
+            callType: callType
         });
         action.setCallback(this, function(response){
             var peakResponse = response.getReturnValue();
-            //alert('Response from Apex Controller '+ peakResponse.success);
+            alert('Response from Apex Controller '+ peakResponse.success);
             console.log(peakResponse);
             if(peakResponse.success){
                 component.set("v.success", true);

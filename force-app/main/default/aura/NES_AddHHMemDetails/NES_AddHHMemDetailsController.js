@@ -50,6 +50,7 @@
         }else if(event.getSource().getLocalId() == "Next1"){
             // Do a Call to Apex Controller to Check if an existing Contact present with same details
             // If Yes re-direct to Screen 3 else re-direct to Screen2
+            //alert(v.formData.memberRTDeveloperName);
             var scr = component.get("v.screen");
             var myAction = component.get("c.chkExistCnts");
             component.set('v.showSpinner', true);
@@ -79,6 +80,7 @@
             }); 
             $A.enqueueAction(myAction);
         }else if(event.getSource().getLocalId() == "Next2"){
+            alert(v.formData.memberRTDeveloperName);
             var scr = component.get("v.screen");
             var myAction = component.get("c.createAddlHHMemContact");
               component.set('v.showSpinner', true);
