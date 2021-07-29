@@ -739,7 +739,7 @@ public without sharing class NES_AddStudentHelper {
                     if (eca <> null && eca.Enrollment_Component__c <> null && eca.Program_Enrollment__c <> null)
                         nonNullInsertingAffiliations.add(eca);
                 }
-				//Commented the below try catch and implemented retry logic to fix issue reported by Perf Team for BUG217916
+                //Commented the below try catch and implemented retry logic to fix issue reported by Perf Team for BUG217916
                 /*try {
                     insert nonNullInsertingAffiliations;
                 } catch (Exception e) {
@@ -781,7 +781,7 @@ public without sharing class NES_AddStudentHelper {
                 //With the ECA rewrite, we changed the hard stop process to only look at dates from the Academic program.
                 Boolean shouldHardStop = false;
 
-				//Replaced with MaxSpecialEdBirthdate__c instead of Too_Old_Cutoff__c in below if condition for 335863
+                //Replaced with MaxSpecialEdBirthdate__c instead of Too_Old_Cutoff__c in below if condition for 335863
                 if (birthdate < academicProgram.MaxSpecialEdBirthdate__c || birthdate > academicProgram.Too_Young_Cutoff__c)
                     shouldHardStop = true;
  

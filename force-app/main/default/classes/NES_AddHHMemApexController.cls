@@ -31,7 +31,7 @@ public without sharing class NES_AddHHMemApexController {
         string finalFirstName = member.fname.trim();
         string finalLastName = member.lname.trim();
         
-    	string finalEmail = member.email.trim();
+        string finalEmail = member.email.trim();
         finalEmail = finalEmail.toLowerCase();
 
         
@@ -196,7 +196,7 @@ public without sharing class NES_AddHHMemApexController {
             relationship.hed__Status__c = 'Current';
             //relationship.hed__RelatedContact__c =  rel.hed__RelatedContact__c;
             relationship.hed__RelatedContact__c =  newCtContactId;
-            relationship.Recalculate_Sharing__c = true;
+            relationship.Recalculate_Sharing__c = true;          
             relationship.hed__Type__c = flowParams[0].addlHHMember.V2_Role__c == 'Parent or Legal Guardian'? 'Parent' : ( flowParams[0].addlHHMember.V2_Role__c == 'Designated Caretaker'? 'Legal Guardian' : (flowParams[0].addlHHMember.V2_Role__c == 'Learning Coach' ? 'Learning Coach' :''));
             relationship.OwnerId = System.Label.NES_Household_OwnerId;
             relationshipList.add(relationship);
