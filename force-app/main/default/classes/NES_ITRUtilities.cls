@@ -12,29 +12,54 @@ public class NES_ITRUtilities {
             hed__Program_Enrollment__c previousYrPERecord = [Select Id,Start_Year__c,Program_Grade_Level__r.Grade_Level__r.Name,Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.ParentId, hed__Account__c, OwnerId from hed__Program_Enrollment__c where Id=:previousYrPEId];
             List<Account> NextYearAcademicProgram  = [Select Id,OwnerId,ParentId,Confirmation_End_Date__c,School_Year__c,Registration_Start_Date__c,Registration_End_Date__c from Account where ParentId =:previousYrPERecord.hed__Account__r.ParentId and Id !=:previousYrPERecord.hed__Account__c and Registration_Start_Date__c <= TODAY AND Registration_End_Date__c >= TODAY] ;
             
+            // Naveen 
+            // Get the list of CT contacts under the Students PE Account
+            List <Contact> ctList = [Select Id, Recordtype.name from Contact where AccountId =: studentContact[0].AccountId and Recordtype.name != 'Student' ];
+            List <Id> ctIdList = new List <Id> ();
+            for(Contact c: ctList){
+                ctIdList.add(c.Id);
+            }
+            
+            List <hed__Program_Enrollment__c> newCareTakerEnrollmentList = new List <hed__Program_Enrollment__c> ();
+            
+            List <Id> ctPeExistsIdList = new List <Id> ();
+            Map <Id, Boolean> ctIdTOPeMap = new Map <Id, Boolean> ();
+            
             if(NextYearAcademicProgram.size()>0){
                 
-                List<hed__Program_Enrollment__c> caretakerEnrollment = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c = :previousYrPERecord.Household_Program_Enrollment__r.hed__Contact__c AND hed__Account__c = :NextYearAcademicProgram[0].Id];
-                
-                //Check Whether Program Enrollment already exist or not for the caretaker if it is not present then insert it
-                Id caretakerEnrollmentId;
                 hed__Program_Enrollment__c newCareTakerEnrollment = new hed__Program_Enrollment__c();
-                if (caretakerEnrollment.size() == 0) {
-                    Id caretakerEnrollmentTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Caretaker').getRecordTypeId();
-                    newCareTakerEnrollment.hed__Contact__c = previousYrPERecord.Household_Program_Enrollment__r.hed__Contact__c;
-                    newCareTakerEnrollment.RecordTypeId = caretakerEnrollmentTypeId;
-                    newCareTakerEnrollment.OwnerId = NextYearAcademicProgram[0].OwnerId;
-                    newCareTakerEnrollment.Enrollment_Type__c = '';
-                    if (NextYearAcademicProgram != null) {
-                        newCareTakerEnrollment.hed__Account__c = NextYearAcademicProgram[0].Id;
+                
+                //List<hed__Program_Enrollment__c> caretakerEnrollment = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c = :previousYrPERecord.Household_Program_Enrollment__r.hed__Contact__c AND hed__Account__c = :NextYearAcademicProgram[0].Id];
+                List<hed__Program_Enrollment__c> caretakerEnrollment = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c WHERE hed__Contact__c In : ctIdList  AND hed__Account__c = :NextYearAcademicProgram[0].Id];
+                
+                for(hed__Program_Enrollment__c pe: caretakerEnrollment){
+                    ctPeExistsIdList.add(pe.hed__Contact__c);                    
+                }
+                
+                for(Id ctId: ctIdList){
+                    if(!ctPeExistsIdList.contains(ctId)){
+                        newCareTakerEnrollment = new hed__Program_Enrollment__c();
+                        Id caretakerEnrollmentTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Caretaker').getRecordTypeId();
+                        newCareTakerEnrollment.hed__Contact__c = ctId;
+                        newCareTakerEnrollment.RecordTypeId = caretakerEnrollmentTypeId;
+                        newCareTakerEnrollment.OwnerId = NextYearAcademicProgram[0].OwnerId;
+                        newCareTakerEnrollment.Enrollment_Type__c = '';
+                        if (NextYearAcademicProgram != null) {
+                            newCareTakerEnrollment.hed__Account__c = NextYearAcademicProgram[0].Id;
+                        }
+                        newCareTakerEnrollmentList.add(newCareTakerEnrollment);                        
                     }
-                    insert newCareTakerEnrollment;
-                    caretakerEnrollmentId = newCareTakerEnrollment.Id;
-                } else {
+                }
+                Id caretakerEnrollmentId;
+                    
+                if(newCareTakerEnrollmentList != null && newCareTakerEnrollmentList.size() >0){
+                    Insert newCareTakerEnrollmentList;
+                    caretakerEnrollmentId = newCareTakerEnrollmentList[0].Id;
+                }
+                else{
                     newCareTakerEnrollment = caretakerEnrollment[0];
                     caretakerEnrollmentId = caretakerEnrollment[0].Id;
                 }
-                
                 
                 //Program Enrollment for student
                 hed__Program_Enrollment__c newStudentEnrollment = new hed__Program_Enrollment__c();
