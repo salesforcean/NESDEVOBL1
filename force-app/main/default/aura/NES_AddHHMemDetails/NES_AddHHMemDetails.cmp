@@ -146,14 +146,14 @@
 						</ul>  
     				</div>
                     <br></br><br></br>
-    					<div class="slds-text-body_regular"> To ensure Success for your student,please review the distinctions between a Caretaker and a 
+    					<div class="slds-text-body_regular"> To ensure success for your student, please review the distinctions between a Caretaker and a 
         														Learning Coach in the chart below and designate the individual appropriately.  
     					</div>
     						<br>
     						<br></br>
     						</br>
-    							<div class="slds-text-body_regular"> After your selection is made,both you and the new Caretaker or Learning coach must complete the approptiate
-        																designation agreement forms,which will allow him or her to access connexus with the rights and privileges below.
+    							<div class="slds-text-body_regular"> After your selection is made, both you and the new Caretaker or Learning coach must complete the appropriate
+        																designation agreement forms, which will allow him or her to access Connexus with the rights and privileges below.
     							</div>
     						<br></br><br></br>
 
@@ -166,7 +166,7 @@
 
     <tr class="slds-line-height_reset style= background-color: red !important">
       <th class="" scope="col">
-          <div class="slds-truncate" title="What educational decisions will you authorize this person to make on behalf of your students(s)? ">What educational decisions will you <p>authorize this person to make on behalf</p> of your students(s)? </div>
+          <div class="slds-truncate" title="What educational decisions will you authorize this person to make on behalf of your student(s)? ">What educational decisions will you <p>authorize this person to make on behalf</p> of your student(s)? </div>
       </th>
       <th class="" scope="col">
           <div class="slds-truncate" title="Designated Caretaker">Designated <p></p> Caretaker </div>
@@ -180,7 +180,7 @@
   <tbody>
     <tr class="slds-hint-parent">
       <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
-        <div class="slds-truncate" title="Enroll the student(s)in this school?">Enroll the student(s)in this school?</div>
+        <div class="slds-truncate" title="Enroll the student(s) in this school?">Enroll the student(s) in this school?</div>
       </td>
       <td data-label="Designated Caretaker">
         <div class="slds-truncate" title="Yes">Yes</div>
@@ -191,7 +191,7 @@
      </tr>
       <tr class="slds-hint-parent">
       <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
-        <div class="slds-truncate" title="Withdraw the student(s)from this school?">Withdraw the student(s)from this school?</div>
+        <div class="slds-truncate" title="Withdraw the student(s)from this school?">Withdraw the student(s) from this school?</div>
       </td>
       <td data-label="Designated Caretaker">
         <div class="slds-truncate" title="Yes">Yes</div>
@@ -202,7 +202,7 @@
      </tr>
        <tr class="slds-hint-parent">
       <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
-        <div class="slds-truncate" title="Make course seletions for the student(s)?">Make course seletions for the student(s)?</div>
+        <div class="slds-truncate" title="Make course selections for the student(s)?">Make course selections for the student(s)?</div>
       </td>
       <td data-label="Designated Caretaker">
         <div class="slds-truncate" title="Yes">Yes</div>
@@ -235,13 +235,13 @@
      </tr>
        <tr class="slds-hint-parent">
       <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
-          <div class="slds-truncate" title="Communicate with the teachers,administrators,staff and support teams of the student(s)in this household via WebMail? ">Communicate with the teachers,<p>administrators,staff and support teams of the</p> student(s)in this household via WebMail? </div>
+          <div class="slds-truncate" title="Communicate with the teachers,administrators,staff and support teams of the student(s)in this household via WebMail? ">Communicate with the teachers,<p>administrators, staff and support teams of the</p> student(s) in this household via WebMail? </div>
       </td>
       <td data-label="Designated Caretaker">
         <div class="slds-truncate" title="Yes">Yes</div>
       </td>
       <td data-label="Designated Learning Coach">
-        <div class="slds-truncate" title="Yes, But limited to feedback or inquiries. No enrollment,Withdrawal, course change/requests,or field trip authorization is premitted.">Yes,<p> But limited to feedback or inquiries. No </p>enrollment,Withdrawal, course change/requests,<p>or field trip authorization is premitted.</p></div>
+        <div class="slds-truncate" title="Yes, But limited to- feedback or inquiries. No enrollment,Withdrawal, course change/requests,or field trip authorization is premitted.">Yes,<p> But limited to feedback or inquiries. No </p>enrollment, withdrawal, course change/requests,<p>or field trip authorization is permitted.</p></div>
       </td>
      </tr>
       <tr class="slds-hint-parent">
@@ -257,7 +257,7 @@
      </tr>
       <tr class="slds-hint-parent">
       <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
-        <div class="slds-truncate" title="Manage,track, and mark student attendance?">Manage,track, and mark student attendance?</div>
+        <div class="slds-truncate" title="Manage,track, and mark student attendance?">Manage, track, and mark student attendance?</div>
       </td>
       <td data-label="Designated Caretaker">
         <div class="slds-truncate" title="Yes">Yes</div>
@@ -268,7 +268,7 @@
      </tr>
       <tr class="slds-hint-parent">
       <td data-label="What educational decisions will you authorize this person to make on behalf of your students(s)?">
-        <div class="slds-truncate" title="Access school bulletin boards,clubs,and activities">Access school bulletin boards,clubs,and activities</div>
+        <div class="slds-truncate" title="Access school bulletin boards,clubs,and activities">Access school bulletin boards, clubs, and activities</div>
       </td>
       <td data-label="Designated Caretaker">
         <div class="slds-truncate" title="Yes">Yes</div>
@@ -282,7 +282,7 @@
                             </div></div></div></div>                             
     <lightning:radioGroup
         aura:id="mygroup"
-        label="I have reviewed and understand the information above. Iam authorizing this individual as a:"
+        label="I have reviewed and understand the information above. I am authorizing this individual as a:"
         options="{! v.memberRTDeveloperNameOptions }"
         value="{! v.formData.memberRTDeveloperName }"         
         required="true" />

@@ -7,6 +7,6 @@
     <inlineHelpText>Customer opts out of receiving calls from an automated dialer.</inlineHelpText>
     <label>Autodialer Opt Out</label>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <type>Checkbox</type>
 </CustomField>

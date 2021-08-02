@@ -9,6 +9,7 @@
 
 => CS_CTSTDLC_PE_RLTN_KM_BatchSchedule.cls (Scheduler Apex)
 
+
 CHANGE-LOG
 ==========
 Rakesh 2020-06-24:
@@ -43,6 +44,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
 
             list<Account> school1List = dataFactoryObj.createListOfAccounts('Arizona Connections Academy', recordTypeIdEI, null, null, schoolYearList.get(0).Id, 1) ; // School            
             list<Account> school2List = dataFactoryObj.createListOfAccounts('California Connections Academy Central', recordTypeIdEI, null, null, schoolYearList.get(0).Id, 1) ; // School
+
             list<Account> school3List = dataFactoryObj.createListOfAccounts('TNCA', recordTypeIdEI, null, null, schoolYearList.get(0).Id, 1) ; // School
             school1List.get(0).Name = 'Arizona Connections Academy'; 
             school2List.get(0).Name = 'California Connections Academy Central';
@@ -50,10 +52,11 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             tempAcctList.addAll(school1List);  
             tempAcctList.addAll(school2List);
             tempAcctList.addAll(school3List);
-            insert tempAcctList;
+           insert tempAcctList;
             
             list<Account> academicProgTNCAList = dataFactoryObj.createListOfAccounts('TNCA 2019-2020', recordTypeIdAP, school2List.get(0).Id, system.today(), schoolYearList.get(0).Id, 3) ; // Program            
             list<Account> academicProgACAList = dataFactoryObj.createListOfAccounts('ACA 2019-2020', recordTypeIdAP, school1List.get(0).Id, system.today(), schoolYearList.get(0).Id, 2) ; // Program                        
+
 
             list<Account> academicProgCALCACList = dataFactoryObj.createListOfAccounts('CALCAC 2019-2020', recordTypeIdAP, school2List.get(0).Id, system.today(), schoolYearList.get(0).Id, 2) ; // Program                        
             list<Account> householdAccList = dataFactoryObj.createListOfAccounts('HouseHoldAcc', recordTypeIdHH, null, null, schoolYearList.get(0).Id, 3) ; // Household
@@ -61,6 +64,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             list<Account> finalAcctList = new list<Account>();            
             finalAcctList.addAll(academicProgTNCAList);
             finalAcctList.addAll(academicProgACAList);
+
 
             finalAcctList.addAll(academicProgCALCACList);
             finalAcctList.addAll(householdAccList);            
@@ -71,6 +75,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             Id recordTypeIdLC = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_LEARNING_COACH).getRecordTypeId();
             
 
+
             list<Contact> CTHouseHold1ConList =  dataFactoryObj.createListOfContacts('CTContact0', recordTypeIdCT, householdAccList.get(0).Id, null, 2);                                 
             list<Contact> CTHouseHold2ConList =  dataFactoryObj.createListOfContacts('CTContact1', recordTypeIdCT, householdAccList.get(1).Id, null, 2);            
             // Learning Coach - Sai Ram at 0 and Joe Maya at 1.
@@ -78,6 +83,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             // Learning Coach - Bharat Thakur
             list<Contact> LCHouseHold2ConList =  dataFactoryObj.createListOfContacts('LCContact1', recordTypeIdLC, householdAccList.get(2).Id, null, 1);            
             // Student - Rakesh Ramaswamy
+
 
             list<Contact> STDHouseHold1conList =  dataFactoryObj.createListOfContacts('StdContact', recordTypeIdSTD, householdAccList.get(0).Id, CTHouseHold1ConList.get(0).Id, 1);                 
             // Student - Shreejit Swain 
@@ -99,6 +105,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             insert finalContactsList;            
             
             list<hed__Relationship__c> relationshipsList = new list<hed__Relationship__c>();            
+
 
             // Creating instances for all the Former Relationships here between Learning Coaches and Students
             // hed__Relationship__c formerRelationship1ForACA = dataFactoryObj.createNewRelationship(CS_Constants.RELATIONSHIP_FORMER_STATUS, STDHouseHold1conList.get(0).Id, LCHouseHold1ConList.get(0).Id, CS_Constants.LEARNING_COACH_TYPE);
@@ -126,12 +133,14 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             hed__Relationship__c currentRelationship4ForTNCA = dataFactoryObj.createNewRelationship(CS_Constants.RELATIONSHIP_CURRENT_STATUS, STDHouseHold2con2List.get(0).Id, LCHouseHold2ConList.get(0).Id, CS_Constants.LEARNING_COACH_TYPE);           
             hed__Relationship__c currentRelationship5ForTNCA = dataFactoryObj.createNewRelationship(CS_Constants.RELATIONSHIP_CURRENT_STATUS, STDHouseHold4conList.get(0).Id, LCHouseHold2ConList.get(0).Id, CS_Constants.LEARNING_COACH_TYPE);            
 
+
             hed__Relationship__c currentRelationship6ForTNCA = dataFactoryObj.createNewRelationship(CS_Constants.RELATIONSHIP_CURRENT_STATUS, STDHouseHold1conList.get(0).Id, LCHouseHold1ConList.get(0).Id, CS_Constants.LEARNING_COACH_TYPE);
             relationshipsList.add(currentRelationship1ForACA);
             relationshipsList.add(currentRelationship2ForACA);
             relationshipsList.add(currentRelationship3ForTNCA);
             relationshipsList.add(currentRelationship4ForTNCA);
             relationshipsList.add(currentRelationship5ForTNCA);
+            
 
             relationshipsList.add(currentRelationship6ForTNCA);
             // Creating instances for all the Current Relationships here between CareTaker and Students
@@ -158,6 +167,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             list<hed__Program_Enrollment__c> completePE1ForSTDHH3ACA = dataFactoryObj.createListOfProgramEnrolls(STDHouseHold2con1List.get(0).Id, academicProgACAList.get(1).Id, CS_Constants.PE_COMPLETE_STATUS, 1);            
             list<hed__Program_Enrollment__c> completePE1ForSTDHH12ACA = dataFactoryObj.createListOfProgramEnrolls(STDHouseHold1conList.get(0).Id, academicProgACAList.get(1).Id, CS_Constants.PE_COMPLETE_STATUS, 1);
 
+
             list<hed__Program_Enrollment__c> completePE1ForSTDHH2CALCAC = dataFactoryObj.createListOfProgramEnrolls(STDHouseHold2con1List.get(0).Id, academicProgCALCACList.get(0).Id, CS_Constants.PE_COMPLETE_STATUS, 1);
             programEnrollList.addAll(withdrawnPE1ForSTDHH2ACA);
             programEnrollList.addAll(withdrawnPE1ForSTDHH2TNCA);
@@ -167,6 +177,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             programEnrollList.addAll(completePE1ForSTDHH3ACA);
             programEnrollList.addAll(withdrawnPE1ForSTDHH3ACA);
             programEnrollList.addAll(completePE1ForSTDHH12ACA);
+
 
             programEnrollList.addAll(completePE1ForSTDHH2CALCAC);
             insert programEnrollList; 
@@ -205,6 +216,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
             communityUsersInsertList.add(CTUser4);
             
             insert communityUsersInsertList;
+
             
             list<Contact> tempSTDCTContactList = new list<Contact>();
 
@@ -251,10 +263,11 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
 
              CS_LCUserCTPermSetsAccessProgEnrollBatch programEnrollbatchJob = new CS_LCUserCTPermSetsAccessProgEnrollBatch();
              Database.executeBatch(programEnrollbatchJob, 50);
-             String chron = '0 0 2 * * ?';        
+            /* String chron = '0 0 2 * * ?';        
              String jobDetails = system.schedule('Assign Perm-Sets To LC Users 1', chron, new CS_CTSTDLC_PE_RLTN_KM_BatchSchedule());
              CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
              System.assertEquals(0, ct.TimesTriggered); 
+             */
              Test.stopTest();
      }
     
@@ -271,7 +284,21 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
              Database.executeBatch(batchJob, 50);             
              Test.stopTest();
      }
-         
+     
+    public static testMethod void associateCTPermSetToaddLCUsersScenarioTest(){
+             Test.startTest();
+             set<Id> studRecsIdSet = new set<Id>();
+             Id recordTypeIdSTD = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_STUDENTS).getRecordTypeId();
+             for(Contact contactRecObj : [SELECT Id, LastName FROM Contact WHERE RecordTypeId = :recordTypeIdSTD]){
+                 studRecsIdSet.add(contactRecObj.Id);
+             }
+             
+
+             CS_CTAddHhldPermSetsAccessRelnshipBatch batchJob = new CS_CTAddHhldPermSetsAccessRelnshipBatch();
+             Database.executeBatch(batchJob, 50);             
+             Test.stopTest();
+     }
+    
      public static testMethod void associateCTPermSetToLCUserScenario10Test(){
              // Update test data added in the Test-Setup above.
             list<Contact> STDHouseHold1conList = [SELECT Id, LastName FROM Contact WHERE LastName = 'StdContact1'];
@@ -315,10 +342,11 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
 
              CS_LCUserCTPermSetsAccessRelnshipBatch batchJob = new CS_LCUserCTPermSetsAccessRelnshipBatch(studRecsIdSet);
              Database.executeBatch(batchJob, 50);
-             String chron = '0 0 2 * * ?';        
+            /* String chron = '0 0 2 * * ?';        
              String jobDetails = system.schedule('Assign Perm-Sets To LC Users 1', chron, new CS_CTSTDLC_PE_RLTN_KM_BatchSchedule());
              CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
              System.assertEquals(0, ct.TimesTriggered);
+             */
              Test.stopTest();
      }
          
@@ -352,10 +380,12 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
 
              CS_LCUserCTPermSetsAccessProgEnrollBatch programEnrollbatchJob = new CS_LCUserCTPermSetsAccessProgEnrollBatch();
              Database.executeBatch(programEnrollbatchJob, 200);
+             /*
              String chron = '0 0 2 * * ?';        
              String jobDetails = system.schedule('Assign Perm-Sets To LC Users 4', chron, new CS_CTSTDLC_PE_RLTN_KM_BatchSchedule());
              CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
              System.assertEquals(0, ct.TimesTriggered); 
+             */
             Test.stopTest();
      }
          
@@ -408,10 +438,12 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
 
             CS_LCUserCTPermSetsAccessProgEnrollBatch programEnrollbatchJob = new CS_LCUserCTPermSetsAccessProgEnrollBatch();
              Database.executeBatch(programEnrollbatchJob, 100);
+             /*
              String chron = '0 0 2 * * ?';        
              String jobDetails = system.schedule('Assign Perm-Sets To LC Users 5', chron, new CS_CTSTDLC_PE_RLTN_KM_BatchSchedule());
              CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
              System.assertEquals(0, ct.TimesTriggered); 
+             */
             Test.stopTest();
      }
          
@@ -525,13 +557,15 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
 
              CS_LCUserCTPermSetsAccessProgEnrollBatch programEnrollbatchJob = new CS_LCUserCTPermSetsAccessProgEnrollBatch();
              Database.executeBatch(programEnrollbatchJob, 50);
+             /*
              String chron = '0 0 2 * * ?';        
              String jobDetails = system.schedule('Assign Perm-Sets To LC Users 7', chron, new CS_CTSTDLC_PE_RLTN_KM_BatchSchedule());
              CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
              System.assertEquals(0, ct.TimesTriggered); 
+             */
             Test.stopTest();
      }
-    
+   
     public static testMethod void associateCTPermSetToLCUserScenario05Test(){
              // Update test data added in the Test-Setup above.
              list<Contact> STDHouseHold1conList = [SELECT Id, LastName FROM Contact WHERE LastName = 'StdContact1'];
@@ -587,10 +621,11 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
 
              CS_LCUserCTPermSetsAccessRelnshipBatch batchJobHandlerObj = new CS_LCUserCTPermSetsAccessRelnshipBatch(studRecsIdSet);
              database.executeBatch(batchJobHandlerObj);
+             /*
              String chron = '0 0 2 * * ?';        
              String jobDetails = system.schedule('Assign Perm-Sets To LC Users 6', chron, new CS_CTSTDLC_PE_RLTN_KM_BatchSchedule());
              CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
-             System.assertEquals(0, ct.TimesTriggered); 
+             System.assertEquals(0, ct.TimesTriggered); */
             Test.stopTest();
      }        
     
@@ -636,7 +671,7 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
      }
      
 
-     public static testMethod void scheduleProgramEnrollBatchForCTPermSetAccessForLCUsersTest(){
+/*   public static testMethod void scheduleProgramEnrollBatchForCTPermSetAccessForLCUsersTest(){
      
          Test.startTest();
          String chron = '0 0 2 * * ?';        
@@ -645,7 +680,8 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
          CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
          System.assertEquals(0, ct.TimesTriggered); 
          Test.stopTest();
-     }  
+     }  */
+
 
      public static testMethod void renrollStudentsToSameSchoolKBAAccessForLCAndCTAndSTDUsersTest1(){
         // Update test data added in the Test-Setup above.
@@ -711,11 +747,14 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
         system.assertNotEquals(programEnrollUpdtTempList, null);
         system.assertEquals(programEnrollUpdtTempList.size() > 0, true);
         update programEnrollUpdtTempList;
-       
-       String chron = '0 0 2 * * ?';        
+         CS_LCUserCTPermSetsAccessProgEnrollBatch programEnrollbatchJob = new CS_LCUserCTPermSetsAccessProgEnrollBatch();
+             Database.executeBatch(programEnrollbatchJob, 50);
+      
+     /*  String chron = '0 0 2 * * ?';        
        String jobDetails = system.schedule('Test Prog Enroll Batch For Perm-set Access to LC Users', chron, new CS_CTSTDLC_PE_RLTN_KM_BatchSchedule());         
        CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
        System.assertEquals(0, ct.TimesTriggered); 
+        */
        Test.stopTest();        
    }
 
@@ -771,11 +810,17 @@ public class CS_ProvisionCTPermsSetToLCUsersBatchTest {
        system.assertNotEquals(programEnrollUpdtTempList, null);
        system.assertEquals(programEnrollUpdtTempList.size() > 0, true);
        update programEnrollUpdtTempList;
+         
+         CS_LCUserCTPermSetsAccessProgEnrollBatch programEnrollbatchJob = new CS_LCUserCTPermSetsAccessProgEnrollBatch();
+             Database.executeBatch(programEnrollbatchJob, 50);
        
-      String chron = '0 0 2 * * ?';        
+    /*  String chron = '0 0 2 * * ?';        
          String jobDetails = system.schedule('Test Prog Enroll Batch For Perm-set Access to LC Users', chron, new CS_CTSTDLC_PE_RLTN_KM_BatchSchedule());         
          CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered,NextFireTime FROM CronTrigger WHERE id = :jobDetails];
          System.assertEquals(0, ct.TimesTriggered); 
+       */
          Test.stopTest();
-     }  
+     } 
+
+
 }

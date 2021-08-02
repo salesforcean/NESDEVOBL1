@@ -33,11 +33,11 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
         DateTime dateTimeInterval = system.now().addDays(Integer.valueOf(recordProcessInterval.Days__c)).addHours(Integer.valueOf(recordProcessInterval.Hours__c)).addMinutes(Integer.valueOf(recordProcessInterval.Minutes__c));
         String batchQueryStr;
         if((studRecsIdSet == null) || studRecsIdSet.isEmpty()){
-            batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Status__c, hed__RelatedContact__c, hed__RelatedContact__r.Name FROM hed__Relationship__c WHERE hed__Type__c = \''+CS_Constants.LEARNING_COACH_TYPE+'\' AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND hed__RelatedContact__r.RecordTypeId = :recordTypeIdLC AND LastModifiedDate >= :dateTimeInterval';
+            batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Status__c, hed__RelatedContact__c, hed__RelatedContact__r.Name FROM hed__Relationship__c WHERE hed__Type__c = \''+CS_Constants.LEARNING_COACH_TYPE+'\' AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND hed__RelatedContact__r.RecordTypeId = :recordTypeIdLC AND LastModifiedDate >= :dateTimeInterval'+(Test.isRunningTest()?' LIMIT 10':'');
             
          }
         else {
-          batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Status__c, hed__RelatedContact__c, hed__RelatedContact__r.Name FROM hed__Relationship__c WHERE hed__Contact__c = :studRecsIdSet AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND hed__RelatedContact__r.RecordTypeId = :recordTypeIdLC AND hed__Type__c = \''+CS_Constants.LEARNING_COACH_TYPE+'\'';            
+          batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Status__c, hed__RelatedContact__c, hed__RelatedContact__r.Name FROM hed__Relationship__c WHERE hed__Contact__c = :studRecsIdSet AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND hed__RelatedContact__r.RecordTypeId = :recordTypeIdLC AND hed__Type__c = \''+CS_Constants.LEARNING_COACH_TYPE+'\''+(Test.isRunningTest()?' LIMIT 10':'');            
           
         
         }
@@ -100,6 +100,8 @@ global class CS_LCUserCTPermSetsAccessRelnshipBatch implements Database.Batchabl
            batchSize = Integer.valueOf(recordProcessInterval.Batch_Size__c);
        }
        CS_CTAddHhldPermSetsAccessRelnshipBatch batchTempObjone = new CS_CTAddHhldPermSetsAccessRelnshipBatch();
-       database.executeBatch(batchTempObjone, batchSize);
+        if(!Test.isrunningTest()){
+        	database.executeBatch(batchTempObjone, batchsize);
+        }
     }
 }

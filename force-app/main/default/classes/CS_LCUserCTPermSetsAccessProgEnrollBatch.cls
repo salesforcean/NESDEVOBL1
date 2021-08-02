@@ -31,7 +31,7 @@ global class CS_LCUserCTPermSetsAccessProgEnrollBatch implements Database.Batcha
         DateTime dateTimeInterval = system.now().addDays(Integer.valueOf(recordProcessInterval.Days__c)).addHours(Integer.valueOf(recordProcessInterval.Hours__c)).addMinutes(Integer.valueOf(recordProcessInterval.Minutes__c));       
 
 
-        String batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Account__c, Status__c, Concatenated_Status__c, School_Account_ID__c, School_Name__c FROM hed__Program_Enrollment__c WHERE (Status__c = \''+CS_Constants.PE_WITHDRAWN_STATUS+'\' OR Status__c = \''+CS_Constants.PE_COMPLETE_STATUS+'\' OR Concatenated_Status__c = \''+CS_Constants.PE_COMPLETE_IN_PROGRESS_STATUS+'\') AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND LastModifiedDate >= :dateTimeInterval';
+        String batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Account__c, Status__c, Concatenated_Status__c, School_Account_ID__c, School_Name__c FROM hed__Program_Enrollment__c WHERE (Status__c = \''+CS_Constants.PE_WITHDRAWN_STATUS+'\' OR Status__c = \''+CS_Constants.PE_COMPLETE_STATUS+'\' OR Concatenated_Status__c = \''+CS_Constants.PE_COMPLETE_IN_PROGRESS_STATUS+'\') AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND LastModifiedDate >= :dateTimeInterval'+(Test.isRunningTest()?' LIMIT 10':'');
         return Database.getQueryLocator(batchQueryStr);
     }
     
@@ -69,6 +69,8 @@ global class CS_LCUserCTPermSetsAccessProgEnrollBatch implements Database.Batcha
            batchSize = Integer.valueOf(recordProcessInterval.Batch_Size__c);
        }
        CS_LCUserCTPermSetsAccessRelnshipBatch batchTempObj = new CS_LCUserCTPermSetsAccessRelnshipBatch(studentRecsIdSet);
-       database.executeBatch(batchTempObj, batchSize);
+        if(!Test.isrunningTest()){
+        database.executeBatch(batchTempObj, batchSize);
+        }
     }
 }
