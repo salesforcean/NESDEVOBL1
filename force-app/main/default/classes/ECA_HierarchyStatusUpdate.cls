@@ -25,6 +25,7 @@ public without sharing class ECA_HierarchyStatusUpdate
 
     public static Boolean isECAPartOfCurrentStage( Enrollment_Component_Affiliation__c eca )
     {   
+        
             if (peDataMap.get(eca.Program_Enrollment__c)==null || peDataMap.get(eca.Program_Enrollment__c).currentStageChildECs==null)
             return false;
         

@@ -12,7 +12,7 @@ public class NES_ITRUtilities {
             hed__Program_Enrollment__c previousYrPERecord = [Select Id,Start_Year__c,Program_Grade_Level__r.Grade_Level__r.Name,Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.ParentId, hed__Account__c, OwnerId from hed__Program_Enrollment__c where Id=:previousYrPEId];
             List<Account> NextYearAcademicProgram  = [Select Id,OwnerId,ParentId,Confirmation_End_Date__c,School_Year__c,Registration_Start_Date__c,Registration_End_Date__c from Account where ParentId =:previousYrPERecord.hed__Account__r.ParentId and Id !=:previousYrPERecord.hed__Account__c and Registration_Start_Date__c <= TODAY AND Registration_End_Date__c >= TODAY] ;
             
-            // Naveen 
+            // Naveen -- Addded below Code as a part of DEFECT 448995
             // Get the list of CT contacts under the Students PE Account
             List <Contact> ctList = [Select Id, Recordtype.name from Contact where AccountId =: studentContact[0].AccountId and Recordtype.name != 'Student' ];
             List <Id> ctIdList = new List <Id> ();

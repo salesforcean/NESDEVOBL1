@@ -511,7 +511,6 @@ public without sharing class  NES_AnnualStudentInformationUtilities {
             }
         }
 
-
         for (Enrollment_Component_Affiliation__c eca : thisPEsECAS.Enrollment_Component_Affiliation__r)
         {
             if (eca.Document_Type__c == 'Report Card') 
@@ -527,6 +526,7 @@ public without sharing class  NES_AnnualStudentInformationUtilities {
                 }
             }
         }
+
 
         for (Enrollment_Component_Affiliation__c eca : thisPEsECAS.Enrollment_Component_Affiliation__r)
         {

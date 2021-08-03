@@ -115,21 +115,23 @@ public class ECA_CriteriaEvaluator {
             //ADDED TESTING
             
            if((mapPEWithEnrollmentType.containskey(eca.Program_Enrollment__c) && mapPEWithEnrollmentType.get(eca.Program_Enrollment__c).Enrollment_Type__c == 'Returning Student' && assignmentLogic == false  && eca.Status__c == 'Complete')){
+              
                eca.Status__c = 'Not Applicable';
                 processedECAs.put(eca.Id, eca);
            }else{
                if (COMPLETION_LOGIC_BLACK_LIST_TXT.containsIgnoreCase(eca.EC_Record_Type__c) && (eca.Status__c == 'Complete' || eca.Status__c == 'Deferred'))             
                 {
-                    
+                    system.debug('Debug Log*****COMPLETION_LOGIC_BLACK_LIST_TXT '+ eca.Id);
                     processedECAs.put(eca.Id, eca); // do nothing if Section/Document is Complete/Doc-deferred, process its parents.
                 }
                 else if ((newStatus = getNewECAStatus(eca.Status__c, assignmentLogic, completionLogic)) !=null) {
-                    
+                    system.debug('Debug Log**getNewECAStatus**'+eca.Id +'****'+ newStatus);
                     eca.Status__c = newStatus;
                     processedECAs.put(eca.Id, eca);
                 } 
                 else if (incompleteChildrenStatus!=null && incompleteChildrenStatus.equalsIgnoreCase('In Progress')) 
                 {
+                    system.debug('Debug Log ****In incompleteChildrenStatus');
                     eca.Status__c = 'In Progress';
                     processedECAs.put(eca.Id, eca);
                 }
@@ -385,7 +387,7 @@ public class ECA_CriteriaEvaluator {
         {
             if (mapECAStatusDecision==null) 
                 mapECAStatusDecision = mapECAEvaluationSettingsByType.get(ECA_STATUS_DECISION_SETTING_TYPE);
-                
+             system.debug('Debug Log**'+mapECAStatusDecision ) ;  
             return mapECAStatusDecision;
         }
 
@@ -397,6 +399,7 @@ public class ECA_CriteriaEvaluator {
     {
         for (ECA_Evaluation_Setting__mdt rec : mapECAStatusDecision.values()) 
         {
+            system.debug('Debug Log*****RecId'+rec.Id);
             system.debug('rec.Status__c.containsIgnoreCase(ecaStatus)*******'+rec.Status__c.containsIgnoreCase(ecaStatus));
             system.debug('assignmentLogic*******'+assignmentLogic);
             system.debug('completionLogic*******'+completionLogic);
@@ -407,6 +410,7 @@ public class ECA_CriteriaEvaluator {
                 assignmentLogic == rec.AssignmentLogic__c && 
                 completionLogic == rec.CompletionLogic__c
             ) {
+                system.debug('Debug Log***'+ rec.NewStatus__c);
                 return rec.NewStatus__c;
             }
         }
