@@ -26,12 +26,16 @@ public with sharing class NES_LTSUtility {
                     Select hed__Contact__c
                     from hed__Program_Enrollment__c
                     where Id in :progEnrollmentIds]){
+           // for(hed__Program_Enrollment__c pe : 
+            //    GenericSOQLQueries.programEnrollmentDetails(progEnrollmentIds)){
+                
                 contactIds.add(pe.hed__Contact__c);
             }
 
             Map<Id,hed__Program_Enrollment__c> progEnrollmentMap = new Map<Id, hed__Program_Enrollment__c>([Select id, LTS__c,LastSchoolType__c,LTSLastCalculation__c,
                     Start_Year__c , Household_Program_Enrollment__c, Stress_Factors__c, hed__Contact__c, DisciplinaryPastActions__c, Start_Year__r.Name, Start_Year__r.Current_Year__c
             from hed__Program_Enrollment__c where Id in:progEnrollmentIds ]);
+            //Map<Id,hed__Program_Enrollment__c> progEnrollmentMap = new Map<Id, hed__Program_Enrollment__c>(GenericSOQLQueries.programEnrollmentDetails(progEnrollmentIds));
             Map<Id, School_Year__c> parentPEtoSYMap = new Map<Id, School_Year__c>();
             for (hed__Program_Enrollment__c pe : progEnrollmentMap.values()) {
                 parentPEtoSYMap.put(pe.Household_Program_Enrollment__c, pe.Start_Year__r);

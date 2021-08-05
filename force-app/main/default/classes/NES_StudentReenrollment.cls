@@ -32,19 +32,11 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
     public override void execute() { 
          // reset fields on PE
-        System.debug('test1-----');
- 		processPE();
-        
         // process ECAs  Added for making Form status as In Progress, for Defect 244255
         processECAs('RE-ENROLLMENT');
-        
-        //To Run Assignment Logic
-       
-        
-        
-        
-       
-        // run the Opportunity Creation
+  		//To Run Assignment Logic
+          processPE();
+     	// run the Opportunity Creation
         createPEOpportunity();
         
          
@@ -56,7 +48,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
 
     @TestVisible private void processPE() {
-system.debug('test2');
+
         hed__Program_Enrollment__c toUpdatePE = new hed__Program_Enrollment__c( 
             Id = this.studPE.Id,
             Status__c = PE_REACTIVATION_STATUS,
@@ -73,7 +65,7 @@ system.debug('test2');
 
 
     @TestVisible private void createPEOpportunity() {
-System.debug('test6-----------');
+
         Opportunity newOppty = this.getNewOpportunity();
         insert newOppty;
 

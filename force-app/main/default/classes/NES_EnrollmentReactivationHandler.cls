@@ -51,7 +51,8 @@ public without sharing class NES_EnrollmentReactivationHandler {
                 NES_ReEnrUtilities.reenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,reactivationType.toUpperCase());
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';
                 peakResponse.success = true;
-            } 
+            }
+            else
             //b)PE Status = 'Withdrawn' and the latest Enrollment record's Withdrawal category ='Prior To Engagement' or 'Withdrawal During School Year' --> Same Year Re-Enrollment path
             if(peRecord.Status__c == 'Withdrawn' && (peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Prior To Engagement' || 
                                                     peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Withdrawal During School Year')
