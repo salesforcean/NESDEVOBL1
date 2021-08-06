@@ -10,6 +10,7 @@
         helper.getGrades(component, event, helper, yearValue);
         helper.getSchoolYears(component, event, helper);
         //helper.InvokeReactive(component,event,helper);
+        //have to change method name as ("EnrollmentInfo")
         helper.getpeEnrollmentType(component, event, helper);        
     },
     closeModal: function (component,event,helper)

@@ -177,10 +177,7 @@ System.debug('test5------------');
                StageEcaToUpdate.add(eca);	
               StageECASet.add(eca.Id);
                  // Added for testing
-            // added condition for NA BUG #433373
-            }else if((eca.Enrollment_Component__r.RecordType.Name != 'Stage') && (eca.Status__c == 'Not Applicable') && (eca.Enrollment_Component__r.Assignment_Logic__c == '1')  && (eca.Program_Enrollment__r.Enrollment_Type__c =='Re-enrolling student')){  
-                eca.Status__c = 'Not Started';
-            }    
+            }   
             system.debug('Enrollment Type*********'+eca.Program_Enrollment__r.Enrollment_Type__c);
             //Added for making Form status as In Progress, This will run only for Re-Enrolling Students for Defect 244255
             if((eca.Enrollment_Component__r.RecordType.Name == 'Form') && enrollmentType == 'RE-ENROLLMENT') 
