@@ -73,7 +73,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
 
     @TestVisible private void setECAList() {
-
+	
         // query & set ecaList
         ecaList = 
             new List<Enrollment_Component_Affiliation__c>
@@ -95,7 +95,19 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                                     Enrollment_Component__r.RecordType.Name 
                                         IN ('Section', 'Form', 'Question', 'Question Group', 'Document', 'Flag', 'Message', 'Text') 
                                 )
+                                // added OR condition for NA BUG #433373
                                 OR 
+                                ( 
+                                    Status__c IN ('Not Applicable')
+                                    AND
+                                    Enrollment_Component__r.Assignment_Logic__c = '1'
+                                    AND
+                                    Program_Enrollment__r.Enrollment_Type__c = 'Re-enrolling student'
+                                    AND 
+                                    Enrollment_Component__r.RecordType.Name 
+                                        IN ('Section', 'Form', 'Question', 'Question Group', 'Document', 'Flag', 'Message', 'Text') 
+                                )
+                                OR
                                 ( 
                                     (  
                                         Status__c IN ('In Progress', 'Complete')

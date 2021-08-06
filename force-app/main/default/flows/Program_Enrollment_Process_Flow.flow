@@ -22,6 +22,7 @@
         <connector>
             <targetReference>myRule_1_A2</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -87,6 +88,7 @@
         <connector>
             <targetReference>myRule_1_A3</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -150,73 +152,9 @@
         <actionName>Set_Academic_Eligibility</actionName>
         <actionType>flow</actionType>
         <connector>
-            <targetReference>myRule_1_A4</targetReference>
-        </connector>
-        <inputParameters>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>SObject</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>SObject</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>maxOccurs</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>objectType</name>
-                <value>
-                    <stringValue>hed__Program_Enrollment__c</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>SObject</stringValue>
-                </value>
-            </processMetadataValues>
-            <name>SObject</name>
-            <value>
-                <elementReference>myVariable_current</elementReference>
-            </value>
-        </inputParameters>
-    </actionCalls>
-    <actionCalls>
-        <processMetadataValues>
-            <name>ActionCallType</name>
-            <value>
-                <stringValue>process</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>flowSelection</name>
-            <value>
-                <stringValue>Set Academic Documents Status</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>myRule_1_A4</name>
-        <label>Set Auto Placemnt Academic Docs Status</label>
-        <locationX>100</locationX>
-        <locationY>500</locationY>
-        <actionName>Set_Academic_Documents_Status</actionName>
-        <actionType>flow</actionType>
-        <connector>
             <targetReference>myDecision2</targetReference>
         </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -279,6 +217,7 @@
         <locationY>200</locationY>
         <actionName>CS_ProgramEnrollmentProcessFlow</actionName>
         <actionType>flow</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -444,7 +383,7 @@
             </processMetadataValues>
             <name>PECheck</name>
             <value>
-                <elementReference>formula_4_myRule_3_A1_6427374859</elementReference>
+                <elementReference>formula_4_myRule_3_A1_6016702976</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
@@ -516,7 +455,7 @@
                 <stringValue>IF(ISNEW(),&apos;New&apos;,&apos;Old&apos;)</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_3_A1_6427374859</name>
+        <name>formula_4_myRule_3_A1_6016702976</name>
         <dataType>String</dataType>
         <expression>IF(ISNEW(),&apos;New&apos;,&apos;Old&apos;)</expression>
     </formulas>
@@ -548,7 +487,7 @@ AND(ISCHANGED( {!myVariable_current.HowStudentPlacementCompleted__c} ),OR( {!myV
         <dataType>Boolean</dataType>
         <expression>ISCHANGED({!myVariable_current.OrderingHoldFlag__c}) || (ISCHANGED({!myVariable_current.Status__c}) &amp;&amp; (ISPICKVAL({!myVariable_current.Status__c}, &apos;Complete&apos;) || ISPICKVAL(PRIORVALUE({!myVariable_current.Status__c}), &apos;Complete&apos;))) || (ISNEW() &amp;&amp; {!myVariable_current.PE_Record_Type_Text__c} =&apos;Student&apos;)</expression>
     </formulas>
-    <interviewLabel>Program_Enrollment_Process_Flow-9_InterviewLabel</interviewLabel>
+    <interviewLabel>Program_Enrollment_Process_Flow-6_InterviewLabel</interviewLabel>
     <label>Program Enrollment Process Flow</label>
     <processMetadataValues>
         <name>ObjectType</name>

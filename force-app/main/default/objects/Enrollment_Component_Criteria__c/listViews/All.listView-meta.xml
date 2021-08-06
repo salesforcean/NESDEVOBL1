@@ -7,10 +7,5 @@
     <columns>Criteria__c</columns>
     <columns>External_Id__c</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>External_Id__c</field>
-        <operation>equals</operation>
-        <value>ITR:ALL2122:CC-43</value>
-    </filters>
     <label>All</label>
 </ListView>
