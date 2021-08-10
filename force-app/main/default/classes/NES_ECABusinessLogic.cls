@@ -201,14 +201,17 @@ return studentInfoList;
 */
     public static void updateWaitListAddedTimeOnOpportunity(Set<Id> ecaIdSet) {
         Set<Id> peIdSet = new Set<Id>();
-        for (Enrollment_Component_Affiliation__c ecaRecord : [
+        //SOQL replaced by a call to GenericSOQLQueries for 430196 on 2021-08-09 by Krishna Peddanagammol
+        /*for (Enrollment_Component_Affiliation__c ecaRecord : [
             SELECT Id,
             Enrollment_Component__r.Waitlist__c,
             Enrollment_Component__r.RecordType.Name,
             Program_Enrollment__c
             FROM Enrollment_Component_Affiliation__c
             WHERE Id IN:ecaIdSet
-        ]) {
+        ])*/
+        for (Enrollment_Component_Affiliation__c ecaRecord : GenericSOQLQueries.ecaDetails(ecaIdSet)) 
+        {
             if (ecaRecord.Enrollment_Component__c != null &&
                 ecaRecord.Enrollment_Component__r.RecordType.Name == 'Stage' &&
                 ecaRecord.Enrollment_Component__r.Waitlist__c == true) {

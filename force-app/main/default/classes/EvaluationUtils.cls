@@ -309,9 +309,11 @@ public class EvaluationUtils  {
 
         //Get the ECs that have already been added to this PE
         Set<Id> ECsAlreadyAddedToPE = new Set<Id> ();
-        for (Enrollment_Component_Affiliation__c eca : [select Enrollment_Component__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment])
+        List<Enrollment_Component_Affiliation__c> existEcas=new List<Enrollment_Component_Affiliation__c>();
+        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,ECACriteriaCheck__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment]){
             ECsAlreadyAddedToPE.add(eca.Enrollment_Component__c);
-
+            existEcas.add(eca);
+        }
         //Add all ther remaining ECAs
         list<Enrollment_Component_Affiliation__c> newAffiliations = new list<Enrollment_Component_Affiliation__c>();
         Set<id> allECs = new set <Id>();  // Holds all the Enrollment Components for this Academic Program
@@ -381,7 +383,31 @@ public class EvaluationUtils  {
 
         if (newAffiliations.size() > 0)
             insert newAffiliations;
-
+        // added by maddileti
+        System.debug('existEcas:'+existEcas);
+        System.debug('EnrollmentType:'+EnrollmentType);
+        List<Enrollment_Component_Affiliation__c> ecastoUpdate=new List<Enrollment_Component_Affiliation__c>();
+        if(existEcas != null && EnrollmentType == 'InitReActivation'){
+            System.debug('existEcas1:'+existEcas);
+            System.debug('EnrollmentType1:'+EnrollmentType);
+            for(Enrollment_Component_Affiliation__c eca :existEcas){
+                if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){
+               if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c))){
+					eca.Status__c = 'Not Started';
+                    //ecastoUpdate.add(eca);
+				}
+				else{
+					eca.Status__c = 'Not Applicable';
+                    //ecastoUpdate.add(eca);
+				}
+                } 
+                ecastoUpdate.add(eca);
+                //existEcas.add(eca);
+            }  
+        }
+             if(ecastoUpdate.size() > 0)
+                  update ecastoUpdate;
+        // end by maddileti
 
 
         // collect SchoolYears
@@ -397,6 +423,18 @@ public class EvaluationUtils  {
 
         //Now insert all the Program Enrollment Criteria records.
         list <Program_Enrollment_Criteria__c> pecsToInsert = new list <Program_Enrollment_Criteria__c> ();
+        // added by maddileti
+        Set<String> ExistingPECs  = new Set<String> (); //The combination of criteriaid, questiongroup, school year and student or house
+        
+		
+		for (Program_Enrollment_Criteria__c pec : [
+            SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c   
+            FROM    Program_Enrollment_Criteria__c 
+            WHERE   Program_Enrollment__c =: programEnrollment ]) 
+        {
+           ExistingPECs .add(pec.Criteria__c + pec.Student_or_Household__c + pec.Question_Group__c + pec.School_Year__c);
+        }
+        // 
         Set<String> pecAlreadyIncluded = new Set<String> (); //The combination of criteriaid, questiongroup, school year and student or house
         for (Enrollment_Component_Criteria__c ecc : [
             SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c   

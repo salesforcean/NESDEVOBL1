@@ -99,10 +99,10 @@
         
     },
     // Added by Maddileti for US 389103 on 16/07/2021
-    getpeEnrollmentType: function (component, event, helper){     
+    getEnrollmentInfo: function (component, event, helper){     
         var programEnrollmentId = component.get("v.programEnrollmentId");
         console.log('programEnrollmentId123:'+programEnrollmentId);
-        var action = component.get("c.getPEEnrStatus");
+        var action = component.get("c.getEnrollmentInfo");
         action.setParams({
             peId: programEnrollmentId          
         });
@@ -112,7 +112,7 @@
                 var returnedResponse = response.getReturnValue();
                 console.log('getreeess:'+returnedResponse);
                 //alert(returnedResponse);
-                component.set("v.peEnrollmentType", returnedResponse);
+                component.set("v.EnrollmentInfo", returnedResponse);
                 
             } else {
                 var error = response.getError();
@@ -127,9 +127,9 @@
         
         var stId=component.get("v.studentId");
         var programEnrollmentId = component.get("v.programEnrollmentId");
-        var callType=component.get("v.peEnrollmentType");
-        
-        var action = component.get("c.doReEnrollment");
+        var callType=component.get("v.EnrollmentInfo");
+        //var processId=component.get("v.processId");
+        var action = component.get("c.InitReEnrollment");
         action.setParams({
             studentContactId: stId, 
             studentPeId: programEnrollmentId,

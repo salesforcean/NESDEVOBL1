@@ -208,13 +208,14 @@ and using those child components get the required component information
     
     
    @AuraEnabled
-    public static NES_ReEnrUtilities.ReEnrResults doReEnrollment(Id studentContactId,Id studentPeId,String callType){
-    	return	NES_ReEnrUtilities.reenrollingStudent(studentContactId,studentPeId,callType);       
+    public static NES_ReEnrUtilities.ReEnrResults InitReEnrollment(Id studentContactId,Id studentPeId,String callType){
+        System.debug('InitreenrollingStudent');
+    	return	NES_ReEnrUtilities.InitreenrollingStudent(studentContactId,studentPeId,callType);       
     } 
 	
     
     @AuraEnabled
-    public static string getPEEnrStatus(Id peId){
+    public static string getEnrollmentInfo(Id peId){
         
         String result = '';
     	hed__Program_Enrollment__c peRecord = [Select Id,Status__c,hed__Contact__c,Enrollment_Type__c,
@@ -224,12 +225,12 @@ and using those child components get the required component information
 												
         	if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student')
             {
-            	result = 'ReActivation';
+            	result = 'InitReActivation';
             }
             else            
             if((!peRecord.Enrollments__r.isEmpty()) && ((peRecord.Status__c == 'Withdrawn' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show') || (peRecord.Status__c == 'Complete' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning')))
             {
-                result = 'ReEnrollment';               
+                result = 'InitReEnrollment';               
             }
         
          return result;

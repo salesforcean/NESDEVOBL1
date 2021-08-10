@@ -37,7 +37,7 @@
     <aura:attribute name="reactiveFlag" type="Boolean" default="false" />
     <aura:attribute name="reEnrollmentMessage" type="Boolean" default="false" />
     <aura:attribute name="enrollmentSuccessMessage" type="Boolean" default="false" />
-    <aura:attribute type="String" name="peEnrollmentType" />      
+    <aura:attribute type="String" name="EnrollmentInfo" />      
 
     <aura:attribute name="reactivateMessage" type="Boolean" default="false" />       
 

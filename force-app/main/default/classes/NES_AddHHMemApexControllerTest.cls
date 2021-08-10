@@ -255,7 +255,7 @@ Peak_Response studentInsertResponse = NES_AddStudentController.createStudent(stu
         User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];  
         Account institutionAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
         
-        Contact careTakerContact=[select id,AccountId,RecordTypeId,CreatedById from Contact where Id =: careTaker.ContactId Limit 1];
+        Contact careTakerContact=[select Id, V2_Role__c, AccountId, RecordTypeId, CreatedById from Contact where Id =: careTaker.ContactId Limit 1];
         param.addlHHMember=careTakerContact;
         hed__Program_Enrollment__c enrollment=new hed__Program_Enrollment__c();
         
@@ -288,7 +288,7 @@ Peak_Response studentInsertResponse = NES_AddStudentController.createStudent(stu
         User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'addlHHMemUS@test.com'];  
         Account institutionAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
         
-        Contact careTakerContact=[select id,AccountId,RecordTypeId,CreatedById from Contact where Id =: careTaker.ContactId Limit 1];
+        Contact careTakerContact=[select Id,V2_Role__c,AccountId,RecordTypeId,CreatedById from Contact where Id =: careTaker.ContactId Limit 1];
         param.addlHHMember=careTakerContact;
         param.action='Create Related Records';
         fParams.add(param);

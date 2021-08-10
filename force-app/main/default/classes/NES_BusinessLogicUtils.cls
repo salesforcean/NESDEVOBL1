@@ -417,6 +417,7 @@ progEnrollment.EntAgeEliOvrDate__c = system.today();
         Map<Id, Id> contactToPEStartYear = new Map<Id, Id> ();
         for (Hed__Program_Enrollment__c progEnrollment : [ SELECT Id, Start_Year__c, hed__Contact__c, hed__Contact__r.CA_StartYear__c
                                                           FROM Hed__Program_Enrollment__c  Where Id in :programEnrollments ]) {
+         
                                                               
                                                               //Be sure we don't add the same contact twice and that the contact doesn't already have a date set.
                                                               if (!contactsReferenced.contains(progEnrollment.hed__Contact__c) && progEnrollment.Start_Year__c != null && progEnrollment.hed__Contact__r.CA_StartYear__c == null)
@@ -1766,7 +1767,9 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         Map<Id, List<Program_Grade_Level__c>> programGradeLevelMap = new Map<Id, List<Program_Grade_Level__c>>();
         Map<Id, Opportunity> opportunityMap = new Map<Id, Opportunity>();
         Map<Id, Id> programEnrollmentIdToAccountIds = new Map<Id, Id>();
-        List<hed__Program_Enrollment__c> programEnrollments = [Select id, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
+        //Commented Below line and added generic soql line for #430196
+        //List<hed__Program_Enrollment__c> programEnrollments = [Select id, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
+        List<hed__Program_Enrollment__c> programEnrollments = GenericSOQLQueries.programEnrollmentDetails(programEnrollmentList);
         List<hed__Program_Enrollment__c> programEnrollmentsToUpdate = new List<hed__Program_Enrollment__c>();
         
         for (Opportunity opp : [

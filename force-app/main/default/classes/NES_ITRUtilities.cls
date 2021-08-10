@@ -13,8 +13,11 @@ public class NES_ITRUtilities {
             List<Account> NextYearAcademicProgram  = [Select Id,OwnerId,ParentId,Confirmation_End_Date__c,School_Year__c,Registration_Start_Date__c,Registration_End_Date__c from Account where ParentId =:previousYrPERecord.hed__Account__r.ParentId and Id !=:previousYrPERecord.hed__Account__c and Registration_Start_Date__c <= TODAY AND Registration_End_Date__c >= TODAY] ;
             
             // Naveen -- Addded below Code as a part of DEFECT 448995
-            // Get the list of CT contacts under the Students PE Account
-            List <Contact> ctList = [Select Id, Recordtype.name from Contact where AccountId =: studentContact[0].AccountId and Recordtype.name != 'Student' ];
+            // Get the list of Verified and Non Learning Coach CT contacts under the Students PE Account
+            //Student Record Type Id
+        	Id studentRecordTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(NES_DashboardUtilities.STUDENT_RT).getRecordTypeId();
+            List <Contact> ctList = [Select Id, Recordtype.name from Contact where AccountId =: studentContact[0].AccountId and RecordtypeId !=: studentRecordTypeId 
+                                     and Unverified__c =: false and V2_Role__c != : 'Learning Coach'];
             List <Id> ctIdList = new List <Id> ();
             for(Contact c: ctList){
                 ctIdList.add(c.Id);
