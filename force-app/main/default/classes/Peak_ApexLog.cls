@@ -83,10 +83,13 @@ public with sharing class Peak_ApexLog {
         }
         userClassLogLevel = Integer.valueOf(personaManager.Log_Level__c);
         
-        List<Peak_Apex_Log_Manager__mdt> mgrRecords = [
+        //SOQL replaced by a call to GenericSOQLQueries for 430196 on 2021-08-10 by Krishna Peddanagammol
+        /*List<Peak_Apex_Log_Manager__mdt> mgrRecords = [
             select QualifiedApiName, Log_Level__c
             from Peak_Apex_Log_Manager__mdt 
-            where QualifiedApiName = :className];
+            where QualifiedApiName = :className];*/
+        List<Peak_Apex_Log_Manager__mdt> mgrRecords = GenericSOQLQueries.apexLogDetails(className);
+        
         if (!mgrRecords.isEmpty()) {
             logManager = mgrRecords.get(0);
             if (logManager.Log_Level__c != LOG_MANAGER_INHERIT) {

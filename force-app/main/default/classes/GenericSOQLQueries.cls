@@ -3,28 +3,32 @@ Author- Vani
 */
 
 public class GenericSOQLQueries{
-
-public static Set<Id> receivedContactID;
-public static list<contact> returnContacts;
     
-public static Integer i=0;    
+    public static Set<Id> receivedContactID;
+    public static list<contact> returnContacts;
+    
+    public static Integer i=0;    
+    
+    public static Set<Id> enrollmentComIds = new set<id>();
+    public static Set<Id> ecaIds = new set<id>();
+    public static String apexClassName;
+    
+    public static list<Enrollment_Component__c> enrollmentComps;// = new list<Enrollment_Component__c>();
+    public static list<Enrollment_Component_Affiliation__c> ecasList;
+    public static list<Peak_Apex_Log_Manager__mdt> apexlogList;
 
-public static Set<Id> enrollmentComIds = new set<id>();
-public static Set<Id> ecaIds = new set<id>();
-
-public static list<Enrollment_Component__c> enrollmentComps;// = new list<Enrollment_Component__c>();
-public static list<Enrollment_Component_Affiliation__c> ecasList;
-
-public static Set<Id> programEnrollmentIds = new set<id>();
-public static list<hed__Program_Enrollment__c> ProgramEnrollmets;
-
-public static Set<Id> criteriaIds;
-public static list<Criteria__c> criteriaList; 
-
-
+    public static Set<Id> programEnrollmentIds = new set<id>();
+    public static list<hed__Program_Enrollment__c> ProgramEnrollmets;
+    
+    public static Set<Id> criteriaIds;
+    public static list<Criteria__c> criteriaList; 
+    
+    Public static set<Id>asIds = new set<id>();
+    public static list<Annual_Student_Information__c> asisList;    
+    
     public static list<contact> contactDetails(set<id> contactIdSet){
-      //  if(string.isBlank(receivedContactID) || !receivedContactID.equalsIgnoreCase(contactIdSet)){        
-       // receivedContactID = new set<Id>();
+        //  if(string.isBlank(receivedContactID) || !receivedContactID.equalsIgnoreCase(contactIdSet)){        
+        // receivedContactID = new set<Id>();
         if(i==0 || !receivedContactID.containsALL(contactIdSet)){
             i = i+1;
             system.debug('*** Inside IF contactDetails() contactIdSet ==> '+contactIdSet);
@@ -41,18 +45,18 @@ public static list<Criteria__c> criteriaList;
     }
     
     public static list<Enrollment_Component__c> enrollmentDetails(set<id> receivedEnroCompID){
-            if(enrollmentComIds.isempty() || !enrollmentComIds.containsALL(receivedEnroCompID)){          
-                System.debug('inside EC Lists');
-                //enrollmentComps = new list<Enrollment_Component__c>();
-                enrollmentComIds.addall(receivedEnroCompID);
-                enrollmentComps=[SELECT Id, Process_Academic_Program__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :receivedEnroCompID];
-                return enrollmentComps;
-            }else{
-                System.debug('In Else block of -enrollmentDetails');
-                return enrollmentComps;
-            } 
-            
-        }
+        if(enrollmentComIds.isempty() || !enrollmentComIds.containsALL(receivedEnroCompID)){          
+            System.debug('inside EC Lists');
+            //enrollmentComps = new list<Enrollment_Component__c>();
+            enrollmentComIds.addall(receivedEnroCompID);
+            enrollmentComps=[SELECT Id, Process_Academic_Program__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :receivedEnroCompID];
+            return enrollmentComps;
+        }else{
+            System.debug('In Else block of -enrollmentDetails');
+            return enrollmentComps;
+        } 
+        
+    }
     
     public static list<hed__Program_Enrollment__c> programEnrollmentDetails(set<id> receivedProgramEnrollments){
         if(programEnrollmentIds.isempty() || !programEnrollmentIds.containsALL(receivedProgramEnrollments)){
@@ -64,20 +68,49 @@ public static list<Criteria__c> criteriaList;
             return ProgramEnrollmets;
         }
     }
+
     //Added for 430196 on 2021-08-09 by Krishna Peddanagammol
     public static list<Enrollment_Component_Affiliation__c> ecaDetails(set<id> receivedECAID){
         if(ecaIds.isempty() || !ecaIds.containsALL(ECAIds)){          
-            System.debug('inside ECA Lists');
+            System.debug('inside -ecaDetails');
             ecaIds.addall(receivedECAID);
             ecasList=[SELECT Id,
-            Enrollment_Component__r.Waitlist__c,
-            Enrollment_Component__r.RecordType.Name,
-            Program_Enrollment__c
-            FROM Enrollment_Component_Affiliation__c WHERE Id = :receivedECAID];
+                Enrollment_Component__r.Waitlist__c,
+                Enrollment_Component__r.RecordType.Name,
+                Program_Enrollment__c
+                FROM Enrollment_Component_Affiliation__c WHERE Id = :receivedECAID];
             return ecasList;
         }else{
             System.debug('In Else block of -ecaDetails');
             return ecasList;
         }             
     }
+
+    //Added for 430196 on 2021-08-10 by Krishna Peddanagammol
+    public static list<Peak_Apex_Log_Manager__mdt> apexLogDetails(String strClassName){
+        if(apexClassName <> '' || apexClassName <> null){          
+            System.debug('inside -apexLogDetails');
+            apexClassName = strClassName;
+            apexlogList=[select QualifiedApiName, Log_Level__c
+            from Peak_Apex_Log_Manager__mdt 
+            where QualifiedApiName = :strClassName];
+            return apexlogList;
+        }else{
+            System.debug('In Else block of -apexLogDetails');
+            return apexlogList;
+        }             
+    }
+    
+    public static list<Annual_Student_Information__c> asiDetails(set<id> receivedASID){
+        if(asIds.isempty() || !asIds.containsALL(ASIDs)){
+            asIds.addall(receivedASID);
+            asisList=[SELECT Id, School_Year__c, Program_Enrollment__c, Program_Enrollment__r.Start_Year__c, Final_Grade_Level__c, 
+                TransitionalKAcknowledgement__c FROM Annual_Student_Information__c WHERE Id = :receivedASID];
+            return asisList;
+        }else{
+            System.debug('In Else block of -asiDetails');
+            return asisList;
+        }
+    }
+    
 }

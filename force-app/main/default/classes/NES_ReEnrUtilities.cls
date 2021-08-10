@@ -2,6 +2,7 @@ public without Sharing class NES_ReEnrUtilities {
     private static Peak_ApexLog logger = new Peak_ApexLog('NES_ReEnrUtilities');
     
     public static ReEnrResults reenrollingStudent(Id studentContactId, Id studentPEId,String callType){
+
         Peak_Response peakResponse = new Peak_Response();
         
         try{
@@ -210,7 +211,9 @@ public without Sharing class NES_ReEnrUtilities {
                 StageName = 'Open',
                 CloseDate = AcademicProgram[0].Confirmation_End_Date__c == null ? Date.today() : AcademicProgram[0].Confirmation_End_Date__c.date()
             );
+            
             // Added by Maddileti for defect 452181 on 26/07/2021
+            
             if(callType=='Full'){
             oppToInsert.How_Student_Was_Reactivated__c='Staff';
             oppToInsert.Full_Reactivation_Date__c = Date.today();
@@ -415,6 +418,7 @@ public without Sharing class NES_ReEnrUtilities {
         */
     }
     public static ReEnrResults InitreenrollingStudent(Id studentContactId, Id studentPEId,String callType){
+        system.debug('-->callType'+callType);
         Peak_Response peakResponse = new Peak_Response();
         try{
                         // Get the Student Contact
@@ -450,24 +454,10 @@ public without Sharing class NES_ReEnrUtilities {
                                                                         Enrollment_Type__c = 'Initial Enrollment',
                                                                         Status__c = 'In Progress');
             update pe;
-            System.debug('pe741:'+pe);
-          /* List<Enrollment_Component_Affiliation__c> ecasList=[select id,Status__c,ECACriteriaCheck__c,Is_Dirty__c,Enrollment_Component__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :studentPERecord.id];
-            List<Enrollment_Component_Affiliation__c> ecastoUpdate=new List<Enrollment_Component_Affiliation__c>();
-        
-            for (Enrollment_Component_Affiliation__c eca :ecasList){
-                
-              if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c))){
-					eca.Status__c = 'Not Started';
-                    ecastoUpdate.add(eca);
-				}
-				else{
-					eca.Status__c = 'Not Applicable';
-                    ecastoUpdate.add(eca);
-				}
-        } */   
-         
-		    //if(ecastoUpdate !=null)
-             //update ecastoUpdate; 
+            
+            // Creating Opportunity
+            createOpportunity(studentContact,studentPEId,AcademicProgram,callType);
+           
             peakResponse.success = true;
             EvaluationUtils.PerformAsyncNewStudentSteps(studentPERecord.Id, processComponent[0].Id, caretakerEnrollment[0].Id,callType); 
             String gradeLevel = studentPERecord?.Program_Grade_Level__r?.Grade_Level__r?.Name; // need to remove
@@ -482,6 +472,36 @@ public without Sharing class NES_ReEnrUtilities {
             logger.saveLogs();
             return null;
     	}
+        
+    }
+ public Static void createOpportunity(List<Contact> studentContact,Id studentPeId,List<Account> AcademicProgram, string callType){
+     system.debug('-->callType'+callType);
+     //Now let's create an Opportunity based on that enrollmentId
+            Opportunity oppToInsert = new Opportunity(
+                Name = studentContact[0].FirstName + ' ' + studentContact[0].LastName + ' Opportunity',
+                OwnerId =AcademicProgram[0].OwnerId,
+                Caretaker_Id__c = studentContact[0].Caretaker_Id__c,
+                Student_Id__c = studentContact[0].Id,
+                AccountId = studentContact[0].AccountId,
+                Program_Enrollment__c = studentPeId,
+                StageName = 'Open',
+                CloseDate = AcademicProgram[0].Confirmation_End_Date__c == null ? Date.today() : AcademicProgram[0].Confirmation_End_Date__c.date()
+            	
+            );
+        if(callType=='Full'){
+            system.debug('-->callType'+callType);
+            oppToInsert.How_Student_Was_Reactivated__c='Staff';
+            oppToInsert.Full_Reactivation_Date__c = Date.today();
+            oppToInsert.Full_Reactivation_User__c = UserInfo.getUserId(); 
+            } else
+            if(callType=='InitReActivation'){
+                system.debug('-->callType'+callType);
+            oppToInsert.How_Student_Was_Reactivated__c='Caretaker';
+            oppToInsert.Full_Reactivation_Date__c = Date.today();
+            oppToInsert.Full_Reactivation_User__c = UserInfo.getUserId(); 
+            } 
+            
+            Insert oppToInsert;
         
     }
     

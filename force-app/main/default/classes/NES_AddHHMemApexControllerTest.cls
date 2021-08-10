@@ -112,7 +112,7 @@ public class NES_AddHHMemApexControllerTest {
             //System.debug('NDEBUG::: StudentExists' + StudentExists);
             NES_AddHHMemApexController.chkExistCnts(cntct);
             String response = NES_AddHHMemApexController.createAddlHHMemContact(cntct);
-            NES_AddHHMemApexController.coveragePadding();
+            
             //System.assertEquals('New Contact Created', response);
             
             /*
