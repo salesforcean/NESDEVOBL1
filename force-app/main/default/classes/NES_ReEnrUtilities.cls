@@ -64,8 +64,8 @@ public without Sharing class NES_ReEnrUtilities {
                                 ( 
                                     Status__c = 'Complete' 
                                     AND 
-									Enrollment_Component__r.Component_Type__c != : 'Household'
-									AND
+                                    Enrollment_Component__r.Component_Type__c != : 'Household'
+                                    AND
                                     Enrollment_Component__r.RecordType.Name 
                                         IN ('Section', 'Form', 'Question', 'Question Group', 'Document', 'Flag', 'Message', 'Text') 
                                 )
@@ -74,7 +74,7 @@ public without Sharing class NES_ReEnrUtilities {
                                     (  
                                         Status__c IN ('In Progress', 'Complete')
                                         AND 
-                                        (	
+                                        (   
                                             Enrollment_Component__r.RecordType.Name = 'Stage' 
                                             AND 
                                             Order__c != 1
@@ -99,7 +99,7 @@ public without Sharing class NES_ReEnrUtilities {
             }
             
 
-		List<Enrollment_Component_Affiliation__c> ecaToUpdate = new List<Enrollment_Component_Affiliation__c>();
+        List<Enrollment_Component_Affiliation__c> ecaToUpdate = new List<Enrollment_Component_Affiliation__c>();
         //Added for testing
        List<Enrollment_Component_Affiliation__c> StageEcaToUpdate = new List<Enrollment_Component_Affiliation__c>();
        Set<Id> StageECASet = new Set<Id>();
@@ -121,27 +121,27 @@ public without Sharing class NES_ReEnrUtilities {
                 }
                 else
                 if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c))){
-					eca.Status__c = 'Not Started';
-				}
-				else{
-					eca.Status__c = 'Not Applicable';
-				}
+                    eca.Status__c = 'Not Started';
+                }
+                else{
+                    eca.Status__c = 'Not Applicable';
+                }
             }else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
                 if(eca.Order__c == 2){
                     eca.Status__c = 'In Progress';
                 }else if(eca.Order__c > 2){
-					if(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)){
-						eca.Status__c = 'Not Started';
-					}
-					else{
-						eca.Status__c = 'Not Applicable';
-					}
+                    if(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)){
+                        eca.Status__c = 'Not Started';
+                    }
+                    else{
+                        eca.Status__c = 'Not Applicable';
+                    }
                 }
             }
                 // Added for testing
                if(!StageECASet.Contains(eca.Id))
                {
-                StageEcaToUpdate.add(eca); 	
+                StageEcaToUpdate.add(eca);  
                 StageECASet.add(eca.Id);
                }
                  
@@ -189,7 +189,7 @@ public without Sharing class NES_ReEnrUtilities {
                    update allEDsToUpdate;
             
             if(StageEcaToUpdate.Size()>0)
-            	update StageEcaToUpdate;
+                update StageEcaToUpdate;
             
             //Determine which version of the ECA process we are using.       
             //Call the future method that will create the remaining ECAs and the PE Criteria.            
@@ -212,19 +212,7 @@ public without Sharing class NES_ReEnrUtilities {
                 CloseDate = AcademicProgram[0].Confirmation_End_Date__c == null ? Date.today() : AcademicProgram[0].Confirmation_End_Date__c.date()
             );
             
-            // Added by Maddileti for defect 452181 on 26/07/2021
-            
-            if(callType=='Full'){
-            oppToInsert.How_Student_Was_Reactivated__c='Staff';
-            oppToInsert.Full_Reactivation_Date__c = Date.today();
-            oppToInsert.Full_Reactivation_User__c = UserInfo.getUserId(); 
-            } else
-            if(callType=='ReActivation'){
-            oppToInsert.How_Student_Was_Reactivated__c='Caretaker';
-            oppToInsert.Full_Reactivation_Date__c = Date.today();
-            oppToInsert.Full_Reactivation_User__c = UserInfo.getUserId(); 
-            }
-            // End by Maddileti for defect 452181 on 26/07/2021
+
             Insert oppToInsert;
             
             String gradeLevel = studentPERecord?.Program_Grade_Level__r?.Grade_Level__r?.Name;
@@ -238,7 +226,7 @@ public without Sharing class NES_ReEnrUtilities {
             logger.logException('There is some issue with the ReEnrollment'+studentPEId, e);
             logger.saveLogs();
             return null;
-    	}
+        }
     }
     
     
@@ -454,7 +442,7 @@ public without Sharing class NES_ReEnrUtilities {
                                                                         Enrollment_Type__c = 'Initial Enrollment',
                                                                         Status__c = 'In Progress');
             update pe;
-            
+             if(callType != 'SYReEnroll')
             // Creating Opportunity
             createOpportunity(studentContact,studentPEId,AcademicProgram,callType);
            
@@ -471,7 +459,7 @@ public without Sharing class NES_ReEnrUtilities {
             logger.logException('There is some issue with the ReEnrollment'+studentPEId, e);
             logger.saveLogs();
             return null;
-    	}
+        }
         
     }
  public Static void createOpportunity(List<Contact> studentContact,Id studentPeId,List<Account> AcademicProgram, string callType){
@@ -486,8 +474,10 @@ public without Sharing class NES_ReEnrUtilities {
                 Program_Enrollment__c = studentPeId,
                 StageName = 'Open',
                 CloseDate = AcademicProgram[0].Confirmation_End_Date__c == null ? Date.today() : AcademicProgram[0].Confirmation_End_Date__c.date()
-            	
+                
             );
+            
+            // Added by Divya for defect 452181 on 11/08/2021
         if(callType=='Full'){
             system.debug('-->callType'+callType);
             oppToInsert.How_Student_Was_Reactivated__c='Staff';
@@ -500,7 +490,7 @@ public without Sharing class NES_ReEnrUtilities {
             oppToInsert.Full_Reactivation_Date__c = Date.today();
             oppToInsert.Full_Reactivation_User__c = UserInfo.getUserId(); 
             } 
-            
+            // End by Divya for defect 452181 on 11/08/2021
             Insert oppToInsert;
         
     }

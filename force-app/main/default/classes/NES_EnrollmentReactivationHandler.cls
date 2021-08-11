@@ -48,7 +48,8 @@ public without sharing class NES_EnrollmentReactivationHandler {
             //a)PE Status = 'Withdrawn' and the latest Enrollment record's Withdrawal category = 'No Show'
             else 
             if(peRecord.Status__c == 'Withdrawn' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show' && reactivationType.toUpperCase() == 'RE_ENROLLMENT'){
-                NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,reactivationType.toUpperCase());
+               // NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,reactivationType.toUpperCase());
+                NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,'InitReEnrollment'); 
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';
                 peakResponse.success = true;
             }
@@ -57,6 +58,8 @@ public without sharing class NES_EnrollmentReactivationHandler {
             if(peRecord.Status__c == 'Withdrawn' && (peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Prior To Engagement' || 
                                                     peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Withdrawal During School Year')
                                                                                 && reactivationType.toUpperCase() == 'RE_ENROLLMENT'){
+                //Sravani:Added code
+                NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,'SYReEnroll');                                                                  
                 NES_EnrollmentReactivationBase process = getProcessInstance(studPEID, reactivationType);
                 process.execute();
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';

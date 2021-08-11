@@ -364,7 +364,7 @@
     getProcessStages:  function(component, event, helper)
     {
         var programEnrollmentId = component.get("v.programEnrollmentId");
-        alert(programEnrollmentId);
+        //alert(programEnrollmentId);
         var action = component.get("c.getRelatedStages");
         action.setParams({
             programEnrollmentId : programEnrollmentId

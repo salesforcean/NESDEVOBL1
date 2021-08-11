@@ -10,5 +10,10 @@
     <columns>LAST_UPDATE</columns>
     <columns>Default_Value__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Answer_Target__c</field>
+        <operation>contains</operation>
+        <value>Prior_School__c.SchoolName__c</value>
+    </filters>
     <label>All</label>
 </ListView>

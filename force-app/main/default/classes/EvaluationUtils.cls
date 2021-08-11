@@ -310,7 +310,7 @@ public class EvaluationUtils  {
         //Get the ECs that have already been added to this PE
         Set<Id> ECsAlreadyAddedToPE = new Set<Id> ();
         List<Enrollment_Component_Affiliation__c> existEcas=new List<Enrollment_Component_Affiliation__c>();
-        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,ECACriteriaCheck__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment]){
+        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,ECACriteriaCheck__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment]){
             ECsAlreadyAddedToPE.add(eca.Enrollment_Component__c);
             existEcas.add(eca);
         }
@@ -386,13 +386,16 @@ public class EvaluationUtils  {
         // added by maddileti
           Set<Id> STDDocECAs = new Set<Id>();
           Set<Id> HHDocECs = new Set<Id>();
+       //  Set<Id> StageECA = new Set<Id>();
+         List<Enrollment_Component_Affiliation__c> StageECAtoUpdate = new List<Enrollment_Component_Affiliation__c>();
           List<Enrollment_Component_Affiliation__c> ecastoUpdate=new List<Enrollment_Component_Affiliation__c>();
-          if(existEcas != null && EnrollmentType == 'InitReActivation'){
+          if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment')){
                 for(Enrollment_Component_Affiliation__c eca :existEcas){
                 if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){
+                                        
                     if(eca.Enrollment_Component__r.RecordType.Name == 'Document' ){
                        
-                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student'){
+                       if(eca.Enrollment_Component__r.Component_Type__c == 'Student'){
                         STDDocECAs.add(eca.id);
                         eca.Status__c = 'Not Started';
                         }
@@ -401,33 +404,55 @@ public class EvaluationUtils  {
                         HHDocECs.add(eca.Enrollment_Component__c); 
                         }
                     }
+                    
                     else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c))){
                         eca.Status__c = 'Not Started';
                         //ecastoUpdate.add(eca);
                     }
+               
                     else{
                         eca.Status__c = 'Not Applicable';
                         //ecastoUpdate.add(eca);
                     }
+                    ecastoUpdate.add(eca);
                 } 
-                ecastoUpdate.add(eca);
+                 if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
+                 if(eca.Order__c == 1 && eca.Status__c != 'Complete' ){
+                    eca.Status__c = 'Complete';
+                }
+                  else if(eca.Order__c == 2){
+                    eca.Status__c = 'In Progress';
+                }else if(eca.Order__c > 2){
+                    eca.Status__c = 'Not Started';
+                }
+                     StageEcaToUpdate.add(eca);	
+             	//	 StageECA.add(eca.Id);
+                //   system.debug('StageEcaToUpdate'+ StageEcaToUpdate);
+
+               }
+
+                
                 //existEcas.add(eca);
             }
-
+   			  
                List<Enrollment_Document__c> allEDsToUpdate = new List<Enrollment_Document__c> ();
               for (Enrollment_Document__c ed : [select id, Enrollment_Component_Affiliation__c, Status_Reason__c from Enrollment_Document__c where Enrollment_Component_Affiliation__c in : STDDocECAs or (Program_Enrollment__c = : caretakerEnrollmentId and Enrollment_Component_Affiliation__r.Enrollment_Component__c in : HHDocECs)]) {
                   system.debug('Enrolldocs'+ ed);
-                  ed.Status_Reason__c = 'Invalid-Reenrollment';
+                  ed.Status_Reason__c = '';
                    allEDsToUpdate.add(ed);
                } 
-
-     
+			
                if (allEDsToUpdate.size() > 0)
                    update allEDsToUpdate; 
+             if(StageEcaToUpdate.size()>0)
+                  update StageEcaToUpdate;
+               if(ecastoUpdate.size() > 0)
+           		 update ecastoUpdate;
+
+            
         }
         
-        if(ecastoUpdate.size() > 0)
-            update ecastoUpdate;
+     
         // end by maddileti
         
         

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Container for org-wide defaults, profile, and user-level overrides for custom logging</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Apex Log Persona Manager</label>
+    <visibility>Public</visibility>
+</CustomObject>
