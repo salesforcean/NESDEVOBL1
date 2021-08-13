@@ -127,8 +127,10 @@
                         </lightning:layoutItem>
                         
                         <aura:set attribute="else">
+                             <div style="color:Red">
   						 There are no schools available for the selected state.
-  						</aura:set>
+                            </div>
+                            </aura:set>
  						</aura:if>
                         
                         

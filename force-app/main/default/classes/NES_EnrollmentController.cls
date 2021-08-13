@@ -204,12 +204,17 @@ and using those child components get the required component information
         schoolYears = [Select Id,current_year__c, Name from School_year__c where Id IN: schoolYrIds order by Name DESC];
         Boolean availability = (currentSchoolYear != schoolYears[0].Name);
         return availability;
-    } 
-    
-    
-   @AuraEnabled
+    }
+    /*
+    @AuraEnabled
+    public static NES_ReEnrUtilities.ReEnrResults doReEnrollment(Id studentContactId,Id studentPeId,String callType){
+    	return	NES_ReEnrUtilities.reenrollingStudent(studentContactId,studentPeId,callType);       
+
+    } */ 
+
+    @AuraEnabled
     public static NES_ReEnrUtilities.ReEnrResults InitReEnrollment(Id studentContactId,Id studentPeId,String callType){
-        System.debug('InitreenrollingStudent');
+        
     	return	NES_ReEnrUtilities.InitreenrollingStudent(studentContactId,studentPeId,callType);       
     } 
 	

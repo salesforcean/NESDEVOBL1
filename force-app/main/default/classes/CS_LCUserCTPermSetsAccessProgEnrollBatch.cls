@@ -30,8 +30,9 @@ global class CS_LCUserCTPermSetsAccessProgEnrollBatch implements Database.Batcha
         Records_Processing_Intervals__mdt recordProcessInterval = [SELECT Id, Days__c, Hours__c, Minutes__c FROM Records_Processing_Intervals__mdt WHERE DeveloperName = :CS_Constants.LC_KBA_ACCESS_PROGENROLL_RECS_PROCESS];
         DateTime dateTimeInterval = system.now().addDays(Integer.valueOf(recordProcessInterval.Days__c)).addHours(Integer.valueOf(recordProcessInterval.Hours__c)).addMinutes(Integer.valueOf(recordProcessInterval.Minutes__c));       
 
-
+         System.debug('dateTimeInterval=====================>'+dateTimeInterval);
         String batchQueryStr = 'SELECT Id, Name, hed__Contact__c, hed__Contact__r.Name, hed__Account__c, Status__c, Concatenated_Status__c, School_Account_ID__c, School_Name__c FROM hed__Program_Enrollment__c WHERE (Status__c = \''+CS_Constants.PE_WITHDRAWN_STATUS+'\' OR Status__c = \''+CS_Constants.PE_COMPLETE_STATUS+'\' OR Concatenated_Status__c = \''+CS_Constants.PE_COMPLETE_IN_PROGRESS_STATUS+'\') AND hed__Contact__r.RecordTypeId = :recordTypeIdSTD AND LastModifiedDate >= :dateTimeInterval'+(Test.isRunningTest()?' LIMIT 10':'');
+        System.debug('batchQueryStr==============>'+batchQueryStr);
         return Database.getQueryLocator(batchQueryStr);
     }
     
@@ -39,7 +40,9 @@ global class CS_LCUserCTPermSetsAccessProgEnrollBatch implements Database.Batcha
          set<Id> studentRecsIdSet = new set<Id>();
         
         for(hed__Program_Enrollment__c programEnrollObj : programEnrollRecs){
-           studentRecsIdSet.add(programEnrollObj.hed__Contact__c);                  
+            System.debug('programEnrollRecs===============>'+programEnrollObj);
+           studentRecsIdSet.add(programEnrollObj.hed__Contact__c);
+           System.debug('studentRecsIdSet===============>'+studentRecsIdSet.size());
         }
         
         // Calling the Batch-Apex handler class to process the revoking and provisioning of the CT permission-sets in relation to the Schools that the Learning Coach comes under.

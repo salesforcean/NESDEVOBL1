@@ -362,8 +362,11 @@ public class EvaluationUtils  {
                     affiliationRecord.Program_Enrollment__c = programEnrollment;
                     affiliationRecord.Order__c = ecr.Order__c;
                     affiliationRecord.EC_Record_Type__c = ecr.Child_Enrollment_Component__r.RecordType.Name;
-                    
-                    if (String.isBlank(ecr.Child_Enrollment_Component__r.Assignment_Logic__c) ) 
+                    //Sravani: Added for Reinstatement
+                    if(ecr.Child_Enrollment_Component__r.RecordType.Name == 'Stage' && ecr.Child_Enrollment_Component__r.Name == 'Eligibility' && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment'))
+                        affiliationRecord.Status__c = 'Complete';
+                    //End code
+                    else if (String.isBlank(ecr.Child_Enrollment_Component__r.Assignment_Logic__c) ) 
                         affiliationRecord.Status__c = 'Not Started';
                     else
                         affiliationRecord.Status__c = 'Not Applicable';
@@ -389,6 +392,7 @@ public class EvaluationUtils  {
        //  Set<Id> StageECA = new Set<Id>();
          List<Enrollment_Component_Affiliation__c> StageECAtoUpdate = new List<Enrollment_Component_Affiliation__c>();
           List<Enrollment_Component_Affiliation__c> ecastoUpdate=new List<Enrollment_Component_Affiliation__c>();
+        system.debug('EvaluationUtils'+ EnrollmentType);
           if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment')){
                 for(Enrollment_Component_Affiliation__c eca :existEcas){
                 if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){
@@ -411,10 +415,12 @@ public class EvaluationUtils  {
                     }
                
                     else{
+                        //if(EnrollmentType == 'InitReEnrollment')
+                        // eca.Is_Dirty__c = true;
                         eca.Status__c = 'Not Applicable';
                         //ecastoUpdate.add(eca);
                     }
-                    ecastoUpdate.add(eca);
+                                     ecastoUpdate.add(eca);
                 } 
                  if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
                  if(eca.Order__c == 1 && eca.Status__c != 'Complete' ){
@@ -438,7 +444,7 @@ public class EvaluationUtils  {
                List<Enrollment_Document__c> allEDsToUpdate = new List<Enrollment_Document__c> ();
               for (Enrollment_Document__c ed : [select id, Enrollment_Component_Affiliation__c, Status_Reason__c from Enrollment_Document__c where Enrollment_Component_Affiliation__c in : STDDocECAs or (Program_Enrollment__c = : caretakerEnrollmentId and Enrollment_Component_Affiliation__r.Enrollment_Component__c in : HHDocECs)]) {
                   system.debug('Enrolldocs'+ ed);
-                  ed.Status_Reason__c = '';
+                  ed.Status_Reason__c = 'Not Applicable';
                    allEDsToUpdate.add(ed);
                } 
 			

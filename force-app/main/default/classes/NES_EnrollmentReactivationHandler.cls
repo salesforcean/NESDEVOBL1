@@ -24,11 +24,11 @@ public without sharing class NES_EnrollmentReactivationHandler {
         
         Peak_Response peakResponse = new Peak_Response();
         String message;
+
         
         hed__Program_Enrollment__c peRecord = [Select Id, Status__c, hed__Contact__c,Enrollment_Type__c,
                                                 (select id,Withdrawal_Category__c from Enrollments__r order by createddate desc)  
                                                 from hed__Program_Enrollment__c where Id =: studPEID limit  1];
-        
              //Staff End – Full ReActivation button logic is to ensure all the forms related to initial enrollment are displayed 
              //    when it is clicked for the PE with Status = Inactive and Enrollment type =’Returning Student’. 
        
@@ -36,14 +36,16 @@ public without sharing class NES_EnrollmentReactivationHandler {
             //Staff End – Full ReActivation button logic is to ensure all the forms related to initial enrollment are displayed 
             //    when it is clicked for the PE with Status = Inactive and Enrollment type =’Returning Student’
             if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student' && reactivationType.toUpperCase() == 'FULL'){
-                NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,reactivationType.toUpperCase());
+                //NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,reactivationType.toUpperCase());
+               //Sravani: Added Code for Reinstatement
+                NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,'InitReactivation');
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';
                 peakResponse.success = true;
             }
             else
             if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student' && reactivationType.toUpperCase() == 'SOFT'){
-                message='Program Enrollment is eligible only for Full ReActivation.';
-                peakResponse.success = true;
+                 message='Program Enrollment is eligible only for Full ReActivation.';
+              peakResponse.success = false;
             }
             //a)PE Status = 'Withdrawn' and the latest Enrollment record's Withdrawal category = 'No Show'
             else 

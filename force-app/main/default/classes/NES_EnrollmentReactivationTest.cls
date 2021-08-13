@@ -240,7 +240,7 @@ public with sharing class NES_EnrollmentReactivationTest {
         Test.startTest();
         Peak_Response response = NES_EnrollmentReactivationHandler.reactivateStudent(progEnrollment.Id, STUDENT_RE_ENROLLMENT);
         Test.stopTest();
-        System.assertEquals(true,response.success);
+        System.assertEquals(false,response.success);
     }
     
     static testMethod void studReenrollment_NegativeRec() {

@@ -217,9 +217,10 @@ public class NES_ReEnrUtilitiesTest {
         Enrollment_Component_Affiliation__c ecaList=[SELECT Id,Enrollment_Component__c,Status__c,Order__c,Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c =: stdPE.id AND Enrollment_Component__r.RecordType.Name ='Document' Limit 1];
         //ecaList.Status__c='Complete';
         //update ecaList;
-        String callType='ReActivation';
+        String callType='InitReActivation';
         Test.startTest();
-        NES_ReEnrUtilities.ReEnrResults response = NES_EnrollmentController.doReEnrollment(studentid.id,stdPE.id,callType);
+        NES_ReEnrUtilities.ReEnrResults responses = NES_ReEnrUtilities.reenrollingStudent(studentid.id,stdPE.id,callType);
+        NES_ReEnrUtilities.ReEnrResults response = NES_EnrollmentController.InitReEnrollment(studentid.id,stdPE.id,callType);
         Test.stopTest();
         system.assertEquals(true,response.success);
         system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());
@@ -252,9 +253,9 @@ public class NES_ReEnrUtilitiesTest {
         update studentPe;
         
         Test.startTest();
-        String result = NES_EnrollmentController.getPEEnrStatus(studentPe.id);
+        String result = NES_EnrollmentController.getEnrollmentInfo(studentPe.id);
         Test.stopTest();
-        system.assertEquals('ReActivation',result);
+        system.assertEquals('InitReActivation',result);
         system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());
     }
     static testMethod void reEnrollmentTypeTest(){
@@ -268,9 +269,9 @@ public class NES_ReEnrUtilitiesTest {
         enrollmentId.Withdrawal_Category__c='No Show';
         update enrollmentId;
         Test.startTest();
-        String result = NES_EnrollmentController.getPEEnrStatus(studentPe.id);
+        String result = NES_EnrollmentController.getEnrollmentInfo(studentPe.id);
         Test.stopTest();
-        system.assertEquals('ReEnrollment',result);
+        system.assertEquals('InitReEnrollment',result);
         system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());
     }
 }

@@ -854,7 +854,7 @@ This method will create or edit Enrollment Documents and  File References
                 //insert enrollmentDocument;
                 
                 list<Enrollment_Document__c> eds = [select id,Status_Reason__c,Type__c, Program_Enrollment__c from Enrollment_Document__c where Uploader__c = :UserInfo.getUserId() AND Type__c = :affiliationList[0].Enrollment_Component__r.Document_Type__c AND Program_Enrollment__c = :programEnrollmentId];
-                System.debug('the ed size:' + eds.size());
+                
                 // Added code for the bug #164337 on 07/05/2020
                 //--Changes start here for Invalid-Reenrollment for the defect #246464 on 15/09/2020
                 // Added code for the Defect #298246 on 7/10/2020
@@ -863,7 +863,8 @@ This method will create or edit Enrollment Documents and  File References
                    fileReference = createFileReferences(documentLink, enrollmentDocument); 
 				}
                 //End code for the Defect #298246 on 7/10/2020 
-				else if (eds.size() == 1 && eds[0].Status_Reason__c == 'Invalid-Reenrollment'){
+				else if (eds.size() == 1 && (eds[0].Status_Reason__c == 'Invalid-Reenrollment' || eds[0].Status_Reason__c == 'Not Applicable' )){
+                   
 				   eds[0].Status_Reason__c = 'Submitted';
 				   eds[0].Uploader__c = UserInfo.getUserId();
                    eds[0].Submission_Time__c = system.now();
@@ -873,6 +874,7 @@ This method will create or edit Enrollment Documents and  File References
 				//--Changes end here Invalid-Reenrollment for the defect #246464 on 15/09/2020
 		
                 else if (eds.size() > 0) {
+                    system.debug('Ed Error'+ eds);
                     peakResponse.messages.add('Document is already uploaded for this section. Please click "Skip for now" to proceed to next section');
                     peakResponse.success = FALSE;
                 }
