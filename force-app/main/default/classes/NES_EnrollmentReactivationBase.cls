@@ -160,6 +160,7 @@ System.debug('test5------------');
 
         Set<Id> ECAsOfTypeDocument = new Set<Id>();
         Set<Id> ECsOfTypeDocument = new Set<Id>();
+        String pecRecId = ecaList[0].Program_Enrollment__c;
         
         for (Enrollment_Component_Affiliation__c eca : ecaList) {
             System.debug('my list-----'+eca);
@@ -176,7 +177,12 @@ System.debug('test5------------');
                StageEcaToUpdate.add(eca);	
               StageECASet.add(eca.Id);
                  // Added for testing
-            }   
+            }
+            else if((eca.Enrollment_Component__r.RecordType.Name == 'Section')  && (eca.Status__c == 'Not Applicable') && (eca.Order__c > 5)){
+                eca.Status__c = 'Not Started';                
+            }
+                            
+            
             system.debug('Enrollment Type*********'+eca.Program_Enrollment__r.Enrollment_Type__c);
             //Added for making Form status as In Progress, This will run only for Re-Enrolling Students for Defect 244255
             if((eca.Enrollment_Component__r.RecordType.Name == 'Form') && enrollmentType == 'RE-ENROLLMENT') 
@@ -229,6 +235,21 @@ System.debug('test5------------');
            }
            
            update ecaToUpdate;
+        }
+        
+        // Ravi: Updating the Result field of PECs whose criteria evaluation should match the Enrollment Type of 'Re-enrolling student' to true
+        List <Program_Enrollment_Criteria__c> pecsToUpdate = new List <Program_Enrollment_Criteria__c> ();
+        for(Program_Enrollment_Criteria__c pec : [SELECT Id, Criteria__r.Criteria_Field__c, Program_Enrollment__c, Result__c, Criteria__c, createddate 
+                                                              FROM Program_Enrollment_Criteria__c 
+                                                              where Program_Enrollment__c =: pecRecId
+                                                              and Criteria__r.Criteria_Field__c like '%Enrollment_Type__c' 
+                                                  and Criteria__r.Comparison_Field__c = 'Re-enrolling student' and Result__c = : false ])
+        {
+            Program_Enrollment_Criteria__c updPec = new Program_Enrollment_Criteria__c (Id = pec.Id, Result__c= true );
+            pecsToUpdate.add(updPec);
+        }
+        if(pecsToUpdate != null && pecsToUpdate.size() >0){
+            update pecsToUpdate;
         }
     }
 

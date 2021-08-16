@@ -107,6 +107,14 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                                         )
                                     )
                                 )
+                                OR
+                                (
+                                	Status__c= 'Not Applicable'
+                                    AND
+                                    Enrollment_Component__r.RecordType.Name = 'Section' 
+                                    AND
+                                    Enrollment_Component__r.Is_Required__c = true
+                                )
                             )
                         )
                 ]);

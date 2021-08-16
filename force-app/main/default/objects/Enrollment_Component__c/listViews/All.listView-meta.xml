@@ -13,7 +13,7 @@
     <filters>
         <field>Answer_Target__c</field>
         <operation>contains</operation>
-        <value>Special_Education__c.EvaluatedWithInLastYear__c</value>
+        <value>Enrollment_Type</value>
     </filters>
     <label>All</label>
 </ListView>

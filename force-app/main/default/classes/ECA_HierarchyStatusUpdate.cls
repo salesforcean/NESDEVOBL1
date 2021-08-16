@@ -281,7 +281,7 @@ public without sharing class ECA_HierarchyStatusUpdate
 
             String updatedStatus = getChildrenStatus(parent, true);
             
-            if(updatedStatus!=null && ((updatedStatus != originalStatus) || (inFlightParent!=null && inFlightParent.Status__c !=  parent.status__c)) ) // parent.status__c)
+            if(updatedStatus!=null && parent !=null && ((updatedStatus != originalStatus) || (inFlightParent!=null && inFlightParent.Status__c !=  parent.status__c)) ) // parent.status__c)
             {
                 if (originalStatus != 'Not Applicable') // skip if NA
                 {
@@ -412,7 +412,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                         }
                         else
                         {
-                            if(stageECA.Order__c > currentOrder && !notApplicableStatuses.containsIgnoreCase(stageECA.status__c))
+                            if(stageECA !=null && stageECA.Order__c > currentOrder && !notApplicableStatuses.containsIgnoreCase(stageECA.status__c))
                             {
                                 stageECA.status__c = 'Not Started';
                                 //stageECA.runRelatedUpdates__c = false;

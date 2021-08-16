@@ -151,11 +151,13 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
         }
         
         // Here we are determining at the School level and for each given Learning Coach what are the different Relationship records that the Learning Coach is associated with.        
-        for(hed__Relationship__c relationRecObj : studentIdAndLCRecIdWithRelationshipsMap.values()){            
+        for(hed__Relationship__c relationRecObj : studentIdAndLCRecIdWithRelationshipsMap.values()){ 
+            System.debug('relationRecObj====================>'+relationRecObj);
             // Identifying which relationship records are present under a given School and for a given Learning Coach is concerned.            
             if(!schoolIdAndLCRecIdWithRelationshipsMap.containsKey(String.valueOf(stdIdSchoolIdMap.get(relationRecObj.hed__Contact__c))+'-'+String.valueOf(relationRecObj.hed__RelatedContact__c))){
               list<hed__Relationship__c> relationsTempList = new list<hed__Relationship__c>();
               relationsTempList.add(relationRecObj);
+              System.debug('relationsTempList========================>'+relationsTempList);
               schoolIdAndLCRecIdWithRelationshipsMap.put(String.valueOf(stdIdSchoolIdMap.get(relationRecObj.hed__Contact__c))+'-'+String.valueOf(relationRecObj.hed__RelatedContact__c), relationsTempList);
 
             }
@@ -878,8 +880,9 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                                  hed__Contact__r.Caretaker_Id__c,hed__Contact__r.Caretaker_Id__r.Accountid,
                                                  hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id
                                                  from hed__Program_Enrollment__c where School_Name__c <> null       
-                                                 AND hed__Contact__c in : StdIds order by LastModifiedDate desc])
+                                                 AND (Status__c='complete' OR Status__c='In Progress') AND hed__Contact__c in : StdIds order by LastModifiedDate desc])
         {
+            System.debug('PE===================================>'+pe);
         
           for(contact allrelctContacts: [Select id,Commuity_User__c,AccountId from Contact where AccountId=:pe.hed__Contact__r.Caretaker_Id__r.accountid and Recordtype.name='Caretaker'])
           {

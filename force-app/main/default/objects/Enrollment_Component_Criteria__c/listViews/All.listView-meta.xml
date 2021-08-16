@@ -7,5 +7,10 @@
     <columns>Criteria__c</columns>
     <columns>External_Id__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Criteria__c</field>
+        <operation>contains</operation>
+        <value>Initial Enrollment</value>
+    </filters>
     <label>All</label>
 </ListView>
