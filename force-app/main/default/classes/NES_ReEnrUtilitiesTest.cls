@@ -219,31 +219,14 @@ public class NES_ReEnrUtilitiesTest {
         //update ecaList;
         String callType='InitReActivation';
         Test.startTest();
-        NES_ReEnrUtilities.ReEnrResults responses = NES_ReEnrUtilities.reenrollingStudent(studentid.id,stdPE.id,callType);
+        //NES_ReEnrUtilities.ReEnrResults responses = NES_ReEnrUtilities.reenrollingStudent(studentid.id,stdPE.id,callType);
         NES_ReEnrUtilities.ReEnrResults response = NES_EnrollmentController.InitReEnrollment(studentid.id,stdPE.id,callType);
         Test.stopTest();
         system.assertEquals(true,response.success);
         system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());
         
     }
-    static testMethod void ecasTest(){
-        Account institutionalAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
-        Account academicProgram = [SELECT Id,name, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c FROM Account WHERE RecordType.Name = 'Academic Program' LIMIT 1];
-        Id studentEnrollmentType = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
-        Id studentContactRT = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Students').getRecordTypeId();
-        List<Contact> studentRec = [Select Id, FirstName,AccountId, LastName,RecordTypeId from contact where RecordTypeId =:studentContactRT];
-        
-        hed__program_enrollment__c studentPe = [Select Id,Enrollment_Type__c,Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.ParentId, hed__Account__c,RecordTypeId from hed__Program_Enrollment__c where RecordTypeId =:studentEnrollmentType Limit 1];
-        studentPe.Enrollment_Type__c='Returning Student';
-        update studentPe;
-        hed__Program_Enrollment__c caretakerEnrollment = [SELECT Id, hed__Contact__c FROM hed__Program_Enrollment__c where id=:studentPe.Household_Program_Enrollment__c Limit 1];
-        List<Enrollment_Component__c> processComponent = [SELECT Id, Assignment_Logic__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :academicProgram.id AND RecordType.Name = :NES_DashboardUtilities.PROCESS_RT Limit 1];
-        
-        Test.startTest();
-        NES_ReEnrUtilities.PerformAsyncNewStudentSteps(studentPe.Id,processComponent[0].Id,caretakerEnrollment.Id);
-        Test.stopTest(); 
-        system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());
-    }
+
     static testMethod void reactivateEnrollmentTypeTest(){
         Id studentEnrollmentType = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
         

@@ -5,5 +5,10 @@
     <columns>RECORDTYPE</columns>
     <columns>Component_Type__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Enrollment_Component__c.Message</value>
+    </filters>
     <label>All Components</label>
 </ListView>

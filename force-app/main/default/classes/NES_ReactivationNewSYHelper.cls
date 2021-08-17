@@ -65,7 +65,7 @@ public class NES_ReactivationNewSYHelper {
         String PE_status_Withdrawn = 'Withdrawn';// Updated by sravani #361444
         String PE_status_Complete = 'Complete';
         string isValid = 'valid';
-        hed__Program_Enrollment__c programEnrollment = [SELECT id, Start_Year__c,hed__Contact__c,hed__Contact__r.Contact_Record_Type_Text__c,hed__Account__r.Parent.Name,Status__c,
+        hed__Program_Enrollment__c programEnrollment = [SELECT id, Start_Year__c,Start_Year__r.Name,hed__Contact__c,hed__Contact__r.Contact_Record_Type_Text__c,hed__Account__r.Parent.Name,Status__c,
                                                         (select id,Withdrawal_Category__c from Enrollments__r order by createddate desc) FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
         
        
@@ -88,9 +88,12 @@ public class NES_ReactivationNewSYHelper {
         List<School_Year__c> schoolYears = NES_EnrollmentController.getSchoolYears(instituteName);
         List<School_Year__c> validSchoolYears = New List<School_Year__c>();
         for(School_Year__c SY : schoolYears){
+            
             if(SY.Id!=omitPEYearId){
                 validSchoolYears.add(SY);
-            }
+           	}
+          
+            
         }
         /*
         List<String> schoolYearIds = new List<String>();

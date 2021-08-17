@@ -237,13 +237,14 @@ System.debug('test5------------');
            update ecaToUpdate;
         }
         
-        // Ravi: Updating the Result field of PECs whose criteria evaluation should match the Enrollment Type of 'Re-enrolling student' to true
+        // Naveen: Updating the Result field of PECs whose criteria evaluation should match the Enrollment Type of 'Re-enrolling student' to true
+        // Fix for Defects: 433373 & 433620
         List <Program_Enrollment_Criteria__c> pecsToUpdate = new List <Program_Enrollment_Criteria__c> ();
         for(Program_Enrollment_Criteria__c pec : [SELECT Id, Criteria__r.Criteria_Field__c, Program_Enrollment__c, Result__c, Criteria__c, createddate 
                                                               FROM Program_Enrollment_Criteria__c 
                                                               where Program_Enrollment__c =: pecRecId
                                                               and Criteria__r.Criteria_Field__c like '%Enrollment_Type__c' 
-                                                  and Criteria__r.Comparison_Field__c = 'Re-enrolling student' and Result__c = : false ])
+                                                  and Criteria__r.Comparison_Value__c = 'Re-enrolling student' and Result__c = : false ])
         {
             Program_Enrollment_Criteria__c updPec = new Program_Enrollment_Criteria__c (Id = pec.Id, Result__c= true );
             pecsToUpdate.add(updPec);

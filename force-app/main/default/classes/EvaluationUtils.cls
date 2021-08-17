@@ -310,7 +310,7 @@ public class EvaluationUtils  {
         //Get the ECs that have already been added to this PE
         Set<Id> ECsAlreadyAddedToPE = new Set<Id> ();
         List<Enrollment_Component_Affiliation__c> existEcas=new List<Enrollment_Component_Affiliation__c>();
-        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,ECACriteriaCheck__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment]){
+        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment]){
             ECsAlreadyAddedToPE.add(eca.Enrollment_Component__c);
             existEcas.add(eca);
         }

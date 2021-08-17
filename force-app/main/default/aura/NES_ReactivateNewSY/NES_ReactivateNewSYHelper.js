@@ -105,38 +105,44 @@
         })
         $A.enqueueAction(action);
     },
-    handleContinue : function(component, event, helper) {
+    handleContinueHelper : function(component, event, helper) {
         var action = component.get("c.newYearReactivate");
         var PErecordDetails = component.get("v.PErecordDetails");
-        
+        var newSchoolYear = component.find("year").get("v.value");
         var grade = component.get("v.gradeLevel");
-        action.setParams({
-            studentId:PErecordDetails.programEnrollment.hed__Contact__c,
-            instituteNam:PErecordDetails.programEnrollment.hed__Account__r.Parent.Name,
-            schoolYear:component.get("v.schoolYear"),
-            gradeLevels:grade=='0'?'K':grade,
-            callType:'application',
-            enrollFlag:true,
-            programEnrollmentId:PErecordDetails.programEnrollment.Id
-        });
-        action.setCallback(this, function(response){
-            var state = response.getState();
-            if(state === "SUCCESS"){
-                var returnedResponse = response.getReturnValue();
-                component.set("v.loaded", true);
-                component.find('notifLib').showToast({
-                    "variant": "SUCCESS",
-                    "title": "SUCCESS",
-                    "message": "Successfully reactivated.",
-                });
-                $A.get("e.force:closeQuickAction").fire();
-            }else {
-                var error = response.getError();
-                console.log("Error: ", error);
-            }
-        })
-        $A.enqueueAction(action);
+        var previousSchoolYear = PErecordDetails.programEnrollment.Start_Year__r.Name;
         
+        if(newSchoolYear < previousSchoolYear){
+            component.set("v.loaded", true);
+            component.set("v.reactivateMessage",true);
+        }else{
+            action.setParams({
+                studentId:PErecordDetails.programEnrollment.hed__Contact__c,
+                instituteNam:PErecordDetails.programEnrollment.hed__Account__r.Parent.Name,
+                schoolYear:component.get("v.schoolYear"),
+                gradeLevels:grade=='0'?'K':grade,
+                callType:'application',
+                enrollFlag:true,
+                programEnrollmentId:PErecordDetails.programEnrollment.Id
+            });
+            action.setCallback(this, function(response){
+                var state = response.getState();
+                if(state === "SUCCESS"){
+                    var returnedResponse = response.getReturnValue();
+                    component.set("v.loaded", true);
+                    component.find('notifLib').showToast({
+                        "variant": "SUCCESS",
+                        "title": "SUCCESS",
+                        "message": "Successfully reactivated.",
+                    });
+                    $A.get("e.force:closeQuickAction").fire();
+                }else {
+                    var error = response.getError();
+                    console.log("Error: ", error);
+                }
+            })
+            $A.enqueueAction(action);
+        }
     },
     getSchoolYears : function(component, event, helper) {
         var PErecordDetails = component.get("v.PErecordDetails");

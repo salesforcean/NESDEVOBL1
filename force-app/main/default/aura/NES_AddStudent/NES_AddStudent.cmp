@@ -21,6 +21,7 @@
     <aura:attribute name="disclaimerHeading" type="String" default="These preliminary checks help ensure this student is eligible" />
     <!-- Updated default text for the Bug :177563 by Jagadeesh -->
     <aura:attribute name="disclaimerText" type="String" default="NOTE: Passing these preliminary eligibility checks does not guarantee your student's spot in school, but it gets the most important questions out of the way first so you aren't spending more time than necessary." />
+    <aura:attribute name="SchoolErrormsg" type="String" default="There are no schools available for the selected state."/>
     <aura:attribute name="showRelationshipError" type="Boolean" default="false" />
     <aura:attribute name="addStudentActive" type="Boolean" default="false" />
     <aura:attribute name="disableCreate" type="Boolean" default="true" />
@@ -128,7 +129,8 @@
                         
                         <aura:set attribute="else">
                              <div style="color:Red">
-  						 There are no schools available for the selected state.
+                                  <h5>{!v.SchoolErrormsg}</h5>
+                                 <!--There are no schools available for the selected state.-->
                             </div>
                             </aura:set>
  						</aura:if>
@@ -181,6 +183,7 @@
                                                         <option value="{!option.value}">{!option.label}</option>
                                                     </aura:iteration>
                                                 </lightning:select>
+                                                
                                             </aura:if>
 
                                             <!-- Radio -->

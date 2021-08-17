@@ -911,10 +911,12 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                     if(!CTUserAndPsIdsMap.containsKey(allrelctContacts.Commuity_User__c))// pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id))
                     {
                         PsIdList = new Set<id>();
+                        System.debug('PsIdList===========================>'+PsIdList);
                     }
                     else
                     {
                         PsIdList = CTUserAndPsIdsMap.get(allrelctContacts.Commuity_User__c); //pe.hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id);
+                        System.debug('PsIdListTest=============================>'+PsIdList);
                     }
                    // CTPsetIdVal = PermSetNameAndIdMap.get(CTPermissionSetsMap.get(pe.School_Name__c));
                    // if(CTPsetIdVal <> null)

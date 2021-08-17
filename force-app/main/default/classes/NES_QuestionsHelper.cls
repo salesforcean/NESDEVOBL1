@@ -185,7 +185,7 @@ public without sharing class NES_QuestionsHelper {
         String caretakerId = UserInfo.getUserId();
         Enrollment_Component_Affiliation__c nextSectionAffiliation;
         studentName = studentName.replace(' ', '+');
-
+        
         List<Enrollment_Component_Affiliation__c> affiliationsNow = [
                 SELECT Id, Enrollment_Component__c, Status__c, Enrollment_Component__r.RecordType.Name,
                         Program_Enrollment__r.hed__Account__c, Program_Enrollment__r.Final_Grade_Level__c
@@ -436,7 +436,7 @@ public without sharing class NES_QuestionsHelper {
                         if (nextAffiliation.Status__c != 'Not Applicable' && nextAffiliation.Status__c != 'Complete' && nextAffiliation.Status__c != 'In Progress' && nextAffiliation.Status__c != 'Deferred') {break;}
                     }
                 }
-
+                
                 if (nextAffiliation.Status__c == 'Complete' || nextAffiliation.Status__c == 'In Progress' || nextAffiliation.Status__c == 'Deferred') {
                     for (Integer m = 0; m < relationships.size(); m++) {
                         nextComponentId = relationships[m].Child_Enrollment_Component__c;

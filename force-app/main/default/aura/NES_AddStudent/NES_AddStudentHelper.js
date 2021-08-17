@@ -169,24 +169,55 @@
                 if(returnedResponse) {
                     for(var i=0;i<returnedResponse.length;i++) {
                         var question = returnedResponse[i];
-                        /*if(question.questionType === 'Radio') {
+                        
+                        // Ravi :Start
+                        var missingGrades = '';
+                        if(question.questionType === 'Picklist') {
                             var options = question.picklistValues;
+                            var alloptions = ['Kindergarden','1','2','3','4','5','6','7','8','9','10','11','12'];
                             if(options) {
-                                var newOptions = [];
+                                let optMap = new Map();  
                                 for(var j=0;j<options.length;j++) {
                                     var option = options[j];
-                                    option.value = options[j].Option_Value__c;
-                                    option.label = options[j].Option_Label__c;
-                                    newOptions.push(option);
+                                    optMap.set(options[j].Option_Value__c, true);
+                                } 
+                                
+                                //alert('All Options Length' + alloptions.length);
+                                //alert('Got Options Length' + options.length);
+                                if(options.length == 0){
+                                    question.msg = 'There are no grades available for this school';
                                 }
-                                question.picklistValues = newOptions;
+                                else
+                                if(options.length != alloptions.length)
+                                {
+                                	for(var j=0;j<alloptions.length;j++) {
+                                        if(!optMap.has(alloptions[j])){
+                                            if(missingGrades == ''){
+                                               missingGrades =  alloptions[j];
+                                            }
+                                            else{
+                                            	missingGrades = missingGrades + ',' + alloptions[j];
+                                            }
+                                        }
+                                    }
+                                    if(missingGrades != ''){
+                                        missingGrades = 'Grade(s)' + missingGrades  +'not available for this school at the moment';
+                                        question.msg = missingGrades;
+                                    }                                    
+                                }
+                                else{
+                                    //question.msg = 'No Missing Grades';
+                                }
                             }
-                        }*/
+                            
+                        }
+                        // Ravi: End
                         questions.push(question);
                     }
                     questions.sort(function(a, b){return a.order - b.order});
                     component.set("v.supplementalQuestions", questions);
                     component.set("v.supplementalQuestionsLoaded", true);
+                    
                 }
             } else {
                 var error = response.getError();
