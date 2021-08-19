@@ -4,9 +4,9 @@
         helper.doInit(component, event, helper);
     },
     // called on click of 'Continue' button
-    handleFireContinue : function(component, event, helper) {
+    handleContinue : function(component, event, helper) {
         component.set("v.loaded", false);
-        helper.handleContinueHelper(component, event, helper);
+        helper.handleContinue(component, event, helper);
     },
     // called on Year selection 
     onYearChange : function(component, event, helper) {

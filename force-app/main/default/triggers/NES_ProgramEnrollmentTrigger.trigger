@@ -33,6 +33,9 @@ trigger NES_ProgramEnrollmentTrigger on hed__Program_Enrollment__c (before updat
             NES_ProgramEnrollmentHandler.handleBeforeUpdate(Trigger.newMap,Trigger.oldMap,actlstnewMap,actlstoldMap);
         }
         else {
+            System.debug('NDEBUG :::::: In Program Enrollment Trigger After Update Block');
+            System.debug('NDEBUG :: New PE Status is:::' + Trigger.new[0].status__c);
+            System.debug('NDEBUG :: Old PE Status is:::' + Trigger.old[0].status__c);
                
             //  NES_ProgramEnrollmentHandler.handleAfterUpdate(Trigger.newMap, Trigger.oldMap);
            //Swapna:Changed the logic to ensure the business assignment logic is executed for active students

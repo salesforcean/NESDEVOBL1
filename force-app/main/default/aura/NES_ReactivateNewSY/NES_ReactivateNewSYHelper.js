@@ -105,17 +105,17 @@
         })
         $A.enqueueAction(action);
     },
-    handleContinueHelper : function(component, event, helper) {
+    handleContinue : function(component, event, helper) {
         var action = component.get("c.newYearReactivate");
         var PErecordDetails = component.get("v.PErecordDetails");
-        var newSchoolYear = component.find("year").get("v.value");
         var grade = component.get("v.gradeLevel");
-        var previousSchoolYear = PErecordDetails.programEnrollment.Start_Year__r.Name;
-        
+        // Added for Defect 456259
+        var newSchoolYear = component.find("year").get("v.value");
+        var previousSchoolYear = PErecordDetails.programEnrollment.Start_Year__r.Name;       
         if(newSchoolYear < previousSchoolYear){
             component.set("v.loaded", true);
-            component.set("v.reactivateMessage",true);
-        }else{
+            component.set("v.reactivateMessage",true);            
+        }else{ // End for Defect 456259 
             action.setParams({
                 studentId:PErecordDetails.programEnrollment.hed__Contact__c,
                 instituteNam:PErecordDetails.programEnrollment.hed__Account__r.Parent.Name,

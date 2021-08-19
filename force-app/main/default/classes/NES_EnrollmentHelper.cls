@@ -573,6 +573,7 @@ newStudentEnrollment.Enrollment_Type__c =oldPE.Enrollment_Type__c;
                 } else if(!oldPE.Enrollments__r.isEmpty() && oldPE.Status__c == 'Complete' && oldPE.Enrollments__r[0].Withdrawal_Category__c == 'Not returning' && enrollFlag == true){
                     
                     newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student'; // Added by Maddileti for defect 450088 on 20/07/2021
+              		newStudentEnrollment.CallType__c = 'InitReEnrollment';
                 } 
                 else {
                     

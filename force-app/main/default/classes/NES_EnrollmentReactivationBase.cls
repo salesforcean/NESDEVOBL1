@@ -239,7 +239,7 @@ System.debug('test5------------');
         
         // Naveen: Updating the Result field of PECs whose criteria evaluation should match the Enrollment Type of 'Re-enrolling student' to true
         // Fix for Defects: 433373 & 433620
-        List <Program_Enrollment_Criteria__c> pecsToUpdate = new List <Program_Enrollment_Criteria__c> ();
+        /*List <Program_Enrollment_Criteria__c> pecsToUpdate = new List <Program_Enrollment_Criteria__c> ();
         for(Program_Enrollment_Criteria__c pec : [SELECT Id, Criteria__r.Criteria_Field__c, Program_Enrollment__c, Result__c, Criteria__c, createddate 
                                                               FROM Program_Enrollment_Criteria__c 
                                                               where Program_Enrollment__c =: pecRecId
@@ -251,7 +251,7 @@ System.debug('test5------------');
         }
         if(pecsToUpdate != null && pecsToUpdate.size() >0){
             update pecsToUpdate;
-        }
+        }*/
     }
 
 

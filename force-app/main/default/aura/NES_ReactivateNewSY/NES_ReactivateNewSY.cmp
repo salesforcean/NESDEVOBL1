@@ -12,9 +12,9 @@
     <aura:attribute name="errorMessage" type="String"  description="to store error message"/>
     <aura:attribute name="recordId" type="String"  description="to store PE record 	Id"/>
     <aura:attribute name="PErecordDetails" type="Object"  description="tostore PE record details"/>
-    
+    <!--Added for defect 456259-->
     <aura:attribute name="reactivateMessage" type="Boolean" default="false" />
-    
+    <!--End for defect 456259-->
     <!-- Handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
@@ -48,7 +48,7 @@
                 <!-- Grade Levels Dropdown end-->
                 <br/>
                 <!-- Continue Button for reactivate-->
-                <lightning:button variant="brand" label="Continue" title="Continue" onclick="{!c.handleFireContinue}" disabled="{!or(v.schoolYear=='',v.gradeLevel=='')}" />
+                <lightning:button variant="brand" label="Continue" title="Continue" onclick="{!c.handleContinue}" disabled="{!or(v.schoolYear=='',v.gradeLevel=='')}" />
                 
                 <aura:set attribute="else">
                     <!-- Spinner Start -->
@@ -61,8 +61,9 @@
             </aura:if>
         </aura:set>
     </aura:if>
-    
+    <!--Added for defect 456259-->
     <aura:if isTrue="{!v.reactivateMessage}">
         <div><p> *To continue enrollment for the 20-21 school year, please call support at   {!$Label.c.NES_Email_Ph}.</p></div>
     </aura:if>
+    <!--End for defect 456259-->
 </aura:component>

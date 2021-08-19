@@ -34,15 +34,15 @@ public without Sharing class NES_ReEnrUtilities {
                 AND RecordType.Name = :NES_DashboardUtilities.PROCESS_RT
                 LIMIT 1
             ];
-           if(callType == 'SYReEnroll')
+          if(callType == 'SYReEnroll')
            {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
-                                                                        Enrollment_Type__c = 'Re-enrolling student'
+                                                                        Enrollment_Type__c = 'Re-enrolling student',Status__c = 'In Progress'
                                                                         );
                  update pe;
            }
              else
-             {
+            {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
                                                                         Enrollment_Type__c = 'Re-enrolling student',
                                                                         Status__c = 'In Progress');

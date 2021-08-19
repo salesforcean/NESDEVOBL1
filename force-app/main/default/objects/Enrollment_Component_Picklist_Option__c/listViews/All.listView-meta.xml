@@ -9,5 +9,15 @@
     <columns>Order__c</columns>
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Enrollment_Component__c</field>
+        <operation>contains</operation>
+        <value>Grade</value>
+    </filters>
+    <filters>
+        <field>External_Id__c</field>
+        <operation>contains</operation>
+        <value>ACA</value>
+    </filters>
     <label>All</label>
 </ListView>

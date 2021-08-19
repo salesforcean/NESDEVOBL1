@@ -397,7 +397,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                         {
                             if (isLastStage)
                                 break;
-                            if(stageECA.order__c == nextOrder)
+                            if(stageECA !=null && stageECA.order__c == nextOrder)
                             {
                                 if (notApplicableStatuses.containsIgnoreCase(stageECA.status__c)) {
                                     nextOrder++;

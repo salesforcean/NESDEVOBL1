@@ -33,9 +33,10 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
     public override void execute() { 
          // reset fields on PE
         // process ECAs  Added for making Form status as In Progress, for Defect 244255
-        processECAs('RE-ENROLLMENT');
-  		//To Run Assignment Logic
+        //To Run Assignment Logic
           processPE();
+        processECAs('RE-ENROLLMENT');
+  		
      	// run the Opportunity Creation
         createPEOpportunity();
         

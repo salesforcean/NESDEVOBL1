@@ -880,7 +880,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
                                                  hed__Contact__r.Caretaker_Id__c,hed__Contact__r.Caretaker_Id__r.Accountid,
                                                  hed__Contact__r.Caretaker_Id__r.Commuity_User__r.id
                                                  from hed__Program_Enrollment__c where School_Name__c <> null       
-                                                 AND (Status__c='complete' OR Status__c='In Progress') AND hed__Contact__c in : StdIds order by LastModifiedDate desc])
+                           AND hed__Contact__c in : StdIds order by LastModifiedDate desc])
         {
             System.debug('PE===================================>'+pe);
         
@@ -983,6 +983,7 @@ public class CS_LCUserAccessToSchoolCTKBAsHandler {
         for(hed__Program_Enrollment__c pe: [select hed__Contact__c,hed__Contact__r.Caretaker_Id__c,
                                             School_Name__c,status__c from hed__Program_Enrollment__c where 
                                             hed__Contact__r.Caretaker_Id__c in: StdCTIdAndCTUsrIdMap.keyset()]){
+               System.debug('pe Latest=================>'+pe);
                     
                     if (WDStdId_SchId.containsKey(pe.hed__Contact__c + '-' + pe.School_Name__C)){
                         mapCTSchool.put(pe.hed__Contact__r.Caretaker_Id__c + '-' +  pe.School_Name__C,pe); //withdraw Std's CT-School , pe

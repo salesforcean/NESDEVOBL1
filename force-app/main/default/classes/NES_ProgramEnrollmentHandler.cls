@@ -134,6 +134,7 @@ public class NES_ProgramEnrollmentHandler {
     
     
     public static void handleAfterUpdate(Map<Id, hed__Program_Enrollment__c> newMap, Map<Id, hed__Program_Enrollment__c> oldMap,Map<Id, hed__Program_Enrollment__c> actlstnewMap, Map<Id, hed__Program_Enrollment__c> actlstoldMap) {
+       System.debug('NDEBUG::::: In After update block of PE:::::::');
         Boolean origRunPlacement = runPlacement;
         runPlacement = false;
         Boolean origCompletion = NES_ECACompletion.shouldRunCompletion;

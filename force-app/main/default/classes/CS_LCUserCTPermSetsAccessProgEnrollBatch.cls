@@ -42,7 +42,7 @@ global class CS_LCUserCTPermSetsAccessProgEnrollBatch implements Database.Batcha
         for(hed__Program_Enrollment__c programEnrollObj : programEnrollRecs){
             System.debug('programEnrollRecs===============>'+programEnrollObj);
            studentRecsIdSet.add(programEnrollObj.hed__Contact__c);
-           System.debug('studentRecsIdSet===============>'+studentRecsIdSet.size());
+           System.debug('studentRecsIdSet===============>'+studentRecsIdSet);
         }
         
         // Calling the Batch-Apex handler class to process the revoking and provisioning of the CT permission-sets in relation to the Schools that the Learning Coach comes under.
