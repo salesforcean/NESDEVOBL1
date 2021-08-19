@@ -12,12 +12,12 @@
     <filters>
         <field>Enrollment_Component__c</field>
         <operation>contains</operation>
-        <value>Grade</value>
+        <value>Grade Requested</value>
     </filters>
     <filters>
         <field>External_Id__c</field>
         <operation>contains</operation>
-        <value>ACA</value>
+        <value>WYCA</value>
     </filters>
     <label>All</label>
 </ListView>

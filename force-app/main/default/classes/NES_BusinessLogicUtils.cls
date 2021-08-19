@@ -2549,12 +2549,13 @@ logger.logException('calculateWhyFlagged', e);
     //137647 -Swapna For ReActivation Case
     public static void reActivationCase(Set<Id> ReactivationPEList){
         List<Case> caselist = new List<Case>();
-        Case c = new Case();
+       // Case c = new Case();  // Commented and added below for defect 433373
         //SOQL replaced by a call to GenericSOQLQueries for 430196 on 2021-08-04 by Ravichandra Amirshetty
         //            RecordType r = [select Id from RecordType where Name ='Enrollment Support'];
         // for(hed__Program_Enrollment__c pe : [SELECT hed__Contact__c,hed__Contact__r.Name,hed__Contact__r.Account.hed__Primary_Contact__c from hed__Program_Enrollment__c where Id IN : ReactivationPEList]){
         for(hed__Program_Enrollment__c pe : GenericSOQLQueries.programEnrollmentDetails(ReactivationPEList)){     
             // c.AccountId = pe.hed__Contact__r.AccountId;
+            Case c = new Case(); // Added by Maddileti for defect 433373
             c.ContactId = pe.hed__Contact__r.Account.hed__Primary_Contact__c; 
             c.Type = 'Enrollment Assistance';
             c.Ticket_Type__c='Account Review';

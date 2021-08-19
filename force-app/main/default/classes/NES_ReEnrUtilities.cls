@@ -37,7 +37,7 @@ public without Sharing class NES_ReEnrUtilities {
           if(callType == 'SYReEnroll')
            {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
-                                                                        Enrollment_Type__c = 'Re-enrolling student',Status__c = 'In Progress'
+                                                                        Enrollment_Type__c = 'Re-enrolling student'
                                                                         );
                  update pe;
            }

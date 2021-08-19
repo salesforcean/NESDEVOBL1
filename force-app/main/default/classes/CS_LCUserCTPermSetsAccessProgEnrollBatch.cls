@@ -51,6 +51,7 @@ global class CS_LCUserCTPermSetsAccessProgEnrollBatch implements Database.Batcha
             CS_LCUserAccessToSchoolCTKBAsHandler handlerObj = new CS_LCUserAccessToSchoolCTKBAsHandler();
 
             permissionSetsRemovalMap.putAll(handlerObj.LCUserSchoolCTPermSetsAccessProgEnroll(studentRecsIdSet));
+            System.debug('permissionSetsRemovalMap=============>'+permissionSetsRemovalMap);
         }
     }        
     

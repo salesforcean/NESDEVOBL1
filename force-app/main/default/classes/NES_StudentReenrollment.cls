@@ -31,13 +31,17 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
 
     public override void execute() { 
-         // reset fields on PE
+         
         // process ECAs  Added for making Form status as In Progress, for Defect 244255
-        //To Run Assignment Logic
-          processPE();
         processECAs('RE-ENROLLMENT');
-  		
-     	// run the Opportunity Creation
+
+        //To Run Assignment Logic
+        
+        
+        // reset fields on PE
+        processPE();
+       
+        // run the Opportunity Creation
         createPEOpportunity();
         
          
@@ -74,7 +78,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
 
     @TestVisible private void setECAList() {
-	
+
         // query & set ecaList
         ecaList = 
             new List<Enrollment_Component_Affiliation__c>
@@ -96,7 +100,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                                     Enrollment_Component__r.RecordType.Name 
                                         IN ('Section', 'Form', 'Question', 'Question Group', 'Document', 'Flag', 'Message', 'Text') 
                                 )
-                                OR
+                                OR 
                                 ( 
                                     (  
                                         Status__c IN ('In Progress', 'Complete')
@@ -107,7 +111,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                                             Order__c != 1
                                         )
                                     )
-                                )                                
+                                )
                             )
                         )
                 ]);

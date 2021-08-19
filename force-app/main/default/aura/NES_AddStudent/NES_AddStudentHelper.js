@@ -170,7 +170,7 @@
                     for(var i=0;i<returnedResponse.length;i++) {
                         var question = returnedResponse[i];
                         
-                        // Ravi :Start
+                        //Ravi :Start
                         var missingGrades = '';
                         if(question.questionType === 'Picklist') {
                             var options = question.picklistValues;

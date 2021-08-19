@@ -58,14 +58,14 @@ public abstract class NES_EnrollmentReactivationBase {
         // Added Start_Year__r.Current_Year__c for 335376 by Shravani Pendyala
         // fetch PE rec
         
-        // "WithdrawalCategory__c" field Added by Shravaniin studPE for US#389103 on 5/25/21
+        // "WithdrawalCategory__c","Enrollment_Type__c" fields Added by Shravaniin studPE for US#389103 on 5/25/21
         studPE =
             [SELECT Id,Enrollment_Type__c, WithdrawalCategory__c, Start_Year__r.Current_Year__c,hed__Account__r.ParentId, Name, hed__Contact__r.Name,hed__Account__r.Registration_Start_Date__c, hed__Account__r.OwnerId,
                 hed__Account__r.Registration_End_Date__c, hed__Account__r.Confirmation_End_Date__c,hed__Contact__r.AccountId, 
                 AcademicPerformanceEligibility__c, RecordTypeId, RecordType.Name, Status__c, Household_Program_Enrollment__c,
                 (SELECT Id,StageName FROM Opportunities__r)
               FROM hed__Program_Enrollment__c WHERE Id = :stud_PEID];
-System.debug('TEst15--------'+studPE);
+
         preValidatePE(); // validate the stud_PE rec
 
     }
@@ -116,8 +116,10 @@ System.debug('TEst15--------'+studPE);
             throw new InvalidParameterValue_Exception(
                 'This Program Enrollment is not eligible; Start Year is Current Year:' + studPE.Start_Year__r.Current_Year__c + ', Expected: true');
         }
+        
         if (type == Reactivation.SOFT && studPE.Status__c == 'Inactive' && (studPE.Enrollment_Type__c== 'Returning Student'))
             throw new InvalidParameterValue_Exception('Program Enrollment is eligible only for Full ReActivation');
+        
         
         //Added for US#389103 by Shravani Pendyala on 5/25/21
         if(studPE.Status__c=='Inactive' && (studPE.WithdrawalCategory__c=='No Show' || studPE.WithdrawalCategory__c=='Not Returning')){ 
@@ -125,9 +127,10 @@ System.debug('TEst15--------'+studPE);
         }
   
     }
+
     // move to implementing child class...
     @TestVisible protected Opportunity getNewOpportunity() { // template to initialize the Oppty & return
-System.debug('test5------------');
+
         hed__Program_Enrollment__c progEnrollment = studPE;
         ReactivatedBy userType =  
             (currentUserProfile.Name.Contains(COMMUNITY_USER_PROFILE_PREFIX)) ? ReactivatedBy.Caretaker : ReactivatedBy.Staff;
@@ -148,7 +151,7 @@ System.debug('test5------------');
 
 
     @TestVisible protected void processECAs(String enrollmentType) {
-        System.debug('test4----------------');
+        
         List<Enrollment_Component_Affiliation__c> ecaToUpdate = new List<Enrollment_Component_Affiliation__c>();
         //Added for testing
        List<Enrollment_Component_Affiliation__c> StageEcaToUpdate = new List<Enrollment_Component_Affiliation__c>();
@@ -160,13 +163,11 @@ System.debug('test5------------');
 
         Set<Id> ECAsOfTypeDocument = new Set<Id>();
         Set<Id> ECsOfTypeDocument = new Set<Id>();
-        String pecRecId = ecaList[0].Program_Enrollment__c;
         
         for (Enrollment_Component_Affiliation__c eca : ecaList) {
             System.debug('my list-----'+eca);
             if((eca.Enrollment_Component__r.RecordType.Name != 'Stage') && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')) {
                 eca.Status__c = 'Not Started';
-                system.debug(eca.Status__c = 'Not Started');
             }else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
                 if(eca.Order__c == 2){
                     eca.Status__c = 'In Progress';
@@ -178,11 +179,6 @@ System.debug('test5------------');
               StageECASet.add(eca.Id);
                  // Added for testing
             }
-            else if((eca.Enrollment_Component__r.RecordType.Name == 'Section')  && (eca.Status__c == 'Not Applicable') && (eca.Order__c > 5)){
-                eca.Status__c = 'Not Started';                
-            }
-                            
-            
             system.debug('Enrollment Type*********'+eca.Program_Enrollment__r.Enrollment_Type__c);
             //Added for making Form status as In Progress, This will run only for Re-Enrolling Students for Defect 244255
             if((eca.Enrollment_Component__r.RecordType.Name == 'Form') && enrollmentType == 'RE-ENROLLMENT') 
@@ -236,22 +232,6 @@ System.debug('test5------------');
            
            update ecaToUpdate;
         }
-        
-        // Naveen: Updating the Result field of PECs whose criteria evaluation should match the Enrollment Type of 'Re-enrolling student' to true
-        // Fix for Defects: 433373 & 433620
-        /*List <Program_Enrollment_Criteria__c> pecsToUpdate = new List <Program_Enrollment_Criteria__c> ();
-        for(Program_Enrollment_Criteria__c pec : [SELECT Id, Criteria__r.Criteria_Field__c, Program_Enrollment__c, Result__c, Criteria__c, createddate 
-                                                              FROM Program_Enrollment_Criteria__c 
-                                                              where Program_Enrollment__c =: pecRecId
-                                                              and Criteria__r.Criteria_Field__c like '%Enrollment_Type__c' 
-                                                  and Criteria__r.Comparison_Value__c = 'Re-enrolling student' and Result__c = : false ])
-        {
-            Program_Enrollment_Criteria__c updPec = new Program_Enrollment_Criteria__c (Id = pec.Id, Result__c= true );
-            pecsToUpdate.add(updPec);
-        }
-        if(pecsToUpdate != null && pecsToUpdate.size() >0){
-            update pecsToUpdate;
-        }*/
     }
 
 
