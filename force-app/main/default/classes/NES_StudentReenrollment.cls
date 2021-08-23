@@ -78,7 +78,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
 
     @TestVisible private void setECAList() {
-
+        //Maddileti 8/20 Defect 450194- Modified query
         // query & set ecaList
         ecaList = 
             new List<Enrollment_Component_Affiliation__c>
@@ -86,16 +86,16 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                     SELECT  Id, SystemModstamp, Enrollment_Component__c,Status__c,Order__c,
                             Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c,
                             Enrollment_Component__r.Needed_for_Re_enrollment__c,
-                            Enrollment_Component__r.RecordTypeId
+                            Enrollment_Component__r.RecordTypeId,Enrollment_Component__r.Needed_for_ITR__c
                     FROM    Enrollment_Component_Affiliation__c 
                     WHERE   
                         Program_Enrollment__c = :studPE.Id 
-                        AND ( Enrollment_Component__r.Needed_for_Re_enrollment__c = true) // Only Stage-2 matters? 
+                        AND ( Enrollment_Component__r.Needed_for_ITR__c = true OR Enrollment_Component__r.Needed_for_Re_enrollment__c = true ) // Only Stage-2 matters? 
                         AND 
                         ( 
                             (
                                 ( 
-                                    Status__c= 'Complete' 
+                                   ( Status__c= 'Complete'  OR (Status__c= 'Not Applicable' AND Enrollment_Component__r.Needed_for_Re_enrollment__c = true AND Enrollment_Component__r.Needed_for_ITR__c != true))
                                     AND 
                                     Enrollment_Component__r.RecordType.Name 
                                         IN ('Section', 'Form', 'Question', 'Question Group', 'Document', 'Flag', 'Message', 'Text') 

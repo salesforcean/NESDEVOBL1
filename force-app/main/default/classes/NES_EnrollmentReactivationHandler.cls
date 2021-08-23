@@ -67,6 +67,9 @@ public without sharing class NES_EnrollmentReactivationHandler {
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';
             }
             else{
+                //Sravani :Added code
+                if(peRecord.Status__c == 'Withdrawn')
+                 NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,'SYReEnroll');   //End Code                                                               
                 NES_EnrollmentReactivationBase process = getProcessInstance(studPEID, reactivationType);
                 System.debug('test11-----------'+process);
                 process.execute();

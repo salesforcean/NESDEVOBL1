@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 08-20-2021
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class Peak_FileUploadController {
     private static Peak_ApexLog logger = new Peak_ApexLog('FileUploadController');
 
@@ -44,9 +51,9 @@ public without sharing class Peak_FileUploadController {
 
             //If we have ECA, query it
             if (enrollmentComponentAffiliationId != NULL && enrollmentComponentAffiliationId != '') {
-
+                
                 theECA = [
-                        SELECT Id, Enrollment_Component__r.Document_File_Formats__c, Program_Enrollment__r.hed__Contact__r.AccountId
+                        SELECT Id, Status__c, Enrollment_Component__r.Document_File_Formats__c, Program_Enrollment__r.hed__Contact__r.AccountId
                         FROM Enrollment_Component_Affiliation__c
                         WHERE Id = :enrollmentComponentAffiliationId
                 ];
@@ -59,7 +66,7 @@ public without sharing class Peak_FileUploadController {
                         FROM Enrollment_Document__c
                         WHERE Id = :enrollmentDocumentId
                 ];
-
+                
                 theECA = [
                         SELECT Id, Enrollment_Component__r.Document_File_Formats__c, Program_Enrollment__r.hed__Contact__r.AccountId
                         FROM Enrollment_Component_Affiliation__c

@@ -363,11 +363,16 @@ public class EvaluationUtils  {
                     affiliationRecord.Order__c = ecr.Order__c;
                     affiliationRecord.EC_Record_Type__c = ecr.Child_Enrollment_Component__r.RecordType.Name;
                     //Sravani: Added for Reinstatement
-                    if(ecr.Child_Enrollment_Component__r.RecordType.Name == 'Stage' && ecr.Child_Enrollment_Component__r.Name == 'Eligibility' && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment'))
+                    if(ecr.Child_Enrollment_Component__r.RecordType.Name == 'Stage' && ecr.Child_Enrollment_Component__r.Name == 'Eligibility' && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment' || EnrollmentType == 'SYReEnroll'))
                         affiliationRecord.Status__c = 'Complete';
                     //End code
                     else if (String.isBlank(ecr.Child_Enrollment_Component__r.Assignment_Logic__c) ) 
-                        affiliationRecord.Status__c = 'Not Started';
+                    {
+                        if(EnrollmentType == 'SYReEnroll' && ecr.Child_Enrollment_Component__r.Needed_for_Re_enrollment__c != true)
+                         affiliationRecord.Status__c = 'Not Applicable';
+                            else
+                            affiliationRecord.Status__c = 'Not Started';
+                    }   
                     else
                         affiliationRecord.Status__c = 'Not Applicable';
                     

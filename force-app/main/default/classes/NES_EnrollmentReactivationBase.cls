@@ -163,10 +163,15 @@ public abstract class NES_EnrollmentReactivationBase {
 
         Set<Id> ECAsOfTypeDocument = new Set<Id>();
         Set<Id> ECsOfTypeDocument = new Set<Id>();
-        
+        system.debug('ecaList to process' + ecaList);
         for (Enrollment_Component_Affiliation__c eca : ecaList) {
             System.debug('my list-----'+eca);
-            if((eca.Enrollment_Component__r.RecordType.Name != 'Stage') && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')) {
+            //Maddileti :8/20/Defect-450194 -Modified code
+            if(eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Enrollment_Component__r.Needed_for_ITR__c == true )
+              eca.Status__c = 'Not Applicable';
+            else
+            {
+            if((eca.Enrollment_Component__r.RecordType.Name != 'Stage') && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete' || eca.Status__c == 'Not Applicable')) {
                 eca.Status__c = 'Not Started';
             }else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
                 if(eca.Order__c == 2){
@@ -193,10 +198,15 @@ public abstract class NES_EnrollmentReactivationBase {
                 if(type==Reactivation.RE_ENROLLMENT) 
                     eca.Status__c = 'In Progress';
             }
+            }
             //added for testing
  		if(!StageECASet.Contains(eca.Id))
             //added for testing
-            ecaToUpdate.add(eca);     
+            ecaToUpdate.add(eca);  
+         
+            
+            
+               
         }
         //added for testing
         if(StageEcaToUpdate.Size()>0)
