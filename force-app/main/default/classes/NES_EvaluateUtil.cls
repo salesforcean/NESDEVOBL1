@@ -864,6 +864,7 @@ public without sharing class NES_EvaluateUtil {
             wrap.textComponent = false;
         }
         wrap.picklistValues = new List<NES_EvaluateUtil.PicklistOption>();
+      	// wrap.exclPicklistValues = new List<NES_EvaluateUtil.PicklistOption>();
 
         System.debug(question.Question_Type__c);
 
@@ -884,8 +885,17 @@ public without sharing class NES_EvaluateUtil {
                     optionValue.order = option.Order__c;
 
                     wrap.picklistValues.add(optionValue);
+                }/*
+                else{
+					if(question.Question_Type__c == 'Picklist'&& ){
+                    NES_EvaluateUtil.PicklistOption optionValue = new NES_EvaluateUtil.PicklistOption();
+                    optionValue.label = option.Option_Label__c;
+                    optionValue.value = option.Option_Value__c;
+                    optionValue.order = option.Order__c;
+                    wrap.exclPicklistValues.add(optionValue);
                 }
-            }
+            }*/
+        }
         }
 
         System.debug(question.Answer_Target__c);
@@ -1226,6 +1236,9 @@ public without sharing class NES_EvaluateUtil {
         public Boolean textComponent { get; set; }
         @AuraEnabled
         public List<PicklistOption> picklistValues { get; set; }
+        @AuraEnabled
+        public List<PicklistOption> exclPicklistValues { get; set; }
+        
 
         public Question() {
             questionReadOnly = false;

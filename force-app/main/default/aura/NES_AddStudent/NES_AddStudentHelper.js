@@ -16,7 +16,7 @@
                 returnedResponse.SelectedSchoolYear = '';
                 returnedResponse.relationshipType = '';
                 helper.clearRelationships(component,event,helper);
-                
+
                 if(returnedResponse.schoolYears) {
                     returnedResponse.schoolYears.sort(function(a,b){
                         if(a.Name < b.Name){
@@ -28,7 +28,7 @@
                     });
                 }
                 
-                
+
                 component.set("v.newStudentData", returnedResponse);
                 
                 if(returnedResponse.defaultAccount.Id != null && component.get("v.numberOfStudents") == 0) {
@@ -37,18 +37,18 @@
                     var a = component.get('c.handleSchoolSelect');
                     $A.enqueueAction(a);
                 }
-                
+
                 if(shouldShowActiveStudents) {
                     component.set("v.addStudentActive", true);
                 }
-                //   console.log(returnedResponse);
-                
+             //   console.log(returnedResponse);
+
             } else {
                 var error = response.getError();
                 console.log("Error: ", error);
             }
         });
-        
+
         $A.enqueueAction(action);
         //Start- added logic for suffix US116612
         
@@ -98,7 +98,7 @@
             helper.getSupplementalQuestions(component, event, helper);
         }
     },
-    
+
     handleSchoolSelect: function(component, event, helper)
     {
         // Reset the supplemental questions if they were previously set
@@ -117,15 +117,9 @@
         });
         action.setCallback(this, function(response){
             var peakResponse = response.getReturnValue();
-            debugger;
             if(peakResponse.success){
-                
                 studentData.schoolYears = peakResponse.results;
-                if(studentData.schoolYears == '' || studentData.schoolYears ==  null)
-                {
-                    component.set("v.message", 'The school you have selected does not have any school years available');
-               }
-                studentData.SelectedSchoolId = schoolId
+                studentData.SelectedSchoolId = schoolId;
                 studentData.schoolYears.sort(function(a,b){
                     if(a.Name < b.Name){
                         return -1;
@@ -134,7 +128,7 @@
                     }
                     return 0;
                 });
-                
+
                 component.set("v.newStudentData", studentData);
             } else {
                 component.set("v.message", peakResponse.messages[0]);
@@ -144,7 +138,7 @@
         $A.enqueueAction(action);
         component.set("v.loading", false);
     },
-    
+
     /* Get questions associated to the academic program */
     getSupplementalQuestions: function(component, event, helper)
     {
@@ -156,88 +150,57 @@
         action.setParams({
             schoolId: schoolId,
             schoolYearId : yearId
-            
+
         });
-        //   console.log('getSupplementalQuestions(' + schoolId + ', ' + yearId );
+     //   console.log('getSupplementalQuestions(' + schoolId + ', ' + yearId );
         action.setCallback(this, function(response){
             var state = response.getState();
             if(state === "SUCCESS"){
                 component.set("v.disableCreate", false);
                 var returnedResponse = response.getReturnValue();
-                //    console.log(returnedResponse);
+            //    console.log(returnedResponse);
                 var questions = [];
                 if(returnedResponse) {
                     for(var i=0;i<returnedResponse.length;i++) {
                         var question = returnedResponse[i];
-                        
-                        //Ravi :Start
-                        var missingGrades = '';
-                        if(question.questionType === 'Picklist') {
+                        /*if(question.questionType === 'Radio') {
                             var options = question.picklistValues;
-                            var alloptions = ['Kindergarden','1','2','3','4','5','6','7','8','9','10','11','12'];
                             if(options) {
-                                let optMap = new Map();  
+                                var newOptions = [];
                                 for(var j=0;j<options.length;j++) {
                                     var option = options[j];
-                                    optMap.set(options[j].Option_Value__c, true);
-                                } 
-                                
-                                //alert('All Options Length' + alloptions.length);
-                                //alert('Got Options Length' + options.length);
-                                if(options.length == 0){
-                                    question.msg = 'There are no grades available for this school';
+                                    option.value = options[j].Option_Value__c;
+                                    option.label = options[j].Option_Label__c;
+                                    newOptions.push(option);
                                 }
-                                else
-                                if(options.length != alloptions.length)
-                                {
-                                	for(var j=0;j<alloptions.length;j++) {
-                                        if(!optMap.has(alloptions[j])){
-                                            if(missingGrades == ''){
-                                               missingGrades =  alloptions[j];
-                                            }
-                                            else{
-                                            	missingGrades = missingGrades + ',' + alloptions[j];
-                                            }
-                                        }
-                                    }
-                                    if(missingGrades != ''){
-                                        missingGrades = 'Grade(s)' + missingGrades  +'not available for this school at the moment';
-                                        question.msg = missingGrades;
-                                    }                                    
-                                }
-                                else{
-                                    //question.msg = 'No Missing Grades';
-                                }
+                                question.picklistValues = newOptions;
                             }
-                            
-                        }
-                        // Ravi: End
+                        }*/
                         questions.push(question);
                     }
                     questions.sort(function(a, b){return a.order - b.order});
                     component.set("v.supplementalQuestions", questions);
                     component.set("v.supplementalQuestionsLoaded", true);
-                    
                 }
             } else {
                 var error = response.getError();
                 console.log("Error: ", error);
             }
         });
-        
+
         $A.enqueueAction(action);
     },
-    
+
     /* Creates student / caretaker relationship */
     submitStudentData: function(component, event, helper)
     {
         var studentData = component.get("v.newStudentData");
         var questionData = component.get("v.supplementalQuestions");
+
+     //   console.log(studentData);
+     //   console.log(questionData);
         
-        //   console.log(studentData);
-        //   console.log(questionData);
-        
-        this.gtm(component,questionData); //Swapna:Added for GTM
+       this.gtm(component,questionData); //Swapna:Added for GTM
         
         var validForm = false;
         validForm = helper.validateForm(component, event, helper);
@@ -246,7 +209,7 @@
             component.set("v.loading", false);
             return;
         }
-        
+
         if(questionData){
             for(var i=0;i<questionData.length;i++) {
                 questionData[i].picklistValues = [];
@@ -259,24 +222,24 @@
             studentData.gradeLevels = [];
             studentData.schoolYears = [];
         }
+
         var action = component.get("c.createStudent");
         action.setParams({
             studentJSON: JSON.stringify(studentData),
             questionJSON: JSON.stringify(questionData)
         });
-        
+
         action.setCallback(this, function(response){
             var peakResponse = response.getReturnValue();
             if(peakResponse != null && peakResponse.success){
                 var appEvent = $A.get("e.c:NES_AddStudentAppEvent");
                 appEvent.setParams({
-                    message: peakResponse.messages[0]
+                   message: peakResponse.messages[0]
                 });
                 appEvent.fire();
                 component.set("v.addStudentActive", false);
                 component.set("v.loading", false);
                 component.set("v.supplementalQuestions", null);
-                //location.reload(true);
             } else {
                 component.set("v.message", "Sorry, we were unable to add your student. Please try again. If the problem persists please contact us.");
                 if(peakResponse != null) {
@@ -292,7 +255,7 @@
         var formItems = component.find('fieldId');
         console.log(formItems);
         var allValid = true;
-        
+
         var relationshipType = component.get('v.newStudentData').relationshipType;
         console.log('relationshipType', relationshipType);
         if(relationshipType === '') {
@@ -301,22 +264,22 @@
         } else {
             component.set("v.showRelationshipError",false);
         }
-        
+
         var newValid = component.find('fieldId').reduce(
             function (validSoFar, inputCmp) {
                 console.log(inputCmp.get('v.value'));
-                //This is needed to deal with a Salesforce bug where old iteration elements are being
-                //returned from component.find
-                
+                    //This is needed to deal with a Salesforce bug where old iteration elements are being
+                    //returned from component.find
+
                 if(inputCmp.isRendered()){
                     inputCmp.showHelpMessageIfInvalid();
                 } else {
                     return true;
                 }
-                
+
                 return validSoFar && inputCmp.get('v.validity').valid && !inputCmp.get('v.validity').valueMissing;
-            }, true);
-        
+                }, true);
+
         var schoolSelect = component.find('schoolSelect');
         var schoolValue = schoolSelect.get("v.value");
         if(!schoolValue) {
@@ -332,8 +295,8 @@
                 allValid = false;
             }
         }
-        
-        
+
+
         var dateItems = [];
         var dateFields = component.find('dateField');
         if(dateFields) {
@@ -373,11 +336,11 @@
                     }, allValid);
             }
         }
-        
+
         console.log('through fields');
         return allValid && newValid;
     },
-    
+
     validateDate: function(component, event, helper){
         var inputCmp = event == null ? component : event.getSource();
         console.log(inputCmp);
@@ -404,25 +367,25 @@
     },
     //Swapna:For GTM
     gtm: function(component,questionData){
-        // alert(JSON.stringify(studentData));
-        
-        
-        var appEvent = $A.get("e.c:NES_GTMEvent"); 
-        var today = $A.localizationService.formatDate(new Date(), "YYYY-MM-DDTHH:mm:ss");
+       // alert(JSON.stringify(studentData));
+      
+     
+         var appEvent = $A.get("e.c:NES_GTMEvent"); 
+           var today = $A.localizationService.formatDate(new Date(), "YYYY-MM-DDTHH:mm:ss");
         appEvent.setParams({"eventNm":"event"});
         appEvent.setParams({"eventValue":"createStudent"});
-        appEvent.setParams({"step":"createStudent"});
-        appEvent.setParams({"stepValue":"createStudent"});
-        appEvent.setParams({"pagePath":document.location.href});
-        appEvent.setParams({"newStudentData":questionData}); 
-        //    appEvent.setParams({"studentId":today}); 
+         appEvent.setParams({"step":"createStudent"});
+         appEvent.setParams({"stepValue":"createStudent"});
+         appEvent.setParams({"pagePath":document.location.href});
+		appEvent.setParams({"newStudentData":questionData}); 
+   //    appEvent.setParams({"studentId":today}); 
         appEvent.setParams({"relationship":component.get("v.newStudentData.relationshipType")}); 
         appEvent.setParams({"schoolName":component.get("v.newStudentData.SelectedSchoolId")}); 
-        //   appEvent.setParams({"gradeLevel":JSON.stringify(studentData).gradeLevels.Name}); 
+     //   appEvent.setParams({"gradeLevel":JSON.stringify(studentData).gradeLevels.Name}); 
         appEvent.setParams({"schoolYear":component.find('yearSelect').get('v.value')}); 
         appEvent.setParams({"timeStamp":today}); 
         
-        appEvent.fire();
+		appEvent.fire();
     }
-    
+
 })

@@ -168,7 +168,10 @@ public with sharing class NES_EnrollmentReactivationTest {
     
     static testMethod void studEnrollmentReactivationFull_Positive() {
         
-        hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c, Status__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];
+        hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c, Status__c,Enrollment_Type__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];
+        progEnrollment.Status__c='Inactive';
+        progEnrollment.Enrollment_Type__c='Returning Student';
+        update progEnrollment;
         
         Test.startTest();
         Peak_Response response = NES_EnrollmentReactivationHandler.reactivateStudent(progEnrollment.Id, REACTIVATION_FULL);
@@ -228,7 +231,7 @@ public with sharing class NES_EnrollmentReactivationTest {
         progEnrollment.Status__c = NES_EnrollmentReactivationBase.PE_WITHDRAWAL_STATUS;
         update progEnrollment;
         Enrollment__c enrollmentId=[SELECT Id,Program_Enrollment__c,Withdrawal_Category__c FROM Enrollment__c where Program_Enrollment__c =: progEnrollment.id Limit 1];    
-        enrollmentId.Withdrawal_Category__c='Prior To Engagement';
+        enrollmentId.Withdrawal_Category__c='Withdrawal During School Year';
         update enrollmentId;
         List<Enrollment_Component_Affiliation__c> ecaList = [Select Id,Program_Enrollment__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c =: progEnrollment.Id];
         delete ecaList;
@@ -240,7 +243,7 @@ public with sharing class NES_EnrollmentReactivationTest {
         Test.startTest();
         Peak_Response response = NES_EnrollmentReactivationHandler.reactivateStudent(progEnrollment.Id, STUDENT_RE_ENROLLMENT);
         Test.stopTest();
-        System.assertEquals(false,response.success);
+        System.assertEquals(true,response.success);
     }
     
     static testMethod void studReenrollment_NegativeRec() {
@@ -290,7 +293,7 @@ public with sharing class NES_EnrollmentReactivationTest {
     
     static testMethod void studEnrollmentReactivationSoft_Positive1() {
         
-        hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c, Status__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];      
+        hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c,Status__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];      
         Test.startTest();
         Peak_Response response = NES_EnrollmentReactivationHandler.reactivateStudent(progEnrollment.Id, STUDENT_RE_ENROLLMENT);
         
@@ -298,7 +301,7 @@ public with sharing class NES_EnrollmentReactivationTest {
             NES_StudentReactivation obj = new NES_StudentReactivation(progEnrollment.Id, NES_EnrollmentReactivationBase.Reactivation.RE_ENROLLMENT);
         obj.processECAs(STUDENT_RE_ENROLLMENT);
         }catch(exception e) {
-            System.assertEquals(e.getMessage(),'This Program Enrollment is not eligible; Start Year is Current Year:false, Expected: true');
+           System.assertEquals(e.getMessage(),'This Program Enrollment is not eligible; Start Year is Current Year:false, Expected: true');
         }
         Test.stopTest();
     }  
@@ -322,5 +325,23 @@ public with sharing class NES_EnrollmentReactivationTest {
         }
         Test.stopTest();
     }
+    
+    
+    static testMethod void studEnrollmentReactivationSoft_Positive4() {
+        
+        hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c,Status__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];      
+        Test.startTest();
+        //Peak_Response response = NES_EnrollmentReactivationHandler.reactivateStudent(progEnrollment.Id, STUDENT_RE_ENROLLMENT);
+        
+        try {
+            NES_StudentReactivation obj = new NES_StudentReactivation(progEnrollment.Id, NES_EnrollmentReactivationBase.Reactivation.FULL);
+            obj.execute();
+        obj.processECAs(STUDENT_RE_ENROLLMENT);
+        }catch(exception e) {
+           System.assertEquals(e.getMessage(),'This Program Enrollment is not eligible; Start Year is Current Year:false, Expected: true');
+        }
+        Test.stopTest();
+    } 
+
     
 }

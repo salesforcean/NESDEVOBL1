@@ -71,7 +71,14 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
             allIds.add(sececr.Child_Enrollment_Component__c);
         }
         System.debug(allIds.size());
-        this.ecaList = [SELECT Id, SystemModstamp,Program_Enrollment__r.Enrollment_Type__c, Enrollment_Component__c,Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Status__c,Order__c 
+        this.ecaList = [SELECT Id, SystemModstamp,
+                        Program_Enrollment__r.Enrollment_Type__c,
+                        Enrollment_Component__r.Needed_for_Re_enrollment__c,
+                        Enrollment_Component__r.Needed_for_ITR__c,
+                        Enrollment_Component__c,
+                        Enrollment_Component__r.RecordType.Name, 
+                        Name,Program_Enrollment__c,
+                        Status__c,Order__c 
                         FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c = :studPE.Id AND Enrollment_Component__c in :allIds AND 
                         (Status__c = 'In Progress' OR Status__c = 'Complete')];
         System.debug(this.ecaList.size());    

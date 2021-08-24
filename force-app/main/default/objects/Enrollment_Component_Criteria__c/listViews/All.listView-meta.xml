@@ -8,9 +8,9 @@
     <columns>External_Id__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Criteria__c</field>
-        <operation>contains</operation>
-        <value>Initial Enrollment</value>
+        <field>External_Id__c</field>
+        <operation>equals</operation>
+        <value>ITR:WYCA2122:Doc_1</value>
     </filters>
     <label>All</label>
 </ListView>

@@ -15,12 +15,16 @@ public class ECA_CriteriaEvaluator {
     /**
      * Called by TriggerCode
      */
-    public static void processDirtyECAs(
+    public static void processDirtyECAs	(
         List<Enrollment_Component_Affiliation__c> newList, 
         Map<Id, Enrollment_Component_Affiliation__c> newMap, 
         Map<Id, Enrollment_Component_Affiliation__c> oldMap
     ) {
-        
+        system.debug('newList '+newList);
+        system.debug('newMap key '+newMap.keyset());
+        system.debug('newMap value '+newMap.values());
+        system.debug('oldMap key '+oldMap.keyset());
+        system.debug('oldMap value '+oldMap.values());
         dirtyECAs = new List<Enrollment_Component_Affiliation__c>();
         dirtyECs = new Map<Id, Enrollment_Component__c>();
         dirtyPEIds = new List<Id>();
@@ -38,7 +42,7 @@ public class ECA_CriteriaEvaluator {
                     eca.is_Dirty__c != oldMap.get(eca.Id).is_Dirty__c
                 )
             ) {
-
+				system.debug('===> is_Dirty__c '+eca.is_Dirty__c);
                 dirtyECAs.add(eca);
                 dirtyPEIds.add(eca.Program_Enrollment__c);
                 dirtyECs.put(eca.Enrollment_Component__c, null);
@@ -47,6 +51,12 @@ public class ECA_CriteriaEvaluator {
                 dirtyECAtoECsMap.put(eca.Id, eca.Enrollment_Component__c);
             }        
         }
+        
+        system.debug('dirtyECtoECAsMap key '+dirtyECtoECAsMap.keyset());
+        system.debug('dirtyECtoECAsMap value '+dirtyECtoECAsMap.values());
+        system.debug('dirtyECAtoECsMap key '+dirtyECAtoECsMap.keyset());
+        system.debug('dirtyECAtoECsMap key '+dirtyECAtoECsMap.values());
+        
         //Get ProgramEnrollment statuses
        // Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>([Select Id, Enrollment_Type__c from hed__Program_Enrollment__c where id IN:dirtyPEIds]);
         // added by maddileti for defect 430511
@@ -62,9 +72,14 @@ public class ECA_CriteriaEvaluator {
         // * Fetch ECs & ECCs & Criteria for given ECAs
         dirtyECs = ECA_CriteriaEvaluatorHelper.getECsById(new List<Id>(dirtyECs.keySet()));
 
+        system.debug('==> dirtyECs key '+dirtyECs.keyset());
+        system.debug('==> dirtyECs value '+dirtyECs.values());
         // build map of EC => ECCs
         mapECtoECCriteria = getECtoECCriteriaMap(dirtyECs); //Change this to EC => Order => ECC.ID
 
+        system.debug('==> mapECtoECCriteria key '+mapECtoECCriteria.keyset());
+        system.debug('==> mapECtoECCriteria value '+mapECtoECCriteria.values());
+        
         // mapPEIdtoPECriteria
         // mapECtoECCriteria
         
@@ -84,14 +99,21 @@ public class ECA_CriteriaEvaluator {
             ec = dirtyECs.get(eca.Enrollment_Component__c);
             eccCriteria = mapECtoECCriteria.get(ec.Id);
 
+            system.debug('==> ec '+ec);
+            system.debug('==> eccCriteria '+eccCriteria);
+            
             Map<Object, Boolean> expressionData = new Map<Object, Boolean>();
             if (eccCriteria!=null) // populate the criteriaData result field
             {                 
                 System.debug('>>>mapPEIdtoPECriteria.get(eca.Program_Enrollment__c)>>>' + mapPEIdtoPECriteria.get(eca.Program_Enrollment__c));
                 System.debug('>>>eccCriteria.get(key>>>' + JSON.serialize(eccCriteria));
+                system.debug('==>eccCriteria key '+eccCriteria.keyset());
                 for (Integer key : eccCriteria.keySet()){ 
                     System.debug('>>>eccCriteria.get(key>>>' + eccCriteria.get(key));
                     Program_Enrollment_Criteria__c pecTmp = mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key));
+                    system.debug('==> pecTmp '+pecTmp);
+                    system.debug('==> pecTmp Result__c '+pecTmp.Result__c);
+                    system.debug('==> key '+key);
                     expressionData.put(key, pecTmp.Result__c);
                     // expressionData.put(key, mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key)).Result__c);
                 }

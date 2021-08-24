@@ -132,10 +132,10 @@
         component.set("v.errorMessage", null);
         component.set("v.creationMessage", null);
         var formData = component.get("v.formData");
-        
+        console.log('-=-=-=-=-='+JSON.stringify(formData));
         //Added below line as part of US200242 to get GTM hidden field values
         var gtmHiddenFields = helper.gtmHiddenFieldsData();
-        
+        console.log('-=-=-=-=-=gtmHiddenFields=='+JSON.stringify(gtmHiddenFields));
         var action = component.get("c.validateAndCreateRecords");
         var url = decodeURIComponent(window.location.search.substring(1));
         var urlParameters = url.split('&');
@@ -146,6 +146,7 @@
                 schoolId = parameter[1];
             }
         }
+        console.log('-=-=-=-=-=schoolId=='+JSON.stringify(schoolId));
         var optOut;
         if (formData.SMSOptIn == true)
             optOut = false;

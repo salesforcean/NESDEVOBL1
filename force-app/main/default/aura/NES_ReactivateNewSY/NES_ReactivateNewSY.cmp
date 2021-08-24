@@ -63,7 +63,7 @@
     </aura:if>
     <!--Added for defect 456259-->
     <aura:if isTrue="{!v.reactivateMessage}">
-        <div><p> *To continue enrollment for the 20-21 school year, please call support at   {!$Label.c.NES_Email_Ph}.</p></div>
+        <div><p>This action button cannot be used for this request. Please use the correct action button for this contact.</p></div>
     </aura:if>
     <!--End for defect 456259-->
 </aura:component>

@@ -12,8 +12,8 @@
     <filterScope>Everything</filterScope>
     <filters>
         <field>Criteria_Field__c</field>
-        <operation>startsWith</operation>
-        <value>Enrollment</value>
+        <operation>equals</operation>
+        <value>Annual_Student_Information__c.Grade_Level_Requested__c</value>
     </filters>
     <label>All</label>
 </ListView>

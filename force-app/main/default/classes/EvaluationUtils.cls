@@ -403,27 +403,37 @@ public class EvaluationUtils  {
                 if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){
                                         
                     if(eca.Enrollment_Component__r.RecordType.Name == 'Document' ){
-                       
+                       system.debug('In Document Loop');
                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student'){
                         STDDocECAs.add(eca.id);
+                        if(!(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)))
+                        eca.Status__c = 'Not Applicable';
+                        else
                         eca.Status__c = 'Not Started';
                         }
-                        else if (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete'){ 
-                        eca.Status__c = 'Not Started';
-                        HHDocECs.add(eca.Enrollment_Component__c); 
+                        else if (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Not Applicable'){ 
+                         eca.Status__c = 'Not Started';
+                         HHDocECs.add(eca.Enrollment_Component__c); 
                         }
                     }
                     
-                    else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c))){
+                    else if(((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c != 'Household' && eca.Status__c != 'Complete'))){
                         eca.Status__c = 'Not Started';
-                        //ecastoUpdate.add(eca);
+                        
                     }
-               
+                  else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Complete')){
+                        eca.Status__c = 'Not Started';
+                    }           
                     else{
-                        //if(EnrollmentType == 'InitReEnrollment')
-                        // eca.Is_Dirty__c = true;
-                        eca.Status__c = 'Not Applicable';
-                        //ecastoUpdate.add(eca);
+                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c == 'Complete')
+                        { 
+                            eca.Status__c = 'Not Started';
+                   		 }
+                      
+                       else if((!(eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete')))
+                        { 
+                            eca.Status__c = 'Not Applicable';
+                   		 }
                     }
                                      ecastoUpdate.add(eca);
                 } 
