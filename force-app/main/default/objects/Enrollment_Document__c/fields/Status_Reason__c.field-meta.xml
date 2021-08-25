@@ -43,6 +43,58 @@
             <controllingFieldValue>Re Eval Conference Form</controllingFieldValue>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
             <controllingFieldValue>Report of Health Examination</controllingFieldValue>
+            <controllingFieldValue>Testing</controllingFieldValue>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Ear, Eye and Dental Certificate (CEED)</controllingFieldValue>
+            <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>HISD Privacy Code</controllingFieldValue>
+            <controllingFieldValue>Health Record (Massachusetts School Health Record)</controllingFieldValue>
+            <controllingFieldValue>Home Language Survey</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Affidavit of State of Colorado Residency</controllingFieldValue>
+            <controllingFieldValue>Blood Lead Test Screening</controllingFieldValue>
+            <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Dental Examination</controllingFieldValue>
+            <controllingFieldValue>Dental Examination (ORCA)</controllingFieldValue>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
+            <controllingFieldValue>Minnesota Health Screen Report</controllingFieldValue>
+            <controllingFieldValue>NCCA Health Assessment</controllingFieldValue>
+            <controllingFieldValue>OEA</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Identity</controllingFieldValue>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
+            <controllingFieldValue>SSN Waiver</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <controllingFieldValue>State Test Scores</controllingFieldValue>
+            <controllingFieldValue>Student Residency &amp; Assistance Questionnaire</controllingFieldValue>
+            <controllingFieldValue>Title I Compact</controllingFieldValue>
+            <controllingFieldValue>Title VII Student Certification Form</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <controllingFieldValue>Vision Screening (OKCA)</controllingFieldValue>
+            <controllingFieldValue>Vision Screening (ORCA)</controllingFieldValue>
+            <valueName>Not Applicable</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>WCA Formal Acknowledgement of Student Handbook</controllingFieldValue>
+            <controllingFieldValue>Re Eval Conference Form</controllingFieldValue>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Report of Health Examination</controllingFieldValue>
             <controllingFieldValue>Immunization Booster</controllingFieldValue>
             <controllingFieldValue>Ear, Eye and Dental Certificate (CEED)</controllingFieldValue>
             <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
@@ -132,15 +184,6 @@
             <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
             <controllingFieldValue>Vision Screening</controllingFieldValue>
             <valueName>Verified</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Re Eval Conference Form</controllingFieldValue>
-            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
-            <controllingFieldValue>Immunization Records</controllingFieldValue>
-            <controllingFieldValue>Proof of Age</controllingFieldValue>
-            <controllingFieldValue>Proof of Residence</controllingFieldValue>
-            <controllingFieldValue>Report Card</controllingFieldValue>
-            <valueName>Not Applicable</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
