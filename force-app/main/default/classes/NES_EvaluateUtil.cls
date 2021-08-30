@@ -887,7 +887,7 @@ public without sharing class NES_EvaluateUtil {
                     wrap.picklistValues.add(optionValue);
                 }/*
                 else{
-					if(question.Question_Type__c == 'Picklist'&& ){
+					if(question.Question_Type__c == 'Picklist'&& question.Question_Prompt__c == 'What grade will you be requesting for this student?'){
                     NES_EvaluateUtil.PicklistOption optionValue = new NES_EvaluateUtil.PicklistOption();
                     optionValue.label = option.Option_Label__c;
                     optionValue.value = option.Option_Value__c;

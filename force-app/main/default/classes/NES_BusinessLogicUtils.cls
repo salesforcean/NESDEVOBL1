@@ -1769,8 +1769,9 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         Map<Id, Opportunity> opportunityMap = new Map<Id, Opportunity>();
         Map<Id, Id> programEnrollmentIdToAccountIds = new Map<Id, Id>();
         //Commented Below line and added generic soql line for #430196
-        //List<hed__Program_Enrollment__c> programEnrollments = [Select id, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
-        List<hed__Program_Enrollment__c> programEnrollments = GenericSOQLQueries.programEnrollmentDetails(programEnrollmentList);
+        List<hed__Program_Enrollment__c> programEnrollments = [Select id, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
+        //Commenting the below line and uncommenting above line as we're getting an issue - Krishna Peddanagammol on 2021-08-27
+        //List<hed__Program_Enrollment__c> programEnrollments = GenericSOQLQueries.programEnrollmentDetails(programEnrollmentList);
         List<hed__Program_Enrollment__c> programEnrollmentsToUpdate = new List<hed__Program_Enrollment__c>();
         
         for (Opportunity opp : [
@@ -1834,7 +1835,9 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                     List<Program_Grade_Level__c> pgls = programGradeLevelMap.get(pe.hed__Account__c);
                     
                     for(Program_Grade_Level__c pgl : pgls) {
-                        
+                        System.debug('pgl.Id='+pgl.Id+', pe.Program_Grade_Level__c='+pe.Program_Grade_Level__c);
+                        System.debug('pgl.ActivateWaitlist__c='+pgl.ActivateWaitlist__c);
+                        System.debug('pgl.StartWaitlist__c='+pgl.StartWaitlist__c+', pgl.EndWaitlist__c='+pgl.EndWaitlist__c);
                         if(pgl.Id == pe.Program_Grade_Level__c && pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) {
                             
                             pe.WaitlistFlag__c = 'Active';

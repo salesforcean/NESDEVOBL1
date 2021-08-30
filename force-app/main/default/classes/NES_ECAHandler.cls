@@ -131,13 +131,12 @@ public class NES_ECAHandler {
 
                    statusChangedECAs.add(eca);
             }
-            
-            // //With the ECA rewrite the ECAs we want to track does not include ones that were N/A
-            // if (eca.Program_Enrollment__r.hed__Account__r.Use_Updated_ECA_Process__c == true && (
-            //    (oldMap.get(eca.Id).Status__c == 'Complete' || oldMap.get(eca.Id).Status__c == 'Deferred') &&
-            //    oldMap.get(eca.Id).Status__c != eca.Status__c && (eca.Status__c == 'Not Started' || eca.Status__c == 'In Progress'))){
-            //        statusChangedECAs.add(eca);
-            // }
+            //With the ECA rewrite the ECAs we want to track does not include ones that were N/A
+            /*if (eca.Program_Enrollment__r.hed__Account__r.Use_Updated_ECA_Process__c == true && (
+                (oldMap.get(eca.Id).Status__c == 'Complete' || oldMap.get(eca.Id).Status__c == 'Deferred') &&
+                oldMap.get(eca.Id).Status__c != eca.Status__c && (eca.Status__c == 'Not Started' || eca.Status__c == 'In Progress'))){
+                    statusChangedECAs.add(eca);
+            }*/
 
             //added for #101935 User Story (Task 104310) on 2019-08-13
 

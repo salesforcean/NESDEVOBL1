@@ -404,6 +404,8 @@ public without sharing class NES_AddStudentHelper {
 
     /* Creates the student related to the caretaker*/
     public static Peak_Response insertingStudent(String studentJSON, String questionJSON) {
+        system.debug('==>studentJSON '+studentJSON);
+        system.debug('==>questionJSON '+questionJSON);
         Peak_Response peakResponse = new Peak_Response();
         User caretaker = [SELECT Id, AccountId, ContactId, Contact.RecordType.Name,Contact.Account.Family_Enrollment_Counselor__c, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId()];
         List <Contact> CtList = [Select Id, V2_Role__c, Unverified__c from Contact where AccountId =: caretaker.Contact.AccountId 
@@ -605,7 +607,9 @@ public without sharing class NES_AddStudentHelper {
                                 if (String.isNotBlank(data.schoolYear)) {
                                     query += ' AND School_Year__c = \'' + data.schoolYear + '\' ';
                                 }
+                                system.debug('==>query '+query);
                                 childRecords = Database.query(query);
+                                system.debug('==>childRecords '+childRecords);
                             } else {
 
                                 if (objectApiName == 'Account') {
@@ -630,10 +634,11 @@ public without sharing class NES_AddStudentHelper {
                             if (childRecords.size() > 0) {
                                 SObject sObj = NES_EvaluateUtil.updateDataVoid(data.questionType, data.targetField, fieldApiName, childRecords[0]);
                                 update sObj;
+                                system.debug('==>sObj '+sObj);
                                 //Capture the birtdate for later use in the hard stop logic.
                                 if (fieldApiName == 'Birthdate__c')
                                     birthdate = ((contact) sObj).Birthdate__c;
-
+								system.debug('==>birthdate '+birthdate);
                             } else {
                                 SObject sObj = Schema.getGlobalDescribe().get(objectApiName).newSObject();
                                 sObj = NES_EvaluateUtil.updateDataVoid(data.questionType, data.targetField, fieldApiName, sObj);
@@ -780,7 +785,9 @@ public without sharing class NES_AddStudentHelper {
 
                 //With the ECA rewrite, we changed the hard stop process to only look at dates from the Academic program.
                 Boolean shouldHardStop = false;
-
+				system.debug('==>birthdate '+birthdate);
+                system.debug('==>MaxSpecialEdBirthdate__c '+academicProgram.MaxSpecialEdBirthdate__c);
+                system.debug('==>Too_Young_Cutoff__c '+academicProgram.Too_Young_Cutoff__c);
                 //Replaced with MaxSpecialEdBirthdate__c instead of Too_Old_Cutoff__c in below if condition for 335863
                 if (birthdate < academicProgram.MaxSpecialEdBirthdate__c || birthdate > academicProgram.Too_Young_Cutoff__c)
                     shouldHardStop = true;
@@ -790,7 +797,7 @@ public without sharing class NES_AddStudentHelper {
                     peakResponse.messages.add(message);
                     newStudentEnrollment.Status__c = 'Ineligible';
                     update newStudentEnrollment; 
-                    
+                    system.debug('==>message '+message);
                     //added for the US 169322 - Jagadeesh Bokam
                     //If the student has been hard stopped, the opp should be closed lost.
                     oppToInsert.StageName = 'Closed Lost';
@@ -799,10 +806,15 @@ public without sharing class NES_AddStudentHelper {
                     //Ended for the US 169322 - Jagadeesh Bokam
                 } 
 
-               //The case creation is now seperated out to a queable.
-               System.enqueueJob(new NES_AddStudentCaseQueueable(caretaker,newStudentEnrollment.Id,newStudent));
-
-
+                //The case creation is now seperated out to a queable.
+                System.enqueueJob(new NES_AddStudentCaseQueueable(caretaker,newStudentEnrollment.Id,newStudent));
+                //Call waitlistCalculatorBatch for defect 466131 by Krishna Peddanagammol on 2021-08-27
+                Set<Id> programEnrollmentIds = new Set<Id>();
+                programEnrollmentIds.add(newStudentEnrollment.Id);
+                if (programEnrollmentIds.size() > 0) {
+                    Database.executeBatch(new NES_WaitListCalculatorBatch(programEnrollmentIds),100);
+                }
+                
                 peakResponse.success = true;
             } catch (Exception e) {
                 peakResponse.success = false;

@@ -236,12 +236,14 @@
                 appEvent.setParams({
                    message: peakResponse.messages[0]
                 });
+                alert(peakResponse.messages[0]);
                 appEvent.fire();
                 component.set("v.addStudentActive", false);
                 component.set("v.loading", false);
                 component.set("v.supplementalQuestions", null);
             } else {
                 component.set("v.message", "Sorry, we were unable to add your student. Please try again. If the problem persists please contact us.");
+                alert('else alert');
                 if(peakResponse != null) {
                     console.log("Error State: " + peakResponse.messages[0]);
                 }
