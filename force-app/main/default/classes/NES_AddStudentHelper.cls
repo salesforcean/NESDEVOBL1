@@ -832,7 +832,7 @@ public without sharing class NES_AddStudentHelper {
 
     //Grabs all the school years based on the given school
     public static Peak_Response grabSchoolYears(Id institutionId) {
-        System.debug(institutionId);
+        System.debug('institutionId===> '+institutionId);
         Peak_Response peakResponse = new Peak_Response();
         Id processId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get('Process').getRecordTypeId();
         Id programId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
