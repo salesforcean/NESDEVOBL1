@@ -920,7 +920,7 @@ public without sharing class NES_AddStudentHelper {
         for (Account institution : institutionTempAccounts) {
             institutionsInState.add(institution.id);
         }
-
+		
         for (Program_PostalCode__c ppc :  [SELECT Academic_Program__c,PostalCode__c FROM Program_PostalCode__c where Academic_Program__c in :programIds]) {
             set<string> thisAPZips;
             if (!institutionToZipListMap.containsKey(ppc.Academic_Program__c)) 
@@ -931,7 +931,7 @@ public without sharing class NES_AddStudentHelper {
             thisAPZips.add(ppc.PostalCode__c);
             institutionToZipListMap.put(ppc.Academic_Program__c, thisAPZips);
         }
-
+        
         System.debug('insti: ' + caretaker.Contact.Account.ShippingState);
         System.debug('insti: ' + institutionTempAccounts);
         Set<Account> institutionSet = new Set<Account>();
@@ -945,6 +945,7 @@ public without sharing class NES_AddStudentHelper {
                     boolean meetsZipCriteria = true;
                     if (institutionToZipListMap.containsKey(child.Id)) { //If this institution has no zips, they won't be in the map at all.
                         set<string> thisAPZips = institutionToZipListMap.get(child.Id);
+                        system.debug('==> APZIp '+thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5)));
                         if (!thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5)))
                             meetsZipCriteria = false;
                     }
@@ -957,7 +958,7 @@ public without sharing class NES_AddStudentHelper {
         }
         List<Account> institutions = new List<Account>();
         institutions.addAll(institutionSet);
-
+		system.debug('==>institutions '+institutions);
 
         // Create empty lists for return to user
         List<School_Year__c> schoolYears = new List<School_Year__c>();
@@ -978,9 +979,9 @@ public without sharing class NES_AddStudentHelper {
             Account schoolAccount = [SELECT Id, Name FROM Account WHERE Id = :caretaker.Contact.inputParameter__c];
             defaultAcc = schoolAccount;
         }
-
+		
         NES_EvaluateUtil.NewStudentData data = new NES_EvaluateUtil.NewStudentData('', '', '','', '', '', '', '', defaultAcc, schoolYears, institutions, gradeLevels);//added additional spaces for US116612
-
+		
         return data;
     }
 
