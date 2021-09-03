@@ -167,7 +167,7 @@ public abstract class NES_EnrollmentReactivationBase {
         for (Enrollment_Component_Affiliation__c eca : ecaList) {
             System.debug('my list-----'+eca);
             //Maddileti :8/20/Defect-450194 -Modified code
-            if(eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Enrollment_Component__r.Needed_for_ITR__c == true )
+            if((eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Enrollment_Component__r.Needed_for_ITR__c == true) || (eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Status__c == 'Not Started'))
               eca.Status__c = 'Not Applicable';
             else
             {

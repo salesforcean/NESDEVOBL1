@@ -79,7 +79,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
     @TestVisible private void setECAList() {
         //Maddileti 8/20 Defect 450194- Modified query
-        // query & set ecaList
+        // query & set ecaList -9/2 Modified Query
         ecaList = 
             new List<Enrollment_Component_Affiliation__c>
                 ([
@@ -90,7 +90,10 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                     FROM    Enrollment_Component_Affiliation__c 
                     WHERE   
                         Program_Enrollment__c = :studPE.Id 
-                        AND ( Enrollment_Component__r.Needed_for_ITR__c = true OR Enrollment_Component__r.Needed_for_Re_enrollment__c = true ) // Only Stage-2 matters? 
+                        AND 
+                        ((Enrollment_Component__r.Needed_for_Re_enrollment__c != true AND Status__c = 'Not Started')
+                         OR
+                    	(( Enrollment_Component__r.Needed_for_ITR__c = true OR Enrollment_Component__r.Needed_for_Re_enrollment__c = true) // Only Stage-2 matters? 
                         AND 
                         ( 
                             (
@@ -113,7 +116,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                                     )
                                 )
                             )
-                        )
+                        )))
                 ]);
 
         System.debug('ecalist::' + JSON.serialize(ecaList));
