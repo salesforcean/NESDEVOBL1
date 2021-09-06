@@ -836,7 +836,9 @@ public without sharing class NES_AddStudentHelper {
         Peak_Response peakResponse = new Peak_Response();
         Id processId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get('Process').getRecordTypeId();
         Id programId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
-
+        
+        User caretaker = [SELECT Contact.inputParameter__c,contact.account.Family_Enrollment_Counselor__c,Contact.Account.ShippingState, Contact.Account.ShippingPostalCode  FROM User WHERE Id = :UserInfo.getUserId()];
+        
         // Grab the process enrollment components to find valid programs with processes
         List<Enrollment_Component__c> processes = [
                 SELECT Id, Process_Academic_Program__c
@@ -856,7 +858,7 @@ public without sharing class NES_AddStudentHelper {
         System.debug(programIds);
 
         List<Account> programs = [
-                SELECT Id, School_Year__c
+                SELECT Id, School_Year__c,Parent.Name
                 FROM Account
                 WHERE RecordTypeId = :programId AND ParentId = :institutionId AND
                 Registration_End_Date__c >= TODAY AND Registration_Start_Date__c <= TODAY
@@ -870,9 +872,47 @@ public without sharing class NES_AddStudentHelper {
         for (Account program : programs) {
             schoolYearIds.add(program.School_Year__c);
         }
+        
+        Map<Id, set<String>> institutionToZipListMap = new Map<Id, set<String>> ();
+        for (Program_PostalCode__c ppc :  [SELECT Academic_Program__c,PostalCode__c FROM Program_PostalCode__c where Academic_Program__c in :programIds]) {
+            set<string> thisAPZips;
+            if (!institutionToZipListMap.containsKey(ppc.Academic_Program__c)) 
+                thisAPZips = new set<String>();
+            else
+                thisAPZips = institutionToZipListMap.get(ppc.Academic_Program__c);
 
-        List<School_Year__c> years = [SELECT Id, Name FROM School_Year__c WHERE Id = :schoolYearIds];
-
+            thisAPZips.add(ppc.PostalCode__c);
+            institutionToZipListMap.put(ppc.Academic_Program__c, thisAPZips);
+        }
+        
+        List<School_Year__c> years = new List<School_Year__c>();
+        for (Account institution : programs) {
+            System.debug('programs ' +institutionToZipListMap.containsKey(institution.Id));
+            System.debug('institution.Id ' +institution.Id);
+            if(institutionToZipListMap.containsKey(institution.Id)){
+                set<string> thisAPZips = institutionToZipListMap.get(institution.Id);
+                System.debug('thisAPZips ' +thisAPZips);
+                System.debug('contains ' +thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5)));
+                if (thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5))){
+                    years = [SELECT Id, Name FROM School_Year__c WHERE Id = :institution.School_Year__c]; 
+                    System.debug('years.Id ' +years);
+                    break;
+                }
+            }
+            
+            if (programIds.contains(institution.Id) && !institutionToZipListMap.containsKey(institution.Id)) {
+                set<string> schlSplit = new set<string>{'My Connections Academy','California Connections Academy Central Coast','California Connections Academy Central'};
+                System.debug('schlSplit.Id ' +schlSplit);
+                if(schlSplit.contains(institution.Parent.Name)){
+                    years = [SELECT Id, Name FROM School_Year__c WHERE Id =:institution.School_Year__c]; 
+                     System.debug('years.Id ' +years);
+                }else{
+                    years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :schoolYearIds]; 
+                     System.debug('years.Id ' +years);
+                }
+            }
+         }
+        
         peakResponse.results = years;
         return peakResponse;
 
