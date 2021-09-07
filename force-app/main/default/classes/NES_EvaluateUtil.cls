@@ -864,7 +864,7 @@ public without sharing class NES_EvaluateUtil {
             wrap.textComponent = false;
         }
         wrap.picklistValues = new List<NES_EvaluateUtil.PicklistOption>();
-      	//wrap.exclPicklistValues = new List<NES_EvaluateUtil.PicklistOption>();
+      	wrap.exclPicklistValues = new List<NES_EvaluateUtil.PicklistOption>();
 
         System.debug(question.Question_Type__c);
 
@@ -886,16 +886,16 @@ public without sharing class NES_EvaluateUtil {
 
                     wrap.picklistValues.add(optionValue);
                 }
-               /* else{
-					if(question.Question_Type__c == 'Picklist'&& question.Question_Prompt__c == 'What grade will you be requesting for this student?'){
-                        //if(question.Question_Type__c == 'Picklist'){
+                else{
+					if(question.Question_Type__c == 'Picklist'&& question.Question_Prompt__c == '<p>What grade will you be requesting for this student?</p>'){
+                       // if(question.Question_Type__c == 'Picklist'){
                         NES_EvaluateUtil.PicklistOption optionValue = new NES_EvaluateUtil.PicklistOption();
-                    optionValue.label = option.Option_Label__c;
-                    optionValue.value = option.Option_Value__c;
-                    optionValue.order = option.Order__c;
-                    wrap.exclPicklistValues.add(optionValue);
+                        optionValue.label = option.Option_Label__c;
+                        optionValue.value = option.Option_Value__c;
+                        optionValue.order = option.Order__c;
+                        wrap.exclPicklistValues.add(optionValue);
                 }
-            }*/
+            }
         }
         }
 

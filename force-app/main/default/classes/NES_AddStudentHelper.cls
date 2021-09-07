@@ -873,6 +873,7 @@ public without sharing class NES_AddStudentHelper {
             schoolYearIds.add(program.School_Year__c);
         }
         
+        // Added for user story 434474
         Map<Id, set<String>> institutionToZipListMap = new Map<Id, set<String>> ();
         for (Program_PostalCode__c ppc :  [SELECT Academic_Program__c,PostalCode__c FROM Program_PostalCode__c where Academic_Program__c in :programIds]) {
             set<string> thisAPZips;
@@ -886,32 +887,29 @@ public without sharing class NES_AddStudentHelper {
         }
         
         List<School_Year__c> years = new List<School_Year__c>();
+        set<string> acSYId = new set<string>();
+        
         for (Account institution : programs) {
-            System.debug('programs ' +institutionToZipListMap.containsKey(institution.Id));
-            System.debug('institution.Id ' +institution.Id);
+            
+            if(!institutionToZipListMap.containsKey(institution.Id)){
+                acSYId.add(institution.School_Year__c);
+            }
+            
             if(institutionToZipListMap.containsKey(institution.Id)){
                 set<string> thisAPZips = institutionToZipListMap.get(institution.Id);
-                System.debug('thisAPZips ' +thisAPZips);
-                System.debug('contains ' +thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5)));
                 if (thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5))){
-                    years = [SELECT Id, Name FROM School_Year__c WHERE Id = :institution.School_Year__c]; 
-                    System.debug('years.Id ' +years);
+                    years = [SELECT Id, Name FROM School_Year__c WHERE Id = :institution.School_Year__c];
                     break;
                 }
             }
             
             if (programIds.contains(institution.Id) && !institutionToZipListMap.containsKey(institution.Id)) {
-                set<string> schlSplit = new set<string>{'My Connections Academy','California Connections Academy Central Coast','California Connections Academy Central'};
-                System.debug('schlSplit.Id ' +schlSplit);
-                if(schlSplit.contains(institution.Parent.Name)){
-                    years = [SELECT Id, Name FROM School_Year__c WHERE Id =:institution.School_Year__c]; 
-                     System.debug('years.Id ' +years);
-                }else{
-                    years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :schoolYearIds]; 
-                     System.debug('years.Id ' +years);
-                }
+                	years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :acSYId]; 
             }
          }
+        //Ended user story 434474
+        	
+        //List<School_Year__c> years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :schoolYearIds];
         
         peakResponse.results = years;
         return peakResponse;

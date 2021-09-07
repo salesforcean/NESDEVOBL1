@@ -20,8 +20,28 @@ public without sharing class NES_DocumentCentralHelper {
 */
     @AuraEnabled
     public static String getDocumentsListByUser(String caretakerId) {
-        
-        List<Enrollment_Document__c> documentsList = [
+        // Added for bug# 471622
+       /* Id careTk = Schema.SObjectType.contact.getRecordTypeInfosByName().get('Caretaker').getRecordTypeId();
+        User caretaker = [SELECT Id, AccountId, ContactId, Contact.AccountId,Profile.Name,ProfileId FROM User WHERE Id=:caretakerId];
+		List<Enrollment_Document__c> documentsList;      
+        if(caretaker.Profile.Name == 'Caretaker Community User'){
+            Map<Id,Contact> mapCon = new Map<Id,Contact>([select id,Name from contact where recordtypeId =:careTk and AccountId=:caretaker.Contact.AccountId]);
+          Map<Id,User> mapUser = new Map<Id,User>([select id,Name from user where ContactId =:mapCon.keyset()]);
+       
+            documentsList = [
+                SELECT id, Date_FollowedUp__c, Date_Reviewed__c, Document_Link__c,
+                Document__c, Type__c, Notes__c, Official_Transcript__c, Program_Enrollment__c, Program_Enrollment__r.hed__Contact__r.Name,
+                Review_Completed_Time__c, Reviewer__c, Submission_Time__c, Uploader__c, Uploader__r.Name, Enrollment_Component_Affiliation__c, Status_Reason__c,
+                Program_Enrollment__r.hed__Account__r.Document_End_Date__c, Program_Enrollment__r.Program_Grade_Level__r.Document_Submission_End_Date__c,
+                Program_Enrollment__r.Program_Grade_Level__r.Document_Submission_Start_Date__c, Program_Enrollment__r.Program_Grade_Level__r.Name
+                FROM Enrollment_Document__c
+                WHERE Uploader__c IN:mapUser.keyset()
+            ];
+        }*/
+         // End for bug# 471622  
+           
+         //System.debug('caretaker Id:' + caretakerId);
+           List<Enrollment_Document__c> documentsList = [
             SELECT id, Date_FollowedUp__c, Date_Reviewed__c, Document_Link__c,
             Document__c, Type__c, Notes__c, Official_Transcript__c, Program_Enrollment__c, Program_Enrollment__r.hed__Contact__r.Name,
             Review_Completed_Time__c, Reviewer__c, Submission_Time__c, Uploader__c, Uploader__r.Name, Enrollment_Component_Affiliation__c, Status_Reason__c,
@@ -30,12 +50,14 @@ public without sharing class NES_DocumentCentralHelper {
             FROM Enrollment_Document__c
             WHERE Uploader__c = :caretakerId
         ];
-        System.debug('The ED records are:' + documentsList);
+        //System.debug('The ED records are:' + documentsList);
         //Start Lines as part of 241543 (Jagadish Babu)
         Set<Id> docECAs = new Set<Id>();
 		for(Enrollment_Document__c doc : documentsList){			
 			docECAs.add(doc.Enrollment_Component_Affiliation__c);
+            
 		}
+        //System.debug('doc ECAs:' + docECAs);
 		//End Lines as part of 241543 (Jagadish Babu)
 		
         // [149116] ALI KM - NEW CODE START
@@ -62,6 +84,7 @@ public without sharing class NES_DocumentCentralHelper {
               AND Status__c = 'In Progress'
               AND hed__Account__r.Document_Start_Date__c != null AND hed__Account__r.Document_End_Date__c != null
               AND hed__Account__r.Document_Start_Date__c <= : currentDate AND hed__Account__r.Document_End_Date__c >= : currentDate])
+            
         {
             
             if (pe.Enrollment_Component_Affiliation__r.size() > 0) {
@@ -103,10 +126,10 @@ public without sharing class NES_DocumentCentralHelper {
         {
             formsToStagesMap.put(ecr.Child_Enrollment_Component__c, ecr.Parent_Enrollment_Component__c);
         }
-        // System.debug(':::formsToStagesMap:::' + formsToStagesMap.size());
-        // System.debug(JSON.serialize(formsToStagesMap));
-        // System.debug(':::stagesToDocsMap:::' + stagesToDocsMap.size());
-        // System.debug(JSON.serialize(stagesToDocsMap));
+        System.debug(':::formsToStagesMap:::' + formsToStagesMap.size());
+        System.debug(JSON.serialize(formsToStagesMap));
+        System.debug(':::stagesToDocsMap:::' + stagesToDocsMap.size());
+        System.debug(JSON.serialize(stagesToDocsMap));
         
         
         // Collect Stages.Forms.children from ECR
@@ -131,11 +154,11 @@ public without sharing class NES_DocumentCentralHelper {
             }
             childToParentMap.put(ecr.Child_Enrollment_Component__c, ecr.Parent_Enrollment_Component__c);
         }
-        // System.debug(':::childToParentMap:::' + childToParentMap.size());
-        // System.debug(JSON.serialize(childToParentMap));
-        // System.debug(':::stagesToDocsMap 2:::' + stagesToDocsMap.size());
-        // System.debug(':::stagesToDocsMap.values():::' + stagesToDocsMap.values());
-        // System.debug(JSON.serialize(stagesToDocsMap));
+        //System.debug(':::childToParentMap:::' + childToParentMap.size());
+        //System.debug(JSON.serialize(childToParentMap));
+        //System.debug(':::stagesToDocsMap 2:::' + stagesToDocsMap.size());
+        //System.debug(':::stagesToDocsMap.values():::' + stagesToDocsMap.values());
+        //System.debug(JSON.serialize(stagesToDocsMap));
         
         
         // collect all Doc.EC.IDs
@@ -143,8 +166,8 @@ public without sharing class NES_DocumentCentralHelper {
         for (List<Id> docECs : stagesToDocsMap.values()) {
             docECIds.addAll(docECs);
         }
-        // System.debug(':::docECIds:::' + docECIds.size());
-        // System.debug(JSON.serialize(docECIds));
+        //System.debug(':::docECIds:::' + docECIds.size());
+        //System.debug(JSON.serialize(docECIds));
         
         
         list<Enrollment_Component_Affiliation__c> ecaListStatus = new list<Enrollment_Component_Affiliation__c> ();

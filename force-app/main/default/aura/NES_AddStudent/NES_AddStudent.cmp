@@ -35,6 +35,10 @@
     <aura:attribute name="message" type="String" default="" />
     <aura:attribute name="numberOfStudents" type="Integer" default="0" />
     <aura:attribute name="suffixOptions" type="List" default="[]"/>
+    
+    <aura:attribute name="questionMsg" type="String" default="" />
+    
+    
 	<aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" /> <!-- Swapna: Add for GTM -->
     <div>
         <div class="{!v.addStudentActive ? 'addStudentBlock' : 'slds-hide'}">
@@ -170,7 +174,7 @@
                                                     </aura:iteration>
                                                 </lightning:select>
                                                 <div style="color:Red">
-                                                {!question.msg}
+                                                {!v.questionMsg}
                                                 </div>
                                             </aura:if>
 
