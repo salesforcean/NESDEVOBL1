@@ -112,10 +112,16 @@ public class ECA_CriteriaEvaluator {
                     System.debug('>>>eccCriteria.get(key>>>' + eccCriteria.get(key));
                     Program_Enrollment_Criteria__c pecTmp = mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key));
                     system.debug('==> pecTmp '+pecTmp);
-                    system.debug('==> pecTmp Result__c '+pecTmp.Result__c);
+                    //system.debug('==> pecTmp Result__c '+pecTmp.Result__c);
                     system.debug('==> key '+key);
+                    //Insert pec records so that we do not get null based on ecc. Check the logic from Evaluationutils and create Pec.
+                    
                     if(pecTmp!=null ){
                     expressionData.put(key, pecTmp.Result__c);
+                    }else{
+                        //Send programenrollment Id and Enrollment component Criteria key as inputs
+                       Program_Enrollment_Criteria__c pecTmpone = recreatingPE(eca.Program_Enrollment__c ,eccCriteria.get(key));
+                        expressionData.put(key, pecTmpone.Result__c);
                     }
                     // expressionData.put(key, mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key)).Result__c);
                 }
@@ -403,7 +409,65 @@ public class ECA_CriteriaEvaluator {
         return mapECtoECCriteria;
     }
     // 12/18/2020 | Mark Membrino | Backing up... | WIP... END
-
+    // Added by Sai puli on Sep 8
+      public static Program_Enrollment_Criteria__c recreatingPE(String programEnrollment,String eccId ){
+          //Parse the eccid as it contains 4 parameters. 
+        //Iterate over all the Criteria for this PE and see if any were impacted.
+         // collect SchoolYears
+        Map<String, School_Year__c> schoolYearByExternalId = new Map<String, School_Year__c>();
+        Map<String, Enrollment_Component__c> questionGroupByExternalId = new Map<String, Enrollment_Component__c>();
+        list <Program_Enrollment_Criteria__c> pecsToInsert = new list <Program_Enrollment_Criteria__c> ();
+         
+     /*     for (Enrollment_Component_Criteria__c ecc : [
+            SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c   
+            FROM    Enrollment_Component_Criteria__c 
+            WHERE   Id =:eccId]) 
+        {
+          if (String.isNotEmpty(ecc.School_Year__c)){
+                    schoolYearByExternalId.put(ecc.School_Year__c,null);
+          }
+          if (String.isNotEmpty(ecc.Question_Group__c)) {   
+                    questionGroupByExternalId.put(ecc.Question_Group__c,null);
+          }
+                // collect schoolYearExtId && questionGroupExtId END...
+           */     
+             Program_Enrollment_Criteria__c newPEC = new Program_Enrollment_Criteria__c();
+                newPEC.Program_Enrollment__c = programEnrollment;
+                 System.debug('Printing the substring'+eccId.substring(0, 18));
+                newPEC.Criteria__c =   eccId.substring(0, 18);//ecc.Criteria__c;
+               // System.debug('Printing the Student or Household'+eccId.contains('Household')? 'Household' :eccId.contains('Student')?'Student':null);
+                newPEC.Student_or_Household__c = eccId.contains('Household')? 'Household' :eccId.contains('Student')?'Student':null; //Student_or_Household__c;
+                newPEC.Most_Recent__c = null;//ecc.Most_Recent__c;
+                newPEC.Question_Group__c = null;//ecc.Question_Group__c;
+                newPEC.School_Year__c = null;//ecc.School_Year__c;
+    
+                insert newPEC;
+          
+             return newPEC;
+          
+       // }
+       /*   if (schoolYearByExternalId.size() > 0 ) {
+            for (School_Year__c schYear : [ SELECT Id, External_Id__c, Name from School_Year__c where External_Id__c IN : schoolYearByExternalId.keySet()]) {
+                schoolYearByExternalId.put(schYear.External_Id__c, schYear);
+            }
+            for (Program_Enrollment_Criteria__c newPECsch : pecsToInsert) {
+                School_Year__c tmpSY = schoolYearByExternalId.get(newPECsch.School_Year__c);
+                if (tmpSY!=null) {
+                    newPECsch.School_Year__c = tmpSY.Id;
+                }
+            }
+        } */
+       // List<Program_Enrollment_Criteria__c> finalPECS=new List<Program_Enrollment_Criteria__c>(); 
+      //  for(Program_Enrollment_Criteria__c pec : pecsToInsert){
+           // if(!ExistingPECs.contains(pec.Criteria__c + pec.Student_or_Household__c + pec.Question_Group__c + pec.School_Year__c))
+            //    finalPECS.add(pec);
+            
+      //  }
+      
+       // if (finalPECS.size() > 0)
+         //   insert finalPECS;
+    }
+  
     @TestVisible
     private static Map<String, ECA_Evaluation_Setting__mdt> mapECAStatusDecision 
     {

@@ -495,6 +495,7 @@ public without sharing class ECA_HierarchyStatusUpdate
         
         set;
     }
-
+    
+  
     public class ECAEvaluationException extends Exception {}
 }

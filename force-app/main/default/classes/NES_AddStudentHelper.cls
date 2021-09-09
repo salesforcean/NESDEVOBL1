@@ -832,7 +832,7 @@ public without sharing class NES_AddStudentHelper {
 
     //Grabs all the school years based on the given school
     public static Peak_Response grabSchoolYears(Id institutionId) {
-        System.debug('institutionId===> '+institutionId);
+        
         Peak_Response peakResponse = new Peak_Response();
         Id processId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get('Process').getRecordTypeId();
         Id programId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
@@ -887,8 +887,9 @@ public without sharing class NES_AddStudentHelper {
         }
         
         List<School_Year__c> years = new List<School_Year__c>();
-        set<string> acSYId = new set<string>();
+        set<string> notMatchingZipCode = new set<string>();
         set<string> matchingZipCode = new set<string>();
+        boolean mtcriteria = true;
         
         for (Account institution : programs) {
             
@@ -896,26 +897,23 @@ public without sharing class NES_AddStudentHelper {
                 set<string> thisAPZips = institutionToZipListMap.get(institution.Id);
                 if (thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5))){
                     matchingZipCode.add(institution.School_Year__c);
-                    break;
+                    if(matchingZipCode.size() != null){
+                        mtcriteria = false;
+                    }
                 }
             }
             
-            if (programIds.contains(institution.Id) && !institutionToZipListMap.containsKey(institution.Id)) {
-                acSYId.add(institution.School_Year__c);
+            if (programIds.contains(institution.Id) && !institutionToZipListMap.containsKey(institution.Id) && mtcriteria) {
+                notMatchingZipCode.add(institution.School_Year__c);
             }
             
          }
-		set<string> finalData = new set<string>();
-       	finalData.addAll(matchingZipCode);
-        finalData.addAll(acSYId);
+        set<string> finalSchlYearResult = new set<string>();
+       	finalSchlYearResult.addAll(matchingZipCode);
+        finalSchlYearResult.addAll(notMatchingZipCode);
         
-        years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :finalData];        
-        
+        years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :finalSchlYearResult];        
         //Ended user story 434474
-        	
-        //List<School_Year__c> years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :schoolYearIds];
-        
-         
         
         peakResponse.results = years;
         return peakResponse;

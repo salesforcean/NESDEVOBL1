@@ -369,8 +369,8 @@ public class EvaluationUtils  {
                     else if (String.isBlank(ecr.Child_Enrollment_Component__r.Assignment_Logic__c) ) 
                     {
                         if(EnrollmentType == 'SYReEnroll' && ecr.Child_Enrollment_Component__r.Needed_for_Re_enrollment__c != true)
-                         affiliationRecord.Status__c = 'Not Applicable';
-                            else
+                            affiliationRecord.Status__c = 'Not Applicable';
+                        else
                             affiliationRecord.Status__c = 'Not Started';
                     }   
                     else
@@ -389,91 +389,204 @@ public class EvaluationUtils  {
                 allQuestionECs.add(ecr.Child_Enrollment_Component__c);
         }
         
-        if (newAffiliations.size() > 0)
+       if (newAffiliations.size() > 0)
+            insert newAffiliations; 
+ /*     try
+      {
+      if (newAffiliations.size() > 0)
             insert newAffiliations;
+      }
+        catch(DMLException e) {
+     if(e.getMessage().contains('UNABLE_TO_LOCK_ROW')) {
+
+             insert newAffiliations;
+
+	}}*/
+
         // added by maddileti
-          Set<Id> STDDocECAs = new Set<Id>();
-          Set<Id> HHDocECs = new Set<Id>();
-       //  Set<Id> StageECA = new Set<Id>();
-         List<Enrollment_Component_Affiliation__c> StageECAtoUpdate = new List<Enrollment_Component_Affiliation__c>();
-          List<Enrollment_Component_Affiliation__c> ecastoUpdate=new List<Enrollment_Component_Affiliation__c>();
-        system.debug('EvaluationUtils'+ EnrollmentType);
-          if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment')){
-                for(Enrollment_Component_Affiliation__c eca :existEcas){
+        
+   /*     Set<Id> STDDocECAs = new Set<Id>();
+        
+        Set<Id> HHDocECs = new Set<Id>();
+        
+        //  Set<Id> StageECA = new Set<Id>();
+        
+        List<Enrollment_Component_Affiliation__c> StageECAtoUpdate = new List<Enrollment_Component_Affiliation__c>();
+        
+        List<Enrollment_Component_Affiliation__c> ecastoUpdate=new List<Enrollment_Component_Affiliation__c>();
+        
+        system.debug('EvaluationUtils-Debug'+ EnrollmentType);
+        
+        if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment')){
+            system.debug('s');
+            
+            for(Enrollment_Component_Affiliation__c eca :existEcas){
+                
                 if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){
-                                        
+                    
+                    
+                    
                     if(eca.Enrollment_Component__r.RecordType.Name == 'Document' ){
-                       system.debug('In Document Loop');
-                       if(eca.Enrollment_Component__r.Component_Type__c == 'Student'){
-                        STDDocECAs.add(eca.id);
-                        if(!(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)))
-                        eca.Status__c = 'Not Applicable';
-                        else
-                        eca.Status__c = 'Not Started';
+                        
+                        system.debug('In Document Loop');
+                        
+                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student'){
+                            
+                            STDDocECAs.add(eca.id);
+                            
+                            if(!(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)))
+                                
+                                eca.Status__c = 'Not Applicable';
+                            
+                            else
+                                
+                                eca.Status__c = 'Not Started';
+                            
                         }
-                        else if (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Not Applicable'){ 
-                         eca.Status__c = 'Not Started';
-                         HHDocECs.add(eca.Enrollment_Component__c); 
+                        
+                        else if (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Not Applicable'){
+                            
+                            eca.Status__c = 'Not Started';
+                            
+                            HHDocECs.add(eca.Enrollment_Component__c);
+                            
                         }
+                        
                     }
                     
+                    
+                    
                     else if(((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c != 'Household' && eca.Status__c != 'Complete'))){
+                        
+                        system.debug('In Blank Assignment-Student');
+                        
+                        eca.Status__c = 'Not Started';
+                        
+                        
+                        
+                    }
+                    
+                    else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Complete')){
+                        
+                        System.debug('In Blank -HH');
+                        
+                        eca.Status__c = 'Not Started';
+                        
+                    }          
+                    
+                    else{
+                        
+                        system.debug('In Else');
+                        
+                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c == 'Complete')
+                            
+                        {  system.debug('Student- Complete');
+                         
+                         eca.Status__c = 'Not Started';
+                         
+                        }
+                        
+                        
+                        
+                     else if((!(eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete')))
+                            
+                        { system.debug('Student- NA');
+                         
+                         eca.Status__c = 'Not Applicable';
+                         
+                        }
+                        
+                    }
+                    
+                    ecastoUpdate.add(eca);
+                    
+                }
+                   if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
+                    
+                    if(eca.Order__c == 1 && eca.Status__c != 'Complete' ){
+                        
+                        eca.Status__c = 'Complete';
+                        
+                    }
+                    
+                    else if(eca.Order__c == 2){
+                        
+                        eca.Status__c = 'In Progress';
+                        
+                    }else if(eca.Order__c > 2){
+                        
                         eca.Status__c = 'Not Started';
                         
                     }
-                  else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Complete')){
-                        eca.Status__c = 'Not Started';
-                    }           
-                    else{
-                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c == 'Complete')
-                        { 
-                            eca.Status__c = 'Not Started';
-                   		 }
-                      
-                       else if((!(eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete')))
-                        { 
-                            eca.Status__c = 'Not Applicable';
-                   		 }
-                    }
-                                     ecastoUpdate.add(eca);
-                } 
-                 if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
-                 if(eca.Order__c == 1 && eca.Status__c != 'Complete' ){
-                    eca.Status__c = 'Complete';
+                    
+                    StageEcaToUpdate.add(eca);            
+                    
+                    //           StageECA.add(eca.Id);
+                    
+                    //   system.debug('StageEcaToUpdate'+ StageEcaToUpdate);
+                    
+                    
+                    
                 }
-                  else if(eca.Order__c == 2){
-                    eca.Status__c = 'In Progress';
-                }else if(eca.Order__c > 2){
-                    eca.Status__c = 'Not Started';
-                }
-                     StageEcaToUpdate.add(eca);	
-             	//	 StageECA.add(eca.Id);
-                //   system.debug('StageEcaToUpdate'+ StageEcaToUpdate);
-
-               }
-
+                
+                
+                
+                
                 
                 //existEcas.add(eca);
+                
             }
-   			  
-               List<Enrollment_Document__c> allEDsToUpdate = new List<Enrollment_Document__c> ();
-              for (Enrollment_Document__c ed : [select id, Enrollment_Component_Affiliation__c, Status_Reason__c from Enrollment_Document__c where Enrollment_Component_Affiliation__c in : STDDocECAs or (Program_Enrollment__c = : caretakerEnrollmentId and Enrollment_Component_Affiliation__r.Enrollment_Component__c in : HHDocECs)]) {
-                  system.debug('Enrolldocs'+ ed);
-                  ed.Status_Reason__c = 'Not Applicable';
-                   allEDsToUpdate.add(ed);
-               } 
-			
-               if (allEDsToUpdate.size() > 0)
-                   update allEDsToUpdate; 
-             if(StageEcaToUpdate.size()>0)
-                  update StageEcaToUpdate;
-               if(ecastoUpdate.size() > 0)
-           		 update ecastoUpdate;
-
+            
+            system.debug('ECAs to be Updated'+ ecastoUpdate);
+            
+            
+            
+            List<Enrollment_Document__c> allEDsToUpdate = new List<Enrollment_Document__c> ();
+            
+      //      for (Enrollment_Document__c ed : [select id, Enrollment_Component_Affiliation__c, Status_Reason__c from Enrollment_Document__c where Enrollment_Component_Affiliation__c in : STDDocECAs or (Program_Enrollment__c = : caretakerEnrollmentId and Enrollment_Component_Affiliation__r.Enrollment_Component__c in : HHDocECs)]) {
+                
+                system.debug('Enrolldocs'+ ed);
+                
+                ed.Status_Reason__c = 'Not Applicable';
+                
+                allEDsToUpdate.add(ed);
+                
+            }
+            
+            
+            
+            if (allEDsToUpdate.size() > 0)
+                
+                update allEDsToUpdate;
+            
+            //if(StageEcaToUpdate.size()>0)
+            
+            //     update StageEcaToUpdate;
+            
+            try
+                
+            {
+                
+                if(StageEcaToUpdate.size()>0)
+                    
+                    update StageEcaToUpdate;
+                
+            }
+            
+            catch(DMLException e) {
+                
+                if(e.getMessage().contains('UNABLE_TO_LOCK_ROW')) {
+                    
+                    update StageEcaToUpdate;
+                    
+                }}
+            
+            if(ecastoUpdate.size() > 0)
+                
+                update ecastoUpdate;
             
         }
-        
-     
+        */
         // end by maddileti
         
         
@@ -568,8 +681,7 @@ public class EvaluationUtils  {
         //Call a method that will set the initial values for PE Criteria based on current data.
         if (eccs.size()>0) 
             evaluatePECs(eccs, programEnrollment);
-        // if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment'))
-       // ECA_CriteriaEvaluator.processDirtyECAs(ecastoUpdate,null,null);
+        
         //Mark the PE as ready to be shown to the caretaker in the community.
         hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id = programEnrollment, Initial_ECA_Creation_Complete__c = true);
         update pe;

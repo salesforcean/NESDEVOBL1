@@ -13,6 +13,9 @@
     
     
     handleSubmit: function (component, event, helper) {
+        //alert('NES_QUESTION');
+        //alert(component.get('v.sectionName'));
+        
         //Added by Jagadeesh for the Task :341992
         var Sname = component.get('v.sectionName');
         var ahi = component.get('v.AHIIncomeSubmitDate');
@@ -53,6 +56,7 @@
         if(allValidated) {
             console.log('handleSubmit');
             helper.fireAppEvent(component, event, helper);
+            
             
         } else {
             component.set("v.spinner", false);
