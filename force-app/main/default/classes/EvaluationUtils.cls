@@ -568,8 +568,8 @@ public class EvaluationUtils  {
         //Call a method that will set the initial values for PE Criteria based on current data.
         if (eccs.size()>0) 
             evaluatePECs(eccs, programEnrollment);
-        //Code to be included-
-        //ecastoUpdate -Loop and set Is Dirty flag =true
+        // if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment'))
+       // ECA_CriteriaEvaluator.processDirtyECAs(ecastoUpdate,null,null);
         //Mark the PE as ready to be shown to the caretaker in the community.
         hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id = programEnrollment, Initial_ECA_Creation_Complete__c = true);
         update pe;

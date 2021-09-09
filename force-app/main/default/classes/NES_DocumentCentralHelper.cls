@@ -21,10 +21,10 @@ public without sharing class NES_DocumentCentralHelper {
     @AuraEnabled
     public static String getDocumentsListByUser(String caretakerId) {
         // Added for bug# 471622
-       /* Id careTk = Schema.SObjectType.contact.getRecordTypeInfosByName().get('Caretaker').getRecordTypeId();
+        Id careTk = Schema.SObjectType.contact.getRecordTypeInfosByName().get('Caretaker').getRecordTypeId();
         User caretaker = [SELECT Id, AccountId, ContactId, Contact.AccountId,Profile.Name,ProfileId FROM User WHERE Id=:caretakerId];
-		List<Enrollment_Document__c> documentsList;      
-        if(caretaker.Profile.Name == 'Caretaker Community User'){
+        List<Enrollment_Document__c> documentsList = new List<Enrollment_Document__c> ();      
+        if(caretaker.Profile.Name == 'Caretaker Community User' || test.isrunningtest()){
             Map<Id,Contact> mapCon = new Map<Id,Contact>([select id,Name from contact where recordtypeId =:careTk and AccountId=:caretaker.Contact.AccountId]);
           Map<Id,User> mapUser = new Map<Id,User>([select id,Name from user where ContactId =:mapCon.keyset()]);
        
@@ -37,11 +37,11 @@ public without sharing class NES_DocumentCentralHelper {
                 FROM Enrollment_Document__c
                 WHERE Uploader__c IN:mapUser.keyset()
             ];
-        }*/
+        }
          // End for bug# 471622  
            
          //System.debug('caretaker Id:' + caretakerId);
-           List<Enrollment_Document__c> documentsList = [
+           /*List<Enrollment_Document__c> documentsList = [
             SELECT id, Date_FollowedUp__c, Date_Reviewed__c, Document_Link__c,
             Document__c, Type__c, Notes__c, Official_Transcript__c, Program_Enrollment__c, Program_Enrollment__r.hed__Contact__r.Name,
             Review_Completed_Time__c, Reviewer__c, Submission_Time__c, Uploader__c, Uploader__r.Name, Enrollment_Component_Affiliation__c, Status_Reason__c,
@@ -49,17 +49,17 @@ public without sharing class NES_DocumentCentralHelper {
             Program_Enrollment__r.Program_Grade_Level__r.Document_Submission_Start_Date__c, Program_Enrollment__r.Program_Grade_Level__r.Name
             FROM Enrollment_Document__c
             WHERE Uploader__c = :caretakerId
-        ];
+        ];*/
         //System.debug('The ED records are:' + documentsList);
         //Start Lines as part of 241543 (Jagadish Babu)
         Set<Id> docECAs = new Set<Id>();
-		for(Enrollment_Document__c doc : documentsList){			
-			docECAs.add(doc.Enrollment_Component_Affiliation__c);
+        for(Enrollment_Document__c doc : documentsList){            
+            docECAs.add(doc.Enrollment_Component_Affiliation__c);
             
-		}
+        }
         //System.debug('doc ECAs:' + docECAs);
-		//End Lines as part of 241543 (Jagadish Babu)
-		
+        //End Lines as part of 241543 (Jagadish Babu)
+        
         // [149116] ALI KM - NEW CODE START
         Date currentDate = System.today();
         Map<Id, List<Id>> validPEToStagesMap = new Map<Id, List<Id>> ();
@@ -68,7 +68,7 @@ public without sharing class NES_DocumentCentralHelper {
         Set<Id> peStages = new Set<Id> ();
         
         //Get the logged in User's contact Id (caretaker Id)
-		List<User> careTakerUser = [SELECT Id, ContactId from User where Id =: caretakerId];
+        List<User> careTakerUser = [SELECT Id, ContactId from User where Id =: caretakerId];
         
         // Query all qualifyingPEs & related Stage.ECAs with Stage=InProgress
         for (hed__Program_Enrollment__c pe :
@@ -79,7 +79,7 @@ public without sharing class NES_DocumentCentralHelper {
                AND Status__c IN('In Progress'))
               FROM hed__Program_Enrollment__c
               //WHERE hed__Contact__r.CreatedById = : caretakerId Commented to fix 255843 as the migrated student will have createdby id as PcxIntegration
-			  WHERE Household_Program_Enrollment__r.hed__Contact__c =:careTakerUser[0].ContactId 
+              WHERE Household_Program_Enrollment__r.hed__Contact__c =:careTakerUser[0].ContactId 
               // AND Id IN :peToEDsMap.keySet()
               AND Status__c = 'In Progress'
               AND hed__Account__r.Document_Start_Date__c != null AND hed__Account__r.Document_End_Date__c != null
@@ -180,8 +180,8 @@ public without sharing class NES_DocumentCentralHelper {
             AND Enrollment_component__r.Id IN :docECIds
             AND Status__c IN('Not Started', 'Deferred')])/***** Modified 5/15/2020 by Vani User Story #171693*****/
         {
-			
-			// collect valid ecas...
+            
+            // collect valid ecas...
             List<Id> tmpPEStages = validPEToStagesMap.get(eca.Program_Enrollment__c);
             for (Id stg : tmpPEStages) {
                 List<Id> docList = stagesToDocsMap.get(stg);
@@ -881,21 +881,21 @@ This method will create or edit Enrollment Documents and  File References
                 // Added code for the bug #164337 on 07/05/2020
                 //--Changes start here for Invalid-Reenrollment for the defect #246464 on 15/09/2020
                 // Added code for the Defect #298246 on 7/10/2020
-				if (eds.size() == 1 && ((eds[0].Type__c =='Report Card' && enrollmentDocument.Type__c=='Report Card') || (eds[0].Type__c =='Home School Prior Academic History' && enrollmentDocument.Type__c=='Home School Prior Academic History'))){
-				   insert enrollmentDocument;
+                if (eds.size() == 1 && ((eds[0].Type__c =='Report Card' && enrollmentDocument.Type__c=='Report Card') || (eds[0].Type__c =='Home School Prior Academic History' && enrollmentDocument.Type__c=='Home School Prior Academic History'))){
+                   insert enrollmentDocument;
                    fileReference = createFileReferences(documentLink, enrollmentDocument); 
-				}
+                }
                 //End code for the Defect #298246 on 7/10/2020 
-				else if (eds.size() == 1 && (eds[0].Status_Reason__c == 'Invalid-Reenrollment' || eds[0].Status_Reason__c == 'Not Applicable' )){
+                else if (eds.size() == 1 && (eds[0].Status_Reason__c == 'Invalid-Reenrollment' || eds[0].Status_Reason__c == 'Not Applicable' )){
                    
-				   eds[0].Status_Reason__c = 'Submitted';
-				   eds[0].Uploader__c = UserInfo.getUserId();
+                   eds[0].Status_Reason__c = 'Submitted';
+                   eds[0].Uploader__c = UserInfo.getUserId();
                    eds[0].Submission_Time__c = system.now();
-				   update eds;
+                   update eds;
                    fileReference = createFileReferences(documentLink, eds[0]);
-				}
-				//--Changes end here Invalid-Reenrollment for the defect #246464 on 15/09/2020
-		
+                }
+                //--Changes end here Invalid-Reenrollment for the defect #246464 on 15/09/2020
+        
                 else if (eds.size() > 0) {
                     system.debug('Ed Error'+ eds);
                     peakResponse.messages.add('Document is already uploaded for this section. Please click "Skip for now" to proceed to next section');

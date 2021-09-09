@@ -1,6 +1,6 @@
 /**
  * Created by karolbrennan on 10/26/18.
- */ 
+ */
 ({
     /* Gets data relevant to the New Student form */
     getNewStudent: function(component, event, helper, shouldShowActiveStudents)
@@ -119,11 +119,6 @@
             var peakResponse = response.getReturnValue();
             if(peakResponse.success){
                 studentData.schoolYears = peakResponse.results;
-                if(studentData.schoolYears == '' || studentData.schoolYears ==  null)
-                {
-                    component.set("v.message", 'The school you have selected does not have any school years available');
-               }
-                
                 studentData.SelectedSchoolId = schoolId;
                 studentData.schoolYears.sort(function(a,b){
                     if(a.Name < b.Name){
@@ -168,49 +163,19 @@
                 if(returnedResponse) {
                     for(var i=0;i<returnedResponse.length;i++) {
                         var question = returnedResponse[i];
-                        var missingGrades = '';
-                        // TODO: Check only for Grade related question
-						//console.log('questionPrompt' +question);
-                       // alert(JSON.stringify(question, null, 4));
-                       //alert(question.questionPrompt);
-                        if(question.questionType === 'Picklist'&& question.questionPrompt.includes("What grade will you be requesting for this student?")) {
-                            var incloptions = question.picklistValues;
-                            var excloptions = question.exclPicklistValues;
-                            //alert('inclodeoptions size ::'+ incloptions.length );
-                            //alert('Excl Option Size:: ' + excloptions.length);
-                            if(incloptions.length == 0 ){
-                                missingGrades = 'There are no grades available for this school';
-                                component.set('v.questionMsg', missingGrades);
-                                //question.msg = missingGrades;
-                            }
-                            else if(excloptions.length != 0) {
-                                alert('Excl Option Size:: ' + excloptions.length);
-                                console.log(excloptions);
-                                for(var j=0;j<excloptions.length;j++) {
-                                    var exoption = excloptions[j];
-                                    //alert('Missing Option Val:::'+ exoption.value);
-                                    //alert('Missing Option Label:::'+ exoption.label);
-                                   
-                                    if(missingGrades == ''){
-                                    	missingGrades =  excloptions[j].value;
-                                    }
-                                    else{
-                                    	missingGrades = missingGrades + ',' + excloptions[j].value;
-                                    }
+                        /*if(question.questionType === 'Radio') {
+                            var options = question.picklistValues;
+                            if(options) {
+                                var newOptions = [];
+                                for(var j=0;j<options.length;j++) {
+                                    var option = options[j];
+                                    option.value = options[j].Option_Value__c;
+                                    option.label = options[j].Option_Label__c;
+                                    newOptions.push(option);
                                 }
-                                /*if(excloptions.length >=13 && missingGrades != ''){
-                                   missingGrades = 'There are no grades available for this school';
-                                    question.msg = missingGrades;
-                                }*/
-                                
-                                    missingGrades = 'Grade(s) '  + missingGrades  +' not available for this school at the moment';
-                                    component.set("v.questionMsg", missingGrades);
-                                alert(v.questionMsg);
+                                question.picklistValues = newOptions;
                             }
-                        }
-                        
-                        
-                        //
+                        }*/
                         questions.push(question);
                     }
                     questions.sort(function(a, b){return a.order - b.order});

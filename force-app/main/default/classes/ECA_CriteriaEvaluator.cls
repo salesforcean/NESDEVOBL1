@@ -2,8 +2,8 @@
     @class:         ECA_CriteriaEvaluator           
     @description:   Part of rewrite of the ECA assignment and completion logic, runs thru is_Dirty ECAs & setup ECA.Status__c based 
                     on EC.Assignment/Completion Logic & triggers parentStatusUpdate as well.
-    @author:        Mark Membrino
-    @createdDate:   8/31/2020
+	@author: 		Mark Membrino
+	@createdDate:   8/31/2020
 */
 public class ECA_CriteriaEvaluator {
 
@@ -15,12 +15,16 @@ public class ECA_CriteriaEvaluator {
     /**
      * Called by TriggerCode
      */
-    public static void processDirtyECAs(
+    public static void processDirtyECAs	(
         List<Enrollment_Component_Affiliation__c> newList, 
         Map<Id, Enrollment_Component_Affiliation__c> newMap, 
         Map<Id, Enrollment_Component_Affiliation__c> oldMap
     ) {
-        
+        system.debug('newList '+newList);
+        system.debug('newMap key '+newMap.keyset());
+        system.debug('newMap value '+newMap.values());
+        system.debug('oldMap key '+oldMap.keyset());
+        system.debug('oldMap value '+oldMap.values());
         dirtyECAs = new List<Enrollment_Component_Affiliation__c>();
         dirtyECs = new Map<Id, Enrollment_Component__c>();
         dirtyPEIds = new List<Id>();
@@ -38,7 +42,7 @@ public class ECA_CriteriaEvaluator {
                     eca.is_Dirty__c != oldMap.get(eca.Id).is_Dirty__c
                 )
             ) {
-
+				system.debug('===> is_Dirty__c '+eca.is_Dirty__c);
                 dirtyECAs.add(eca);
                 dirtyPEIds.add(eca.Program_Enrollment__c);
                 dirtyECs.put(eca.Enrollment_Component__c, null);
@@ -47,13 +51,19 @@ public class ECA_CriteriaEvaluator {
                 dirtyECAtoECsMap.put(eca.Id, eca.Enrollment_Component__c);
             }        
         }
+        
+        system.debug('dirtyECtoECAsMap key '+dirtyECtoECAsMap.keyset());
+        system.debug('dirtyECtoECAsMap value '+dirtyECtoECAsMap.values());
+        system.debug('dirtyECAtoECsMap key '+dirtyECAtoECsMap.keyset());
+        system.debug('dirtyECAtoECsMap key '+dirtyECAtoECsMap.values());
+        
         //Get ProgramEnrollment statuses
-        //Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>([Select Id, Enrollment_Type__c from hed__Program_Enrollment__c where id IN:dirtyPEIds]);
+       // Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>([Select Id, Enrollment_Type__c from hed__Program_Enrollment__c where id IN:dirtyPEIds]);
         // added by maddileti for defect 430511
         //Set<id> allPEIds = new Set<id>(dirtyPEIds);
-        List<hed__Program_Enrollment__c> PEList = GenericSOQLQueries.programEnrollmentDetails(new Set<id>(dirtyPEIds));
-        Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>(PEList);
-        // added by maddileti for defect 430511
+	    List<hed__Program_Enrollment__c> PEList = GenericSOQLQueries.programEnrollmentDetails(new Set<id>(dirtyPEIds));
+       Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>(PEList);
+        // End by maddileti for defect 430511
         if (dirtyECAs.size()==0)
             return;
         
@@ -62,9 +72,14 @@ public class ECA_CriteriaEvaluator {
         // * Fetch ECs & ECCs & Criteria for given ECAs
         dirtyECs = ECA_CriteriaEvaluatorHelper.getECsById(new List<Id>(dirtyECs.keySet()));
 
+        system.debug('==> dirtyECs key '+dirtyECs.keyset());
+        system.debug('==> dirtyECs value '+dirtyECs.values());
         // build map of EC => ECCs
         mapECtoECCriteria = getECtoECCriteriaMap(dirtyECs); //Change this to EC => Order => ECC.ID
 
+        system.debug('==> mapECtoECCriteria key '+mapECtoECCriteria.keyset());
+        system.debug('==> mapECtoECCriteria value '+mapECtoECCriteria.values());
+        
         // mapPEIdtoPECriteria
         // mapECtoECCriteria
         
@@ -79,24 +94,28 @@ public class ECA_CriteriaEvaluator {
 
         for (Enrollment_Component_Affiliation__c eca : dirtyECAs) 
         {        
-            system.debug('ECA form Id here*******'+eca.Id);
+			system.debug('ECA form Id here*******'+eca.Id);
             
             ec = dirtyECs.get(eca.Enrollment_Component__c);
             eccCriteria = mapECtoECCriteria.get(ec.Id);
 
+            system.debug('==> ec '+ec);
+            system.debug('==> eccCriteria '+eccCriteria);
+            
             Map<Object, Boolean> expressionData = new Map<Object, Boolean>();
             if (eccCriteria!=null) // populate the criteriaData result field
             {                 
                 System.debug('>>>mapPEIdtoPECriteria.get(eca.Program_Enrollment__c)>>>' + mapPEIdtoPECriteria.get(eca.Program_Enrollment__c));
                 System.debug('>>>eccCriteria.get(key>>>' + JSON.serialize(eccCriteria));
+                system.debug('==>eccCriteria key '+eccCriteria.keyset());
                 for (Integer key : eccCriteria.keySet()){ 
                     System.debug('>>>eccCriteria.get(key>>>' + eccCriteria.get(key));
                     Program_Enrollment_Criteria__c pecTmp = mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key));
-                    System.debug('Printing pecTemp'+pecTmp);
-                    if(pecTmp !=null){
+                    system.debug('==> pecTmp '+pecTmp);
+                    system.debug('==> pecTmp Result__c '+pecTmp.Result__c);
+                    system.debug('==> key '+key);
+                    if(pecTmp!=null ){
                     expressionData.put(key, pecTmp.Result__c);
-                    }else{
-                    expressionData.put(key, true); 
                     }
                     // expressionData.put(key, mapPEIdtoPECriteria.get(eca.Program_Enrollment__c).get(eccCriteria.get(key)).Result__c);
                 }
@@ -120,26 +139,28 @@ public class ECA_CriteriaEvaluator {
             //ADDED TESTING
             
            if((mapPEWithEnrollmentType.containskey(eca.Program_Enrollment__c) && mapPEWithEnrollmentType.get(eca.Program_Enrollment__c).Enrollment_Type__c == 'Returning Student' && assignmentLogic == false  && eca.Status__c == 'Complete')){
+              
                eca.Status__c = 'Not Applicable';
                 processedECAs.put(eca.Id, eca);
            }else{
                if (COMPLETION_LOGIC_BLACK_LIST_TXT.containsIgnoreCase(eca.EC_Record_Type__c) && (eca.Status__c == 'Complete' || eca.Status__c == 'Deferred'))             
                 {
-                    
+                    system.debug('Debug Log*****COMPLETION_LOGIC_BLACK_LIST_TXT '+ eca.Id);
                     processedECAs.put(eca.Id, eca); // do nothing if Section/Document is Complete/Doc-deferred, process its parents.
                 }
                 else if ((newStatus = getNewECAStatus(eca.Status__c, assignmentLogic, completionLogic)) !=null) {
-                    
+                    system.debug('Debug Log**getNewECAStatus**'+eca.Id +'****'+ newStatus);
                     eca.Status__c = newStatus;
                     processedECAs.put(eca.Id, eca);
                 } 
                 else if (incompleteChildrenStatus!=null && incompleteChildrenStatus.equalsIgnoreCase('In Progress')) 
                 {
+                    system.debug('Debug Log ****In incompleteChildrenStatus');
                     eca.Status__c = 'In Progress';
                     processedECAs.put(eca.Id, eca);
                 }
            }
-           
+       	   
             
             eca.is_Dirty__c = false;
         }
@@ -390,7 +411,7 @@ public class ECA_CriteriaEvaluator {
         {
             if (mapECAStatusDecision==null) 
                 mapECAStatusDecision = mapECAEvaluationSettingsByType.get(ECA_STATUS_DECISION_SETTING_TYPE);
-                
+             system.debug('Debug Log**'+mapECAStatusDecision ) ;  
             return mapECAStatusDecision;
         }
 
@@ -402,6 +423,7 @@ public class ECA_CriteriaEvaluator {
     {
         for (ECA_Evaluation_Setting__mdt rec : mapECAStatusDecision.values()) 
         {
+            system.debug('Debug Log*****RecId'+rec.Id);
             system.debug('rec.Status__c.containsIgnoreCase(ecaStatus)*******'+rec.Status__c.containsIgnoreCase(ecaStatus));
             system.debug('assignmentLogic*******'+assignmentLogic);
             system.debug('completionLogic*******'+completionLogic);
@@ -412,6 +434,7 @@ public class ECA_CriteriaEvaluator {
                 assignmentLogic == rec.AssignmentLogic__c && 
                 completionLogic == rec.CompletionLogic__c
             ) {
+                system.debug('Debug Log***'+ rec.NewStatus__c);
                 return rec.NewStatus__c;
             }
         }

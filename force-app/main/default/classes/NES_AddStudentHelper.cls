@@ -888,28 +888,34 @@ public without sharing class NES_AddStudentHelper {
         
         List<School_Year__c> years = new List<School_Year__c>();
         set<string> acSYId = new set<string>();
+        set<string> matchingZipCode = new set<string>();
         
         for (Account institution : programs) {
-            
-            if(!institutionToZipListMap.containsKey(institution.Id)){
-                acSYId.add(institution.School_Year__c);
-            }
             
             if(institutionToZipListMap.containsKey(institution.Id)){
                 set<string> thisAPZips = institutionToZipListMap.get(institution.Id);
                 if (thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5))){
-                    years = [SELECT Id, Name FROM School_Year__c WHERE Id = :institution.School_Year__c];
+                    matchingZipCode.add(institution.School_Year__c);
                     break;
                 }
             }
             
             if (programIds.contains(institution.Id) && !institutionToZipListMap.containsKey(institution.Id)) {
-                	years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :acSYId]; 
+                acSYId.add(institution.School_Year__c);
             }
+            
          }
+		set<string> finalData = new set<string>();
+       	finalData.addAll(matchingZipCode);
+        finalData.addAll(acSYId);
+        
+        years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :finalData];        
+        
         //Ended user story 434474
         	
         //List<School_Year__c> years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :schoolYearIds];
+        
+         
         
         peakResponse.results = years;
         return peakResponse;
