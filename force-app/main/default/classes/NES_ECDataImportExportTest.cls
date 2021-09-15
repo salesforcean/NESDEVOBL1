@@ -94,6 +94,13 @@ public with sharing class NES_ECDataImportExportTest {
         Enrollment_Component_Relationship__c questionGroupECR3 = Peak_TestUtils.createEnrollmentComponentRelationship(questionComponentForQG3.Id, questionGroupComponent.Id); // level-5
         
     }
+    
+    static testMethod void ppDataTest() {
+        Test.startTest();
+        NES_EnrollmentCompentBuilder.enrollmentComponentData ecd = new NES_EnrollmentCompentBuilder.enrollmentComponentData();
+        NES_ECDataImportExport.ppData(ecd);
+        Test.stopTest();
+    }
 
     static testMethod void processExport_Positive() {
 

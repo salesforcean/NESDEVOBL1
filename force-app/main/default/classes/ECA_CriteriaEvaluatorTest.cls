@@ -26,6 +26,20 @@ public class ECA_CriteriaEvaluatorTest
         Set<String> extIds = new Set<String>{'NES-QG-01', 'NES-QG-02'};
         ECA_CriteriaEvaluatorHelper.getECsByExternalId(extIds);
     }
+    
+    @IsTest
+    static void recreatingPETest()
+    {
+        hed__Program_Enrollment__c progEnrollment = [SELECT Id,hed__Account__c, Status__c,Enrollment_Type__c,RecordType.Name FROM hed__Program_Enrollment__c  LIMIT 1];
+        Criteria__c c = new Criteria__c(Name='Test Criteria',Criteria_Field__c='test',Comparison_Data_Type__c='Text',Operator__c='CONTAINS');
+        insert c;
+        Enrollment_Component__c ecComponent=[SELECT Id,Component_Type__c FROM Enrollment_Component__c LIMIT 1];
+        Enrollment_Component_Criteria__c ecc = new Enrollment_Component_Criteria__c(Enrollment_Component__c=ecComponent.Id,Criteria__c=c.Id,Criteria_Type__c='Assignment');
+        insert ecc;
+       Test.startTest();
+        Program_Enrollment_Criteria__c pec = ECA_CriteriaEvaluator.recreatingPE(progEnrollment.Id, c.Id);
+       Test.stopTest();
+    }
 
     /**
      *  Forward Test All Stages completion:  Stage 1 is Complete, Stage 2: Section is marked as 'Complete' from 'Not-Started', Section has only 1 Form, 
