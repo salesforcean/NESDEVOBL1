@@ -1340,6 +1340,27 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
                 NES_BusinessLogicUtils.reActivationCase(peids);
             Test.stopTest();
         
-    } 
+    }
+    
+    static testMethod void calculateEntranceAgeEligibilityTest(){
+        cntct_student = [SELECT Id, Name, AccountId, Account.Shippingstate, Account.ShippingPostalCode FROM Contact limit 1];
+        list<contact> studentList = new list<contact>();
+        studentList.add(cntct_student);
+            Test.startTest();
+                NES_BusinessLogicUtils.calculateEntranceAgeEligibility(studentList);
+            Test.stopTest();
+        
+    }
+    
+    static testMethod void updateImmunizationStatusCurrentTest(){
+        hed__Program_Enrollment__c programEnrollment = [Select Id from hed__Program_Enrollment__c WHERE Status__c = 'In Progress' limit 1];
+        Health_and_Immunization__c haIm = new Health_and_Immunization__c(Immunization_Status_FollowUp__c='Exemption',Immunization_Status__c='Exemption',Program_Enrollment__c=programEnrollment.Id);
+        insert haIm;
+        list<Health_and_Immunization__c> lsthaIm = new list<Health_and_Immunization__c>();
+            Test.startTest();
+            List<Health_and_Immunization__c> healthImm = NES_BusinessLogicUtils.updateImmunizationStatusCurrent(lsthaIm);
+        	system.assert(haIm.Immunization_Status_FollowUp__c != null);
+            Test.stopTest();
+    }
    
 }

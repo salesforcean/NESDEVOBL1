@@ -7,7 +7,8 @@
 * Added other Age Eligibility fields needed for calcuations US114797 (Andrew Sim) on 11/05/19
 */
 @isTest
-private class NES_ProgramEnrollmentTriggerTest {    
+private class NES_ProgramEnrollmentTriggerTest {
+
     @TestSetup
     static void setup() {
         Peak_TestUtils.createNESBusinessLogicSwitch('Entrance Age Eligibility Override', true);
@@ -150,7 +151,6 @@ private class NES_ProgramEnrollmentTriggerTest {
         //End: Test coverage data for Bug #226654
                     
     }
-
     /**
      * Created by Anand
      * puporse to Test updateFinalConfirmationDate Method for opportunity Final Semester='First'

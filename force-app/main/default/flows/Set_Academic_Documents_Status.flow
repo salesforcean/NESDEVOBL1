@@ -7,6 +7,7 @@
         <locationY>0</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailSubject</name>
             <value>
@@ -16,7 +17,7 @@
         <inputParameters>
             <name>emailBody</name>
             <value>
-                <stringValue>The Set_Academic_Documents_Status-1 invocable process failed to start because no records in your org match the record Id specified. In the entities that invoke Set_Academic_Documents_Status-1, such as other processes, check the value for this input: SObjectId.</stringValue>
+                <stringValue>The Set_Academic_Documents_Status-2 invocable process failed to start because no records in your org match the record Id specified. In the entities that invoke Set_Academic_Documents_Status-2, such as other processes, check the value for this input: SObjectId.</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -33,6 +34,7 @@
         <locationY>0</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailSubject</name>
             <value>
@@ -42,7 +44,7 @@
         <inputParameters>
             <name>emailBody</name>
             <value>
-                <stringValue>The Set_Academic_Documents_Status-1 invocable process failed to start because a valid value wasn&apos;t found. This can happen when entities that invoke Set_Academic_Documents_Status-1, such as other processes, don&apos;t have values for either the SObject or SObjectId. For example: 
+                <stringValue>The Set_Academic_Documents_Status-2 invocable process failed to start because a valid value wasn&apos;t found. This can happen when entities that invoke Set_Academic_Documents_Status-2, such as other processes, don&apos;t have values for either the SObject or SObjectId. For example: 
 -An SObject or SObject ID wasn&apos;t specified.
 -A value might have been included, but it was null at runtime. </stringValue>
             </value>
@@ -160,7 +162,7 @@
         <dataType>Boolean</dataType>
         <expression>OR( {!SObject.HowStudentPlacementCompleted__c} = &quot;Modified Auto-Placement Process&quot;, {!SObject.HowStudentPlacementCompleted__c} = &quot;School Recommended Auto-Placement Process&quot;, {!SObject.HowStudentPlacementCompleted__c} = &quot;Standard Auto-Placement Process&quot;)</expression>
     </formulas>
-    <interviewLabel>Set_Academic_Documents_Status-1_InterviewLabel</interviewLabel>
+    <interviewLabel>Set_Academic_Documents_Status-2_InterviewLabel</interviewLabel>
     <label>Set Academic Documents Status</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -228,6 +230,19 @@
             <processMetadataValues>
                 <name>implicit</name>
                 <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Program_Enrollment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>SObject.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
                     <booleanValue>false</booleanValue>
                 </value>
             </processMetadataValues>
@@ -271,19 +286,6 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Report Card</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Program_Enrollment__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>SObject.Id</elementReference>
             </value>
         </filters>
         <filters>
@@ -407,6 +409,19 @@
             <processMetadataValues>
                 <name>implicit</name>
                 <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Program_Enrollment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>SObject.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
                     <booleanValue>false</booleanValue>
                 </value>
             </processMetadataValues>
@@ -450,19 +465,6 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Unofficial Transcript</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Program_Enrollment__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>SObject.Id</elementReference>
             </value>
         </filters>
         <filters>
@@ -553,7 +555,7 @@
         <object>Enrollment_Component_Affiliation__c</object>
     </recordUpdates>
     <startElementReference>sobjectInputCheckDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>SObject</name>
         <dataType>SObject</dataType>

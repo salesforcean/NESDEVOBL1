@@ -237,7 +237,7 @@
             <field>Label</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Initial Enrollment</stringValue>
+                <stringValue> Enrollment</stringValue>
             </value>
         </filters>
         <object>CS_Event_Notification_Params__mdt</object>

@@ -559,21 +559,19 @@
                     event.setParams({
                         "url": peakResponse.messages[0]
                     });
-                    event.fire();
+                    //event.fire();
                     
-                    /*
+                    
                     // Naveen
                     // Added to re-direct the CT back to allow the Auto Placement Process to Run and complete
                     var Sname = component.get('v.sectionName');
-                    alert(Sname);
+                    //alert(Sname);
                     if(Sname === "Academic History"){
                         helper.goBack(component, event, helper);
                     }
                     else{
                     	event.fire();
                     }
-                    */
-                    
                 } else {
                     console.log('Fail before go back');
                     component.set("v.spinner", false);

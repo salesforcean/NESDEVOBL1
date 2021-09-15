@@ -204,7 +204,58 @@ public class NES_ReEnrUtilitiesTest {
         update enrollmentDocument2;
         // 
         
-    } 
+    }
+    
+    static testMethod void reenrollingStudentTest(){
+        //User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'portalUser@gmail.com'];
+        Contact studentid=[select id,Birthdate__c from Contact where LastName ='TestCon' AND RecordType.name = 'Students' limit 1];
+        
+        Account institutionalAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
+        Account academicProgram = [SELECT Id,name, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c FROM Account WHERE RecordType.Name = 'Academic Program' LIMIT 1];
+        
+        hed__Program_Enrollment__c stdPE=[select id,Enrollment_Type__c,Household_Program_Enrollment__c from hed__Program_Enrollment__c WHERE RecordType.Name = 'Student' limit 1];
+        
+        Enrollment_Component_Affiliation__c ecaList=[SELECT Id,Enrollment_Component__c,Status__c,Order__c,Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c =: stdPE.id AND Enrollment_Component__r.RecordType.Name ='Document' Limit 1];
+        String callType='SYReEnroll';
+        NES_ReEnrUtilities.ReEnrResults response;
+        try{
+            Test.startTest();
+            response = NES_ReEnrUtilities.InitreenrollingStudent(studentid.id,stdPE.id,callType);
+            Test.stopTest();
+            system.assertEquals(true,response.success);
+            system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());
+        }catch(Exception e){
+            system.assertEquals(false,response.success);
+            system.assertEquals(e.getMessage(), 'Could not complete Re-Enrollment process');
+        }
+        
+    }
+    
+    static testMethod void updateECAsTest(){
+        hed__Program_Enrollment__c stdPE=[select id,Enrollment_Type__c,Household_Program_Enrollment__c from hed__Program_Enrollment__c WHERE RecordType.Name = 'Caretaker' limit 1];
+        
+        Enrollment_Component_Affiliation__c ecaList=[SELECT Id,Enrollment_Component__c,Status__c,Order__c,Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c =: stdPE.id Limit 1];
+        ecaList.Enrollment_Component__r.Component_Type__c = 'Student';
+        ecaList.Enrollment_Component__r.Assignment_Logic__c = '1';
+        update ecaList;
+        
+        Enrollment_Document__c enrollmentDocument2 = Peak_TestUtils.createEnrollmentDocumentRecord(stdPE.id);
+        Enrollment_Document__c ed = [select id,Status_Reason__c from Enrollment_Document__c LIMIT 1];
+        ed.Status_Reason__c = 'Not Applicable';
+        update ed;
+        
+        string EnrollmentType = 'InitReActivation';
+        try{
+            Test.startTest();
+            NES_ReEnrUtilities.UpdateECAs(stdPE.id,stdPE.id,EnrollmentType);
+            Test.stopTest();
+        }catch(DMLException e){
+            System.Assert(e.getMessage().contains('UNABLE_TO_LOCK_ROW'));
+        }
+        
+    }
+    
+    
     static testMethod void pesTest(){
         //User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'portalUser@gmail.com'];
         Contact studentid=[select id,Birthdate__c from Contact where LastName ='TestCon' AND RecordType.name = 'Students' limit 1];
@@ -226,7 +277,7 @@ public class NES_ReEnrUtilitiesTest {
         system.assertEquals(0, [Select Id from Peak_Apex_Log__c].size());
         
     }
-
+    
     static testMethod void reactivateEnrollmentTypeTest(){
         Id studentEnrollmentType = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
         

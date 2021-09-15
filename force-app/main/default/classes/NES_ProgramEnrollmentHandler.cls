@@ -25,6 +25,7 @@ public class NES_ProgramEnrollmentHandler {
 
 
 
+   
 
 
     public static void handleBeforeInsert(List<hed__Program_Enrollment__c> newList,List<hed__Program_Enrollment__c> actList) {
@@ -134,7 +135,6 @@ public class NES_ProgramEnrollmentHandler {
     
     
     public static void handleAfterUpdate(Map<Id, hed__Program_Enrollment__c> newMap, Map<Id, hed__Program_Enrollment__c> oldMap,Map<Id, hed__Program_Enrollment__c> actlstnewMap, Map<Id, hed__Program_Enrollment__c> actlstoldMap) {
-       System.debug('NDEBUG::::: In After update block of PE:::::::');
         Boolean origRunPlacement = runPlacement;
         runPlacement = false;
         Boolean origCompletion = NES_ECACompletion.shouldRunCompletion;
@@ -262,8 +262,8 @@ public class NES_ProgramEnrollmentHandler {
         /********* End Placement Updates *************/
 		/****Moved over to line number 143 ****/
        NES_Constants.runAssignment = origAssignment;
-        NES_ECACompletion.shouldRunCompletion = origCompletion;
-                        
+       NES_ECACompletion.shouldRunCompletion = origCompletion;
+       
 
        //MM 11/18/2020 Removed for only running for when origRunAssignment is true because in the new ECA model, we always need it to run.         
      //   if (origRunAssignment) {  
@@ -295,6 +295,7 @@ public class NES_ProgramEnrollmentHandler {
                             System.debug('changed field: ' + str);
 
                             if ((thisPEWithDetail != null) && (thisPEWithDetail.hed__Account__c != null) && thisPEWithDetail.hed__Account__r.Use_Updated_ECA_Process__c) {  //New ECA method.
+
                                 EvaluationUtils.fieldUpdate newFieldUpdate = new EvaluationUtils.fieldUpdate ();
                                 newFieldUpdate.programEnrollmentId = newPERec.Id;
                                 newFieldUpdate.objectAndFieldName = 'hed__Program_Enrollment__c.' + str;
@@ -328,7 +329,7 @@ public class NES_ProgramEnrollmentHandler {
                 NES_ECACompletion.programEnrollmentCompletion(changedFieldsMap, 'hed__Program_Enrollment__c');
                 
             }
-                
+
 
             if (fieldUpdateList.size() > 0)  //Must be at least one PE in the NEW ECA model that has a changed field so call the new ECA stuff.
                 EvaluationUtils.evaluateChangedFields  (fieldUpdateList);
@@ -354,7 +355,7 @@ public class NES_ProgramEnrollmentHandler {
                 System.debug('ecaList.size() = '+ecaList.size());
                 List<Enrollment_Component_Affiliation__c> ecaUpdateList = new List<Enrollment_Component_Affiliation__c>();
                 Double waitlistOrder = 0;
-                
+                String WaitlistStageUpdate = 'Y';
                 if(ecaList.size()>0){
                     for(Enrollment_Component_Affiliation__c eca: ecaList){
                         if((eca.Program_Enrollment__r.waitlistflag__c == 'Active') && (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && (eca.Enrollment_Component__r.Name == 'Waitlist')) {
@@ -371,15 +372,21 @@ public class NES_ProgramEnrollmentHandler {
                                 eca.Status__c = 'Not Started';
                                 ecaUpdateList.add(eca);
                             }
+                            //Defect-473087
+                            else if((eca.Program_Enrollment__r.waitlistflag__c == 'Active') && 
+                            (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && 
+                                    (eca.Order__c < waitlistOrder) && (eca.Status__c <> 'Complete')){
+                                        WaitlistStageUpdate = 'N';
+                                    }
                             else if((eca.Program_Enrollment__r.waitlistflag__c == 'Active') && 
                             (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && 
                             (eca.Order__c == waitlistOrder) && 
                             (eca.Program_Enrollment__r.Stage__c == 'Waitlist' || 
                             eca.Program_Enrollment__r.Stage__c == 'Confirmation of Enrollment' || 
                             eca.Program_Enrollment__r.Stage__c == 'Final Confirmation' ||
-                            eca.Program_Enrollment__r.Stage__c == 'Intent To Attend')){
-                                eca.Status__c = 'In Progress';
-                                ecaUpdateList.add(eca);
+                            eca.Program_Enrollment__r.Stage__c == 'Intent To Attend') && WaitlistStageUpdate == 'Y'){
+                               eca.Status__c = 'In Progress';
+                               ecaUpdateList.add(eca);
                             }
 
                             // Code below else-if ladder logic for addressing Bug #. 280977
@@ -388,7 +395,7 @@ public class NES_ProgramEnrollmentHandler {
                                 (eca.Program_Enrollment__r.waitlistflag__c == '')) &&
                                 (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && 
                                 (eca.Order__c >= waitlistOrder) &&
-                                (eca.Program_Enrollment__r.Stage__c == 'Waitlist')
+                                (eca.Program_Enrollment__r.Stage__c == 'Waitlist') && WaitlistStageUpdate == 'Y'
                                ) {
                                    eca.Status__c = 'Not Applicable';
                                    ecaUpdateList.add(eca);
@@ -460,7 +467,7 @@ public class NES_ProgramEnrollmentHandler {
         //Start-added for #107180 User Story (Task 108660) on 2019-09-06
        // NES_ProgramEnrollmentBusinessLogic.updateAnnualStudStatus(newList);
           //NES_ProgramEnrollmentBusinessLogic.updateAnnualStudStatus(actList);//Swapna:Changed to active list
-        //End-added for #107180 User Story (Task 108660) on 2019-09-06      
+        //End-added for #107180 User Story (Task 108660) on 2019-09-06     
     }
 
 }

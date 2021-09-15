@@ -173,47 +173,47 @@ public class NES_AddStudentControllerTest {
         }
     }
     
+    //added for 434464
     static testMethod void schoolYear(){
+        User careTaker = [SELECT Id, ContactId,AccountId FROM User WHERE Username = 'portalUser@gmail.com'];	
         
-        Account acc = new Account(Name = 'test account', ShippingState = 'CA', ShippingPostalCode = '93065');
-        insert acc;
+        contact con = [select id,LastName from contact where Id=:caretaker.ContactId];
         
-        Account institutionalAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
-        institutionalAccount.ShippingState = 'CA';
-        update institutionalAccount;
+        Account houseHoldAccount = [select id,ShippingState,ShippingPostalCode,Name from Account where Id=:caretaker.AccountId];
+        houseHoldAccount.ShippingState = 'CA';
+        houseHoldAccount.ShippingPostalCode = '93065';
+        update houseHoldAccount;
         
-        Account acdPgrm = [SELECT Id,School_Year__c,School_Year__r.Name FROM Account WHERE RecordType.Name = 'Academic Program' LIMIT 1];
-        acdPgrm.ParentId = institutionalAccount.Id;
-        update acdPgrm;
+        Account academicProgram = [SELECT Id, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c FROM Account
+                                          WHERE RecordType.Name = 'Academic Program' LIMIT 1];
         
-        Enrollment_Component__c qComponent = [SELECT Id,Process_Academic_Program__c FROM Enrollment_Component__c WHERE Assignment_Logic__c != null AND RecordType.Name = 'Process' LIMIT 1];   
-            
-        Program_PostalCode__c pc = new Program_PostalCode__c();
-        pc.Name = 'Test';
-        pc.Academic_Program__c = qComponent.Process_Academic_Program__c;
-        pc.PostalCode__c = '93065';
+        Enrollment_Component__c qCom = [SELECT Id,Process_Academic_Program__c FROM Enrollment_Component__c WHERE Assignment_Logic__c != null AND RecordType.Name = 'Process' LIMIT 1];
+        
+        Program_PostalCode__c pc = new Program_PostalCode__c(Name = 'Test',Academic_Program__c = qCom.Process_Academic_Program__c,PostalCode__c = '93065');
         insert pc;
         
-        Program_PostalCode__c pc1 = new Program_PostalCode__c();
-        pc1.Name = 'Test1';
-        pc1.Academic_Program__c = qComponent.Process_Academic_Program__c;
-        pc1.PostalCode__c = '93064';
-        insert pc1;
+        Program_PostalCode__c pcOne = new Program_PostalCode__c(Name = 'Test',Academic_Program__c = qCom.Process_Academic_Program__c,PostalCode__c = '93064');
+        insert pcOne;
         
-        Program_PostalCode__c pc2 = new Program_PostalCode__c();
-        pc2.Name = 'Test2';
-        pc2.Academic_Program__c = qComponent.Process_Academic_Program__c;
-        pc2.PostalCode__c = '93063';
-        insert pc2;
+        Program_PostalCode__c pgrmPC = [select id,Name,Academic_Program__c,PostalCode__c from Program_PostalCode__c where Academic_Program__c =:qCom.Process_Academic_Program__c LIMIT 1];
         
-		system.assertEquals(pc.PostalCode__c, acc.ShippingPostalCode, 'Postal code Matched');        
+        Map<Id, set<String>> institutionToZipListMap = new Map<Id, set<String>>();
+        Id acId= pgrmPC.Academic_Program__c;
+        set<string> pcValues = new set<string>{pgrmPC.PostalCode__c};
+        institutionToZipListMap.put(acId, pcValues);
         
-       // List<School_Year__c> schoolYears = [SELECT Id,Name FROM School_Year__c WHERE Id =: acdPgrm.School_Year__c LIMIT 1];
+        set<string> academicPCId = institutionToZipListMap.get(qCom.Process_Academic_Program__c);
+        String pcSingleValue = new List<String> (academicPCId).get(0);
         
-     //   Peak_Response response = NES_AddStudentController.getSchoolYears(institutionalAccount.Id);
-      //  system.assertEquals(acdPgrm.School_Year__r.Name, schoolYears[0].Name, 'Success');
-      //  system.assertEquals(acc.ShippingPostalCode, pc.PostalCode__c, 'Success');
+        System.runAs(careTaker) {
+            Test.startTest();
+            Peak_Response res = NES_AddStudentController.getSchoolYears(academicProgram.Id);
+            system.assert(academicPCId.contains(houseHoldAccount.ShippingPostalCode));
+            Test.stopTest();
+        }
+        
     }
+    
     
     //added for US116612
     
