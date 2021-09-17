@@ -38,8 +38,8 @@ global class updatePipelinePEsTASCalca implements Database.Batchable<sObject> {
           
         for(hed__program_enrollment__c pe: scope){
             System.debug('PE ID being processed is :::::' + pe.Id);
-            EvaluationUtils.PerformAsyncNewStudentStepsUpdatePipelinePEs(pe.id,processid,pe.Household_Program_Enrollment__c,
-                                                                               pe.Enrollment_Type__c);	
+            /* EvaluationUtils.PerformAsyncNewStudentStepsUpdatePipelinePEs(pe.id,processid,pe.Household_Program_Enrollment__c,
+                                                                               pe.Enrollment_Type__c); */	
         }
         
         // Get the Tell Us about your Student Stage ECAs and Update the Status to In Progress

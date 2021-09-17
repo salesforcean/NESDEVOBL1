@@ -24,8 +24,8 @@ global class updatePipelinePEsOACalca implements Database.Batchable<sObject> {
         
         for(hed__program_enrollment__c p:scope){
             //system.debug('Nagendra :'+p.id);
-            EvaluationUtils.PerformAsyncNewStudentStepsUpdatePipelinePEs(p.id,processid,p.Household_Program_Enrollment__c,
-                                                                         p.Enrollment_Type__c);
+            /* EvaluationUtils.PerformAsyncNewStudentStepsUpdatePipelinePEs(p.id,processid,p.Household_Program_Enrollment__c,
+                                                                         p.Enrollment_Type__c); */
         }
     }
     global void finish(Database.BatchableContext bc){
