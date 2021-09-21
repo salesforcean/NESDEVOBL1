@@ -4208,6 +4208,41 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Open_Application__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active-Reset</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Disciplinary History</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eligibility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special Education</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>OrderingHoldFlag__c</picklist>
         <values>
             <fullName>Alternate Shipping</fullName>

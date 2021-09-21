@@ -858,7 +858,7 @@ public without sharing class NES_AddStudentHelper {
         System.debug(programIds);
 
         List<Account> programs = [
-                SELECT Id, School_Year__c,Parent.Name
+                SELECT Id, School_Year__c
                 FROM Account
                 WHERE RecordTypeId = :programId AND ParentId = :institutionId AND
                 Registration_End_Date__c >= TODAY AND Registration_Start_Date__c <= TODAY
@@ -909,9 +909,9 @@ public without sharing class NES_AddStudentHelper {
         if(academicProgramIds.size() >= 1){
             years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :matchingZipCode];            
         }else{
-			for(Account a : programs){
-                if(!academicProgramIds.contains(a.Id) && !notMatchingZipCode.contains(a.Id)){
-                    notZipCodeSchlYrIds.add(a.School_Year__c);
+			for(Account acdPrgm : programs){
+                if(!academicProgramIds.contains(acdPrgm.Id) && !notMatchingZipCode.contains(acdPrgm.Id)){
+                    notZipCodeSchlYrIds.add(acdPrgm.School_Year__c);
                 }
             }
             

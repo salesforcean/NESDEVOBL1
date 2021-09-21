@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_Application__c</fullName>
+    <externalId>false</externalId>
+    <label>Open Application</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Active</fullName>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>Active-Reset</fullName>
+                <default>false</default>
+                <label>Active-Reset</label>
+            </value>
+            <value>
+                <fullName>Released</fullName>
+                <default>false</default>
+                <label>Released</label>
+            </value>
+            <value>
+                <fullName>In Review</fullName>
+                <default>false</default>
+                <label>In Review</label>
+            </value>
+            <value>
+                <fullName>Eligibility</fullName>
+                <default>false</default>
+                <label>Eligibility</label>
+            </value>
+            <value>
+                <fullName>Disciplinary History</fullName>
+                <default>false</default>
+                <label>Disciplinary History</label>
+            </value>
+            <value>
+                <fullName>Special Education</fullName>
+                <default>false</default>
+                <label>Special Education</label>
+            </value>
+            <value>
+                <fullName>Placement</fullName>
+                <default>false</default>
+                <label>Placement</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -11,9 +11,9 @@
     <columns>Default_Value__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Answer_Target__c</field>
-        <operation>contains</operation>
-        <value>Enrollment_Type</value>
+        <field>External_Id__c</field>
+        <operation>equals</operation>
+        <value>ACA2021:HI28</value>
     </filters>
     <label>All</label>
 </ListView>
