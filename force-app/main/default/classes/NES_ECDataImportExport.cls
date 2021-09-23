@@ -178,8 +178,6 @@ public with sharing class NES_ECDataImportExport {
      * // ideally this should return just 1 Active record
      */
     private static List<ecrTree__c> getECRTreeByParentIDs(Set<Id> ecTreeParentIDs, String type) {
-        System.debug('NDEBUG :: ECTREEPARENTID' + ecTreeParentIDs);
-        System.debug('NDEBUG :: TYPE' + type);
 
         return [SELECT  Id, 
                         name, 
@@ -293,9 +291,8 @@ public with sharing class NES_ECDataImportExport {
                     Child_Enrollment_Component__r.Assignment_Logic__c,
                     Child_Enrollment_Component__r.Is_Required__c,
                     Child_Enrollment_Component__r.External_Id__c,
-                 Child_Enrollment_Component__r.Needed_for_Re_enrollment__c,
+                Child_Enrollment_Component__r.Needed_for_Re_enrollment__c,
                 Child_Enrollment_Component__r.Needed_for_ITR__c
-
             FROM    Enrollment_Component_Relationship__c
             WHERE   Id =: recIDs
             //AND   Child_Enrollment_Component__r.RecordType.Name = : NES_DashboardUtilities.STAGE_RT 

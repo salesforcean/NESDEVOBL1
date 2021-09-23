@@ -308,9 +308,8 @@ public class NES_ProgramEnrollmentHandler {
 
                              {//JB/SM:Included defensive coding-374966
                                  if ((thisPEWithDetail != null) && (thisPEWithDetail.hed__Account__c != null) && !(thisPEWithDetail.hed__Account__r.Use_Updated_ECA_Process__c))
-                                 {                                 
-                                    changedFields.add(str);
-                                 }
+
+                                changedFields.add(str);
                         }
                         }
                     } catch (Exception e) {System.debug('Error: ' + e); logger.logException('handleAfterUpdate', e);logger.saveLogs();

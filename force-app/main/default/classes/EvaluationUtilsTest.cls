@@ -4,41 +4,6 @@ public class EvaluationUtilsTest  {
     static void setup(){
     }
 
-    static testMethod void fieldUpdateTest(){
-        /*Account institutionAccount = Peak_TestUtils.createEducationalInstitutionAccount();
-        //Insert the School Year record
-        School_Year__c schoolYear = Peak_TestUtils.createSchoolYears('Test School Year', System.today());
-
-        //Create Academic Program Account i.e.., Child Account
-        Account academicProgram = Peak_TestUtils.createAccountForNewStudentData(institutionAccount.Id, schoolYear.Id);
-        academicProgram.Registration_Start_Date__c = System.today().addDays(-10);
-        academicProgram.Registration_End_Date__c = System.today().addDays(10);
-        update academicProgram;
-
-        // Create a Contact with 'Caretaker' record type
-        Contact careTakerContact = Peak_TestUtils.createTestContact('Caretaker', institutionAccount.Id);
-
-        //Create a care taker user for community
-        User careTaker = Peak_TestUtils.CreatePortalCaretTakerUser(careTakerContact.Id);
-
-        // Create a Contact with 'Students' record type
-        Contact student = Peak_TestUtils.createTestContact('Students', institutionAccount.Id);
-        
-        hed__program_enrollment__c program_enrollment_1 = Peak_TestUtils.createProgramEnrollment(String.valueOf(academicProgram.Id), String.valueOf(Student.Id), String.valueOf(schoolYear.Id), false);
-        insert program_enrollment_1;
-        
-        EvaluationUtils.fieldUpdate newFieldUpdate = new EvaluationUtils.fieldUpdate ();
-        newFieldUpdate.programEnrollmentId = program_enrollment_1.Id;
-        newFieldUpdate.objectAndFieldName = 'Annual_Student_Information__c.Grade_Level_Requested__c';
-        newFieldUpdate.studentOrHousehold = 'Student';
-        newFieldUpdate.schoolYear = '2019-2020';
-        newFieldUpdate.questionGroup = 'test';
-        newFieldUpdate.mostRecent = true;
-        newFieldUpdate.newValue = '5';
-        EvaluationUtils.fieldUpdate fUpdate = new EvaluationUtils.fieldUpdate(program_enrollment_1.Id,'Annual_Student_Information__c.Grade_Level_Requested__c','2019-2020','test',true,'5');
-*/    
-}
-    
     static testMethod void testNumberComparisonsEquals(){
         EvaluationUtils.criteriaItem testItem = new EvaluationUtils.criteriaItem();
         testItem.comparisonDataType = 'Number';

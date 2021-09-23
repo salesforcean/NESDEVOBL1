@@ -172,49 +172,6 @@ public class NES_AddStudentControllerTest {
             return res; 
         }
     }
-    
-    //added for 434464
-    static testMethod void schoolYear(){
-        User careTaker = [SELECT Id, ContactId,AccountId FROM User WHERE Username = 'portalUser@gmail.com'];	
-        
-        contact con = [select id,LastName from contact where Id=:caretaker.ContactId];
-        
-        Account houseHoldAccount = [select id,ShippingState,ShippingPostalCode,Name from Account where Id=:caretaker.AccountId];
-        houseHoldAccount.ShippingState = 'CA';
-        houseHoldAccount.ShippingPostalCode = '93065';
-        update houseHoldAccount;
-        
-        Account academicProgram = [SELECT Id, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c FROM Account
-                                          WHERE RecordType.Name = 'Academic Program' LIMIT 1];
-        
-        Enrollment_Component__c qCom = [SELECT Id,Process_Academic_Program__c FROM Enrollment_Component__c WHERE Assignment_Logic__c != null AND RecordType.Name = 'Process' LIMIT 1];
-        
-        Program_PostalCode__c pc = new Program_PostalCode__c(Name = 'Test',Academic_Program__c = qCom.Process_Academic_Program__c,PostalCode__c = '93065');
-        insert pc;
-        
-        Program_PostalCode__c pcOne = new Program_PostalCode__c(Name = 'Test',Academic_Program__c = qCom.Process_Academic_Program__c,PostalCode__c = '93064');
-        insert pcOne;
-        
-        Program_PostalCode__c pgrmPC = [select id,Name,Academic_Program__c,PostalCode__c from Program_PostalCode__c where Academic_Program__c =:qCom.Process_Academic_Program__c LIMIT 1];
-        
-        Map<Id, set<String>> institutionToZipListMap = new Map<Id, set<String>>();
-        Id acId= pgrmPC.Academic_Program__c;
-        set<string> pcValues = new set<string>{pgrmPC.PostalCode__c};
-        institutionToZipListMap.put(acId, pcValues);
-        
-        set<string> academicPCId = institutionToZipListMap.get(qCom.Process_Academic_Program__c);
-        String pcSingleValue = new List<String> (academicPCId).get(0);
-        
-        System.runAs(careTaker) {
-            Test.startTest();
-            Peak_Response res = NES_AddStudentController.getSchoolYears(academicProgram.Id);
-            system.assert(academicPCId.contains(houseHoldAccount.ShippingPostalCode));
-            Test.stopTest();
-        }
-        
-    }
-    
-    
     //added for US116612
     
     static testMethod void unitTestOne() {

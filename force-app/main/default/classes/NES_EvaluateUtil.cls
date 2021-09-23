@@ -868,7 +868,7 @@ public without sharing class NES_EvaluateUtil {
 
         System.debug(question.Question_Type__c);
         
-        /*if(question.Question_Type__c == 'Picklist' && question.Question_Prompt__c == '<p>What grade will you be requesting for this student?</p>'){
+        if(question.Question_Type__c == 'Picklist' && question.Question_Prompt__c == '<p>What grade will you be requesting for this student?</p>'){
             wrap.exclPicklistValues = new List<NES_EvaluateUtil.PicklistOption>();
             for (Enrollment_Component_Picklist_Option__c option : question.Enrollment_Component_Picklist_Options__r) {
                 
@@ -882,7 +882,7 @@ public without sharing class NES_EvaluateUtil {
                         wrap.exclPicklistValues.add(optionValue);
                 }
             }
-        }*/
+        }
 
         //Check the type of the record and check whether there any child records of type options
         if ((question.Question_Type__c == 'Radio' || question.Question_Type__c == 'Checkbox Group' || question.Question_Type__c == 'Picklist') && question.Enrollment_Component_Picklist_Options__r != null) {

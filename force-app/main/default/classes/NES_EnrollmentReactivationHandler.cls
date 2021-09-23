@@ -24,6 +24,7 @@ public without sharing class NES_EnrollmentReactivationHandler {
         
         Peak_Response peakResponse = new Peak_Response();
         String message;
+        
 
         
         hed__Program_Enrollment__c peRecord = [Select Id, Status__c, hed__Contact__c,Enrollment_Type__c,
@@ -62,6 +63,7 @@ public without sharing class NES_EnrollmentReactivationHandler {
                                                                                 && reactivationType.toUpperCase() == 'RE_ENROLLMENT'){
                 //Sravani:Added code
                 NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,'SYReEnroll');                                                                  
+
                 NES_EnrollmentReactivationBase process = getProcessInstance(studPEID, reactivationType);
                 process.execute();
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';

@@ -3,19 +3,16 @@
     doInit : function(component, event, helper) {
         // calling 'validatePE' method in the controller 'NES_ReactivationNewSYHelper'
         var action = component.get("c.validatePE");
-        
         // passing recordID as parameter to the method
         action.setParams({
             programEnrollmentId:component.get("v.recordId"),  
         });
-        
         action.setCallback(this, function(response){
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
                 if(returnedResponse.isValid=='valid'){
                     component.set("v.PErecordDetails",returnedResponse);
-                    
                     helper.getSchoolYears(component, event, helper);   
                 } else {
                     /*
@@ -29,9 +26,7 @@
                         "title": "Invalid PE!",
                         "message": JSON.stringify(returnedResponse.isValid),
                     });
-                    
                 }
-                
             } else {
                 var error = response.getError();
                 component.set("v.isError",true);
@@ -44,7 +39,6 @@
     getGrades : function(component, event, helper, selectedYr) {
         var PErecordDetails = component.get("v.PErecordDetails");
         var action = component.get("c.getGradeLevels");
-        
         action.setParams({
             selectedYr:selectedYr,
             instituteName:PErecordDetails.programEnrollment.hed__Account__r.Parent.Name,
@@ -56,11 +50,8 @@
                 console.log(JSON.stringify(response.getReturnValue()));
                 if(response.getReturnValue().length > 0){
                     component.set("v.noGradeLevel", false);
-                    
-                    
                     returnedResponse.forEach(grade => {
                         if(grade.hasOwnProperty('Name')){
-                        
                         var studentGradeLevel = null;
                         switch(grade.Name){
                         case 'K':
@@ -87,17 +78,14 @@
                                              grade.Name = studentGradeLevel;
                                              }
                                              });
-                    
                     returnedResponse.sort(function(a, b) {
                         return a.index - b.index;
                     });
-                    
                     component.set("v.gradeLevels", returnedResponse);
                 } else{
                     component.set("v.gradeLevels", '');
                     component.set("v.noGradeLevel", true);
                 }
-                
             } else {
                 var error = response.getError();
                 console.log("Error: ", error);
@@ -108,6 +96,7 @@
     handleContinue : function(component, event, helper) {
         var action = component.get("c.newYearReactivate");
         var PErecordDetails = component.get("v.PErecordDetails");
+
         var grade = component.get("v.gradeLevel");
         // Added for Defect 456259
         var newSchoolYear = component.find("year").get("v.value");
@@ -116,33 +105,36 @@
             component.set("v.loaded", true);
             component.set("v.reactivateMessage",true);            
         }else{ // End for Defect 456259 
-            action.setParams({
-                studentId:PErecordDetails.programEnrollment.hed__Contact__c,
-                instituteNam:PErecordDetails.programEnrollment.hed__Account__r.Parent.Name,
-                schoolYear:component.get("v.schoolYear"),
-                gradeLevels:grade=='0'?'K':grade,
-                callType:'application',
-                enrollFlag:true,
-                programEnrollmentId:PErecordDetails.programEnrollment.Id
-            });
-            action.setCallback(this, function(response){
-                var state = response.getState();
-                if(state === "SUCCESS"){
-                    var returnedResponse = response.getReturnValue();
-                    component.set("v.loaded", true);
-                    component.find('notifLib').showToast({
-                        "variant": "SUCCESS",
-                        "title": "SUCCESS",
-                        "message": "Successfully reactivated.",
-                    });
-                    $A.get("e.force:closeQuickAction").fire();
-                }else {
-                    var error = response.getError();
-                    console.log("Error: ", error);
-                }
-            })
-            $A.enqueueAction(action);
+
+        action.setParams({
+            studentId:PErecordDetails.programEnrollment.hed__Contact__c,
+            instituteNam:PErecordDetails.programEnrollment.hed__Account__r.Parent.Name,
+            schoolYear:component.get("v.schoolYear"),
+            gradeLevels:grade=='0'?'K':grade,
+            callType:'application',
+            enrollFlag:true,
+            programEnrollmentId:PErecordDetails.programEnrollment.Id
+        });
+        action.setCallback(this, function(response){
+            var state = response.getState();
+            if(state === "SUCCESS"){
+                var returnedResponse = response.getReturnValue();
+                component.set("v.loaded", true);
+                component.find('notifLib').showToast({
+                    "variant": "SUCCESS",
+                    "title": "SUCCESS",
+                    "message": "Successfully reactivated.",
+                });
+                $A.get("e.force:closeQuickAction").fire();
+            }else {
+                var error = response.getError();
+                console.log("Error: ", error);
+            }
+        })
+        $A.enqueueAction(action);
+
         }
+
     },
     getSchoolYears : function(component, event, helper) {
         var PErecordDetails = component.get("v.PErecordDetails");
@@ -155,7 +147,6 @@
             var state = response.getState();
             if(state === "SUCCESS"){
                 var returnedResponse = response.getReturnValue();
-                
                 if(response.getReturnValue().length > 0){
                     component.set("v.noSchoolYears", false);
                     component.set("v.schoolYears", returnedResponse);
@@ -167,7 +158,6 @@
                     });
                 }
                 component.set("v.loaded", true);
-                
             } else {
                 var error = response.getError();
                 console.log("Error: ", error);
@@ -175,5 +165,4 @@
         })
         $A.enqueueAction(action);
     }
-    
 })

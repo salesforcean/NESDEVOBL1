@@ -429,6 +429,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                         // ensure all other Stages are complete.
                         for(Enrollment_Component_Affiliation__c stageECA : stageECAs)
                         {
+                            System.debug('Printing the value of StageEca status-->'+stageECA.Status__c);
                             if (notApplicableStatuses.containsIgnoreCase(stageECA.Status__c)) // skip Not Applicable Stages
                                 continue;
 
@@ -495,7 +496,6 @@ public without sharing class ECA_HierarchyStatusUpdate
         
         set;
     }
-    
-  
+
     public class ECAEvaluationException extends Exception {}
 }

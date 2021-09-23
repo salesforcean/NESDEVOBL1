@@ -60,6 +60,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
                                                                     Child_Enrollment_Component__r.RecordType.Name = 'Section'];
         System.debug(sectionECRs.size());
         List<Id> allIds = new List<Id>();
+
         //Fix for defect #210102 on 2020-07-15 (Mark Membrino)
         for(Enrollment_Component_Affiliation__c stageeca:eca){
             allIds.add(stageeca.Enrollment_Component__r.Id);
@@ -163,7 +164,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
         } else if(!programEnrollment.Opportunities__r.isEmpty() ) {
             for(Opportunity opp:programEnrollment.Opportunities__r) {                
                 
-                if (opp.StageName<>'Closed Lost') {
+                if (opp.StageName<>'Closed Lost') {    
                     system.debug('in NES_StudentReactivation-->opp.StageBlock-->'+opp.StageName);
                     isInsert = false;
                     break;

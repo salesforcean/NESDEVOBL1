@@ -22,6 +22,7 @@
     <!-- Updated default text for the Bug :177563 by Jagadeesh -->
     <aura:attribute name="disclaimerText" type="String" default="NOTE: Passing these preliminary eligibility checks does not guarantee your student's spot in school, but it gets the most important questions out of the way first so you aren't spending more time than necessary." />
     <aura:attribute name="SchoolErrormsg" type="String" default="There are no schools available for the selected state."/>
+    <aura:attribute name="SchoolYearErrormsg" type="String" default="The school you have selected does not have any school years available."/>
     <aura:attribute name="showRelationshipError" type="Boolean" default="false" />
     <aura:attribute name="addStudentActive" type="Boolean" default="false" />
     <aura:attribute name="disableCreate" type="Boolean" default="true" />
@@ -214,7 +215,7 @@
                                 </aura:iteration>
                             </lightning:layout>
                         </lightning:layoutItem>
-                    </aura:if>
+                    </aura:if> 
                 </aura:if>
                 <div aria-live="assertive">
                     <aura:if isTrue="{!v.message !=''}">

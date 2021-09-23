@@ -58,9 +58,13 @@ public abstract class NES_EnrollmentReactivationBase {
         // Added Start_Year__r.Current_Year__c for 335376 by Shravani Pendyala
         // fetch PE rec
         
+
+
         // "WithdrawalCategory__c","Enrollment_Type__c" fields Added by Shravaniin studPE for US#389103 on 5/25/21
         studPE =
             [SELECT Id,Enrollment_Type__c, WithdrawalCategory__c, Start_Year__r.Current_Year__c,hed__Account__r.ParentId, Name, hed__Contact__r.Name,hed__Account__r.Registration_Start_Date__c, hed__Account__r.OwnerId,
+
+
                 hed__Account__r.Registration_End_Date__c, hed__Account__r.Confirmation_End_Date__c,hed__Contact__r.AccountId, 
                 AcademicPerformanceEligibility__c, RecordTypeId, RecordType.Name, Status__c, Household_Program_Enrollment__c,
                 (SELECT Id,StageName FROM Opportunities__r)
@@ -116,16 +120,20 @@ public abstract class NES_EnrollmentReactivationBase {
             throw new InvalidParameterValue_Exception(
                 'This Program Enrollment is not eligible; Start Year is Current Year:' + studPE.Start_Year__r.Current_Year__c + ', Expected: true');
         }
+
+
         
         if (type == Reactivation.SOFT && studPE.Status__c == 'Inactive' && (studPE.Enrollment_Type__c== 'Returning Student'))
             throw new InvalidParameterValue_Exception('Program Enrollment is eligible only for Full ReActivation');
         
         
+
+
         //Added for US#389103 by Shravani Pendyala on 5/25/21
         if(studPE.Status__c=='Inactive' && (studPE.WithdrawalCategory__c=='No Show' || studPE.WithdrawalCategory__c=='Not Returning')){ 
           throw new InvalidParameterValue_Exception('Program Enrollment is eligible only for Full ReActivation');
         }
-  
+
     }
 
     // move to implementing child class...
@@ -163,15 +171,19 @@ public abstract class NES_EnrollmentReactivationBase {
 
         Set<Id> ECAsOfTypeDocument = new Set<Id>();
         Set<Id> ECsOfTypeDocument = new Set<Id>();
+
+
         system.debug('ecaList to process' + ecaList);
         for (Enrollment_Component_Affiliation__c eca : ecaList) {
             System.debug('my list-----'+eca);
-            //Maddileti :8/20/Defect-450194 -Modified code
-            if((eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Enrollment_Component__r.Needed_for_ITR__c == true) || (eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Status__c == 'Not Started'))
+            //Maddileti :8/20/Defect-450194/474866 -Modified code
+            if(((eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Enrollment_Component__r.Needed_for_ITR__c == true) || (eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Status__c == 'Not Started')) && enrollmentType == 'RE-ENROLLMENT')
               eca.Status__c = 'Not Applicable';
             else
             {
             if((eca.Enrollment_Component__r.RecordType.Name != 'Stage') && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete' || eca.Status__c == 'Not Applicable')) {
+
+
                 eca.Status__c = 'Not Started';
             }else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
                 if(eca.Order__c == 2){
@@ -179,10 +191,14 @@ public abstract class NES_EnrollmentReactivationBase {
                 }else if(eca.Order__c > 2){
                     eca.Status__c = 'Not Started';
                 }
+                
+
                 // Added for testing
                StageEcaToUpdate.add(eca);	
               StageECASet.add(eca.Id);
                  // Added for testing
+
+
             }
             system.debug('Enrollment Type*********'+eca.Program_Enrollment__r.Enrollment_Type__c);
             //Added for making Form status as In Progress, This will run only for Re-Enrolling Students for Defect 244255
@@ -197,12 +213,16 @@ public abstract class NES_EnrollmentReactivationBase {
                 //For Reenrollments, all ECAs should have been completed once and for documents, they should be marked as In Progress.
                 if(type==Reactivation.RE_ENROLLMENT) 
                     eca.Status__c = 'In Progress';
+
+
             }
             }
             //added for testing
  		if(!StageECASet.Contains(eca.Id))
             //added for testing
-            ecaToUpdate.add(eca);  
+
+ 
+            ecaToUpdate.add(eca);     
          
             
             
@@ -223,6 +243,8 @@ public abstract class NES_EnrollmentReactivationBase {
                for (Enrollment_Document__c ed : allEDsToUpdate) {
                    ed.Status_Reason__c = 'Invalid-Reenrollment';
                    EDsAlreadyAdded.add(ed.id);
+
+
                }
 
                //MM 10/5/2020 We need to find the house docs that might be tied to a different ECA.
@@ -236,10 +258,12 @@ public abstract class NES_EnrollmentReactivationBase {
                        allEDsToUpdate.add(ed);
                }
 
+
                if (allEDsToUpdate.size() > 0)
                    update allEDsToUpdate;
            }
            
+
            update ecaToUpdate;
         }
     }

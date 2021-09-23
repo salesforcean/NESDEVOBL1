@@ -404,8 +404,6 @@ public without sharing class NES_AddStudentHelper {
 
     /* Creates the student related to the caretaker*/
     public static Peak_Response insertingStudent(String studentJSON, String questionJSON) {
-        system.debug('==>studentJSON '+studentJSON);
-        system.debug('==>questionJSON '+questionJSON);
         Peak_Response peakResponse = new Peak_Response();
         User caretaker = [SELECT Id, AccountId, ContactId, Contact.RecordType.Name,Contact.Account.Family_Enrollment_Counselor__c, Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId()];
         List <Contact> CtList = [Select Id, V2_Role__c, Unverified__c from Contact where AccountId =: caretaker.Contact.AccountId 
@@ -607,9 +605,7 @@ public without sharing class NES_AddStudentHelper {
                                 if (String.isNotBlank(data.schoolYear)) {
                                     query += ' AND School_Year__c = \'' + data.schoolYear + '\' ';
                                 }
-                                system.debug('==>query '+query);
                                 childRecords = Database.query(query);
-                                system.debug('==>childRecords '+childRecords);
                             } else {
 
                                 if (objectApiName == 'Account') {
@@ -634,11 +630,10 @@ public without sharing class NES_AddStudentHelper {
                             if (childRecords.size() > 0) {
                                 SObject sObj = NES_EvaluateUtil.updateDataVoid(data.questionType, data.targetField, fieldApiName, childRecords[0]);
                                 update sObj;
-                                system.debug('==>sObj '+sObj);
                                 //Capture the birtdate for later use in the hard stop logic.
                                 if (fieldApiName == 'Birthdate__c')
                                     birthdate = ((contact) sObj).Birthdate__c;
-								system.debug('==>birthdate '+birthdate);
+
                             } else {
                                 SObject sObj = Schema.getGlobalDescribe().get(objectApiName).newSObject();
                                 sObj = NES_EvaluateUtil.updateDataVoid(data.questionType, data.targetField, fieldApiName, sObj);
@@ -744,7 +739,7 @@ public without sharing class NES_AddStudentHelper {
                     if (eca <> null && eca.Enrollment_Component__c <> null && eca.Program_Enrollment__c <> null)
                         nonNullInsertingAffiliations.add(eca);
                 }
-                //Commented the below try catch and implemented retry logic to fix issue reported by Perf Team for BUG217916
+				//Commented the below try catch and implemented retry logic to fix issue reported by Perf Team for BUG217916
                 /*try {
                     insert nonNullInsertingAffiliations;
                 } catch (Exception e) {
@@ -785,10 +780,8 @@ public without sharing class NES_AddStudentHelper {
 
                 //With the ECA rewrite, we changed the hard stop process to only look at dates from the Academic program.
                 Boolean shouldHardStop = false;
-				system.debug('==>birthdate '+birthdate);
-                system.debug('==>MaxSpecialEdBirthdate__c '+academicProgram.MaxSpecialEdBirthdate__c);
-                system.debug('==>Too_Young_Cutoff__c '+academicProgram.Too_Young_Cutoff__c);
-                //Replaced with MaxSpecialEdBirthdate__c instead of Too_Old_Cutoff__c in below if condition for 335863
+
+				//Replaced with MaxSpecialEdBirthdate__c instead of Too_Old_Cutoff__c in below if condition for 335863
                 if (birthdate < academicProgram.MaxSpecialEdBirthdate__c || birthdate > academicProgram.Too_Young_Cutoff__c)
                     shouldHardStop = true;
  
@@ -797,7 +790,7 @@ public without sharing class NES_AddStudentHelper {
                     peakResponse.messages.add(message);
                     newStudentEnrollment.Status__c = 'Ineligible';
                     update newStudentEnrollment; 
-                    system.debug('==>message '+message);
+                    
                     //added for the US 169322 - Jagadeesh Bokam
                     //If the student has been hard stopped, the opp should be closed lost.
                     oppToInsert.StageName = 'Closed Lost';
@@ -806,15 +799,10 @@ public without sharing class NES_AddStudentHelper {
                     //Ended for the US 169322 - Jagadeesh Bokam
                 } 
 
-                //The case creation is now seperated out to a queable.
-                System.enqueueJob(new NES_AddStudentCaseQueueable(caretaker,newStudentEnrollment.Id,newStudent));
-                //Call waitlistCalculatorBatch for defect 466131 by Krishna Peddanagammol on 2021-08-27
-                Set<Id> programEnrollmentIds = new Set<Id>();
-                programEnrollmentIds.add(newStudentEnrollment.Id);
-                if (programEnrollmentIds.size() > 0) {
-                    Database.executeBatch(new NES_WaitListCalculatorBatch(programEnrollmentIds),100);
-                }
-                
+               //The case creation is now seperated out to a queable.
+               System.enqueueJob(new NES_AddStudentCaseQueueable(caretaker,newStudentEnrollment.Id,newStudent));
+
+
                 peakResponse.success = true;
             } catch (Exception e) {
                 peakResponse.success = false;
@@ -832,13 +820,11 @@ public without sharing class NES_AddStudentHelper {
 
     //Grabs all the school years based on the given school
     public static Peak_Response grabSchoolYears(Id institutionId) {
-        
+        System.debug(institutionId);
         Peak_Response peakResponse = new Peak_Response();
         Id processId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get('Process').getRecordTypeId();
         Id programId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
-        
-        User caretaker = [SELECT Contact.inputParameter__c,contact.account.Family_Enrollment_Counselor__c,Contact.Account.ShippingState, Contact.Account.ShippingPostalCode  FROM User WHERE Id = :UserInfo.getUserId()];
-        
+
         // Grab the process enrollment components to find valid programs with processes
         List<Enrollment_Component__c> processes = [
                 SELECT Id, Process_Academic_Program__c
@@ -872,55 +858,9 @@ public without sharing class NES_AddStudentHelper {
         for (Account program : programs) {
             schoolYearIds.add(program.School_Year__c);
         }
-        
-        // Added for user story 434474
-        Map<Id, set<String>> institutionToZipListMap = new Map<Id, set<String>> ();
-        for (Program_PostalCode__c ppc :  [SELECT Academic_Program__c,PostalCode__c FROM Program_PostalCode__c where Academic_Program__c in :programIds]) {
-            set<string> thisAPZips;
-            if (!institutionToZipListMap.containsKey(ppc.Academic_Program__c)) 
-                thisAPZips = new set<String>();
-            else
-                thisAPZips = institutionToZipListMap.get(ppc.Academic_Program__c);
 
-            thisAPZips.add(ppc.PostalCode__c);
-            institutionToZipListMap.put(ppc.Academic_Program__c, thisAPZips);
-        }
-        
-        List<School_Year__c> years = new List<School_Year__c>();
-        set<string> notZipCodeSchlYrIds = new set<string>();
-        set<string> matchingZipCode = new set<string>();
-        set<string> notMatchingZipCode = new set<string>();
-        Map<Id, Account> matchingPC = new Map<Id, Account>();
-        
-        for (Account institution : programs) {
-            if(institutionToZipListMap.containsKey(institution.Id)){
-                set<string> thisAPZips = institutionToZipListMap.get(institution.Id);
-                if (thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5))){
-                    matchingZipCode.add(institution.School_Year__c);
-                    matchingPC.put(institution.Id, institution);
-                }else{
-                    notMatchingZipCode.add(institution.Id);
-                }
-            }
-         }
-		
-       	set<Id> academicProgramIds = matchingPC.keyset();
-        
-        if(academicProgramIds.size() >= 1){
-            years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :matchingZipCode];            
-        }else{
-			for(Account acdPrgm : programs){
-                if(!academicProgramIds.contains(acdPrgm.Id) && !notMatchingZipCode.contains(acdPrgm.Id)){
-                    notZipCodeSchlYrIds.add(acdPrgm.School_Year__c);
-                }
-            }
-            
-            if(notZipCodeSchlYrIds.size() >= 1){
-                years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :notZipCodeSchlYrIds];
-            }
-        }  
-        //Ended user story 434474
-        
+        List<School_Year__c> years = [SELECT Id, Name FROM School_Year__c WHERE Id = :schoolYearIds];
+
         peakResponse.results = years;
         return peakResponse;
 
@@ -968,7 +908,7 @@ public without sharing class NES_AddStudentHelper {
         for (Account institution : institutionTempAccounts) {
             institutionsInState.add(institution.id);
         }
-		system.debug('==>institutionsInState '+institutionsInState);
+
         for (Program_PostalCode__c ppc :  [SELECT Academic_Program__c,PostalCode__c FROM Program_PostalCode__c where Academic_Program__c in :programIds]) {
             set<string> thisAPZips;
             if (!institutionToZipListMap.containsKey(ppc.Academic_Program__c)) 
@@ -979,8 +919,7 @@ public without sharing class NES_AddStudentHelper {
             thisAPZips.add(ppc.PostalCode__c);
             institutionToZipListMap.put(ppc.Academic_Program__c, thisAPZips);
         }
-        system.debug('==>institutionToZipListMap '+institutionToZipListMap.keyset());
-        system.debug('==>institutionToZipListMap '+institutionToZipListMap.values());
+
         System.debug('insti: ' + caretaker.Contact.Account.ShippingState);
         System.debug('insti: ' + institutionTempAccounts);
         Set<Account> institutionSet = new Set<Account>();
@@ -992,11 +931,8 @@ public without sharing class NES_AddStudentHelper {
                 for (Account child : institution.ChildAccounts) {
                     //This if this institution even has zips assigned.
                     boolean meetsZipCriteria = true;
-                    System.debug('institutionToZipListMap.containsKey(child.Id): ' + institutionToZipListMap.containsKey(child.Id));
-                    System.debug('child.Id: ' + child.Id);
                     if (institutionToZipListMap.containsKey(child.Id)) { //If this institution has no zips, they won't be in the map at all.
                         set<string> thisAPZips = institutionToZipListMap.get(child.Id);
-                        system.debug('==> APZIp '+thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5)));
                         if (!thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5)))
                             meetsZipCriteria = false;
                     }
@@ -1009,7 +945,7 @@ public without sharing class NES_AddStudentHelper {
         }
         List<Account> institutions = new List<Account>();
         institutions.addAll(institutionSet);
-		system.debug('==>institutions '+institutions);
+
 
         // Create empty lists for return to user
         List<School_Year__c> schoolYears = new List<School_Year__c>();
@@ -1030,12 +966,9 @@ public without sharing class NES_AddStudentHelper {
             Account schoolAccount = [SELECT Id, Name FROM Account WHERE Id = :caretaker.Contact.inputParameter__c];
             defaultAcc = schoolAccount;
         }
-		system.debug('==>defaultAcc '+defaultAcc);
-        system.debug('==>schoolYears '+schoolYears);
-        system.debug('==>institutions '+institutions);
-        system.debug('==>gradeLevels '+gradeLevels);
+
         NES_EvaluateUtil.NewStudentData data = new NES_EvaluateUtil.NewStudentData('', '', '','', '', '', '', '', defaultAcc, schoolYears, institutions, gradeLevels);//added additional spaces for US116612
-		system.debug('==>data '+data);
+
         return data;
     }
 

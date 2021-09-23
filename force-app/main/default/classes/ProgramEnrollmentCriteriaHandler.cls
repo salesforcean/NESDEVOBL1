@@ -1,6 +1,10 @@
 public class ProgramEnrollmentCriteriaHandler  {
     public static void handleAfterUpdate(List<Program_Enrollment_Criteria__c> newList, Map<Id, Program_Enrollment_Criteria__c> newMap, Map<Id, Program_Enrollment_Criteria__c> oldMap) {
-        List<Program_Enrollment_Criteria__c> allUpdatedPECs = new List<Program_Enrollment_Criteria__c>();
+       system.debug('newList'+ newList);
+       system.debug('newMap'+ newMap);
+       system.debug('oldMap'+ oldMap);
+       
+       List<Program_Enrollment_Criteria__c> allUpdatedPECs = new List<Program_Enrollment_Criteria__c>();
         //Collect all PE Criteria that have a changed result.
         for (Program_Enrollment_Criteria__c pec: newList) {
             if (pec.Result__c <> oldMap.get(pec.id).Result__c)

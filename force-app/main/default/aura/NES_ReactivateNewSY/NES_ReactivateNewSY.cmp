@@ -1,5 +1,4 @@
 <aura:component description="Reactivate Student Enrollment For New School Year; Used for 'Reactivation - New SY' quick action on PE record detail page." implements="force:hasRecordId,force:lightningQuickAction" access="global" controller="NES_ReactivationNewSYHelper" >
-    
     <!-- Attributes -->
     <aura:attribute name="gradeLevels" type="Grade_Level__c[]" description="to store list of grade levels"/> 
     <aura:attribute name="schoolYears" type="School_Year__c[]"  description="to store list of School years"/>
@@ -12,14 +11,14 @@
     <aura:attribute name="errorMessage" type="String"  description="to store error message"/>
     <aura:attribute name="recordId" type="String"  description="to store PE record 	Id"/>
     <aura:attribute name="PErecordDetails" type="Object"  description="tostore PE record details"/>
+
     <!--Added for defect 456259-->
     <aura:attribute name="reactivateMessage" type="Boolean" default="false" />
     <!--End for defect 456259-->
+
     <!-- Handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    
     <lightning:notificationsLibrary aura:id="notifLib"/>
-    
     <!-- Checking if there is an error -->
     <aura:if isTrue="{!v.isError}">
         <!-- Displaying the error message -->
@@ -28,7 +27,9 @@
             <!-- checking if 'loaded' variable is true -->
             <aura:if isTrue="{! v.loaded }">
                 <!-- School Years Dropdown start-->
+
                 <lightning:select aura:id="year" name="Yearselect" label="Select a Year"  value="{!v.schoolYear}" onchange="{!c.onYearChange}" disabled='{!v.noSchoolYears}'>
+
                     <option value="">-- None --</option>
                     <!-- iterating over  'schoolYears' collection to provide options to select from -->
                     <aura:iteration items="{!v.schoolYears}" var="year">
@@ -48,8 +49,7 @@
                 <!-- Grade Levels Dropdown end-->
                 <br/>
                 <!-- Continue Button for reactivate-->
-                <lightning:button variant="brand" label="Continue" title="Continue" onclick="{!c.handleContinue}" disabled="{!or(v.schoolYear=='',v.gradeLevel=='')}" />
-                
+                <lightning:button variant="brand" label="Continue" title="Continue" onclick="{! c.handleContinue }" disabled="{!or(v.schoolYear=='',v.gradeLevel=='')}" />
                 <aura:set attribute="else">
                     <!-- Spinner Start -->
                     <div style="position:relative">
@@ -57,13 +57,14 @@
                     </div>
                     <!-- Spinner End-->
                 </aura:set>
-                
             </aura:if>
         </aura:set>
     </aura:if>
+
     <!--Added for defect 456259-->
     <aura:if isTrue="{!v.reactivateMessage}">
         <div><p>This action button cannot be used for this request. Please use the correct action button for this contact.</p></div>
     </aura:if>
     <!--End for defect 456259-->
+
 </aura:component>

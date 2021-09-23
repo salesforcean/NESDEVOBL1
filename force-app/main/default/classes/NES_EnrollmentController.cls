@@ -204,11 +204,15 @@ and using those child components get the required component information
         schoolYears = [Select Id,current_year__c, Name from School_year__c where Id IN: schoolYrIds order by Name DESC];
         Boolean availability = (currentSchoolYear != schoolYears[0].Name);
         return availability;
-    }
+    } 
+
     /*
-    @AuraEnabled
+
+   @AuraEnabled
     public static NES_ReEnrUtilities.ReEnrResults doReEnrollment(Id studentContactId,Id studentPeId,String callType){
     	return	NES_ReEnrUtilities.reenrollingStudent(studentContactId,studentPeId,callType);       
+
+
 
     } */ 
 
@@ -216,12 +220,16 @@ and using those child components get the required component information
     public static NES_ReEnrUtilities.ReEnrResults InitReEnrollment(Id studentContactId,Id studentPeId,String callType){
         
     	return	NES_ReEnrUtilities.InitreenrollingStudent(studentContactId,studentPeId,callType);       
+
+
     } 
 	
     
     @AuraEnabled
+
     public static string getEnrollmentInfo(Id peId){
         
+
         String result = '';
     	hed__Program_Enrollment__c peRecord = [Select Id,Status__c,hed__Contact__c,Enrollment_Type__c,
                                                 (select id,Withdrawal_Category__c from Enrollments__r order by createddate desc)  
@@ -230,15 +238,21 @@ and using those child components get the required component information
 												
         	if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student')
             {
+
+
             	result = 'InitReActivation';
             }
             else            
             if((!peRecord.Enrollments__r.isEmpty()) && ((peRecord.Status__c == 'Withdrawn' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show') || (peRecord.Status__c == 'Complete' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning')))
             {
                 result = 'InitReEnrollment';               
+
+
             }
         
          return result;
         
     }
+
+
 }

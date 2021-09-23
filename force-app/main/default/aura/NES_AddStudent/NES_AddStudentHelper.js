@@ -1,6 +1,7 @@
 /**
  * Created by karolbrennan on 10/26/18.
- */
+ *Ravi09/07/2021
+ */ 
 ({
     /* Gets data relevant to the New Student form */
     getNewStudent: function(component, event, helper, shouldShowActiveStudents)
@@ -82,7 +83,7 @@
         component.set("v.newStudentData", null);
         helper.getNewStudent(component,event,helper);
         component.set("v.addStudentActive", false);
-        component.set("v.supplementalQuestionsLoaded",false);
+        component.set("v.fsupplementalQuestionsLoaded",false);
         component.set("v.supplementalQuestions",null);
         component.set("v.message", '');
     },
@@ -94,6 +95,8 @@
         newStudentData.SelectedSchoolYear = schoolYear;
         component.set("v.newStudentData", newStudentData);
         console.log('schoolYear', schoolYear);
+        console.log('StudentData:::'+newStudentData);
+       
         if(schoolYear) {
             helper.getSupplementalQuestions(component, event, helper);
         }
@@ -119,6 +122,11 @@
             var peakResponse = response.getReturnValue();
             if(peakResponse.success){
                 studentData.schoolYears = peakResponse.results;
+                if(studentData.schoolYears == '' || studentData.schoolYears ==  null ||studentData.schoolYears == undefined)
+                {
+                    component.set("v.message", 'The school you have selected does not have any school years available');
+               }
+                
                 studentData.SelectedSchoolId = schoolId;
                 studentData.schoolYears.sort(function(a,b){
                     if(a.Name < b.Name){
@@ -152,39 +160,77 @@
             schoolYearId : yearId
 
         });
-     //   console.log('getSupplementalQuestions(' + schoolId + ', ' + yearId );
+        console.log('getSupplementalQuestions(' + schoolId + ', ' + yearId );
         action.setCallback(this, function(response){
             var state = response.getState();
             if(state === "SUCCESS"){
                 component.set("v.disableCreate", false);
                 var returnedResponse = response.getReturnValue();
-            //    console.log(returnedResponse);
+              console.log('Response$$$-'+returnedResponse);
+               
                 var questions = [];
                 if(returnedResponse) {
                     for(var i=0;i<returnedResponse.length;i++) {
                         var question = returnedResponse[i];
-                        /*if(question.questionType === 'Radio') {
-                            var options = question.picklistValues;
-                            if(options) {
-                                var newOptions = [];
-                                for(var j=0;j<options.length;j++) {
-                                    var option = options[j];
-                                    option.value = options[j].Option_Value__c;
-                                    option.label = options[j].Option_Label__c;
-                                    newOptions.push(option);
-                                }
-                                question.picklistValues = newOptions;
+                        var missingGrades = '';
+                        // TODO: Check only for Grade related question
+						//console.log('questionPrompt' +question);
+                       // alert(JSON.stringify(question, null, 4));
+                       //alert(question.questionPrompt);
+                       
+                        if(question.questionType === 'Picklist'&& question.questionPrompt.includes("What grade will you be requesting for this student?")) {
+                          
+                            var incloptions = question.picklistValues;
+                            var excloptions = question.exclPicklistValues;
+                           
+                             
+                            if(incloptions.length == 0 ){
+                                missingGrades = 'There are no grades available for this school';
+                                component.set('v.questionMsg', missingGrades);
+                                //question.msg = missingGrades;
                             }
-                        }*/
+                           
+                            else if(excloptions){
+                                alert('Excl Option Size:: ' + excloptions.length);
+                                console.log(excloptions);
+                                for(var j=0;j<excloptions.length;j++) {
+                                    var exoption = excloptions[j];
+                                    //alert('Missing Option Val:::'+ exoption.value);
+                                    //alert('Missing Option Label:::'+ exoption.label);
+                                   
+                                    if(missingGrades == ''){
+                                    	missingGrades =  excloptions[j].value;
+                                    }
+                                    else{
+                                    	missingGrades = missingGrades + ',' + excloptions[j].value;
+                                    }
+                                }
+                                
+                                    /*missingGrades = 'Grade(s) '  + missingGrades  +' not available for this school at the moment';
+                                    component.set("v.questionMsg", missingGrades);*/
+                                	//alert(component.get("v.questionMsg"));
+                                	if(missingGrades.length>0 && missingGrades!=null){
+                                    missingGrades = 'Grade(s) '  + missingGrades  +' not available for this school at the moment';
+                                    component.set("v.questionMsg", missingGrades);
+                                }else{
+                                    component.set("v.questionMsg", '');
+                                }
+                            }
+                        }
+                        
+                        
+                        //
                         questions.push(question);
                     }
                     questions.sort(function(a, b){return a.order - b.order});
+                    console.log('questions'+JSON.stringify(questions));
                     component.set("v.supplementalQuestions", questions);
                     component.set("v.supplementalQuestionsLoaded", true);
                 }
             } else {
                 var error = response.getError();
                 console.log("Error: ", error);
+                
             }
         });
 

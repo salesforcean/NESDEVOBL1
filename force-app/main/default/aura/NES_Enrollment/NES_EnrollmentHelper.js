@@ -374,6 +374,7 @@
             var state = response.getState();
             if(state === "SUCCESS") {
                 var returnedResponse = response.getReturnValue();
+                //alert(JSON.stringify(returnedResponse));
                 var stages = [];
                 var completedStages = [];
                 var noOrderStages = [];
@@ -383,7 +384,7 @@
                     returnedResponse.sort(function(a, b){
                         return a.Order__c - b.Order__c
                     });
-	
+					//alert(JSON.stringify(returnedResponse));
                     console.log('#### Returned Response' + returnedResponse);
                     for(var i=0;i<returnedResponse.length; i++) {
                         if(returnedResponse[i].Order__c != null) {
@@ -415,7 +416,9 @@
                 }
 
                 component.set("v.completedStages", completeTally);
+                        //alert(component.get("v.completedStages"));
                 component.set("v.stages", stages);
+                        //alert(component.get("v.stages"));
                 console.log("Stage length: " + stages.length);
                 helper.getEnrollmentForms(component, event, helper);
             } else {

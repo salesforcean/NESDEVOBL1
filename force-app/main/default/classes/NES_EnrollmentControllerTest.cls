@@ -279,10 +279,6 @@ public with sharing class NES_EnrollmentControllerTest {
         Boolean response = NES_EnrollmentController.getIsEnrollmentReady(hpe.Id);
         Peak_Response pResponse = NES_EnrollmentController.reactivateStudent(hpe.Id);
         system.assertEquals(false, response);
-        hpe.Initial_ECA_Creation_Complete__c = true;
-        update hpe;
-        Boolean response1 = NES_EnrollmentController.getIsEnrollmentReady(hpe.Id);
-        system.assertEquals(true, response1);
         test.stopTest();
     }
 	

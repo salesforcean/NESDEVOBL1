@@ -54,7 +54,7 @@ public without Sharing class NES_ReEnrUtilities {
             peakResponse.success = true;
             UpdateECAs(studentPERecord.Id, caretakerEnrollment[0].Id,callType);
             EvaluationUtils.PerformAsyncNewStudentSteps(studentPERecord.Id, processComponent[0].Id, caretakerEnrollment[0].Id,callType); 
-          //  ValidateECAs(studentPERecord.Id, caretakerEnrollment[0].Id,callType);
+           // ValidateECAs(studentPERecord.Id, caretakerEnrollment[0].Id,callType);
             String gradeLevel = studentPERecord?.Program_Grade_Level__r?.Grade_Level__r?.Name; // need to remove
             ReEnrResults result = new ReEnrResults(studentPERecord.id , processComponent[0].Id, gradelevel, true);
             return result; 
@@ -73,7 +73,7 @@ public without Sharing class NES_ReEnrUtilities {
     
   public Static void UpdateECAs(Id programEnrollment,Id caretakerEnrollmentId,string EnrollmentType){
     List<Enrollment_Component_Affiliation__c> existEcas=new List<Enrollment_Component_Affiliation__c>();
-        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment FOR UPDATE]){
+        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c,Enrollment_Component__r.Name from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment FOR UPDATE]){
            
             existEcas.add(eca);
         }
@@ -90,27 +90,23 @@ public without Sharing class NES_ReEnrUtilities {
         system.debug('EvaluationUtils-Debug'+ EnrollmentType);
         
         if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment')){
-            system.debug('s');
-            
+                        
             for(Enrollment_Component_Affiliation__c eca :existEcas){
-                
-                if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){
-                    
-                    
-                    
+                 if(eca.Enrollment_Component__r.RecordType.Name =='Flag'){
+                     eca.Status__c = 'Not Applicable';
+                 }
+                else if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){
+                  
                     if(eca.Enrollment_Component__r.RecordType.Name == 'Document' ){
-                        
-                        system.debug('In Document Loop');
-                        
-                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student'){
+                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c != 'Not Applicable'){
                             
                             STDDocECAs.add(eca.id);
                             
-                            if(!(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)))
+                           /* if(!(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)))
                                 
                                 eca.Status__c = 'Not Applicable';
                             
-                            else
+                            else */
                                 
                                 eca.Status__c = 'Not Started';
                             
@@ -125,35 +121,26 @@ public without Sharing class NES_ReEnrUtilities {
                         }
                         
                     }
-                    
-                    
-                    
+                
                     else if(((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c != 'Household' && eca.Status__c != 'Complete'))){
                         
-                        system.debug('In Blank Assignment-Student');
-                        
                         eca.Status__c = 'Not Started';
-                        
-                        
-                        
                     }
                     
                     else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Complete')){
                          eca.Status__c = 'Not Started';
                         
                     }  
-                     else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete' && eca.Enrollment_Component__r.RecordType.Name == 'Form')){
+                     else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete' && eca.Enrollment_Component__r.RecordType.Name == 'Form' && eca.Enrollment_Component__r.Name == 'Household Information' )){
                          eca.Status__c = 'In Progress';
                         
                     }
                     
                     else{
                         
-                        system.debug('In Else');
-                        
-                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c == 'Complete')
+                    if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c == 'Complete')
                             
-                        {  system.debug('Student- Complete');
+                        {  
                          
                          eca.Status__c = 'Not Started';
                         // eca.Is_Dirty__c = true;
@@ -161,10 +148,9 @@ public without Sharing class NES_ReEnrUtilities {
                         }
                         
                         
-                        
                   else if((!(eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete')))
                             
-                        { system.debug('Student- NA');
+                        { 
                          
                          eca.Status__c = 'Not Applicable';
                          
@@ -175,7 +161,7 @@ public without Sharing class NES_ReEnrUtilities {
                     ecastoUpdate.add(eca);
                     
                 }
-                   if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
+                else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
                     
                     if(eca.Order__c == 1 && eca.Status__c != 'Complete' ){
                         
@@ -195,39 +181,20 @@ public without Sharing class NES_ReEnrUtilities {
                     
                     StageEcaToUpdate.add(eca);            
                     
-                    //           StageECA.add(eca.Id);
-                    
-                    //   system.debug('StageEcaToUpdate'+ StageEcaToUpdate);
-                    
-                    
-                    
                 }
                 
                 
-                
-                
-                
-                //existEcas.add(eca);
-                
             }
-            
-            system.debug('ECAs to be Updated'+ ecastoUpdate);
-            
-            
-            
+                       
             List<Enrollment_Document__c> allEDsToUpdate = new List<Enrollment_Document__c> ();
             
             for (Enrollment_Document__c ed : [select id, Enrollment_Component_Affiliation__c, Status_Reason__c from Enrollment_Document__c where Enrollment_Component_Affiliation__c in : STDDocECAs or (Program_Enrollment__c = : caretakerEnrollmentId and Enrollment_Component_Affiliation__r.Enrollment_Component__c in : HHDocECs)]) {
-                
-                system.debug('Enrolldocs'+ ed);
                 
                 ed.Status_Reason__c = 'Not Applicable';
                 
                 allEDsToUpdate.add(ed);
                 
             }
-            
-            
             
             if (allEDsToUpdate.size() > 0)
                 
@@ -254,21 +221,22 @@ public without Sharing class NES_ReEnrUtilities {
                     update StageEcaToUpdate;
                     
                 }}
-            
-            if(ecastoUpdate.size() > 0)
+           
+              if(ecastoUpdate.size() > 0)
                 
                 update ecastoUpdate;
-            
+          
         }
   }   
   
- /*    public Static void ValidateECAs(Id programEnrollment,Id caretakerEnrollmentId,string EnrollmentType){
+ /* public Static void ValidateECAs(Id programEnrollment,Id caretakerEnrollmentId,string EnrollmentType){
     List<Enrollment_Component_Affiliation__c> existEcas=new List<Enrollment_Component_Affiliation__c>();
-        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment AND Enrollment_Component__r.Name = 'Student Information' FOR UPDATE]){
+        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment AND Enrollment_Component__r.Name = 'Waitlist'and Enrollment_Component__r.RecordType.Name = 'Stage' and Program_Enrollment__r.WaitlistFlag__c ='Active']){
            
             existEcas.add(eca);
         }
          if(existEcas.size() > 0){
+             system.debug('In Validate');
             for(Enrollment_Component_Affiliation__c eca :existEcas){
                  eca.Status__c = 'Not Started';
             }
@@ -277,7 +245,7 @@ public without Sharing class NES_ReEnrUtilities {
                 update existEcas;
          } 
          
-     }*/
+     } */
  
  public Static void createOpportunity(List<Contact> studentContact,hed__Program_Enrollment__c studentPERecord,List<Account> AcademicProgram, string callType){
      

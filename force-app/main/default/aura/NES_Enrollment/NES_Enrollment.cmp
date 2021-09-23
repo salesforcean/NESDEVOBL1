@@ -106,6 +106,7 @@
                               <div class="slds-progress">
                                 <ol class="slds-progress__list">
                                     <aura:iteration items="{!v.stages}" var="stage">
+                                      <!--  {!stage.Enrollment_Component__r.Name}-->
                                       <li class="{!stage.Status__c == 'Complete'
                                                                 ? 'slds-is-completed slds-progress__item'
                                                                 : stage.Status__c == 'In Progress'

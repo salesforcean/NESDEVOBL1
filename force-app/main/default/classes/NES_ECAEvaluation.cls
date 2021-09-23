@@ -804,12 +804,16 @@ AND Enrollment_Component__c IN :ECsToQueryFor
           }            
       }
                Boolean updateFlag = false;
+            
                                                        
+                                                      
             List<Enrollment_Component_Affiliation__c> affiliations = [
                         SELECT Enrollment_Component__c, Status__c
                         FROM Enrollment_Component_Affiliation__c
                         WHERE Program_Enrollment__c = :studentEnrollmentId
                    ]; 
+           
+           
                                                        
            List<Enrollment_Component_Affiliation__c> assignmentAffiliations = evalAssignment(studentId, caretakerId, accountId, 
                                                    studentEnrollmentId, caretakerEnrollmentId, stageRelationships, formRelationships, sectionRelationships, 
