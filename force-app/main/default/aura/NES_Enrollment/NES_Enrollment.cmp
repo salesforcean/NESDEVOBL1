@@ -107,18 +107,21 @@
                                 <ol class="slds-progress__list">
                                     <aura:iteration items="{!v.stages}" var="stage">
                                       <!--  {!stage.Enrollment_Component__r.Name}-->
-                                      <li class="{!stage.Status__c == 'Complete'
-                                                                ? 'slds-is-completed slds-progress__item'
-                                                                : stage.Status__c == 'In Progress'
-                                                                    ? 'slds-is-active slds-progress__item'
-                                                                    : 'slds-progress__item'}" onmouseenter="{!c.stepHover}" onmouseleave="{!c.stepHover}">
-                                            <button disabled="disabled" class="slds-progress__marker slds-button"
-                                                    style="{!stage.Status__c == 'Complete' ? 'background:url('+$Resource.icons+'/ok.png) center center no-repeat #3c8630!important;background-size:100%!important;border-width: 3px;' : ''}"
-                                                    title="{!stage.Enrollment_Component__r.Name}"> 
-                                                <!-- Text above the status indicator  is to be removed By Ravi-->
-                                                <!--span class="slds-assistive-text">{!stage.Enrollment_Component__r.Name}</span-->
-                                            </button>
-                                        </li> 
+                                        <!--<aura:if isTrue="{!stage.Enrollment_Component__r.Name != 'Open Application'}">-->
+                                            <li class="{!stage.Status__c == 'Complete'
+                                                       ? 'slds-is-completed slds-progress__item'
+                                                       : stage.Status__c == 'In Progress'
+                                                       ? 'slds-is-active slds-progress__item'
+                                                       : 'slds-progress__item'}" onmouseenter="{!c.stepHover}" onmouseleave="{!c.stepHover}">
+                                                <button disabled="disabled" class="slds-progress__marker slds-button"
+                                                        style="{!stage.Status__c == 'Complete' ? 'background:url('+$Resource.icons+'/ok.png) center center no-repeat #3c8630!important;background-size:100%!important;border-width: 3px;' : ''}"
+                                                        title="{!stage.Enrollment_Component__r.Name}"> 
+                                                    <!-- Text above the status indicator  is to be removed By Ravi-->
+                                                    <!--span class="slds-assistive-text">{!stage.Enrollment_Component__r.Name}</span-->
+                                                </button>
+                                            </li> 
+                                        <!--</aura:if>-->
+                                      
                                 
                                     </aura:iteration>
                                 </ol>

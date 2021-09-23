@@ -418,7 +418,7 @@
                 component.set("v.completedStages", completeTally);
                         //alert(component.get("v.completedStages"));
                 component.set("v.stages", stages);
-                        //alert(component.get("v.stages"));
+                        //alert(JSON.stringify(component.get("v.stages")));
                 console.log("Stage length: " + stages.length);
                 helper.getEnrollmentForms(component, event, helper);
             } else {

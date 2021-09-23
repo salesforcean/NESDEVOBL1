@@ -1769,8 +1769,10 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         Map<Id, Opportunity> opportunityMap = new Map<Id, Opportunity>();
         Map<Id, Id> programEnrollmentIdToAccountIds = new Map<Id, Id>();
         //Commented Below line and added generic soql line for #430196
-        //List<hed__Program_Enrollment__c> programEnrollments = [Select id, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
-        List<hed__Program_Enrollment__c> programEnrollments = GenericSOQLQueries.programEnrollmentDetails(programEnrollmentList);
+        //List<hed__Program_Enrollment__c> programEnrollments = [Select id, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList]; Commented query and updated the below query with Open Application Flag // DK
+        List<hed__Program_Enrollment__c> programEnrollments = [Select id, Open_Application__c, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
+       //	List<hed__Program_Enrollment__c> programEnrollments = GenericSOQLQueries.programEnrollmentDetails(programEnrollmentList);
+       
         List<hed__Program_Enrollment__c> programEnrollmentsToUpdate = new List<hed__Program_Enrollment__c>();
         
         for (Opportunity opp : [
@@ -1809,8 +1811,12 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         }
         
         for (Program_Grade_Level__c pgl : [
-            SELECT Id, Academic_Program__c, ActivateWaitlist__c, StartWaitlist__c, EndWaitlist__c
+            //SELECT Id, Academic_Program__c, ActivateWaitlist__c, StartWaitlist__c, EndWaitlist__c
+            //FROM Program_Grade_Level__c   Commented query and updated the below query with Open Application Flag // DK
+            
+            SELECT Id, Academic_Program__c, ActivateWaitlist__c, StartWaitlist__c, EndWaitlist__c,Active_Open_Application__c,Start_Open_Application__c,End_Open_Application__c
             FROM Program_Grade_Level__c
+            
             WHERE Academic_Program__c IN:programEnrollmentIdToAccountIds.values()
         ]) {
             List<Program_Grade_Level__c> tempGradeLevels = new List<Program_Grade_Level__c>();
@@ -1834,10 +1840,16 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                     List<Program_Grade_Level__c> pgls = programGradeLevelMap.get(pe.hed__Account__c);
                     
                     for(Program_Grade_Level__c pgl : pgls) {
-                        
-                        if(pgl.Id == pe.Program_Grade_Level__c && pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) {
+                                                
+                       // if(pgl.Id == pe.Program_Grade_Level__c && pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) {
                             
-                            pe.WaitlistFlag__c = 'Active';
+                          //  pe.WaitlistFlag__c = 'Active';
+                          	if(pgl.Id == pe.Program_Grade_Level__c && (pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now() || pgl.Active_Open_Application__c == TRUE && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now() )) {
+                            if(pgl.ActivateWaitlist__c == TRUE){
+                                pe.WaitlistFlag__c = 'Active';
+                            }else{
+                                pe.Open_Application__c = 'Active';
+                            }
                             programEnrollmentsToUpdate.add(pe);
                             resetPEFlag = false;
                             break;
@@ -1845,7 +1857,8 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                             resetPEFlag = true;
                         }
                     }
-                    
+        
+                          
                     if(resetPEFlag) {
                         pe.WaitlistFlag__c = null;
                         programEnrollmentsToUpdate.add(pe);

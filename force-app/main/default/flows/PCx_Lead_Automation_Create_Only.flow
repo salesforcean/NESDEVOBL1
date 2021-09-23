@@ -143,6 +143,37 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.AEM_Unique_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
@@ -209,7 +240,7 @@
                 <stringValue>$User.Id </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_7823328242</name>
+        <name>formula_2_myRule_1_A1_7061323555</name>
         <dataType>String</dataType>
         <expression>{!$User.Id}</expression>
     </formulas>
@@ -220,7 +251,7 @@
                 <stringValue>$Label.Task_RT_ID_Form_Submission </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_2634106605</name>
+        <name>formula_3_myRule_1_A1_0227686923</name>
         <dataType>String</dataType>
         <expression>{!$Label.Task_RT_ID_Form_Submission}</expression>
     </formulas>
@@ -231,11 +262,11 @@
                 <stringValue>TEXT ([Lead].Channel_Type__c)  + &apos;-&apos; + [Lead].LastName</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_5803634826</name>
+        <name>formula_4_myRule_1_A1_3243559527</name>
         <dataType>String</dataType>
         <expression>TEXT ({!myVariable_current.Channel_Type__c})  + &apos;-&apos; + {!myVariable_current.LastName}</expression>
     </formulas>
-    <interviewLabel>PCx_Lead_Automation_Create_Only-7_InterviewLabel</interviewLabel>
+    <interviewLabel>PCx_Lead_Automation_Create_Only-8_InterviewLabel</interviewLabel>
     <label>PCx Lead Automation - Create Only</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -270,6 +301,42 @@
         <connector>
             <targetReference>myDecision5</targetReference>
         </connector>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Act.AEM Unique ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Act_AEM_Unique_ID__c</field>
+            <value>
+                <elementReference>myVariable_current.AEM_Unique_ID__c</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <processMetadataValues>
                 <name>dataType</name>
@@ -1881,7 +1948,7 @@
             </processMetadataValues>
             <field>OwnerId</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_7823328242</elementReference>
+                <elementReference>formula_2_myRule_1_A1_7061323555</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1947,7 +2014,7 @@
             </processMetadataValues>
             <field>RecordTypeId</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_2634106605</elementReference>
+                <elementReference>formula_3_myRule_1_A1_0227686923</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -2013,7 +2080,7 @@
             </processMetadataValues>
             <field>Subject</field>
             <value>
-                <elementReference>formula_4_myRule_1_A1_5803634826</elementReference>
+                <elementReference>formula_4_myRule_1_A1_3243559527</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
