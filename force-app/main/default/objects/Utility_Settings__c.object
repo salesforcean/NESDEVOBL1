@@ -3,6 +3,15 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <description>Used for projects where the developer plans to store many settings for a specific piece of functionality.</description>
     <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Document_Download__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field is used in Enrollment Document page.</description>
+        <externalId>false</externalId>
+        <label>Document Download</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Utility Settings</label>
     <visibility>Public</visibility>
 </CustomObject>

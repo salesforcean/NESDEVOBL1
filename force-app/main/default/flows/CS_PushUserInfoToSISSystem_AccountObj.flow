@@ -33,7 +33,6 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
     <decisions>
         <description>Check Record Type and Request Type</description>
         <name>Check_Record_Type</name>
@@ -87,7 +86,6 @@
             <targetReference>Check_Record_Type</targetReference>
         </connector>
         <object>Account</object>
-        <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

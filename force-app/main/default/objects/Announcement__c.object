@@ -153,7 +153,144 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Academic_Program</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.RecordType.DeveloperName</field>
+                <operation>equals</operation>
+                <value>Educational_Institution</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Announcements</relationshipLabel>
+        <relationshipName>Announcements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Alert_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Alert Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Critical</fullName>
+                    <default>false</default>
+                    <label>Critical</label>
+                </value>
+                <value>
+                    <fullName>Alert</fullName>
+                    <default>false</default>
+                    <label>Alert</label>
+                </value>
+                <value>
+                    <fullName>Notification</fullName>
+                    <default>false</default>
+                    <label>Notification</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Body__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Body</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Date_Off__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date Off</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Date_On__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Dismissable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Dismissable</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Program_Grade_Level__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The Program Grade Level the Announcement should be displayed for.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Program Grade Level the Announcement should be displayed for.</inlineHelpText>
+        <label>Program Grade Level</label>
+        <referenceTo>Program_Grade_Level__c</referenceTo>
+        <relationshipLabel>Announcements</relationshipLabel>
+        <relationshipName>Announcements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <label>Announcement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Alert_Type__c</columns>
+        <columns>Body__c</columns>
+        <columns>Date_On__c</columns>
+        <columns>Date_Off__c</columns>
+        <columns>Account__c</columns>
+        <columns>Program_Grade_Level__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>Announcement Name</label>
@@ -161,7 +298,14 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Announcements</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Account_OR_Program_Grade_Level</fullName>
+        <active>true</active>
+        <description>User may only populate the Account OR Program Grade Level, not both</description>
+        <errorConditionFormula>AND(Account__c != NULL, Program_Grade_Level__c != NULL)</errorConditionFormula>
+        <errorMessage>Account and Program Grade Level are both populated, please remove one. Announcements may only be created for either an Account OR a Program Grade Level, not both.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

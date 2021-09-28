@@ -154,6 +154,53 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Academic_Program__c</fullName>
+        <externalId>false</externalId>
+        <label>Academic Program</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Program_PostalCode</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PostalCode__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>PostalCode</label>
+        <length>20</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Potentially_Ineligible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Potentially Ineligible</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Program Postal Code</label>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
@@ -162,7 +209,14 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Program Postal Codes</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Confirm_Postal_Codes_are_5_digits</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(REGEX( PostalCode__c , &quot;\\d{5}&quot;))</errorConditionFormula>
+        <errorDisplayField>PostalCode__c</errorDisplayField>
+        <errorMessage>Postal Codes must be 5 digits</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

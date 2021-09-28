@@ -20,6 +20,7 @@ public without sharing class NES_AddStudentHelper {
         }
 
         Id programRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
+        System.debug('Record Id::::::::Ravi :::'+programRecordTypeId);
         List <Account> schools = [
                 SELECT Id, Name
                 FROM Account
@@ -29,17 +30,20 @@ public without sharing class NES_AddStudentHelper {
         ];
         System.debug(schools);
         Id schoolId = schools[0].Id;
-
+         System.debug('Schools::R::'+schools);
         List<NES_EvaluateUtil.Question> returnObjList;
 
         // Grab all the record type Ids
         Id sectionEnrollmentRecordTypeId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get(NES_DashboardUtilities.SECTION_RT).getRecordTypeId();
         Id questionGroupRecordTypeId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get(NES_DashboardUtilities.QUESTIONGROUP_RT).getRecordTypeId();
         Id questionsEnrollmentRecordTypeId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get(NES_DashboardUtilities.QUESTION_RT).getRecordTypeId();
-
+        
+        System.debug('Ravi::1:'+sectionEnrollmentRecordTypeId);
+        System.debug('Ravi::2:'+questionGroupRecordTypeId);
+        System.debug('Ravi::3:'+questionsEnrollmentRecordTypeId);
         //Get a List of Process type Enrollment Component records For Process Academic Program
         List<Enrollment_Component__c> processComponentList = [SELECT Id FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :schoolId AND RecordType.Name = :NES_DashboardUtilities.PROCESS_RT];
-
+        System.debug('Ravi::4:'+processComponentList);
         //Find the Id of the First Stage by using the Order on the Enrollment Relationships object
         Id firstStageComponentId;
         List<Enrollment_Component_Relationship__c> processRelationships = [
@@ -52,7 +56,8 @@ public without sharing class NES_AddStudentHelper {
         if (processRelationships.size() > 0) {
             firstStageComponentId = processRelationships[0].Child_Enrollment_Component__c;
         }
-
+       System.debug('Ravi:::5:'+processRelationships.size());
+        System.debug('Ravi:::6:'+firstStageComponentId);
         List<Id> componentIdsForLater = new List<Id>();
 
         // Create map for storing the Enrollment Component Id, assignment logic
@@ -276,11 +281,14 @@ public without sharing class NES_AddStudentHelper {
                             }
 
                             //Create a map of Option_Exclusion__c record for the above account and Enrollment components records
+                            System.debug('Chang==='+ schoolId);
+                            System.debug('Chang2===='+newQuestionIds);
                             List <Option_Exclusion__c> exclusions = [
                                     SELECT Id, Academic_Program__c, Option__c
                                     FROM Option_Exclusion__c
                                     WHERE Academic_Program__c = :schoolId AND Option__r.Enrollment_Component__c IN :newQuestionIds
                             ];
+                            System.debug('Chang1=='+exclusions);
                             for (Option_Exclusion__c rec : exclusions) {
 
                                 if (!optionExclusionMap.containsKey(rec.Option__c)) {
@@ -820,19 +828,19 @@ public without sharing class NES_AddStudentHelper {
 
     //Grabs all the school years based on the given school
     public static Peak_Response grabSchoolYears(Id institutionId) {
-        System.debug(institutionId);
+        
         Peak_Response peakResponse = new Peak_Response();
         Id processId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get('Process').getRecordTypeId();
         Id programId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
-
+        
+        User caretaker = [SELECT Contact.inputParameter__c,contact.account.Family_Enrollment_Counselor__c,Contact.Account.ShippingState, Contact.Account.ShippingPostalCode  FROM User WHERE Id = :UserInfo.getUserId()];
+        
         // Grab the process enrollment components to find valid programs with processes
         List<Enrollment_Component__c> processes = [
                 SELECT Id, Process_Academic_Program__c
                 FROM Enrollment_Component__c
                 WHERE RecordTypeId = :processId
         ];
-
-        System.debug(processes);
 
         List<Id> programIds = new List<Id>();
 
@@ -841,8 +849,6 @@ public without sharing class NES_AddStudentHelper {
             programIds.add(process.Process_Academic_Program__c);
         }
 
-        System.debug(programIds);
-
         List<Account> programs = [
                 SELECT Id, School_Year__c
                 FROM Account
@@ -850,17 +856,61 @@ public without sharing class NES_AddStudentHelper {
                 Registration_End_Date__c >= TODAY AND Registration_Start_Date__c <= TODAY
         ];
 
-        System.debug(programs);
-
         List<Id> schoolYearIds = new List<Id>();
 
         // loop through academic programs to get school year Ids
         for (Account program : programs) {
             schoolYearIds.add(program.School_Year__c);
         }
+        
+        // Added for user story 434474
+        Map<Id, set<String>> institutionToZipListMap = new Map<Id, set<String>> ();
+        for (Program_PostalCode__c ppc :  [SELECT Academic_Program__c,PostalCode__c FROM Program_PostalCode__c where Academic_Program__c in :programIds]) {
+            set<string> thisAPZips;
+            if (!institutionToZipListMap.containsKey(ppc.Academic_Program__c)) 
+                thisAPZips = new set<String>();
+            else
+                thisAPZips = institutionToZipListMap.get(ppc.Academic_Program__c);
 
-        List<School_Year__c> years = [SELECT Id, Name FROM School_Year__c WHERE Id = :schoolYearIds];
-
+            thisAPZips.add(ppc.PostalCode__c);
+            institutionToZipListMap.put(ppc.Academic_Program__c, thisAPZips);
+        }
+        
+        List<School_Year__c> years = new List<School_Year__c>();
+        set<string> notZipCodeSchlYrIds = new set<string>();
+        set<string> matchingZipCode = new set<string>();
+        set<string> notMatchingZipCode = new set<string>();
+        Map<Id, Account> matchingPC = new Map<Id, Account>();
+        
+        for (Account institution : programs) {
+            if(institutionToZipListMap.containsKey(institution.Id)){
+                set<string> thisAPZips = institutionToZipListMap.get(institution.Id);
+                if (thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5))){
+                    matchingZipCode.add(institution.School_Year__c);
+                    matchingPC.put(institution.Id, institution);
+                }else{
+                    notMatchingZipCode.add(institution.Id);
+                }
+            }
+         }
+		
+       	set<Id> academicProgramIds = matchingPC.keyset();
+        
+        if(academicProgramIds.size() >= 1){
+            years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :matchingZipCode]; 
+        }else{
+			for(Account acdPrgm : programs){
+                if(!academicProgramIds.contains(acdPrgm.Id) && !notMatchingZipCode.contains(acdPrgm.Id)){
+                    notZipCodeSchlYrIds.add(acdPrgm.School_Year__c);
+                }
+            }
+            
+            if(notZipCodeSchlYrIds.size() >= 1){
+                years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :notZipCodeSchlYrIds];
+            }
+        }  
+        //Ended for user story 434474
+        
         peakResponse.results = years;
         return peakResponse;
 

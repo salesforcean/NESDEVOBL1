@@ -153,7 +153,95 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Child_Component_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Child_Enrollment_Component__r.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Child Component Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Child_Enrollment_Component__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>The enrollment component that is the child in the relationship being defined.</description>
+        <externalId>false</externalId>
+        <label>Child Enrollment Component</label>
+        <referenceTo>Enrollment_Component__c</referenceTo>
+        <relationshipLabel>Parent Enrollment Components</relationshipLabel>
+        <relationshipName>Enrollment_Component_Relationships1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <description>The order of the child component within the parent.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Order of the subcomponent on the parent component.</inlineHelpText>
+        <label>Order</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Component_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Parent_Enrollment_Component__r.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Parent Component Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Enrollment_Component__c</fullName>
+        <description>The enrollment component that is the parent in the relationship being defined.</description>
+        <externalId>false</externalId>
+        <label>Parent Enrollment Component</label>
+        <referenceTo>Enrollment_Component__c</referenceTo>
+        <relationshipLabel>Child Enrollment Components</relationshipLabel>
+        <relationshipName>Enrollment_Component_Relationships</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
     <label>Enrollment Component Relationship</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Parent_Enrollment_Component__c</columns>
+        <columns>Child_Enrollment_Component__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>ECR-{0}</displayFormat>
         <label>Enrollment Component Relationship Name</label>
@@ -167,5 +255,75 @@
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>ECR_Child_Cannot_Be_Parent</fullName>
+        <active>true</active>
+        <description>Validation rule ensuring the child component is not also the parent.</description>
+        <errorConditionFormula>AND(Child_Enrollment_Component__r.Id = Parent_Enrollment_Component__r.Id )</errorConditionFormula>
+        <errorMessage>The Child Enrollment Component cannot also be the Parent Enrollment Component.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ECR_Document_Has_Correct_Parent</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(  NOT( Parent_Enrollment_Component__r.RecordType.DeveloperName  = &quot;Form&quot; ) ,  Child_Enrollment_Component__r.RecordType.DeveloperName   =&quot;Document&quot; )</errorConditionFormula>
+        <errorMessage>A component of record type &quot;Document&quot; must have a parent of record type &quot;Form&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ECR_Flag_Has_Parent_Stage</fullName>
+        <active>true</active>
+        <description>To ensure that proper structure is present</description>
+        <errorConditionFormula>AND(  NOT(  Parent_Enrollment_Component__r.RecordType.DeveloperName  = &quot;Stage&quot;),   Child_Enrollment_Component__r.RecordType.DeveloperName   =&quot;Flag&quot; )</errorConditionFormula>
+        <errorMessage>A component of type &quot;Flag&quot; must have a parent of type  &quot;Stage&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ECR_Form_Has_Parent_Stage</fullName>
+        <active>true</active>
+        <description>To ensure that proper structure is present</description>
+        <errorConditionFormula>AND(  NOT( Parent_Enrollment_Component__r.RecordType.DeveloperName = &quot;Stage&quot;),   Child_Enrollment_Component__r.RecordType.DeveloperName  = &quot;Form&quot; )</errorConditionFormula>
+        <errorMessage>A component of type &quot;Form&quot; must have a parent of type &quot;Stage&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ECR_HiddenForm_Has_Correct_Parent</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(  
+  
+  NOT(
+     OR(Parent_Enrollment_Component__r.RecordType.DeveloperName  
+          = &quot;Section&quot;, 
+        Parent_Enrollment_Component__r.RecordType.DeveloperName  
+          = &quot;Question_Group&quot;)
+     ), Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Hidden_Input&quot; )</errorConditionFormula>
+        <errorDisplayField>Child_Enrollment_Component__c</errorDisplayField>
+        <errorMessage>A component of type &quot;Hidden Value&quot; must have a parent of type  &quot;Section&quot; or &quot;Question_Group&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ECR_Question_Has_Correct_Parent</fullName>
+        <active>true</active>
+        <description>To ensure that proper structure is present</description>
+        <errorConditionFormula>AND(  
+				NOT( 
+								OR(AND(Parent_Enrollment_Component__r.Order__c = 1, Parent_Enrollment_Component__r.RecordType.DeveloperName  =  &quot;Process&quot;),   Parent_Enrollment_Component__r.RecordType.DeveloperName  =  &quot;Form&quot;,  Parent_Enrollment_Component__r.RecordType.DeveloperName = &quot;Section&quot;,  Parent_Enrollment_Component__r.RecordType.DeveloperName = &quot;Question_Group&quot; )),  Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Question&quot; )</errorConditionFormula>
+        <errorMessage>A component of type &quot;Question&quot; must have a parent of type either &quot;Form&quot;, &quot;Section&quot;, or &quot;Question Group&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ECR_Stage_Has_Parent_Process</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(  NOT(  Parent_Enrollment_Component__r.RecordType.DeveloperName =&quot;Process&quot;),   Child_Enrollment_Component__r.RecordType.DeveloperName  = &quot;Stage&quot; )</errorConditionFormula>
+        <errorMessage>A component of type &quot;Stage&quot; must have a parent of type  &quot;Process&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Order_Required_Based_On_Record_Type_Chld</fullName>
+        <active>true</active>
+        <description>Order is required if the Child Component is a Form, Section, Question, Stage, Message, or Document</description>
+        <errorConditionFormula>AND(ISBLANK(Order__c),
+				or( 
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Form&quot;,  
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Section&quot;, 
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Question&quot;,
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Stage&quot;,
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Message&quot;,
+								Child_Enrollment_Component__r.RecordType.DeveloperName = &quot;Document&quot;))</errorConditionFormula>
+        <errorMessage>Order is required if the Child Component is a Form, Section, Question, Stage, Message, or Document</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

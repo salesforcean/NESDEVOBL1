@@ -153,7 +153,227 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Comparison_Data_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Comparison Data Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Boolean</fullName>
+                    <default>false</default>
+                    <label>Boolean</label>
+                </value>
+                <value>
+                    <fullName>Date</fullName>
+                    <default>false</default>
+                    <label>Date</label>
+                </value>
+                <value>
+                    <fullName>Date (Years Calculated)</fullName>
+                    <default>false</default>
+                    <label>Date (Years Calculated)</label>
+                </value>
+                <value>
+                    <fullName>Datetime</fullName>
+                    <default>false</default>
+                    <label>Datetime</label>
+                </value>
+                <value>
+                    <fullName>Number</fullName>
+                    <default>false</default>
+                    <label>Number</label>
+                </value>
+                <value>
+                    <fullName>Time</fullName>
+                    <default>false</default>
+                    <label>Time</label>
+                </value>
+                <value>
+                    <fullName>Text</fullName>
+                    <default>false</default>
+                    <label>Text</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Comparison_Field__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Comparison Field (Right)</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Comparison_Value__c</fullName>
+        <description>The value being used on the right side of the criteria comparison. This field should be populated if you are comparing the left side field to a static value.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Comparison Value (Right)</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Criteria_Field__c</fullName>
+        <description>The API name of the object-field combination being used on the right side of the criteria comparison. This field should be populated if you are comparing the left side field to the value of another field. Example. Account.Name</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Criteria Field (Left)</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Most_Recent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Within the enrollment model, some objects are a one to many off of the Program Enrollment. For example, ASI (Annual Student Information). In those cases, we need to know which Criteria record need recalculating. This field will store the Most Recent that this criteria is related to.</description>
+        <externalId>false</externalId>
+        <label>Most Recent</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Operator__c</fullName>
+        <description>The comparison operator used to compare the left and right sides of the criteria.</description>
+        <externalId>false</externalId>
+        <label>Comparison Operator</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>=</fullName>
+                    <default>false</default>
+                    <label>=</label>
+                </value>
+                <value>
+                    <fullName>!=</fullName>
+                    <default>false</default>
+                    <label>!=</label>
+                </value>
+                <value>
+                    <fullName>&gt;</fullName>
+                    <default>false</default>
+                    <label>&gt;</label>
+                </value>
+                <value>
+                    <fullName>&gt;=</fullName>
+                    <default>false</default>
+                    <label>&gt;=</label>
+                </value>
+                <value>
+                    <fullName>&lt;</fullName>
+                    <default>false</default>
+                    <label>&lt;</label>
+                </value>
+                <value>
+                    <fullName>&lt;=</fullName>
+                    <default>false</default>
+                    <label>&lt;=</label>
+                </value>
+                <value>
+                    <fullName>CONTAINS</fullName>
+                    <default>false</default>
+                    <label>CONTAINS</label>
+                </value>
+                <value>
+                    <fullName>DOES NOT CONTAIN</fullName>
+                    <default>false</default>
+                    <label>DOES NOT CONTAIN</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Question_Group__c</fullName>
+        <description>Within the enrollment model, some objects are a one to many off of the Program Enrollment. For example, ASI (Annual Student Information). In those cases, we need to know which Criteria record need recalculating. This field will store the Question Group that this criteria is related to.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Question Group</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>School_Year__c</fullName>
+        <description>Within the enrollment model, some objects are a one to many off of the Program Enrollment. For example, ASI (Annual Student Information). In those cases, we need to know which Criteria record need recalculating. This field will store the school year that this criteria is related to.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>School Year</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isLookupValue__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>isLookupValue</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Criteria</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Comparison_Data_Type__c</columns>
+        <columns>Operator__c</columns>
+        <columns>Comparison_Value__c</columns>
+        <columns>Criteria_Field__c</columns>
+        <columns>Question_Group__c</columns>
+        <columns>School_Year__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Criteria_Field__c</field>
+            <operation>equals</operation>
+            <value>Annual_Student_Information__c.Grade_Level_Requested__c</value>
+        </filters>
+        <label>All</label>
+    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>Criteria Name</label>
@@ -165,5 +385,18 @@
         <searchResultsAdditionalFields>CREATEDBY_USER.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>C_Require_Data_Type_with_Comp_Value</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( ISBLANK(TEXT(Comparison_Data_Type__c)), NOT(ISBLANK( Comparison_Value__c)))</errorConditionFormula>
+        <errorMessage>Data type is required when there is a comparison value.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>C_Select_Either_Value_or_Field</fullName>
+        <active>true</active>
+        <description>To ensure that both value and field are not set at the same time.</description>
+        <errorConditionFormula>AND( NOT( ISBLANK( Comparison_Field__c ) ) ,  NOT( ISBLANK( Comparison_Value__c ) )  )</errorConditionFormula>
+        <errorMessage>A Comparison Field and Comparison Value cannot be set at the same time. Please choose one.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

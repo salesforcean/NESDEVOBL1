@@ -153,7 +153,302 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>AgreementYN__c</fullName>
+        <externalId>false</externalId>
+        <label>AgreementYN</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Agreement__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Agreement</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Date__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Program_Enrollment__c</fullName>
+        <externalId>false</externalId>
+        <label>Program Enrollment</label>
+        <referenceTo>hed__Program_Enrollment__c</referenceTo>
+        <relationshipLabel>Acknowledgements</relationshipLabel>
+        <relationshipName>Acknowledgements</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Question_Group__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Question Group</label>
+        <referenceTo>Enrollment_Component__c</referenceTo>
+        <relationshipLabel>Acknowledgements</relationshipLabel>
+        <relationshipName>Acknowledgements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>School_Year__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>School Year</label>
+        <referenceTo>School_Year__c</referenceTo>
+        <relationshipLabel>Acknowledgements</relationshipLabel>
+        <relationshipName>Acknowledgements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Signature__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Signature</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Statement__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Statement</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Acknowledgement Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AG Acknowledgement</fullName>
+                    <default>false</default>
+                    <label>AG Acknowledgement</label>
+                </value>
+                <value>
+                    <fullName>Caretaker Authorization Decision</fullName>
+                    <default>false</default>
+                    <label>Caretaker Authorization Decision</label>
+                </value>
+                <value>
+                    <fullName>Contact Information Verification</fullName>
+                    <default>false</default>
+                    <label>Contact Information Verification</label>
+                </value>
+                <value>
+                    <fullName>Credit Transfer Policy</fullName>
+                    <default>false</default>
+                    <label>Credit Transfer Policy</label>
+                </value>
+                <value>
+                    <fullName>CT Enrollment Commitment</fullName>
+                    <default>false</default>
+                    <label>CT Enrollment Commitment</label>
+                </value>
+                <value>
+                    <fullName>CT Enrollment Intent</fullName>
+                    <default>false</default>
+                    <label>CT Enrollment Intent</label>
+                </value>
+                <value>
+                    <fullName>CT PLCA</fullName>
+                    <default>false</default>
+                    <label>CT PLCA</label>
+                </value>
+                <value>
+                    <fullName>Disciplinary History Affirmation</fullName>
+                    <default>false</default>
+                    <label>Disciplinary History Affirmation</label>
+                </value>
+                <value>
+                    <fullName>Emergency Contact No Contact</fullName>
+                    <default>false</default>
+                    <label>Emergency Contact No Contact</label>
+                </value>
+                <value>
+                    <fullName>FERPA Notification</fullName>
+                    <default>false</default>
+                    <label>FERPA Notification</label>
+                </value>
+                <value>
+                    <fullName>Tech Support Permission</fullName>
+                    <default>false</default>
+                    <label>Tech Support Permission</label>
+                </value>
+                <value>
+                    <fullName>HH Income Parent Signature</fullName>
+                    <default>false</default>
+                    <label>HH Income Parent Signature</label>
+                </value>
+                <value>
+                    <fullName>Honor Code Agreement (LC)</fullName>
+                    <default>false</default>
+                    <label>Honor Code Agreement (LC)</label>
+                </value>
+                <value>
+                    <fullName>Honor Code Agreement (Student)</fullName>
+                    <default>false</default>
+                    <label>Honor Code Agreement (Student)</label>
+                </value>
+                <value>
+                    <fullName>HS FERPA Military Note</fullName>
+                    <default>false</default>
+                    <label>HS FERPA Military Note</label>
+                </value>
+                <value>
+                    <fullName>Medicaid Statement Agreement</fullName>
+                    <default>false</default>
+                    <label>Medicaid Statement Agreement</label>
+                </value>
+                <value>
+                    <fullName>No Tech Confirmation</fullName>
+                    <default>false</default>
+                    <label>No Tech Confirmation</label>
+                </value>
+                <value>
+                    <fullName>Receive Equipment</fullName>
+                    <default>false</default>
+                    <label>Receive Equipment</label>
+                </value>
+                <value>
+                    <fullName>Receive Printer</fullName>
+                    <default>false</default>
+                    <label>Receive Printer</label>
+                </value>
+                <value>
+                    <fullName>Receive Subsidy</fullName>
+                    <default>false</default>
+                    <label>Receive Subsidy</label>
+                </value>
+                <value>
+                    <fullName>Receive Equipment Hardship</fullName>
+                    <default>false</default>
+                    <label>Receive Equipment Hardship</label>
+                </value>
+                <value>
+                    <fullName>CT DCA</fullName>
+                    <default>false</default>
+                    <label>CT DCA</label>
+                </value>
+                <value>
+                    <fullName>CT DLCA</fullName>
+                    <default>false</default>
+                    <label>CT DLCA</label>
+                </value>
+                <value>
+                    <fullName>CT PAH</fullName>
+                    <default>false</default>
+                    <label>CT PAH</label>
+                </value>
+                <value>
+                    <fullName>Third Grade Reading Waived</fullName>
+                    <default>false</default>
+                    <label>Third Grade Reading Waived</label>
+                </value>
+                <value>
+                    <fullName>Transitional K Acknowledgement</fullName>
+                    <default>false</default>
+                    <label>Transitional K Acknowledgement</label>
+                </value>
+                <value>
+                    <fullName>Internet Technology Acknowledgement</fullName>
+                    <default>false</default>
+                    <label>Internet Technology Acknowledgement</label>
+                </value>
+                <value>
+                    <fullName>Parent Information Notice for California Healthy Youth Act</fullName>
+                    <default>false</default>
+                    <label>Parent Information Notice for California Healthy Youth Act</label>
+                </value>
+                <value>
+                    <fullName>Parent/Legal Guardian (Caretaker) Acknowledgement</fullName>
+                    <default>false</default>
+                    <label>Parent/Legal Guardian (Caretaker) Acknowledgement</label>
+                </value>
+                <value>
+                    <fullName>Returning Household Acknowledgement</fullName>
+                    <default>false</default>
+                    <label>Returning Household Acknowledgement</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>V2_External_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>V2 External ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
     <label>Acknowledgement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Type__c</columns>
+        <columns>Agreement__c</columns>
+        <columns>Program_Enrollment__c</columns>
+        <columns>Question_Group__c</columns>
+        <columns>School_Year__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>Acknowledgement Name</label>
@@ -161,7 +456,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Acknowledgements</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

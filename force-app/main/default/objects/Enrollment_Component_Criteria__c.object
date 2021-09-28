@@ -153,7 +153,169 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Criteria_Number__c</fullName>
+        <description>The criteria number that will be used to reference it in the logic definition on the Criteria Group. Criteria should be numbered 1 - n, where n is the total number of criteria associated with the Enrollment Component.</description>
+        <externalId>false</externalId>
+        <label>Criteria Number</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Criteria_Type__c</fullName>
+        <description>Indicator of whether or not the criteria is used as part of eligibility screening.</description>
+        <externalId>false</externalId>
+        <label>Criteria Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Ineligibility</fullName>
+                    <default>false</default>
+                    <label>Ineligibility</label>
+                </value>
+                <value>
+                    <fullName>Assignment</fullName>
+                    <default>false</default>
+                    <label>Assignment</label>
+                </value>
+                <value>
+                    <fullName>Completion</fullName>
+                    <default>false</default>
+                    <label>Completion</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Criteria__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>The criteria being associated to the Enrollment Component.</description>
+        <externalId>false</externalId>
+        <label>Criteria</label>
+        <referenceTo>Criteria__c</referenceTo>
+        <relationshipLabel>Enrollment Component Criteria</relationshipLabel>
+        <relationshipName>Enrollment_Component_Criteria</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Enrollment_Component__c</fullName>
+        <description>The parent enrollment component for the component criteria.</description>
+        <externalId>false</externalId>
+        <label>Enrollment Component</label>
+        <referenceTo>Enrollment_Component__c</referenceTo>
+        <relationshipLabel>Enrollment Component Criteria</relationshipLabel>
+        <relationshipName>Enrollment_Component_Criteria</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Most_Recent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Within the enrollment model, some objects are a one to many off of the Program Enrollment. For example, ASI (Annual Student Information). In those cases, we need to know which Criteria record need recalculating. This field will store the Most Recent that this criteria is related to.</description>
+        <externalId>false</externalId>
+        <label>Most Recent</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Question_Group__c</fullName>
+        <description>Within the enrollment model, some objects are a one to many off of the Program Enrollment. For example, ASI (Annual Student Information). In those cases, we need to know which Criteria record need recalculating. This field will store the Question Group that this criteria is related to.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Question Group</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>School_Year__c</fullName>
+        <description>Within the enrollment model, some objects are a one to many off of the Program Enrollment. For example, ASI (Annual Student Information). In those cases, we need to know which Criteria record need recalculating. This field will store the school year that this criteria is related to.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>School Year</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Student_or_Household__c</fullName>
+        <externalId>false</externalId>
+        <label>Student or Household</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Household</fullName>
+                    <default>false</default>
+                    <label>Household</label>
+                </value>
+                <value>
+                    <fullName>Student</fullName>
+                    <default>false</default>
+                    <label>Student</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Enrollment Component Criteria</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Student_or_Household__c</columns>
+        <columns>Enrollment_Component__c</columns>
+        <columns>Criteria__c</columns>
+        <columns>External_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>External_Id__c</field>
+            <operation>equals</operation>
+            <value>ITR:WYCA2122:Doc_1</value>
+        </filters>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>ECC-{000}</displayFormat>
         <label>Enrollment Component Criteria Name</label>
@@ -161,8 +323,21 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Enrollment Component Criteria</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>ECC_Ineligibility_Has_Correct_Parent</fullName>
+        <active>true</active>
+        <description>To ensure that proper structure is present</description>
+        <errorConditionFormula>AND(  ISPICKVAL(Criteria_Type__c, &quot;Ineligibility&quot;) ,  NOT(  Enrollment_Component__r.RecordType.DeveloperName = &quot;Process&quot;))</errorConditionFormula>
+        <errorMessage>A criteria of type &quot;Ineligibility&quot; must have a parent enrollment component of type  &quot;Process&quot;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ECC_Process_Has_Parent_Component</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL(Criteria_Type__c , &quot;Process&quot;),  ISBLANK( Enrollment_Component__c ))</errorConditionFormula>
+        <errorMessage>Field Enrollment component can&apos;t be blank when type is Process.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>49.0</apiVersion>
     <decisions>
         <name>Answered_Yes1</name>
         <label>Answered Yes?</label>
@@ -65,7 +64,6 @@
         <label>Update Chat Transcript</label>
         <locationX>453</locationX>
         <locationY>228</locationY>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>ChatKey</field>
             <operator>EqualTo</operator>
@@ -86,7 +84,6 @@
         <label>Update Chat Transcript</label>
         <locationX>221</locationX>
         <locationY>363</locationY>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>ChatKey</field>
             <operator>EqualTo</operator>

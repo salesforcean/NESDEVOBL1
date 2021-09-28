@@ -153,7 +153,157 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Criteria__c</fullName>
+        <description>The parent criteria the refinement record will be applied to.</description>
+        <externalId>false</externalId>
+        <label>Criteria</label>
+        <referenceTo>Criteria__c</referenceTo>
+        <relationshipLabel>Criteria Refinements</relationshipLabel>
+        <relationshipName>Criteria_Refinements</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Operator__c</fullName>
+        <description>The comparison operator used to compare the left and right sides of the refinement logic.</description>
+        <externalId>false</externalId>
+        <label>Refinement Operator</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>=</fullName>
+                    <default>false</default>
+                    <label>=</label>
+                </value>
+                <value>
+                    <fullName>!=</fullName>
+                    <default>false</default>
+                    <label>!=</label>
+                </value>
+                <value>
+                    <fullName>&gt;</fullName>
+                    <default>false</default>
+                    <label>&gt;</label>
+                </value>
+                <value>
+                    <fullName>&gt;=</fullName>
+                    <default>false</default>
+                    <label>&gt;=</label>
+                </value>
+                <value>
+                    <fullName>&lt;</fullName>
+                    <default>false</default>
+                    <label>&lt;</label>
+                </value>
+                <value>
+                    <fullName>&lt;=</fullName>
+                    <default>false</default>
+                    <label>&lt;=</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Refinement_Field_Left__c</fullName>
+        <description>The API name of the object-field combination being used on the left side of the refinement comparison. Example. Account.Name</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Refinement Field (Left)</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Refinement_Field_Right__c</fullName>
+        <description>The API name of the object-field combination being used on the right side of the refinement comparison. This field should be populated if you are comparing the left side field to the value of another field. Example. Account.Name</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Refinement Field (Right)</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Refinement_Type__c</fullName>
+        <description>Indicator of whether the refinement record should be applied to the right or left side of the parent criteria.</description>
+        <externalId>false</externalId>
+        <label>Refinement Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Right side</fullName>
+                    <default>false</default>
+                    <label>Right side</label>
+                </value>
+                <value>
+                    <fullName>Left side</fullName>
+                    <default>false</default>
+                    <label>Left side</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Refinement_Value__c</fullName>
+        <description>The value being used on the right side of the refinement comparison. This field should be populated if you are comparing the left side field to a static value.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Refinement Value (Right)</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Criteria Refinement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Criteria__c</columns>
+        <columns>Refinement_Field_Left__c</columns>
+        <columns>Refinement_Field_Right__c</columns>
+        <columns>Operator__c</columns>
+        <columns>Refinement_Type__c</columns>
+        <columns>Refinement_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>CR-{000}</displayFormat>
         <label>Criteria Refinement Name</label>
@@ -161,7 +311,34 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Criteria Refinements</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>CR_Criteria_Required</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( Criteria__c )</errorConditionFormula>
+        <errorDisplayField>Criteria__c</errorDisplayField>
+        <errorMessage>A Criteria must be defined for a Criteria Refinement.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CR_Refinement_Type_Required</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL( Refinement_Type__c ,&apos;&apos;), NOT( ISBLANK( Refinement_Value__c ) ) )</errorConditionFormula>
+        <errorDisplayField>Refinement_Type__c</errorDisplayField>
+        <errorMessage>A refinement type must be defined for a Criteria Refinement</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CR_Select_Either_Value_or_Field</fullName>
+        <active>true</active>
+        <description>To ensure that both value and field are not set at the same time</description>
+        <errorConditionFormula>AND( NOT( ISBLANK( Refinement_Field_Right__c ) ) ,  NOT( ISBLANK( Refinement_Value__c ) )  )</errorConditionFormula>
+        <errorMessage>A Refinement Field and Refinement Value cannot be set at the same time. Please choose one.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CR_Select_Value_or_Field_Once</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISBLANK( Refinement_Field_Right__c ) , ISBLANK( Refinement_Value__c ))</errorConditionFormula>
+        <errorMessage>Both Refinement Field (right) &amp; Refinement Value (right) can&apos;t be empty at once.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

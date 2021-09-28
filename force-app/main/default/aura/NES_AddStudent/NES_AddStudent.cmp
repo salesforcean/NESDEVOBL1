@@ -128,11 +128,13 @@
                                 </aura:iteration>
                             </lightning:select>
                         </lightning:layoutItem>
+                            <!-- Added by ravi US #433409-->
                         <aura:set attribute="else">
                              <div style="color:Red">
                                   <h5>{!v.SchoolErrormsg}</h5>
                                  </div>
                             </aura:set>
+                            <!-- Ended here-->
  						</aura:if>
                          <aura:if isTrue="{!and(v.newStudentData.SelectedSchoolId != null, v.newStudentData.SelectedSchoolId != '')}">
                             <!--aura:if isTrue="{!not(empty(v.v.newStudentData.schoolYears))}"-->

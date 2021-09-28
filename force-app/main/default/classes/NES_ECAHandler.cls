@@ -119,7 +119,7 @@ public class NES_ECAHandler {
                    statusChangedECAs.add(eca);
             }*/
             
-			  //added for #101935 User Story (Task 104310) on 2019-08-13 to check the status of updated ECA changed for 'Complete' to 'In progress' or 'Not started' and collect all those ECA's in list
+              //added for #101935 User Story (Task 104310) on 2019-08-13 to check the status of updated ECA changed for 'Complete' to 'In progress' or 'Not started' and collect all those ECA's in list
             //updated for 122106, added oldMap check for ECA.Status = 'Not Applicable'
             //MM 8/26/2020  Added check to only include ECA for PEs in the old ECA process.
             //updated for 227705, added oldMap check for ECA.Status = 'Deferred'
@@ -161,7 +161,7 @@ public class NES_ECAHandler {
                 PE.Waitlist_Time_Date_Stamp__c = System.now();
                 pesToUpdateMap.put(eca.Program_Enrollment__c, PE);
             }
-			system.debug('added for debuging waitlist defect**********'+eca.Enrollment_Component__r.Name+'****'+eca.Enrollment_Component__r.RecordType.Name+'*****Status****'+eca.Status__c);
+            system.debug('added for debuging waitlist defect**********'+eca.Enrollment_Component__r.Name+'****'+eca.Enrollment_Component__r.RecordType.Name+'*****Status****'+eca.Status__c);
             
             if (eca.Status__c == 'In Progress' && oldMap.get(eca.Id).Status__c<> 'In Progress' && eca.Enrollment_Component__r.RecordType.Name == 'Stage') {
                 hed__Program_Enrollment__c PE;

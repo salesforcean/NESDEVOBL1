@@ -1,0 +1,84 @@
+<aura:component controller="CSVCreator" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes">
+	<aura:attribute name="csvObject" type="CSVObject"/>
+	<aura:attribute name="csvString" type="String"/>
+    <aura:attribute name="jsonString" type="String"/>
+    <aura:attribute name="accountId" type="String"/>
+    <aura:attribute name="contactId" type="String"/>
+    <aura:attribute name="contactList" type="List"/>
+    <aura:attribute name="studentList" type="String"/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    
+    <aura:attribute name="isError" type="boolean" default="false"/>
+    <aura:attribute name="isImportDisabled" type="boolean" default="true"/>
+    <aura:attribute name="loaded" type="boolean" default="true"/>
+     <aura:attribute name="header" type="String" default="Import Care Taker Records"/>
+
+
+	<aura:handler name="change" value="v.csvString" action="{!c.handleGetCSV}"/>
+	<aura:dependency resource="markup://force:navigateToURL" type="EVENT"/>
+    <aura:attribute name="filetype" type="List" default="['.csv']" />
+
+    <aura:attribute name="columnNames" type="List" default="['Name','Last Name','Email','Username','Password','Phone Number','State','Zip']" />
+    <aura:attribute name="mandatoryFields" type="List" default="['Name','Last Name','Email','Username','Password','Phone Number','State','Zip']" />
+    <aura:dependency resource="markup://force:showToast" type="EVENT,COMPONENT" />
+      
+ <aura:if isTrue="{! v.loaded }">
+            <aura:set attribute="else">
+                <lightning:spinner alternativeText="Loading" />
+            </aura:set>
+        </aura:if>            
+	<div class="slds-size_8-of-8 hidecard">
+        
+
+		<div class="slds-card__header slds-grid">
+			<header class="slds-media slds-media_center slds-has-flexi-truncate">
+				<div class="slds-media__body">
+					<h2 class="slds-card__header-title">
+						<span>{!v.header}</span>
+					</h2>
+				</div>
+                <div>
+                <button class="slds-button slds-button_brand" onclick="{!c.gotoURL}">Download CSV Template</button>
+				<!--
+                <button class="slds-button slds-button_destructive" onclick="{!c.cleanData}">Clean Data</button>
+			 	-->
+                    <lightning:button variant="success" label="Import Data" title="Import Data" onclick="{! c.handleImportClick }" disabled="{!v.isImportDisabled}"/>
+                </div>
+                </header>
+		</div>
+		<div class="slds-card__body slds-card__body_inner">
+  		<input type="file" accept="{!v.filetype}" class="file" aura:id="file" onchange="{!c.handleUploadFinished}"/>
+			<aura:if isTrue="{!not(empty(v.csvObject))}">
+                 <div style="overflow:auto">
+				<table class="slds-table">
+					<thead>
+						<tr>
+							<aura:iteration items="{!v.csvObject.headers}" var="header">
+								<th>{!header.column_name}</th>
+							</aura:iteration>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<aura:iteration items="{!v.csvObject.lines}" var="line">
+							<tr>
+								<aura:iteration items="{!line}" var="cell">
+									<td>{!cell}</td>
+								</aura:iteration>
+							</tr>
+						</aura:iteration>
+					</tbody>
+				</table>
+                </div>
+			</aura:if>
+		</div>
+        <div class="slds-modal__footer slds-size_1-of-1">
+            <!--
+    <lightning:button variant="Brand" class="slds-button" label="Next" onclick="{!c.handleNext}" disabled="{!v.isNextDisabled}"></lightning:button>
+             -->
+</div>
+	</div>
+
+           
+
+    <lightning:flow aura:id="opportunityFlow" />
+</aura:component>

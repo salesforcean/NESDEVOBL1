@@ -29,6 +29,7 @@ public without sharing class NES_AddStudentController {
     public static List<NES_EvaluateUtil.Question> getComponentsByAcademicProgram(String schoolId, String schoolYearId) {
         List<NES_EvaluateUtil.Question> returnObjList = NES_AddStudentHelper.grabQuestionsBySchool(schoolId, schoolYearId);
         return returnObjList;
+        
     }
 
     /**

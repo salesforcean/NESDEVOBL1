@@ -335,7 +335,7 @@ return studentInfoList;
                 WHERE Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c = TRUE
                 and Status__c <> 'Not Applicable'
                 AND Program_Enrollment__c IN : progEnrollIds
-            ];	 
+            ];   
             
             system.debug('ECAs required for autoplacement' + affiliations);    
             

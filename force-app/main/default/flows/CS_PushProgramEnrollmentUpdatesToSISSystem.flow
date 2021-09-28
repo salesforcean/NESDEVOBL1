@@ -44,7 +44,6 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
     <decisions>
         <description>This decision checks whether the Program Enrollment is of type &quot;Caretaker&quot; or not.</description>
         <name>Is_Caretaker_PE</name>
@@ -115,7 +114,6 @@
         <connector>
             <targetReference>Is_Student_PE_available</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Household_Program_Enrollment__c</field>
             <operator>EqualTo</operator>

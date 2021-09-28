@@ -64,7 +64,6 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>assignDocumentReviewOwner</name>
         <label>assignDocumentReviewOwner</label>
@@ -133,7 +132,6 @@
         <name>academicQueue</name>
         <dataType>String</dataType>
         <displayField>Name</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Name</field>
             <operator>Contains</operator>
@@ -159,7 +157,6 @@
         <name>educationalInstitutionList</name>
         <dataType>String</dataType>
         <displayField>Name</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>RecordTypeId</field>
             <operator>EqualTo</operator>
@@ -189,7 +186,6 @@
         <name>nonAcademicQueue</name>
         <dataType>String</dataType>
         <displayField>Name</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Name</field>
             <operator>Contains</operator>
@@ -219,7 +215,6 @@
         <name>schoolYearList</name>
         <dataType>String</dataType>
         <displayField>Name</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>End_Date__c</field>
             <operator>GreaterThan</operator>
@@ -261,7 +256,6 @@
         <connector>
             <targetReference>assignDocumentReviewOwner</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

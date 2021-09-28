@@ -154,7 +154,1337 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>CL_Cycle_Who_ENRSR_Fax_2__c</fullName>
+        <description>Who received Enrollment Notification Request 2 Fax</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>CL Cycle Who ENRSR Fax 2</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CL_Cycle_Who_ENRSR_Fax_3__c</fullName>
+        <description>Who received Enrollment Notification Request 3 Fax</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>CL Cycle Who ENRSR Fax 3</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CL_Cycle_Who_Sent_Cum_File__c</fullName>
+        <description>Who Sent Records to School</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>CL Cycle Who Sent Cum File</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CL_Other_Cum_File_Address_Sent_To__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>CL Other Cum File Address Sent To</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CL_Other_Cum_File_Date_Requested__c</fullName>
+        <description>Date school records request received</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>CL Other Cum File Date Requested</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CL_Other_Cum_File_Date_Sent__c</fullName>
+        <description>Date Student Records Sent to School</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>CL Other Cum File Date Sent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CL_Other_Cum_File_Name_Of_Requestor__c</fullName>
+        <description>Name of Requestor (School/Other)</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>CL Other Cum File Name Of Requestor</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_Record_Request_Call_Received__c</fullName>
+        <description>Date phone call received</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date Record Request Call Received</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>District_Notified_Mail_Tracking__c</fullName>
+        <description>Certified mail receipt tracking number</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>District Notified Mail Tracking</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enroll_Notification_Request1_Fax_Date__c</fullName>
+        <description>Date of 1st Request Fax</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Enroll Notification Request1 Fax Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Enroll_Notification_Request2_Fax_Date__c</fullName>
+        <description>Date of 2nd Request Fax</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Enroll Notification Request2 Fax Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Enroll_Notification_Request3_Fax_Date__c</fullName>
+        <description>Date of 3rd Request Fax</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Enroll Notification Request3 Fax Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>File_Forwarded_To_1__c</fullName>
+        <description>First time file forwarded to</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>File Forwarded To 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>File_Forwarded_To_2__c</fullName>
+        <description>Second time file forwarded to</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>File Forwarded To 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>File_Forwarded_To_3__c</fullName>
+        <description>Third time file forwarded to</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>File Forwarded To 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>NCAParentContactedDate3c__c</fullName>
+        <description>Parent Contacted 3</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA_Parent_Contacted_Date_3__c</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Notification_1_Sent_Date__c</fullName>
+        <description>VOE Request 1 sent</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Notification 1 Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Notification_1_Sent_Note__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Notification 1 Sent Note</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Notification_2_Sent_Date__c</fullName>
+        <description>VOE Request 2 sent</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Notification 2 Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Notification_2_Sent_Note__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Notification 2 Sent Note</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_Notification_3_Sent_Date__c</fullName>
+        <description>VOE Request 3 sent</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Notification 3 Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Notification_3_Sent_Note__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Notification 3 Sent Note</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_Parent_Contacted_Date_1__c</fullName>
+        <description>Parent Contacted 1</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Parent Contacted Date 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Parent_Contacted_Date_2__c</fullName>
+        <description>Parent Contacted 2</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Parent Contacted Date 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Parent_Contacted_Note_1__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Parent Contacted Note 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_Parent_Contacted_Note_2__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Parent Contacted Note 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_Parent_Contacted_Note_3__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Parent Contacted Note 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_Request_Remind_3_Sent_Note__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Request Remind 3 Sent Note</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_Request_Reminder_1_Sent_Date__c</fullName>
+        <description>Request Reminder 1 sent</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Request Reminder 1 Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Request_Reminder_1_Sent_Note__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Request Reminder 1 Sent Note</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_Request_Reminder_2_Sent_Date__c</fullName>
+        <description>Request Reminder 2 sent</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Request Reminder 2 Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Request_Reminder_2_Sent_Note__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Request Reminder 2 Sent Note</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_Request_Reminder_3_Sent_Date__c</fullName>
+        <description>Request Reminder 3 sent</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Request Reminder 3 Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_Research_Complete__c</fullName>
+        <description>Research Complete</description>
+        <externalId>false</externalId>
+        <label>NCA Research Complete</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>NCA_Verify_Enroll_Receive_Note__c</fullName>
+        <description>Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA Verify Enroll Receive Note</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NCA_WD_Transfer_Form_2_Completed__c</fullName>
+        <description>Withdrawal/Transfer Form 2 Completed</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA WD Transfer Form 2 Completed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>NCA_WD_Transfer_Form_Completed__c</fullName>
+        <description>Withdrawal/Transfer Form 1 Completed</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>NCA WD Transfer Form Completed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ORCA_District_Denied_Date__c</fullName>
+        <description>District denied date</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>ORCA District Denied Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ORCA_District_Over_10_Date__c</fullName>
+        <description>District over 10 days</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>ORCA District Over 10 Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ORCA_District_Over_14_Date__c</fullName>
+        <description>District over 14 days</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>ORCA District Over 14 Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ORCA_District_Sent_Date__c</fullName>
+        <description>Sent to district date</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>ORCA District Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ORCA_District_Verified_Date__c</fullName>
+        <description>District verified date</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>ORCA District Verified Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PCA_Carlsbad_Date_Sent__c</fullName>
+        <description>Date Carlsbad SD notified of student&apos;s intent to enroll</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>PCA Carlsbad Date Sent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PCA_Carlsbad__c</fullName>
+        <description>Status of Carlsbad SD Review</description>
+        <externalId>false</externalId>
+        <label>PCA Carlsbad</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>false</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Released</fullName>
+                    <default>false</default>
+                    <label>Released</label>
+                </value>
+                <value>
+                    <fullName>Sent to district</fullName>
+                    <default>false</default>
+                    <label>Sent to district</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_Notified_Mail_Tracking__c</fullName>
+        <description>Certified mail receipt tracking number</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Parent Notified Mail Tracking</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Program_Enrollment__c</fullName>
+        <description>The Progam Enrollment record of the student.</description>
+        <externalId>false</externalId>
+        <label>Program Enrollment</label>
+        <referenceTo>hed__Program_Enrollment__c</referenceTo>
+        <relationshipLabel>District Notification &amp; Records Requests</relationshipLabel>
+        <relationshipName>District_Notification_Records_Requests</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Records_Request_Received_2__c</fullName>
+        <description>Date Second Request was Received by School</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request Received 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Records_Request_Received_3__c</fullName>
+        <description>Date Third Request was Received by School</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request Received 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Records_Request_Received__c</fullName>
+        <description>Date Initial Request was Received by School</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request Received</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_2_Notes__c</fullName>
+        <description>Enter dates and notes associated with the above status</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request School 2 Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_2_Status__c</fullName>
+        <description>Status of the records request sent to school #2</description>
+        <externalId>false</externalId>
+        <label>Records Request School 2 Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Received</fullName>
+                    <default>false</default>
+                    <label>Received</label>
+                </value>
+                <value>
+                    <fullName>Requested</fullName>
+                    <default>false</default>
+                    <label>Requested</label>
+                </value>
+                <value>
+                    <fullName>Unavailable</fullName>
+                    <default>false</default>
+                    <label>Unavailable</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_2__c</fullName>
+        <description>School #2 Address, phone number, fax, and contact person</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request School 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_3_Notes__c</fullName>
+        <description>Enter dates and notes associated with the above status</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request School 3 Notes</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_3_Status__c</fullName>
+        <description>Status of the records request sent to school #3</description>
+        <externalId>false</externalId>
+        <label>Records Request School 3 Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Received</fullName>
+                    <default>false</default>
+                    <label>Received</label>
+                </value>
+                <value>
+                    <fullName>Requested</fullName>
+                    <default>false</default>
+                    <label>Requested</label>
+                </value>
+                <value>
+                    <fullName>Unavailable</fullName>
+                    <default>false</default>
+                    <label>Unavailable</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_3__c</fullName>
+        <description>School #3 Address, phone number, fax, and contact person</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request School 3</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_District_Email__c</fullName>
+        <description>School/District Records Request E-mail Address</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request School District Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_District_Fax__c</fullName>
+        <description>School/District Records Request Fax Number</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request School District Fax</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Records_Request_School_District_Phone__c</fullName>
+        <description>School/District Records Request Phone Number</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Records Request School District Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Request_Sent_To__c</fullName>
+        <description>Records sent to</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Request Sent To</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requested_Student_Records_Comment__c</fullName>
+        <description>Requested Student Records Comments</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Requested Student Records Comment</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SCCA_Name_of_Next_School__c</fullName>
+        <description>In order to assist us in obtaining a cumulative record once the student is enrolled, what is the name of the school the student would have been assigned to by the district</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>SCCA Name of Next School</label>
+        <length>75</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Second_Records_Request_Needed__c</fullName>
+        <description>Do you need to send another records request to a different school</description>
+        <externalId>false</externalId>
+        <label>Second Records Request Needed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Secondary_Academic_Doc_Request__c</fullName>
+        <description>Secondary RC/PAH Request</description>
+        <externalId>false</externalId>
+        <label>Secondary Academic Doc Request</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>Illegible Academic Documentation</fullName>
+                    <default>false</default>
+                    <label>Illegible Academic Documentation</label>
+                </value>
+                <value>
+                    <fullName>Incomplete - HSCF</fullName>
+                    <default>false</default>
+                    <label>Incomplete - HSCF</label>
+                </value>
+                <value>
+                    <fullName>Incomplete - PAH</fullName>
+                    <default>false</default>
+                    <label>Incomplete - PAH</label>
+                </value>
+                <value>
+                    <fullName>Incomplete - Report Card</fullName>
+                    <default>false</default>
+                    <label>Incomplete - Report Card</label>
+                </value>
+                <value>
+                    <fullName>Incomplete - Transcript</fullName>
+                    <default>false</default>
+                    <label>Incomplete - Transcript</label>
+                </value>
+                <value>
+                    <fullName>Invalid - HSCF</fullName>
+                    <default>false</default>
+                    <label>Invalid - HSCF</label>
+                </value>
+                <value>
+                    <fullName>Invalid - PAH</fullName>
+                    <default>false</default>
+                    <label>Invalid - PAH</label>
+                </value>
+                <value>
+                    <fullName>Invalid - Report Card (Need Current)</fullName>
+                    <default>false</default>
+                    <label>Invalid - Report Card (Need Current)</label>
+                </value>
+                <value>
+                    <fullName>Invalid - Report Card (Need EOY)</fullName>
+                    <default>false</default>
+                    <label>Invalid - Report Card (Need EOY)</label>
+                </value>
+                <value>
+                    <fullName>Invalid - Transcript</fullName>
+                    <default>false</default>
+                    <label>Invalid - Transcript</label>
+                </value>
+                <value>
+                    <fullName>Invalid- Past Deadline</fullName>
+                    <default>false</default>
+                    <label>Invalid- Past Deadline</label>
+                </value>
+                <value>
+                    <fullName>Invalid-Report Card (Need Other)</fullName>
+                    <default>false</default>
+                    <label>Invalid-Report Card (Need Other)</label>
+                </value>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Received - Enrollment Letter/Schedule</fullName>
+                    <default>false</default>
+                    <label>Received - Enrollment Letter/Schedule</label>
+                </value>
+                <value>
+                    <fullName>Received - Grading Scale</fullName>
+                    <default>false</default>
+                    <label>Received - Grading Scale</label>
+                </value>
+                <value>
+                    <fullName>Received - HSCF</fullName>
+                    <default>false</default>
+                    <label>Received - HSCF</label>
+                </value>
+                <value>
+                    <fullName>Received - PAH</fullName>
+                    <default>false</default>
+                    <label>Received - PAH</label>
+                </value>
+                <value>
+                    <fullName>Received - Report Card</fullName>
+                    <default>false</default>
+                    <label>Received - Report Card</label>
+                </value>
+                <value>
+                    <fullName>Received - Transcript</fullName>
+                    <default>false</default>
+                    <label>Received - Transcript</label>
+                </value>
+                <value>
+                    <fullName>Requested - Enrollment Letter/Schedule</fullName>
+                    <default>false</default>
+                    <label>Requested - Enrollment Letter/Schedule</label>
+                </value>
+                <value>
+                    <fullName>Requested - Grading Scale</fullName>
+                    <default>false</default>
+                    <label>Requested - Grading Scale</label>
+                </value>
+                <value>
+                    <fullName>Requested - HSCF</fullName>
+                    <default>false</default>
+                    <label>Requested - HSCF</label>
+                </value>
+                <value>
+                    <fullName>Requested - PAH</fullName>
+                    <default>false</default>
+                    <label>Requested - PAH</label>
+                </value>
+                <value>
+                    <fullName>Requested - Report Card (Current)</fullName>
+                    <default>false</default>
+                    <label>Requested - Report Card (Current)</label>
+                </value>
+                <value>
+                    <fullName>Requested - Report Card (EOY)</fullName>
+                    <default>false</default>
+                    <label>Requested - Report Card (EOY)</label>
+                </value>
+                <value>
+                    <fullName>Requested - Summer School Report Card</fullName>
+                    <default>false</default>
+                    <label>Requested - Summer School Report Card</label>
+                </value>
+                <value>
+                    <fullName>Requested - Transcript</fullName>
+                    <default>false</default>
+                    <label>Requested - Transcript</label>
+                </value>
+                <value>
+                    <fullName>Requested- Report Card (Need Other)</fullName>
+                    <default>false</default>
+                    <label>Requested- Report Card (Need Other)</label>
+                </value>
+                <value>
+                    <fullName>Verified - Enrollment Letter</fullName>
+                    <default>false</default>
+                    <label>Verified - Enrollment Letter</label>
+                </value>
+                <value>
+                    <fullName>Verified - Grading Scale</fullName>
+                    <default>false</default>
+                    <label>Verified - Grading Scale</label>
+                </value>
+                <value>
+                    <fullName>Verified - HSCF</fullName>
+                    <default>false</default>
+                    <label>Verified - HSCF</label>
+                </value>
+                <value>
+                    <fullName>Verified - PAH</fullName>
+                    <default>false</default>
+                    <label>Verified - PAH</label>
+                </value>
+                <value>
+                    <fullName>Verified - Report Card</fullName>
+                    <default>false</default>
+                    <label>Verified - Report Card</label>
+                </value>
+                <value>
+                    <fullName>Verified - Transcript</fullName>
+                    <default>false</default>
+                    <label>Verified - Transcript</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Student_Has_SSI__c</fullName>
+        <description>Student has SSI</description>
+        <externalId>false</externalId>
+        <label>Student Has SSI</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Forwarded_1__c</fullName>
+        <description>First date records forwarded</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Forwarded 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Forwarded_2__c</fullName>
+        <description>Second date records forwarded</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Forwarded 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Forwarded_3__c</fullName>
+        <description>Third date records forwarded</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Forwarded 3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Not_Applicable_Date__c</fullName>
+        <description>Date Student Records marked Not Applicable</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Not Applicable Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Not_Available_Date__c</fullName>
+        <description>Date Student Records marked Not Available</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Not Available Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Notification_2_Sent__c</fullName>
+        <description>Date Student Records Notification 2 was sent</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Notification 2 Sent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Notification_3_Sent__c</fullName>
+        <description>Date Student Records Notification 3 was sent</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Notification 3 Sent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Received__c</fullName>
+        <description>Date of File Receipt</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Received</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Requested__c</fullName>
+        <description>Date Initial Request</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Student Records Requested</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Student_Records_Tracking__c</fullName>
+        <description>Status of Student Records</description>
+        <externalId>false</externalId>
+        <label>Student Records Tracking</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Forwarded</fullName>
+                    <default>false</default>
+                    <label>Forwarded</label>
+                </value>
+                <value>
+                    <fullName>Not applicable</fullName>
+                    <default>false</default>
+                    <label>Not applicable</label>
+                </value>
+                <value>
+                    <fullName>Not available</fullName>
+                    <default>false</default>
+                    <label>Not available</label>
+                </value>
+                <value>
+                    <fullName>Notification 1 sent</fullName>
+                    <default>false</default>
+                    <label>Notification 1 sent</label>
+                </value>
+                <value>
+                    <fullName>Notification 2 sent</fullName>
+                    <default>false</default>
+                    <label>Notification 2 sent</label>
+                </value>
+                <value>
+                    <fullName>Notification 3 sent</fullName>
+                    <default>false</default>
+                    <label>Notification 3 sent</label>
+                </value>
+                <value>
+                    <fullName>Received</fullName>
+                    <default>false</default>
+                    <label>Received</label>
+                </value>
+                <value>
+                    <fullName>Received - Incomplete</fullName>
+                    <default>false</default>
+                    <label>Received - Incomplete</label>
+                </value>
+                <value>
+                    <fullName>Received but not uploaded</fullName>
+                    <default>false</default>
+                    <label>Received but not uploaded</label>
+                </value>
+                <value>
+                    <fullName>Request sent to School #2</fullName>
+                    <default>false</default>
+                    <label>Request sent to School #2</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type_of_Prior_School_Rec_Request__c</fullName>
+        <description>Type of Prior School - Records Request</description>
+        <externalId>false</externalId>
+        <label>Type of Prior School Rec Request</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Charter school (public)</fullName>
+                    <default>false</default>
+                    <label>Charter school (public)</label>
+                </value>
+                <value>
+                    <fullName>Homeschool</fullName>
+                    <default>false</default>
+                    <label>Homeschool</label>
+                </value>
+                <value>
+                    <fullName>Online (virtual) public school</fullName>
+                    <default>false</default>
+                    <label>Online (virtual) public school</label>
+                </value>
+                <value>
+                    <fullName>Private/parochial school</fullName>
+                    <default>false</default>
+                    <label>Private/parochial school</label>
+                </value>
+                <value>
+                    <fullName>Public school</fullName>
+                    <default>false</default>
+                    <label>Public school</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Verification_Meets_State_REQs__c</fullName>
+        <description>Verification meets state requirements</description>
+        <externalId>false</externalId>
+        <label>Verification Meets State REQs</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Why_Address_Changed_Records_Request__c</fullName>
+        <description>Why was Records Request changed to different address above</description>
+        <externalId>false</externalId>
+        <label>Why Address Changed Records Request</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1st Notification School Contact informed us SIF data incorrect</fullName>
+                    <default>false</default>
+                    <label>1st Notification School Contact informed us SIF data incorrect</label>
+                </value>
+                <value>
+                    <fullName>Directed to another school for information</fullName>
+                    <default>false</default>
+                    <label>Directed to another school for information</label>
+                </value>
+                <value>
+                    <fullName>Incomplete Information Available</fullName>
+                    <default>false</default>
+                    <label>Incomplete Information Available</label>
+                </value>
+                <value>
+                    <fullName>Records Request Authorization lists different school than info from SIF</fullName>
+                    <default>false</default>
+                    <label>Records Request Authorization lists different school than info from SIF</label>
+                </value>
+                <value>
+                    <fullName>Report Card lists different school than info from SIF</fullName>
+                    <default>false</default>
+                    <label>Report Card lists different school than info from SIF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Why_Records_Not_Forwarded_to_CA__c</fullName>
+        <description>Why Records Not Forwarded to CA</description>
+        <externalId>false</externalId>
+        <label>Why Records Not Forwarded to CA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Previous school will not release records because family owes money to school</fullName>
+                    <default>false</default>
+                    <label>Previous school will not release records because family owes money to school</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
     <label>District Notification &amp; Records Request</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>District Notification &amp; Records Request</label>
@@ -162,7 +1492,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>District Notification &amp; Records Requests</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

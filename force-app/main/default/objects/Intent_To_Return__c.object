@@ -153,7 +153,827 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Done_Different_to_Return__c</fullName>
+        <externalId>false</externalId>
+        <label>Done Different to Return</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ITR_Decision_Time_Frame__c</fullName>
+        <externalId>false</externalId>
+        <label>ITR Decision Time Frame</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>End of April</fullName>
+                    <default>false</default>
+                    <label>End of April</label>
+                </value>
+                <value>
+                    <fullName>End of May</fullName>
+                    <default>false</default>
+                    <label>End of May</label>
+                </value>
+                <value>
+                    <fullName>End of June</fullName>
+                    <default>false</default>
+                    <label>End of June</label>
+                </value>
+                <value>
+                    <fullName>Unsure</fullName>
+                    <default>false</default>
+                    <label>Unsure</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ITR_No_COVID_Length__c</fullName>
+        <externalId>false</externalId>
+        <label>ITR No COVID Length</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Until our local school opens for in-person class</fullName>
+                    <default>false</default>
+                    <label>Until our local school opens for in-person class</label>
+                </value>
+                <value>
+                    <fullName>Until COVID-19 cases were more under control</fullName>
+                    <default>false</default>
+                    <label>Until COVID-19 cases were more under control</label>
+                </value>
+                <value>
+                    <fullName>Until there was a COVID-19 vaccine</fullName>
+                    <default>false</default>
+                    <label>Until there was a COVID-19 vaccine</label>
+                </value>
+                <value>
+                    <fullName>Until I/we had to go back to working outside the home</fullName>
+                    <default>false</default>
+                    <label>Until I/we had to go back to working outside the home</label>
+                </value>
+                <value>
+                    <fullName>For 1 year</fullName>
+                    <default>false</default>
+                    <label>For 1 year</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ITR_No_COVID__c</fullName>
+        <externalId>false</externalId>
+        <label>ITR No COVID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ITR_No_Intended_Length__c</fullName>
+        <externalId>false</externalId>
+        <label>ITR No Intended Length</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A few months</fullName>
+                    <default>false</default>
+                    <label>A few months</label>
+                </value>
+                <value>
+                    <fullName>Until the end of that school year</fullName>
+                    <default>false</default>
+                    <label>Until the end of that school year</label>
+                </value>
+                <value>
+                    <fullName>2-3 years</fullName>
+                    <default>false</default>
+                    <label>2-3 years</label>
+                </value>
+                <value>
+                    <fullName>4 or more years</fullName>
+                    <default>false</default>
+                    <label>4 or more years</label>
+                </value>
+                <value>
+                    <fullName>Until they graduated</fullName>
+                    <default>false</default>
+                    <label>Until they graduated</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ITR_No_Plan_Vs_Actual__c</fullName>
+        <externalId>false</externalId>
+        <label>ITR No Plan Vs Actual</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>no</fullName>
+                    <default>false</default>
+                    <label>no</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ITR_Summer_Info__c</fullName>
+        <externalId>false</externalId>
+        <label>ITR Summer Info</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Credit recovery</fullName>
+                    <default>false</default>
+                    <label>Credit recovery</label>
+                </value>
+                <value>
+                    <fullName>High school original credit and/or NCAA eligible courses</fullName>
+                    <default>false</default>
+                    <label>High school original credit and/or NCAA eligible courses</label>
+                </value>
+                <value>
+                    <fullName>K-8 enrichment/world languages</fullName>
+                    <default>false</default>
+                    <label>K-8 enrichment/world languages</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ITR_Why_Undecided__c</fullName>
+        <externalId>false</externalId>
+        <label>ITR Why Undecided</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>We may be moving</fullName>
+                    <default>false</default>
+                    <label>We may be moving</label>
+                </value>
+                <value>
+                    <fullName>We want to wait until the end of the school year to decide</fullName>
+                    <default>false</default>
+                    <label>We want to wait until the end of the school year to decide</label>
+                </value>
+                <value>
+                    <fullName>We may not be able to provide a Learning Coach to assist our student next year</fullName>
+                    <default>false</default>
+                    <label>We may not be able to provide a Learning Coach to assist our student next year</label>
+                </value>
+                <value>
+                    <fullName>We have concerns about academic performance and are considering other options</fullName>
+                    <default>false</default>
+                    <label>We have concerns about academic performance and are considering other options</label>
+                </value>
+                <value>
+                    <fullName>We have concerns about socialization and are considering other options</fullName>
+                    <default>false</default>
+                    <label>We have concerns about socialization and are considering other options</label>
+                </value>
+                <value>
+                    <fullName>We are waiting to see what happens with COVID-19</fullName>
+                    <default>false</default>
+                    <label>We are waiting to see what happens with COVID-19</label>
+                </value>
+                <value>
+                    <fullName>We have concerns about the learning platform and technology for next year and are considering other options</fullName>
+                    <default>false</default>
+                    <label>We have concerns about the learning platform and technology for next year and are considering other options</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>We think our student will return, but don’t want to commit yet</fullName>
+                    <default>false</default>
+                    <label>We think our student will return, but don’t want to commit yet</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ITR_Yes_Primary_Returning_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>ITR Yes Primary Returning Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Connections Academy provides our family a flexible schedule</fullName>
+                    <default>false</default>
+                    <label>Connections Academy provides our family a flexible schedule</label>
+                </value>
+                <value>
+                    <fullName>Connections Academy offers a safer learning environment</fullName>
+                    <default>false</default>
+                    <label>Connections Academy offers a safer learning environment</label>
+                </value>
+                <value>
+                    <fullName>My child is succeeding academically with Connections Academy</fullName>
+                    <default>false</default>
+                    <label>My child is succeeding academically with Connections Academy</label>
+                </value>
+                <value>
+                    <fullName>I prefer the curriculum and courses used by Connections Academy to alternatives</fullName>
+                    <default>false</default>
+                    <label>I prefer the curriculum and courses used by Connections Academy to alternatives</label>
+                </value>
+                <value>
+                    <fullName>Connections Academy offers teachers who are highly qualified and dedicated to supporting students</fullName>
+                    <default>false</default>
+                    <label>Connections Academy offers teachers who are highly qualified and dedicated to supporting students</label>
+                </value>
+                <value>
+                    <fullName>Connections Academy accommodates my child’s health issues or special needs</fullName>
+                    <default>false</default>
+                    <label>Connections Academy accommodates my child’s health issues or special needs</label>
+                </value>
+                <value>
+                    <fullName>Connections Academy provides a better school solution as a military family</fullName>
+                    <default>false</default>
+                    <label>Connections Academy provides a better school solution as a military family</label>
+                </value>
+                <value>
+                    <fullName>Connections Academy allows me to be actively involved in my child/children’s education</fullName>
+                    <default>false</default>
+                    <label>Connections Academy allows me to be actively involved in my child/children’s education</label>
+                </value>
+                <value>
+                    <fullName>Connections Academy best prepares my child for college or career opportunities</fullName>
+                    <default>false</default>
+                    <label>Connections Academy best prepares my child for college or career opportunities</label>
+                </value>
+                <value>
+                    <fullName>Online school continues to be the best option for my family during COVID-19</fullName>
+                    <default>false</default>
+                    <label>Online school continues to be the best option for my family during COVID-19</label>
+                </value>
+                <value>
+                    <fullName>My child prefers online learning and wants to continue</fullName>
+                    <default>false</default>
+                    <label>My child prefers online learning and wants to continue</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>No_Return_Survey_Satisfied__c</fullName>
+        <externalId>false</externalId>
+        <label>No Return Survey Satisfied</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Very satisfied</fullName>
+                    <default>false</default>
+                    <label>Very satisfied</label>
+                </value>
+                <value>
+                    <fullName>Somewhat satisfied</fullName>
+                    <default>false</default>
+                    <label>Somewhat satisfied</label>
+                </value>
+                <value>
+                    <fullName>Somewhat dissatisfied</fullName>
+                    <default>false</default>
+                    <label>Somewhat dissatisfied</label>
+                </value>
+                <value>
+                    <fullName>Very dissatisfied</fullName>
+                    <default>false</default>
+                    <label>Very dissatisfied</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POA_Additional_Info_Request__c</fullName>
+        <externalId>false</externalId>
+        <label>POA Additional Info Request</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_Withdrawal_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Parent Withdrawal Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Enrollment was intended to be short term and is no longer needed for my student</fullName>
+                    <default>false</default>
+                    <label>Enrollment was intended to be short term and is no longer needed for my student</label>
+                </value>
+                <value>
+                    <fullName>Generally dissatisfied with curriculum/course options</fullName>
+                    <default>false</default>
+                    <label>Generally dissatisfied with curriculum/course options</label>
+                </value>
+                <value>
+                    <fullName>My student is pursuing a GED</fullName>
+                    <default>false</default>
+                    <label>My student is pursuing a GED</label>
+                </value>
+                <value>
+                    <fullName>My student wants to return to a traditional school setting for other (non-socialization related) reasons</fullName>
+                    <default>false</default>
+                    <label>My student wants to return to a traditional school setting for other (non-socialization related) reasons</label>
+                </value>
+                <value>
+                    <fullName>My student wants to return to a traditional school setting for socialization reasons</fullName>
+                    <default>false</default>
+                    <label>My student wants to return to a traditional school setting for socialization reasons</label>
+                </value>
+                <value>
+                    <fullName>Technical difficulties</fullName>
+                    <default>false</default>
+                    <label>Technical difficulties</label>
+                </value>
+                <value>
+                    <fullName>The curriculum is too easy</fullName>
+                    <default>false</default>
+                    <label>The curriculum is too easy</label>
+                </value>
+                <value>
+                    <fullName>The curriculum is too hard</fullName>
+                    <default>false</default>
+                    <label>The curriculum is too hard</label>
+                </value>
+                <value>
+                    <fullName>The program takes too much of the Learning Coach’s time</fullName>
+                    <default>false</default>
+                    <label>The program takes too much of the Learning Coach’s time</label>
+                </value>
+                <value>
+                    <fullName>The program takes too much of the student’s time</fullName>
+                    <default>false</default>
+                    <label>The program takes too much of the student’s time</label>
+                </value>
+                <value>
+                    <fullName>The program/schedule is not flexible enough</fullName>
+                    <default>false</default>
+                    <label>The program/schedule is not flexible enough</label>
+                </value>
+                <value>
+                    <fullName>The transition to a virtual school was too difficult</fullName>
+                    <default>false</default>
+                    <label>The transition to a virtual school was too difficult</label>
+                </value>
+                <value>
+                    <fullName>There was not enough help/guidance setting us up in the school</fullName>
+                    <default>false</default>
+                    <label>There was not enough help/guidance setting us up in the school</label>
+                </value>
+                <value>
+                    <fullName>We are moving</fullName>
+                    <default>false</default>
+                    <label>We are moving</label>
+                </value>
+                <value>
+                    <fullName>We are no longer able to provide a Learning Coach to assist our student</fullName>
+                    <default>false</default>
+                    <label>We are no longer able to provide a Learning Coach to assist our student</label>
+                </value>
+                <value>
+                    <fullName>We are not satisfied with our student’s teachers</fullName>
+                    <default>false</default>
+                    <label>We are not satisfied with our student’s teachers</label>
+                </value>
+                <value>
+                    <fullName>We are not satisfied with the school leadership</fullName>
+                    <default>false</default>
+                    <label>We are not satisfied with the school leadership</label>
+                </value>
+                <value>
+                    <fullName>We have chosen to homeschool</fullName>
+                    <default>false</default>
+                    <label>We have chosen to homeschool</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone__c</fullName>
+        <description>School or association phone number</description>
+        <encryptionScheme>CaseSensitiveDeterministicEncryption</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Program_Enrollment__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Program Enrollment</label>
+        <referenceTo>hed__Program_Enrollment__c</referenceTo>
+        <relationshipLabel>Intent To Returns</relationshipLabel>
+        <relationshipName>Intent_To_Returns</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Question_Group__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Question Group</label>
+        <referenceTo>Enrollment_Component__c</referenceTo>
+        <relationshipLabel>Intent To Returns</relationshipLabel>
+        <relationshipName>Intent_To_Returns</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SchoolCity__c</fullName>
+        <encryptionScheme>CaseSensitiveDeterministicEncryption</encryptionScheme>
+        <externalId>false</externalId>
+        <label>SchoolCity</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SchoolDistrict__c</fullName>
+        <encryptionScheme>CaseSensitiveDeterministicEncryption</encryptionScheme>
+        <externalId>false</externalId>
+        <label>SchoolDistrict</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SchoolName__c</fullName>
+        <encryptionScheme>CaseSensitiveDeterministicEncryption</encryptionScheme>
+        <externalId>false</externalId>
+        <label>SchoolName</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SchoolState__c</fullName>
+        <description>State in which the school or association operates</description>
+        <encryptionScheme>CaseSensitiveDeterministicEncryption</encryptionScheme>
+        <externalId>false</externalId>
+        <label>SchoolState</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SchoolStreet_Address__c</fullName>
+        <encryptionScheme>CaseSensitiveDeterministicEncryption</encryptionScheme>
+        <externalId>false</externalId>
+        <label>SchoolStreet Address</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SchoolType__c</fullName>
+        <externalId>false</externalId>
+        <label>SchoolType</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Homeschool</fullName>
+                    <default>false</default>
+                    <label>Homeschool</label>
+                </value>
+                <value>
+                    <fullName>Charter School (Public)</fullName>
+                    <default>false</default>
+                    <label>Charter School (Public)</label>
+                </value>
+                <value>
+                    <fullName>Online (Virtual) Public School</fullName>
+                    <default>false</default>
+                    <label>Online (Virtual) Public School</label>
+                </value>
+                <value>
+                    <fullName>Private/Parochial School</fullName>
+                    <default>false</default>
+                    <label>Private/Parochial School</label>
+                </value>
+                <value>
+                    <fullName>Public School</fullName>
+                    <default>false</default>
+                    <label>Public School</label>
+                </value>
+                <value>
+                    <fullName>Virtual School (Public)</fullName>
+                    <default>false</default>
+                    <label>Virtual School (Public)</label>
+                </value>
+                <value>
+                    <fullName>BIE School / Federal Grant / BIE Contract</fullName>
+                    <default>false</default>
+                    <label>BIE School / Federal Grant / BIE Contract</label>
+                </value>
+                <value>
+                    <fullName>State Supported</fullName>
+                    <default>false</default>
+                    <label>State Supported</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SchoolZIP__c</fullName>
+        <encryptionScheme>CaseSensitiveDeterministicEncryption</encryptionScheme>
+        <externalId>false</externalId>
+        <label>SchoolZIP</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type_School_Going_To__c</fullName>
+        <externalId>false</externalId>
+        <label>Type School Going To</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Charter</fullName>
+                    <default>false</default>
+                    <label>Charter</label>
+                </value>
+                <value>
+                    <fullName>GED/HSE</fullName>
+                    <default>false</default>
+                    <label>GED/HSE</label>
+                </value>
+                <value>
+                    <fullName>Graduating</fullName>
+                    <default>false</default>
+                    <label>Graduating</label>
+                </value>
+                <value>
+                    <fullName>Homeschool</fullName>
+                    <default>false</default>
+                    <label>Homeschool</label>
+                </value>
+                <value>
+                    <fullName>Other virtual</fullName>
+                    <default>false</default>
+                    <label>Other virtual</label>
+                </value>
+                <value>
+                    <fullName>Private</fullName>
+                    <default>false</default>
+                    <label>Private</label>
+                </value>
+                <value>
+                    <fullName>Public</fullName>
+                    <default>false</default>
+                    <label>Public</label>
+                </value>
+                <value>
+                    <fullName>Unsure</fullName>
+                    <default>false</default>
+                    <label>Unsure</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>What_could_we_have_done_differently__c</fullName>
+        <externalId>false</externalId>
+        <label>What could we have done differently</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Learning Platform could be more user-friendly</fullName>
+                    <default>false</default>
+                    <label>Learning Platform could be more user-friendly</label>
+                </value>
+                <value>
+                    <fullName>We experienced technical issues with the learning platform</fullName>
+                    <default>false</default>
+                    <label>We experienced technical issues with the learning platform</label>
+                </value>
+                <value>
+                    <fullName>Curriculum is too easy for my student</fullName>
+                    <default>false</default>
+                    <label>Curriculum is too easy for my student</label>
+                </value>
+                <value>
+                    <fullName>Curriculum is too hard for my student</fullName>
+                    <default>false</default>
+                    <label>Curriculum is too hard for my student</label>
+                </value>
+                <value>
+                    <fullName>The teachers do not communicate enough with students</fullName>
+                    <default>false</default>
+                    <label>The teachers do not communicate enough with students</label>
+                </value>
+                <value>
+                    <fullName>The school team does not communicate enough with Learning Coaches</fullName>
+                    <default>false</default>
+                    <label>The school team does not communicate enough with Learning Coaches</label>
+                </value>
+                <value>
+                    <fullName>I could use additional support or training as a Learning Coach</fullName>
+                    <default>false</default>
+                    <label>I could use additional support or training as a Learning Coach</label>
+                </value>
+                <value>
+                    <fullName>The extracurricular activities do not meet the interests or needs of my student</fullName>
+                    <default>false</default>
+                    <label>The extracurricular activities do not meet the interests or needs of my student</label>
+                </value>
+                <value>
+                    <fullName>My student needs more engagement with other students academically or socially</fullName>
+                    <default>false</default>
+                    <label>My student needs more engagement with other students academically or socially</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Intent To Return</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>Intent To Return Name</label>
@@ -161,7 +981,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Intent To Returns</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <startsWith>Vowel</startsWith>
     <visibility>Public</visibility>

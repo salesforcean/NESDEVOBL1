@@ -157,7 +157,2615 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>AdditionalCoursesforCompass__c</fullName>
+        <description>Additional Courses Requested for Compass Students</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Additional Courses for Compass</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>AddtlApprovedCompassCourses__c</fullName>
+        <description>Additional Approved Compass Courses</description>
+        <externalId>false</externalId>
+        <label>Addtl Approved Compass Courses</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Compass Science (only if the student is in Compass LA and Math)</fullName>
+                    <default>false</default>
+                    <label>Compass Science (only if the student is in Compass LA and Math)</label>
+                </value>
+                <value>
+                    <fullName>Compass Social Studies (only if the student is in Compass LA and Math)</fullName>
+                    <default>false</default>
+                    <label>Compass Social Studies (only if the student is in Compass LA and Math)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CompassLAInstructionalLevel__c</fullName>
+        <description>Compass Language Arts Instructional Level</description>
+        <externalId>false</externalId>
+        <label>Compass LA Instructional Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                    <label>7</label>
+                </value>
+                <value>
+                    <fullName>8</fullName>
+                    <default>false</default>
+                    <label>8</label>
+                </value>
+                <value>
+                    <fullName>English I</fullName>
+                    <default>false</default>
+                    <label>English I</label>
+                </value>
+                <value>
+                    <fullName>English II</fullName>
+                    <default>false</default>
+                    <label>English II</label>
+                </value>
+                <value>
+                    <fullName>English III</fullName>
+                    <default>false</default>
+                    <label>English III</label>
+                </value>
+                <value>
+                    <fullName>English IV</fullName>
+                    <default>false</default>
+                    <label>English IV</label>
+                </value>
+                <value>
+                    <fullName>K</fullName>
+                    <default>false</default>
+                    <label>K</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CompassMathInstructionalLevel__c</fullName>
+        <description>Compass Math Instructional  Level</description>
+        <externalId>false</externalId>
+        <label>Compass Math Instructional Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                    <label>7</label>
+                </value>
+                <value>
+                    <fullName>8</fullName>
+                    <default>false</default>
+                    <label>8</label>
+                </value>
+                <value>
+                    <fullName>Algebra I</fullName>
+                    <default>false</default>
+                    <label>Algebra I</label>
+                </value>
+                <value>
+                    <fullName>Algebra II</fullName>
+                    <default>false</default>
+                    <label>Algebra II</label>
+                </value>
+                <value>
+                    <fullName>Geometry</fullName>
+                    <default>false</default>
+                    <label>Geometry</label>
+                </value>
+                <value>
+                    <fullName>Honors Algebra</fullName>
+                    <default>false</default>
+                    <label>Honors Algebra</label>
+                </value>
+                <value>
+                    <fullName>K</fullName>
+                    <default>false</default>
+                    <label>K</label>
+                </value>
+                <value>
+                    <fullName>Pre-Calculus</fullName>
+                    <default>false</default>
+                    <label>Pre-Calculus</label>
+                </value>
+                <value>
+                    <fullName>Trigonometry</fullName>
+                    <default>false</default>
+                    <label>Trigonometry</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CompassSSInstructionalLevel__c</fullName>
+        <description>Compass Social Studies Instructional Level</description>
+        <externalId>false</externalId>
+        <label>Compass SS Instructional Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 (Not Available)</fullName>
+                    <default>false</default>
+                    <label>1 (Not Available)</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                    <label>7</label>
+                </value>
+                <value>
+                    <fullName>Economics</fullName>
+                    <default>false</default>
+                    <label>Economics</label>
+                </value>
+                <value>
+                    <fullName>K (Not Available)</fullName>
+                    <default>false</default>
+                    <label>K (Not Available)</label>
+                </value>
+                <value>
+                    <fullName>Macroeconomics</fullName>
+                    <default>false</default>
+                    <label>Macroeconomics</label>
+                </value>
+                <value>
+                    <fullName>Microeconomics</fullName>
+                    <default>false</default>
+                    <label>Microeconomics</label>
+                </value>
+                <value>
+                    <fullName>Personal Finance</fullName>
+                    <default>false</default>
+                    <label>Personal Finance</label>
+                </value>
+                <value>
+                    <fullName>US History I</fullName>
+                    <default>false</default>
+                    <label>US History I</label>
+                </value>
+                <value>
+                    <fullName>US History II</fullName>
+                    <default>false</default>
+                    <label>US History II</label>
+                </value>
+                <value>
+                    <fullName>World Geography</fullName>
+                    <default>false</default>
+                    <label>World Geography</label>
+                </value>
+                <value>
+                    <fullName>World History</fullName>
+                    <default>false</default>
+                    <label>World History</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CompassScienceInstructionLevel__c</fullName>
+        <description>Compass Science Instructional Level</description>
+        <externalId>false</externalId>
+        <label>Compass Science Instruction Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>Biology</fullName>
+                    <default>false</default>
+                    <label>Biology</label>
+                </value>
+                <value>
+                    <fullName>Chemistry</fullName>
+                    <default>false</default>
+                    <label>Chemistry</label>
+                </value>
+                <value>
+                    <fullName>Earth/Space Science</fullName>
+                    <default>false</default>
+                    <label>Earth/Space Science</label>
+                </value>
+                <value>
+                    <fullName>K (Not Available)</fullName>
+                    <default>false</default>
+                    <label>K (Not Available)</label>
+                </value>
+                <value>
+                    <fullName>MS Earth and Space Science</fullName>
+                    <default>false</default>
+                    <label>MS Earth and Space Science</label>
+                </value>
+                <value>
+                    <fullName>MS Life Science</fullName>
+                    <default>false</default>
+                    <label>MS Life Science</label>
+                </value>
+                <value>
+                    <fullName>MS Nature of Science</fullName>
+                    <default>false</default>
+                    <label>MS Nature of Science</label>
+                </value>
+                <value>
+                    <fullName>MS Physical Science</fullName>
+                    <default>false</default>
+                    <label>MS Physical Science</label>
+                </value>
+                <value>
+                    <fullName>Physical Science</fullName>
+                    <default>false</default>
+                    <label>Physical Science</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ConnectedProgramRequests__c</fullName>
+        <description>Additional Approved Connected Courses</description>
+        <externalId>false</externalId>
+        <label>Connected Program Requests</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Science</fullName>
+                    <default>false</default>
+                    <label>Science</label>
+                </value>
+                <value>
+                    <fullName>Social Studies</fullName>
+                    <default>false</default>
+                    <label>Social Studies</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>DateLastReEval__c</fullName>
+        <description>Date of student&apos;s last evaluation meeting (this is the evaluation review meeting date, not the testing date -- EXCEPT IN FL)</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date Last Re Eval</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DateMcKinneyVentoReviewed__c</fullName>
+        <description>Date review by McKinney Vento Liaison</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date McKinney Vento Reviewed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DateReviewedbySpecEdDirector__c</fullName>
+        <description>Date reviewed by Special Education Director</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date Reviewed by Spec Ed Director</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DateofInitialGiftedCall__c</fullName>
+        <description>Date of Initial Gifted Contact</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date of Initial Gifted Call</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DyslexiaServices__c</fullName>
+        <description>Is the student receiving services for dyslexia?</description>
+        <externalId>false</externalId>
+        <label>Dyslexia Services</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>EvaluatedWithInLastYear__c</fullName>
+        <description>Has the student been evaluated for special education services within the last year?</description>
+        <externalId>false</externalId>
+        <label>EvaluatedWithInLastYear</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Decline to Disclose</fullName>
+                    <default>false</default>
+                    <label>Decline to Disclose</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>FLVS_GiftedEP_Past3Years__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has the student had an education plan for gifted services in the last three years?</description>
+        <externalId>false</externalId>
+        <label>FLVS GiftedEP Past3Years</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FormallyExitedIEP__c</fullName>
+        <description>Was the student formally exited from his/her IEP in the past three years?</description>
+        <externalId>false</externalId>
+        <label>Formally Exited IEP</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Gifted__c</fullName>
+        <description>Identifies gifted students</description>
+        <externalId>false</externalId>
+        <label>Gifted</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Documenting</fullName>
+                    <default>false</default>
+                    <label>Documenting</label>
+                </value>
+                <value>
+                    <fullName>Gifted Allow</fullName>
+                    <default>false</default>
+                    <label>Gifted Allow</label>
+                </value>
+                <value>
+                    <fullName>Gifted Allow Continue</fullName>
+                    <default>false</default>
+                    <label>Gifted Allow Continue</label>
+                </value>
+                <value>
+                    <fullName>Gifted Connections Academy Identification</fullName>
+                    <default>false</default>
+                    <label>Gifted Connections Academy Identification</label>
+                </value>
+                <value>
+                    <fullName>Gifted EP - FL</fullName>
+                    <default>false</default>
+                    <label>Gifted EP - FL</label>
+                </value>
+                <value>
+                    <fullName>Gifted IEP</fullName>
+                    <default>false</default>
+                    <label>Gifted IEP</label>
+                </value>
+                <value>
+                    <fullName>Gifted Local School Identification</fullName>
+                    <default>false</default>
+                    <label>Gifted Local School Identification</label>
+                </value>
+                <value>
+                    <fullName>Gifted No Gifted Courses</fullName>
+                    <default>false</default>
+                    <label>Gifted No Gifted Courses</label>
+                </value>
+                <value>
+                    <fullName>Gifted Potential</fullName>
+                    <default>false</default>
+                    <label>Gifted Potential</label>
+                </value>
+                <value>
+                    <fullName>Ineligible</fullName>
+                    <default>false</default>
+                    <label>Ineligible</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>HasStudentEverHad504Plan__c</fullName>
+        <description>Has the student ever had a 504 plan?</description>
+        <externalId>false</externalId>
+        <label>Has Student Ever Had 504 Plan</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>Decline to Disclose</fullName>
+                    <default>false</default>
+                    <label>Decline to Disclose</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IACA_SpedStudClassification__c</fullName>
+        <description>Student Classification</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>IACA Sped Stud Classification</label>
+        <length>4</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IEPHistory__c</fullName>
+        <description>Has the student ever had an Individualized Education Program (IEP)?</description>
+        <externalId>false</externalId>
+        <label>IEPHistory</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Decline to Disclose</fullName>
+                    <default>false</default>
+                    <label>Decline to Disclose</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IEPLastReviewed__c</fullName>
+        <description>IEP Last Reviewed</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>IEP Last Reviewed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>IEPLastUpdated__c</fullName>
+        <description>When was the last time the student&apos;s IEP was updated?</description>
+        <externalId>false</externalId>
+        <label>IEP Last Updated</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Within the last year</fullName>
+                    <default>false</default>
+                    <label>Within the last year</label>
+                </value>
+                <value>
+                    <fullName>Within the last two years</fullName>
+                    <default>false</default>
+                    <label>Within the last two years</label>
+                </value>
+                <value>
+                    <fullName>Within the last three years</fullName>
+                    <default>false</default>
+                    <label>Within the last three years</label>
+                </value>
+                <value>
+                    <fullName>More than three years ago</fullName>
+                    <default>false</default>
+                    <label>More than three years ago</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IEPMeetingStatus__c</fullName>
+        <description>IEP Meeting Status</description>
+        <externalId>false</externalId>
+        <label>IEP Meeting Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pre-enrollment meeting held-Return to district</fullName>
+                    <default>false</default>
+                    <label>Pre-enrollment meeting held-Return to district</label>
+                </value>
+                <value>
+                    <fullName>Pre-enrollment meeting scheduled</fullName>
+                    <default>false</default>
+                    <label>Pre-enrollment meeting scheduled</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IEPPastThreeYears__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has the student had an Individualized Education Program (IEP) in the last three years?</description>
+        <externalId>false</externalId>
+        <label>IEP Past Three Years</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IEPStateTestingParticipation__c</fullName>
+        <description>How will the student participate in state testing?</description>
+        <externalId>false</externalId>
+        <label>IEP State Testing Participation</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>State test not given at student&apos;s current grade level</fullName>
+                    <default>false</default>
+                    <label>State test not given at student&apos;s current grade level</label>
+                </value>
+                <value>
+                    <fullName>Student will take alternative assessment</fullName>
+                    <default>false</default>
+                    <label>Student will take alternative assessment</label>
+                </value>
+                <value>
+                    <fullName>Student will take modified assessment</fullName>
+                    <default>false</default>
+                    <label>Student will take modified assessment</label>
+                </value>
+                <value>
+                    <fullName>Student will take state test with accommodations</fullName>
+                    <default>false</default>
+                    <label>Student will take state test with accommodations</label>
+                </value>
+                <value>
+                    <fullName>Student will take state test without accommodations</fullName>
+                    <default>false</default>
+                    <label>Student will take state test without accommodations</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IEP_504_Docs_ElectonicOrMail__c</fullName>
+        <description>IEP_504_Docs_ElectronicOrMail</description>
+        <externalId>false</externalId>
+        <label>IEP 504 Docs Electonic or Mail</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>I have read and understand the above, I agree to receiving notices by electronic mail and to use the digital signature process provided by the school.</fullName>
+                    <default>false</default>
+                    <label>I have read and understand the above, I agree to receiving notices by electronic mail and to use the digital signature process provided by the school.</label>
+                </value>
+                <value>
+                    <fullName>I prefer to receive all documentation discussed above, by U.S. mail. I have read and understand the above, however, I elect to opt out of 1) receiving notices by electronic mail and 2) using the digital signature process provided by the school.</fullName>
+                    <default>false</default>
+                    <label>I prefer to receive all documentation discussed above, by U.S. mail. I have read and understand the above, however, I elect to opt out of 1) receiving notices by electronic mail and 2) using the digital signature process provided by the school.</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IEP_DisabilityTextBox__c</fullName>
+        <description>Description of the student&apos;s disabilities</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>IEP Disability Text Box</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>IEP_Disability__c</fullName>
+        <description>Identification of the student&apos;s disabilities.</description>
+        <externalId>false</externalId>
+        <label>IEP Disability</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Allergies</fullName>
+                    <default>false</default>
+                    <label>Allergies</label>
+                </value>
+                <value>
+                    <fullName>Asperger&apos;s syndrome</fullName>
+                    <default>false</default>
+                    <label>Asperger&apos;s syndrome</label>
+                </value>
+                <value>
+                    <fullName>Attention deficit disorder (ADD or ADHD)</fullName>
+                    <default>false</default>
+                    <label>Attention deficit disorder (ADD or ADHD)</label>
+                </value>
+                <value>
+                    <fullName>Autism spectrum disorder</fullName>
+                    <default>false</default>
+                    <label>Autism spectrum disorder</label>
+                </value>
+                <value>
+                    <fullName>Emotional issues</fullName>
+                    <default>false</default>
+                    <label>Emotional issues</label>
+                </value>
+                <value>
+                    <fullName>Gifted</fullName>
+                    <default>false</default>
+                    <label>Gifted</label>
+                </value>
+                <value>
+                    <fullName>Hard of hearing/deaf</fullName>
+                    <default>false</default>
+                    <label>Hard of hearing/deaf</label>
+                </value>
+                <value>
+                    <fullName>Intellectual disability (cognitive impairment)</fullName>
+                    <default>false</default>
+                    <label>Intellectual disability (cognitive impairment)</label>
+                </value>
+                <value>
+                    <fullName>Other health issues</fullName>
+                    <default>false</default>
+                    <label>Other health issues</label>
+                </value>
+                <value>
+                    <fullName>Physical disability</fullName>
+                    <default>false</default>
+                    <label>Physical disability</label>
+                </value>
+                <value>
+                    <fullName>Specific learning disability</fullName>
+                    <default>false</default>
+                    <label>Specific learning disability</label>
+                </value>
+                <value>
+                    <fullName>Speech/language issues</fullName>
+                    <default>false</default>
+                    <label>Speech/language issues</label>
+                </value>
+                <value>
+                    <fullName>Visually impaired/blind</fullName>
+                    <default>false</default>
+                    <label>Visually impaired/blind</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Unsure</fullName>
+                    <default>false</default>
+                    <label>Unsure</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>IEP__c</fullName>
+        <description>Students with disabilities with IEPs</description>
+        <externalId>false</externalId>
+        <label>IEP</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Documenting</fullName>
+                    <default>false</default>
+                    <label>Documenting</label>
+                </value>
+                <value>
+                    <fullName>IEP</fullName>
+                    <default>false</default>
+                    <label>IEP</label>
+                </value>
+                <value>
+                    <fullName>IEP-Withdrawn</fullName>
+                    <default>false</default>
+                    <label>IEP-Withdrawn</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>InstructionalModificationNotes__c</fullName>
+        <description>Instructional Modification Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Instructional Modification Notes</label>
+        <length>131072</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>LS_Articulation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Articulation</description>
+        <externalId>false</externalId>
+        <label>LS Articulation</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LS_DaysOfWeekContactPreferred__c</fullName>
+        <description>Days of the week LiveSpeech contact is preferred.</description>
+        <externalId>false</externalId>
+        <label>LS Days Of Week Contact Preferred</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Friday</fullName>
+                    <default>false</default>
+                    <label>Friday</label>
+                </value>
+                <value>
+                    <fullName>Monday</fullName>
+                    <default>false</default>
+                    <label>Monday</label>
+                </value>
+                <value>
+                    <fullName>Thursday</fullName>
+                    <default>false</default>
+                    <label>Thursday</label>
+                </value>
+                <value>
+                    <fullName>Tuesday</fullName>
+                    <default>false</default>
+                    <label>Tuesday</label>
+                </value>
+                <value>
+                    <fullName>Wednesday</fullName>
+                    <default>false</default>
+                    <label>Wednesday</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>LS_Fluency__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Fluency</description>
+        <externalId>false</externalId>
+        <label>LS Fluency</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LS_Language__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Language</description>
+        <externalId>false</externalId>
+        <label>LS Language</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LS_Other_Speech_Services_Type__c</fullName>
+        <description>Other Speech Services Type Needed</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>LS Other Speech Services Type</label>
+        <length>500</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>LS_Pragmatics__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Pragmatics</description>
+        <externalId>false</externalId>
+        <label>LS Pragmatics</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LS_Pre_Enroll_Directors_Notes__c</fullName>
+        <description>Director&apos;s Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>LS Pre Enroll Directors Notes</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>LS_Pre_Enrollment_Date_Stamp__c</fullName>
+        <description>Pre Enrollment Date Stamp (auto populates)</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>LS Pre Enrollment Date Stamp</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>LS_Pre_Enrollment__c</fullName>
+        <description>Requested Service</description>
+        <externalId>false</externalId>
+        <label>LS Pre Enrollment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Attend IEP Meetings</fullName>
+                    <default>false</default>
+                    <label>Attend IEP Meetings</label>
+                </value>
+                <value>
+                    <fullName>Review Records</fullName>
+                    <default>false</default>
+                    <label>Review Records</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>LS_PreferredPhoneNumber__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>LS Preferred Phone Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>LS_Preferred_Email_Address__c</fullName>
+        <description>Preferred email address</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>LS Preferred Email Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LS_Preferred_Method_Of_Contact__c</fullName>
+        <description>Preferred method of contact</description>
+        <externalId>false</externalId>
+        <label>LS Preferred Method Of Contact</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Via Phone</fullName>
+                    <default>false</default>
+                    <label>Via Phone</label>
+                </value>
+                <value>
+                    <fullName>Via Text</fullName>
+                    <default>false</default>
+                    <label>Via Text</label>
+                </value>
+                <value>
+                    <fullName>Via WebMail</fullName>
+                    <default>false</default>
+                    <label>Via WebMail</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LS_Preferred_Mobile_Phone_Number__c</fullName>
+        <description>Preferred mobile phone number (for text messages)</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>LS Preferred Mobile Phone Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>LS_Time_of_Day_Contact_Preferred__c</fullName>
+        <description>Preferred time of day for LiveSpeech contact</description>
+        <externalId>false</externalId>
+        <label>LS Time of Day Contact Preferred</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Afternoon</fullName>
+                    <default>false</default>
+                    <label>Afternoon</label>
+                </value>
+                <value>
+                    <fullName>Evening</fullName>
+                    <default>false</default>
+                    <label>Evening</label>
+                </value>
+                <value>
+                    <fullName>Morning</fullName>
+                    <default>false</default>
+                    <label>Morning</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>LastAnnualReview__c</fullName>
+        <description>Date of Last annual review (NC/OH-IEP Meeting Date)</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Last Annual Review</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>LeastRestrictiveEnvironment__c</fullName>
+        <description>Least Restrictive Environment</description>
+        <externalId>false</externalId>
+        <label>Least Restrictive Environment</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>21% to 60% in special education</fullName>
+                    <default>false</default>
+                    <label>21% to 60% in special education</label>
+                </value>
+                <value>
+                    <fullName>80% or more of the day in the regular class</fullName>
+                    <default>false</default>
+                    <label>80% or more of the day in the regular class</label>
+                </value>
+                <value>
+                    <fullName>More than 61% in special education</fullName>
+                    <default>false</default>
+                    <label>More than 61% in special education</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>McKinney_Ventio_Eligibility__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>McKinney Vento Eligible</description>
+        <externalId>false</externalId>
+        <label>McKinney Ventio Eligibility</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>McKinney_Vento_Review_Status__c</fullName>
+        <description>Status of McKinney Vento Review</description>
+        <externalId>false</externalId>
+        <label>McKinney Vento Review Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Placement Complete</fullName>
+                    <default>false</default>
+                    <label>Placement Complete</label>
+                </value>
+                <value>
+                    <fullName>Ready for Placement</fullName>
+                    <default>false</default>
+                    <label>Ready for Placement</label>
+                </value>
+                <value>
+                    <fullName>Reviewed</fullName>
+                    <default>false</default>
+                    <label>Reviewed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>MckV_Waived__c</fullName>
+        <description>Which required documents were not collected upon enrollment</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>MckV Waived</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>OEA_Spec_Ed_Approvedor_Denied__c</fullName>
+        <description>Special Education services for the student</description>
+        <externalId>false</externalId>
+        <label>OEA Spec Ed Approvedor Denied</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Denied</fullName>
+                    <default>false</default>
+                    <label>Denied</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Participated_Alt_Assessment__c</fullName>
+        <externalId>false</externalId>
+        <label>Participated Alt Assessment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Unsure</fullName>
+                    <default>false</default>
+                    <label>Unsure</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Plan504AllergyAccomodations__c</fullName>
+        <description>Does the student’s 504 plan include accommodations for allergies?</description>
+        <externalId>false</externalId>
+        <label>504 Plan Allergy Accomodations</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Plan504Exit__c</fullName>
+        <description>Was the student formally exited from his/her 504 plan in the past three years?</description>
+        <externalId>false</externalId>
+        <label>Plan504Exit</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Plan504History__c</fullName>
+        <description>Has the student had a 504 plan in the last three years?</description>
+        <externalId>false</externalId>
+        <label>Plan504History</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Plan504LastReviewed__c</fullName>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>504 Plan Last Reviewed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Plan504__c</fullName>
+        <description>Students with 504 plans</description>
+        <externalId>false</externalId>
+        <label>Plan504</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>504</fullName>
+                    <default>false</default>
+                    <label>504</label>
+                </value>
+                <value>
+                    <fullName>504 Missing</fullName>
+                    <default>false</default>
+                    <label>504 Missing</label>
+                </value>
+                <value>
+                    <fullName>504-No Documentation Available</fullName>
+                    <default>false</default>
+                    <label>504-No Documentation Available</label>
+                </value>
+                <value>
+                    <fullName>Illegible</fullName>
+                    <default>false</default>
+                    <label>Illegible</label>
+                </value>
+                <value>
+                    <fullName>Received</fullName>
+                    <default>false</default>
+                    <label>Received</label>
+                </value>
+                <value>
+                    <fullName>Received-No Documentation</fullName>
+                    <default>false</default>
+                    <label>Received-No Documentation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Previously_Identified_GT__c</fullName>
+        <description>Has the student been previously identified as gifted and talented?</description>
+        <externalId>false</externalId>
+        <label>Previously Identified GT</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Program_Enrollment__c</fullName>
+        <externalId>false</externalId>
+        <label>Program Enrollment</label>
+        <referenceTo>hed__Program_Enrollment__c</referenceTo>
+        <relationshipLabel>Special Educations</relationshipLabel>
+        <relationshipName>Special_Educations</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>ReEvaluation_Frequency__c</fullName>
+        <description>How often should the re-evaluation occur</description>
+        <externalId>false</externalId>
+        <label>Re-Evaluation Frequency</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1 year</fullName>
+                    <default>false</default>
+                    <label>1 year</label>
+                </value>
+                <value>
+                    <fullName>2 years</fullName>
+                    <default>false</default>
+                    <label>2 years</label>
+                </value>
+                <value>
+                    <fullName>3 years</fullName>
+                    <default>false</default>
+                    <label>3 years</label>
+                </value>
+                <value>
+                    <fullName>Gifted - No Re-Evaluation Required</fullName>
+                    <default>false</default>
+                    <label>Gifted - No Re-Evaluation Required</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ReviewedbySpecialEdDirector__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Has this student been reviewed by the Special Education Director</description>
+        <externalId>false</externalId>
+        <label>Reviewed by Special Ed Director</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SPED_Disability__c</fullName>
+        <description>SP/ED Primary Disability</description>
+        <externalId>false</externalId>
+        <label>SPED Disability</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Autism</fullName>
+                    <default>false</default>
+                    <label>Autism</label>
+                </value>
+                <value>
+                    <fullName>Communication (TECCA and ORCA use only)</fullName>
+                    <default>false</default>
+                    <label>Communication (TECCA and ORCA use only)</label>
+                </value>
+                <value>
+                    <fullName>DD</fullName>
+                    <default>false</default>
+                    <label>DD</label>
+                </value>
+                <value>
+                    <fullName>Deaf_Blindness</fullName>
+                    <default>false</default>
+                    <label>Deaf_Blindness</label>
+                </value>
+                <value>
+                    <fullName>ED</fullName>
+                    <default>false</default>
+                    <label>ED</label>
+                </value>
+                <value>
+                    <fullName>Eligible Individual (IACA use only)</fullName>
+                    <default>false</default>
+                    <label>Eligible Individual (IACA use only)</label>
+                </value>
+                <value>
+                    <fullName>Gifted</fullName>
+                    <default>false</default>
+                    <label>Gifted</label>
+                </value>
+                <value>
+                    <fullName>HI</fullName>
+                    <default>false</default>
+                    <label>HI</label>
+                </value>
+                <value>
+                    <fullName>ID</fullName>
+                    <default>false</default>
+                    <label>ID</label>
+                </value>
+                <value>
+                    <fullName>ID - Mild</fullName>
+                    <default>false</default>
+                    <label>ID - Mild</label>
+                </value>
+                <value>
+                    <fullName>ID - Moderate</fullName>
+                    <default>false</default>
+                    <label>ID - Moderate</label>
+                </value>
+                <value>
+                    <fullName>ID - Severe</fullName>
+                    <default>false</default>
+                    <label>ID - Severe</label>
+                </value>
+                <value>
+                    <fullName>Language (FL, ID and IN only)</fullName>
+                    <default>false</default>
+                    <label>Language (FL, ID and IN only)</label>
+                </value>
+                <value>
+                    <fullName>Multiple</fullName>
+                    <default>false</default>
+                    <label>Multiple</label>
+                </value>
+                <value>
+                    <fullName>Neurological (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Neurological (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>OHI</fullName>
+                    <default>false</default>
+                    <label>OHI</label>
+                </value>
+                <value>
+                    <fullName>OHI-Major (Ohio use only)</fullName>
+                    <default>false</default>
+                    <label>OHI-Major (Ohio use only)</label>
+                </value>
+                <value>
+                    <fullName>OHI-Minor (Ohio use only)</fullName>
+                    <default>false</default>
+                    <label>OHI-Minor (Ohio use only)</label>
+                </value>
+                <value>
+                    <fullName>Physical/OI</fullName>
+                    <default>false</default>
+                    <label>Physical/OI</label>
+                </value>
+                <value>
+                    <fullName>S/L</fullName>
+                    <default>false</default>
+                    <label>S/L</label>
+                </value>
+                <value>
+                    <fullName>Sensory/Deaf-Blind (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/Deaf-Blind (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>Sensory/HI (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/HI (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>Sensory/VI (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/VI (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>SLD</fullName>
+                    <default>false</default>
+                    <label>SLD</label>
+                </value>
+                <value>
+                    <fullName>Speech (FL, ID and IN only)</fullName>
+                    <default>false</default>
+                    <label>Speech (FL, ID and IN only)</label>
+                </value>
+                <value>
+                    <fullName>TBI</fullName>
+                    <default>false</default>
+                    <label>TBI</label>
+                </value>
+                <value>
+                    <fullName>VI</fullName>
+                    <default>false</default>
+                    <label>VI</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SPED_Secondary_Disability__c</fullName>
+        <description>SP/ED Secondary Disability</description>
+        <externalId>false</externalId>
+        <label>SPED Secondary Disability</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Autism</fullName>
+                    <default>false</default>
+                    <label>Autism</label>
+                </value>
+                <value>
+                    <fullName>Communication (TECCA and ORCA use only)</fullName>
+                    <default>false</default>
+                    <label>Communication (TECCA and ORCA use only)</label>
+                </value>
+                <value>
+                    <fullName>DD</fullName>
+                    <default>false</default>
+                    <label>DD</label>
+                </value>
+                <value>
+                    <fullName>ED</fullName>
+                    <default>false</default>
+                    <label>ED</label>
+                </value>
+                <value>
+                    <fullName>Gifted</fullName>
+                    <default>false</default>
+                    <label>Gifted</label>
+                </value>
+                <value>
+                    <fullName>HI</fullName>
+                    <default>false</default>
+                    <label>HI</label>
+                </value>
+                <value>
+                    <fullName>ID</fullName>
+                    <default>false</default>
+                    <label>ID</label>
+                </value>
+                <value>
+                    <fullName>ID - Mild</fullName>
+                    <default>false</default>
+                    <label>ID - Mild</label>
+                </value>
+                <value>
+                    <fullName>ID - Moderate</fullName>
+                    <default>false</default>
+                    <label>ID - Moderate</label>
+                </value>
+                <value>
+                    <fullName>ID - Severe</fullName>
+                    <default>false</default>
+                    <label>ID - Severe</label>
+                </value>
+                <value>
+                    <fullName>Language (FL, ID and IN only)</fullName>
+                    <default>false</default>
+                    <label>Language (FL, ID and IN only)</label>
+                </value>
+                <value>
+                    <fullName>Multiple</fullName>
+                    <default>false</default>
+                    <label>Multiple</label>
+                </value>
+                <value>
+                    <fullName>Neurological (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Neurological (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>OHI</fullName>
+                    <default>false</default>
+                    <label>OHI</label>
+                </value>
+                <value>
+                    <fullName>Physical/OI</fullName>
+                    <default>false</default>
+                    <label>Physical/OI</label>
+                </value>
+                <value>
+                    <fullName>S/L</fullName>
+                    <default>false</default>
+                    <label>S/L</label>
+                </value>
+                <value>
+                    <fullName>Sensory/Deaf-Blind (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/Deaf-Blind (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>Sensory/HI (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/HI (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>Sensory/VI (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/VI (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>SLD</fullName>
+                    <default>false</default>
+                    <label>SLD</label>
+                </value>
+                <value>
+                    <fullName>Speech (FL, ID and IN only)</fullName>
+                    <default>false</default>
+                    <label>Speech (FL, ID and IN only)</label>
+                </value>
+                <value>
+                    <fullName>TBI</fullName>
+                    <default>false</default>
+                    <label>TBI</label>
+                </value>
+                <value>
+                    <fullName>VI</fullName>
+                    <default>false</default>
+                    <label>VI</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SPED_Services_Exit_Date__c</fullName>
+        <description>Date the student no longer receives Special Services</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>SPED Services Exit Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SPED_Services_Exit_Reason__c</fullName>
+        <description>The reason the student no longer receives Special Services</description>
+        <externalId>false</externalId>
+        <label>SPED Services Exit Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Aged out of Special Education</fullName>
+                    <default>false</default>
+                    <label>Aged out of Special Education</label>
+                </value>
+                <value>
+                    <fullName>Evaluation is out of date</fullName>
+                    <default>false</default>
+                    <label>Evaluation is out of date</label>
+                </value>
+                <value>
+                    <fullName>Evaluation no longer supports a disability</fullName>
+                    <default>false</default>
+                    <label>Evaluation no longer supports a disability</label>
+                </value>
+                <value>
+                    <fullName>Graduated or exited High School</fullName>
+                    <default>false</default>
+                    <label>Graduated or exited High School</label>
+                </value>
+                <value>
+                    <fullName>IEP not needed in this setting</fullName>
+                    <default>false</default>
+                    <label>IEP not needed in this setting</label>
+                </value>
+                <value>
+                    <fullName>Parent request</fullName>
+                    <default>false</default>
+                    <label>Parent request</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SPED_Tertiary_Disability__c</fullName>
+        <description>SP/ED Tertiary Disability</description>
+        <externalId>false</externalId>
+        <label>SPED Tertiary Disability</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Autism</fullName>
+                    <default>false</default>
+                    <label>Autism</label>
+                </value>
+                <value>
+                    <fullName>Communication (TECCA and ORCA use only)</fullName>
+                    <default>false</default>
+                    <label>Communication (TECCA and ORCA use only)</label>
+                </value>
+                <value>
+                    <fullName>DD</fullName>
+                    <default>false</default>
+                    <label>DD</label>
+                </value>
+                <value>
+                    <fullName>ED</fullName>
+                    <default>false</default>
+                    <label>ED</label>
+                </value>
+                <value>
+                    <fullName>Gifted</fullName>
+                    <default>false</default>
+                    <label>Gifted</label>
+                </value>
+                <value>
+                    <fullName>HI</fullName>
+                    <default>false</default>
+                    <label>HI</label>
+                </value>
+                <value>
+                    <fullName>ID</fullName>
+                    <default>false</default>
+                    <label>ID</label>
+                </value>
+                <value>
+                    <fullName>ID - Mild</fullName>
+                    <default>false</default>
+                    <label>ID - Mild</label>
+                </value>
+                <value>
+                    <fullName>ID - Moderate</fullName>
+                    <default>false</default>
+                    <label>ID - Moderate</label>
+                </value>
+                <value>
+                    <fullName>ID - Severe</fullName>
+                    <default>false</default>
+                    <label>ID - Severe</label>
+                </value>
+                <value>
+                    <fullName>Language (FL, ID and IN only)</fullName>
+                    <default>false</default>
+                    <label>Language (FL, ID and IN only)</label>
+                </value>
+                <value>
+                    <fullName>Multiple</fullName>
+                    <default>false</default>
+                    <label>Multiple</label>
+                </value>
+                <value>
+                    <fullName>Neurological (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Neurological (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>OHI</fullName>
+                    <default>false</default>
+                    <label>OHI</label>
+                </value>
+                <value>
+                    <fullName>Physical/OI</fullName>
+                    <default>false</default>
+                    <label>Physical/OI</label>
+                </value>
+                <value>
+                    <fullName>S/L</fullName>
+                    <default>false</default>
+                    <label>S/L</label>
+                </value>
+                <value>
+                    <fullName>Sensory/Deaf-Blind (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/Deaf-Blind (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>Sensory/HI (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/HI (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>Sensory/VI (TECCA use only)</fullName>
+                    <default>false</default>
+                    <label>Sensory/VI (TECCA use only)</label>
+                </value>
+                <value>
+                    <fullName>SLD</fullName>
+                    <default>false</default>
+                    <label>SLD</label>
+                </value>
+                <value>
+                    <fullName>Speech (FL, ID and IN only)</fullName>
+                    <default>false</default>
+                    <label>Speech (FL, ID and IN only)</label>
+                </value>
+                <value>
+                    <fullName>TBI</fullName>
+                    <default>false</default>
+                    <label>TBI</label>
+                </value>
+                <value>
+                    <fullName>VI</fullName>
+                    <default>false</default>
+                    <label>VI</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Consult_Direct_SpEd_Type__c</fullName>
+        <description>Consult/Direct Special Education Services</description>
+        <externalId>false</externalId>
+        <label>Service Consult Direct SpEd Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Consult</fullName>
+                    <default>false</default>
+                    <label>Consult</label>
+                </value>
+                <value>
+                    <fullName>Consult/Direct</fullName>
+                    <default>false</default>
+                    <label>Consult/Direct</label>
+                </value>
+                <value>
+                    <fullName>Direct</fullName>
+                    <default>false</default>
+                    <label>Direct</label>
+                </value>
+                <value>
+                    <fullName>Full-Time</fullName>
+                    <default>false</default>
+                    <label>Full-Time</label>
+                </value>
+                <value>
+                    <fullName>Itinerant</fullName>
+                    <default>false</default>
+                    <label>Itinerant</label>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+                <value>
+                    <fullName>Supplemental</fullName>
+                    <default>false</default>
+                    <label>Supplemental</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Occupational_Type__c</fullName>
+        <description>Occupational Therapy Services</description>
+        <externalId>false</externalId>
+        <label>Service Occupational Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Consult</fullName>
+                    <default>false</default>
+                    <label>Consult</label>
+                </value>
+                <value>
+                    <fullName>Consult/Direct</fullName>
+                    <default>false</default>
+                    <label>Consult/Direct</label>
+                </value>
+                <value>
+                    <fullName>Direct</fullName>
+                    <default>false</default>
+                    <label>Direct</label>
+                </value>
+                <value>
+                    <fullName>Virtual</fullName>
+                    <default>false</default>
+                    <label>Virtual</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Other1_Type__c</fullName>
+        <description>Other Services</description>
+        <externalId>false</externalId>
+        <label>Service Other1 Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>American Sign Language (ASL)</fullName>
+                    <default>false</default>
+                    <label>American Sign Language (ASL)</label>
+                </value>
+                <value>
+                    <fullName>Assistive Technology</fullName>
+                    <default>false</default>
+                    <label>Assistive Technology</label>
+                </value>
+                <value>
+                    <fullName>Autism Support</fullName>
+                    <default>false</default>
+                    <label>Autism Support</label>
+                </value>
+                <value>
+                    <fullName>Behavior Support</fullName>
+                    <default>false</default>
+                    <label>Behavior Support</label>
+                </value>
+                <value>
+                    <fullName>Behavior Support (Virtual)</fullName>
+                    <default>false</default>
+                    <label>Behavior Support (Virtual)</label>
+                </value>
+                <value>
+                    <fullName>Closed Captioning</fullName>
+                    <default>false</default>
+                    <label>Closed Captioning</label>
+                </value>
+                <value>
+                    <fullName>Consult/Direct—Do not choose</fullName>
+                    <default>false</default>
+                    <label>Consult/Direct—Do not choose</label>
+                </value>
+                <value>
+                    <fullName>Consult—Do not choose</fullName>
+                    <default>false</default>
+                    <label>Consult—Do not choose</label>
+                </value>
+                <value>
+                    <fullName>Counseling</fullName>
+                    <default>false</default>
+                    <label>Counseling</label>
+                </value>
+                <value>
+                    <fullName>Counseling (Virtual)</fullName>
+                    <default>false</default>
+                    <label>Counseling (Virtual)</label>
+                </value>
+                <value>
+                    <fullName>Direct—Do not choose</fullName>
+                    <default>false</default>
+                    <label>Direct—Do not choose</label>
+                </value>
+                <value>
+                    <fullName>Hearing</fullName>
+                    <default>false</default>
+                    <label>Hearing</label>
+                </value>
+                <value>
+                    <fullName>Orientation and Mobility</fullName>
+                    <default>false</default>
+                    <label>Orientation and Mobility</label>
+                </value>
+                <value>
+                    <fullName>Outside Academic Services</fullName>
+                    <default>false</default>
+                    <label>Outside Academic Services</label>
+                </value>
+                <value>
+                    <fullName>Physical Therapy</fullName>
+                    <default>false</default>
+                    <label>Physical Therapy</label>
+                </value>
+                <value>
+                    <fullName>Social Skills</fullName>
+                    <default>false</default>
+                    <label>Social Skills</label>
+                </value>
+                <value>
+                    <fullName>Social Skills/Virtual</fullName>
+                    <default>false</default>
+                    <label>Social Skills/Virtual</label>
+                </value>
+                <value>
+                    <fullName>Social Work</fullName>
+                    <default>false</default>
+                    <label>Social Work</label>
+                </value>
+                <value>
+                    <fullName>Social Work (Virtual)</fullName>
+                    <default>false</default>
+                    <label>Social Work (Virtual)</label>
+                </value>
+                <value>
+                    <fullName>Transition Services</fullName>
+                    <default>false</default>
+                    <label>Transition Services</label>
+                </value>
+                <value>
+                    <fullName>Vision</fullName>
+                    <default>false</default>
+                    <label>Vision</label>
+                </value>
+                <value>
+                    <fullName>Adapted Physical Education (APE)</fullName>
+                    <default>false</default>
+                    <label>Adapted Physical Education (APE)</label>
+                </value>
+                <value>
+                    <fullName>Nursing Services</fullName>
+                    <default>false</default>
+                    <label>Nursing Services</label>
+                </value>
+                <value>
+                    <fullName>Other Service Not Listed</fullName>
+                    <default>false</default>
+                    <label>Other Service Not Listed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Other2_Type__c</fullName>
+        <description>Other Services</description>
+        <externalId>false</externalId>
+        <label>Service Other2 Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>American Sign Language (ASL)</fullName>
+                    <default>false</default>
+                    <label>American Sign Language (ASL)</label>
+                </value>
+                <value>
+                    <fullName>Assistive Technology</fullName>
+                    <default>false</default>
+                    <label>Assistive Technology</label>
+                </value>
+                <value>
+                    <fullName>Autism Support</fullName>
+                    <default>false</default>
+                    <label>Autism Support</label>
+                </value>
+                <value>
+                    <fullName>Behavior Support</fullName>
+                    <default>false</default>
+                    <label>Behavior Support</label>
+                </value>
+                <value>
+                    <fullName>Behavior Support (Virtual)</fullName>
+                    <default>false</default>
+                    <label>Behavior Support (Virtual)</label>
+                </value>
+                <value>
+                    <fullName>Closed Captioning</fullName>
+                    <default>false</default>
+                    <label>Closed Captioning</label>
+                </value>
+                <value>
+                    <fullName>Consult/Direct—Do not choose</fullName>
+                    <default>false</default>
+                    <label>Consult/Direct—Do not choose</label>
+                </value>
+                <value>
+                    <fullName>Consult—Do not choose</fullName>
+                    <default>false</default>
+                    <label>Consult—Do not choose</label>
+                </value>
+                <value>
+                    <fullName>Counseling</fullName>
+                    <default>false</default>
+                    <label>Counseling</label>
+                </value>
+                <value>
+                    <fullName>Counseling (Virtual)</fullName>
+                    <default>false</default>
+                    <label>Counseling (Virtual)</label>
+                </value>
+                <value>
+                    <fullName>Direct—Do not choose</fullName>
+                    <default>false</default>
+                    <label>Direct—Do not choose</label>
+                </value>
+                <value>
+                    <fullName>Hearing</fullName>
+                    <default>false</default>
+                    <label>Hearing</label>
+                </value>
+                <value>
+                    <fullName>Orientation and Mobility</fullName>
+                    <default>false</default>
+                    <label>Orientation and Mobility</label>
+                </value>
+                <value>
+                    <fullName>Outside Academic Services</fullName>
+                    <default>false</default>
+                    <label>Outside Academic Services</label>
+                </value>
+                <value>
+                    <fullName>Physical Therapy</fullName>
+                    <default>false</default>
+                    <label>Physical Therapy</label>
+                </value>
+                <value>
+                    <fullName>Social Skills</fullName>
+                    <default>false</default>
+                    <label>Social Skills</label>
+                </value>
+                <value>
+                    <fullName>Social Skills/Virtual</fullName>
+                    <default>false</default>
+                    <label>Social Skills/Virtual</label>
+                </value>
+                <value>
+                    <fullName>Social Work</fullName>
+                    <default>false</default>
+                    <label>Social Work</label>
+                </value>
+                <value>
+                    <fullName>Social Work (Virtual)</fullName>
+                    <default>false</default>
+                    <label>Social Work (Virtual)</label>
+                </value>
+                <value>
+                    <fullName>Transition Services</fullName>
+                    <default>false</default>
+                    <label>Transition Services</label>
+                </value>
+                <value>
+                    <fullName>Vision</fullName>
+                    <default>false</default>
+                    <label>Vision</label>
+                </value>
+                <value>
+                    <fullName>Adapted Physical Education (APE)</fullName>
+                    <default>false</default>
+                    <label>Adapted Physical Education (APE)</label>
+                </value>
+                <value>
+                    <fullName>Nursing Services</fullName>
+                    <default>false</default>
+                    <label>Nursing Services</label>
+                </value>
+                <value>
+                    <fullName>Other Service Not Listed</fullName>
+                    <default>false</default>
+                    <label>Other Service Not Listed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service_Speech_Language_Type__c</fullName>
+        <description>Speech and Language Services</description>
+        <externalId>false</externalId>
+        <label>Service Speech Language Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Consult</fullName>
+                    <default>false</default>
+                    <label>Consult</label>
+                </value>
+                <value>
+                    <fullName>Consult/Direct</fullName>
+                    <default>false</default>
+                    <label>Consult/Direct</label>
+                </value>
+                <value>
+                    <fullName>Direct</fullName>
+                    <default>false</default>
+                    <label>Direct</label>
+                </value>
+                <value>
+                    <fullName>LiveSpeech</fullName>
+                    <default>false</default>
+                    <label>LiveSpeech</label>
+                </value>
+                <value>
+                    <fullName>Other Virtual</fullName>
+                    <default>false</default>
+                    <label>Other Virtual</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SpecialEdCaseManager__c</fullName>
+        <description>Special Ed Case Manager</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Special Ed Case Manager</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Special_Education_Notes__c</fullName>
+        <description>Special Education Notes</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Special Education Notes</label>
+        <length>500</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>StatusofSpecialEdReview__c</fullName>
+        <description>Status of Review</description>
+        <externalId>false</externalId>
+        <label>Status of Special Ed Review</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Contacting Parent</fullName>
+                    <default>false</default>
+                    <label>Contacting Parent</label>
+                </value>
+                <value>
+                    <fullName>Contacting Parent AND referred for RTI/SST</fullName>
+                    <default>false</default>
+                    <label>Contacting Parent AND referred for RTI/SST</label>
+                </value>
+                <value>
+                    <fullName>Gifted Review</fullName>
+                    <default>false</default>
+                    <label>Gifted Review</label>
+                </value>
+                <value>
+                    <fullName>No Action Needed</fullName>
+                    <default>false</default>
+                    <label>No Action Needed</label>
+                </value>
+                <value>
+                    <fullName>Referred for a 504 Evaluation</fullName>
+                    <default>false</default>
+                    <label>Referred for a 504 Evaluation</label>
+                </value>
+                <value>
+                    <fullName>Referred for Special Education Evaluation</fullName>
+                    <default>false</default>
+                    <label>Referred for Special Education Evaluation</label>
+                </value>
+                <value>
+                    <fullName>Sent to RtI/SST</fullName>
+                    <default>false</default>
+                    <label>Sent to RtI/SST</label>
+                </value>
+                <value>
+                    <fullName>Sent to School Counselor</fullName>
+                    <default>false</default>
+                    <label>Sent to School Counselor</label>
+                </value>
+                <value>
+                    <fullName>Sent to Grade Level Administrator</fullName>
+                    <default>false</default>
+                    <label>Sent to Grade Level Administrator</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>TierII_Behavior_Perf_Comment__c</fullName>
+        <description>Please provide any comments regarding this student’s behavior performance that could help the teacher identify an appropriate intervention</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>TierII Behavior Perf Comment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>TierII_Behavior_Recommend__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>The student is recommended for a BEHAVIOR intervention in the given school year</description>
+        <externalId>false</externalId>
+        <label>TierII Behavior Recommend</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TierII_Recommendation__c</fullName>
+        <description>Interventions recommended for the given school year (if applicable)</description>
+        <externalId>false</externalId>
+        <label>TierII Recommendation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Math</fullName>
+                    <default>false</default>
+                    <label>Math</label>
+                </value>
+                <value>
+                    <fullName>Reading/Language Arts</fullName>
+                    <default>false</default>
+                    <label>Reading/Language Arts</label>
+                </value>
+                <value>
+                    <fullName>Science</fullName>
+                    <default>false</default>
+                    <label>Science</label>
+                </value>
+                <value>
+                    <fullName>Social Studies</fullName>
+                    <default>false</default>
+                    <label>Social Studies</label>
+                </value>
+                <value>
+                    <fullName>Writing</fullName>
+                    <default>false</default>
+                    <label>Writing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>V2_External_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>V2 External ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
     <label>Special Education</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>Special Education Name</label>
@@ -165,7 +2773,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Special Educations</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

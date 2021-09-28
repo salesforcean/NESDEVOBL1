@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>50.0</apiVersion>
     <assignments>
         <name>Assign_Integration_Status</name>
         <label>Assign Integration Status</label>
@@ -137,7 +136,6 @@
             </value>
         </inputAssignments>
         <object>Enrollment_Event__e</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
         <name>LogError</name>
@@ -169,7 +167,6 @@
             </value>
         </inputAssignments>
         <object>Peak_Apex_Log__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
         <name>Fetch_Enrollment</name>
@@ -180,7 +177,6 @@
         <connector>
             <targetReference>Enrollment_Exists</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -219,7 +215,6 @@
         <connector>
             <targetReference>Create_and_Publish_Event</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Label</field>
             <operator>EqualTo</operator>
@@ -250,7 +245,6 @@
         <connector>
             <targetReference>Assign_Integration_Status</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

@@ -154,6 +154,172 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Account__c</fullName>
+        <description>The household account</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Address Change Request</relationshipLabel>
+        <relationshipName>Address_Change_Request</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Date_HH_Moved__c</fullName>
+        <description>The date the household moved to the new home address.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Date HH Moved</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>HomeAddressChangeRequest__c</fullName>
+        <description>The new home address information</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Home Address Change Request</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Home_Address_Change_Request__c</fullName>
+        <description>The new home address information</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Home Address Change Request</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherAddressChangeRequest__c</fullName>
+        <description>The new other address information</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Other Address Change Request</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Address_Change_Request__c</fullName>
+        <description>The new other address information</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Other Address Change Request</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TX_NameOfCountry__c</fullName>
+        <description>Name of country moving to</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>TX Name Of Country</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TX_Name_Of_Country__c</fullName>
+        <description>Name of country moving to</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>TX Name Of Country</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>V2_External_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>V2 External ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>WeAreMovingReason_Src__c</fullName>
+        <description>Reason family is moving</description>
+        <externalId>false</externalId>
+        <label>We Are Moving Reason Src</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Out of the country</fullName>
+                    <default>false</default>
+                    <label>Out of the country</label>
+                </value>
+                <value>
+                    <fullName>Out of the school district</fullName>
+                    <default>false</default>
+                    <label>Out of the school district</label>
+                </value>
+                <value>
+                    <fullName>Out of the state</fullName>
+                    <default>false</default>
+                    <label>Out of the state</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>We_Are_Moving_Reason_Src__c</fullName>
+        <description>Reason family is moving</description>
+        <externalId>false</externalId>
+        <label>We Are Moving Reason Src</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Out of the country</fullName>
+                    <default>false</default>
+                    <label>Out of the country</label>
+                </value>
+                <value>
+                    <fullName>Out of the school district</fullName>
+                    <default>false</default>
+                    <label>Out of the school district</label>
+                </value>
+                <value>
+                    <fullName>Out of the state</fullName>
+                    <default>false</default>
+                    <label>Out of the state</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Address Change Request</label>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
@@ -161,7 +327,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Address Change Request</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>assignRecords</name>
         <label>assignRecords</label>
@@ -99,7 +98,6 @@
         <name>defaultGLR</name>
         <dataType>String</dataType>
         <displayField>Grade_Level_Requested__c</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -113,7 +111,6 @@
         <name>defaultPI</name>
         <dataType>String</dataType>
         <displayField>Previously_Identified_GT__c</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -127,7 +124,6 @@
         <name>defaultPlacementFlag</name>
         <dataType>String</dataType>
         <displayField>PlacementFlag__c</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -141,7 +137,6 @@
         <name>defaultProgramRequest</name>
         <dataType>String</dataType>
         <displayField>GiftedProgramRequest_LA_M_S__c</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -155,7 +150,6 @@
         <name>defaultSIF</name>
         <dataType>String</dataType>
         <displayField>SIF_Gifted_Initial_Interest__c</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -177,7 +171,6 @@
         <name>GiftedSED</name>
         <dataType>String</dataType>
         <displayField>Gifted__c</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -191,7 +184,6 @@
         <name>RecordTypeChoices</name>
         <dataType>String</dataType>
         <displayField>Grade_Level_Completed__c</displayField>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

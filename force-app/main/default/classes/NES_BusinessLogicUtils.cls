@@ -1762,17 +1762,18 @@ programEnrollment.StudentFlag__c = 'On-Hold';
 * Purpose : Method to calculate Waitlist Flag on Program Enrollment.
 */
     //Start: Ritvik/Ashish 12/02/2019 Code refactor for SOQL queries
-    public static List<Hed__Program_Enrollment__c> waitListCalculator(Set<Id> programEnrollmentList) {
+  public static List<Hed__Program_Enrollment__c> waitListCalculator(Set<Id> programEnrollmentList) {
         System.debug('waitlistCalculator+++++');
         Map<Id, Annual_Student_Information__c> annualStudentInformationMap = new Map<Id, Annual_Student_Information__c>();
         Map<Id, List<Program_Grade_Level__c>> programGradeLevelMap = new Map<Id, List<Program_Grade_Level__c>>();
         Map<Id, Opportunity> opportunityMap = new Map<Id, Opportunity>();
         Map<Id, Id> programEnrollmentIdToAccountIds = new Map<Id, Id>();
         //Commented Below line and added generic soql line for #430196
-        //List<hed__Program_Enrollment__c> programEnrollments = [Select id, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList]; Commented query and updated the below query with Open Application Flag // DK
+
         List<hed__Program_Enrollment__c> programEnrollments = [Select id, Open_Application__c, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
-       //	List<hed__Program_Enrollment__c> programEnrollments = GenericSOQLQueries.programEnrollmentDetails(programEnrollmentList);
-       
+        //Commenting the below line and uncommenting above line as we're getting an issue - Krishna Peddanagammol on 2021-08-27
+        //List<hed__Program_Enrollment__c> programEnrollments = GenericSOQLQueries.programEnrollmentDetails(programEnrollmentList);
+
         List<hed__Program_Enrollment__c> programEnrollmentsToUpdate = new List<hed__Program_Enrollment__c>();
         
         for (Opportunity opp : [
@@ -1811,12 +1812,8 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         }
         
         for (Program_Grade_Level__c pgl : [
-            //SELECT Id, Academic_Program__c, ActivateWaitlist__c, StartWaitlist__c, EndWaitlist__c
-            //FROM Program_Grade_Level__c   Commented query and updated the below query with Open Application Flag // DK
-            
-            SELECT Id, Academic_Program__c, ActivateWaitlist__c, StartWaitlist__c, EndWaitlist__c,Active_Open_Application__c,Start_Open_Application__c,End_Open_Application__c
+            SELECT Id, Academic_Program__c, ActivateWaitlist__c, StartWaitlist__c, EndWaitlist__c, Active_Open_Application__c,Start_Open_Application__c,End_Open_Application__c
             FROM Program_Grade_Level__c
-            
             WHERE Academic_Program__c IN:programEnrollmentIdToAccountIds.values()
         ]) {
             List<Program_Grade_Level__c> tempGradeLevels = new List<Program_Grade_Level__c>();
@@ -1831,6 +1828,8 @@ programEnrollment.StudentFlag__c = 'On-Hold';
             return programEnrollmentsToUpdate;
         }
         
+       list<hed__Program_Enrollment__c> openAppPE = New list<hed__Program_Enrollment__c>();
+      	boolean openAppFlag = true;
         Boolean resetPEFlag = false;
         for (hed__Program_Enrollment__c pe : programEnrollments) {
             if (opportunityMap.get(pe.Id) != null && annualStudentInformationMap.get(pe.Id) != null
@@ -1840,14 +1839,21 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                     List<Program_Grade_Level__c> pgls = programGradeLevelMap.get(pe.hed__Account__c);
                     
                     for(Program_Grade_Level__c pgl : pgls) {
-                                                
-                       // if(pgl.Id == pe.Program_Grade_Level__c && pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) {
+                        System.debug('pgl.Id='+pgl.Id+', pe.Program_Grade_Level__c='+pe.Program_Grade_Level__c);
+                        System.debug('pgl.ActivateWaitlist__c='+pgl.ActivateWaitlist__c);
+                        System.debug('pgl.StartWaitlist__c='+pgl.StartWaitlist__c+', pgl.EndWaitlist__c='+pgl.EndWaitlist__c);
+                        //if(pgl.Id == pe.Program_Grade_Level__c && pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) {
                             
-                          //  pe.WaitlistFlag__c = 'Active';
-                          	if(pgl.Id == pe.Program_Grade_Level__c && (pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now() || pgl.Active_Open_Application__c == TRUE && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now() )) {
+                           // pe.WaitlistFlag__c = 'Active';
+                           
+                        if(pgl.Id == pe.Program_Grade_Level__c && openAppFlag && (pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now() || pgl.Active_Open_Application__c == TRUE && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now() )) {
+                            //pe.Open_Application__c = 'Active';
+                            openAppFlag = false;
                             if(pgl.ActivateWaitlist__c == TRUE){
                                 pe.WaitlistFlag__c = 'Active';
-                            }else{
+                            }
+                            
+                            if(pgl.Active_Open_Application__c == TRUE){
                                 pe.Open_Application__c = 'Active';
                             }
                             programEnrollmentsToUpdate.add(pe);
@@ -1857,8 +1863,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                             resetPEFlag = true;
                         }
                     }
-        
-                          
+                    
                     if(resetPEFlag) {
                         pe.WaitlistFlag__c = null;
                         programEnrollmentsToUpdate.add(pe);
@@ -1868,8 +1873,11 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                 }
             
         }
+      	//update openAppPE;
+      	//programEnrollmentsToUpdate.addAll(openAppPE);
         return programEnrollmentsToUpdate;
     }
+    
     
     
     /**

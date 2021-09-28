@@ -1,6 +1,6 @@
 /**
  * Created by karolbrennan on 10/26/18.
- *Ravi09/07/2021
+ *Ravi09/23/2021
  */ 
 ({
     /* Gets data relevant to the New Student form */
@@ -177,7 +177,8 @@
 						//console.log('questionPrompt' +question);
                        // alert(JSON.stringify(question, null, 4));
                        //alert(question.questionPrompt);
-                       
+                       //alert(JSON.stringify(question.questionPrompt));
+                      // alert(JSON.stringify(question.questionType));
                         if(question.questionType === 'Picklist'&& question.questionPrompt.includes("What grade will you be requesting for this student?")) {
                           
                             var incloptions = question.picklistValues;
@@ -191,7 +192,7 @@
                             }
                            
                             else if(excloptions){
-                                alert('Excl Option Size:: ' + excloptions.length);
+                                //alert('Excl Option Size:: ' + excloptions.length);
                                 console.log(excloptions);
                                 for(var j=0;j<excloptions.length;j++) {
                                     var exoption = excloptions[j];

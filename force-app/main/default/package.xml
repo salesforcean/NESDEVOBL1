@@ -26,91 +26,87 @@
     </types>
     <types>
         <members>*</members>
-        <name>LightningComponentBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>StaticResource</name>
-    </types>
-    <types>
         <members>Account</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Contact</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Opportunity</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Lead</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Case</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>User</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>hed__Program_Enrollment__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Enrollment__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Enrollment_Component__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Enrollment_Document__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Enrollment_Component_Affiliation__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Enrollment_Component_Criteria__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Criteria__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Criteria_Group__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>*</members>
         <members>Enrollment_Component_Relationship__c</members>
-        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Program_Enrollment_Criteria__c</members>
         <members>*</members>
+        <members>Program_Enrollment_Criteria__c</members>
         <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Flow</name>
     </types>
     <types>
         <members>*</members>
@@ -118,7 +114,11 @@
     </types>
     <types>
         <members>*</members>
-        <name>Flow</name>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
     </types>
     <version>47.0</version>
 </Package>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>49.0</apiVersion>
     <description>This Autolaunched Flow will copy some data from the lead object to a call log task.
 This flow is called from the FEC task automation Process Builder
 ADO#169317</description>
@@ -34,7 +33,6 @@ ADO#169317</description>
         <connector>
             <targetReference>Update_call_log_with_lead_data</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -93,7 +91,6 @@ ADO#169317</description>
         <label>Update call log with lead data</label>
         <locationX>688</locationX>
         <locationY>326</locationY>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

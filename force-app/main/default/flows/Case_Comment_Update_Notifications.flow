@@ -65,7 +65,6 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -248,7 +247,6 @@
         <label>Update</label>
         <locationX>100</locationX>
         <locationY>300</locationY>
-        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>

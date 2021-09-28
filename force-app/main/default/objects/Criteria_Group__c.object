@@ -153,7 +153,111 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Enrollment_Component__c</fullName>
+        <description>The parent enrollment component for the criteria group.</description>
+        <externalId>false</externalId>
+        <label>Enrollment Component</label>
+        <referenceTo>Enrollment_Component__c</referenceTo>
+        <relationshipLabel>Criteria Groups</relationshipLabel>
+        <relationshipName>Criteria_Groups</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Logic__c</fullName>
+        <description>The evaluation logic of the criteria group.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Logic</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Number__c</fullName>
+        <description>The group number that will be used to reference it in the logic definition on the Enrollment Component. Groups should be numbered 1 - n, where n is the total number of groups associated with the Enrollment Component.</description>
+        <externalId>false</externalId>
+        <label>Group Number</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Type__c</fullName>
+        <defaultValue>IF( $RecordType.DeveloperName == &apos;Pre_Screen&apos;, &apos;Hard Stop&apos;, &apos;&apos;)</defaultValue>
+        <description>Is this group a hard stop or soft stop for the user? This is used exlusively for groups of eligibility criteria and is not valid for other situations.</description>
+        <externalId>false</externalId>
+        <label>Group Type</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hard Stop</fullName>
+                    <default>false</default>
+                    <label>Hard Stop</label>
+                </value>
+                <value>
+                    <fullName>Soft Stop</fullName>
+                    <default>false</default>
+                    <label>Soft Stop</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Message__c</fullName>
+        <description>The message that should appear for users if the group evaluates to true. This is only used for groups related to Elibility Screening.</description>
+        <encryptionScheme>None</encryptionScheme>
+        <externalId>false</externalId>
+        <label>Message Content</label>
+        <length>1000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
     <label>Criteria Group</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Enrollment_Component__c</columns>
+        <columns>Group_Number__c</columns>
+        <columns>Group_Logic__c</columns>
+        <columns>Message__c</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
         <label>Criteria Group Name</label>
@@ -162,6 +266,38 @@
     </nameField>
     <pluralLabel>Criteria Groups</pluralLabel>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Non_Pre_Screen</fullName>
+        <active>false</active>
+        <label>Non Pre-Screen</label>
+        <picklistValues>
+            <picklist>Group_Type__c</picklist>
+            <values>
+                <fullName>Hard Stop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soft Stop</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Pre_Screen</fullName>
+        <active>true</active>
+        <label>Pre-Screen</label>
+        <picklistValues>
+            <picklist>Group_Type__c</picklist>
+            <values>
+                <fullName>Hard Stop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soft Stop</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <searchLayouts>
         <searchResultsAdditionalFields>Enrollment_Component__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>

@@ -153,14 +153,70 @@
     <enableSharing>false</enableSharing>
     <enableStreamingApi>false</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Completed_Tasks__c</fullName>
+        <externalId>false</externalId>
+        <label>Completed Tasks</label>
+        <summaryFilterItems>
+            <field>Peak_Checklist_Task__c.Complete__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Peak_Checklist_Task__c.Peak_Checklist__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Completed__c</fullName>
+        <externalId>false</externalId>
+        <formula>Completed_Tasks__c  =  Number_of_Tasks__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Completed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Active?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Tasks__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Tasks</label>
+        <summaryForeignKey>Peak_Checklist_Task__c.Peak_Checklist__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Peak_Checklists</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <label>Peak Checklist</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>PC-{0}</displayFormat>
         <label>Peak Checklist Name</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Peak Checklists</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
