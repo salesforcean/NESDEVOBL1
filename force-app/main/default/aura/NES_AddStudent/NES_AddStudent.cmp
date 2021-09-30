@@ -34,6 +34,7 @@
     <aura:attribute name="supplementalQuestionsLoaded" type="Boolean" default="false" />
     <aura:attribute name="supplementalQuestions" type="Object[]" />
     <aura:attribute name="message" type="String" default="" />
+    <aura:attribute name="schYrEr" type="boolean"/>
     <aura:attribute name="numberOfStudents" type="Integer" default="0" />
     <aura:attribute name="suffixOptions" type="List" default="[]"/>
     
@@ -119,6 +120,7 @@
                         <!-- line commented by ravi # US433409 and add error message-->
                         <!-- <aura:if isTrue="{!and(v.newStudentData.activeSchools != null, v.newStudentData.activeSchools != '')}"> -->
                         <aura:if isTrue="{!not(empty(v.newStudentData.activeSchools))}" >
+                            <!--aura:if isTrue="{!or(v.newStudentData.activeSchools == NULL,v.newStudentData.activeSchools != NULL)}" -->
                         <lightning:layoutItem size="12" mediumDeviceSize="6" padding="around-small">
                             <lightning:select aura:id="schoolSelect" name="activeSchools" value="{!v.newStudentData.SelectedSchoolId}" required="true" label="Please confirm the school this student should attend:"
                                               onchange="{!c.handleSchoolSelect}">
@@ -137,7 +139,7 @@
                             <!-- Ended here-->
  						</aura:if>
                          <aura:if isTrue="{!and(v.newStudentData.SelectedSchoolId != null, v.newStudentData.SelectedSchoolId != '')}">
-                            <!--aura:if isTrue="{!not(empty(v.v.newStudentData.schoolYears))}"-->
+                            <!--aura:if isTrue="{!not(empty(v.newStudentData.schoolYears))}"-->
                             <lightning:layoutItem size="12" mediumDeviceSize="6" padding="around-small">
                                 <lightning:select aura:id="yearSelect" required="true" name="schoolYear"  label="Apply for what school year?" onchange="{!c.handleYearSelect}">
                                     <option value="">- select year -</option>
@@ -146,6 +148,16 @@
                                     </aura:iteration>
                                 </lightning:select>
                             </lightning:layoutItem>
+                             <aura:if isTrue="{!v.schYrEr}">
+                                 <div style="color:Red">
+                                  <h5>{!v.SchoolYearErrormsg}</h5>
+                                 </div>
+                             </aura:if>
+                             <!--aura:set attribute="else">
+                             <div style="color:Red">
+                                  <h5>{!v.SchoolYearErrormsg}</h5>
+                                 </div>
+                            </aura:set-->
                            </aura:if>
                     </div>
                     <aura:if isTrue="{!v.supplementalQuestionsLoaded}">

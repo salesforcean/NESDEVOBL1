@@ -864,26 +864,26 @@ public without sharing class NES_EvaluateUtil {
             wrap.textComponent = false;
         }
         wrap.picklistValues = new List<NES_EvaluateUtil.PicklistOption>();
-      	
 
         System.debug(question.Question_Type__c);
-        
-        if(question.Question_Type__c == 'Picklist' && question.Question_Prompt__c == '<p>What grade will you be requesting for this student?</p>'){
-            wrap.exclPicklistValues = new List<NES_EvaluateUtil.PicklistOption>();
+
+        System.debug(question.Question_Type__c);
+        //Added by Ravi US 433409
+        if(question.Question_Type__c == 'Picklist' && question.Question_Prompt__c.contains('What grade will you be requesting for this student?')) 
+        { 
+         wrap.exclPicklistValues = new List<NES_EvaluateUtil.PicklistOption>();
             for (Enrollment_Component_Picklist_Option__c option : question.Enrollment_Component_Picklist_Options__r) {
                 
                 if (optionExclusionMap.containsKey(option.Id)) {
-                        System.debug('NDEBUG ::::: Entering else block::::::::');
-                       // if(question.Question_Type__c == 'Picklist'){
-                        NES_EvaluateUtil.PicklistOption optionValue = new NES_EvaluateUtil.PicklistOption();
+                       NES_EvaluateUtil.PicklistOption optionValue = new NES_EvaluateUtil.PicklistOption();
                         optionValue.label = option.Option_Label__c;
                         optionValue.value = option.Option_Value__c;
                         optionValue.order = option.Order__c;
                         wrap.exclPicklistValues.add(optionValue);
                 }
             }
-        }
-
+        } 
+		//Endded Here
         //Check the type of the record and check whether there any child records of type options
         if ((question.Question_Type__c == 'Radio' || question.Question_Type__c == 'Checkbox Group' || question.Question_Type__c == 'Picklist') && question.Enrollment_Component_Picklist_Options__r != null) {
             for (Enrollment_Component_Picklist_Option__c option : question.Enrollment_Component_Picklist_Options__r) {
@@ -902,19 +902,8 @@ public without sharing class NES_EvaluateUtil {
 
                     wrap.picklistValues.add(optionValue);
                 }
-                /*
-                else{
-					if(question.Question_Type__c == 'Picklist'&& question.Question_Prompt__c == '<p>What grade will you be requesting for this student?</p>'){
-                        System.debug('NDEBUG ::::: Entering else block::::::::');
-                       // if(question.Question_Type__c == 'Picklist'){
-                        NES_EvaluateUtil.PicklistOption optionValue = new NES_EvaluateUtil.PicklistOption();
-                        optionValue.label = option.Option_Label__c;
-                        optionValue.value = option.Option_Value__c;
-                        optionValue.order = option.Order__c;
-                        wrap.exclPicklistValues.add(optionValue);
-                }
-            }*/
-        }
+                
+            }
         }
 
         System.debug(question.Answer_Target__c);
@@ -1083,7 +1072,7 @@ public without sharing class NES_EvaluateUtil {
             } else if (String.isNotBlank(enrollmentId)) {
                 query = 'SELECT id, ' + fieldStrings + ' FROM ' + objectName + ' WHERE program_enrollment__c = \'' + enrollmentId + '\' ';
             }
-				
+
             System.debug('testingrc-------->'+ query);
             if (String.isNotBlank(query)) {
                 query.remove('(');

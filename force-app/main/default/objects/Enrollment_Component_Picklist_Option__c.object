@@ -153,115 +153,7 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <fields>
-        <fullName>Enrollment_Component__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Parent Question Record Type, Picklist Type Enrollment Component.</inlineHelpText>
-        <label>Enrollment Component</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Enrollment_Component__c.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Question</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Enrollment_Component__c</referenceTo>
-        <relationshipLabel>Enrollment Component Picklist Options</relationshipLabel>
-        <relationshipName>Enrollment_Component_Picklist_Options</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>true</reparentableMasterDetail>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>External_Id__c</fullName>
-        <caseSensitive>true</caseSensitive>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>true</externalId>
-        <label>External Id</label>
-        <length>50</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>Option_Label__c</fullName>
-        <description>The display name for the option that should appear for the user in the picklist.</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Option Label</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Option_Value__c</fullName>
-        <description>The value that will be saved to the target field when this option is selected by the person completing the question.</description>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Option Value</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Order__c</fullName>
-        <description>The order the option should display for the user in. Unordered options should display alphabetically. If there is a mix of ordered and unordered options, display the ordered options first, followed by the unordered sorted alphabetically.</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Relative to the parent Enrollment Component</inlineHelpText>
-        <label>Order</label>
-        <precision>8</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>isLookupValue__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>isLookupValue</label>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
     <label>Enrollment Component Picklist Option</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>External_Id__c</columns>
-        <columns>Enrollment_Component__c</columns>
-        <columns>Option_Label__c</columns>
-        <columns>Option_Value__c</columns>
-        <columns>Order__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Enrollment_Component__c</field>
-            <operation>contains</operation>
-            <value>Grade Requested</value>
-        </filters>
-        <filters>
-            <field>External_Id__c</field>
-            <operation>contains</operation>
-            <value>WYCA</value>
-        </filters>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>PO-{0}</displayFormat>
         <label>Enrollment Component Picklist Option Nam</label>
@@ -269,6 +161,17 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Enrollment Component Picklist Options</pluralLabel>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>OBJECT_ID</fields>
+        <fields>External_Id__c</fields>
+        <fields>Option_Label__c</fields>
+        <fields>Option_Value__c</fields>
+        <fields>Order__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <profileName>System Administrator</profileName>
+    </profileSearchLayouts>
     <searchLayouts>
         <searchResultsAdditionalFields>Enrollment_Component__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Option_Value__c</searchResultsAdditionalFields>

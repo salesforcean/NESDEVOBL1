@@ -3,28 +3,6 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <description>To hold all code fired error messages</description>
     <enableFeeds>false</enableFeeds>
-    <fields>
-        <fullName>Error_Message__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Error Message</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Name__c</fullName>
-        <encryptionScheme>None</encryptionScheme>
-        <externalId>false</externalId>
-        <label>Name</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Error Messages</label>
     <visibility>Public</visibility>
 </CustomObject>

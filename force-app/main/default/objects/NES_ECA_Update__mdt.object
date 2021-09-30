@@ -3,76 +3,7 @@
     <description>Referred in:
 Created By : Jagadish Babu
 Purpose :This metadata object is place holder to take the reference data in executing Final confirmation batch to update Enrollment component affiliation records to Not Applicable</description>
-    <fields>
-        <fullName>Academic_Program__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Academic Program</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Date_to_be_Updated_On__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Date to be Updated On</label>
-        <required>true</required>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Enrollment_Component__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Enrollment Component</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Grade_level__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Grade level</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Status__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Status</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Type__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Type</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>NES_ECA_Update</label>
-    <listViews>
-        <fullName>By_date</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>Date_to_be_Updated_On__c</columns>
-        <columns>Academic_Program__c</columns>
-        <columns>Enrollment_Component__c</columns>
-        <columns>Grade_level__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>By date</label>
-    </listViews>
     <pluralLabel>NES_ECA_Updates</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

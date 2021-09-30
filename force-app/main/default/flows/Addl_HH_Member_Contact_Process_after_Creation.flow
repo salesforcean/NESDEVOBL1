@@ -7,6 +7,7 @@
         <locationY>373</locationY>
         <actionName>NES_AddHHMemApexController</actionName>
         <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>action</name>
             <value>
@@ -26,6 +27,7 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <apiVersion>52.0</apiVersion>
     <constants>
         <name>ActionType</name>
         <dataType>String</dataType>
@@ -163,6 +165,7 @@
             </value>
         </inputAssignments>
         <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
         <name>Get_Enrollment_Support_Record_Type</name>
@@ -173,6 +176,7 @@
         <connector>
             <targetReference>Get_Queue_Name</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
@@ -200,6 +204,7 @@
         <connector>
             <targetReference>Create_Ticket</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Type</field>
             <operator>EqualTo</operator>
@@ -224,6 +229,7 @@
         <connector>
             <targetReference>Get_Enrollment_Support_Record_Type</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Unverified__c</field>
             <operator>EqualTo</operator>
@@ -232,6 +238,7 @@
             </value>
         </filters>
         <object>Contact</object>
+        <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

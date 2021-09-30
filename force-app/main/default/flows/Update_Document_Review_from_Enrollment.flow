@@ -65,6 +65,7 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <apiVersion>49.0</apiVersion>
     <decisions>
         <name>isChangedDecision2_myRule_1_Doc_File_Reference_Created_c</name>
         <label>isChangedDecision2_myRule_1_Doc_File_Reference_Created_c</label>
@@ -303,6 +304,7 @@
         <connector>
             <targetReference>myRule_1_A3</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -487,6 +489,7 @@
         <label>Update OwnerId to Non Academic Queue</label>
         <locationX>100</locationX>
         <locationY>400</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>

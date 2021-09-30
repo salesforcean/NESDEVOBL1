@@ -202,6 +202,7 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>myAssignment_myRule_1_A1</name>
         <label>myAssignment_myRule_1_A1</label>
@@ -689,6 +690,7 @@
         <label>Update Support Team</label>
         <locationX>1000</locationX>
         <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -818,6 +820,7 @@
         <label>Update Support Team</label>
         <locationX>100</locationX>
         <locationY>300</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -950,6 +953,7 @@
         <connector>
             <targetReference>myRule_7_A2</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -1030,6 +1034,7 @@
         <label>Update Support Team</label>
         <locationX>700</locationX>
         <locationY>300</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>

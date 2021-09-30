@@ -3,29 +3,6 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <description>Container for org-wide defaults, profile, and user-level overrides for custom logging</description>
     <enableFeeds>false</enableFeeds>
-    <fields>
-        <fullName>Log_Level__c</fullName>
-        <defaultValue>1</defaultValue>
-        <externalId>false</externalId>
-        <inlineHelpText>1: ERROR =&gt; Only errors will be logged
-2: WARNING =&gt; Warnings and errors will be logged
-3: INFO =&gt; Everything will be logged</inlineHelpText>
-        <label>Log Level</label>
-        <precision>1</precision>
-        <required>true</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
     <label>Apex Log Persona Manager</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>SETUP_OWNER_NAME</columns>
-        <columns>SETUP_TYPE</columns>
-        <columns>Log_Level__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

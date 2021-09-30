@@ -152,6 +152,7 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>myAssignment_myRule_1_A1</name>
         <label>myAssignment_myRule_1_A1</label>
@@ -285,6 +286,7 @@
         <connector>
             <targetReference>invocableContextCheckDecision</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

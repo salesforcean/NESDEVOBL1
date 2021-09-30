@@ -31,7 +31,7 @@
                 
 
                 component.set("v.newStudentData", returnedResponse);
-                
+                debugger;
                 if(returnedResponse.defaultAccount.Id != null && component.get("v.numberOfStudents") == 0) {
                     var schoolSelect = component.find('schoolSelect');
                     schoolSelect.set('v.value', returnedResponse.defaultAccount.Id);
@@ -122,11 +122,13 @@
             var peakResponse = response.getReturnValue();
             if(peakResponse.success){
                 studentData.schoolYears = peakResponse.results;
+                // Error msg Added by RAVI US #433409 
                 if(studentData.schoolYears == '' || studentData.schoolYears ==  null ||studentData.schoolYears == undefined)
                 {
-                    component.set("v.message", 'The school you have selected does not have any school years available');
+                    component.set("v.schYrEr", true);
+                   // component.set("v.SchoolYearErrormsg", 'The school you have selected does not have any school years available');
                }
-                
+                //End Here
                 studentData.SelectedSchoolId = schoolId;
                 studentData.schoolYears.sort(function(a,b){
                     if(a.Name < b.Name){
@@ -174,31 +176,20 @@
                         var question = returnedResponse[i];
                         var missingGrades = '';
                         // TODO: Check only for Grade related question
-						//console.log('questionPrompt' +question);
-                       // alert(JSON.stringify(question, null, 4));
-                       //alert(question.questionPrompt);
-                       //alert(JSON.stringify(question.questionPrompt));
-                      // alert(JSON.stringify(question.questionType));
+						// Added by RAVI #US 433409
                         if(question.questionType === 'Picklist'&& question.questionPrompt.includes("What grade will you be requesting for this student?")) {
                           
                             var incloptions = question.picklistValues;
                             var excloptions = question.exclPicklistValues;
-                           
-                             
-                            if(incloptions.length == 0 ){
+							if(incloptions.length == 0 ){
                                 missingGrades = 'There are no grades available for this school';
                                 component.set('v.questionMsg', missingGrades);
-                                //question.msg = missingGrades;
-                            }
-                           
-                            else if(excloptions){
-                                //alert('Excl Option Size:: ' + excloptions.length);
+                                }
+                             
+                           else if(excloptions){
                                 console.log(excloptions);
                                 for(var j=0;j<excloptions.length;j++) {
                                     var exoption = excloptions[j];
-                                    //alert('Missing Option Val:::'+ exoption.value);
-                                    //alert('Missing Option Label:::'+ exoption.label);
-                                   
                                     if(missingGrades == ''){
                                     	missingGrades =  excloptions[j].value;
                                     }
@@ -206,11 +197,7 @@
                                     	missingGrades = missingGrades + ',' + excloptions[j].value;
                                     }
                                 }
-                                
-                                    /*missingGrades = 'Grade(s) '  + missingGrades  +' not available for this school at the moment';
-                                    component.set("v.questionMsg", missingGrades);*/
-                                	//alert(component.get("v.questionMsg"));
-                                	if(missingGrades.length>0 && missingGrades!=null){
+                                if(missingGrades.length>0 && missingGrades!=null){
                                     missingGrades = 'Grade(s) '  + missingGrades  +' not available for this school at the moment';
                                     component.set("v.questionMsg", missingGrades);
                                 }else{
@@ -220,7 +207,7 @@
                         }
                         
                         
-                        //
+                        //Endded here
                         questions.push(question);
                     }
                     questions.sort(function(a, b){return a.order - b.order});

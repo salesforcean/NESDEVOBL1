@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
     <interviewLabel>ChatBot - Update Transfer Requested {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ChatBot - Update Transfer Requested</label>
     <processMetadataValues>
@@ -20,6 +21,7 @@
         <label>Update Transcript ChatBot - Transfer Requested</label>
         <locationX>378</locationX>
         <locationY>207</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>ChatKey</field>
             <operator>EqualTo</operator>

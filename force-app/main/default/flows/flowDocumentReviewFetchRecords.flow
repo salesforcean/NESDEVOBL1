@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>assignErrorAccount</name>
         <label>assignErrorAccount</label>
@@ -1145,6 +1146,7 @@
         <connector>
             <targetReference>decisionPORDocumentType</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -1174,6 +1176,7 @@
         <connector>
             <targetReference>validateASIdecisionDocTypes</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1206,6 +1209,7 @@
         <connector>
             <targetReference>validateCaretakerContact</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>AccountId</field>
             <operator>EqualTo</operator>
@@ -1236,6 +1240,7 @@
         <connector>
             <targetReference>validateCommonRecords</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -1265,6 +1270,7 @@
         <connector>
             <targetReference>validateCustody</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1288,6 +1294,7 @@
         <connector>
             <targetReference>getPE1</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -1316,6 +1323,7 @@
         <connector>
             <targetReference>validateEV</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1349,6 +1357,7 @@
         <connector>
             <targetReference>validateExit</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1382,6 +1391,7 @@
         <connector>
             <targetReference>validateIEP</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1415,6 +1425,7 @@
         <connector>
             <targetReference>validateImmunizationRecord</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1439,6 +1450,7 @@
         <connector>
             <targetReference>validatePAH</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1469,6 +1481,7 @@
         <connector>
             <targetReference>getAccount</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -1498,6 +1511,7 @@
         <connector>
             <targetReference>getAccount</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -1530,6 +1544,7 @@
         <connector>
             <targetReference>validateRC</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1560,6 +1575,7 @@
         <connector>
             <targetReference>validateMasterAgreement</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>hed__Contact__c</field>
             <operator>EqualTo</operator>
@@ -1595,6 +1611,7 @@
         <connector>
             <targetReference>validateSEDdecisionIEPPlus</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -1620,6 +1637,7 @@
         <connector>
             <targetReference>validateUT</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Program_Enrollment__c</field>
             <operator>EqualTo</operator>

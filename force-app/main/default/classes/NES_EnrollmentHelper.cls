@@ -7,15 +7,15 @@
 public without sharing class NES_EnrollmentHelper {
 
     private static Peak_ApexLog logger = new Peak_ApexLog('EnrollmentHelper');
-
-    /**
-     * Created by Ashish Sharma on 12/05/18
-     * Parameters: ID
-     * Return Type: List<Enrollment_Component_Affiliation__c>
-     * Purpose : This method is used to retreive and return the enrollment components' information (Stage Record Type) of the related programEnrollmentId
-                Using Enrollment_Component_Affiliation__c object here as this is defining the relationship between Enrollment_Component__c
-                and Program_Enrollment__c objects
-    */
+       
+       /**
+* Created by Ashish Sharma on 12/05/18
+* Parameters: ID
+* Return Type: List<Enrollment_Component_Affiliation__c>
+* Purpose : This method is used to retreive and return the enrollment components' information (Stage Record Type) of the related programEnrollmentId
+Using Enrollment_Component_Affiliation__c object here as this is defining the relationship between Enrollment_Component__c
+and Program_Enrollment__c objects
+*/
     @AuraEnabled
     public static List<Enrollment_Component_Affiliation__c> getRelatedStages(Id programEnrollmentId){
         try{
@@ -23,37 +23,16 @@ public without sharing class NES_EnrollmentHelper {
 Retreive and return the enrollment components' information (Stage Record Type) of the related programEnrollmentId
 Using Enrollment_Component_Affiliation__c object here as this is defining the relationship between Enrollment_Component__c
 and Program_Enrollment__c objects
-*/
-        	//list<hed__Program_Enrollment__c> lstPE= [select id,Stage__c,Open_Application__c from hed__Program_Enrollment__c where id=:programEnrollmentId];
-           // if(lstPE[0].Open_Application__c != 'Active'){
-                //lstPE[0].Stage__c ='Tell Us About Your Student';
-                //update lstPE;
-            //}
-            
-            
-           // list<Enrollment_Component_Affiliation__c> lstEC = [SELECT Id,name,status__c,Enrollment_Component__r.Name FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c =: programEnrollmentId AND Enrollment_Component__r.Name = 'Tell us About your Student'];
-            //if(lstEC[0].Enrollment_Component__r.Name != 'Open Application'){
-               // lstEC[0].status__c = 'In Progress';
-               // update lstEC;
-          //  }
-            
-            
-            if(programEnrollmentId != null){
+*/ 
+             if(programEnrollmentId != null){
                 List<Enrollment_Component_Affiliation__c> enrollmentComponents = new List<Enrollment_Component_Affiliation__c>();
-                for(Enrollment_Component_Affiliation__c eca : [SELECT Enrollment_Component__c,Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c,Program_Enrollment__r.Program_Grade_Level__r.Active_Open_Application__c,Program_Enrollment__r.Open_Application__c,
-               													 	Enrollment_Component__r.Open_Application__c,Program_Enrollment__c FROM Enrollment_Component_Affiliation__c
-                                                                    WHERE Program_Enrollment__c =: programEnrollmentId
-                                                                    AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
-                                                                    AND status__c <> 'Not Applicable']){
-                                                                        
-                       if(eca.Program_Enrollment__r.Open_Application__c == 'Active' && eca.Enrollment_Component__r.Name == 'Open Application'){
-                        //eca.Program_Enrollment__r.Stage__c ='Open Application';
-                        enrollmentComponents.add(eca);
-                       }else if(eca.Enrollment_Component__r.Name != 'Open Application'){
-                           enrollmentComponents.add(eca);
-                       }
-                                                                    }
-                //Update enrollmentComponents;
+                for(Enrollment_Component_Affiliation__c eca : [SELECT Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c
+                                                               FROM Enrollment_Component_Affiliation__c
+                                                               WHERE Program_Enrollment__c =: programEnrollmentId
+                                                               AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
+                                                               AND status__c <> 'Not Applicable']){
+                                                                   enrollmentComponents.add(eca);
+                                                               }
                 System.debug('NDEBUG  ECAs are :::::' + enrollmentComponents);
                 return enrollmentComponents;
             }
@@ -62,6 +41,60 @@ and Program_Enrollment__c objects
         } catch(Exception e){logger.logException('getRelatedStages', e);logger.saveLogs();return null;
                             }
     }
+    
+    
+    //Divya -- Open Application User story
+   /*@AuraEnabled
+    public static List<Enrollment_Component_Affiliation__c> getRelatedStages(Id programEnrollmentId){
+        try{
+            
+            List<Enrollment_Component_Affiliation__c> enrollmentComponents = new List<Enrollment_Component_Affiliation__c>();
+            Map<Id,Enrollment_Component_Affiliation__c> ecaMap = new Map<Id,Enrollment_Component_Affiliation__c>();
+            Map<Id,Enrollment_Component_Affiliation__c> ecaMap1 = new Map<Id,Enrollment_Component_Affiliation__c>();
+    		set<id> peIds;
+            set<id> ecaIds;
+            if(programEnrollmentId != null){
+                for(Enrollment_Component_Affiliation__c eca : [SELECT Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c
+                                                               FROM Enrollment_Component_Affiliation__c
+                                                               WHERE Program_Enrollment__c =: programEnrollmentId
+                                                               AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
+                                                               AND status__c <> 'Not Applicable']){
+                                                                   
+                                                                   if(eca.Program_Enrollment__r.Open_Application__c == 'Active'){
+                                                                       ecaMap.put(eca.Program_Enrollment__c, eca);
+																	}
+                                                               }
+                List<Enrollment_Component_Affiliation__c> enrollComponents;
+                list<Enrollment_Component_Affiliation__c> ecaLst1;
+                List<Enrollment_Component_Affiliation__c> enrCmp = ecaMap.values();
+                if(enrCmp.size() > 0){
+                    enrollmentComponents = ecaMap.values();
+                }
+                
+                for(Enrollment_Component_Affiliation__c eca1 : [SELECT Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c
+                                                               FROM Enrollment_Component_Affiliation__c
+                                                               WHERE Program_Enrollment__c =: programEnrollmentId
+                                                               AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
+                                                               AND status__c <> 'Not Applicable' AND Program_Enrollment__r.Open_Application__c = null 
+                                                               AND Enrollment_Component__r.Name != 'Open Application']){
+                                                                   if(eca1.Order__c == 3){
+                                                                       eca1.Status__c = 'In Progress';
+                                                                       enrollComponents.add(eca1);
+                                                                   }
+                                                               }
+                if(enrollComponents.size() > 0){
+                    Update enrollComponents;
+                    enrollmentComponents = enrollComponents;
+                }
+                System.debug('NDEBUG  ECAs are :::::' + enrollmentComponents);
+                
+                return enrollmentComponents;
+            }
+            return null;
+        } catch(Exception e){logger.logException('getRelatedStages', e);logger.saveLogs();return null;
+                            }
+    }*/
+    //ended Divya
 
     /**
      * Created by Ashish Sharma on 12/05/18

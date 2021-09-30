@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
     <interviewLabel>LoginFlowForCareTakerProfile {!$Flow.CurrentDateTime}</interviewLabel>
     <label>LoginFlowForCareTakerProfilev4</label>
     <processMetadataValues>
@@ -24,6 +25,7 @@
         <connector>
             <targetReference>Update_User_Record</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -41,6 +43,7 @@
         <label>Update User Record</label>
         <locationX>608</locationX>
         <locationY>61</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

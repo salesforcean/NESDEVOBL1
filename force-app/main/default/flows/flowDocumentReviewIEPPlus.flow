@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>assignRecords</name>
         <label>assignRecords</label>
@@ -665,18 +666,22 @@
     </subflows>
     <textTemplates>
         <name>getIEPEDs</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>&lt;p&gt;{!iepRecord}&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>getIEPEDSS</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>&lt;p&gt;{!iepRecord.Notes__c}&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>Note</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>&lt;p&gt;{!iepRecord}&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>notesAPi</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>&lt;p&gt;&lt;span style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;{!&lt;/span&gt;iepRecord&lt;span style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;.Notes__c}&lt;/span&gt;&lt;/p&gt;</text>
     </textTemplates>
     <variables>
