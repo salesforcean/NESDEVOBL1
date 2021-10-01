@@ -1841,8 +1841,9 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                     for(Program_Grade_Level__c pgl : pgls) {
                         System.debug('pgl.Id='+pgl.Id+', pe.Program_Grade_Level__c='+pe.Program_Grade_Level__c);
                         System.debug('pgl.ActivateWaitlist__c='+pgl.ActivateWaitlist__c);
-                        System.debug('pgl.StartWaitlist__c='+pgl.StartWaitlist__c+', pgl.EndWaitlist__c='+pgl.EndWaitlist__c);                          
-                        if(pgl.Id == pe.Program_Grade_Level__c && (pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now() || pgl.Active_Open_Application__c == TRUE && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now() )) {
+                        System.debug('pgl.StartWaitlist__c='+pgl.StartWaitlist__c+', pgl.EndWaitlist__c='+pgl.EndWaitlist__c);  
+                        //Added for Userstory 451172- DK
+                        if(pgl.Id == pe.Program_Grade_Level__c && ((pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) || (pgl.Active_Open_Application__c == TRUE && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now() ))) { 
                                                       
                             if(pgl.ActivateWaitlist__c == TRUE && pe.WaitlistFlag__c!= 'Released'){
                                 pe.WaitlistFlag__c = 'Active';
@@ -1851,6 +1852,8 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                             if(pgl.Active_Open_Application__c == TRUE && pe.Open_Application__c!= 'Released'){
                                 pe.Open_Application__c = 'Active';
                             }
+                            
+                            // End for Userstory 451172- DK
                             programEnrollmentsToUpdate.add(pe);
                             resetPEFlag = false;
                             break;

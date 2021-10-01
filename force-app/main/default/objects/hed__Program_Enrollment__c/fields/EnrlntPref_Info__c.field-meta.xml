@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EnrlntPref_Info__c</fullName>
+    <externalId>false</externalId>
+    <label>EnrlntPref Info</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Biological or adopted sibling of a student currently attending TECCA.</fullName>
+                <default>false</default>
+                <label>Biological or adopted sibling of a student currently attending TECCA.</label>
+            </value>
+            <value>
+                <fullName>Students residing in rural communities</fullName>
+                <default>false</default>
+                <label>Students residing in rural communities</label>
+            </value>
+            <value>
+                <fullName>Students in institutionalized settings</fullName>
+                <default>false</default>
+                <label>Students in institutionalized settings</label>
+            </value>
+            <value>
+                <fullName>Students who are gifted and talented</fullName>
+                <default>false</default>
+                <label>Students who are gifted and talented</label>
+            </value>
+            <value>
+                <fullName>Students who are over-age for their grade</fullName>
+                <default>false</default>
+                <label>Students who are over-age for their grade</label>
+            </value>
+            <value>
+                <fullName>Students who are pregnant or who have a child</fullName>
+                <default>false</default>
+                <label>Students who are pregnant or who have a child</label>
+            </value>
+            <value>
+                <fullName>Students who feel bullied or who are out of school due to other safety concerns</fullName>
+                <default>false</default>
+                <label>Students who feel bullied or who are out of school due to other safety concerns</label>
+            </value>
+            <value>
+                <fullName>Students who have been expelled</fullName>
+                <default>false</default>
+                <label>Students who have been expelled</label>
+            </value>
+            <value>
+                <fullName>Students who have or are at risk of dropping out</fullName>
+                <default>false</default>
+                <label>Students who have or are at risk of dropping out</label>
+            </value>
+            <value>
+                <fullName>Students who seek academic work not available in their school</fullName>
+                <default>false</default>
+                <label>Students who seek academic work not available in their school</label>
+            </value>
+            <value>
+                <fullName>Students with disabilities</fullName>
+                <default>false</default>
+                <label>Students with disabilities</label>
+            </value>
+            <value>
+                <fullName>Students with medical needs requiring a home or hospital setting</fullName>
+                <default>false</default>
+                <label>Students with medical needs requiring a home or hospital setting</label>
+            </value>
+            <value>
+                <fullName>Students with unusual needs requiring a flexible schedule</fullName>
+                <default>false</default>
+                <label>Students with unusual needs requiring a flexible schedule</label>
+            </value>
+            <value>
+                <fullName>None of these situations apply to my student</fullName>
+                <default>false</default>
+                <label>None of these situations apply to my student</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Aff_Info_AfricanAmerican__c</fullName>
+    <externalId>false</externalId>
+    <label>Aff Info AfricanAmerican</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Decline to indicate</fullName>
+                <default>false</default>
+                <label>Decline to indicate</label>
+            </value>
+            <value>
+                <fullName>African-American</fullName>
+                <default>false</default>
+                <label>African-American</label>
+            </value>
+            <value>
+                <fullName>Ethiopian-Oromo</fullName>
+                <default>false</default>
+                <label>Ethiopian-Oromo</label>
+            </value>
+            <value>
+                <fullName>Ethiopian-Other</fullName>
+                <default>false</default>
+                <label>Ethiopian-Other</label>
+            </value>
+            <value>
+                <fullName>Liberian</fullName>
+                <default>false</default>
+                <label>Liberian</label>
+            </value>
+            <value>
+                <fullName>Nigerian</fullName>
+                <default>false</default>
+                <label>Nigerian</label>
+            </value>
+            <value>
+                <fullName>Somali</fullName>
+                <default>false</default>
+                <label>Somali</label>
+            </value>
+            <value>
+                <fullName>Other Black</fullName>
+                <default>false</default>
+                <label>Other Black</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -125,7 +125,7 @@
                 // Error msg Added by RAVI US #433409 
                 if(studentData.schoolYears == '' || studentData.schoolYears ==  null ||studentData.schoolYears == undefined)
                 {
-                    component.set("v.schYrEr", true);
+                    component.set("v.schoolYearsNotAvail", true);
                    // component.set("v.SchoolYearErrormsg", 'The school you have selected does not have any school years available');
                }
                 //End Here
@@ -175,15 +175,14 @@
                     for(var i=0;i<returnedResponse.length;i++) {
                         var question = returnedResponse[i];
                         var missingGrades = '';
-                        // TODO: Check only for Grade related question
-						// Added by RAVI #US 433409
+                        // Added by RAVI #US 433409
                         if(question.questionType === 'Picklist'&& question.questionPrompt.includes("What grade will you be requesting for this student?")) {
                           
                             var incloptions = question.picklistValues;
                             var excloptions = question.exclPicklistValues;
 							if(incloptions.length == 0 ){
                                 missingGrades = 'There are no grades available for this school';
-                                component.set('v.questionMsg', missingGrades);
+                                component.set('v.GradesNotAvailMsg', missingGrades);
                                 }
                              
                            else if(excloptions){
@@ -199,9 +198,9 @@
                                 }
                                 if(missingGrades.length>0 && missingGrades!=null){
                                     missingGrades = 'Grade(s) '  + missingGrades  +' not available for this school at the moment';
-                                    component.set("v.questionMsg", missingGrades);
+                                    component.set("v.GradesNotAvailMsg", missingGrades);
                                 }else{
-                                    component.set("v.questionMsg", '');
+                                    component.set("v.GradesNotAvailMsg", '');
                                 }
                             }
                         }

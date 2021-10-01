@@ -866,9 +866,7 @@ public without sharing class NES_EvaluateUtil {
         wrap.picklistValues = new List<NES_EvaluateUtil.PicklistOption>();
 
         System.debug(question.Question_Type__c);
-
-        System.debug(question.Question_Type__c);
-        //Added by Ravi US 433409
+		//Added by Ravi US 433409
         if(question.Question_Type__c == 'Picklist' && question.Question_Prompt__c.contains('What grade will you be requesting for this student?')) 
         { 
          wrap.exclPicklistValues = new List<NES_EvaluateUtil.PicklistOption>();
@@ -1244,6 +1242,7 @@ public without sharing class NES_EvaluateUtil {
         public Boolean textComponent { get; set; }
         @AuraEnabled
         public List<PicklistOption> picklistValues { get; set; }
+        //Added By Ravi For US 433409
         @AuraEnabled
         public List<PicklistOption> exclPicklistValues { get; set; }
         

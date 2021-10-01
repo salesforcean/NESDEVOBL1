@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Barriers__c</fullName>
+    <externalId>false</externalId>
+    <label>Barriers</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Repeated at least one grade, Was absent more than ten percent during the last semester</fullName>
+                <default>false</default>
+                <label>Repeated at least one grade, Was absent more than ten percent during the last semester</label>
+            </value>
+            <value>
+                <fullName>Has a current overall grade point average less than 1.5</fullName>
+                <default>false</default>
+                <label>Has a current overall grade point average less than 1.5</label>
+            </value>
+            <value>
+                <fullName>Has failed one or more academic subjects in the past year</fullName>
+                <default>false</default>
+                <label>Has failed one or more academic subjects in the past year</label>
+            </value>
+            <value>
+                <fullName>Is two or more semester credits behind</fullName>
+                <default>false</default>
+                <label>Is two or more semester credits behind</label>
+            </value>
+            <value>
+                <fullName>Has attended three or more schools within the previous two years</fullName>
+                <default>false</default>
+                <label>Has attended three or more schools within the previous two years</label>
+            </value>
+            <value>
+                <fullName>Has a documented, or pattern of, substance abuse</fullName>
+                <default>false</default>
+                <label>Has a documented, or pattern of, substance abuse</label>
+            </value>
+            <value>
+                <fullName>Is pregnant or a parent</fullName>
+                <default>false</default>
+                <label>Is pregnant or a parent</label>
+            </value>
+            <value>
+                <fullName>Is an emancipated or unaccompanied youth</fullName>
+                <default>false</default>
+                <label>Is an emancipated or unaccompanied youth</label>
+            </value>
+            <value>
+                <fullName>Is a previous dropout</fullName>
+                <default>false</default>
+                <label>Is a previous dropout</label>
+            </value>
+            <value>
+                <fullName>Has serious personal, emotional, or medical issues</fullName>
+                <default>false</default>
+                <label>Has serious personal, emotional, or medical issues</label>
+            </value>
+            <value>
+                <fullName>Has a court or agency referral</fullName>
+                <default>false</default>
+                <label>Has a court or agency referral</label>
+            </value>
+            <value>
+                <fullName>Demonstrates behavior that is detrimental to academic progress</fullName>
+                <default>false</default>
+                <label>Demonstrates behavior that is detrimental to academic progress</label>
+            </value>
+            <value>
+                <fullName>Is below proficient based on local criteria</fullName>
+                <default>false</default>
+                <label>Is below proficient based on local criteria</label>
+            </value>
+            <value>
+                <fullName>standardized test, or both</fullName>
+                <default>false</default>
+                <label>standardized test, or both</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

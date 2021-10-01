@@ -355,7 +355,7 @@ public class NES_ProgramEnrollmentHandler {
                 System.debug('ecaList.size() = '+ecaList.size());
                 List<Enrollment_Component_Affiliation__c> ecaUpdateList = new List<Enrollment_Component_Affiliation__c>();
                 Double waitlistOrder = 0;
-                String WaitlistStageUpdate = 'Y';
+                String WaitlistStageUpdate = 'Y'; 
                 if(ecaList.size()>0){
                     for(Enrollment_Component_Affiliation__c eca: ecaList){
                         if((eca.Program_Enrollment__r.waitlistflag__c == 'Active') && (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && (eca.Enrollment_Component__r.Name == 'Waitlist')) {
@@ -370,7 +370,7 @@ public class NES_ProgramEnrollmentHandler {
                             (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && 
                             (eca.Order__c > waitlistOrder) && (eca.Status__c <> 'Not Started')){
                                 eca.Status__c = 'Not Started';
-                                ecaUpdateList.add(eca);
+                                ecaUpdateList.add(eca);                                
                             }
                             //Defect-473087
                             else if((eca.Program_Enrollment__r.waitlistflag__c == 'Active') && 

@@ -20,9 +20,19 @@ public with sharing class NES_ProgramGradeLevelBusinessLogic {
                 if (pgl.StartWaitlist__c != oldMap.get(pgl.Id).StartWaitlist__c || pgl.EndWaitlist__c != oldMap.get(pgl.Id).EndWaitlist__c || pgl.ActivateWaitlist__c != oldMap.get(pgl.Id).ActivateWaitlist__c){
                         pglIds.add(pgl.Id);
                     }
+                //Added for Userstory 451172- DK
+                if (pgl.Start_Open_Application__c != oldMap.get(pgl.Id).Start_Open_Application__c || pgl.End_Open_Application__c != oldMap.get(pgl.Id).End_Open_Application__c || pgl.Active_Open_Application__c != oldMap.get(pgl.Id).Active_Open_Application__c){
+                        pglIds.add(pgl.Id);
+                }
             }
-                else if (pgl.StartWaitlist__c != null || pgl.EndWaitlist__c != null || pgl.ActivateWaitlist__c != null)
+            else if (pgl.StartWaitlist__c != null || pgl.EndWaitlist__c != null || pgl.ActivateWaitlist__c != null){
                 pglIds.add(pgl.Id);
+            }
+            
+            //Added for Userstory 451172 -DK
+            else if (pgl.Start_Open_Application__c != null || pgl.End_Open_Application__c != null || pgl.Active_Open_Application__c != null){
+                pglIds.add(pgl.Id);
+            }
             
         }
         Set<Id> programEnrollmentIds = new Set<Id>();

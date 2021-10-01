@@ -19,6 +19,146 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Additional_Info_Ethnicity__c</picklist>
+        <values>
+            <fullName>Colombian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Decline to indicate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ecuadorian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guatemalan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mexican</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Hispanic%2FLatino</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Rican</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Salvadoran</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaniard%2FSpanish%2FSpanish-American</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Aff_Info_AfricanAmerican__c</picklist>
+        <values>
+            <fullName>African-American</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Decline to indicate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ethiopian-Oromo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ethiopian-Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liberian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nigerian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Black</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Somali</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Aff_Info_Asian__c</picklist>
+        <values>
+            <fullName>Asian Indian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Burmese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chinese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Decline to indicate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Filipino</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hmong</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Karen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Korean</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Asian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vietnamese</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Biological_Parents_Rel__c</picklist>
+        <values>
+            <fullName>Married</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Married</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Caretaker_Accessibility__c</picklist>
         <values>
             <fullName>No</fullName>
@@ -3292,6 +3432,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Federal_State_Race_Info_AMIndian__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Gender_Selector__c</picklist>
         <values>
             <fullName>Female</fullName>
@@ -3837,6 +3988,33 @@
         </values>
         <values>
             <fullName>True</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TribalAff_Info_AMIndian__c</picklist>
+        <values>
+            <fullName>Anishinaabe%2FOjibwe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cherokee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dakota%2FLakota</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Decline to indicate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other North American Indian Tribal Affilitation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
             <default>false</default>
         </values>
     </picklistValues>

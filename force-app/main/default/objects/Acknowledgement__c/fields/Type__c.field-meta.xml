@@ -160,6 +160,21 @@
                 <default>false</default>
                 <label>Returning Household Acknowledgement</label>
             </value>
+            <value>
+                <fullName>Age Eligibility</fullName>
+                <default>false</default>
+                <label>Age Eligibility</label>
+            </value>
+            <value>
+                <fullName>Out of County</fullName>
+                <default>false</default>
+                <label>Out of County</label>
+            </value>
+            <value>
+                <fullName>Prior School Attendance</fullName>
+                <default>false</default>
+                <label>Prior School Attendance</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

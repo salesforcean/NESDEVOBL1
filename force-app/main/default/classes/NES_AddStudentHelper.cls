@@ -267,7 +267,7 @@ public without sharing class NES_AddStudentHelper {
                                     }
                                 }
                             }
-							//Added by ravi US #433409
+                            //Added by Ravi US #433409
                             //Create a map of Option_Exclusion__c record for the above account and Enrollment components records
                             List <Option_Exclusion__c> exclusions = [
                                     SELECT Id, Academic_Program__c, Option__c
@@ -280,7 +280,7 @@ public without sharing class NES_AddStudentHelper {
                                     optionExclusionMap.put(rec.Option__c, rec);
                                 }
                             }
-							// End here
+                            // End here
                             // Final list of questions
                             List <Enrollment_Component__c> questionComponents = [
                                     SELECT Answer_Target__c, Assignment_Logic__c, Completion_Logic__c, Component_Message__c, Component_Type__c,
@@ -543,7 +543,7 @@ public without sharing class NES_AddStudentHelper {
 
                 //Get all the stages
                 List<Enrollment_Component_Relationship__c> relationships = [
-                        SELECT Child_Enrollment_Component__c, Id, Order__c, Parent_Enrollment_Component__c,
+                        SELECT Child_Enrollment_Component__c, Child_Enrollment_Component__r.Name, Id, Order__c, Parent_Enrollment_Component__c,
                                 Child_Enrollment_Component__r.Assignment_Logic__c, Child_Enrollment_Component__r.Component_Type__c
                         FROM Enrollment_Component_Relationship__c
                         WHERE Parent_Enrollment_Component__c IN :processComponent
@@ -631,7 +631,7 @@ public without sharing class NES_AddStudentHelper {
                                 //Capture the birtdate for later use in the hard stop logic.
                                 if (fieldApiName == 'Birthdate__c')
                                     birthdate = ((contact) sObj).Birthdate__c;
-								system.debug('==>birthdate '+birthdate);
+                                system.debug('==>birthdate '+birthdate);
                             } else {
                                 SObject sObj = Schema.getGlobalDescribe().get(objectApiName).newSObject();
                                 sObj = NES_EvaluateUtil.updateDataVoid(data.questionType, data.targetField, fieldApiName, sObj);
@@ -675,21 +675,48 @@ public without sharing class NES_AddStudentHelper {
                 affiliationRecord2.Order__c = relationships[0].Order__c;
                 ecAffiliationsToInsert.add(affiliationRecord2);
 
+                
                 //Add the rest of the stages that have no assignment logic.
                 for (Integer i = 1; i < relationships.size(); i++) {
-                    if (String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {                
-                        Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
+                    Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
+                    if(!String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c) && relationships[i].Order__c == 2){
                         affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
                         affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                         affiliationRecord.Order__c = relationships[i].Order__c;
-                        //The second stage should be in progress all others not started.
-                        if (i == 1)
+                        if(relationships[i].Order__c == 2){
                             affiliationRecord.Status__c = 'In Progress';
-                        else
+                        }else{
                             affiliationRecord.Status__c = 'Not Started';
-                        ecAffiliationsToInsert.add(affiliationRecord);
+                        }
+						ecAffiliationsToInsert.add(affiliationRecord);
+                    }else if((ecAffiliationsToInsert.size() == 0 || ecAffiliationsToInsert.size() == null) && relationships[i].Order__c == 3){
+                        Enrollment_Component_Affiliation__c affiliationRec = new Enrollment_Component_Affiliation__c();
+                        affiliationRec.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
+                        affiliationRec.Program_Enrollment__c = newStudentEnrollment.Id;
+                        affiliationRec.Order__c = relationships[i].Order__c;
+                        //The second stage should be in progress all others not started.
+                        if (relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student')
+                            affiliationRec.Status__c = 'In Progress';
+                        else
+                            affiliationRec.Status__c = 'Not Started';
+                        ecAffiliationsToInsert.add(affiliationRec);
                     }
-                } 
+                    
+                        //Add the rest of the stages that have no assignment logic.
+                       /*for (Integer i = 1; i < relationships.size(); i++) {
+                        if (String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {                
+                            Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
+                            affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
+                            affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
+                            affiliationRecord.Order__c = relationships[i].Order__c;
+                            //The second stage should be in progress all others not started.
+                            if (i == 1)
+                                affiliationRecord.Status__c = 'In Progress';
+                            else
+                                affiliationRecord.Status__c = 'Not Started';
+                            ecAffiliationsToInsert.add(affiliationRecord);
+                        }*/
+                    } 
 
                 //add forms affiliation for the forms under stage 1 that have no assignment logic
                 List<Enrollment_Component_Relationship__c> formRelationships = [
@@ -778,7 +805,7 @@ public without sharing class NES_AddStudentHelper {
 
                 //With the ECA rewrite, we changed the hard stop process to only look at dates from the Academic program.
                 Boolean shouldHardStop = false;
-				system.debug('==>birthdate '+birthdate);
+                system.debug('==>birthdate '+birthdate);
                 system.debug('==>MaxSpecialEdBirthdate__c '+academicProgram.MaxSpecialEdBirthdate__c);
                 system.debug('==>Too_Young_Cutoff__c '+academicProgram.Too_Young_Cutoff__c);
                 //Replaced with MaxSpecialEdBirthdate__c instead of Too_Old_Cutoff__c in below if condition for 335863
@@ -825,9 +852,7 @@ public without sharing class NES_AddStudentHelper {
 
     //Grabs all the school years based on the given school
     public static Peak_Response grabSchoolYears(Id institutionId) {
-
         
-
         Peak_Response peakResponse = new Peak_Response();
         Id processId = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get('Process').getRecordTypeId();
         Id programId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Academic Program').getRecordTypeId();
@@ -892,13 +917,13 @@ public without sharing class NES_AddStudentHelper {
                 }
             }
          }
-		
-       	set<Id> academicProgramIds = matchingPC.keyset();
+        
+        set<Id> academicProgramIds = matchingPC.keyset();
         
         if(academicProgramIds.size() >= 1){
             years = [SELECT Id, Name FROM School_Year__c WHERE Id IN :matchingZipCode]; 
         }else{
-			for(Account acdPrgm : programs){
+            for(Account acdPrgm : programs){
                 if(!academicProgramIds.contains(acdPrgm.Id) && !notMatchingZipCode.contains(acdPrgm.Id)){
                     notZipCodeSchlYrIds.add(acdPrgm.School_Year__c);
                 }
@@ -923,15 +948,15 @@ public without sharing class NES_AddStudentHelper {
 
         // USXXX (Ali Khan)
         User caretaker = [SELECT Contact.inputParameter__c,contact.account.Family_Enrollment_Counselor__c,Contact.Account.ShippingState, Contact.Account.ShippingPostalCode  FROM User WHERE Id = :UserInfo.getUserId()];
-
+        // Commented the Registration start date and end date and included in the query For US #433409
         // Grab the process enrollment components to find valid schools
         List<Enrollment_Component__c> processes = [
-                SELECT Id, Process_Academic_Program__c
+                SELECT Id, Process_Academic_Program__c,Process_Academic_Program__r.Registration_Start_Date__c,Process_Academic_Program__r.Registration_End_Date__c 
                 FROM Enrollment_Component__c
                 WHERE RecordTypeId = :processId AND Process_Academic_Program__c != NULL
                 AND Process_Academic_Program__r.School_Year__c != NULL
-                AND Process_Academic_Program__r.Registration_Start_Date__c <= TODAY
-                AND Process_Academic_Program__r.Registration_End_Date__c >= TODAY
+                //AND Process_Academic_Program__r.Registration_Start_Date__c <= TODAY
+                //AND Process_Academic_Program__r.Registration_End_Date__c >= TODAY
         ];
         List<Id> programIds = new List<Id>();
 
@@ -939,24 +964,21 @@ public without sharing class NES_AddStudentHelper {
         for (Enrollment_Component__c process : processes) {
             programIds.add(process.Process_Academic_Program__c);
         }
-
         // USXXX (Ali Khan)
         // Mark Membrino.  Added that we only want to show institutions that match on zip if that institution has any zips set up.
-		//Added By Ravi& Niranjan US 433409 & 434474 
+
         Map<Id, set<String>> institutionToZipListMap = new Map<Id, set<String>> ();
-        // Added by Niranjan & Ravi US 433409 & 434474
-        Set<Account> matchingAcademicPostal = new Set<Account>();
-		Set<Account> institutionSet = new Set<Account>();
-        // Endded here
+        Set<Id> institutionsInState = new Set<Id>();
+
         List<Account> institutionTempAccounts = [
                 SELECT Id, Name, (SELECT Id, Name FROM ChildAccounts)
                 FROM Account
                 WHERE RecordTypeId = :institutionRecordTypeId
                 AND ShippingState = :caretaker.Contact.Account.ShippingState
         ];
-		// state accademic programs added in set variable added by Niranjan & Ravi US 433409 & 434474 
+
         for (Account institution : institutionTempAccounts) {
-            institutionSet.add(institution);
+            institutionsInState.add(institution.id);
         }
 
         for (Program_PostalCode__c ppc :  [SELECT Academic_Program__c,PostalCode__c FROM Program_PostalCode__c where Academic_Program__c in :programIds]) {
@@ -970,6 +992,8 @@ public without sharing class NES_AddStudentHelper {
             institutionToZipListMap.put(ppc.Academic_Program__c, thisAPZips);
         }
 
+        Set<Account> institutionSet = new Set<Account>();
+
         //loop through institutions to grab all the ones with valid academic programs
         for (Account institution : institutionTempAccounts) {
             //if they have an academic program, we want to return to the school list
@@ -979,26 +1003,18 @@ public without sharing class NES_AddStudentHelper {
                     boolean meetsZipCriteria = true;
                     if (institutionToZipListMap.containsKey(child.Id)) { //If this institution has no zips, they won't be in the map at all.
                         set<string> thisAPZips = institutionToZipListMap.get(child.Id);
-                        system.debug('==> APZIp '+thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5)));
                         if (!thisAPZips.contains(caretaker.Contact.Account.ShippingPostalCode.substring(0,5)))
                             meetsZipCriteria = false;
                     }
-                    // Added only configured corresponding academic records in set
                     if (programIds.contains(child.Id) && meetsZipCriteria) {
-                        matchingAcademicPostal.add(institution);
+                        institutionSet.add(institution);
                     }
-                    
                 }
             }
         }
         List<Account> institutions = new List<Account>();
-        if(matchingAcademicPostal.size () > 0){
-            institutions.addAll(matchingAcademicPostal);
-        }else{
         institutions.addAll(institutionSet);
-
-        }
-		// Endded here.
+        
 
         // Create empty lists for return to user
         List<School_Year__c> schoolYears = new List<School_Year__c>();
@@ -1021,7 +1037,7 @@ public without sharing class NES_AddStudentHelper {
         }
 
         NES_EvaluateUtil.NewStudentData data = new NES_EvaluateUtil.NewStudentData('', '', '','', '', '', '', '', defaultAcc, schoolYears, institutions, gradeLevels);//added additional spaces for US116612
-		System.debug('data :::::::::'+ data );
+
         return data;
     }
 

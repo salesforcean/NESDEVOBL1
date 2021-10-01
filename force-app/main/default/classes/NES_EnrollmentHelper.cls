@@ -43,7 +43,7 @@ and Program_Enrollment__c objects
     }
     
     
-    //Divya -- Open Application User story
+   //Added for Userstory 451172- DK
    /*@AuraEnabled
     public static List<Enrollment_Component_Affiliation__c> getRelatedStages(Id programEnrollmentId){
         try{

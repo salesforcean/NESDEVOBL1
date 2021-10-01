@@ -114,6 +114,65 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Barriers__c</picklist>
+        <values>
+            <fullName>Demonstrates behavior that is detrimental to academic progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Has a court or agency referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Has a current overall grade point average less than 1%2E5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Has a documented%2C or pattern of%2C substance abuse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Has attended three or more schools within the previous two years</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Has failed one or more academic subjects in the past year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Has serious personal%2C emotional%2C or medical issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Is a previous dropout</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Is an emancipated or unaccompanied youth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Is below proficient based on local criteria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Is pregnant or a parent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Is two or more semester credits behind</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Repeated at least one grade%2C Was absent more than ten percent during the last semester</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>standardized test%2C or both</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>CAWaitlistPlacementOptionCalc__c</picklist>
         <values>
             <fullName>TBD</fullName>
@@ -124,6 +183,41 @@
         <picklist>CL_ApproveDisciplineFlag__c</picklist>
         <values>
             <fullName>TBD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CareerPathways__c</picklist>
+        <values>
+            <fullName>Agriculture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arts%2C A%2FV%2C and Communication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business and Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cosmetology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Culinary Arts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Health Science</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospitality and Human Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information Technology</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -234,6 +328,25 @@
         </values>
         <values>
             <fullName>Prior to 2002-03</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ComputerSelection__c</picklist>
+        <values>
+            <fullName>Connections Academy Computer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connections Academy Computer %2F Temporary Use of Another Computer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Family-owned Home Computer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shared Connections Academy Computer</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -373,6 +486,77 @@
         </values>
         <values>
             <fullName>is suspended</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DistrictStudentResides__c</picklist>
+        <values>
+            <fullName>Canton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dedham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dover-Sherborn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Framingham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Holliston</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hopkinton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medfield</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Millis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>My district is not listed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Natick</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Needham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Norwood</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sherborn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Walpole</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wayland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Westwood</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -527,6 +711,80 @@
         </values>
         <values>
             <fullName>Non-Responsive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>EnrlntPref_Info__c</picklist>
+        <values>
+            <fullName>Biological or adopted sibling of a student currently attending TECCA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None of these situations apply to my student</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students in institutionalized settings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students residing in rural communities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students who are gifted and talented</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students who are over-age for their grade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students who are pregnant or who have a child</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students who feel bullied or who are out of school due to other safety concerns</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students who have been expelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students who have or are at risk of dropping out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students who seek academic work not available in their school</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students with disabilities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students with medical needs requiring a home or hospital setting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Students with unusual needs requiring a flexible schedule</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Enrlnt_GPA_Range__c</picklist>
+        <values>
+            <fullName>2%2E5 or Above</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Below 2%2E5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsure</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -973,6 +1231,21 @@
         </values>
         <values>
             <fullName>Science</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Grad_On_track__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -3558,6 +3831,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>IsParentHillsboroughEmployee__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LC_HighestLevelofEducation__c</picklist>
         <values>
             <fullName>College graduate %28Bachelor%27s degree%29</fullName>
@@ -3978,6 +4262,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Local_School_Eligibility__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>MoreHighSchoolDocumentation__c</picklist>
         <values>
             <fullName>Documentation needed</fullName>
@@ -4235,6 +4530,28 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>OEA_Eligibility_Flag__c</picklist>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>OEA_Status__c</picklist>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Accepted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>OH_Discipline_Status__c</picklist>
         <values>
             <fullName>has been expelled</fullName>
@@ -4446,6 +4763,17 @@
         </values>
         <values>
             <fullName>Year Round</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pending_Disciplinary_Past_Actions__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -4724,6 +5052,41 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Prior_School_Attendance_Info__c</picklist>
+        <values>
+            <fullName>Acoma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cochiti</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fort Sill Apache</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Isleta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jemez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jicarilla Apache</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>My student does not have more than 10 unexcused absences%2C is currently enrolled in school%2C and has not been withdrawn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>My student does not meet the prior school attendance requirements and is not eligible to enroll%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>RCStatus__c</picklist>
         <values>
             <fullName>Received</fullName>
@@ -4947,6 +5310,28 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>ReceiveESEServices__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Receive_Equip_Hardship__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>RegularContactDay__c</picklist>
         <values>
             <fullName>Friday</fullName>
@@ -5135,6 +5520,17 @@
         </values>
         <values>
             <fullName>WebMail address</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>School_Admin_Unit__c</picklist>
+        <values>
+            <fullName>MCAIntentoEnrollSchoolDistrict</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>See V2 field</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -6252,6 +6648,17 @@
         </values>
         <values>
             <fullName>Verified</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>UT_HomeschoolNotification__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
             <default>false</default>
         </values>
     </picklistValues>

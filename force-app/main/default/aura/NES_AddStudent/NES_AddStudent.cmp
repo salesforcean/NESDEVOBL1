@@ -21,9 +21,7 @@
     <aura:attribute name="disclaimerHeading" type="String" default="These preliminary checks help ensure this student is eligible" />
     <!-- Updated default text for the Bug :177563 by Jagadeesh -->
     <aura:attribute name="disclaimerText" type="String" default="NOTE: Passing these preliminary eligibility checks does not guarantee your student's spot in school, but it gets the most important questions out of the way first so you aren't spending more time than necessary." />
-    <aura:attribute name="SchoolErrormsg" type="String" default="There are no schools available for the selected state."/>
-    <aura:attribute name="SchoolYearErrormsg" type="String" default="The school you have selected does not have any school years available."/>
-    <aura:attribute name="showRelationshipError" type="Boolean" default="false" />
+	<aura:attribute name="showRelationshipError" type="Boolean" default="false" />
     <aura:attribute name="addStudentActive" type="Boolean" default="false" />
     <aura:attribute name="disableCreate" type="Boolean" default="true" />
     <aura:attribute name="notParentSubheading" type="String" />
@@ -34,12 +32,13 @@
     <aura:attribute name="supplementalQuestionsLoaded" type="Boolean" default="false" />
     <aura:attribute name="supplementalQuestions" type="Object[]" />
     <aura:attribute name="message" type="String" default="" />
-    <aura:attribute name="schYrEr" type="boolean"/>
     <aura:attribute name="numberOfStudents" type="Integer" default="0" />
     <aura:attribute name="suffixOptions" type="List" default="[]"/>
-    
-    <aura:attribute name="questionMsg" type="String" default="" />
-    
+    <!-- Added For #US 433409-->
+    <aura:attribute name="GradesNotAvailMsg" type="String" default="" />
+    <aura:attribute name="SchoolNotAvailErrorMsg" type="String" default="There are no schools available for the selected state."/>
+    <aura:attribute name="SchoolYearsNotAvailErrorMsg" type="String" default="The school you have selected does not have any school years available."/>
+    <aura:attribute name="schoolYearsNotAvail" type="boolean" default="false"/>
     
 	<aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" /> <!-- Swapna: Add for GTM -->
     <div>
@@ -130,10 +129,10 @@
                                 </aura:iteration>
                             </lightning:select>
                         </lightning:layoutItem>
-                            <!-- Added by ravi US #433409-->
+                            <!-- Added by Ravi US #433409-->
                         <aura:set attribute="else">
                              <div style="color:Red">
-                                  <h5>{!v.SchoolErrormsg}</h5>
+                                  <h5>{!v.SchoolNotAvailErrorMsg}</h5>
                                  </div>
                             </aura:set>
                             <!-- Ended here-->
@@ -148,10 +147,12 @@
                                     </aura:iteration>
                                 </lightning:select>
                             </lightning:layoutItem>
-                             <aura:if isTrue="{!v.schYrEr}">
+                             <!-- Added by Ravi US #433409-->
+                             <aura:if isTrue="{!v.schoolYearsNotAvail}">
                                  <div style="color:Red">
-                                  <h5>{!v.SchoolYearErrormsg}</h5>
+                                  <h5>{!v.SchoolYearsNotAvailErrorMsg}</h5>
                                  </div>
+                                 
                              </aura:if>
                              <!--aura:set attribute="else">
                              <div style="color:Red">
@@ -188,8 +189,9 @@
                                                         <option value="{!option.value}">{!option.label}</option>
                                                     </aura:iteration>
                                                 </lightning:select>
+                                                
                                                 <div style="color:Red">
-                                                {!v.questionMsg}
+                                                {!v.GradesNotAvailMsg}
                                                 </div>
                                             </aura:if>
 

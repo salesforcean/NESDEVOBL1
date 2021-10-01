@@ -63,6 +63,31 @@
                 <elementReference>CopiedLastName</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CopiedAccountName</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Account_School_Information</name>
+        <label>Get Account School Information</label>
+        <locationX>961</locationX>
+        <locationY>226</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account_Record_Type_Text__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RecordId</elementReference>
+            </value>
+        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Account</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -100,6 +125,9 @@
         <label>Clone the Updated Records</label>
         <locationX>954</locationX>
         <locationY>73</locationY>
+        <connector>
+            <targetReference>Get_Account_School_Information</targetReference>
+        </connector>
         <inputReference>Get_Record_Type_Name</inputReference>
     </recordUpdates>
     <start>
@@ -110,6 +138,13 @@
         </connector>
     </start>
     <status>Draft</status>
+    <variables>
+        <name>CopiedAccountName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
     <variables>
         <name>CopiedLastName</name>
         <dataType>String</dataType>
@@ -126,6 +161,13 @@
         <value>
             <stringValue></stringValue>
         </value>
+    </variables>
+    <variables>
+        <name>RecordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
     </variables>
     <variables>
         <name>RecordTypeID</name>

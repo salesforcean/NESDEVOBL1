@@ -2835,6 +2835,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Living_With_PRNT_LG__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>MigratoryInfoIdentifiedPersons__c</picklist>
         <values>
             <fullName>none</fullName>
