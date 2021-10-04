@@ -18,8 +18,8 @@
 	<aura:dependency resource="markup://force:navigateToURL" type="EVENT"/>
     <aura:attribute name="filetype" type="List" default="['.csv']" />
 
-    <aura:attribute name="columnNames" type="List" default="['Name','Last Name','Email','Username','Password','Phone Number','State','Zip']" />
-    <aura:attribute name="mandatoryFields" type="List" default="['Name','Last Name','Email','Username','Password','Phone Number','State','Zip']" />
+    <aura:attribute name="columnNames" type="List" default="['Name','Last Name','Email','Username','Password','Phone Number','State','Zip','Phone Type']" />
+    <aura:attribute name="mandatoryFields" type="List" default="['Name','Last Name','Email','Username','Password','Phone Number','State','Zip','Phone Type']" />
     <aura:dependency resource="markup://force:showToast" type="EVENT,COMPONENT" />
       
  <aura:if isTrue="{! v.loaded }">

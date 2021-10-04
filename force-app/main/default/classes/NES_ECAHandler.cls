@@ -37,7 +37,7 @@ public class NES_ECAHandler {
                                                                   Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c, Program_Enrollment__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.id,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.id,
-                                                                  Enrollment_Component__r.Waitlist__c, Enrollment_Component__r.Name, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c
+                                                                  Enrollment_Component__r.Waitlist__c,Enrollment_Component__r.Open_Application__c,Enrollment_Component__r.Name, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c
                                                                   FROM Enrollment_Component_Affiliation__c
                                                                   WHERE Id IN :ECAIdSet];
         for (Enrollment_Component_Affiliation__c eca : affiliations) {

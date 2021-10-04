@@ -116,7 +116,7 @@ public without sharing class ECA_HierarchyStatusUpdate
 
         if (resetFlags)
             allNA = true;
-        if (parentECA!=null){ // Added a Null pointer Check- DK
+        
         ProgramEnrollmentDataClass peData = peDataMap.get(parentECA.Program_Enrollment__c);
         ecrProcessData acaPgmData = peData.academicProgramData;
         list<Id> childrenECs = acaPgmData.ecParentToChildrenMap.get(parentECA.Enrollment_Component__c);
@@ -154,7 +154,7 @@ public without sharing class ECA_HierarchyStatusUpdate
         }
             }
         }
-       } 
+        
 
         //Determine the correct parent status   
         if(allComplete)
@@ -274,11 +274,10 @@ public without sharing class ECA_HierarchyStatusUpdate
             Enrollment_Component_Affiliation__c parent = queriedECAs.get(ecaId);
             Enrollment_Component_Affiliation__c inFlightParent = toProcessECAs.get(ecaId);
 
-           //if(!VALID_ECA_STATUS.containsIgnoreCase(queriedECAs.get(parent.Id).enrollment_component__r.recordtype.name))            
-              if(parent != null && !VALID_ECA_STATUS.containsIgnoreCase(queriedECAs.get(parent.Id).enrollment_component__r.recordtype.name)) // Commented above line and Added a Null pointer check - DK  
+            if(!VALID_ECA_STATUS.containsIgnoreCase(queriedECAs.get(parent.Id).enrollment_component__r.recordtype.name))
                 continue;
-            
-            String originalStatus = (inFlightParent!=null ? inFlightParent.Status__c : parent!= null ? parent.status__c : ''); // Added a Null Pointer check-- DK
+
+            String originalStatus = (inFlightParent!=null ? inFlightParent.Status__c : parent.status__c);
 
             String updatedStatus = getChildrenStatus(parent, true);
             
@@ -330,7 +329,6 @@ public without sharing class ECA_HierarchyStatusUpdate
                     // MM 11/20/2020 | Handle CT with first Student bug
                     if((originalStatus.equalsIgnoreCase('In Progress')) && 
                         (updatedStatus.equalsIgnoreCase('Not Started') || updatedStatus.equalsIgnoreCase('Not Applicable')) && 
-                        parent!=null && peData!=null && peData.currentStageECA!=null && // Added a Null pointer check - DK
                         parent.Id == peData.currentStageECA.Id
                     ) {
                         Id inProgressStage = null;
@@ -373,16 +371,14 @@ public without sharing class ECA_HierarchyStatusUpdate
 
                         
                         Enrollment_Component_Affiliation__c currentStageECA = peData.currentStageECA;
-                        Enrollment_Component_Affiliation__c inFlightStageECA; // Added as a part of Null pointer check - DK
-                        if (currentStageECA!=null){ // Added as a part of Null pointer check - DK
-                        inFlightStageECA = toProcessECAs.get(currentStageECA.Id); // Added as a part of Null pointer check - DK
+                        Enrollment_Component_Affiliation__c inFlightStageECA = toProcessECAs.get(currentStageECA.Id);
                         String originalStageStatus = (inFlightStageECA!=null ? inFlightStageECA.Status__c : currentStageECA.status__c);
                         if (originalStageStatus == 'In Progress') {
                             forUpdateECAs.put(parent.id, parent);
                             continue;
                         }
                     }
-                  }  
+                    
                     //Determine the direction of the stage movement
                     Boolean isForward = ( (updatedStatus == 'In Progress' || updatedStatus == 'Not Started') ? false : true );
                     Integer currentOrder = (Integer) parent.Order__c;
@@ -433,7 +429,6 @@ public without sharing class ECA_HierarchyStatusUpdate
                         // ensure all other Stages are complete.
                         for(Enrollment_Component_Affiliation__c stageECA : stageECAs)
                         {
-                            System.debug('Printing the value of StageEca status-->'+stageECA.Status__c);
                             if (notApplicableStatuses.containsIgnoreCase(stageECA.Status__c)) // skip Not Applicable Stages
                                 continue;
 

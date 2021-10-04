@@ -31,7 +31,6 @@
                 
 
                 component.set("v.newStudentData", returnedResponse);
-                debugger;
                 if(returnedResponse.defaultAccount.Id != null && component.get("v.numberOfStudents") == 0) {
                     var schoolSelect = component.find('schoolSelect');
                     schoolSelect.set('v.value', returnedResponse.defaultAccount.Id);

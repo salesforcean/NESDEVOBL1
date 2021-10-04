@@ -72,9 +72,8 @@ public without sharing class CSVCreator  {
                      fieldObj.password=(String)dataMap.get('Password');
                      fieldObj.state=(String)dataMap.get('State');
                      fieldObj.zip=(String)dataMap.get('Zip');
-                     fieldObj.phone=(String)dataMap.get('Phone');
-                     
-                     fieldObj.phone=(String)dataMap.get('Phone');
+                     fieldObj.phone=(String)dataMap.get('Phone Number');                 
+                     fieldObj.phoneType=(String)dataMap.get('Phone Type');
                      fieldObj.programCode=(String)dataMap.get('Academic Program');
                      fieldObj.gradeCode=(String)dataMap.get('Grade');
                      fieldObj.yearCode=(String)dataMap.get('School Year');
@@ -224,6 +223,10 @@ public without sharing class CSVCreator  {
         {
         for(CSVObject.CSVField obj: lstobj)
                 { 
+                    
+       system.debug(NES_RegistrationHelper.createNewRecords(obj.ConFirstName, obj.ConLastName, obj.Email, obj.username, obj.password, 'schoolId', 'mname', 'suffix', obj.zip, obj.state,obj.phoneType, obj.phone, false,'')) ;
+           }
+           /*
             Account acct = new Account(Name=obj.ConFirstName,Phone=obj.Phone,ShippingState=obj.state,ShippingPostalCode=obj.zip);
             accountMap.put(count,acct);   
             count++;        
@@ -287,6 +290,8 @@ public without sharing class CSVCreator  {
                 }
         returnresponse.contactList= contactMap.values();           
         returnresponse.state='SUCCESS';
+*/
+           
         }
         catch(Exception e)
         {

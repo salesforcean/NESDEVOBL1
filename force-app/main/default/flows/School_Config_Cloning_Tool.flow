@@ -77,8 +77,8 @@
     <recordLookups>
         <name>Get_Account_School_Information</name>
         <label>Get Account School Information</label>
-        <locationX>961</locationX>
-        <locationY>226</locationY>
+        <locationX>954</locationX>
+        <locationY>341</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <filterLogic>and</filterLogic>
         <filters>
@@ -126,10 +126,28 @@
         <locationX>954</locationX>
         <locationY>73</locationY>
         <connector>
-            <targetReference>Get_Account_School_Information</targetReference>
+            <targetReference>Academic_Program_Screen</targetReference>
         </connector>
         <inputReference>Get_Record_Type_Name</inputReference>
     </recordUpdates>
+    <screens>
+        <name>Academic_Program_Screen</name>
+        <label>Academic Program Screen</label>
+        <locationX>955</locationX>
+        <locationY>213</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Get_Account_School_Information</targetReference>
+        </connector>
+        <fields>
+            <name>AcademicProgram</name>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
     <start>
         <locationX>83</locationX>
         <locationY>58</locationY>

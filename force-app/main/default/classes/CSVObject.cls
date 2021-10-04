@@ -32,6 +32,7 @@ public without sharing class CSVObject  {
         public String programCode;
         public String gradeCode;
         public String yearCode;
+        public String phoneTy;
 
 
     } 

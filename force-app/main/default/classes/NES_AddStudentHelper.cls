@@ -40,7 +40,7 @@ public without sharing class NES_AddStudentHelper {
         //Find the Id of the First Stage by using the Order on the Enrollment Relationships object
         Id firstStageComponentId;
         List<Enrollment_Component_Relationship__c> processRelationships = [
-                SELECT Child_Enrollment_Component__c, Id, Order__c, Parent_Enrollment_Component__c
+                SELECT Child_Enrollment_Component__c,Child_Enrollment_Component__r.Name, Id, Order__c, Parent_Enrollment_Component__c
                 FROM Enrollment_Component_Relationship__c
                 WHERE Parent_Enrollment_Component__c IN :processComponentList
                 AND Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.STAGE_RT
@@ -58,7 +58,7 @@ public without sharing class NES_AddStudentHelper {
         Set<Id> formComponentIds = new Set<Id>();
         if (firstStageComponentId != null) {
             List <Enrollment_Component_Relationship__c> stageRelationships = [
-                    SELECT Id, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.Assignment_Logic__c, Parent_Enrollment_Component__c
+                    SELECT Id, Child_Enrollment_Component__c, Child_Enrollment_Component__r.Name, Order__c, Child_Enrollment_Component__r.Assignment_Logic__c, Parent_Enrollment_Component__c
                     FROM Enrollment_Component_Relationship__c
                     WHERE Parent_Enrollment_Component__c = :firstStageComponentId
                     AND Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.FORM_RT
@@ -77,7 +77,7 @@ public without sharing class NES_AddStudentHelper {
             Set<Id> sectionComponentIds = new Set<Id>();
             if (formComponentIds.size() > 0) {
                 List<Enrollment_Component_Relationship__c> formRelationships = [
-                        SELECT Id, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.Assignment_Logic__c,
+                        SELECT Id, Child_Enrollment_Component__c, Child_Enrollment_Component__r.Name, Order__c, Child_Enrollment_Component__r.Assignment_Logic__c,
                                 Parent_Enrollment_Component__c, Child_Enrollment_Component__r.RecordType.Name
                         FROM Enrollment_Component_Relationship__c
                         WHERE Parent_Enrollment_Component__c IN :formComponentIds
@@ -97,7 +97,7 @@ public without sharing class NES_AddStudentHelper {
                 Set<Id> questionComponentIds = new Set<Id>();
                 if (sectionComponentIds.size() > 0) {
                     List<Enrollment_Component_Relationship__c> sectionRelationships = [
-                            SELECT Id, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordTypeId,
+                            SELECT Id, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.Name, Child_Enrollment_Component__r.RecordTypeId,
                                     Child_Enrollment_Component__r.Assignment_Logic__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.RecordType.Name
                             FROM Enrollment_Component_Relationship__c
                             WHERE Parent_Enrollment_Component__c IN :sectionComponentIds
@@ -123,7 +123,7 @@ public without sharing class NES_AddStudentHelper {
                     componentIdsForLater.addAll(groupComponentIds);
 
                     List<Enrollment_Component_Relationship__c> groupRelationships = [
-                            SELECT Id, Child_Enrollment_Component__c, Order__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.RecordType.Name,
+                            SELECT Id, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.Name, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.RecordType.Name,
                                     Child_Enrollment_Component__r.Assignment_Logic__c
                             FROM Enrollment_Component_Relationship__c
                             WHERE Parent_Enrollment_Component__c IN :groupComponentIds
@@ -674,36 +674,68 @@ public without sharing class NES_AddStudentHelper {
                 affiliationRecord2.Status__c = 'Complete';
                 affiliationRecord2.Order__c = relationships[0].Order__c;
                 ecAffiliationsToInsert.add(affiliationRecord2);
-
                 
-                //Add the rest of the stages that have no assignment logic.
+                 //Add the rest of the stages that have no assignment logic.
+                /*Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                 for (Integer i = 1; i < relationships.size(); i++) {
-                    Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
-                    if(!String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c) && relationships[i].Order__c == 2){
+                    if(!String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)){
                         affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
                         affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                         affiliationRecord.Order__c = relationships[i].Order__c;
-                        if(relationships[i].Order__c == 2){
+                        if(relationships[i].Child_Enrollment_Component__r.Name == 'Open Application'){
                             affiliationRecord.Status__c = 'In Progress';
                         }else{
                             affiliationRecord.Status__c = 'Not Started';
                         }
 						ecAffiliationsToInsert.add(affiliationRecord);
-                    }else if((ecAffiliationsToInsert.size() == 0 || ecAffiliationsToInsert.size() == null) && relationships[i].Order__c == 3){
+                    }else if(ecAffiliationsToInsert.size() == 0 || ecAffiliationsToInsert.size() == null){
+                       // Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
+                        affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
+                        affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
+                        affiliationRecord.Order__c = relationships[i].Order__c;
+                        //The second stage should be in progress all others not started.
+                        if (relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student')
+                            affiliationRecord.Status__c = 'In Progress';
+                        else
+                            affiliationRecord.Status__c = 'Not Started';
+                        ecAffiliationsToInsert.add(affiliationRecord);
+                    }else{
+                         affiliationRecord.Status__c = 'Not Started';
+                        ecAffiliationsToInsert.add(affiliationRecord);
+                    }*/
+                    
+                     
+               			 //Add the rest of the stages that have no assignment logic.
+                			
+                	for (Integer i = 1; i < relationships.size(); i++) {
+					if(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)){
                         Enrollment_Component_Affiliation__c affiliationRec = new Enrollment_Component_Affiliation__c();
                         affiliationRec.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
                         affiliationRec.Program_Enrollment__c = newStudentEnrollment.Id;
                         affiliationRec.Order__c = relationships[i].Order__c;
-                        //The second stage should be in progress all others not started.
                         if (relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student')
                             affiliationRec.Status__c = 'In Progress';
                         else
                             affiliationRec.Status__c = 'Not Started';
                         ecAffiliationsToInsert.add(affiliationRec);
                     }
-                    
+                       
+                  if(String.isNotBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)){
+                        Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
+                        affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
+                        affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
+                        affiliationRecord.Order__c = relationships[i].Order__c;
+                        if(relationships[i].Child_Enrollment_Component__r.Name == 'Open Application'){
+                            affiliationRecord.Status__c = 'In Progress';
+                        }else{
+                            affiliationRecord.Status__c = 'Not Started';
+                        }
+						ecAffiliationsToInsert.add(affiliationRecord);
+                    }
+
+  
                         //Add the rest of the stages that have no assignment logic.
-                       /*for (Integer i = 1; i < relationships.size(); i++) {
+                      /* for (Integer i = 1; i < relationships.size(); i++) {
                         if (String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {                
                             Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                             affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
@@ -720,7 +752,7 @@ public without sharing class NES_AddStudentHelper {
 
                 //add forms affiliation for the forms under stage 1 that have no assignment logic
                 List<Enrollment_Component_Relationship__c> formRelationships = [
-                        SELECT Child_Enrollment_Component__c, Id, Order__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.Assignment_Logic__c
+                        SELECT Child_Enrollment_Component__c, Child_Enrollment_Component__r.Name,Id, Order__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.Assignment_Logic__c
                         FROM Enrollment_Component_Relationship__c
                         WHERE Parent_Enrollment_Component__c = :relationships[0].Child_Enrollment_Component__c
                         AND Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.FORM_RT
@@ -742,7 +774,7 @@ public without sharing class NES_AddStudentHelper {
 
                 //add section affiliations that have assignment criteria that were added in the previous section.
                 List<Enrollment_Component_Relationship__c> sectionRelationships = [
-                        SELECT Child_Enrollment_Component__c, Id, Order__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.Assignment_Logic__c
+                        SELECT Child_Enrollment_Component__c, Id, Child_Enrollment_Component__r.Name,Order__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__r.Assignment_Logic__c
                         FROM Enrollment_Component_Relationship__c
                         WHERE Parent_Enrollment_Component__c IN :formRelationshipIds
                         AND Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.SECTION_RT

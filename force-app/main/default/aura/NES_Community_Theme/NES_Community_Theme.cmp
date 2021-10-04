@@ -31,7 +31,7 @@
                                 <aura:if isTrue="{!v.isGuest}">
                                     <!--START: Added for US#335191 by Jagadeesh Bokam -->
                                     <!--<img src="{!$Resource.communityLogo}" class="logo" alt="Connections Academy Logo" />-->
-                                    <img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" />
+                                    <!--img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" /-->
                                       <!--END: Added for US#335191 by Jagadeesh Bokam -->
                                     <aura:set attribute="else">
                                         <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" /></a>
@@ -39,12 +39,14 @@
                                 </aura:if>
                             </lightning:layoutItem>
                         </aura:if>
+                        <!-- Modofied generic logo by Ravi feature #425110-->
                         <aura:if isTrue="{!not(empty(v.logoName))}">
                             <lightning:layoutItem flexibility="shrink" class="slds-order_1 slds-medium-order_1">
-                                <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Label.c.NES_Community_Stem_Url+'/sfsites/c/resource/' + v.logoName}" class="logo" alt="{!v.logoName}"/></a>
+                                <!--a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Label.c.NES_Community_Stem_Url+'/sfsites/c/resource/' + v.logoName}" class="logo" alt="{!v.logoName}"/></a-->
+                            <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" /></a>
                             </lightning:layoutItem>
                         </aura:if>
-
+						<!-- End Here-->
                         <aura:if isTrue="{!v.onRegistrationPage}">
                             <lightning:layoutItem flexibility="grow" class="{!v.currentRegistrationStep == '1' ? 'slds-order_2 slds-text-align_right slds-p-top_x-small signinButtonArea' : 'slds-hide'}">
                                 <div class="slds-hide_medium">

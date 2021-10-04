@@ -26,12 +26,17 @@ and Program_Enrollment__c objects
 */ 
              if(programEnrollmentId != null){
                 List<Enrollment_Component_Affiliation__c> enrollmentComponents = new List<Enrollment_Component_Affiliation__c>();
-                for(Enrollment_Component_Affiliation__c eca : [SELECT Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c
+                for(Enrollment_Component_Affiliation__c eca : [SELECT Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c,Program_Enrollment__r.Program_Grade_Level__r.Active_Open_Application__c,Program_Enrollment__r.Open_Application__c
                                                                FROM Enrollment_Component_Affiliation__c
                                                                WHERE Program_Enrollment__c =: programEnrollmentId
                                                                AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
                                                                AND status__c <> 'Not Applicable']){
-                                                                   enrollmentComponents.add(eca);
+                                                                   //if(eca.Program_Enrollment__r.Open_Application__c == 'Active' && eca.Enrollment_Component__r.Name == 'Open Application'){
+                        
+                                                                            //enrollmentComponents.add(eca);
+                                                                        //}else if(eca.Enrollment_Component__r.Name != 'Open Application'){
+                                                                                    enrollmentComponents.add(eca);
+                                                                                //}
                                                                }
                 System.debug('NDEBUG  ECAs are :::::' + enrollmentComponents);
                 return enrollmentComponents;

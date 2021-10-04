@@ -10,7 +10,7 @@ public without sharing class NES_RegistrationHelper {
 
     public static Peak_Response createNewRecords(String fName, String lName, String emailString, String uName, String password, String schoolId, string mName, string suffix, string zipCode, string state, string phoneType, string phone, boolean smsOptOut, String gtmHiddenFields) {
         Peak_Response peakResponse = new Peak_Response();
-
+    system.debug(fName+lName+emailString+uName+password+schoolId+mName+suffix+zipCode+state+phoneType+phone);
 
         String idamAccessToken = NES_IdamUtilities.getIdamAccessToken();
         if (idamAccessToken == null) {
@@ -59,9 +59,10 @@ public without sharing class NES_RegistrationHelper {
 
             //Initialize the wrapper object and its properties for request
             NES_RegistrationUtils.IdentityCreate data = new NES_RegistrationUtils.IdentityCreate(fName, lName, emailString, uName, password);
-
             //Create JSON for HttpRequest
             String payLoad = JSON.serialize(data);
+            system.debug('payLoad-'+payLoad);
+
             logger.logInfo('createNewRecords', 'IdentityCreate payload:  ' + payLoad);
 
             //Send message to forge rock for creating a new account            
