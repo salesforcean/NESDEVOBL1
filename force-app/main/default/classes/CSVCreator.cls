@@ -52,7 +52,7 @@ public without sharing class CSVCreator  {
         return new CSVObject(headers, lines);
     }
     @AuraEnabled
-    public static ResponseObj insertData(String strfromle,String section,List<Contact> contactList){
+    public static Peak_Response insertData(String strfromle,String section,List<Contact> contactList){
         ResponseObj returnresponse=new ResponseObj();
         List<Account> AccoutnListtoInsert = new List<Account>();
         List<CSVObject.CSVField> lstobj=new List<CSVObject.CSVField>();
@@ -89,24 +89,24 @@ public without sharing class CSVCreator  {
         //if(lstobj.size()>0)
         //createCommunityUsers(lstobj);
      //if(AccoutnListtoInsert.size() > 0)
-     
+     Peak_Response peakResponse;
             try {
                 system.debug('section-'+section);
                 if(section=='1')
-                returnresponse=createCommunityUsers(lstobj);
-                else if (section=='2')
+                 peakResponse=createCommunityUsers(lstobj);
+               /* else if (section=='2')
                 returnresponse=createStudent(fieldObj,contactList);
                 else 
                 returnresponse=createPERecord(fieldObj,contactList);    
-
+				*/
                //returnresponse = 'SUCCESS';
             }
             catch(Exception ex){
                 system.debug('exception-'+ex);
-               returnresponse.errorMessage = ex.getMessage();
+              // returnresponse.errorMessage = ex.getMessage();
             }
         
-        return returnresponse;
+        return peakResponse;
     }
     
     public class ResponseObj
@@ -209,12 +209,13 @@ public without sharing class CSVCreator  {
             }
  		return returnresponse;
      }
-    private static ResponseObj createCommunityUsers(List<CSVObject.CSVField> lstobj){
+    private static Peak_Response createCommunityUsers(List<CSVObject.CSVField> lstobj){
         List<sObject> lstsObj = new List<sObject>();
         List<Account> accountList=new List<Account>();
         List<User> userList=new  List<User> ();
             //CSVObject.CSVField obj=lstobj;
             ResponseObj returnresponse=new ResponseObj();
+           Peak_Response responseObj;
             Integer count=0;
             Map<Integer,Account> accountMap=new Map<Integer,Account>();
         	Map<Integer,Contact> contactMap=new Map<Integer,Contact>();
@@ -223,9 +224,10 @@ public without sharing class CSVCreator  {
         {
         for(CSVObject.CSVField obj: lstobj)
                 { 
-                    
-       system.debug(NES_RegistrationHelper.createNewRecords(obj.ConFirstName, obj.ConLastName, obj.Email, obj.username, obj.password, 'schoolId', 'mname', 'suffix', obj.zip, obj.state,obj.phoneType, obj.phone, false,'')) ;
-           }
+ responseObj=POCHelper.createNewRecords(obj.ConFirstName, obj.ConLastName, obj.Email, obj.username, obj.password, 'schoolId', 'mname', 'suffix', obj.zip, obj.state,obj.phoneType, obj.phone, false,'') ;
+                      system.debug('obj--'+responseObj);         
+
+                }
            /*
             Account acct = new Account(Name=obj.ConFirstName,Phone=obj.Phone,ShippingState=obj.state,ShippingPostalCode=obj.zip);
             accountMap.put(count,acct);   
@@ -295,10 +297,10 @@ public without sharing class CSVCreator  {
         }
         catch(Exception e)
         {
-               returnresponse.errorMessage=e.getMessage();
-                returnresponse.state='Error'; 
+           //    returnresponse.errorMessage=e.getMessage();
+              //  returnresponse.state='Error'; 
         }
-        return returnresponse;
+        return responseObj;
       
     }
     

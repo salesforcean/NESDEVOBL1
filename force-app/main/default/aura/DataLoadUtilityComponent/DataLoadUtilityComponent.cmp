@@ -78,7 +78,5 @@
 </div>
 	</div>
 
-           
 
-    <lightning:flow aura:id="opportunityFlow" />
 </aura:component>

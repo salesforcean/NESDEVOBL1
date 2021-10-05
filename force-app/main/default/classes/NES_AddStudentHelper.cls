@@ -675,40 +675,9 @@ public without sharing class NES_AddStudentHelper {
                 affiliationRecord2.Order__c = relationships[0].Order__c;
                 ecAffiliationsToInsert.add(affiliationRecord2);
                 
-                 //Add the rest of the stages that have no assignment logic.
-                /*Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
-                for (Integer i = 1; i < relationships.size(); i++) {
-                    if(!String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)){
-                        affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
-                        affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
-                        affiliationRecord.Order__c = relationships[i].Order__c;
-                        if(relationships[i].Child_Enrollment_Component__r.Name == 'Open Application'){
-                            affiliationRecord.Status__c = 'In Progress';
-                        }else{
-                            affiliationRecord.Status__c = 'Not Started';
-                        }
-						ecAffiliationsToInsert.add(affiliationRecord);
-                    }else if(ecAffiliationsToInsert.size() == 0 || ecAffiliationsToInsert.size() == null){
-                       // Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
-                        affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
-                        affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
-                        affiliationRecord.Order__c = relationships[i].Order__c;
-                        //The second stage should be in progress all others not started.
-                        if (relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student')
-                            affiliationRecord.Status__c = 'In Progress';
-                        else
-                            affiliationRecord.Status__c = 'Not Started';
-                        ecAffiliationsToInsert.add(affiliationRecord);
-                    }else{
-                         affiliationRecord.Status__c = 'Not Started';
-                        ecAffiliationsToInsert.add(affiliationRecord);
-                    }*/
-                    
-                     
-               			 //Add the rest of the stages that have no assignment logic.
-                			
-                	for (Integer i = 1; i < relationships.size(); i++) {
-					if(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)){
+                 //Add the rest of the stages that have no assignment logic.                    
+                  for (Integer i = 1; i < relationships.size(); i++) {
+                    if(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)){
                         Enrollment_Component_Affiliation__c affiliationRec = new Enrollment_Component_Affiliation__c();
                         affiliationRec.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
                         affiliationRec.Program_Enrollment__c = newStudentEnrollment.Id;
@@ -730,12 +699,12 @@ public without sharing class NES_AddStudentHelper {
                         }else{
                             affiliationRecord.Status__c = 'Not Started';
                         }
-						ecAffiliationsToInsert.add(affiliationRecord);
+                        ecAffiliationsToInsert.add(affiliationRecord);
                     }
 
   
                         //Add the rest of the stages that have no assignment logic.
-                      /* for (Integer i = 1; i < relationships.size(); i++) {
+                       /*for (Integer i = 1; i < relationships.size(); i++) {
                         if (String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {                
                             Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                             affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;

@@ -156,7 +156,11 @@ public class ECA_CriteriaEvaluator {
                 }
                 else if ((newStatus = getNewECAStatus(eca.Status__c, assignmentLogic, completionLogic)) !=null) {
                     system.debug('Debug Log**getNewECAStatus**'+eca.Id +'****'+ newStatus);
-                    eca.Status__c = newStatus;
+                   // if(eca.Enrollment_Component__r.Name == 'Open Application'){
+                        eca.Status__c = newStatus;
+                   /* }else{
+                        eca.Status__c = 'Not Started';
+                    }*/
                     processedECAs.put(eca.Id, eca);
                 } 
                 else if (incompleteChildrenStatus!=null && incompleteChildrenStatus.equalsIgnoreCase('In Progress')) 
@@ -449,23 +453,34 @@ public class ECA_CriteriaEvaluator {
     @TestVisible
     private static String getNewECAStatus(String ecaStatus, Boolean assignmentLogic, Boolean completionLogic) 
     {
+        
+        system.debug('Debug Log*****mapECAStatusDecision.values()'+mapECAStatusDecision.values());
+       // boolean mtflag = true;
         for (ECA_Evaluation_Setting__mdt rec : mapECAStatusDecision.values()) 
         {
             system.debug('Debug Log*****RecId'+rec.Id);
+            
             system.debug('rec.Status__c.containsIgnoreCase(ecaStatus)*******'+rec.Status__c.containsIgnoreCase(ecaStatus));
             system.debug('assignmentLogic*******'+assignmentLogic);
             system.debug('completionLogic*******'+completionLogic);
             system.debug('rec.AssignmentLogic__c*******'+rec.AssignmentLogic__c);
-            system.debug('rec.CompletionLogic__c*******'+rec.CompletionLogic__c);           
-            if (
-                rec.Status__c.containsIgnoreCase(ecaStatus) && 
-                assignmentLogic == rec.AssignmentLogic__c && 
-                completionLogic == rec.CompletionLogic__c
-            ) {
-                system.debug('Debug Log***'+ rec.NewStatus__c);
+            system.debug('rec.CompletionLogic__c*******'+rec.CompletionLogic__c);
+            /*if(rec.Status__c == 'Not Started' && rec.DeveloperName == 'NotStarted_true_false'){
+                mtflag = false;
                 return rec.NewStatus__c;
             }
-        }
+            if(mtflag){*/
+                if (
+                    rec.Status__c.containsIgnoreCase(ecaStatus) && 
+                    assignmentLogic == rec.AssignmentLogic__c && 
+                    completionLogic == rec.CompletionLogic__c
+                ) {
+                    system.debug('Debug Log***'+ rec.NewStatus__c);
+                    return rec.NewStatus__c;
+                }
+            }
+            
+        
 
         // if no matches
         return null;

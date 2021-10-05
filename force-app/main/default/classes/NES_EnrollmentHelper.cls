@@ -31,12 +31,7 @@ and Program_Enrollment__c objects
                                                                WHERE Program_Enrollment__c =: programEnrollmentId
                                                                AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
                                                                AND status__c <> 'Not Applicable']){
-                                                                   //if(eca.Program_Enrollment__r.Open_Application__c == 'Active' && eca.Enrollment_Component__r.Name == 'Open Application'){
-                        
-                                                                            //enrollmentComponents.add(eca);
-                                                                        //}else if(eca.Enrollment_Component__r.Name != 'Open Application'){
-                                                                                    enrollmentComponents.add(eca);
-                                                                                //}
+                                                                   enrollmentComponents.add(eca);
                                                                }
                 System.debug('NDEBUG  ECAs are :::::' + enrollmentComponents);
                 return enrollmentComponents;
@@ -56,7 +51,7 @@ and Program_Enrollment__c objects
             List<Enrollment_Component_Affiliation__c> enrollmentComponents = new List<Enrollment_Component_Affiliation__c>();
             Map<Id,Enrollment_Component_Affiliation__c> ecaMap = new Map<Id,Enrollment_Component_Affiliation__c>();
             Map<Id,Enrollment_Component_Affiliation__c> ecaMap1 = new Map<Id,Enrollment_Component_Affiliation__c>();
-    		set<id> peIds;
+            set<id> peIds;
             set<id> ecaIds;
             if(programEnrollmentId != null){
                 for(Enrollment_Component_Affiliation__c eca : [SELECT Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c
@@ -67,7 +62,7 @@ and Program_Enrollment__c objects
                                                                    
                                                                    if(eca.Program_Enrollment__r.Open_Application__c == 'Active'){
                                                                        ecaMap.put(eca.Program_Enrollment__c, eca);
-																	}
+                                                                    }
                                                                }
                 List<Enrollment_Component_Affiliation__c> enrollComponents;
                 list<Enrollment_Component_Affiliation__c> ecaLst1;
@@ -123,19 +118,19 @@ and Program_Enrollment__c objects
         }
         List<Enrollment_Component_Relationship__c> messageRelationships = new List<Enrollment_Component_Relationship__c>();
          if(affiliationIds.size() > 0){
-			messageRelationships = [SELECT Child_Enrollment_Component__c FROM Enrollment_Component_Relationship__c
+            messageRelationships = [SELECT Child_Enrollment_Component__c FROM Enrollment_Component_Relationship__c
                                                                             WHERE Parent_Enrollment_Component__c =: enrollmentComponentId
                                                                             AND Child_Enrollment_Component__r.RecordTypeId =: messageRecordTypeId
                                                                             AND Child_Enrollment_Component__c IN : affiliationIds
                                                                             ORDER BY Order__c];
-		}
-		else{
-			messageRelationships = [SELECT Child_Enrollment_Component__c FROM Enrollment_Component_Relationship__c
+        }
+        else{
+            messageRelationships = [SELECT Child_Enrollment_Component__c FROM Enrollment_Component_Relationship__c
                                                                            WHERE Parent_Enrollment_Component__c =: enrollmentComponentId
                                                                            AND Child_Enrollment_Component__r.RecordTypeId =: messageRecordTypeId
                                                                            ORDER BY Order__c];
-			
-		}
+            
+        }
         for(Enrollment_Component_Relationship__c rel : messageRelationships){
             messageIds.add(rel.Child_Enrollment_Component__c);
         }
@@ -251,11 +246,11 @@ and Program_Enrollment__c objects
                                 /*
                                 * Updated by Krishna Reddy P on 08/07/2019 for User Story: 101933
                                 * Purpose: Added additional condition in if statement to check for 'Not Applicable' Status. 
-                                * 			A new constant is added at NES_DashboardUtilities.NOTAPPLICABLE_STATUS 				 
+                                *           A new constant is added at NES_DashboardUtilities.NOTAPPLICABLE_STATUS               
                                 */ 
                                                                     if(eca.Status__c != NES_DashboardUtilities.EXEMPT_STATUS && eca.Status__c != NES_DashboardUtilities.NOTAPPLICABLE_STATUS)
                                                                     {
-                                    	forms.add(new NES_DashboardUtilities.Form(temp.Name, eca.Status__c, temp.Component_Message__c, temp.Id, eca.Order__c));                                        
+                                        forms.add(new NES_DashboardUtilities.Form(temp.Name, eca.Status__c, temp.Component_Message__c, temp.Id, eca.Order__c));                                        
                                 }
                             }
                         }
@@ -333,7 +328,7 @@ and Program_Enrollment__c objects
                         /*
                         * Updated by Krishna Reddy P on 08/20/2019 for User Story: 101933 Fixd for Bug #106393
                         * Purpose: Added additional condition in if statement to check for 'Not Applicable' Status. 
-                        * 			A new constant is added at NES_DashboardUtilities.NOTAPPLICABLE_STATUS 				 
+                        *           A new constant is added at NES_DashboardUtilities.NOTAPPLICABLE_STATUS               
                         */ 
                         if(eca.Status__c != NES_DashboardUtilities.EXEMPT_STATUS && eca.Status__c != NES_DashboardUtilities.NOTAPPLICABLE_STATUS){
                             //check document dates detailed by the academic program attached to the program enrollment
@@ -416,10 +411,10 @@ and Program_Enrollment__c objects
                 //programEnrollmentRecord.Id = opportunityToUpdate.Program_Enrollment__c;
                 // Added - Start --for us: 182050 by viswa
                 if(programEnrollmentRecord.Enrollment_Type__c == 'Re-enrolling student')
-                	 programEnrollmentRecord.Status__c = 'Withdrawn';
+                     programEnrollmentRecord.Status__c = 'Withdrawn';
                 // End --for us: 182050 by viswa
                 else
-                	programEnrollmentRecord.Status__c = 'Inactive';
+                    programEnrollmentRecord.Status__c = 'Inactive';
                 
                 update programEnrollmentRecord;
                 system.debug('programEnrollmentRecord+++++'+programEnrollmentRecord);
@@ -584,7 +579,7 @@ and Program_Enrollment__c objects
                         caretakerEnrollmentId.hed__Account__c = academicProgram.Id;
                     }
                     insert caretakerEnrollmentId;
-					*/
+                    */
                 } else {
                     caretakerEnrollmentId = caretakerEnrollments[0];
                 }
@@ -634,7 +629,7 @@ newStudentEnrollment.Enrollment_Type__c =oldPE.Enrollment_Type__c;
                     newStudentEnrollment.Enrollment_Type__c = 'Re-enrolling student'; // Added by Maddileti for defect 450088 on 20/07/2021
                 } 
                 else {
-				   
+                   
                   newStudentEnrollment.Enrollment_Type__c =oldPE.Enrollment_Type__c;
                 }   
                 // End by Maddileti for bug 369690 on 22/03/2021
