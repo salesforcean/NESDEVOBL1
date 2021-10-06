@@ -259,15 +259,6 @@
     <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <externalSharingModel>ReadWriteTransfer</externalSharingModel>
-    <profileSearchLayouts>
-        <fields>FULL_NAME</fields>
-        <fields>LEAD.PHONE</fields>
-        <fields>LEAD.MOBILE_PHONE</fields>
-        <fields>LEAD.EMAIL</fields>
-        <fields>LEAD.STATUS</fields>
-        <fields>CORE.USERS.ALIAS</fields>
-        <profileName>Enrollment Support</profileName>
-    </profileSearchLayouts>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <searchLayouts>

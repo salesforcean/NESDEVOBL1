@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>50.0</apiVersion>
     <decisions>
         <name>Restrict_To_SIS_Y</name>
         <label>Restrict To SIS = Y</label>
@@ -109,7 +108,6 @@
                 <elementReference>PECheck</elementReference>
             </value>
         </inputAssignments>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
     </subflows>
     <variables>
         <name>CaretakerContact</name>

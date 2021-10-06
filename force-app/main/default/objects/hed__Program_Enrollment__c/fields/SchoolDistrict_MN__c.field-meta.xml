@@ -1,0 +1,1736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SchoolDistrict_MN__c</fullName>
+    <externalId>false</externalId>
+    <label>SchoolDistrict MN</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>A.C.G.C</fullName>
+                <default>false</default>
+                <label>A.C.G.C</label>
+            </value>
+            <value>
+                <fullName>Ada-Borup</fullName>
+                <default>false</default>
+                <label>Ada-Borup</label>
+            </value>
+            <value>
+                <fullName>Adrian</fullName>
+                <default>false</default>
+                <label>Adrian</label>
+            </value>
+            <value>
+                <fullName>Aitkin</fullName>
+                <default>false</default>
+                <label>Aitkin</label>
+            </value>
+            <value>
+                <fullName>Albany</fullName>
+                <default>false</default>
+                <label>Albany</label>
+            </value>
+            <value>
+                <fullName>Albert Lea</fullName>
+                <default>false</default>
+                <label>Albert Lea</label>
+            </value>
+            <value>
+                <fullName>Alden-Conger</fullName>
+                <default>false</default>
+                <label>Alden-Conger</label>
+            </value>
+            <value>
+                <fullName>Alexandria</fullName>
+                <default>false</default>
+                <label>Alexandria</label>
+            </value>
+            <value>
+                <fullName>Annandale</fullName>
+                <default>false</default>
+                <label>Annandale</label>
+            </value>
+            <value>
+                <fullName>Anoka-Hennepin</fullName>
+                <default>false</default>
+                <label>Anoka-Hennepin</label>
+            </value>
+            <value>
+                <fullName>Ashby</fullName>
+                <default>false</default>
+                <label>Ashby</label>
+            </value>
+            <value>
+                <fullName>Austin</fullName>
+                <default>false</default>
+                <label>Austin</label>
+            </value>
+            <value>
+                <fullName>Badger</fullName>
+                <default>false</default>
+                <label>Badger</label>
+            </value>
+            <value>
+                <fullName>Bagley</fullName>
+                <default>false</default>
+                <label>Bagley</label>
+            </value>
+            <value>
+                <fullName>Balaton</fullName>
+                <default>false</default>
+                <label>Balaton</label>
+            </value>
+            <value>
+                <fullName>Barnesville</fullName>
+                <default>false</default>
+                <label>Barnesville</label>
+            </value>
+            <value>
+                <fullName>Barnum</fullName>
+                <default>false</default>
+                <label>Barnum</label>
+            </value>
+            <value>
+                <fullName>Battle Lake</fullName>
+                <default>false</default>
+                <label>Battle Lake</label>
+            </value>
+            <value>
+                <fullName>Becker</fullName>
+                <default>false</default>
+                <label>Becker</label>
+            </value>
+            <value>
+                <fullName>BeIgrade-Brooten-EIrosa</fullName>
+                <default>false</default>
+                <label>BeIgrade-Brooten-EIrosa</label>
+            </value>
+            <value>
+                <fullName>Belle Plaine</fullName>
+                <default>false</default>
+                <label>Belle Plaine</label>
+            </value>
+            <value>
+                <fullName>Bellingham</fullName>
+                <default>false</default>
+                <label>Bellingham</label>
+            </value>
+            <value>
+                <fullName>Bemidji</fullName>
+                <default>false</default>
+                <label>Bemidji</label>
+            </value>
+            <value>
+                <fullName>Benson</fullName>
+                <default>false</default>
+                <label>Benson</label>
+            </value>
+            <value>
+                <fullName>Bertha-Hewitt</fullName>
+                <default>false</default>
+                <label>Bertha-Hewitt</label>
+            </value>
+            <value>
+                <fullName>Big Lake</fullName>
+                <default>false</default>
+                <label>Big Lake</label>
+            </value>
+            <value>
+                <fullName>Bird Island-Olivia-Lake Lillian</fullName>
+                <default>false</default>
+                <label>Bird Island-Olivia-Lake Lillian</label>
+            </value>
+            <value>
+                <fullName>Blackduck</fullName>
+                <default>false</default>
+                <label>Blackduck</label>
+            </value>
+            <value>
+                <fullName>Blooming Prairie</fullName>
+                <default>false</default>
+                <label>Blooming Prairie</label>
+            </value>
+            <value>
+                <fullName>Bloomington</fullName>
+                <default>false</default>
+                <label>Bloomington</label>
+            </value>
+            <value>
+                <fullName>Blue Earth Area</fullName>
+                <default>false</default>
+                <label>Blue Earth Area</label>
+            </value>
+            <value>
+                <fullName>Braham</fullName>
+                <default>false</default>
+                <label>Braham</label>
+            </value>
+            <value>
+                <fullName>Brainerd</fullName>
+                <default>false</default>
+                <label>Brainerd</label>
+            </value>
+            <value>
+                <fullName>Brandon</fullName>
+                <default>false</default>
+                <label>Brandon</label>
+            </value>
+            <value>
+                <fullName>Breckenridge</fullName>
+                <default>false</default>
+                <label>Breckenridge</label>
+            </value>
+            <value>
+                <fullName>Brewster</fullName>
+                <default>false</default>
+                <label>Brewster</label>
+            </value>
+            <value>
+                <fullName>Brooklyn Center</fullName>
+                <default>false</default>
+                <label>Brooklyn Center</label>
+            </value>
+            <value>
+                <fullName>Browerville</fullName>
+                <default>false</default>
+                <label>Browerville</label>
+            </value>
+            <value>
+                <fullName>Browns Valley</fullName>
+                <default>false</default>
+                <label>Browns Valley</label>
+            </value>
+            <value>
+                <fullName>Buffalo Lake-Hector</fullName>
+                <default>false</default>
+                <label>Buffalo Lake-Hector</label>
+            </value>
+            <value>
+                <fullName>Buffalo-Hanover-Montrose</fullName>
+                <default>false</default>
+                <label>Buffalo-Hanover-Montrose</label>
+            </value>
+            <value>
+                <fullName>Burnsville-Eagan-Savage</fullName>
+                <default>false</default>
+                <label>Burnsville-Eagan-Savage</label>
+            </value>
+            <value>
+                <fullName>Butterfield</fullName>
+                <default>false</default>
+                <label>Butterfield</label>
+            </value>
+            <value>
+                <fullName>Byron</fullName>
+                <default>false</default>
+                <label>Byron</label>
+            </value>
+            <value>
+                <fullName>Caledonia</fullName>
+                <default>false</default>
+                <label>Caledonia</label>
+            </value>
+            <value>
+                <fullName>Cambridge-lsanti</fullName>
+                <default>false</default>
+                <label>Cambridge-lsanti</label>
+            </value>
+            <value>
+                <fullName>Campbell-Tintah</fullName>
+                <default>false</default>
+                <label>Campbell-Tintah</label>
+            </value>
+            <value>
+                <fullName>Canby</fullName>
+                <default>false</default>
+                <label>Canby</label>
+            </value>
+            <value>
+                <fullName>cannon Falls</fullName>
+                <default>false</default>
+                <label>cannon Falls</label>
+            </value>
+            <value>
+                <fullName>Carlton</fullName>
+                <default>false</default>
+                <label>Carlton</label>
+            </value>
+            <value>
+                <fullName>Cass Lake-Bena</fullName>
+                <default>false</default>
+                <label>Cass Lake-Bena</label>
+            </value>
+            <value>
+                <fullName>cedar Mountain</fullName>
+                <default>false</default>
+                <label>cedar Mountain</label>
+            </value>
+            <value>
+                <fullName>centennial</fullName>
+                <default>false</default>
+                <label>centennial</label>
+            </value>
+            <value>
+                <fullName>central</fullName>
+                <default>false</default>
+                <label>central</label>
+            </value>
+            <value>
+                <fullName>Chaska</fullName>
+                <default>false</default>
+                <label>Chaska</label>
+            </value>
+            <value>
+                <fullName>Chatfield</fullName>
+                <default>false</default>
+                <label>Chatfield</label>
+            </value>
+            <value>
+                <fullName>Chisago Lakes</fullName>
+                <default>false</default>
+                <label>Chisago Lakes</label>
+            </value>
+            <value>
+                <fullName>Chisholm</fullName>
+                <default>false</default>
+                <label>Chisholm</label>
+            </value>
+            <value>
+                <fullName>Chokio-Alberta</fullName>
+                <default>false</default>
+                <label>Chokio-Alberta</label>
+            </value>
+            <value>
+                <fullName>Clearbrook-Gonvick</fullName>
+                <default>false</default>
+                <label>Clearbrook-Gonvick</label>
+            </value>
+            <value>
+                <fullName>Cleveland</fullName>
+                <default>false</default>
+                <label>Cleveland</label>
+            </value>
+            <value>
+                <fullName>climax</fullName>
+                <default>false</default>
+                <label>climax</label>
+            </value>
+            <value>
+                <fullName>Clinton-Graceville-Beardsley</fullName>
+                <default>false</default>
+                <label>Clinton-Graceville-Beardsley</label>
+            </value>
+            <value>
+                <fullName>Cloquet</fullName>
+                <default>false</default>
+                <label>Cloquet</label>
+            </value>
+            <value>
+                <fullName>Columbia Heights</fullName>
+                <default>false</default>
+                <label>Columbia Heights</label>
+            </value>
+            <value>
+                <fullName>Comfrey</fullName>
+                <default>false</default>
+                <label>Comfrey</label>
+            </value>
+            <value>
+                <fullName>Cook County</fullName>
+                <default>false</default>
+                <label>Cook County</label>
+            </value>
+            <value>
+                <fullName>Cromwell-Wright</fullName>
+                <default>false</default>
+                <label>Cromwell-Wright</label>
+            </value>
+            <value>
+                <fullName>Crookston</fullName>
+                <default>false</default>
+                <label>Crookston</label>
+            </value>
+            <value>
+                <fullName>Crosby-Ironton</fullName>
+                <default>false</default>
+                <label>Crosby-Ironton</label>
+            </value>
+            <value>
+                <fullName>Cyrus</fullName>
+                <default>false</default>
+                <label>Cyrus</label>
+            </value>
+            <value>
+                <fullName>Dassel-Cokato</fullName>
+                <default>false</default>
+                <label>Dassel-Cokato</label>
+            </value>
+            <value>
+                <fullName>Dawson-Boyd</fullName>
+                <default>false</default>
+                <label>Dawson-Boyd</label>
+            </value>
+            <value>
+                <fullName>Deer River</fullName>
+                <default>false</default>
+                <label>Deer River</label>
+            </value>
+            <value>
+                <fullName>Delano</fullName>
+                <default>false</default>
+                <label>Delano</label>
+            </value>
+            <value>
+                <fullName>Detroit Lakes</fullName>
+                <default>false</default>
+                <label>Detroit Lakes</label>
+            </value>
+            <value>
+                <fullName>Dilworth-Glyndon-Felton</fullName>
+                <default>false</default>
+                <label>Dilworth-Glyndon-Felton</label>
+            </value>
+            <value>
+                <fullName>Dover-Eyota</fullName>
+                <default>false</default>
+                <label>Dover-Eyota</label>
+            </value>
+            <value>
+                <fullName>Duluth</fullName>
+                <default>false</default>
+                <label>Duluth</label>
+            </value>
+            <value>
+                <fullName>Eagle Valley</fullName>
+                <default>false</default>
+                <label>Eagle Valley</label>
+            </value>
+            <value>
+                <fullName>East Central</fullName>
+                <default>false</default>
+                <label>East Central</label>
+            </value>
+            <value>
+                <fullName>East Grand Forks</fullName>
+                <default>false</default>
+                <label>East Grand Forks</label>
+            </value>
+            <value>
+                <fullName>Eastern Carver County</fullName>
+                <default>false</default>
+                <label>Eastern Carver County</label>
+            </value>
+            <value>
+                <fullName>Eden Prairie</fullName>
+                <default>false</default>
+                <label>Eden Prairie</label>
+            </value>
+            <value>
+                <fullName>Eden Valley-Watkins</fullName>
+                <default>false</default>
+                <label>Eden Valley-Watkins</label>
+            </value>
+            <value>
+                <fullName>Edgerton</fullName>
+                <default>false</default>
+                <label>Edgerton</label>
+            </value>
+            <value>
+                <fullName>Edina</fullName>
+                <default>false</default>
+                <label>Edina</label>
+            </value>
+            <value>
+                <fullName>Elgin-Millville</fullName>
+                <default>false</default>
+                <label>Elgin-Millville</label>
+            </value>
+            <value>
+                <fullName>Elk River</fullName>
+                <default>false</default>
+                <label>Elk River</label>
+            </value>
+            <value>
+                <fullName>Ellsworth</fullName>
+                <default>false</default>
+                <label>Ellsworth</label>
+            </value>
+            <value>
+                <fullName>Ely</fullName>
+                <default>false</default>
+                <label>Ely</label>
+            </value>
+            <value>
+                <fullName>Esko</fullName>
+                <default>false</default>
+                <label>Esko</label>
+            </value>
+            <value>
+                <fullName>Evansville</fullName>
+                <default>false</default>
+                <label>Evansville</label>
+            </value>
+            <value>
+                <fullName>Fairmont Area Schools</fullName>
+                <default>false</default>
+                <label>Fairmont Area Schools</label>
+            </value>
+            <value>
+                <fullName>Faribault</fullName>
+                <default>false</default>
+                <label>Faribault</label>
+            </value>
+            <value>
+                <fullName>Farmington</fullName>
+                <default>false</default>
+                <label>Farmington</label>
+            </value>
+            <value>
+                <fullName>Fergus Falls</fullName>
+                <default>false</default>
+                <label>Fergus Falls</label>
+            </value>
+            <value>
+                <fullName>Fertile-Beltrami</fullName>
+                <default>false</default>
+                <label>Fertile-Beltrami</label>
+            </value>
+            <value>
+                <fullName>Fillmore Central</fullName>
+                <default>false</default>
+                <label>Fillmore Central</label>
+            </value>
+            <value>
+                <fullName>Fisher</fullName>
+                <default>false</default>
+                <label>Fisher</label>
+            </value>
+            <value>
+                <fullName>Floodwood</fullName>
+                <default>false</default>
+                <label>Floodwood</label>
+            </value>
+            <value>
+                <fullName>Foley</fullName>
+                <default>false</default>
+                <label>Foley</label>
+            </value>
+            <value>
+                <fullName>Forest Lake</fullName>
+                <default>false</default>
+                <label>Forest Lake</label>
+            </value>
+            <value>
+                <fullName>Fosston</fullName>
+                <default>false</default>
+                <label>Fosston</label>
+            </value>
+            <value>
+                <fullName>Franconia</fullName>
+                <default>false</default>
+                <label>Franconia</label>
+            </value>
+            <value>
+                <fullName>Frazee-Vergas</fullName>
+                <default>false</default>
+                <label>Frazee-Vergas</label>
+            </value>
+            <value>
+                <fullName>Fridley</fullName>
+                <default>false</default>
+                <label>Fridley</label>
+            </value>
+            <value>
+                <fullName>Fulda</fullName>
+                <default>false</default>
+                <label>Fulda</label>
+            </value>
+            <value>
+                <fullName>G.F.W.</fullName>
+                <default>false</default>
+                <label>G.F.W.</label>
+            </value>
+            <value>
+                <fullName>Glencoe-Silver Lake</fullName>
+                <default>false</default>
+                <label>Glencoe-Silver Lake</label>
+            </value>
+            <value>
+                <fullName>Glenville-Emmons</fullName>
+                <default>false</default>
+                <label>Glenville-Emmons</label>
+            </value>
+            <value>
+                <fullName>Goodhue</fullName>
+                <default>false</default>
+                <label>Goodhue</label>
+            </value>
+            <value>
+                <fullName>Goodridge</fullName>
+                <default>false</default>
+                <label>Goodridge</label>
+            </value>
+            <value>
+                <fullName>Granada Huntley-East Chain</fullName>
+                <default>false</default>
+                <label>Granada Huntley-East Chain</label>
+            </value>
+            <value>
+                <fullName>Grand Meadow</fullName>
+                <default>false</default>
+                <label>Grand Meadow</label>
+            </value>
+            <value>
+                <fullName>Grand Rapids</fullName>
+                <default>false</default>
+                <label>Grand Rapids</label>
+            </value>
+            <value>
+                <fullName>Greenbush-Middle River</fullName>
+                <default>false</default>
+                <label>Greenbush-Middle River</label>
+            </value>
+            <value>
+                <fullName>Greenway</fullName>
+                <default>false</default>
+                <label>Greenway</label>
+            </value>
+            <value>
+                <fullName>Grygla</fullName>
+                <default>false</default>
+                <label>Grygla</label>
+            </value>
+            <value>
+                <fullName>Hancock</fullName>
+                <default>false</default>
+                <label>Hancock</label>
+            </value>
+            <value>
+                <fullName>Hastings</fullName>
+                <default>false</default>
+                <label>Hastings</label>
+            </value>
+            <value>
+                <fullName>Hawley</fullName>
+                <default>false</default>
+                <label>Hawley</label>
+            </value>
+            <value>
+                <fullName>Hayfield</fullName>
+                <default>false</default>
+                <label>Hayfield</label>
+            </value>
+            <value>
+                <fullName>Hendricks</fullName>
+                <default>false</default>
+                <label>Hendricks</label>
+            </value>
+            <value>
+                <fullName>Henning</fullName>
+                <default>false</default>
+                <label>Henning</label>
+            </value>
+            <value>
+                <fullName>Herman-Norcross</fullName>
+                <default>false</default>
+                <label>Herman-Norcross</label>
+            </value>
+            <value>
+                <fullName>Hermantown</fullName>
+                <default>false</default>
+                <label>Hermantown</label>
+            </value>
+            <value>
+                <fullName>Heron Lake-Okabena</fullName>
+                <default>false</default>
+                <label>Heron Lake-Okabena</label>
+            </value>
+            <value>
+                <fullName>Hibbing</fullName>
+                <default>false</default>
+                <label>Hibbing</label>
+            </value>
+            <value>
+                <fullName>Hill City</fullName>
+                <default>false</default>
+                <label>Hill City</label>
+            </value>
+            <value>
+                <fullName>Hills-Beaver Creek</fullName>
+                <default>false</default>
+                <label>Hills-Beaver Creek</label>
+            </value>
+            <value>
+                <fullName>Hinckley-Finlayson</fullName>
+                <default>false</default>
+                <label>Hinckley-Finlayson</label>
+            </value>
+            <value>
+                <fullName>Holdingford</fullName>
+                <default>false</default>
+                <label>Holdingford</label>
+            </value>
+            <value>
+                <fullName>Hopkins</fullName>
+                <default>false</default>
+                <label>Hopkins</label>
+            </value>
+            <value>
+                <fullName>Houston</fullName>
+                <default>false</default>
+                <label>Houston</label>
+            </value>
+            <value>
+                <fullName>Howard Lake-Waverly-Winsted</fullName>
+                <default>false</default>
+                <label>Howard Lake-Waverly-Winsted</label>
+            </value>
+            <value>
+                <fullName>Hutchinson</fullName>
+                <default>false</default>
+                <label>Hutchinson</label>
+            </value>
+            <value>
+                <fullName>International Falls</fullName>
+                <default>false</default>
+                <label>International Falls</label>
+            </value>
+            <value>
+                <fullName>Inver Grove Heights</fullName>
+                <default>false</default>
+                <label>Inver Grove Heights</label>
+            </value>
+            <value>
+                <fullName>lsle</fullName>
+                <default>false</default>
+                <label>lsle</label>
+            </value>
+            <value>
+                <fullName>Ivanhoe</fullName>
+                <default>false</default>
+                <label>Ivanhoe</label>
+            </value>
+            <value>
+                <fullName>Jackson County Central</fullName>
+                <default>false</default>
+                <label>Jackson County Central</label>
+            </value>
+            <value>
+                <fullName>Janesville-Waldorf-Pemberton</fullName>
+                <default>false</default>
+                <label>Janesville-Waldorf-Pemberton</label>
+            </value>
+            <value>
+                <fullName>Jordan</fullName>
+                <default>false</default>
+                <label>Jordan</label>
+            </value>
+            <value>
+                <fullName>Kasson-Mantorville</fullName>
+                <default>false</default>
+                <label>Kasson-Mantorville</label>
+            </value>
+            <value>
+                <fullName>Kelliher</fullName>
+                <default>false</default>
+                <label>Kelliher</label>
+            </value>
+            <value>
+                <fullName>Kenyon-Wanamingo</fullName>
+                <default>false</default>
+                <label>Kenyon-Wanamingo</label>
+            </value>
+            <value>
+                <fullName>Kerkhoven-Murdock-Sunburg</fullName>
+                <default>false</default>
+                <label>Kerkhoven-Murdock-Sunburg</label>
+            </value>
+            <value>
+                <fullName>Kimball</fullName>
+                <default>false</default>
+                <label>Kimball</label>
+            </value>
+            <value>
+                <fullName>Kingsland</fullName>
+                <default>false</default>
+                <label>Kingsland</label>
+            </value>
+            <value>
+                <fullName>Kittson Central</fullName>
+                <default>false</default>
+                <label>Kittson Central</label>
+            </value>
+            <value>
+                <fullName>Lac Qui Parle Valley</fullName>
+                <default>false</default>
+                <label>Lac Qui Parle Valley</label>
+            </value>
+            <value>
+                <fullName>Lacrescent-Hokah</fullName>
+                <default>false</default>
+                <label>Lacrescent-Hokah</label>
+            </value>
+            <value>
+                <fullName>Lake Benton</fullName>
+                <default>false</default>
+                <label>Lake Benton</label>
+            </value>
+            <value>
+                <fullName>Lake City</fullName>
+                <default>false</default>
+                <label>Lake City</label>
+            </value>
+            <value>
+                <fullName>Lake Crystal-Wellcome Memorial</fullName>
+                <default>false</default>
+                <label>Lake Crystal-Wellcome Memorial</label>
+            </value>
+            <value>
+                <fullName>Lake of the Woods</fullName>
+                <default>false</default>
+                <label>Lake of the Woods</label>
+            </value>
+            <value>
+                <fullName>Lake Park Audubon</fullName>
+                <default>false</default>
+                <label>Lake Park Audubon</label>
+            </value>
+            <value>
+                <fullName>Lake Superior</fullName>
+                <default>false</default>
+                <label>Lake Superior</label>
+            </value>
+            <value>
+                <fullName>Lakeview</fullName>
+                <default>false</default>
+                <label>Lakeview</label>
+            </value>
+            <value>
+                <fullName>Lakeville</fullName>
+                <default>false</default>
+                <label>Lakeville</label>
+            </value>
+            <value>
+                <fullName>Lancaster</fullName>
+                <default>false</default>
+                <label>Lancaster</label>
+            </value>
+            <value>
+                <fullName>Lanesboro</fullName>
+                <default>false</default>
+                <label>Lanesboro</label>
+            </value>
+            <value>
+                <fullName>Laporte</fullName>
+                <default>false</default>
+                <label>Laporte</label>
+            </value>
+            <value>
+                <fullName>Le Center</fullName>
+                <default>false</default>
+                <label>Le Center</label>
+            </value>
+            <value>
+                <fullName>Le Sueur-Henderson</fullName>
+                <default>false</default>
+                <label>Le Sueur-Henderson</label>
+            </value>
+            <value>
+                <fullName>Leroy</fullName>
+                <default>false</default>
+                <label>Leroy</label>
+            </value>
+            <value>
+                <fullName>Lester Prairie</fullName>
+                <default>false</default>
+                <label>Lester Prairie</label>
+            </value>
+            <value>
+                <fullName>Lewiston-Altura</fullName>
+                <default>false</default>
+                <label>Lewiston-Altura</label>
+            </value>
+            <value>
+                <fullName>Litchfield</fullName>
+                <default>false</default>
+                <label>Litchfield</label>
+            </value>
+            <value>
+                <fullName>Little Falls</fullName>
+                <default>false</default>
+                <label>Little Falls</label>
+            </value>
+            <value>
+                <fullName>Littlefork-Big Falls</fullName>
+                <default>false</default>
+                <label>Littlefork-Big Falls</label>
+            </value>
+            <value>
+                <fullName>Long Prairie-Grey Eagle</fullName>
+                <default>false</default>
+                <label>Long Prairie-Grey Eagle</label>
+            </value>
+            <value>
+                <fullName>Luverne</fullName>
+                <default>false</default>
+                <label>Luverne</label>
+            </value>
+            <value>
+                <fullName>Lyle</fullName>
+                <default>false</default>
+                <label>Lyle</label>
+            </value>
+            <value>
+                <fullName>Lynd</fullName>
+                <default>false</default>
+                <label>Lynd</label>
+            </value>
+            <value>
+                <fullName>M.A.C.C.R.A.Y.</fullName>
+                <default>false</default>
+                <label>M.A.C.C.R.A.Y.</label>
+            </value>
+            <value>
+                <fullName>Mabel-Canton</fullName>
+                <default>false</default>
+                <label>Mabel-Canton</label>
+            </value>
+            <value>
+                <fullName>Madelia</fullName>
+                <default>false</default>
+                <label>Madelia</label>
+            </value>
+            <value>
+                <fullName>Mahnomen</fullName>
+                <default>false</default>
+                <label>Mahnomen</label>
+            </value>
+            <value>
+                <fullName>Mahtomedi</fullName>
+                <default>false</default>
+                <label>Mahtomedi</label>
+            </value>
+            <value>
+                <fullName>Mankato</fullName>
+                <default>false</default>
+                <label>Mankato</label>
+            </value>
+            <value>
+                <fullName>Maple Lake</fullName>
+                <default>false</default>
+                <label>Maple Lake</label>
+            </value>
+            <value>
+                <fullName>Maple River</fullName>
+                <default>false</default>
+                <label>Maple River</label>
+            </value>
+            <value>
+                <fullName>Marshall</fullName>
+                <default>false</default>
+                <label>Marshall</label>
+            </value>
+            <value>
+                <fullName>Marshall County Central Schools</fullName>
+                <default>false</default>
+                <label>Marshall County Central Schools</label>
+            </value>
+            <value>
+                <fullName>Martin County West</fullName>
+                <default>false</default>
+                <label>Martin County West</label>
+            </value>
+            <value>
+                <fullName>McGregor</fullName>
+                <default>false</default>
+                <label>McGregor</label>
+            </value>
+            <value>
+                <fullName>McLeod West Schools</fullName>
+                <default>false</default>
+                <label>McLeod West Schools</label>
+            </value>
+            <value>
+                <fullName>Medford</fullName>
+                <default>false</default>
+                <label>Medford</label>
+            </value>
+            <value>
+                <fullName>Melrose</fullName>
+                <default>false</default>
+                <label>Melrose</label>
+            </value>
+            <value>
+                <fullName>Menahga</fullName>
+                <default>false</default>
+                <label>Menahga</label>
+            </value>
+            <value>
+                <fullName>Mesabi East</fullName>
+                <default>false</default>
+                <label>Mesabi East</label>
+            </value>
+            <value>
+                <fullName>Milaca</fullName>
+                <default>false</default>
+                <label>Milaca</label>
+            </value>
+            <value>
+                <fullName>Milroy</fullName>
+                <default>false</default>
+                <label>Milroy</label>
+            </value>
+            <value>
+                <fullName>Minneapolis</fullName>
+                <default>false</default>
+                <label>Minneapolis</label>
+            </value>
+            <value>
+                <fullName>Minneota</fullName>
+                <default>false</default>
+                <label>Minneota</label>
+            </value>
+            <value>
+                <fullName>Minnetonka</fullName>
+                <default>false</default>
+                <label>Minnetonka</label>
+            </value>
+            <value>
+                <fullName>Minnewaska</fullName>
+                <default>false</default>
+                <label>Minnewaska</label>
+            </value>
+            <value>
+                <fullName>Montevideo</fullName>
+                <default>false</default>
+                <label>Montevideo</label>
+            </value>
+            <value>
+                <fullName>Montgomery-Lonsdale</fullName>
+                <default>false</default>
+                <label>Montgomery-Lonsdale</label>
+            </value>
+            <value>
+                <fullName>Monticello</fullName>
+                <default>false</default>
+                <label>Monticello</label>
+            </value>
+            <value>
+                <fullName>Moorhead</fullName>
+                <default>false</default>
+                <label>Moorhead</label>
+            </value>
+            <value>
+                <fullName>Moose Lake</fullName>
+                <default>false</default>
+                <label>Moose Lake</label>
+            </value>
+            <value>
+                <fullName>Mora</fullName>
+                <default>false</default>
+                <label>Mora</label>
+            </value>
+            <value>
+                <fullName>Morris</fullName>
+                <default>false</default>
+                <label>Morris</label>
+            </value>
+            <value>
+                <fullName>Mounds View</fullName>
+                <default>false</default>
+                <label>Mounds View</label>
+            </value>
+            <value>
+                <fullName>Mountain Iron-Buhl</fullName>
+                <default>false</default>
+                <label>Mountain Iron-Buhl</label>
+            </value>
+            <value>
+                <fullName>Mountain Lake</fullName>
+                <default>false</default>
+                <label>Mountain Lake</label>
+            </value>
+            <value>
+                <fullName>Murray County Central</fullName>
+                <default>false</default>
+                <label>Murray County Central</label>
+            </value>
+            <value>
+                <fullName>N .R .H.E.G.</fullName>
+                <default>false</default>
+                <label>N .R .H.E.G.</label>
+            </value>
+            <value>
+                <fullName>Nashwauk-Keewatin</fullName>
+                <default>false</default>
+                <label>Nashwauk-Keewatin</label>
+            </value>
+            <value>
+                <fullName>Nett Lake</fullName>
+                <default>false</default>
+                <label>Nett Lake</label>
+            </value>
+            <value>
+                <fullName>Nevis</fullName>
+                <default>false</default>
+                <label>Nevis</label>
+            </value>
+            <value>
+                <fullName>New London-Spicer</fullName>
+                <default>false</default>
+                <label>New London-Spicer</label>
+            </value>
+            <value>
+                <fullName>New Prague Area</fullName>
+                <default>false</default>
+                <label>New Prague Area</label>
+            </value>
+            <value>
+                <fullName>New Ulm</fullName>
+                <default>false</default>
+                <label>New Ulm</label>
+            </value>
+            <value>
+                <fullName>New York Mills</fullName>
+                <default>false</default>
+                <label>New York Mills</label>
+            </value>
+            <value>
+                <fullName>Nicollet</fullName>
+                <default>false</default>
+                <label>Nicollet</label>
+            </value>
+            <value>
+                <fullName>Norman County East</fullName>
+                <default>false</default>
+                <label>Norman County East</label>
+            </value>
+            <value>
+                <fullName>Norman County West</fullName>
+                <default>false</default>
+                <label>Norman County West</label>
+            </value>
+            <value>
+                <fullName>North Branch</fullName>
+                <default>false</default>
+                <label>North Branch</label>
+            </value>
+            <value>
+                <fullName>North St Paul-Maplewood-Oakdale</fullName>
+                <default>false</default>
+                <label>North St Paul-Maplewood-Oakdale</label>
+            </value>
+            <value>
+                <fullName>Northfield</fullName>
+                <default>false</default>
+                <label>Northfield</label>
+            </value>
+            <value>
+                <fullName>Northland Community Schools</fullName>
+                <default>false</default>
+                <label>Northland Community Schools</label>
+            </value>
+            <value>
+                <fullName>Ogilvie</fullName>
+                <default>false</default>
+                <label>Ogilvie</label>
+            </value>
+            <value>
+                <fullName>Oklee</fullName>
+                <default>false</default>
+                <label>Oklee</label>
+            </value>
+            <value>
+                <fullName>Onamia</fullName>
+                <default>false</default>
+                <label>Onamia</label>
+            </value>
+            <value>
+                <fullName>Orono</fullName>
+                <default>false</default>
+                <label>Orono</label>
+            </value>
+            <value>
+                <fullName>Ortonville</fullName>
+                <default>false</default>
+                <label>Ortonville</label>
+            </value>
+            <value>
+                <fullName>Osakis</fullName>
+                <default>false</default>
+                <label>Osakis</label>
+            </value>
+            <value>
+                <fullName>Osseo</fullName>
+                <default>false</default>
+                <label>Osseo</label>
+            </value>
+            <value>
+                <fullName>Owatonna</fullName>
+                <default>false</default>
+                <label>Owatonna</label>
+            </value>
+            <value>
+                <fullName>Park Rapids</fullName>
+                <default>false</default>
+                <label>Park Rapids</label>
+            </value>
+            <value>
+                <fullName>Parkers Prairie</fullName>
+                <default>false</default>
+                <label>Parkers Prairie</label>
+            </value>
+            <value>
+                <fullName>Paynesville</fullName>
+                <default>false</default>
+                <label>Paynesville</label>
+            </value>
+            <value>
+                <fullName>Pelican Rapids</fullName>
+                <default>false</default>
+                <label>Pelican Rapids</label>
+            </value>
+            <value>
+                <fullName>Pequot Lakes</fullName>
+                <default>false</default>
+                <label>Pequot Lakes</label>
+            </value>
+            <value>
+                <fullName>Perham</fullName>
+                <default>false</default>
+                <label>Perham</label>
+            </value>
+            <value>
+                <fullName>Pierz</fullName>
+                <default>false</default>
+                <label>Pierz</label>
+            </value>
+            <value>
+                <fullName>Pillager</fullName>
+                <default>false</default>
+                <label>Pillager</label>
+            </value>
+            <value>
+                <fullName>Pine City</fullName>
+                <default>false</default>
+                <label>Pine City</label>
+            </value>
+            <value>
+                <fullName>Pine Island</fullName>
+                <default>false</default>
+                <label>Pine Island</label>
+            </value>
+            <value>
+                <fullName>Pine Point</fullName>
+                <default>false</default>
+                <label>Pine Point</label>
+            </value>
+            <value>
+                <fullName>Pine River-Backus</fullName>
+                <default>false</default>
+                <label>Pine River-Backus</label>
+            </value>
+            <value>
+                <fullName>Pipestone Area</fullName>
+                <default>false</default>
+                <label>Pipestone Area</label>
+            </value>
+            <value>
+                <fullName>Plainview-Elgin-Millville School District</fullName>
+                <default>false</default>
+                <label>Plainview-Elgin-Millville School District</label>
+            </value>
+            <value>
+                <fullName>Plummer</fullName>
+                <default>false</default>
+                <label>Plummer</label>
+            </value>
+            <value>
+                <fullName>Princeton</fullName>
+                <default>false</default>
+                <label>Princeton</label>
+            </value>
+            <value>
+                <fullName>Prior Lake</fullName>
+                <default>false</default>
+                <label>Prior Lake</label>
+            </value>
+            <value>
+                <fullName>Prior Lake-Savage Proctor</fullName>
+                <default>false</default>
+                <label>Prior Lake-Savage Proctor</label>
+            </value>
+            <value>
+                <fullName>Randolph</fullName>
+                <default>false</default>
+                <label>Randolph</label>
+            </value>
+            <value>
+                <fullName>Red Lake</fullName>
+                <default>false</default>
+                <label>Red Lake</label>
+            </value>
+            <value>
+                <fullName>Red Lake Falls</fullName>
+                <default>false</default>
+                <label>Red Lake Falls</label>
+            </value>
+            <value>
+                <fullName>Red Rock Central</fullName>
+                <default>false</default>
+                <label>Red Rock Central</label>
+            </value>
+            <value>
+                <fullName>Red Wing</fullName>
+                <default>false</default>
+                <label>Red Wing</label>
+            </value>
+            <value>
+                <fullName>Redwood Falls Area Schools</fullName>
+                <default>false</default>
+                <label>Redwood Falls Area Schools</label>
+            </value>
+            <value>
+                <fullName>Renville County West</fullName>
+                <default>false</default>
+                <label>Renville County West</label>
+            </value>
+            <value>
+                <fullName>Richfield</fullName>
+                <default>false</default>
+                <label>Richfield</label>
+            </value>
+            <value>
+                <fullName>Robbinsdale</fullName>
+                <default>false</default>
+                <label>Robbinsdale</label>
+            </value>
+            <value>
+                <fullName>Rochester</fullName>
+                <default>false</default>
+                <label>Rochester</label>
+            </value>
+            <value>
+                <fullName>Rock Ridge</fullName>
+                <default>false</default>
+                <label>Rock Ridge</label>
+            </value>
+            <value>
+                <fullName>Rockford</fullName>
+                <default>false</default>
+                <label>Rockford</label>
+            </value>
+            <value>
+                <fullName>Rocori</fullName>
+                <default>false</default>
+                <label>Rocori</label>
+            </value>
+            <value>
+                <fullName>Roseau</fullName>
+                <default>false</default>
+                <label>Roseau</label>
+            </value>
+            <value>
+                <fullName>Rosemount-Apple Valley-Eagan</fullName>
+                <default>false</default>
+                <label>Rosemount-Apple Valley-Eagan</label>
+            </value>
+            <value>
+                <fullName>Roseville</fullName>
+                <default>false</default>
+                <label>Roseville</label>
+            </value>
+            <value>
+                <fullName>Rothsay Round Lake</fullName>
+                <default>false</default>
+                <label>Rothsay Round Lake</label>
+            </value>
+            <value>
+                <fullName>Royalton RTR</fullName>
+                <default>false</default>
+                <label>Royalton RTR</label>
+            </value>
+            <value>
+                <fullName>Rush City</fullName>
+                <default>false</default>
+                <label>Rush City</label>
+            </value>
+            <value>
+                <fullName>Rushford-Peterson</fullName>
+                <default>false</default>
+                <label>Rushford-Peterson</label>
+            </value>
+            <value>
+                <fullName>Russell</fullName>
+                <default>false</default>
+                <label>Russell</label>
+            </value>
+            <value>
+                <fullName>Ruthton</fullName>
+                <default>false</default>
+                <label>Ruthton</label>
+            </value>
+            <value>
+                <fullName>Sartell</fullName>
+                <default>false</default>
+                <label>Sartell</label>
+            </value>
+            <value>
+                <fullName>Sauk Centre</fullName>
+                <default>false</default>
+                <label>Sauk Centre</label>
+            </value>
+            <value>
+                <fullName>Sauk Rapids</fullName>
+                <default>false</default>
+                <label>Sauk Rapids</label>
+            </value>
+            <value>
+                <fullName>Sebeka</fullName>
+                <default>false</default>
+                <label>Sebeka</label>
+            </value>
+            <value>
+                <fullName>Shakopee</fullName>
+                <default>false</default>
+                <label>Shakopee</label>
+            </value>
+            <value>
+                <fullName>Sibley East</fullName>
+                <default>false</default>
+                <label>Sibley East</label>
+            </value>
+            <value>
+                <fullName>Sleepy Eye</fullName>
+                <default>false</default>
+                <label>Sleepy Eye</label>
+            </value>
+            <value>
+                <fullName>South Koochiching</fullName>
+                <default>false</default>
+                <label>South Koochiching</label>
+            </value>
+            <value>
+                <fullName>South St. Paul</fullName>
+                <default>false</default>
+                <label>South St. Paul</label>
+            </value>
+            <value>
+                <fullName>South Washington County</fullName>
+                <default>false</default>
+                <label>South Washington County</label>
+            </value>
+            <value>
+                <fullName>Southland</fullName>
+                <default>false</default>
+                <label>Southland</label>
+            </value>
+            <value>
+                <fullName>Spring Grove</fullName>
+                <default>false</default>
+                <label>Spring Grove</label>
+            </value>
+            <value>
+                <fullName>Spring Lake Park</fullName>
+                <default>false</default>
+                <label>Spring Lake Park</label>
+            </value>
+            <value>
+                <fullName>Springfield</fullName>
+                <default>false</default>
+                <label>Springfield</label>
+            </value>
+            <value>
+                <fullName>St. Anthony-New Brighton</fullName>
+                <default>false</default>
+                <label>St. Anthony-New Brighton</label>
+            </value>
+            <value>
+                <fullName>St. Charles</fullName>
+                <default>false</default>
+                <label>St. Charles</label>
+            </value>
+            <value>
+                <fullName>St. Clair</fullName>
+                <default>false</default>
+                <label>St. Clair</label>
+            </value>
+            <value>
+                <fullName>St. Cloud</fullName>
+                <default>false</default>
+                <label>St. Cloud</label>
+            </value>
+            <value>
+                <fullName>St. Francis</fullName>
+                <default>false</default>
+                <label>St. Francis</label>
+            </value>
+            <value>
+                <fullName>St. James</fullName>
+                <default>false</default>
+                <label>St. James</label>
+            </value>
+            <value>
+                <fullName>St. Louis County</fullName>
+                <default>false</default>
+                <label>St. Louis County</label>
+            </value>
+            <value>
+                <fullName>St. Louis Park</fullName>
+                <default>false</default>
+                <label>St. Louis Park</label>
+            </value>
+            <value>
+                <fullName>St. Michael-Albertville</fullName>
+                <default>false</default>
+                <label>St. Michael-Albertville</label>
+            </value>
+            <value>
+                <fullName>St. Paul</fullName>
+                <default>false</default>
+                <label>St. Paul</label>
+            </value>
+            <value>
+                <fullName>St. Peter</fullName>
+                <default>false</default>
+                <label>St. Peter</label>
+            </value>
+            <value>
+                <fullName>Staples-Motley</fullName>
+                <default>false</default>
+                <label>Staples-Motley</label>
+            </value>
+            <value>
+                <fullName>Stephen-Argyle</fullName>
+                <default>false</default>
+                <label>Stephen-Argyle</label>
+            </value>
+            <value>
+                <fullName>Stewartville</fullName>
+                <default>false</default>
+                <label>Stewartville</label>
+            </value>
+            <value>
+                <fullName>Stillwater</fullName>
+                <default>false</default>
+                <label>Stillwater</label>
+            </value>
+            <value>
+                <fullName>Swanville</fullName>
+                <default>false</default>
+                <label>Swanville</label>
+            </value>
+            <value>
+                <fullName>Thief River Falls</fullName>
+                <default>false</default>
+                <label>Thief River Falls</label>
+            </value>
+            <value>
+                <fullName>Tracy</fullName>
+                <default>false</default>
+                <label>Tracy</label>
+            </value>
+            <value>
+                <fullName>Tri-City United</fullName>
+                <default>false</default>
+                <label>Tri-City United</label>
+            </value>
+            <value>
+                <fullName>Tri-County</fullName>
+                <default>false</default>
+                <label>Tri-County</label>
+            </value>
+            <value>
+                <fullName>Triton</fullName>
+                <default>false</default>
+                <label>Triton</label>
+            </value>
+            <value>
+                <fullName>Truman</fullName>
+                <default>false</default>
+                <label>Truman</label>
+            </value>
+            <value>
+                <fullName>Tyler</fullName>
+                <default>false</default>
+                <label>Tyler</label>
+            </value>
+            <value>
+                <fullName>Ulen-Hitterdal</fullName>
+                <default>false</default>
+                <label>Ulen-Hitterdal</label>
+            </value>
+            <value>
+                <fullName>Underwood</fullName>
+                <default>false</default>
+                <label>Underwood</label>
+            </value>
+            <value>
+                <fullName>United South Central</fullName>
+                <default>false</default>
+                <label>United South Central</label>
+            </value>
+            <value>
+                <fullName>Upsala</fullName>
+                <default>false</default>
+                <label>Upsala</label>
+            </value>
+            <value>
+                <fullName>Verndale</fullName>
+                <default>false</default>
+                <label>Verndale</label>
+            </value>
+            <value>
+                <fullName>Virginia</fullName>
+                <default>false</default>
+                <label>Virginia</label>
+            </value>
+            <value>
+                <fullName>Wabasha—Kellogg</fullName>
+                <default>false</default>
+                <label>Wabasha—Kellogg</label>
+            </value>
+            <value>
+                <fullName>Wabasso</fullName>
+                <default>false</default>
+                <label>Wabasso</label>
+            </value>
+            <value>
+                <fullName>Waconia</fullName>
+                <default>false</default>
+                <label>Waconia</label>
+            </value>
+            <value>
+                <fullName>Wadena-Deer Creek</fullName>
+                <default>false</default>
+                <label>Wadena-Deer Creek</label>
+            </value>
+            <value>
+                <fullName>Walker-Hackensack-Akeley</fullName>
+                <default>false</default>
+                <label>Walker-Hackensack-Akeley</label>
+            </value>
+            <value>
+                <fullName>Warren-Alvarado-Oslo</fullName>
+                <default>false</default>
+                <label>Warren-Alvarado-Oslo</label>
+            </value>
+            <value>
+                <fullName>Warroad</fullName>
+                <default>false</default>
+                <label>Warroad</label>
+            </value>
+            <value>
+                <fullName>Waseca</fullName>
+                <default>false</default>
+                <label>Waseca</label>
+            </value>
+            <value>
+                <fullName>Watertown-Mayer</fullName>
+                <default>false</default>
+                <label>Watertown-Mayer</label>
+            </value>
+            <value>
+                <fullName>Waterville-Elysian-Morristown</fullName>
+                <default>false</default>
+                <label>Waterville-Elysian-Morristown</label>
+            </value>
+            <value>
+                <fullName>Waubun</fullName>
+                <default>false</default>
+                <label>Waubun</label>
+            </value>
+            <value>
+                <fullName>Wayzata</fullName>
+                <default>false</default>
+                <label>Wayzata</label>
+            </value>
+            <value>
+                <fullName>West Central Area</fullName>
+                <default>false</default>
+                <label>West Central Area</label>
+            </value>
+            <value>
+                <fullName>West St. Paul-Mendota Hts.-Eagan</fullName>
+                <default>false</default>
+                <label>West St. Paul-Mendota Hts.-Eagan</label>
+            </value>
+            <value>
+                <fullName>Westbrook-Walnut Grove Schools</fullName>
+                <default>false</default>
+                <label>Westbrook-Walnut Grove Schools</label>
+            </value>
+            <value>
+                <fullName>Westonka</fullName>
+                <default>false</default>
+                <label>Westonka</label>
+            </value>
+            <value>
+                <fullName>Wheaton Area School</fullName>
+                <default>false</default>
+                <label>Wheaton Area School</label>
+            </value>
+            <value>
+                <fullName>Wheaton Area Schools</fullName>
+                <default>false</default>
+                <label>Wheaton Area Schools</label>
+            </value>
+            <value>
+                <fullName>White Bear Lake</fullName>
+                <default>false</default>
+                <label>White Bear Lake</label>
+            </value>
+            <value>
+                <fullName>Willmar</fullName>
+                <default>false</default>
+                <label>Willmar</label>
+            </value>
+            <value>
+                <fullName>Willow River</fullName>
+                <default>false</default>
+                <label>Willow River</label>
+            </value>
+            <value>
+                <fullName>Win-E-Mac</fullName>
+                <default>false</default>
+                <label>Win-E-Mac</label>
+            </value>
+            <value>
+                <fullName>Windom</fullName>
+                <default>false</default>
+                <label>Windom</label>
+            </value>
+            <value>
+                <fullName>Winona Area  | Breakout</fullName>
+                <default>false</default>
+                <label>Winona Area  | Breakout</label>
+            </value>
+            <value>
+                <fullName>Worthington</fullName>
+                <default>false</default>
+                <label>Worthington</label>
+            </value>
+            <value>
+                <fullName>Wrenshall</fullName>
+                <default>false</default>
+                <label>Wrenshall</label>
+            </value>
+            <value>
+                <fullName>Yellow Medicine East</fullName>
+                <default>false</default>
+                <label>Yellow Medicine East</label>
+            </value>
+            <value>
+                <fullName>Zumbrota-Mazeppa</fullName>
+                <default>false</default>
+                <label>Zumbrota-Mazeppa</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -86,7 +86,9 @@ NES_AccountBusinessLogic.populateSchoolID(oldMap, newMap);
 NES_AccountBusinessLogic.recalcTechnologyFlag(newMap.values(), oldMap); */
         //Swapna:Changed to active list
         NES_AccountBusinessLogic.recalcAddrEligIfRequired(actlstnewMap.values(), actlstoldMap);
-        NES_AccountBusinessLogic.recalcTechnologyFlag(actlstnewMap.values(), actlstoldMap);
+        
+        //Commented Deprecate Technology flag logic for US 476956
+        //NES_AccountBusinessLogic.recalcTechnologyFlag(actlstnewMap.values(), actlstoldMap);
        
         //Added/changed by Chinna on 8 , 9th and 10 april 2020
         //Map<Id, Account> accountsMap = new Map<Id, Account>();

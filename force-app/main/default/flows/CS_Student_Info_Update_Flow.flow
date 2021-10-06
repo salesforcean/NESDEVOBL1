@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>50.0</apiVersion>
     <assignments>
         <name>Assign_Student_Contact</name>
         <label>Assign Student Contact</label>
@@ -295,7 +294,6 @@
         <connector>
             <targetReference>Loop_through_CT_Student_PEs</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Caretaker_Contact__c</field>
             <operator>EqualTo</operator>
@@ -328,7 +326,6 @@
         <connector>
             <targetReference>Loop_through_PEs</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Household_Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -366,7 +363,6 @@
         <label>Update Disposition Indicator-Applicant</label>
         <locationX>1430</locationX>
         <locationY>208</locationY>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -394,7 +390,6 @@
         <label>Update Disposition Indicator-Enrolled</label>
         <locationX>1431</locationX>
         <locationY>356</locationY>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -425,7 +420,6 @@
         <connector>
             <targetReference>Is_InProgress_PE</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

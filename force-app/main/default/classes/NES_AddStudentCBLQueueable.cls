@@ -23,7 +23,8 @@ public without sharing class NES_AddStudentCBLQueueable implements Queueable {
 
 			//Mark Membring 3/19/2020  Moved from the enrollment triggers to reduce the soql count (154059)
 			programEnrollments = NES_BusinessLogicUtils.calculateAddressEligibility(programEnrollments);
-			programEnrollments = NES_BusinessLogicUtils.flagTechnologyAction(programEnrollments);
+            //Commented Deprecate Technology flag logic for US 476956
+			//programEnrollments = NES_BusinessLogicUtils.flagTechnologyAction(programEnrollments);
             update programEnrollments;
 
 

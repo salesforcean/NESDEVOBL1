@@ -376,7 +376,8 @@ progEnrollment.EntAgeEliOvrDate__c = system.today();
 * Created by Mark Membrino on 10/29/19.
 * Purpose : Method to calculate the Technology Flag Story 114150.
 */
-    public static List<Hed__Program_Enrollment__c> flagTechnologyAction(List<Hed__Program_Enrollment__c> programEnrollmentList) {
+    //Commented Deprecate Technology flag logic for US 476956
+    /*public static List<Hed__Program_Enrollment__c> flagTechnologyAction(List<Hed__Program_Enrollment__c> programEnrollmentList) {
         Set<Id> academicProgramsReferenced = new set <Id> ();
         Set<Id> contactsReferenced = new Set<Id>();
         for (Hed__Program_Enrollment__c progEnrollment : programEnrollmentList) {
@@ -405,7 +406,7 @@ progEnrollment.EntAgeEliOvrDate__c = system.today();
         }
         
         return programEnrollmentList;
-    }
+    }*/
     
     /**
 * Created by Mark Membrino on 11/11/19.

@@ -676,7 +676,7 @@ public without sharing class NES_AddStudentHelper {
                 ecAffiliationsToInsert.add(affiliationRecord2);
                 
                  //Add the rest of the stages that have no assignment logic.                    
-                  for (Integer i = 1; i < relationships.size(); i++) {
+                  /*for (Integer i = 1; i < relationships.size(); i++) {
                     if(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)){
                         Enrollment_Component_Affiliation__c affiliationRec = new Enrollment_Component_Affiliation__c();
                         affiliationRec.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
@@ -700,11 +700,11 @@ public without sharing class NES_AddStudentHelper {
                             affiliationRecord.Status__c = 'Not Started';
                         }
                         ecAffiliationsToInsert.add(affiliationRecord);
-                    }
+                    }*/
 
   
                         //Add the rest of the stages that have no assignment logic.
-                       /*for (Integer i = 1; i < relationships.size(); i++) {
+                       for (Integer i = 1; i < relationships.size(); i++) {
                         if (String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {                
                             Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                             affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
@@ -716,7 +716,7 @@ public without sharing class NES_AddStudentHelper {
                             else
                                 affiliationRecord.Status__c = 'Not Started';
                             ecAffiliationsToInsert.add(affiliationRecord);
-                        }*/
+                        }
                     } 
 
                 //add forms affiliation for the forms under stage 1 that have no assignment logic

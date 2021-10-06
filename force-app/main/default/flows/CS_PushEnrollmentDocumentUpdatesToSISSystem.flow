@@ -80,7 +80,6 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
     <decisions>
         <name>Check_Child_PEs</name>
         <label>Check Child PEs ?</label>
@@ -165,7 +164,6 @@
         <connector>
             <targetReference>Check_Child_PEs</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Household_Program_Enrollment__c</field>
             <operator>EqualTo</operator>
@@ -210,7 +208,6 @@
         <connector>
             <targetReference>Search_Document_Reason_Message</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Status__c</field>
             <operator>EqualTo</operator>
@@ -234,7 +231,6 @@
         <connector>
             <targetReference>PushEnrollDoc2SIS</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Document_Type__c</field>
             <operator>EqualTo</operator>
@@ -264,7 +260,6 @@
         <connector>
             <targetReference>Check_Student_PE</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

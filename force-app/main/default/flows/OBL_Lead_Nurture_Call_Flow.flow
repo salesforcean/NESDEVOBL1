@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <apiVersion>51.0</apiVersion>
     <choices>
         <name>ch_Additional_Questions_Tell_me_more_Register</name>
         <choiceText>Additional Questions / Tell me more /Register</choiceText>
@@ -724,7 +723,6 @@ Added link on OBLN - 030 page</description>
         <connector>
             <targetReference>Get_User_Record</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -745,7 +743,6 @@ Added link on OBLN - 030 page</description>
         <connector>
             <targetReference>IC_Dialer_Call_Direction</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -765,7 +762,6 @@ Added link on OBLN - 030 page</description>
         <connector>
             <targetReference>DT_Yes_Yes_2</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>

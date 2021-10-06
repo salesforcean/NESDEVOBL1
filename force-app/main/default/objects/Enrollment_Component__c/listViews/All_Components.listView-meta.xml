@@ -5,10 +5,5 @@
     <columns>RECORDTYPE</columns>
     <columns>Component_Type__c</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>Answer_Target__c</field>
-        <operation>equals</operation>
-        <value>hed__Program_Enrollment__c.Internet_Subsidy_Agreement__c</value>
-    </filters>
     <label>All Components</label>
 </ListView>

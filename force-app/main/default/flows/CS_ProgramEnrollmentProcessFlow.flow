@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>50.0</apiVersion>
     <decisions>
         <name>Program_Enrollment_Record_Type</name>
         <label>Program Enrollment Record Type</label>
@@ -117,7 +116,6 @@
                 <elementReference>ProgramEnrollmentRec</elementReference>
             </value>
         </inputAssignments>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
     </subflows>
     <variables>
         <name>CaretakerContact</name>

@@ -3432,6 +3432,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Federal_State_Race_Inf_SouthCentralAMIND__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Federal_State_Race_Info_AMIndian__c</picklist>
         <values>
             <fullName>No</fullName>

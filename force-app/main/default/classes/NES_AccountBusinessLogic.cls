@@ -152,7 +152,8 @@ public without sharing class NES_AccountBusinessLogic {
      * Created By Mark Membrino on 10/30/2019  Story 114150
      * If computer in home is updated, we need to recalc the technology flag for all related PEs.
      */
-    public static void recalcTechnologyFlag(List<Account> newList, Map<Id, Account> oldMap) {
+    //Commented Deprecate Technology flag logic for US 476956
+    /*public static void recalcTechnologyFlag(List<Account> newList, Map<Id, Account> oldMap) {
         Set<Id> accountIds = new Set<Id>();
         for (Account account : newList) {
             if (oldMap != null && !oldMap.isEmpty()) {
@@ -168,17 +169,17 @@ public without sharing class NES_AccountBusinessLogic {
                 from hed__Program_Enrollment__c
                 where hed__Contact__r.AccountId IN :accountIds and status__c = 'In Progress']);*/
            //added for bug 121557
-            list <hed__Program_Enrollment__c> PEsToCheck =[ Select id, hed__Account__c, hed__Contact__c
+           /* list <hed__Program_Enrollment__c> PEsToCheck =[ Select id, hed__Account__c, hed__Contact__c
                 from hed__Program_Enrollment__c
-                where hed__Contact__r.AccountId IN :accountIds ]; //and status__c = 'In Progress'
+                where hed__Contact__r.AccountId IN :accountIds ]; //and status__c = 'In Progress'*/
           //added for bug 121557
 
-                System.debug('recalcTechnologyFlag PEsToCheck' + PEsToCheck);
+           /*     System.debug('recalcTechnologyFlag PEsToCheck' + PEsToCheck);
 
             if (PEsToCheck.size() > 0) {
                 list <hed__Program_Enrollment__c> PEsToUpdate = NES_BusinessLogicUtils.flagTechnologyAction(PEsToCheck);
                 update PEsToUpdate;
             }
         }
-    }
+    }*/
 }

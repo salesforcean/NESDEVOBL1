@@ -10,11 +10,6 @@
         <connector>
             <targetReference>CreateStudentContact</targetReference>
         </connector>
-        <dataTypeMappings>
-            <typeName>U__convertedCSVRows</typeName>
-            <typeValue>Contact</typeValue>
-        </dataTypeMappings>
-        <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>accountId</name>
             <value>
@@ -44,7 +39,6 @@
             <name>convertedCSVRows</name>
         </outputParameters>
     </actionCalls>
-    <apiVersion>53.0</apiVersion>
     <interviewLabel>Data Import Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Data Import Flow</label>
     <processMetadataValues>
@@ -131,7 +125,6 @@
                     <elementReference>StudentDataImport.contentVersionIds</elementReference>
                 </value>
             </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>

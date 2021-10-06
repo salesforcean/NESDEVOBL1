@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>51.0</apiVersion>
     <assignments>
         <name>Assigning_School_ID</name>
         <label>Assigning School ID</label>
@@ -51,7 +50,6 @@ Assign School ID Location to a lead based on the Zip Code, State and Grade offer
         <connector>
             <targetReference>Assigning_School_ID</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Name</field>
             <operator>EqualTo</operator>
@@ -69,7 +67,6 @@ Assign School ID Location to a lead based on the Zip Code, State and Grade offer
         <connector>
             <targetReference>Zip_Code</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>PostalCode</field>
             <operator>NotEqualTo</operator>
@@ -85,7 +82,6 @@ Assign School ID Location to a lead based on the Zip Code, State and Grade offer
             </value>
         </filters>
         <object>Lead</object>
-        <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>

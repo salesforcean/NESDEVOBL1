@@ -10,7 +10,6 @@
         <connector>
             <targetReference>Thank_you_Message</targetReference>
         </connector>
-        <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>action</name>
             <value>
@@ -24,7 +23,6 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>52.0</apiVersion>
     <constants>
         <name>ApexAction</name>
         <dataType>String</dataType>
@@ -88,7 +86,6 @@
         <connector>
             <targetReference>Check_unverified</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -108,7 +105,6 @@
         <connector>
             <targetReference>Create_Related_Records</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Status</field>
             <operator>EqualTo</operator>
@@ -181,7 +177,6 @@
         <connector>
             <targetReference>Update_ticket_status</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Unverified__c</field>
             <operator>EqualTo</operator>

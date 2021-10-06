@@ -51,7 +51,6 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>Assign_Contact_Fields</name>
         <label>Assign Contact Fields</label>
@@ -273,7 +272,6 @@
         <connector>
             <targetReference>UserInfoToSIS</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -315,7 +313,6 @@
         <connector>
             <targetReference>UserInfoToSIS</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -350,7 +347,6 @@
             <targetReference>ReqType_UserInfo_Update</targetReference>
         </connector>
         <object>Contact</object>
-        <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

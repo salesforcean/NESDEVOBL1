@@ -1194,7 +1194,8 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
       insert currentASI;
       Annual_Student_Information__c asiRecord = [SELECT Id,Program_Enrollment__r.HS_LTS_Group__c FROM Annual_Student_Information__c
       WHERE Id =: currentASI.Id];
-          NES_BusinessLogicUtils.flagTechnologyAction(abcd);
+      //Commented Deprecate Technology flag logic for US 476956
+          //NES_BusinessLogicUtils.flagTechnologyAction(abcd);
       //System.assertEquals('Medium HS LTS',asiRecord.Program_Enrollment__r.HS_LTS_Group__c);
       Test.stopTest();
   }

@@ -2935,6 +2935,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Open_Application__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Own_Or_Rent_Home__c</picklist>
         <values>
             <fullName>No</fullName>
