@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Waitlisted__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(DATEVALUE(Waitlist_Time_Date_Stamp__c) &lt; hed__Account__r.School_Start_Date__c, hed__Account__r.School_Start_Date__c -1, hed__Account__r.School_Start_Date__c +1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Waitlisted</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

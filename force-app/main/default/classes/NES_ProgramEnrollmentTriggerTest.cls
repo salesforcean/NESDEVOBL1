@@ -76,7 +76,8 @@ private class NES_ProgramEnrollmentTriggerTest {
         //progEnrollment.Status__c = 'Complete';
         progEnrollment.CounselingFlag__c = 'Stop';
         progEnrollment.WaitlistFlag__c = 'Active';
-        progEnrollment.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment.PrincipalGeneralFlag__c = 'Released';
         progEnrollment.PlacementFlag__c = 'Principal Review' ;
@@ -95,7 +96,8 @@ private class NES_ProgramEnrollmentTriggerTest {
         hed__Program_Enrollment__c progEnrollment2 = Peak_TestUtils.createProgramEnrollment(academicAccount.Id, TestContact.Id, pSchoolYear.Id, false);
         progEnrollment2.CounselingFlag__c = 'Stop';
         progEnrollment2.WaitlistFlag__c = 'Active';
-        progEnrollment2.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment2.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment2.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment2.PlacementFlag__c = 'Principal Review' ;
         progEnrollment2.PORFlag__c = 'Pending';
@@ -112,7 +114,8 @@ private class NES_ProgramEnrollmentTriggerTest {
         //progEnrollment3.Status__c = 'Complete';
         progEnrollment3.CounselingFlag__c = 'Stop';
         progEnrollment3.WaitlistFlag__c = 'Active';
-        progEnrollment3.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment3.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment3.PrincipalGeneralFlag__c = 'Released';
         progEnrollment3.PriorWithdrawalFlag__c = 'Hold';
         progEnrollment3.PlacementFlag__c = 'Principal Review' ;
@@ -938,7 +941,8 @@ private class NES_ProgramEnrollmentTriggerTest {
             progEnrollment.Start_Year__c = cSchoolYear.Id;
             progEnrollment.CounselingFlag__c = 'Stop';
             progEnrollment.WaitlistFlag__c = 'Active';
-            progEnrollment.UserTechnologyFlag__c = 'Pending Review';
+            //Commented Deprecate Technology flag logic for US 476956
+            //progEnrollment.UserTechnologyFlag__c = 'Pending Review';
             progEnrollment.HomelessRiskFlag__c = 'Potential Homeless';
 
             progEnrollment.PriorWithdrawalFlag__c = 'Hold';

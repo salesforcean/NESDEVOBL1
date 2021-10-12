@@ -4558,6 +4558,10 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Placement</fullName>
             <default>false</default>
         </values>

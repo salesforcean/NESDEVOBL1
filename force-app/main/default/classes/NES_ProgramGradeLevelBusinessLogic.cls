@@ -21,7 +21,7 @@ public with sharing class NES_ProgramGradeLevelBusinessLogic {
                         pglIds.add(pgl.Id);
                     }
                 //Added for Userstory 451172- DK
-                if (pgl.Start_Open_Application__c != oldMap.get(pgl.Id).Start_Open_Application__c || pgl.End_Open_Application__c != oldMap.get(pgl.Id).End_Open_Application__c || pgl.Active_Open_Application__c != oldMap.get(pgl.Id).Active_Open_Application__c){
+                if (pgl.Start_Open_Application__c != oldMap.get(pgl.Id).Start_Open_Application__c || pgl.End_Open_Application__c != oldMap.get(pgl.Id).End_Open_Application__c || pgl.Open_Application__c != oldMap.get(pgl.Id).Open_Application__c){
                         pglIds.add(pgl.Id);
                 }
             }
@@ -30,7 +30,7 @@ public with sharing class NES_ProgramGradeLevelBusinessLogic {
             }
             
             //Added for Userstory 451172 -DK
-            else if (pgl.Start_Open_Application__c != null || pgl.End_Open_Application__c != null || pgl.Active_Open_Application__c != null){
+            else if (pgl.Start_Open_Application__c != null || pgl.End_Open_Application__c != null || pgl.Open_Application__c != null){
                 pglIds.add(pgl.Id);
             }
             

@@ -342,7 +342,7 @@ public class NES_ProgramEnrollmentHandler {
         //End-added for #107180 User Story (Task 108660) on 2019-09-06
 
         //Start: US #226654 (Krishna Peddanagammol) on 28-Aug-2020
-        try{
+        /*try{
             if(newMap.size()>0){
                 List<Enrollment_Component_Affiliation__c> ecaList = new List<Enrollment_Component_Affiliation__c>();
                 
@@ -412,7 +412,7 @@ public class NES_ProgramEnrollmentHandler {
         }
         catch(Exception ex) { 
             System.debug('Exception Thrown:' + ex.getMessage()); logger.logException('execute', ex); logger.saveLogs(); 
-        }
+        }*/
         //End: US #226654    
     }
 

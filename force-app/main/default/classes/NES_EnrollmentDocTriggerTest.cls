@@ -44,7 +44,8 @@ public class NES_EnrollmentDocTriggerTest {
         progEnrollment.Status__c = 'In Progress';
         progEnrollment.CounselingFlag__c = 'Stop';
         progEnrollment.WaitlistFlag__c = 'Active';
-        progEnrollment.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment.PrincipalGeneralFlag__c = 'Released';
         progEnrollment.PlacementFlag__c = 'Principal Review' ;

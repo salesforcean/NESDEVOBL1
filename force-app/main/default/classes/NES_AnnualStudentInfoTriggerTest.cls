@@ -60,7 +60,8 @@ public class NES_AnnualStudentInfoTriggerTest {
         progEnrollment.Status__c = 'In Progress';
         progEnrollment.CounselingFlag__c = 'Stop';
         progEnrollment.WaitlistFlag__c = 'Active';
-        progEnrollment.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment.PrincipalGeneralFlag__c = 'Released';
         progEnrollment.PlacementFlag__c = 'Principal Review' ;
@@ -80,7 +81,8 @@ public class NES_AnnualStudentInfoTriggerTest {
         progEnrollment2.Status__c = 'In Progress';
         progEnrollment2.CounselingFlag__c = 'Stop';
         progEnrollment2.WaitlistFlag__c = 'Active';
-        progEnrollment2.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment2.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment2.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment2.PrincipalGeneralFlag__c = 'Released';
         progEnrollment.PlacementFlag__c = 'Principal Review' ;
@@ -96,7 +98,8 @@ public class NES_AnnualStudentInfoTriggerTest {
         progEnrollment3.Status__c = 'In Progress';
         progEnrollment3.CounselingFlag__c = 'Stop';
         progEnrollment3.WaitlistFlag__c = 'Active';
-        progEnrollment3.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment3.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment3.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment3.PrincipalGeneralFlag__c = 'Released';
         progEnrollment.PlacementFlag__c = 'Principal Review' ;
@@ -372,7 +375,8 @@ public class NES_AnnualStudentInfoTriggerTest {
 
         progEnrollment.CounselingFlag__c = 'Stop';
         progEnrollment.WaitlistFlag__c = 'Active';
-        progEnrollment.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment.PlacementFlag__c = 'Principal Review' ;
         progEnrollment.PORFlag__c ='Pending';
@@ -389,7 +393,8 @@ public class NES_AnnualStudentInfoTriggerTest {
         hed__Program_Enrollment__c progEnrollment2 = Peak_TestUtils.createProgramEnrollment(academicAccount.Id, con.Id,SchoolYear.Id, false);
         progEnrollment2.CounselingFlag__c = 'Stop';
         progEnrollment2.WaitlistFlag__c = 'Active';
-        progEnrollment2.UserTechnologyFlag__c = 'Withdraw';
+        //Commented Deprecate Technology flag logic for US 476956
+        //progEnrollment2.UserTechnologyFlag__c = 'Withdraw';
         progEnrollment2.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment2.PrincipalGeneralFlag__c = 'Released';
         progEnrollment.PlacementFlag__c = 'Principal Review' ;
@@ -440,14 +445,14 @@ public class NES_AnnualStudentInfoTriggerTest {
         Insert currentASI;
         // Assert the updated ProgEnrollment WhyFlag Field
         Annual_Student_Information__c asiUpdated = [Select Program_Enrollment__r.WhyFlagged__c FROM Annual_Student_Information__c WHERE Id =:currentASI.Id];
-        System.assertEquals(asiUpdated.Program_Enrollment__r.WhyFlagged__c, '{Placement}-{Program Fit}-[Waitlisted]-[Technology]-[Disciplinary History]-[Potential Homeless]-{Age Eligibility}-');
+        System.assertEquals(asiUpdated.Program_Enrollment__r.WhyFlagged__c, '{Placement}-{Program Fit}-[Waitlisted]-[Disciplinary History]-[Potential Homeless]-{Age Eligibility}-');
         Annual_Student_Information__c currentASITest = Peak_TestUtils.createAnnualStudentInformation('Current ASI1', programEnrollmentList[1].Id, cSchoolYear.Id, false);
         currentASITest.HowStudentPlacementCompleted__c = 'Standard Auto-Placement Process';
         currentASITest.Final_Grade_Level__c = '2';
         Insert currentASITest;
         // Assert the updated ProgEnrollment WhyFlag Field
         Annual_Student_Information__c asiUpdated2 = [Select Program_Enrollment__r.WhyFlagged__c FROM Annual_Student_Information__c WHERE Id =:currentASITest.Id];
-        System.assertEquals(asiUpdated2.Program_Enrollment__r.WhyFlagged__c, '{Program Fit}-[Waitlisted]-[Technology]-[Disciplinary History]-[Potential Homeless]-{Age Eligibility}-');
+        System.assertEquals(asiUpdated2.Program_Enrollment__r.WhyFlagged__c, '{Program Fit}-[Waitlisted]-[Disciplinary History]-[Potential Homeless]-{Age Eligibility}-');
         Test.StopTest();
     }
     /**
@@ -474,7 +479,8 @@ public class NES_AnnualStudentInfoTriggerTest {
             progEnrollment.Start_Year__c = cSchoolYear.Id;
             progEnrollment.CounselingFlag__c = 'Stop';
             progEnrollment.WaitlistFlag__c = 'Active';
-            progEnrollment.UserTechnologyFlag__c = 'Withdraw';
+            //Commented Deprecate Technology flag logic for US 476956
+            //progEnrollment.UserTechnologyFlag__c = 'Withdraw';
             progEnrollment.HomelessRiskFlag__c = 'Potential Homeless';
 
             progEnrollment.PriorWithdrawalFlag__c = 'Hold';

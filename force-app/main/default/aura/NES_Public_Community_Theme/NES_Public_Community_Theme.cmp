@@ -42,7 +42,9 @@
                         <aura:if isTrue="{!not(empty(v.logoName))}">
                             <lightning:layoutItem flexibility="shrink" class="slds-order_1 slds-medium-order_1">
                                 <!--a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Label.c.NES_Community_Stem_Url+'/sfsites/c/resource/' + v.logoName}" class="logo" alt="{!v.logoName}"/></a-->                               
-                            	<a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" /></a>
+                            <!-- Added for generic logo by Ravi feature #425110 -->
+                                <a href="{!v.baseUrl + '/dashboard'}"><img src="{!$Resource.CommunityLogo_New}" class="logo" alt="Connections Academy Logo" /></a>
+                            <!-- End: Added for generic logo by Ravi feature #425110-->
                             </lightning:layoutItem>
                         </aura:if>
                         <!--removing auraif-isTrue as the public pages are very limited  ADO 142925- GG -->

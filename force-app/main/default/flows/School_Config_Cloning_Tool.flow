@@ -3,12 +3,15 @@
     <assignments>
         <name>Get_All_Records</name>
         <label>Get All Records</label>
-        <locationX>844</locationX>
-        <locationY>355</locationY>
+        <locationX>827</locationX>
+        <locationY>341</locationY>
         <assignmentItems>
             <assignToReference>Get_Academic_Program_Information</assignToReference>
             <operator>Assign</operator>
         </assignmentItems>
+        <connector>
+            <targetReference>Update_Academic_Program</targetReference>
+        </connector>
     </assignments>
     <decisions>
         <name>Check_Latest_Record</name>
@@ -85,8 +88,8 @@
     <recordLookups>
         <name>Get_Account_School_Information</name>
         <label>Get Account School Information</label>
-        <locationX>954</locationX>
-        <locationY>341</locationY>
+        <locationX>1037</locationX>
+        <locationY>320</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_All_Records</targetReference>
@@ -138,6 +141,13 @@
             <targetReference>Academic_Program_Screen</targetReference>
         </connector>
         <inputReference>Get_Record_Type_Name</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Academic_Program</name>
+        <label>Update Academic Program</label>
+        <locationX>681</locationX>
+        <locationY>340</locationY>
+        <inputReference>Get_Academic_Program_Information</inputReference>
     </recordUpdates>
     <screens>
         <name>Academic_Program_Screen</name>

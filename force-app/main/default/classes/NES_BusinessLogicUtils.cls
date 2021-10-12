@@ -1771,7 +1771,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         Map<Id, Id> programEnrollmentIdToAccountIds = new Map<Id, Id>();
         //Commented Below line and added generic soql line for #430196
 
-        List<hed__Program_Enrollment__c> programEnrollments = [Select id, Open_Application__c, hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
+        List<hed__Program_Enrollment__c> programEnrollments = [Select id, Open_Application__c, Open_Application_Period_status__c,hed__Account__c, WaitlistFlag__c, Program_Grade_Level__c from hed__Program_Enrollment__c where id in:programEnrollmentList];
         //Commenting the below line and uncommenting above line as we're getting an issue - Krishna Peddanagammol on 2021-08-27
         //List<hed__Program_Enrollment__c> programEnrollments = GenericSOQLQueries.programEnrollmentDetails(programEnrollmentList);
 
@@ -1813,7 +1813,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         }
         
         for (Program_Grade_Level__c pgl : [
-            SELECT Id, Academic_Program__c, ActivateWaitlist__c, StartWaitlist__c, EndWaitlist__c, Active_Open_Application__c,Start_Open_Application__c,End_Open_Application__c
+            SELECT Id, Academic_Program__c, ActivateWaitlist__c, StartWaitlist__c, EndWaitlist__c, Open_Application__c,Start_Open_Application__c,End_Open_Application__c
             FROM Program_Grade_Level__c
             WHERE Academic_Program__c IN:programEnrollmentIdToAccountIds.values()
         ]) {
@@ -1844,15 +1844,16 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                         System.debug('pgl.ActivateWaitlist__c='+pgl.ActivateWaitlist__c);
                         System.debug('pgl.StartWaitlist__c='+pgl.StartWaitlist__c+', pgl.EndWaitlist__c='+pgl.EndWaitlist__c);  
                         //Added for Userstory 451172- DK
-                        if(pgl.Id == pe.Program_Grade_Level__c && ((pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) || (pgl.Active_Open_Application__c == TRUE && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now() ))) { 
+                        if(pgl.Id == pe.Program_Grade_Level__c && ((pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) || (pgl.Open_Application__c == 'Active' && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now() ))) { 
                                                       
                             if(pgl.ActivateWaitlist__c == TRUE && pe.WaitlistFlag__c!= 'Released'){
                                 pe.WaitlistFlag__c = 'Active';
                             }
                             
-                            if(pgl.Active_Open_Application__c == TRUE && pe.Open_Application__c!= 'Released'){
+                            if(pgl.Open_Application__c == 'Active' && pe.Open_Application__c!= 'Released'){
                                 pe.Open_Application__c = 'Active';
                             }
+                            
                             
                             // End for Userstory 451172- DK
                             programEnrollmentsToUpdate.add(pe);
@@ -1972,7 +1973,8 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                                           peRecord.Start_Year__c != null ||
                                           peRecord.PriorWithdrawalFlag__c != null ||
                                           peRecord.WaitlistFlag__c != null ||
-                                          peRecord.UserTechnologyFlag__c != null ||
+                                          //Commented Deprecate Technology flag logic for US 476956
+                                          //peRecord.UserTechnologyFlag__c != null ||
                                           peRecord.GradeLevelEligibility__c != null ||
                                           peRecord.EntranceAgeEligibilityFinal__c != null ||
                                           peRecord.DisciplinaryFlagOverride__c != null ||
@@ -1987,7 +1989,8 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                                            peRecord.Start_Year__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).Start_Year__c ||
                                            peRecord.PriorWithdrawalFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).PriorWithdrawalFlag__c ||
                                            peRecord.WaitlistFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).WaitlistFlag__c ||
-                                           peRecord.UserTechnologyFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).UserTechnologyFlag__c ||
+                                           //Commented Deprecate Technology flag logic for US 476956
+                                           //peRecord.UserTechnologyFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).UserTechnologyFlag__c ||
                                            peRecord.GradeLevelEligibility__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).GradeLevelEligibility__c ||
                                            peRecord.EntranceAgeEligibilitySystem__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).EntranceAgeEligibilitySystem__c ||
                                            peRecord.EntranceAgeEligibilityOverride__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).EntranceAgeEligibilityOverride__c ||
@@ -2260,9 +2263,10 @@ returnString += '';
                     } .contains(progEnrollment.WaitlistFlag__c)) {
                         returnString += '[Waitlisted]-';
                     }
-            if (!String.isBlank(progEnrollment.UserTechnologyFlag__c) && progEnrollment.UserTechnologyFlag__c == 'Technology Flag') {
+            //Commented Deprecate Technology flag logic for US 476956
+            /*if (!String.isBlank(progEnrollment.UserTechnologyFlag__c) && progEnrollment.UserTechnologyFlag__c == 'Technology Flag') {
                 returnString += '[Technology]-';
-            }
+            }*/
             if (!String.isBlank(progEnrollment.DisciplinaryFlagOverride__c) &&
                 (progEnrollment.DisciplinaryFlagOverride__c == 'Pending Review' || progEnrollment.DisciplinaryFlagOverride__c == 'Withdraw')) {
                     returnString += '[Disciplinary History]-';
@@ -2508,11 +2512,12 @@ returnString += '[Prior Withdrawal]-';
                         returnString += '[Waitlisted]-';
                     }
             
-            //Mark Membrino 11/13/2019 Gap analysis Story 117691. 
-            if (!String.isBlank(progEnrollment.UserTechnologyFlag__c) && 
+            //Mark Membrino 11/13/2019 Gap analysis Story 117691.
+            //Commented Deprecate Technology flag logic for US 476956 
+            /*if (!String.isBlank(progEnrollment.UserTechnologyFlag__c) && 
                 (progEnrollment.UserTechnologyFlag__c == 'Pending Review' || progEnrollment.UserTechnologyFlag__c == 'Withdraw')) {
                     returnString += '[Technology]-';
-                }
+                }*/
             if (!String.isBlank(progEnrollment.DisciplinaryFlagOverride__c) &&
                 (progEnrollment.DisciplinaryFlagOverride__c == 'Pending Review' || progEnrollment.DisciplinaryFlagOverride__c == 'Withdraw')) {
                     returnString += '[Disciplinary History]-';

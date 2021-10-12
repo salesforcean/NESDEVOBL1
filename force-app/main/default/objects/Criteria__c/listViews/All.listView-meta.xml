@@ -11,9 +11,9 @@
     <columns>LAST_UPDATE</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>Criteria_Field__c</field>
+        <field>NAME</field>
         <operation>equals</operation>
-        <value>Annual_Student_Information__c.Grade_Level_Requested__c</value>
+        <value>Hold Final Confirmation</value>
     </filters>
     <label>All</label>
 </ListView>
