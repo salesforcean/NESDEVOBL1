@@ -468,8 +468,9 @@ public class NES_AnnualStudentInfoTriggerTest {
         School_Year__c cSchoolYear = [SELECT Id,Start_Date__c,End_Date__c FROM School_Year__c WHERE Start_Date__c = :StartDate LIMIT 1 ];
         School_Year__c  SchoolYear =[SELECT Id,Start_Date__c,End_Date__c FROM School_Year__c LIMIT 1];
         List<hed__Program_Enrollment__c> programEnrollmentList = new List<hed__Program_Enrollment__c>();
-        //Start : Added Limit 1 to query in for by Ritvik on 01/15/2019 as per discussion with Tricia in call. 
-        for(hed__Program_Enrollment__c progEnrollment:[SELECT Id,Status__c,CounselingFlag__c,WaitlistFlag__c,UserTechnologyFlag__c,
+        //Start : Added Limit 1 to query in for by Ritvik on 01/15/2019 as per discussion with Tricia in call.
+        //Commented Deprecate Technology flag logic for US 476956 
+        for(hed__Program_Enrollment__c progEnrollment:[SELECT Id,Status__c,CounselingFlag__c,WaitlistFlag__c,/*UserTechnologyFlag__c,*/
                 HomelessRiskFlag__c,PrincipalGeneralFlag__c,PlacementFlag__c,
                 PORFlag__c,Start_Year__c,HHPORFlag__c,GradeLevelEligibility__c,
                 EntranceAgeEligibilitySystem__c,EntranceAgeEligibilityOverride__c,EntranceAgeEligibilityFinal__c,
@@ -522,9 +523,10 @@ public class NES_AnnualStudentInfoTriggerTest {
         update spEducation ;
         Special_Education__c specialEducationTest = [SELECT Program_Enrollment__r.WhyFlagged__c FROM Special_Education__c WHERE Id =:spEducation.Id];
         System.assertNotEquals(specialEducationTest.Program_Enrollment__r.WhyFlagged__c, null);
+        //Commented Deprecate Technology flag logic for US 476956
         hed__Program_Enrollment__c progEnrollmentToTest =[SELECT Id,HHPORFlag__c,PORFlag__c,WhyFlagged__c,PlacementFlag__c,CounselingFlag__c,Start_Year__c,
                 PriorWithdrawalFlag__c,WaitlistFlag__c,
-                UserTechnologyFlag__c,DisciplinaryFlagOverride__c,HomelessRiskFlag__c,PrincipalGeneralFlag__c FROM hed__Program_Enrollment__c LIMIT 1];
+                /*UserTechnologyFlag__c,*/DisciplinaryFlagOverride__c,HomelessRiskFlag__c,PrincipalGeneralFlag__c FROM hed__Program_Enrollment__c LIMIT 1];
         System.assertNotEquals(progEnrollmentToTest.WhyFlagged__c, null);        
     }
 

@@ -388,20 +388,19 @@ public class EvaluationUtils  {
             if (ecr.Child_Enrollment_Component__r.RecordType.Name == NES_DashboardUtilities.QUESTION_RT)
                 allQuestionECs.add(ecr.Child_Enrollment_Component__c);
         }
-        
-       if (newAffiliations.size() > 0)
-            insert newAffiliations; 
- /*     try
-      {
-      if (newAffiliations.size() > 0)
-            insert newAffiliations;
-      }
+        //Details: Code fix for UNABLE_TO_LOCK_ROW issue faced by Performance Team during performance testing
+        //by <Krishna Peddanagammol> On <2021-10-12> 
+        try
+        {
+            if (newAffiliations.size() > 0)
+                insert newAffiliations;
+        }
         catch(DMLException e) {
-     if(e.getMessage().contains('UNABLE_TO_LOCK_ROW')) {
-
-             insert newAffiliations;
-
-	}}*/
+            if(e.getMessage().contains('UNABLE_TO_LOCK_ROW')) {
+                if (newAffiliations.size() > 0)
+                    upsert newAffiliations;
+            }
+        }
 
         // collect SchoolYears
         Map<String, School_Year__c> schoolYearByExternalId = new Map<String, School_Year__c>();

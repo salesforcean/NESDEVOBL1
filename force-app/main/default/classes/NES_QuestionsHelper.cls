@@ -481,12 +481,12 @@ public without sharing class NES_QuestionsHelper {
         Map<Id, SObject> sObjectMap = new Map<Id, SObject>();
 
         // Added to triage Bug # 400086 by Sumanth - 6/11/2021
-        logger.logError('NES_QuestionsHelper->saveAnswers', 'Entered into saveAnswers method for Bug 400086'); 
+        //logger.logError('NES_QuestionsHelper->saveAnswers', 'Entered into saveAnswers method for Bug 400086'); 
         String sObjectMapText,singleQuestionsText,objectsForUpdateText,PENameText;
         PENameText = (studentEnrollmentId != null) ? studentEnrollmentId : 'StudentEnrollmentId is null';
-        logger.logError('NES_QuestionsHelper->saveAnswers', 'Std PE Id-->'+PENameText); 
+        //logger.logError('NES_QuestionsHelper->saveAnswers', 'Std PE Id-->'+PENameText); 
         singleQuestionsText = (singleQuestions != null && singleQuestions.size() > 0) ? JSON.serialize(singleQuestions) : 'singleQuestions List is null.';
-        logger.logError('NES_QuestionsHelper->saveAnswers', 'singleQuestionsText-->'+singleQuestionsText); 
+        //logger.logError('NES_QuestionsHelper->saveAnswers', 'singleQuestionsText-->'+singleQuestionsText); 
         // Loop through questions for lists of SObjects
         for (NES_EvaluateUtil.Question singleQuestion : singleQuestions) {
 
@@ -513,7 +513,7 @@ public without sharing class NES_QuestionsHelper {
         }
        // Added to triage Bug # 400086 by Sumanth - 6/11/2021
         sObjectMapText = (sObjectMap != null) ? JSON.serialize(sObjectMap) : 'sObjectMap map is null.';
-        logger.logError('NES_QuestionsHelper->saveAnswers', 'sObjectMapText-->'+sObjectMapText);
+        //logger.logError('NES_QuestionsHelper->saveAnswers', 'sObjectMapText-->'+sObjectMapText);
         for (String mapKey : sObjectMap.keySet()) {
             SObject sObj = sObjectMap.get(mapKey);
             objectsForUpdate.add(sObj);
@@ -521,14 +521,14 @@ public without sharing class NES_QuestionsHelper {
 
          // Added to triage Bug # 400086 by Sumanth - 6/11/2021               
         objectsForUpdateText = (objectsForUpdate != null && objectsForUpdate.size() > 0) ? JSON.serialize(objectsForUpdate)+'\n objectsForUpdate size : '+objectsForUpdate.size() : 'objectsForUpdate List is null.';
-        logger.logError('NES_QuestionsHelper->saveAnswers', 'objectsForUpdateText-->'+objectsForUpdateText);
+        //logger.logError('NES_QuestionsHelper->saveAnswers', 'objectsForUpdateText-->'+objectsForUpdateText);
         integer i = 0;
         do {
            try{
                i++;
                // Added null pointer check for Bug # 400086 by Sravani
-               logger.logError('NES_QuestionsHelper->saveAnswers', 'Entered into try block');
-               logger.saveLogs();
+               //logger.logError('NES_QuestionsHelper->saveAnswers', 'Entered into try block');
+               //logger.saveLogs();
                if(!objectsForUpdate.Isempty() && objectsForUpdate.size()>0) 
                    update objectsForUpdate; 
                break;  //If we make it to this line, the update succeeded. 

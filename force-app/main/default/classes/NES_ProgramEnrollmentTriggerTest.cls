@@ -927,8 +927,9 @@ private class NES_ProgramEnrollmentTriggerTest {
         School_Year__c cSchoolYear = [SELECT Id,Start_Date__c,End_Date__c FROM School_Year__c WHERE Start_Date__c = :StartDate LIMIT 1];
         //  School_Year__c  SchoolYear =[SELECT Id,Start_Date__c,End_Date__c FROM School_Year__c LIMIT 1];
         List<hed__Program_Enrollment__c> programEnrollmentList = new List<hed__Program_Enrollment__c>();
+        //Commented Deprecate Technology flag logic for US 476956
         for (hed__Program_Enrollment__c progEnrollment : [
-                SELECT Id,Status__c,CounselingFlag__c,WaitlistFlag__c,UserTechnologyFlag__c,
+                SELECT Id,Status__c,CounselingFlag__c,WaitlistFlag__c,/*UserTechnologyFlag__c,*/
                         HomelessRiskFlag__c,PrincipalGeneralFlag__c,PlacementFlag__c,
                         PORFlag__c,Start_Year__c,HHPORFlag__c,GradeLevelEligibility__c,
                         EntranceAgeEligibilitySystem__c,EntranceAgeEligibilityOverride__c,EntranceAgeEligibilityFinal__c,

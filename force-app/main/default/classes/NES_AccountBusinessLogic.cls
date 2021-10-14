@@ -95,15 +95,14 @@ public without sharing class NES_AccountBusinessLogic {
         Set<Id> accountIds = new Set<Id>();
         for (Account account : newList) {
             if (oldMap != null && !oldMap.isEmpty()) {
-                //Commented Deprecate Technology flag logic for US 476956
                 if (account.LC_HighestLevelofEducation__c != oldMap.get(account.Id).LC_HighestLevelofEducation__c
                         || account.Mktg_Customer_Loyalty__c != oldMap.get(account.Id).Mktg_Customer_Loyalty__c
-                        //|| account.Computer_in_Home__c != oldMap.get(account.Id).Computer_in_Home__c
+                        || account.Computer_in_Home__c != oldMap.get(account.Id).Computer_in_Home__c
                         || account.Internet_Connection_Type__c != oldMap.get(account.Id).Internet_Connection_Type__c)
                     accountIds.add(account.Id);
             } else {
                 if (!String.isBlank(account.LC_HighestLevelofEducation__c) || !String.isBlank(account.Mktg_Customer_Loyalty__c)
-                       /* || account.Computer_in_Home__c != null */|| !String.isBlank(account.Internet_Connection_Type__c))
+                        || account.Computer_in_Home__c != null || !String.isBlank(account.Internet_Connection_Type__c))
 
                     accountIds.add(account.Id);
             }

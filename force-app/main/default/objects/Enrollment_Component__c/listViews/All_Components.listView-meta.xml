@@ -5,5 +5,10 @@
     <columns>RECORDTYPE</columns>
     <columns>Component_Type__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Answer_Target__c</field>
+        <operation>contains</operation>
+        <value>HLS_Guardian_Native_Language__c</value>
+    </filters>
     <label>All Components</label>
 </ListView>

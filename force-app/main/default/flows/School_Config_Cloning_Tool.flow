@@ -88,8 +88,8 @@
     <recordLookups>
         <name>Get_Account_School_Information</name>
         <label>Get Account School Information</label>
-        <locationX>1037</locationX>
-        <locationY>320</locationY>
+        <locationX>968</locationX>
+        <locationY>338</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_All_Records</targetReference>

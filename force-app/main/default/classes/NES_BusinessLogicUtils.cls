@@ -2120,7 +2120,8 @@ programEnrollment.StudentFlag__c = 'On-Hold';
             EntranceAgeEligibilityOverride__c,
             EntranceAgeEligibilityFinal__c,
             WaitlistFlag__c,
-            UserTechnologyFlag__c,
+            //Commented Deprecate Technology flag logic for US 476956
+            //UserTechnologyFlag__c,
             DisciplinaryFlagOverride__c,
             HomelessRiskFlag__c,
             EligibilityFlag__c,
@@ -2356,7 +2357,8 @@ returnString += '';
             EntranceAgeEligibilityOverride__c,
             EntranceAgeEligibilityFinal__c,
             WaitlistFlag__c,
-            UserTechnologyFlag__c,
+            //Commented Deprecate Technology flag logic for US 476956
+            //UserTechnologyFlag__c,
             DisciplinaryFlagOverride__c,
             HomelessRiskFlag__c,
             EligibilityFlag__c,

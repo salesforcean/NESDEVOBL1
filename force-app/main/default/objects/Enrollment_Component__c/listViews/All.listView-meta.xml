@@ -13,7 +13,7 @@
     <filters>
         <field>Answer_Target__c</field>
         <operation>contains</operation>
-        <value>Computer_In_Home</value>
+        <value>Student_Custody__c.Custody_Relationship__c</value>
     </filters>
     <label>All</label>
 </ListView>

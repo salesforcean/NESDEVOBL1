@@ -723,9 +723,8 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         currentSchoolYear = [SELECT Id, Name FROM School_Year__c WHERE Name =: currentSchoolYearName limit 1];
         PE = Peak_TestUtils.createProgramEnrollment(acc_academicProgram.Id, cntct_student.Id, currentSchoolYear.Id, true);      
        
-        //Commented Deprecate Technology flag logic for US 476956
-        //acc_academicProgram.TechnologyFlagAction__c = 'Pending Review';
-        //update acc_academicProgram;
+        acc_academicProgram.TechnologyFlagAction__c = 'Pending Review';
+        update acc_academicProgram;
         
         PE.status__c = 'In Progress';
         update PE;
@@ -736,9 +735,8 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
                //Pe1.status__c = 'In Progress';//added by anitha P  
                //update pe1;
         // Update the household to say there is no computer at home
-        //Commented Deprecate Technology flag logic for US 476956
-                //acc_houseHold.Computer_in_Home__c = 'No';
-               // Update acc_houseHold;
+        acc_houseHold.Computer_in_Home__c = 'No';
+        Update acc_houseHold;
             
         } catch (Exception e) {
             err = e;
@@ -746,7 +744,8 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         Test.stopTest();
 
         // refresh PE
-        PE = [SELECT Id, UserTechnologyFlag__c from hed__Program_Enrollment__c WHERE Id =: PE.Id];
+        // Commented Deprecate Technology flag logic for US 476956
+        PE = [SELECT Id /*UserTechnologyFlag__c*/ from hed__Program_Enrollment__c WHERE Id =: PE.Id];
 
         // assert
         //Commented Deprecate Technology flag logic for US 476956
@@ -771,17 +770,15 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         currentSchoolYear = [SELECT Id, Name FROM School_Year__c WHERE Name =: currentSchoolYearName limit 1];
         PE = Peak_TestUtils.createProgramEnrollment(acc_academicProgram.Id, cntct_student.Id, currentSchoolYear.Id, true);
         
-		//Commented Deprecate Technology flag logic for US 476956
-        //acc_academicProgram.TechnologyFlagAction__c = 'Pending Review';
-        //update acc_academicProgram;
+		acc_academicProgram.TechnologyFlagAction__c = 'Pending Review';
+        update acc_academicProgram;
         
         PE.status__c = 'In Progress';
         update PE;
         
         // Update the household to say there is no computer at home
-        //Commented Deprecate Technology flag logic for US 476956
-        //acc_houseHold.Computer_in_Home__c = 'No';
-        //Update acc_houseHold;
+        acc_houseHold.Computer_in_Home__c = 'No';
+        Update acc_houseHold;
         hed__Program_Enrollment__c PE2;
 
         Exception err;
@@ -796,7 +793,8 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         Test.stopTest();
 
         // refresh PE
-        PE = [SELECT Id, UserTechnologyFlag__c from hed__Program_Enrollment__c WHERE Id =: PE2.Id];
+        // Commented Deprecate Technology flag logic for US 476956
+        PE = [SELECT Id /*UserTechnologyFlag__c*/ from hed__Program_Enrollment__c WHERE Id =: PE2.Id];
 
         // assert
         //Commented Deprecate Technology flag logic for US 476956
@@ -1269,8 +1267,7 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         account1.Internet_Connection_Type__c = 'Cable';
         account1.LC_HighestLevelofEducation__c = 'High school graduate';
         account1.Mktg_Customer_Loyalty__c = 'Test Customer Loyalty';
-        //Commented Deprecate Technology flag logic for US 476956
-        //account1.Computer_in_Home__c = 'Yes';
+        account1.Computer_in_Home__c = 'Yes';
         update account1;
     }
      

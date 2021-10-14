@@ -273,18 +273,14 @@ public without sharing class ECA_HierarchyStatusUpdate
             Id ecaId = peData.ecToECAMap.get(ecId);
             Enrollment_Component_Affiliation__c parent = queriedECAs.get(ecaId);
             Enrollment_Component_Affiliation__c inFlightParent = toProcessECAs.get(ecaId);
-           // System.debug('parent.status__c---------------------------------->' +parent.status__c);
-            //System.debug('parent---------------------------------->' +parent);
-			//System.debug('inFlightParent.Status__c---------------------------------->' +inFlightParent.Status__c);
-            //System.debug('inFlightParent---------------------------------->' +inFlightParent);
-
+         
             if(!VALID_ECA_STATUS.containsIgnoreCase(queriedECAs.get(parent.Id).enrollment_component__r.recordtype.name))
                 continue;
 
             String originalStatus = (inFlightParent!=null ? inFlightParent.Status__c : parent.status__c);
-			//System.debug('originalStatus---------------------------------->' +originalStatus);
+			
             String updatedStatus = getChildrenStatus(parent, true);
-            //System.debug('updatedStatus---------------------------------->' +updatedStatus);
+           
             if(updatedStatus!=null && parent !=null && ((updatedStatus != originalStatus) || (inFlightParent!=null && inFlightParent.Status__c !=  parent.status__c)) ) // parent.status__c)
             {
                 if (originalStatus != 'Not Applicable') // skip if NA
