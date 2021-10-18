@@ -7,6 +7,7 @@
 */
 
 public class EvaluationUtils  {
+    private static Peak_ApexLog logger = new Peak_ApexLog('EvaluationUtils');
     //This method is the main entry point from the triggers that have been written on the base objects.
     //It is handed a list of fields that have been updated and collected in a trigger.  
     //The changedFieldsMap parameter is a map between field names and the value that field was updated to.
@@ -390,18 +391,22 @@ public class EvaluationUtils  {
         }
         //Details: Code fix for UNABLE_TO_LOCK_ROW issue faced by Performance Team during performance testing
         //by <Krishna Peddanagammol> On <2021-10-12> 
-        try
-        {
-            if (newAffiliations.size() > 0)
-                insert newAffiliations;
-        }
-        catch(DMLException e) {
-            if(e.getMessage().contains('UNABLE_TO_LOCK_ROW')) {
+        integer i=0;
+        do{
+            try
+            {
+                i++;
                 if (newAffiliations.size() > 0)
                     upsert newAffiliations;
             }
-        }
-
+            catch(DMLException e) {
+                //if(e.getMessage().contains('UNABLE_TO_LOCK_ROW')) {
+                logger.logException('Retrying a timed out insert', e);
+                logger.saveLogs();         
+                //}
+            }
+        }while(i<5);
+        
         // collect SchoolYears
         Map<String, School_Year__c> schoolYearByExternalId = new Map<String, School_Year__c>();
         // collect QuestionGroups        
@@ -509,7 +514,7 @@ public class EvaluationUtils  {
             NES_AnnualStudentInfoBusinessLogic.populateProgramGradeLevel(programEnrollments[0].Annual_Student_Information__r, null);
         }
         else{
-          //  if(EnrollmentType != 'InitReActivation' && EnrollmentType != 'InitReEnrollment' && EnrollmentType != 'SYReEnroll')
+            //  if(EnrollmentType != 'InitReActivation' && EnrollmentType != 'InitReEnrollment' && EnrollmentType != 'SYReEnroll')
             System.enqueueJob(new NES_AddStudentCBLQueueable(programEnrollment)); 
         }
         //Ended by Jagadish Babu       

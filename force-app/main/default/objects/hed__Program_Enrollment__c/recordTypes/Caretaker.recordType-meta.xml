@@ -8044,6 +8044,13 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Waitlist_Released__c</picklist>
+        <values>
+            <fullName>Waitlist Released</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>WhyIsYourChildAttdReferredBy__c</picklist>
         <values>
             <fullName>School Administrator %28principal%2C assistant principal%29</fullName>

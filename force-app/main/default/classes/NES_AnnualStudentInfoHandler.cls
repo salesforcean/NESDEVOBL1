@@ -94,6 +94,7 @@ public with sharing class NES_AnnualStudentInfoHandler {
 
         if (runCBL) {
             if (waitlistFlagCalcSwitch)
+                //Commented for a bug related to waitlist stage going off as soon as kid is placed (Krishna Peddanagammol) (2021-10-14) While working on ADO #473192 assigned to (Ravichandra Amirshetty) 
                 NES_AnnualStudentInfoBusinessLogic.waitlistCalculator(actlstnewMap.values(), actlstoldMap); //Swapna:Changed to active list
             if (whyFlagSwitch) {
                 NES_BusinessLogicUtils.invokeCalculateWhyFlagMethod(actlstnewMap.values(), actlstoldMap); //Swapna:Changed to active list

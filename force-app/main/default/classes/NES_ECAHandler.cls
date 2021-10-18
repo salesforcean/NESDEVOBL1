@@ -86,7 +86,8 @@ public class NES_ECAHandler {
                                                                   SELECT Id, Status__c, Order__c, Deferral_Date__c, Enrollment_Component__r.Component_Type__c, Enrollment_Component__r.RecordType.Name,
 
                                                                   Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c,Program_Enrollment__r.Status__c, Program_Enrollment__c,
-                                                                  Program_Enrollment__r.Household_Program_Enrollment__r.id, Program_Enrollment__r.WaitlistFlag__c, 
+                                                                  Program_Enrollment__r.Household_Program_Enrollment__r.id, Program_Enrollment__r.WaitlistFlag__c,
+            													  Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.id, Enrollment_Component__r.Name,
                                                                   Enrollment_Component__r.Waitlist__c, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c,Program_Enrollment__r.hed__Account__r.Use_Updated_ECA_Process__c
                                                                   FROM Enrollment_Component_Affiliation__c
@@ -173,6 +174,16 @@ public class NES_ECAHandler {
                 PE.id = eca.Program_Enrollment__c;
                 PE.Stage__c = eca.Enrollment_Component__r.Name;
                 PE.Stage_Date__c = System.now();
+                //Added below code Us #473192
+                if(oldMap.get(eca.Id).Enrollment_Component__r.Name == 'Waitlist' && (eca.Enrollment_Component__r.Name <> 'Waitlist')){
+				if(System.today() < eca.Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.School_Start_Date__c )
+				PE.Waitlist_Released__c = 'Before School Start Date';
+				else
+				PE.Waitlist_Released__c = 'After School Start Date';
+				PE.Waitlist_Released_Dt__c = System.today();
+				
+				}
+                //End here
                 pesToUpdateMap.put(eca.Program_Enrollment__c, PE);
             }
 
