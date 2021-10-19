@@ -36,6 +36,7 @@ public class NES_ECAHandler {
                                                                   SELECT Id, Status__c, Order__c, Enrollment_Component__r.Component_Type__c, Enrollment_Component__r.RecordType.Name,
                                                                   Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c, Program_Enrollment__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.id,
+            													  Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.id,
                                                                   Enrollment_Component__r.Waitlist__c,Enrollment_Component__r.Open_Application__c,Enrollment_Component__r.Name, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c
                                                                   FROM Enrollment_Component_Affiliation__c
@@ -81,13 +82,14 @@ public class NES_ECAHandler {
         List<Enrollment_Component_Affiliation__c> statusChangedECAs = new List<Enrollment_Component_Affiliation__c> ();
         //added for #101935 User Story (Task 104310) on 2019-08-13
         //Added Program_Enrollment__r.Status__c field in SOQL query for the bug 328454 on 10/30/2020
+        //Added Program_Enrollment__r.hed__Account__r.School_Start_Date__c field in SOQL query for the US 473192 on 10/14/2021
         List<Enrollment_Component_Affiliation__c> affiliations = [
                                                                   // added 123972- ECA's EC record type and record name
                                                                   SELECT Id, Status__c, Order__c, Deferral_Date__c, Enrollment_Component__r.Component_Type__c, Enrollment_Component__r.RecordType.Name,
 
                                                                   Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c,Program_Enrollment__r.Status__c, Program_Enrollment__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.id, Program_Enrollment__r.WaitlistFlag__c,
-            													  Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
+            													  Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.id, Enrollment_Component__r.Name,
                                                                   Enrollment_Component__r.Waitlist__c, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c,Program_Enrollment__r.hed__Account__r.Use_Updated_ECA_Process__c
                                                                   FROM Enrollment_Component_Affiliation__c
@@ -162,8 +164,6 @@ public class NES_ECAHandler {
                 PE.Waitlist_Time_Date_Stamp__c = System.now();
                 pesToUpdateMap.put(eca.Program_Enrollment__c, PE);
             }
-            system.debug('added for debuging waitlist defect**********'+eca.Enrollment_Component__r.Name+'****'+eca.Enrollment_Component__r.RecordType.Name+'*****Status****'+eca.Status__c);
-            
             if (eca.Status__c == 'In Progress' && oldMap.get(eca.Id).Status__c<> 'In Progress' && eca.Enrollment_Component__r.RecordType.Name == 'Stage') {
                 hed__Program_Enrollment__c PE;
                 if (!pesToUpdateMap.containsKey(eca.Program_Enrollment__c))
@@ -174,14 +174,17 @@ public class NES_ECAHandler {
                 PE.id = eca.Program_Enrollment__c;
                 PE.Stage__c = eca.Enrollment_Component__r.Name;
                 PE.Stage_Date__c = System.now();
-                //Added below code Us #473192
-                if(oldMap.get(eca.Id).Enrollment_Component__r.Name == 'Waitlist' && (eca.Enrollment_Component__r.Name <> 'Waitlist')){
-				if(System.today() < eca.Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.School_Start_Date__c )
-				PE.Waitlist_Released__c = 'Before School Start Date';
-				else
-				PE.Waitlist_Released__c = 'After School Start Date';
-				PE.Waitlist_Released_Dt__c = System.today();
-				
+                //Added below code Us #473192 By Ravi 
+                if(eca.Enrollment_Component__r.Name == 'Confirmation of Enrollment')
+                {
+                    if(System.today() < eca.Program_Enrollment__r.hed__Account__r.School_Start_Date__c )
+                    {
+                        PE.Waitlist_Released__c = 'Before School Start Date';
+                        PE.Waitlist_Released_Dt__c = System.today();
+                    }  else{
+                        PE.Waitlist_Released__c = 'After School Start Date';
+                        PE.Waitlist_Released_Dt__c = System.today();
+                    }
 				}
                 //End here
                 pesToUpdateMap.put(eca.Program_Enrollment__c, PE);

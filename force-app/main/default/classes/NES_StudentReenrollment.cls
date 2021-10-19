@@ -62,6 +62,8 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
             WaitlistCounter__c = null,
             Waitlist_Time_Date_Stamp__c = null,
             Waitlist_Time_Date_Stamp_Override__c = null,
+            Waitlist_Released__c = null,
+            Waitlist_Released_Dt__c = null,
             Initial_ECA_Creation_Complete__c = true
         );
         update toUpdatePE;

@@ -698,6 +698,7 @@ public without sharing class NES_AddStudentHelper {
                            affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                            affiliationRecord.Order__c = relationships[i].Order__c;
                         affiliationRecord.Status__c = 'In Progress';
+                        affiliationRecord.is_Dirty__c = false; 
                         
                         //relationshipId = relationships[i].Child_Enrollment_Component__c;
                     }else if(!(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c))){

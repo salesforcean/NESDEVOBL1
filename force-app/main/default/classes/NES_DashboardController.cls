@@ -38,4 +38,19 @@ type Enrollment components and related ECAs. Return this information after addin
     public static NES_ReEnrUtilities.ReEnrResults processReEnrasInEnr(Id studentId, Id programEnrollmentId){
         return NES_ReEnrUtilities.reenrollingStudent(studentId, programEnrollmentId);
 	} */
+    
+    
+      @AuraEnabled
+    public static void openApplication(Id programEnrollmentId){ 
+     
+  	List<Enrollment_Component_Affiliation__c> lsteca  = [Select id, Name, Status__c,Program_Enrollment__c from Enrollment_Component_Affiliation__c where EC_Record_Type__c = 'Stage'  AND Enrollment_Component__r.Name = 'Open Application' AND Status__c = 'Complete' AND Program_Enrollment__c=:programEnrollmentId];
+         system.debug('lsteca '+lsteca); 
+        for (Enrollment_Component_Affiliation__c eca :lsteca ){
+            eca.Status__c = 'In Progress';
+        }
+        system.debug('lsteca '+lsteca); 
+        if (lsteca.size() > 0){
+             update lsteca;
+        }
+    }    
 }

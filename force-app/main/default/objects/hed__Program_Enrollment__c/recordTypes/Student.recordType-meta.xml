@@ -8134,7 +8134,11 @@
     <picklistValues>
         <picklist>Waitlist_Released__c</picklist>
         <values>
-            <fullName>Waitlist Released</fullName>
+            <fullName>After School Start Date</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Before School Start Date</fullName>
             <default>false</default>
         </values>
     </picklistValues>

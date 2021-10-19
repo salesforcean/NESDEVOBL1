@@ -102,9 +102,22 @@
  * changes added by anithap on 17/01/2019
  * 
  */
-                $A.get("e.force:navigateToURL").setParams({
+              $A.get("e.force:navigateToURL").setParams({
                     "url": url
                 }).fire();
+                
+                var datset = event.currentTarget.dataset;
+                var action = component.get("c.openApplication");
+                action.setParams({
+                    programEnrollmentId : datset.programenrollmentid
+                });
+                action.setCallback(this, function(response){
+                                   var state = response.getState();
+                if(state === 'SUCCESS'){
+                    console.log('updated successfully');
+                }
+                                   });
+        		$A.enqueueAction(action);
             }
         
     },

@@ -8,12 +8,18 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
+        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Waitlist Released</fullName>
+                <fullName>After School Start Date</fullName>
                 <default>false</default>
-                <label>Waitlist Released</label>
+                <label>After School Start Date</label>
+            </value>
+            <value>
+                <fullName>Before School Start Date</fullName>
+                <default>false</default>
+                <label>Before School Start Date</label>
             </value>
         </valueSetDefinition>
     </valueSet>

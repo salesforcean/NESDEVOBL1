@@ -396,8 +396,10 @@ public class EvaluationUtils  {
             try
             {
                 i++;
-                if (newAffiliations.size() > 0)
+                if (newAffiliations.size() > 0){
                     upsert newAffiliations;
+                	break;//Breaking the loop as the DML executed and no exceptions
+                }
             }
             catch(DMLException e) {
                 //if(e.getMessage().contains('UNABLE_TO_LOCK_ROW')) {

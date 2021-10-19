@@ -219,7 +219,9 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
             PlacementFlag__c = null,
             WaitlistCounter__c = null,  //Need for re enroll
             Waitlist_Time_Date_Stamp__c = null,  //Need for re enroll
-            Waitlist_Time_Date_Stamp_Override__c = null    //Need for re enroll
+            Waitlist_Time_Date_Stamp_Override__c = null,    //Need for re enroll
+            Waitlist_Released__c = null,//Need for re enroll
+            Waitlist_Released_Dt__c = null //Need for re enroll
         );
 
         update toUpdatePE;
