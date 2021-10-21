@@ -2,7 +2,11 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ITR_Tasks_Status__c</fullName>
     <externalId>false</externalId>
-    <formula>IF((ISPICKVAL( Enrollment_Type__c , &apos;Returning Student&apos;)) &amp;&amp; (((Total_Forms__c - Total_Forms_Completed__c)=1) ||((Total_Forms__c - Total_Forms_Completed__c)=0))&amp;&amp; (Initial_ECA_Creation_Complete__c=True), &apos;Tasks Completed&apos; , &apos;Tasks Not Completed&apos;)</formula>
+    <formula>IF((ISPICKVAL( Enrollment_Type__c , &apos;Returning Student&apos;)) &amp;&amp; NOT(ISNULL(V2_ITR_Tasks_Complete_Status__c)),V2_ITR_Tasks_Complete_Status__c ,
+IF((ISPICKVAL( Enrollment_Type__c , &apos;Returning Student&apos;)) &amp;&amp;
+(((Total_Forms__c - Total_Forms_Completed__c)=1) ||
+((Total_Forms__c - Total_Forms_Completed__c)=0))&amp;&amp;
+(Initial_ECA_Creation_Complete__c=True), &apos;Tasks Completed&apos; , &apos;Tasks Not Completed&apos;))</formula>
     <label>ITR Tasks Status</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

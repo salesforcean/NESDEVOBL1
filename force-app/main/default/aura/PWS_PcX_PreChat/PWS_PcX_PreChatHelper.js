@@ -9,9 +9,6 @@
         //because some school codes require additional fields
         var schoolCode;
 
-        // default to true
-        window.zipCodeLookupRequired = true;
-
         // Dynamically create input fields
         fields.forEach(function (field) {
             // this will render fields out in the same HTML structure as the out of the box form
@@ -67,16 +64,12 @@
             input.setAttribute("aria-required", field.required);
             input.setAttribute("aria-describedby", "label_" + field.name);
 
-            //Customize Zip Code input if needed
-            if (field.name === "Chat_Zip_Code__c") {
-                console.log(field.name + " found");
+            if (field.name === "Chat_Zip_Code__c") {// Customize Zip Code input if needed
                 input.required = true;
                 input.setAttribute("aria-required", true);
                 input.placeholder = "Zip Code *";
-                window.zipCodeLookupRequired = true;
-                input.setAttribute("type", "");
-            } else if (field.name === "Global_Opt_Out__c") {
-                // Manually set the Global Opt Out field to "NO"
+                input.setAttribute("type", "text");
+            } else if (field.name === "Global_Opt_Out__c") {// Manually set the Global Opt Out field to "NO"
                 input.value = field.value = "NO";
                 input.maxLength = field.maxLength = 2;
             }
@@ -149,9 +142,11 @@
     */
     performZipCodeLookup: function (helper, startChatMethod, preChatInfo) {
         if (window.$) {
-            const zipCodeValue = $("input[name='Chat_Zip_Code__c']").val();
+            const zipCodeValue = ($("input[name='Chat_Zip_Code__c']").val()
+                && $("input[name='Chat_Zip_Code__c']").val().trim())
+                ? $("input[name='Chat_Zip_Code__c']").val().substring(0, 5) : null;
 
-            if (zipCodeValue.length === 5) {
+            if (zipCodeValue) {
                 const parameters = {
                     zipCode: zipCodeValue,
                     urlType: "Enrollment Redirect"
@@ -165,7 +160,6 @@
 
                 $.getJSON("https://" + window.zipCodeLookupDomain + "/API/FindByZip/locations/getLocationByZipCode", parameters)
                     .done(function (data) {
-
                         const schoolJson = JSON.parse(data);
                         const $schoolIdHiddenField = $("input[name='School_ID_Location__c']");
                         if (schoolJson && schoolJson.idLocation) {
@@ -173,7 +167,6 @@
                             // replace school id with value returned from API unless it's iNaCA
                             idLocation === iNaCaSchoolId ? $schoolIdHiddenField.val("") : $schoolIdHiddenField.val(idLocation);
                             // form values have changed so regenerate prechatInfo object
-
                             preChatInfo = helper.createStartChatDataArray();
                         } else {
                             // invalid zip or error on API call
@@ -205,18 +198,11 @@
             "Company", "Channel Type", "Lead Source",
             "GA Click ID", "GA Client ID", "GA Device", "GA Exp ID", "GA Medium", "GA Source"
         ];
-        const schoolCodesToDisplayZipCode = [91, 4950];
 
         if (field.type === "inputEmail") {
             return "email";// return email for email inputs
         } else if (field.type === "inputPhone") {
             return "tel";// return tel for phone number inputs
-        }
-
-        //Determine if Zip Code input is needed
-        //Currently only necessary for certain school codes
-        if (field.name === "Chat_Zip_Code__c" && schoolCodesToDisplayZipCode.includes(schoolCode)) {
-            return "text";
         }
 
         // Hide hidden fields and the Global Opt Out field

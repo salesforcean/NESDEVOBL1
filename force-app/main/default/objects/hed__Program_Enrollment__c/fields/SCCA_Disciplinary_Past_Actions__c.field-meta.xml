@@ -36,11 +36,6 @@
                 <default>false</default>
                 <label>Yes, suspended and expelled</label>
             </value>
-            <value>
-                <fullName>Yes</fullName>
-                <default>false</default>
-                <label>Yes</label>
-            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

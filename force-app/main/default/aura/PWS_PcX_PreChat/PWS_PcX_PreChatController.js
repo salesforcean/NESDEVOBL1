@@ -8,7 +8,7 @@
     */
     onInit: function (component, event, helper) {
         // get domain name to build zip code lookup endpoint URL
-    	window.zipCodeLookupDomain = window.parent.location.hostname;
+        window.zipCodeLookupDomain = window.parent.location.hostname;
     },
     /**
     * After this component has rendered, create an  input fields
@@ -30,15 +30,15 @@
         }
     },
     /**
-	 * Handler for when the start chat button is clicked
-	 *
-	 * @param component - This prechat UI component.
-	 * @param event - The Aura event.
-	 * @param helper - This component's helper.
-	 */
+     * Handler for when the start chat button is clicked
+     *
+     * @param component - This prechat UI component.
+     * @param event - The Aura event.
+     * @param helper - This component's helper.
+     */
     onStartButtonClick: function (component, event, helper) {
         var prechatInfo = helper.createStartChatDataArray();
-        console.log('Pre Chat Data: ' + JSON.stringify(prechatInfo));        
+
         var prechatAPI = component.find("prechatAPI");
         var salesForceFieldValidation = prechatAPI.validateFields(prechatInfo);
 
@@ -49,7 +49,8 @@
         var requiredFieldValidation = helper.validateRequiredFields(prechatInfo);
 
         if (salesForceFieldValidation.valid && formFieldValidation === true && requiredFieldValidation === true) {
-            if (window.zipCodeLookupRequired === true) {
+            var performSchoolLookupByZipEnabled = $('button.embeddedServiceSidebarButton').attr('data-school-lookup-by-zip-enabled') === 'true';
+            if (performSchoolLookupByZipEnabled) {
                 // let the getJSON callback trigger chat after lookup
                 helper.performZipCodeLookup(helper, prechatAPI.startChat, prechatInfo);
             }
@@ -62,12 +63,12 @@
         }
     },
     /**
-	 * Handler for when the external scripts are loaded
-	 *
-	 * @param component - This prechat UI component.
-	 * @param event - The Aura event.
-	 * @param helper - This component's helper.
-	 */
+     * Handler for when the external scripts are loaded
+     *
+     * @param component - This prechat UI component.
+     * @param event - The Aura event.
+     * @param helper - This component's helper.
+     */
     scriptsLoaded: function (component, event, helper) {
         if (window.chatValidation) {
             // chat was closed and re-opened

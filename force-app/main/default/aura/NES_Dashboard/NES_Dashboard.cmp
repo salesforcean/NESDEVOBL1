@@ -155,7 +155,7 @@
                                                             <aura:if isTrue="{!program.buttonLabel != 'Complete'}">
                                                                 <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
                                                                     
-                                                                    <div class="viewButton slds-p-top_Large">
+                                                                    <div aura:id="controlbtn" class="viewButton slds-p-top_Large">
                                                                         
                                                                         <span class="btnblock">
                                                                             <a href="javascript:void(0)"

@@ -2,11 +2,11 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Open_Application_Period_status__c</fullName>
     <externalId>false</externalId>
-    <formula>IF (TEXT(Program_Grade_Level__r.Open_Application__c ) &lt;&gt; Null &amp;&amp; TEXT(Program_Grade_Level__r.Open_Application__c ) = &apos;Active&apos; &amp;&amp; Text(Open_Application__c)= &apos;Active&apos; &amp;&amp; Program_Grade_Level__r.Start_Open_Application__c &lt;= NOW() &amp;&amp; Program_Grade_Level__r.End_Open_Application__c &gt;= NOW(), 
+    <formula>IF (TEXT(Program_Grade_Level__r.Open_Application__c ) &lt;&gt; Null &amp;&amp; TEXT(Program_Grade_Level__r.Open_Application__c ) = &apos;Active&apos; &amp;&amp; Text(Open_Application__c)= &apos;Active&apos; &amp;&amp; Program_Grade_Level__r.Start_Open_Application__c &lt;= NOW() &amp;&amp; Program_Grade_Level__r.End_Open_Application__c &gt;= NOW(),
 
-&apos;Active&apos;, 
+&apos;Active&apos;,
 
-IF(TEXT(Program_Grade_Level__r.Open_Application__c ) = Null &amp;&amp; TEXT(hed__Account__r.Open_Application__c) = &apos;Active&apos; &amp;&amp; Text(Open_Application__c)= &apos;Active&apos; &amp;&amp;  hed__Account__r.Open_Application_Start_Date__c&lt;= NOW() &amp;&amp; hed__Account__r.Open_Application_End_Date__c &gt;= NOW(),&apos;Active&apos;,
+IF(TEXT(Program_Grade_Level__r.Open_Application__c ) = Null &amp;&amp; TEXT(hed__Account__r.Open_Application__c) = &apos;Active&apos; &amp;&amp; Text(Open_Application__c)= &apos;Active&apos; &amp;&amp; hed__Account__r.Open_Application_Start_Date__c&lt;= NOW() &amp;&amp; hed__Account__r.Open_Application_End_Date__c &gt;= NOW(),&apos;Active&apos;,
 
 &apos;Inactive&apos;))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

@@ -677,11 +677,12 @@ public without sharing class NES_AddStudentHelper {
                 
                //Added for Open Application User story-->DK
                 
-              //Add the rest of the stages that have no assignment logic. 
+          
                Id studentEnrollTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
                 
                 List<hed__Program_Enrollment__c> hPe = [SELECT id, Open_Application__c,RecordTypeId from hed__Program_Enrollment__c where Id=:newStudentEnrollment.Id];                       
                 system.debug('==>hPe '+hPe);
+                //boolean is_Dirty__c;
                 string TASInprogress = 'N';
                 //Id relationshipId;
                 for (Integer i = 1; i < relationships.size(); i++) {
@@ -698,20 +699,19 @@ public without sharing class NES_AddStudentHelper {
                            affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                            affiliationRecord.Order__c = relationships[i].Order__c;
                         affiliationRecord.Status__c = 'In Progress';
-                        affiliationRecord.is_Dirty__c = false; 
-                        
+                        affiliationRecord.is_Dirty__c = false;                       
                         //relationshipId = relationships[i].Child_Enrollment_Component__c;
-                    }else if(!(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c))){
+                        
+                    }else if(!(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c))){ 
                            affiliationRecord.Status__c = 'Not Applicable';
                            TASInprogress = 'Y';
                        }
                       
-                       else if (i!= 1 && String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {
+                        if (i!= 1 && String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {  
                            affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
                            affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                            affiliationRecord.Order__c = relationships[i].Order__c;
-                           //The second stage should be in progress all others not started.
-                           if (i == 1){
+                           if (i == 1){  
                                affiliationRecord.Status__c = 'In Progress';
                            }else if (relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student' && TASInprogress == 'Y'){
                                affiliationRecord.Status__c = 'In Progress';
@@ -736,13 +736,13 @@ public without sharing class NES_AddStudentHelper {
                             affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                             affiliationRecord.Order__c = relationships[i].Order__c;
                             //The second stage should be in progress all others not started.
-                            if (i == 1)
+                            if (i==1)
                                 affiliationRecord.Status__c = 'In Progress';
                             else
                                 affiliationRecord.Status__c = 'Not Started';
                             ecAffiliationsToInsert.add(affiliationRecord);
                         }
-                    }*/ 
+                    }*/
 
                 //add forms affiliation for the forms under stage 1 that have no assignment logic
                 List<Enrollment_Component_Relationship__c> formRelationships = [

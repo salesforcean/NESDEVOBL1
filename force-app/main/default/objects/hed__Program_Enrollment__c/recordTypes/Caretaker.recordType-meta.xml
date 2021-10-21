@@ -1161,6 +1161,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Foster_Flag__c</picklist>
+        <values>
+            <fullName>Pending Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Fulltime_or_Partime__c</picklist>
         <values>
             <fullName>Full-Time Student</fullName>
@@ -4993,30 +5004,6 @@
     <picklistValues>
         <picklist>Prior_School_Attendance_Info__c</picklist>
         <values>
-            <fullName>Acoma</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Cochiti</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Fort Sill Apache</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Isleta</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Jemez</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Jicarilla Apache</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>My student does not have more than 10 unexcused absences%2C is currently enrolled in school%2C and has not been withdrawn</fullName>
             <default>false</default>
         </values>
@@ -5338,10 +5325,6 @@
         </values>
         <values>
             <fullName>No</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Yes</fullName>
             <default>false</default>
         </values>
         <values>

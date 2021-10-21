@@ -1973,6 +1973,8 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                                           peRecord.Start_Year__c != null ||
                                           peRecord.PriorWithdrawalFlag__c != null ||
                                           peRecord.WaitlistFlag__c != null ||
+                                          //Added user story for US 476964
+                                          peRecord.Foster_Flag__c == 'Pending Review' ||
                                           //Commented Deprecate Technology flag logic for US 476956
                                           //peRecord.UserTechnologyFlag__c != null ||
                                           peRecord.GradeLevelEligibility__c != null ||
@@ -2520,6 +2522,11 @@ returnString += '[Prior Withdrawal]-';
                 (progEnrollment.UserTechnologyFlag__c == 'Pending Review' || progEnrollment.UserTechnologyFlag__c == 'Withdraw')) {
                     returnString += '[Technology]-';
                 }*/
+            //Added user story for US 476964
+            if (!String.isBlank(progEnrollment.Foster_Flag__c) && progEnrollment.Foster_Flag__c == 'Pending Review') {
+						returnString += '{Foster Flag}-';
+				}
+            //Ended user story for US 476964
             if (!String.isBlank(progEnrollment.DisciplinaryFlagOverride__c) &&
                 (progEnrollment.DisciplinaryFlagOverride__c == 'Pending Review' || progEnrollment.DisciplinaryFlagOverride__c == 'Withdraw')) {
                     returnString += '[Disciplinary History]-';
@@ -2596,6 +2603,22 @@ logger.logException('calculateWhyFlagged', e);
         }
         insert caselist;
         
+    }
+    
+    //476964 - Niranjan for Foster Flag
+    public static void calculateFosterFlag(List<hed__Program_Enrollment__c> actList){
+        set<Id> peIds = new set<Id>();
+        for(hed__Program_Enrollment__c hpe : actList){
+            peIds.add(hpe.Id);
+        }
+        list<Student_Custody__c> stdCustodyRec = [SELECT id, Custody_Relationship__c, Program_Enrollment__c from Student_Custody__c where Program_Enrollment__r.Id IN:peIds];
+        for(Student_Custody__c stCust : stdCustodyRec){
+            for(hed__Program_Enrollment__c hpe : actList){
+                if(stCust.Custody_Relationship__c.contains('Foster')){
+                    hpe.Foster_Flag__c = 'Pending Review';
+                }
+            }
+        }        
     }
     
 }

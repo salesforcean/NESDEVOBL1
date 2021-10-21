@@ -3,10 +3,14 @@
  */
 ({
     doInit: function(component, event, helper)
-    {       
+    { 
+        
+       helper.getStudents(component, event, helper);
         // get list of students
-        helper.getStudents(component, event, helper);
+        
     },
+   
+  
     /* US:332932 --- commented for deployment */
     callOtherSchoolEnrollment: function(component, event, helper)
     {
@@ -72,7 +76,7 @@
                     $A.get("e.force:navigateToURL").setParams({
                         "url": url
                     }).fire();
-                    
+                   
                 }else{
                     console.log('Error');
                     component.set("v.loading", false);
@@ -82,7 +86,7 @@
                     
         }
             else{
-                //added for the US 335364 by Jagadish babu : End    
+                   //added for the US 335364 by Jagadish babu : End    
                 var url = event.currentTarget.dataset.link;
                 var userId = $A.get("$SObjectType.CurrentUser.Id");
                 //alert(url);
@@ -92,7 +96,7 @@
              * changes added by anithap on 17/01/2019
              * added c__prefix to studentId,caretakerId,studentGrade,processId,programEnrollmentId.
              */
-                    url = url + '?studentId=' + encodeURIComponent(dataset.studentid)
+                   url = url + '?studentId=' + encodeURIComponent(dataset.studentid)
                     + '&caretakerId=' + userId
                     + '&programEnrollmentId=' + encodeURIComponent(dataset.programenrollmentid)
                     + '&processId=' + encodeURIComponent(dataset.processid)
@@ -102,23 +106,13 @@
  * changes added by anithap on 17/01/2019
  * 
  */
+
               $A.get("e.force:navigateToURL").setParams({
                     "url": url
                 }).fire();
-                
-                var datset = event.currentTarget.dataset;
-                var action = component.get("c.openApplication");
-                action.setParams({
-                    programEnrollmentId : datset.programenrollmentid
-                });
-                action.setCallback(this, function(response){
-                                   var state = response.getState();
-                if(state === 'SUCCESS'){
-                    console.log('updated successfully');
-                }
-                                   });
-        		$A.enqueueAction(action);
-            }
+                 
+              helper.openApp(component, event, helper); 
+             }
         
     },
     /* Handles add student submission */
