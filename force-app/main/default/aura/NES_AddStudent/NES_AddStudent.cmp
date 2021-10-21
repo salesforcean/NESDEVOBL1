@@ -150,7 +150,7 @@
                              <!-- Added by Ravi US #433409-->
                              <aura:if isTrue="{!v.schoolYearsNotAvail}">
                                  <div style="color:Red">
-                                  <h5>{!v.SchoolYearsNotAvailErrorMsg}</h5>
+                                  {!v.SchoolYearsNotAvailErrorMsg}
                                  </div>
                                  
                              </aura:if>
@@ -181,17 +181,14 @@
                                         <aura:if isTrue="{!question.questionType == 'Picklist' || question.questionType == 'Radio' || question.questionType == 'Checkbox Group' || question.questionType == 'Date' }">
                                             <!-- Picklist -->
                                             <aura:if isTrue="{!question.questionType == 'Picklist'}">
-                                                <lightning:select aura:id="fieldId" label=""
-                                                                  value="{!question.targetField}"
-                                                                  required="{!question.required}">
+                                                <lightning:select aura:id="fieldId" label="" value="{!question.targetField}" required="{!question.required}">
                                                     <option value="">- select one -</option>
                                                     <aura:iteration items="{!question.picklistValues}" var="option">
                                                         <option value="{!option.value}">{!option.label}</option>
                                                     </aura:iteration>
                                                 </lightning:select>
-                                                
-                                                <div style="color:Red">
-                                                {!v.GradesNotAvailMsg}
+                                            <div style="color:Red">
+                                                 {!v.GradesNotAvailMsg}
                                                 </div>
                                             </aura:if>
 

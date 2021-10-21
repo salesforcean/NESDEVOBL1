@@ -74,7 +74,7 @@ public class NES_ProgramEnrollmentHandler {
         NES_Constants.runAssignment = false; 
         
         //Added user story for US 476964
-        //NES_BusinessLogicUtils.calculateFosterFlag(actlstnewMap.values());
+        NES_BusinessLogicUtils.calculateFosterFlag(actlstnewMap.values());
         //Ended user story for US 476964
 
         // Changes added on 2020-06-23.
