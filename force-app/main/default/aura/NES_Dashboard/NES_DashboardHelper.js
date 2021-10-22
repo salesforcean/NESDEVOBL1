@@ -53,7 +53,7 @@
  
     },
     
-    openApp: function(component, event, helper){
+   /* openApp: function(component, event, helper){
         var datset = event.currentTarget.dataset;
        // component.set("v.loading",true);
         var action = component.get("c.openApplication");
@@ -67,6 +67,6 @@
             }
         });
         $A.enqueueAction(action);
-    }
+    }*/
         
 });

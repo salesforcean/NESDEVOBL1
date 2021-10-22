@@ -5,7 +5,11 @@
 }
 /* Commented by Ravi Bug# 135343
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');*/
-.THIS .generated-question{display:flex;flex-direction:column;justify-content:space-between}
+.THIS .generated-question{
+    /*display:flex;*/
+    flex-direction:column;
+    justify-content:space-between
+}
 .THIS select{height:36px}
 .THIS h2{font-weight:600!important;line-height:1.25}
 /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
@@ -54,11 +58,11 @@
  }
 /* Added by ravi on 07/01/2020 */                
 
-                .THIS .slds-col:hover{ text-decoration: underline}
+ .THIS .slds-col:hover{ text-decoration: underline}
                 
-                .THIS .btn_clr{
-                    /*color:#000000;*/ 
-                    /*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
-             color:#BF0366;   
-                    /*End: Added for US#335191 by Jagadeesh Bokam*/
-                }
+ .THIS .btn_clr{
+ /*color:#000000;*/ 
+/*BEGIN: Added for US#335191 by Jagadeesh Bokam*/
+color:#BF0366;   
+ /*End: Added for US#335191 by Jagadeesh Bokam*/
+  }

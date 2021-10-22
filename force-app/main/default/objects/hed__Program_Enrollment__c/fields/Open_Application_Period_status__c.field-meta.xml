@@ -6,7 +6,7 @@
 
 &apos;Active&apos;,
 
-IF(TEXT(Program_Grade_Level__r.Open_Application__c ) = Null &amp;&amp; TEXT(hed__Account__r.Open_Application__c) = &apos;Active&apos; &amp;&amp; Text(Open_Application__c)= &apos;Active&apos; &amp;&amp; hed__Account__r.Open_Application_Start_Date__c&lt;= NOW() &amp;&amp; hed__Account__r.Open_Application_End_Date__c &gt;= NOW(),&apos;Active&apos;,
+IF(TEXT(Program_Grade_Level__r.Open_Application__c ) = Null &amp;&amp; TEXT(hed__Account__r.Open_Application__c) = &apos;Active&apos;&amp;&amp; Text(Open_Application__c)= &apos;Active&apos;&amp;&amp; hed__Account__r.Open_Application_Start_Date__c&lt;= NOW() &amp;&amp; hed__Account__r.Open_Application_End_Date__c &gt;= NOW(),&apos;Active&apos;,
 
 &apos;Inactive&apos;))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

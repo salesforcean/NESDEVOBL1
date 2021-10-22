@@ -35,7 +35,7 @@
     <aura:attribute name="numberOfStudents" type="Integer" default="0" />
     <aura:attribute name="suffixOptions" type="List" default="[]"/>
     <!-- Added For #US 433409-->
-    <aura:attribute name="GradesNotAvailMsg" type="String" default="" />
+    <aura:attribute name="GradesNotAvailMsg" type="String" default=""/>
     <aura:attribute name="SchoolNotAvailErrorMsg" type="String" default="There are no schools available for the selected state."/>
     <aura:attribute name="SchoolYearsNotAvailErrorMsg" type="String" default="The school you have selected does not have any school years available."/>
     <aura:attribute name="schoolYearsNotAvail" type="boolean" default="false"/>
@@ -150,7 +150,7 @@
                              <!-- Added by Ravi US #433409-->
                              <aura:if isTrue="{!v.schoolYearsNotAvail}">
                                  <div style="color:Red">
-                                  {!v.SchoolYearsNotAvailErrorMsg}
+                                 <h5>{!v.SchoolYearsNotAvailErrorMsg}</h5> 
                                  </div>
                                  
                              </aura:if>
@@ -181,14 +181,16 @@
                                         <aura:if isTrue="{!question.questionType == 'Picklist' || question.questionType == 'Radio' || question.questionType == 'Checkbox Group' || question.questionType == 'Date' }">
                                             <!-- Picklist -->
                                             <aura:if isTrue="{!question.questionType == 'Picklist'}">
-                                                <lightning:select aura:id="fieldId" label="" value="{!question.targetField}" required="{!question.required}">
+                                                <lightning:select aura:id="fieldId" label="" value="{!question.targetField}" required="true">
                                                     <option value="">- select one -</option>
                                                     <aura:iteration items="{!question.picklistValues}" var="option">
                                                         <option value="{!option.value}">{!option.label}</option>
                                                     </aura:iteration>
                                                 </lightning:select>
-                                            <div style="color:Red">
-                                                 {!v.GradesNotAvailMsg}
+                                            <!--div style="color:Red"-->
+                                                <Br></Br>
+                                                <div class="slds-text-body_regular" style="color:Red">
+                                                <h5> {!v.GradesNotAvailMsg}</h5>
                                                 </div>
                                             </aura:if>
 
@@ -225,6 +227,7 @@
                                             </aura:set>
                                         </aura:if>
                                     </lightning:layoutItem>
+                                    
                                 </aura:iteration>
                             </lightning:layout>
                         </lightning:layoutItem>

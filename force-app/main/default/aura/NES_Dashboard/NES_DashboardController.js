@@ -111,7 +111,7 @@
                     "url": url
                 }).fire();
                  
-              helper.openApp(component, event, helper); 
+              //helper.openApp(component, event, helper); 
              }
         
     },

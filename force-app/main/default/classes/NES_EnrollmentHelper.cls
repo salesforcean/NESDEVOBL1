@@ -42,60 +42,8 @@ and Program_Enrollment__c objects
                             }
     }
     
-    
-   //Added for Userstory 451172- DK
-   /*@AuraEnabled
-    public static List<Enrollment_Component_Affiliation__c> getRelatedStages(Id programEnrollmentId){
-        try{
-            
-            List<Enrollment_Component_Affiliation__c> enrollmentComponents = new List<Enrollment_Component_Affiliation__c>();
-            Map<Id,Enrollment_Component_Affiliation__c> ecaMap = new Map<Id,Enrollment_Component_Affiliation__c>();
-            Map<Id,Enrollment_Component_Affiliation__c> ecaMap1 = new Map<Id,Enrollment_Component_Affiliation__c>();
-            set<id> peIds;
-            set<id> ecaIds;
-            if(programEnrollmentId != null){
-                for(Enrollment_Component_Affiliation__c eca : [SELECT Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c
-                                                               FROM Enrollment_Component_Affiliation__c
-                                                               WHERE Program_Enrollment__c =: programEnrollmentId
-                                                               AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
-                                                               AND status__c <> 'Not Applicable']){
-                                                                   
-                                                                   if(eca.Program_Enrollment__r.Open_Application__c == 'Active'){
-                                                                       ecaMap.put(eca.Program_Enrollment__c, eca);
-                                                                    }
-                                                               }
-                List<Enrollment_Component_Affiliation__c> enrollComponents;
-                list<Enrollment_Component_Affiliation__c> ecaLst1;
-                List<Enrollment_Component_Affiliation__c> enrCmp = ecaMap.values();
-                if(enrCmp.size() > 0){
-                    enrollmentComponents = ecaMap.values();
-                }
-                
-                for(Enrollment_Component_Affiliation__c eca1 : [SELECT Enrollment_Component__r.Name, Status__c, Order__c, Program_Enrollment__r.Final_Grade_Level__c
-                                                               FROM Enrollment_Component_Affiliation__c
-                                                               WHERE Program_Enrollment__c =: programEnrollmentId
-                                                               AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
-                                                               AND status__c <> 'Not Applicable' AND Program_Enrollment__r.Open_Application__c = null 
-                                                               AND Enrollment_Component__r.Name != 'Open Application']){
-                                                                   if(eca1.Order__c == 3){
-                                                                       eca1.Status__c = 'In Progress';
-                                                                       enrollComponents.add(eca1);
-                                                                   }
-                                                               }
-                if(enrollComponents.size() > 0){
-                    Update enrollComponents;
-                    enrollmentComponents = enrollComponents;
-                }
-                System.debug('NDEBUG  ECAs are :::::' + enrollmentComponents);
-                
-                return enrollmentComponents;
-            }
-            return null;
-        } catch(Exception e){logger.logException('getRelatedStages', e);logger.saveLogs();return null;
-                            }
-    }*/
-    //ended Divya
-
+   
+  
     /**
      * Created by Ashish Sharma on 12/05/18
      * Parameters: ID

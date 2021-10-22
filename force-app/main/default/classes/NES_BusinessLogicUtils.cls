@@ -1986,7 +1986,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                                           peRecord.PrincipalGeneralFlag__c != null)) ||
                             (!isInsert && (peRecord.HHPORFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).HHPORFlag__c ||
                                            //Added user story for US 476964
-                                           //peRecord.Foster_Flag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).Foster_Flag__c ||
+                                           peRecord.Foster_Flag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).Foster_Flag__c ||
                                            peRecord.PORFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).PORFlag__c ||
                                            peRecord.PlacementFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).PlacementFlag__c ||
                                            peRecord.CounselingFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).CounselingFlag__c ||
@@ -2124,8 +2124,6 @@ programEnrollment.StudentFlag__c = 'On-Hold';
             EntranceAgeEligibilityOverride__c,
             EntranceAgeEligibilityFinal__c,
             WaitlistFlag__c,
-            //Added user story for US 476964
-            //Foster_Flag__c,
             //Commented Deprecate Technology flag logic for US 476956
             //UserTechnologyFlag__c,
             DisciplinaryFlagOverride__c,
@@ -2274,13 +2272,6 @@ returnString += '';
             /*if (!String.isBlank(progEnrollment.UserTechnologyFlag__c) && progEnrollment.UserTechnologyFlag__c == 'Technology Flag') {
                 returnString += '[Technology]-';
             }*/
-            //Added user story for US 476964
-            /*if (!String.isBlank(progEnrollment.Foster_Flag__c) && progEnrollment.Foster_Flag__c == 'Pending Review') {
-                returnString += '{Foster Flag}-';
-            }else if (String.isBlank(progEnrollment.Foster_Flag__c) || progEnrollment.Foster_Flag__c == 'Released') {
-                returnString += '';
-            }*/
-            //Ended user story for US 476964
             if (!String.isBlank(progEnrollment.DisciplinaryFlagOverride__c) &&
                 (progEnrollment.DisciplinaryFlagOverride__c == 'Pending Review' || progEnrollment.DisciplinaryFlagOverride__c == 'Withdraw')) {
                     returnString += '[Disciplinary History]-';
@@ -2619,39 +2610,30 @@ logger.logException('calculateWhyFlagged', e);
         insert caselist;
         
     }
-    //public static Map<Id,hed__Program_Enrollment__c> peMapRec = new Map<Id,hed__Program_Enrollment__c>();
-    //476964 - Niranjan for Foster Flag
-    public static void calculateFosterFlag(List<hed__Program_Enrollment__c> actList){
-        set<Id> peIds = new set<Id>();
-        for(hed__Program_Enrollment__c hpe : actList){
-            peIds.add(hpe.Id);
-            //peMapRec.put(hpe.Id, hpe);
-        }
-        Map<Id,Student_Custody__c> stdCustodyRec = new Map<Id,Student_Custody__c>([SELECT id, Custody_Relationship__c, Program_Enrollment__c from Student_Custody__c where Program_Enrollment__r.Id IN:peIds]);
-        for(Student_Custody__c stCust : stdCustodyRec.values()){
-            for(hed__Program_Enrollment__c hpe : actList){
-                if(stCust.Custody_Relationship__c.contains('Foster')){
-                    hpe.Foster_Flag__c = 'Pending Review';
-                }
-            }
-        }        
-    }
     
-  /*  
-    public static void calculateFosterFlagLogic(List<Student_Custody__c> actList){
+    
+    //476964 - Niranjan for Foster Flag
+    public static void calculateFosterFlagLogic(list<Student_Custody__c> custodyList){
         set<Id> peIds = new set<Id>();
-        for(Student_Custody__c custRel : actList){
-            peIds.add(custRel.Program_Enrollment__c);
+        set<Id> fosterPEIds = new set<Id>();
+        for(Student_Custody__c custRel : custodyList){
+            if(custRel.Custody_Relationship__c == null || !custRel.Custody_Relationship__c.contains('Foster')){
+                peIds.add(custRel.Program_Enrollment__c);
+            }else if(custRel.Custody_Relationship__c.contains('Foster')){
+                fosterPEIds.add(custRel.Program_Enrollment__c);
+            }
         }
+
        list<hed__Program_Enrollment__c> pgrmEnrollList = new list<hed__Program_Enrollment__c>();
-       Map<Id,hed__Program_Enrollment__c> peEnrollMapRec = new Map<Id,hed__Program_Enrollment__c>([SELECT id,Foster_Flag__c from hed__Program_Enrollment__c where Id IN:peIds]);
+       Map<Id,hed__Program_Enrollment__c> peEnrollMapRec = new Map<Id,hed__Program_Enrollment__c>([SELECT id,Foster_Flag__c from hed__Program_Enrollment__c where Id IN:fosterPEIds]);
+        
         for(hed__Program_Enrollment__c pe : peEnrollMapRec.values()){
-            if(peMapRec.containskey(pe.Id)){
+            if(pe.Foster_Flag__c != 'Pending Review'){
                 pe.Foster_Flag__c = 'Pending Review';
                 pgrmEnrollList.add(pe);
-            }
+            } 
         }
         update pgrmEnrollList;
-    }*/
+    } 
     
 }

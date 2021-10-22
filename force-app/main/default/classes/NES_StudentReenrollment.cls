@@ -58,6 +58,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
             Id = this.studPE.Id,
             Status__c = PE_REACTIVATION_STATUS,
             Enrollment_Type__c = PE_RE_ENROLLMENT_TYPE_DEFAULT,
+            Open_Application__c = null,
             WaitlistFlag__c = null,
             WaitlistCounter__c = null,
             Waitlist_Time_Date_Stamp__c = null,
@@ -95,7 +96,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                         AND 
                         ((Enrollment_Component__r.Needed_for_Re_enrollment__c != true AND Status__c = 'Not Started')
                          OR
-                    	(( Enrollment_Component__r.Needed_for_ITR__c = true OR Enrollment_Component__r.Needed_for_Re_enrollment__c = true) // Only Stage-2 matters? 
+                        (( Enrollment_Component__r.Needed_for_ITR__c = true OR Enrollment_Component__r.Needed_for_Re_enrollment__c = true) // Only Stage-2 matters? 
                         AND 
                         ( 
                             (

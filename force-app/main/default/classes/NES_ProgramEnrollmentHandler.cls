@@ -36,10 +36,6 @@ public class NES_ProgramEnrollmentHandler {
           //  NES_ProgramEnrollmentBusinessLogic.calculateEntranceAgeEligibilityOverride(newList, null);
 
         List<SObject> validRecords = new List<SObject>();
-        
-        //Added user story for US 476964
-        //NES_BusinessLogicUtils.calculateFosterFlag(actList);
-        //Ended user story for US 476964
 
       //  for (hed__Program_Enrollment__c programEnrollment : newList) {
           for (hed__Program_Enrollment__c programEnrollment : actList) { //Swapna:Changed to active list
@@ -72,10 +68,6 @@ public class NES_ProgramEnrollmentHandler {
         Boolean origRunAssignment = NES_ECACompletion.shouldRunCompletion && NES_Constants.runAssignment;
         NES_ECACompletion.shouldRunCompletion = false;
         NES_Constants.runAssignment = false; 
-        
-        //Added user story for US 476964
-        NES_BusinessLogicUtils.calculateFosterFlag(actlstnewMap.values());
-        //Ended user story for US 476964
 
         // Changes added on 2020-06-23.
         // Sumanth/Rakesh: Added the below 2 Maps for US # 186957 (Task# 195460, 195459)
@@ -150,11 +142,6 @@ public class NES_ProgramEnrollmentHandler {
         Boolean origRunAssignment = NES_ECACompletion.shouldRunCompletion && NES_Constants.runAssignment;
         NES_ECACompletion.shouldRunCompletion = false;
         NES_Constants.runAssignment = false;
-		
-        
-        //Added user story for US 476964
-        //NES_BusinessLogicUtils.calculateFosterFlag(actlstnewMap.values());
-        //Ended user story for US 476964
         
         if (!logicSwitch) {
             return;
@@ -457,10 +444,6 @@ public class NES_ProgramEnrollmentHandler {
 
         }
         
-        //Added user story for US 476964
-        //NES_BusinessLogicUtils.calculateFosterFlag(actList);
-        //Ended user story for US 476964
-         
         Set<Id> programEnrollmentIds = new Set<Id>();
         Set<string> activePEIds = new Set<string>();
 

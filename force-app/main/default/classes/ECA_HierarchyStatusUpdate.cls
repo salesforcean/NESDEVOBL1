@@ -147,7 +147,8 @@ public without sharing class ECA_HierarchyStatusUpdate
                 allComplete = false;
             }
             
-            if(childStatus != 'Not Started' && childStatus != 'Not Applicable') //Check that all ECAs regardless of whether they are required or not are not started
+            //if(childStatus != 'Not Started' && childStatus != 'Not Applicable') //Check that all ECAs regardless of whether they are required or not are not started
+             if(childStatus != 'Not Started' || childStatus != 'Not Applicable') // Commented above if and added for User story 451172 -- by DK
             {
                 allNA = false; 
             } 

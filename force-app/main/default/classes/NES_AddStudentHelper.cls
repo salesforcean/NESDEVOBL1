@@ -676,15 +676,11 @@ public without sharing class NES_AddStudentHelper {
                 ecAffiliationsToInsert.add(affiliationRecord2);
                 
                //Added for Open Application User story-->DK
-                
-          
-               Id studentEnrollTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
+                Id studentEnrollTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
                 
                 List<hed__Program_Enrollment__c> hPe = [SELECT id, Open_Application__c,RecordTypeId from hed__Program_Enrollment__c where Id=:newStudentEnrollment.Id];                       
-                system.debug('==>hPe '+hPe);
-                //boolean is_Dirty__c;
-                string TASInprogress = 'N';
-                //Id relationshipId;
+                system.debug('==>hPe.size() '+hPe.size());           
+                string TASInprogress = 'N';             
                 for (Integer i = 1; i < relationships.size(); i++) {
                     system.debug('==>i'+i);
                     Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
@@ -698,32 +694,63 @@ public without sharing class NES_AddStudentHelper {
                         affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
                            affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                            affiliationRecord.Order__c = relationships[i].Order__c;
-                        affiliationRecord.Status__c = 'In Progress';
-                        affiliationRecord.is_Dirty__c = false;                       
-                        //relationshipId = relationships[i].Child_Enrollment_Component__c;
-                        
+                        system.debug('we are at line 704');
+                        affiliationRecord.Status__c = 'In Progress';                                             
                     }else if(!(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c))){ 
                            affiliationRecord.Status__c = 'Not Applicable';
                            TASInprogress = 'Y';
                        }
                       
-                        if (i!= 1 && String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {  
+                        if (i!= 1 && String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) { 
                            affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
                            affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                            affiliationRecord.Order__c = relationships[i].Order__c;
                            if (i == 1){  
+                                system.debug('we are at line 718');
                                affiliationRecord.Status__c = 'In Progress';
                            }else if (relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student' && TASInprogress == 'Y'){
+                                system.debug('we are at line 721');
                                affiliationRecord.Status__c = 'In Progress';
-                               //relationshipId = relationships[i].Child_Enrollment_Component__c;
                            }else{
+                               system.debug('we are at line 724');
                                affiliationRecord.Status__c = 'Not Started';
                            }
                          
                        }
                       ecAffiliationsToInsert.add(affiliationRecord);
                    }
-               			 
+                                           
+                //Added for Open Application User story-->DK
+               //Id studentEnrollTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
+                /*string ECASstatus = 'N';
+                List<hed__Program_Enrollment__c> hPe = [SELECT id, Open_Application__c,RecordTypeId from hed__Program_Enrollment__c where Id=:newStudentEnrollment.Id];                                   
+                for (Integer i = 1; i < relationships.size(); i++) {
+                    Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();                   
+                   if(relationships[i].Child_Enrollment_Component__r.Name == 'Open Application'){
+                           affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
+                           affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
+                           affiliationRecord.Order__c = relationships[i].Order__c;
+                       if (String.isNotBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)){                              
+                               affiliationRecord.Status__c = 'In Progress';                                
+                           }
+                   }else if(!(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c))){                      
+                       affiliationRecord.Status__c = 'Not Applicable';
+                       ECASstatus = 'Y';
+                   }                   
+                    if (i!= 1 && String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) { 
+                        affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
+                        affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
+                        affiliationRecord.Order__c = relationships[i].Order__c;
+                        if(relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student' && ECASstatus == 'Y'){                           
+                            affiliationRecord.Status__c = 'In Progress';
+                        }else{                           
+                            affiliationRecord.Status__c = 'Not Started';
+                        }
+                    }                    
+                      ecAffiliationsToInsert.add(affiliationRecord);
+                    	
+                   }*/           			 
+
                 
                 //End of Open Application User story --> DK
                 

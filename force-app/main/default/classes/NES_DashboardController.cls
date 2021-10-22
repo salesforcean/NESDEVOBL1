@@ -40,7 +40,7 @@ type Enrollment components and related ECAs. Return this information after addin
 	} */
     
     
-      @AuraEnabled
+      /*@AuraEnabled
     public static void openApplication(Id programEnrollmentId){ 
      
   	List<Enrollment_Component_Affiliation__c> lsteca  = [Select id, Name, Status__c,Program_Enrollment__c from Enrollment_Component_Affiliation__c where EC_Record_Type__c = 'Stage'  AND Enrollment_Component__r.Name = 'Open Application' AND Status__c = 'Not Started' AND Program_Enrollment__c=:programEnrollmentId];
@@ -52,5 +52,5 @@ type Enrollment components and related ECAs. Return this information after addin
         if (lsteca.size() > 0){
              update lsteca;
         }
-    }
+    }*/
 }
