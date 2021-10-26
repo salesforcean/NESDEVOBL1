@@ -878,7 +878,7 @@
                       $A.get('e.force:refreshView').fire();
                       if(peakResponse == null)
                        //   window.open("https://obl.tfaforms.net/8?prgenrollid="+ component.get('v.programEnrollmentId')+'&sectionId='+component.get('v.sectionId'), "_blank");
-                          window.open("https://obl.tfaforms.net/14?prgenrollid="+ component.get('v.programEnrollmentId')+'&sectionId='+component.get('v.sectionId'), "_blank");
+                          	window.open("https://obl.tfaforms.net/18?prgenrollid="+ component.get('v.programEnrollmentId')+'&sectionId='+component.get('v.sectionId'), "_blank");
 
                   } else {
                       var error = response.getError();

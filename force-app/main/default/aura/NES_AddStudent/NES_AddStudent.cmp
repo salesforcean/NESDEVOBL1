@@ -149,7 +149,7 @@
                             </lightning:layoutItem>
                              <!-- Added by Ravi US #433409-->
                              <aura:if isTrue="{!v.schoolYearsNotAvail}">
-                                 <div style="color:Red">
+                                 <div style="color:Red"><br></br>
                                  <h5>{!v.SchoolYearsNotAvailErrorMsg}</h5> 
                                  </div>
                                  

@@ -2867,15 +2867,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Aquaculture%2Ffish hatcheries</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Canning vegetables or fruits</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Dairy farm</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2884,10 +2876,6 @@
         </values>
         <values>
             <fullName>Detassel Corn</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Duck%2C turkey%2C chicken%2C pork or beef processing plant</fullName>
             <default>false</default>
         </values>
         <values>

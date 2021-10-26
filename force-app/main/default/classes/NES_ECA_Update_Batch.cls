@@ -11,7 +11,7 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
     public Set<String> enrollmentComponents; //Holds Set of Academic program|grade level keysets
     public static final String PE_STATUS = 'In Progress';   
     public static final String PE_RECORDTYPE = 'Student';  
-    
+    public List<Enrollment_Component_Criteria__c> enrollmentComponentCriterias;
     global Database.QueryLocator start(Database.BatchableContext BC) { 
         Set<String> academicProgramWithGradeSet = new Set<String>();
         academicProgramWithGradeSet.addAll(mapAcademicProgramWithGrade.keySet());    
@@ -23,7 +23,8 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
     }
     
     global void execute(Database.BatchableContext BC, List<SObject> scope) {
-        Set<Id> programEnrollmentIds = new Set<Id>();       
+        Set<Id> programEnrollmentIds = new Set<Id>(); 
+        Set<Id> peids = new Set<Id>(); 
         for(hed__Program_Enrollment__c pe : (List<hed__Program_Enrollment__c>) scope) {            
             programEnrollmentIds.add(pe.Id);
         }
@@ -39,17 +40,43 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
             if(mapAcademicProgramWithGrade.containsKey(affiliation.Program_Enrollment__r.Academic_Program_With_Grade__c)){
                 for(NES_ECA_Update__mdt ecsToUpdate : mapAcademicProgramWithGrade.get(affiliation.Program_Enrollment__r.Academic_Program_With_Grade__c)){                    
                     if(affiliation.Enrollment_Component__r.RecordType.Name == ecsToUpdate.Type__c && affiliation.Enrollment_Component__r.Name == ecsToUpdate.Enrollment_Component__c){
+                        peids.add(affiliation.Program_Enrollment__c);
                         Enrollment_Component_Affiliation__c n = new Enrollment_Component_Affiliation__c(id = affiliation.id, Status__c = ecsToUpdate.Status__c );
                         ecas.add(n);          
                     }                        
                 }            	
             }            
         }
+        System.debug('ECAs 11.size()'+ecas.size());
         if(ecas.size() > 0){
             List<Enrollment_Component_Affiliation__c> ecaListToUpdate = new List<Enrollment_Component_Affiliation__c>();
             ecaListToUpdate.addAll(ecas);
             Database.update(ecaListToUpdate, false);
-        }       
+        }
+        
+        ///////
+      System.debug('peids.size()'+peids.size());
+      Set<String> criteriasIds=new Set<String>();
+        for (Enrollment_Component_Criteria__c ecc : enrollmentComponentCriterias){
+             criteriasIds.add(ecc.Criteria__c + ecc.Student_or_Household__c + ecc.Question_Group__c + ecc.School_Year__c);
+        }
+        System.debug('criteriasIds.size()'+criteriasIds.size());
+        List<Program_Enrollment_Criteria__c> updatePECs=new List<Program_Enrollment_Criteria__c>();
+        
+        List<Program_Enrollment_Criteria__c> ProgramCriterias = [SELECT  Criteria__c,Result__c,Criteria__r.name, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c   
+            FROM    Program_Enrollment_Criteria__c WHERE Program_Enrollment__C In :peids];
+        
+        for(Program_Enrollment_Criteria__c pecs :ProgramCriterias){
+           if(criteriasIds.contains(pecs.Criteria__c + pecs.Student_or_Household__c + pecs.Question_Group__c + pecs.School_Year__c)){
+            Program_Enrollment_Criteria__c pecsUpdate=new Program_Enrollment_Criteria__c(id=pecs.Id); 
+            pecsUpdate.Result__c=false;
+            updatePECs.add(pecsUpdate);
+           } 
+        }
+        System.debug('updatePECs.size()'+updatePECs.size());
+        if(updatePECs.size()>0)
+		    Database.update(updatePECs, false); 
+        ////////////
     }
     
     global void finish(Database.BatchableContext BC) {
@@ -96,6 +123,9 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
             }
             enrollmentComponents.add(ref.Enrollment_Component__c);    	
         } 
+            enrollmentComponentCriterias = [SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c  
+                                        FROM    Enrollment_Component_Criteria__c
+                                        WHERE   Enrollment_Component__r.Name in :enrollmentComponents];
         system.debug('mapAcademicProgramWithGrade*******'+mapAcademicProgramWithGrade);
     }  
     

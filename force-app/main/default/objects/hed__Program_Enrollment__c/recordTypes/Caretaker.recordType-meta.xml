@@ -4798,18 +4798,6 @@
     <picklistValues>
         <picklist>Pace_Selection__c</picklist>
         <values>
-            <fullName>Accelerated</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Extended</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Standard</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Traditional</fullName>
             <default>false</default>
         </values>

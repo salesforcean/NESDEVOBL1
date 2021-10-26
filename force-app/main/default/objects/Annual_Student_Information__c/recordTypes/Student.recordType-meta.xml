@@ -1189,26 +1189,6 @@
     <picklistValues>
         <picklist>GiftedProgramRequest_LA_M_S__c</picklist>
         <values>
-            <fullName>Accelerated Math</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Enriched Language Arts</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Enriched Science</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Gifted and Talented Language Arts</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Gifted and Talented Math</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Language Arts</fullName>
             <default>false</default>
         </values>
@@ -1355,10 +1335,6 @@
         </values>
         <values>
             <fullName>K</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Kindergarten</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -2137,10 +2113,6 @@
         <picklist>Reason_Requesting_Retention__c</picklist>
         <values>
             <fullName>As the parent or guardian%2C I do not believe my student is ready to move forward%2E</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>I selected this in error%2E</fullName>
             <default>false</default>
         </values>
         <values>

@@ -30,26 +30,31 @@
             <value>
                 <fullName>Accelerated Math</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Accelerated Math</label>
             </value>
             <value>
                 <fullName>Enriched Language Arts</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Enriched Language Arts</label>
             </value>
             <value>
                 <fullName>Enriched Science</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Enriched Science</label>
             </value>
             <value>
                 <fullName>Gifted and Talented Language Arts</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Gifted and Talented Language Arts</label>
             </value>
             <value>
                 <fullName>Gifted and Talented Math</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Gifted and Talented Math</label>
             </value>
         </valueSetDefinition>

@@ -237,14 +237,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Adoptive parent %28listed on birth certificate%29</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Adoptive parent %28not listed on birth certificate%29</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Biological father %28listed on birth certificate%29</fullName>
             <default>false</default>
         </values>
@@ -265,10 +257,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Foster parent %28official custody awarded by government agency%29</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Grandfather</fullName>
             <default>false</default>
         </values>
@@ -277,23 +265,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Grandparent%28s%29</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Legal guardian %28has legal custody%29</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>None of the above</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Other individual without guardianship</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Other relative %28such as an aunt%2C uncle%2C or cousin%29</fullName>
             <default>false</default>
         </values>
         <values>

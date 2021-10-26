@@ -12,11 +12,6 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Accelerated</fullName>
-                <default>false</default>
-                <label>Accelerated</label>
-            </value>
-            <value>
                 <fullName>Traditional</fullName>
                 <default>false</default>
                 <label>Traditional</label>
@@ -25,16 +20,6 @@
                 <fullName>Year Round</fullName>
                 <default>false</default>
                 <label>Year Round</label>
-            </value>
-            <value>
-                <fullName>Extended</fullName>
-                <default>false</default>
-                <label>Extended</label>
-            </value>
-            <value>
-                <fullName>Standard</fullName>
-                <default>false</default>
-                <label>Standard</label>
             </value>
         </valueSetDefinition>
     </valueSet>

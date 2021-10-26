@@ -12,16 +12,6 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Allergies</fullName>
-                <default>false</default>
-                <label>Allergies</label>
-            </value>
-            <value>
-                <fullName>Asperger&apos;s syndrome</fullName>
-                <default>false</default>
-                <label>Asperger&apos;s syndrome</label>
-            </value>
-            <value>
                 <fullName>Attention deficit disorder (ADD or ADHD)</fullName>
                 <default>false</default>
                 <label>Attention deficit disorder (ADD or ADHD)</label>
@@ -75,11 +65,6 @@
                 <fullName>Visually impaired/blind</fullName>
                 <default>false</default>
                 <label>Visually impaired/blind</label>
-            </value>
-            <value>
-                <fullName>Other</fullName>
-                <default>false</default>
-                <label>Other</label>
             </value>
             <value>
                 <fullName>Unsure</fullName>

@@ -17,14 +17,15 @@
                 <label>As the parent or guardian, I do not believe my student is ready to move forward.</label>
             </value>
             <value>
-                <fullName>I selected this in error.</fullName>
-                <default>false</default>
-                <label>I selected this in error.</label>
-            </value>
-            <value>
                 <fullName>My student’s previous school recommended retention.</fullName>
                 <default>false</default>
                 <label>My student’s previous school recommended retention.</label>
+            </value>
+            <value>
+                <fullName>I selected this in error.</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I selected this in error.</label>
             </value>
         </valueSetDefinition>
     </valueSet>

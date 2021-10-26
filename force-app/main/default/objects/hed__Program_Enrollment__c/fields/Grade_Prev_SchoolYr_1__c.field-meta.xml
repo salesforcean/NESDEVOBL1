@@ -71,6 +71,11 @@
                 <default>false</default>
                 <label>11</label>
             </value>
+            <value>
+                <fullName>12</fullName>
+                <default>false</default>
+                <label>12</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

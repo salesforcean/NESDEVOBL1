@@ -13,11 +13,6 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Advanced</fullName>
-                <default>false</default>
-                <label>Advanced</label>
-            </value>
-            <value>
                 <fullName>Advanced Placement</fullName>
                 <default>false</default>
                 <label>Advanced Placement</label>
@@ -33,13 +28,21 @@
                 <label>Standard</label>
             </value>
             <value>
+                <fullName>Advanced</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Advanced</label>
+            </value>
+            <value>
                 <fullName>Dual Diploma</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Dual Diploma</label>
             </value>
             <value>
                 <fullName>None</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>None</label>
             </value>
         </valueSetDefinition>

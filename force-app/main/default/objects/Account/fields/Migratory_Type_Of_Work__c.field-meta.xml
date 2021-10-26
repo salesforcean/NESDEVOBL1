@@ -67,24 +67,9 @@
                 <label>Tobacco farm</label>
             </value>
             <value>
-                <fullName>Aquaculture/fish hatcheries</fullName>
-                <default>false</default>
-                <label>Aquaculture/fish hatcheries</label>
-            </value>
-            <value>
                 <fullName>Canning vegetables or fruits</fullName>
                 <default>false</default>
                 <label>Canning vegetables or fruits</label>
-            </value>
-            <value>
-                <fullName>Dairy farm</fullName>
-                <default>false</default>
-                <label>Dairy farm</label>
-            </value>
-            <value>
-                <fullName>Duck, turkey, chicken, pork or beef processing plant</fullName>
-                <default>false</default>
-                <label>Duck, turkey, chicken, pork or beef processing plant</label>
             </value>
             <value>
                 <fullName>Plant or harvest vegetables or fruits</fullName>
@@ -100,6 +85,24 @@
                 <fullName>Poultry and/or egg farm</fullName>
                 <default>false</default>
                 <label>Poultry and/or egg farm</label>
+            </value>
+            <value>
+                <fullName>Aquaculture/fish hatcheries</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Aquaculture/fish hatcheries</label>
+            </value>
+            <value>
+                <fullName>Dairy farm</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dairy farm</label>
+            </value>
+            <value>
+                <fullName>Duck, turkey, chicken, pork or beef processing plant</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Duck, turkey, chicken, pork or beef processing plant</label>
             </value>
         </valueSetDefinition>
     </valueSet>
