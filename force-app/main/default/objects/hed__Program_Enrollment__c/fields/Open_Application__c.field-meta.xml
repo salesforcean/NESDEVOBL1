@@ -17,44 +17,50 @@
                 <label>Active</label>
             </value>
             <value>
-                <fullName>Active-Reset</fullName>
-                <default>false</default>
-                <label>Active-Reset</label>
-            </value>
-            <value>
                 <fullName>Released</fullName>
                 <default>false</default>
                 <label>Released</label>
             </value>
             <value>
-                <fullName>In Review</fullName>
+                <fullName>Inactive</fullName>
                 <default>false</default>
-                <label>In Review</label>
+                <label>Inactive</label>
             </value>
             <value>
-                <fullName>Eligibility</fullName>
+                <fullName>Active-Reset</fullName>
                 <default>false</default>
-                <label>Eligibility</label>
+                <isActive>false</isActive>
+                <label>Active-Reset</label>
             </value>
             <value>
                 <fullName>Disciplinary History</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Disciplinary History</label>
             </value>
             <value>
-                <fullName>Special Education</fullName>
+                <fullName>Eligibility</fullName>
                 <default>false</default>
-                <label>Special Education</label>
+                <isActive>false</isActive>
+                <label>Eligibility</label>
+            </value>
+            <value>
+                <fullName>In Review</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>In Review</label>
             </value>
             <value>
                 <fullName>Placement</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Placement</label>
             </value>
             <value>
-                <fullName>Inactive</fullName>
+                <fullName>Special Education</fullName>
                 <default>false</default>
-                <label>Inactive</label>
+                <isActive>false</isActive>
+                <label>Special Education</label>
             </value>
         </valueSetDefinition>
     </valueSet>

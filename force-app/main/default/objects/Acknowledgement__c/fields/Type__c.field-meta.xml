@@ -175,6 +175,11 @@
                 <default>false</default>
                 <label>Prior School Attendance</label>
             </value>
+            <value>
+                <fullName>Program Expectations</fullName>
+                <default>false</default>
+                <label>Program Expectations</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -77,7 +77,8 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
                         Enrollment_Component__r.Needed_for_Re_enrollment__c,
                         Enrollment_Component__r.Needed_for_ITR__c,
                         Enrollment_Component__c,
-                        Enrollment_Component__r.RecordType.Name, 
+                        Enrollment_Component__r.RecordType.Name,
+                        Program_Enrollment__r.Open_Application__c, //Added for Open Application User story 451172 -->DK
                         Name,Program_Enrollment__c,
                         Status__c,Order__c 
                         FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c = :studPE.Id AND Enrollment_Component__c in :allIds AND 
@@ -188,7 +189,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
         List<Enrollment_Document__c> edToUpdate = new List<Enrollment_Document__c>();
         
         for (Enrollment_Document__c ed : edlist) {
-		    edToUpdate.add(new Enrollment_Document__c(id=ed.id, status_reason__c=ED_REACTIVATION_REASON_CODE));
+            edToUpdate.add(new Enrollment_Document__c(id=ed.id, status_reason__c=ED_REACTIVATION_REASON_CODE));
         }
         if (edList.size()>0) {
             update edToUpdate;
@@ -243,7 +244,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
                 Science_Placement_Level__c = null,
                 Final_Grade_Level__c = null,
                 AutomatedPlacementExclude__c = false,
-				StudentPlacementBucket__c = null
+                StudentPlacementBucket__c = null
             ));
         }
         if (toUpdateASIs.size()>0) {

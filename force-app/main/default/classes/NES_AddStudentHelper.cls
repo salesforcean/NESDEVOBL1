@@ -705,6 +705,7 @@ public without sharing class NES_AddStudentHelper {
                       ecAffiliationsToInsert.add(affiliationRecord);
                    }
               
+                
                 //End of Open Application User story 451172 --> DK
                 
                 

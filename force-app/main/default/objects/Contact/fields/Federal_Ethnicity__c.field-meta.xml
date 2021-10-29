@@ -27,123 +27,147 @@
                 <label>Parent refused to report ethnicity</label>
             </value>
             <value>
-                <fullName>I prefer not to disclose this information</fullName>
-                <default>false</default>
-                <label>I prefer not to disclose this information</label>
-            </value>
-            <value>
                 <fullName>American Indian or Alaskan Native</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>American Indian or Alaskan Native</label>
-            </value>
-            <value>
-                <fullName>Asian: Asian Indian</fullName>
-                <default>false</default>
-                <label>Asian: Asian Indian</label>
-            </value>
-            <value>
-                <fullName>Asian: Cambodian</fullName>
-                <default>false</default>
-                <label>Asian: Cambodian</label>
-            </value>
-            <value>
-                <fullName>Asian: Chinese</fullName>
-                <default>false</default>
-                <label>Asian: Chinese</label>
-            </value>
-            <value>
-                <fullName>Asian: Japanese</fullName>
-                <default>false</default>
-                <label>Asian: Japanese</label>
-            </value>
-            <value>
-                <fullName>Asian: Korean</fullName>
-                <default>false</default>
-                <label>Asian: Korean</label>
-            </value>
-            <value>
-                <fullName>Asian: Laotian</fullName>
-                <default>false</default>
-                <label>Asian: Laotian</label>
-            </value>
-            <value>
-                <fullName>Asian: Other Asian</fullName>
-                <default>false</default>
-                <label>Asian: Other Asian</label>
-            </value>
-            <value>
-                <fullName>Asian: Vietnamese</fullName>
-                <default>false</default>
-                <label>Asian: Vietnamese</label>
-            </value>
-            <value>
-                <fullName>Black or African American</fullName>
-                <default>false</default>
-                <label>Black or African American</label>
-            </value>
-            <value>
-                <fullName>Filipino</fullName>
-                <default>false</default>
-                <label>Filipino</label>
-            </value>
-            <value>
-                <fullName>Pacific Islander: Guamanian</fullName>
-                <default>false</default>
-                <label>Pacific Islander: Guamanian</label>
-            </value>
-            <value>
-                <fullName>Pacific Islander: Hawaiian</fullName>
-                <default>false</default>
-                <label>Pacific Islander: Hawaiian</label>
-            </value>
-            <value>
-                <fullName>Pacific Islander: Other Pacific Islander</fullName>
-                <default>false</default>
-                <label>Pacific Islander: Other Pacific Islander</label>
-            </value>
-            <value>
-                <fullName>Pacific Islander: Samoan</fullName>
-                <default>false</default>
-                <label>Pacific Islander: Samoan</label>
-            </value>
-            <value>
-                <fullName>Pacific Islander: Tahitian</fullName>
-                <default>false</default>
-                <label>Pacific Islander: Tahitian</label>
-            </value>
-            <value>
-                <fullName>Refuse To Report</fullName>
-                <default>false</default>
-                <label>Refuse To Report</label>
-            </value>
-            <value>
-                <fullName>White (not Hispanic)</fullName>
-                <default>false</default>
-                <label>White (not Hispanic)</label>
             </value>
             <value>
                 <fullName>American Indian/Alaskan Native</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>American Indian/Alaskan Native</label>
             </value>
             <value>
                 <fullName>Asian/Pacific Islander</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Asian/Pacific Islander</label>
+            </value>
+            <value>
+                <fullName>Asian: Asian Indian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Asian: Asian Indian</label>
+            </value>
+            <value>
+                <fullName>Asian: Cambodian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Asian: Cambodian</label>
+            </value>
+            <value>
+                <fullName>Asian: Chinese</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Asian: Chinese</label>
+            </value>
+            <value>
+                <fullName>Asian: Japanese</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Asian: Japanese</label>
+            </value>
+            <value>
+                <fullName>Asian: Korean</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Asian: Korean</label>
+            </value>
+            <value>
+                <fullName>Asian: Laotian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Asian: Laotian</label>
+            </value>
+            <value>
+                <fullName>Asian: Other Asian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Asian: Other Asian</label>
+            </value>
+            <value>
+                <fullName>Asian: Vietnamese</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Asian: Vietnamese</label>
+            </value>
+            <value>
+                <fullName>Black or African American</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Black or African American</label>
             </value>
             <value>
                 <fullName>Black/African-American (not Hispanic)</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Black/African-American (not Hispanic)</label>
+            </value>
+            <value>
+                <fullName>Filipino</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Filipino</label>
             </value>
             <value>
                 <fullName>Hispanic</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>Hispanic</label>
+            </value>
+            <value>
+                <fullName>I prefer not to disclose this information</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I prefer not to disclose this information</label>
+            </value>
+            <value>
+                <fullName>Pacific Islander: Guamanian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pacific Islander: Guamanian</label>
+            </value>
+            <value>
+                <fullName>Pacific Islander: Hawaiian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pacific Islander: Hawaiian</label>
+            </value>
+            <value>
+                <fullName>Pacific Islander: Other Pacific Islander</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pacific Islander: Other Pacific Islander</label>
+            </value>
+            <value>
+                <fullName>Pacific Islander: Samoan</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pacific Islander: Samoan</label>
+            </value>
+            <value>
+                <fullName>Pacific Islander: Tahitian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pacific Islander: Tahitian</label>
+            </value>
+            <value>
+                <fullName>Refuse To Report</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Refuse To Report</label>
+            </value>
+            <value>
+                <fullName>White (not Hispanic)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>White (not Hispanic)</label>
             </value>
             <value>
                 <fullName>White/Caucasian</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>White/Caucasian</label>
             </value>
         </valueSetDefinition>

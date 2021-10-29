@@ -334,10 +334,10 @@ public without sharing class NES_RegistrationHelper {
                      } 
             }
             else{
-                  logger.logError('verifyUsernameAvailabilty', 'Non-200 status code: ' + response.getStatusCode() + ', ' + response.getBody() + ', '+userInput);
-            }
-        }
-        logger.saveLogs();
+                logger.logError('verifyUsernameAvailabilty', 'Non-200 status code: ' + response.getStatusCode() + ', ' + response.getBody() + ', '+userInput);
+                logger.saveLogs();  
+                }
+        }        
         return peakResponse;
     } 
     

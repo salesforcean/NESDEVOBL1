@@ -4739,35 +4739,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Active-Reset</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Disciplinary History</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Eligibility</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>In Review</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Inactive</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Placement</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Released</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Special Education</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -6598,7 +6574,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Prior Lake-Savage Proctor</fullName>
+            <fullName>Prior Lake-Savage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proctor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RTR</fullName>
             <default>false</default>
         </values>
         <values>
@@ -6666,11 +6650,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Rothsay Round Lake</fullName>
+            <fullName>Rothsay</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Royalton RTR</fullName>
+            <fullName>Round Lake</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Royalton</fullName>
             <default>false</default>
         </values>
         <values>

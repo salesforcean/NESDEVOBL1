@@ -97,11 +97,6 @@
                 <label>Korean</label>
             </value>
             <value>
-                <fullName>Not Applicable</fullName>
-                <default>false</default>
-                <label>Not Applicable</label>
-            </value>
-            <value>
                 <fullName>Portuguese</fullName>
                 <default>false</default>
                 <label>Portuguese</label>

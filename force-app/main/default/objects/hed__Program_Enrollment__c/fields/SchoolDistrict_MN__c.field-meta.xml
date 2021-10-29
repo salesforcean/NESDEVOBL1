@@ -1262,9 +1262,9 @@
                 <label>Prior Lake</label>
             </value>
             <value>
-                <fullName>Prior Lake-Savage Proctor</fullName>
+                <fullName>Prior Lake-Savage</fullName>
                 <default>false</default>
-                <label>Prior Lake-Savage Proctor</label>
+                <label>Prior Lake-Savage</label>
             </value>
             <value>
                 <fullName>Randolph</fullName>
@@ -1347,14 +1347,14 @@
                 <label>Roseville</label>
             </value>
             <value>
-                <fullName>Rothsay Round Lake</fullName>
+                <fullName>Rothsay</fullName>
                 <default>false</default>
-                <label>Rothsay Round Lake</label>
+                <label>Rothsay</label>
             </value>
             <value>
-                <fullName>Royalton RTR</fullName>
+                <fullName>Royalton</fullName>
                 <default>false</default>
-                <label>Royalton RTR</label>
+                <label>Royalton</label>
             </value>
             <value>
                 <fullName>Rush City</fullName>
@@ -1730,6 +1730,21 @@
                 <fullName>Zumbrota-Mazeppa</fullName>
                 <default>false</default>
                 <label>Zumbrota-Mazeppa</label>
+            </value>
+            <value>
+                <fullName>Round Lake</fullName>
+                <default>false</default>
+                <label>Round Lake</label>
+            </value>
+            <value>
+                <fullName>Proctor</fullName>
+                <default>false</default>
+                <label>Proctor</label>
+            </value>
+            <value>
+                <fullName>RTR</fullName>
+                <default>false</default>
+                <label>RTR</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -136,6 +136,11 @@
                 <default>false</default>
                 <label>Vietnamese</label>
             </value>
+            <value>
+                <fullName>Somali</fullName>
+                <default>false</default>
+                <label>Somali</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
     <visibleLines>5</visibleLines>

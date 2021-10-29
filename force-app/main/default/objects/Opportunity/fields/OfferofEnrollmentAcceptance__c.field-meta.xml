@@ -13,14 +13,26 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>I understand and accept this offer of enrollment.</fullName>
+                <fullName>I accept this offer of enrollment for my student</fullName>
                 <default>false</default>
-                <label>I understand and accept this offer of enrollment.</label>
+                <label>I accept this offer of enrollment for my student</label>
+            </value>
+            <value>
+                <fullName>I decline this offer of enrollment for my student</fullName>
+                <default>false</default>
+                <label>I decline this offer of enrollment for my student</label>
             </value>
             <value>
                 <fullName>I am declining this offer of enrollment for my student.</fullName>
                 <default>false</default>
+                <isActive>false</isActive>
                 <label>I am declining this offer of enrollment for my student.</label>
+            </value>
+            <value>
+                <fullName>I understand and accept this offer of enrollment.</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I understand and accept this offer of enrollment.</label>
             </value>
         </valueSetDefinition>
     </valueSet>

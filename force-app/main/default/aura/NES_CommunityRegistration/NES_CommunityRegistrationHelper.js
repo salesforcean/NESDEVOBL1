@@ -252,6 +252,8 @@
         action.setCallback(this, function(response){
            var str = response.toString();
             var state = response.getState();
+            console.log(state);
+            console.log(str);
             if(state === "SUCCESS"){
                 respStatus = response.getReturnValue().success;
                 console.log(respStatus);

@@ -18,11 +18,6 @@
                 <label>Albanian</label>
             </value>
             <value>
-                <fullName>American Sign Language (ASL)</fullName>
-                <default>false</default>
-                <label>American Sign Language (ASL)</label>
-            </value>
-            <value>
                 <fullName>Arabic</fullName>
                 <default>false</default>
                 <label>Arabic</label>
@@ -156,6 +151,17 @@
                 <fullName>Vietnamese</fullName>
                 <default>false</default>
                 <label>Vietnamese</label>
+            </value>
+            <value>
+                <fullName>Hmong</fullName>
+                <default>false</default>
+                <label>Hmong</label>
+            </value>
+            <value>
+                <fullName>American Sign Language (ASL)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>American Sign Language (ASL)</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -40,7 +40,7 @@ public class NES_ECA_Update_BatchTest {
         
         List<hed__Program_Enrollment__c> listPeids=new List<hed__Program_Enrollment__c>();
         listPeids.add(pevalues);
-        
+  
         RecordType rtypes2 = [Select Name, Id From RecordType where sObjectType='Enrollment_Component__c' and RecordType.name = 'Form' limit 1];
         RecordType rtypes3 = [Select Name, Id From RecordType where sObjectType='Enrollment_Component__c' and RecordType.name = 'Section' limit 1];
         RecordType rtypes4 = [Select Name, Id From RecordType where sObjectType='Enrollment_Component__c' and RecordType.name = 'Flag' limit 1];
@@ -68,6 +68,34 @@ public class NES_ECA_Update_BatchTest {
         ecaValues1.Enrollment_Component__c=ecValues1.Id;
         afflist.add(ecaValues1);
         insert afflist;
+        
+        //////
+        Criteria__c completionCriteria = Peak_TestUtils.createCriteriaRecord(null, 'hed__Program_Enrollment__c.DisciplinaryFlagOverride__c', '=', false);
+        completionCriteria.Comparison_Data_Type__c = 'Text';
+        completionCriteria.Comparison_Value__c = 'Released';
+        completionCriteria.Question_Group__c='';
+        completionCriteria.School_Year__c=currentSchoolYear.id;
+        insert completionCriteria;
+        
+        Enrollment_Component_Criteria__c studentEnrollmentComponentCriteria2 = Peak_TestUtils.createEnrollCompCriteria(null, ecValues.Id, false);
+        studentEnrollmentComponentCriteria2.Criteria__c = completionCriteria.Id;
+        studentEnrollmentComponentCriteria2.Student_or_Household__c = 'Student';
+        studentEnrollmentComponentCriteria2.Question_Group__c='';
+        studentEnrollmentComponentCriteria2.School_Year__c=currentSchoolYear.id;
+        studentEnrollmentComponentCriteria2.Criteria_Number__c = 2;
+        insert studentEnrollmentComponentCriteria2;
+        
+        Program_Enrollment_Criteria__c pecs = new Program_Enrollment_Criteria__c();
+        pecs.Program_Enrollment__c=pevalues.Id;
+        pecs.Criteria__c=completionCriteria.Id;
+        pecs.School_Year__c=currentSchoolYear.Id;
+        pecs.Student_or_Household__c='Student';
+        pecs.Question_Group__c='';
+        insert pecs;
+        
+        List<Program_Enrollment_Criteria__c> listPecs=new List<Program_Enrollment_Criteria__c>();
+        listPecs.add(pecs);
+        ////////
         
     }
     

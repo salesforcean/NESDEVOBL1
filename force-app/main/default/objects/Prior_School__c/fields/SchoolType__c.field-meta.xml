@@ -13,14 +13,39 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
+                <fullName>Homeschool</fullName>
+                <default>false</default>
+                <label>Homeschool</label>
+            </value>
+            <value>
+                <fullName>Public</fullName>
+                <default>false</default>
+                <label>Public</label>
+            </value>
+            <value>
+                <fullName>Private</fullName>
+                <default>false</default>
+                <label>Private</label>
+            </value>
+            <value>
+                <fullName>Public School</fullName>
+                <default>false</default>
+                <label>Public School</label>
+            </value>
+            <value>
+                <fullName>Virtual School (Public)</fullName>
+                <default>false</default>
+                <label>Virtual School (Public)</label>
+            </value>
+            <value>
                 <fullName>None</fullName>
                 <default>false</default>
                 <label>None</label>
             </value>
             <value>
-                <fullName>Homeschool</fullName>
+                <fullName>BIE School / Federal Grant / BIE Contract</fullName>
                 <default>false</default>
-                <label>Homeschool</label>
+                <label>BIE School / Federal Grant / BIE Contract</label>
             </value>
             <value>
                 <fullName>Charter School (Public)</fullName>
@@ -36,21 +61,6 @@
                 <fullName>Private/Parochial School</fullName>
                 <default>false</default>
                 <label>Private/Parochial School</label>
-            </value>
-            <value>
-                <fullName>Public School</fullName>
-                <default>false</default>
-                <label>Public School</label>
-            </value>
-            <value>
-                <fullName>Virtual School (Public)</fullName>
-                <default>false</default>
-                <label>Virtual School (Public)</label>
-            </value>
-            <value>
-                <fullName>BIE School / Federal Grant / BIE Contract</fullName>
-                <default>false</default>
-                <label>BIE School / Federal Grant / BIE Contract</label>
             </value>
             <value>
                 <fullName>State Supported</fullName>

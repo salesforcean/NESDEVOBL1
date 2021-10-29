@@ -42,7 +42,6 @@
         } else {
             component.set("v.spinner", false);
         }
-
     },
 
     grabStudentName: function(component, event, helper) {

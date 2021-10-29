@@ -36,9 +36,9 @@ public class NES_ECAHandler {
                                                                   SELECT Id, Status__c, Order__c, Enrollment_Component__r.Component_Type__c, Enrollment_Component__r.RecordType.Name,
                                                                   Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c, Program_Enrollment__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.id,
-            													  Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
+                                                                  Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.id,
-                                                                  Enrollment_Component__r.Waitlist__c,Enrollment_Component__r.Open_Application__c,Enrollment_Component__r.Name, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c
+                                                                  Enrollment_Component__r.Waitlist__c,Enrollment_Component__r.Name, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c
                                                                   FROM Enrollment_Component_Affiliation__c
                                                                   WHERE Id IN :ECAIdSet];
         for (Enrollment_Component_Affiliation__c eca : affiliations) {
@@ -89,7 +89,7 @@ public class NES_ECAHandler {
 
                                                                   Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c,Program_Enrollment__r.Status__c, Program_Enrollment__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.id, Program_Enrollment__r.WaitlistFlag__c,
-            													  Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
+                                                                  Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.id, Enrollment_Component__r.Name,
                                                                   Enrollment_Component__r.Waitlist__c, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c,Program_Enrollment__r.hed__Account__r.Use_Updated_ECA_Process__c
                                                                   FROM Enrollment_Component_Affiliation__c
@@ -175,7 +175,12 @@ public class NES_ECAHandler {
                 PE.Stage__c = eca.Enrollment_Component__r.Name;
                 PE.Stage_Date__c = System.now();
                 //Added below code Us #473192 By Ravi 
-                if(eca.Enrollment_Component__r.Name == 'Confirmation of Enrollment')
+                //if(eca.Enrollment_Component__r.Name == 'Confirmation of Enrollment')
+                system.debug('Old value********'+oldMap.get(eca.Id).Name);
+                system.debug('new value--------'+eca.Enrollment_Component__r.Name);
+                //if(oldMap.get(eca.Id).Name == 'Waitlist' && eca.Enrollment_Component__r.Name == 'Waitlist')
+                   // if(oldMap.get(eca.Enrollment_Component__r.Name) == 'Waitlist' && eca.Name == 'Waitlist')
+                 if(oldMap.get(eca.Id).Name == 'Waitlist' && eca.Enrollment_Component__r.Name <> 'Waitlist')
                 {
                     if(System.today() < eca.Program_Enrollment__r.hed__Account__r.School_Start_Date__c )
                     {
@@ -185,7 +190,7 @@ public class NES_ECAHandler {
                         PE.Waitlist_Released__c = 'After School Start Date';
                         PE.Waitlist_Released_Dt__c = System.today();
                     }
-				}
+                }
                 //End here
                 pesToUpdateMap.put(eca.Program_Enrollment__c, PE);
             }

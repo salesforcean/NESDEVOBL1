@@ -447,7 +447,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                             Enrollment_Component_Affiliation__c processECA = queriedECAs.get(peData.ecToECAMap.get(acaPgmData.processId));
                             if (processECA!=null)
                             {
-                                processECA.Status__c = 'Complete';
+                                processECA.Status__c = 'Complete';                               
                                 processECA.Date_Completed__c = System.today();
                                 forUpdateECAs.put(processECA.id, processECA);
 

@@ -4,6 +4,7 @@
 ({
     doInit: function(component, event, helper)
     {
+        
         helper.initiateStudent(component, event, helper);
     },
     doNothing: function(component, event, helper)

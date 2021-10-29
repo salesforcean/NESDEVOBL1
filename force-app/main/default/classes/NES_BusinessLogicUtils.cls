@@ -1835,37 +1835,33 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         for (hed__Program_Enrollment__c pe : programEnrollments) {
             if (opportunityMap.get(pe.Id) != null && annualStudentInformationMap.get(pe.Id) != null
                 && programEnrollmentIdToAccountIds.get(pe.Id) != null
-                && programGradeLevelMap.get(programEnrollmentIdToAccountIds.get(pe.Id)) != null) {
-                    
-                    List<Program_Grade_Level__c> pgls = programGradeLevelMap.get(pe.hed__Account__c);
-                    
+                && programGradeLevelMap.get(programEnrollmentIdToAccountIds.get(pe.Id)) != null) {                    
+                    List<Program_Grade_Level__c> pgls = programGradeLevelMap.get(pe.hed__Account__c);                    
                     for(Program_Grade_Level__c pgl : pgls) {
                         System.debug('pgl.Id='+pgl.Id+', pe.Program_Grade_Level__c='+pe.Program_Grade_Level__c);
                         System.debug('pgl.ActivateWaitlist__c='+pgl.ActivateWaitlist__c);
                         System.debug('pgl.StartWaitlist__c='+pgl.StartWaitlist__c+', pgl.EndWaitlist__c='+pgl.EndWaitlist__c);  
-                        //Added for Userstory 451172- DK
-                        if(pgl.Id == pe.Program_Grade_Level__c && ((pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()) || (pgl.Open_Application__c == 'Active' && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now() ))) { 
-                                                      
-                            if(pgl.ActivateWaitlist__c == TRUE && pe.WaitlistFlag__c!= 'Released'){
+                        
+                        //Added for Userstory 451172- DK                       
+                        if(pgl.Id == pe.Program_Grade_Level__c){
+                            if(pgl.ActivateWaitlist__c == TRUE && pe.WaitlistFlag__c!= 'Released' && pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()){
                                 pe.WaitlistFlag__c = 'Active';
+                            }  
+                            if(pgl.Open_Application__c == 'Active' && pe.Open_Application__c!= 'Released' && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now()){
+                                     pe.Open_Application__c = 'Active';
+                                
+                            }else if(pgl.Open_Application__c == 'Inactive' || pgl.Start_Open_Application__c > System.now() || pgl.End_Open_Application__c < System.now()){
+                                pe.Open_Application__c = 'Released';
                             }
-                            
-                            if(pgl.Open_Application__c == 'Active' && pe.Open_Application__c!= 'Released'){
-                                pe.Open_Application__c = 'Active';
-                            }
-                          
                             // End for Userstory 451172- DK
+                            
                             programEnrollmentsToUpdate.add(pe);
                             resetPEFlag = false;
                             break;
                         }
                         else {
-                            resetPEFlag = true;
-                            
-                        }                                                   
-      
-                    }
-                    
+                            resetPEFlag = true;                       }                                                   
+                    }                   
                     if(resetPEFlag) {
                         pe.WaitlistFlag__c = null;
                         programEnrollmentsToUpdate.add(pe);
@@ -1880,7 +1876,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
     }
     
     
-	public static void openApplicationflag(list<Program_Grade_Level__c> pglList) {   
+	/*public static void openApplicationflag(list<Program_Grade_Level__c> pglList) {   
         set<id> peIds = new set<id>();
         for(Program_Grade_Level__c pg: pglList){
             peIds.add(pg.Id);
@@ -1910,7 +1906,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
             update peUpdate;
             system.debug('peUpdate'+peUpdate);
         }        
-    }
+    }*/
     
     /**
 * Created by Raju on 24/12/18.
@@ -2050,8 +2046,6 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                 }
                 
             }
-            system.debug('==>progEnrollmentIds '+progEnrollmentIds);
-            system.debug('==>runWhyFlagged '+runWhyFlagged);
             if (!progEnrollmentIds.isEmpty() && runWhyFlagged) {
                 // calculateWhyFlagged Method is Called from here When progEnrollmentIds
                 System.debug('calculating why flagged');
@@ -2647,39 +2641,37 @@ logger.logException('calculateWhyFlagged', e);
     }
     
     
-    //476964 - Niranjan for Foster Flag
+    //476964 - Niranjan for Foster Flag display in Program Enrollment
     public static void calculateFosterFlag(list<Student_Custody__c> custodyList){
-        system.debug('==>custodyList '+custodyList);
+        
         set<Id> peIds = new set<Id>();
         set<Id> fosterPEIds = new set<Id>();
-        list<string> fosterFlgVal = new list<string>();
+        set<Id> finlPEIds = new set<Id>();
         
         for(Student_Custody__c custRel : custodyList){
             if(custRel.Custody_Relationship__c == null || !custRel.Custody_Relationship__c.contains('Foster')){
                 peIds.add(custRel.Program_Enrollment__c);
             }else if(custRel.Custody_Relationship__c.contains('Foster')){
                 fosterPEIds.add(custRel.Program_Enrollment__c);
-                fosterFlgVal.add(custRel.Custody_Relationship__c);
-            }
-        }
-	    
-       list<hed__Program_Enrollment__c> pgrmEnrollList = new list<hed__Program_Enrollment__c>();
-       Map<Id,hed__Program_Enrollment__c> peEnrollMapRec = new Map<Id,hed__Program_Enrollment__c>([SELECT id,Foster_Flag__c from hed__Program_Enrollment__c where Id IN:fosterPEIds]);
-       
-        if(peIds.size() > 0 && fosterFlgVal.size() == 0){
-            list<hed__Program_Enrollment__c> lstPE = [SELECT id,Foster_Flag__c from hed__Program_Enrollment__c where Id IN:peIds];
-            for(hed__Program_Enrollment__c pe : lstPE){
-                pe.Foster_Flag__c = '';
-                pgrmEnrollList.add(pe);
             }
         }
         
+        if(peIds.size() > 0 && fosterPEIds.size() == 0){
+            finlPEIds.addAll(peIds);
+        }else if(fosterPEIds.size() >= 1){
+            finlPEIds.addAll(fosterPEIds);
+        }
+	    
+       list<hed__Program_Enrollment__c> pgrmEnrollList = new list<hed__Program_Enrollment__c>();
+       Map<Id,hed__Program_Enrollment__c> peEnrollMapRec = new Map<Id,hed__Program_Enrollment__c>([SELECT id,Foster_Flag__c from hed__Program_Enrollment__c where Id IN:finlPEIds]);
+       
         for(hed__Program_Enrollment__c pe : peEnrollMapRec.values()){
-            if(!peEnrollMapRec.isEmpty()){
-                if(pe.Foster_Flag__c != 'Pending Review' && fosterFlgVal.size() >= 1){
-                    pe.Foster_Flag__c = 'Pending Review';
-                    pgrmEnrollList.add(pe);
-                }
+            if(pe.Foster_Flag__c != 'Pending Review' && fosterPEIds.size() >= 1){
+                pe.Foster_Flag__c = 'Pending Review';
+                pgrmEnrollList.add(pe);
+            }else if(peIds.size() > 0 && fosterPEIds.size() == 0){
+                pe.Foster_Flag__c = '';
+                pgrmEnrollList.add(pe);
             }
         }
         

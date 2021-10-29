@@ -21,7 +21,7 @@ trigger NES_ProgramGradeLevelTrigger on Program_Grade_Level__c (after insert, af
             
             NES_ProgramGradeLevelHandler.handleAfterUpdate(Trigger.new, Trigger.newMap, Trigger.oldMap);
             //NES_BusinessLogicUtils.waitListCalculator(peList.keySet());
-            
+             //NES_BusinessLogicUtils.openApplicationflag(Trigger.new);
             
         }
 

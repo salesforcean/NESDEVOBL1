@@ -3,7 +3,7 @@ Created for NES_ProgramGradeLevelBusinessLogic class (Jagadish Babu)
 **/
 @isTest
 public class NES_ProgramGradeLevelBusinessLogicTest {
-	@TestSetup
+    @TestSetup
     static void setup(){
         //Create Educational Institutional Account i.e.., Parent Account
         Account institutionAccount = Peak_TestUtils.createEducationalInstitutionAccount();
@@ -36,7 +36,7 @@ public class NES_ProgramGradeLevelBusinessLogicTest {
 
         //Create a relationship between the User Contact and Student Contact
         hed__Relationship__c  relationship = Peak_TestUtils.createRelationship(careTaker.ContactId, student.Id, true);
-		
+        
         //Create Grade Level
          Grade_Level__c gradeLevel = Peak_TestUtils.createGradeLevel('TestGrade', true);
         
@@ -51,7 +51,7 @@ public class NES_ProgramGradeLevelBusinessLogicTest {
         studentEnrollment.Program_Enrollment__c = careTakerEnrollment.Id;
         studentEnrollment.Program_Grade_Level__c = programGradeLevel.Id;
         insert studentEnrollment;
-		
+        
         List<Enrollment_Component__c> componentList = new List <Enrollment_Component__c>();
         Enrollment_Component__c processComponent = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Process', false);        
         Enrollment_Component__c stageComponent = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Stage', false);
@@ -72,11 +72,11 @@ public class NES_ProgramGradeLevelBusinessLogicTest {
         Enrollment_Component_Affiliation__c processAffiliation = Peak_TestUtils.createEnrollmentComponentAffiliation(studentEnrollment.Id, processComponent.Id, false);
         enrollmentComponentAffiliations.add(processAffiliation);
         insert enrollmentComponentAffiliations;
-	}
+    }
     
     
     static testMethod void testWaitListTest(){        
-        Program_Grade_Level__c oldPGL = [Select id, ActivateWaitlist__c,StartWaitlist__c,EndWaitlist__c from Program_Grade_Level__c limit 1];
+        Program_Grade_Level__c oldPGL = [Select id, ActivateWaitlist__c,StartWaitlist__c,EndWaitlist__c, Start_Open_Application__c, End_Open_Application__c, Open_Application__c   from Program_Grade_Level__c limit 1];
         hed__Program_Enrollment__c programEnrollment = [Select Id,WaitlistFlag__c, Program_Grade_Level__c,Program_Grade_Level__r.Name from hed__Program_Enrollment__c where Program_Grade_Level__c =:oldPGL.Id and recordType.Name='Student' limit 1];
         Map<id, Program_Grade_Level__c> oldMapPGL = new Map<id, Program_Grade_Level__c>{oldPGL.Id=>oldPGL};
         Program_Grade_Level__c newPGL = new Program_Grade_Level__c();
@@ -89,7 +89,7 @@ public class NES_ProgramGradeLevelBusinessLogicTest {
         }catch(Exception e){}
         
         test.startTest();
-        	NES_ProgramGradeLevelBusinessLogic.waitListCalculator(oldMapPGL,new List<Program_Grade_Level__c> {newPGL});
+            NES_ProgramGradeLevelBusinessLogic.waitListCalculator(oldMapPGL,new List<Program_Grade_Level__c> {newPGL});
         test.stopTest();
         system.assertEquals(true, newPGL.ActivateWaitlist__c);        
     }
@@ -107,7 +107,7 @@ public class NES_ProgramGradeLevelBusinessLogicTest {
         
         test.startTest();
            NES_ProgramGradeLevelBusinessLogic.waitListCalculator(null,new List<Program_Grade_Level__c> {newPGL}); 
-       	test.stopTest();
+        test.stopTest();
         system.assertEquals(true, newPGL.ActivateWaitlist__c); 
     }
     
@@ -123,7 +123,7 @@ public class NES_ProgramGradeLevelBusinessLogicTest {
         }catch(Exception e){}
         
         test.startTest();
-       	 NES_ProgramGradeLevelBusinessLogic.waitListCalculator(null,new List<Program_Grade_Level__c> {newPGL}); 
+         NES_ProgramGradeLevelBusinessLogic.waitListCalculator(null,new List<Program_Grade_Level__c> {newPGL}); 
         test.stopTest();
          system.assertEquals(false, newPGL.ActivateWaitlist__c); 
     }   

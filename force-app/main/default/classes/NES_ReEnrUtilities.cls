@@ -39,14 +39,17 @@ public without Sharing class NES_ReEnrUtilities {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
                                                                         Enrollment_Type__c = 'Re-enrolling student'
                                                                         );
-                 update pe;
+            pe.Waitlist_Released__c = null;
+            pe.Waitlist_Released_Dt__c = null;  
+               update pe;
            }
              else
              {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
                                                                         Enrollment_Type__c = 'Re-enrolling student',
                                                                         Status__c = 'In Progress');
-               
+              pe.Waitlist_Released__c = null;
+            pe.Waitlist_Released_Dt__c = null;  
              update pe;
                  createOpportunity(studentContact,studentPERecord,AcademicProgram,callType);
              }

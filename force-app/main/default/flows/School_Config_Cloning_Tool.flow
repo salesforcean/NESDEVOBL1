@@ -145,8 +145,8 @@
     <recordUpdates>
         <name>Update_Academic_Program</name>
         <label>Update Academic Program</label>
-        <locationX>679</locationX>
-        <locationY>337</locationY>
+        <locationX>676</locationX>
+        <locationY>338</locationY>
         <inputReference>Get_Academic_Program_Information</inputReference>
     </recordUpdates>
     <screens>

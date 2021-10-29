@@ -186,15 +186,33 @@ public abstract class NES_EnrollmentReactivationBase {
 
                 eca.Status__c = 'Not Started';
             }else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
-                if(eca.Order__c == 2){
-                    eca.Status__c = 'In Progress';
-                }else if(eca.Order__c > 2){
-                    eca.Status__c = 'Not Started';
+                
+                //Added for Open Application User story 451172 -->DK
+                if(enrollmentType == 'RE-ENROLLMENT'){
+                    if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c != 'Active'){
+                        eca.Status__c = 'Complete';
+                    }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == 'Active'){
+                        eca.Status__c = 'In Progress';
+                    }else if(eca.Order__c == 3){
+                        eca.Status__c = 'In Progress';
+                    }else if(eca.Order__c > 3){
+						 eca.Status__c = 'Not Started';
+                    }
                 }
+                //End for Open Application User story 451172 -->DK
+                else{
+                    if(eca.Order__c == 2){
+                        eca.Status__c = 'In Progress';
+                    }else if(eca.Order__c > 2){
+						 eca.Status__c = 'Not Started';
+                    }
+                }
+                
+                
                 
 
                 // Added for testing
-               StageEcaToUpdate.add(eca);	
+               StageEcaToUpdate.add(eca);   
               StageECASet.add(eca.Id);
                  // Added for testing
 
@@ -218,7 +236,7 @@ public abstract class NES_EnrollmentReactivationBase {
             }
             }
             //added for testing
- 		if(!StageECASet.Contains(eca.Id))
+        if(!StageECASet.Contains(eca.Id))
             //added for testing
 
  

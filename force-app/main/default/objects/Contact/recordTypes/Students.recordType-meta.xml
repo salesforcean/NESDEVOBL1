@@ -3270,71 +3270,7 @@
     <picklistValues>
         <picklist>Federal_Ethnicity__c</picklist>
         <values>
-            <fullName>American Indian or Alaskan Native</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>American Indian%2FAlaskan Native</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%2FPacific Islander</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%3A Asian Indian</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%3A Cambodian</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%3A Chinese</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%3A Japanese</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%3A Korean</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%3A Laotian</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%3A Other Asian</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Asian%3A Vietnamese</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Black or African American</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Black%2FAfrican-American %28not Hispanic%29</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Filipino</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Hispanic</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Hispanic or Latino</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>I prefer not to disclose this information</fullName>
             <default>false</default>
         </values>
         <values>
@@ -3342,39 +3278,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Pacific Islander%3A Guamanian</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pacific Islander%3A Hawaiian</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pacific Islander%3A Other Pacific Islander</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pacific Islander%3A Samoan</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pacific Islander%3A Tahitian</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Parent refused to report ethnicity</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Refuse To Report</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>White %28not Hispanic%29</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>White%2FCaucasian</fullName>
             <default>false</default>
         </values>
     </picklistValues>

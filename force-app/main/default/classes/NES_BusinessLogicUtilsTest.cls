@@ -1350,6 +1350,25 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
                 NES_BusinessLogicUtils.reActivationCase(peids);
             Test.stopTest();
         
-    } 
+    }
+    
+    //Foster flag test scenario
+    static testMethod void calculateFosterFlagTest(){
+        
+        hed__Program_Enrollment__c programEnrollment1 = [SELECT Id, Foster_Flag__c FROM hed__Program_Enrollment__c LIMIT 1];
+        List<Student_Custody__c> scList = new list<Student_Custody__c>();
+        Student_Custody__c studentCust = new Student_Custody__c(Custody_Name__c='Mother', Custody_Relationship__c='Foster mother (official custody awarded by government agency)', Program_Enrollment__c=programEnrollment1.Id);
+        scList.add(studentCust);
+        insert scList;
+        
+        Test.startTest();
+        NES_BusinessLogicUtils.calculateFosterFlag(scList);
+        List<Student_Custody__c> studCust = [select id,Custody_Relationship__c,Program_Enrollment__c from Student_Custody__c LIMIT 1];
+        studCust[0].Custody_Relationship__c = 'Grandmother';
+        update studCust;
+        NES_BusinessLogicUtils.calculateFosterFlag(studCust);
+        Test.stopTest();
+        
+    }
    
 }

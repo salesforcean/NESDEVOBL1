@@ -42,6 +42,7 @@
 
     <aura:attribute name="withdrawModalOpen" type="Boolean" default="false" />
     <aura:attribute name="spinner" type="Boolean" default="true" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
 	<!--Swapna:for GTM -->
     <aura:attribute name="currentSectionName" type="String"/>
 	<aura:attribute name="currentFormName" type="String"/>

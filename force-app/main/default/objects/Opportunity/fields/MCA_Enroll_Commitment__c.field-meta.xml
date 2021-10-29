@@ -13,14 +13,9 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>I am declining the offer of enrollment for my student.</fullName>
+                <fullName>I declare my commitment to enroll for my student for the 2022-2023 school year.</fullName>
                 <default>false</default>
-                <label>I am declining the offer of enrollment for my student.</label>
-            </value>
-            <value>
-                <fullName>I declare my commitment to enroll for my student for the 2018–19 school year.</fullName>
-                <default>false</default>
-                <label>I declare my commitment to enroll for my student for the 2018–19 school year.</label>
+                <label>I declare my commitment to enroll for my student for the 2022-2023 school year.</label>
             </value>
         </valueSetDefinition>
     </valueSet>

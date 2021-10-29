@@ -58,8 +58,8 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
             Id = this.studPE.Id,
             Status__c = PE_REACTIVATION_STATUS,
             Enrollment_Type__c = PE_RE_ENROLLMENT_TYPE_DEFAULT,
-            Open_Application__c = null,
-            WaitlistFlag__c = null,
+            Open_Application__c = null,  // Added for Open Application User story 451172 --> DK
+            WaitlistFlag__c = null, 
             WaitlistCounter__c = null,
             Waitlist_Time_Date_Stamp__c = null,
             Waitlist_Time_Date_Stamp_Override__c = null,
@@ -88,8 +88,8 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                 ([
                     SELECT  Id, SystemModstamp, Enrollment_Component__c,Status__c,Order__c,
                             Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c,
-                            Enrollment_Component__r.Needed_for_Re_enrollment__c,
-                            Enrollment_Component__r.RecordTypeId,Enrollment_Component__r.Needed_for_ITR__c
+                            Enrollment_Component__r.Needed_for_Re_enrollment__c,Enrollment_Component__r.Name,
+                            Enrollment_Component__r.RecordTypeId,Enrollment_Component__r.Needed_for_ITR__c,Program_Enrollment__r.Open_Application__c 
                     FROM    Enrollment_Component_Affiliation__c 
                     WHERE   
                         Program_Enrollment__c = :studPE.Id 
