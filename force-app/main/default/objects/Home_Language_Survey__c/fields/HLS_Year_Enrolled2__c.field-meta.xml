@@ -106,6 +106,21 @@
                 <default>false</default>
                 <label>Not Applicable</label>
             </value>
+            <value>
+                <fullName>2019</fullName>
+                <default>false</default>
+                <label>2019</label>
+            </value>
+            <value>
+                <fullName>2020</fullName>
+                <default>false</default>
+                <label>2020</label>
+            </value>
+            <value>
+                <fullName>2021</fullName>
+                <default>false</default>
+                <label>2021</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

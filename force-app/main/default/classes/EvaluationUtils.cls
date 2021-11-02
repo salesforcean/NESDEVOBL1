@@ -366,7 +366,7 @@ public class EvaluationUtils  {
                     //Sravani: Added for Reinstatement
                     if(ecr.Child_Enrollment_Component__r.RecordType.Name == 'Stage' && ecr.Child_Enrollment_Component__r.Name == 'Eligibility' && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment' || EnrollmentType == 'SYReEnroll'))
                         affiliationRecord.Status__c = 'Complete';
-                    //End code
+                    //End code                  
                     else if (String.isBlank(ecr.Child_Enrollment_Component__r.Assignment_Logic__c) ) 
                     {
                         if(EnrollmentType == 'SYReEnroll' && ecr.Child_Enrollment_Component__r.Needed_for_Re_enrollment__c != true)

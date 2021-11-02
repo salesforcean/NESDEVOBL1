@@ -77,12 +77,15 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
                         Enrollment_Component__r.Needed_for_Re_enrollment__c,
                         Enrollment_Component__r.Needed_for_ITR__c,
                         Enrollment_Component__c,
-                        Enrollment_Component__r.RecordType.Name,
-                        Program_Enrollment__r.Open_Application__c, //Added for Open Application User story 451172 -->DK
+                        Enrollment_Component__r.Assignment_Logic__c,//Added for Open Application User story 451172 -->DK
+                        Enrollment_Component__r.Name,  //Added for Open Application User story 451172 -->DK
+					    Enrollment_Component__r.RecordType.Name, 
+                       	Program_Enrollment__r.Open_Application__c, //Added for Open Application User story 451172 -->DK
+                        Program_Enrollment__r.Program_Grade_Level__c, //Added for Open Application User story 451172 -->DK
                         Name,Program_Enrollment__c,
                         Status__c,Order__c 
                         FROM Enrollment_Component_Affiliation__c WHERE Program_Enrollment__c = :studPE.Id AND Enrollment_Component__c in :allIds AND 
-                        (Status__c = 'In Progress' OR Status__c = 'Complete')];
+                        (Status__c = 'In Progress' OR Status__c = 'Complete') ORDER BY Order__c ASC];
         System.debug(this.ecaList.size());    
         //End : Fix for Bug #195463 on 2020-06-25 (Krishna Peddanagammol)
 
@@ -100,6 +103,8 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
         this.studSEList = new List<Special_Education__c>
             ([SELECT Id FROM Special_Education__c WHERE Program_Enrollment__c = :studPE.Id]);
         System.debug('studSEList:' + JSON.serialize(studSEList));
+        
+       
         
     }
 
@@ -189,7 +194,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
         List<Enrollment_Document__c> edToUpdate = new List<Enrollment_Document__c>();
         
         for (Enrollment_Document__c ed : edlist) {
-            edToUpdate.add(new Enrollment_Document__c(id=ed.id, status_reason__c=ED_REACTIVATION_REASON_CODE));
+		    edToUpdate.add(new Enrollment_Document__c(id=ed.id, status_reason__c=ED_REACTIVATION_REASON_CODE));
         }
         if (edList.size()>0) {
             update edToUpdate;
@@ -218,11 +223,13 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
             EvaluatePlacementExclude__c = true,
             EvaluatePlacementBucket__c = true,
             PlacementFlag__c = null,
+            Open_Application__c = null, //Added for Open Application User story 451172 -->DK
             WaitlistCounter__c = null,  //Need for re enroll
             Waitlist_Time_Date_Stamp__c = null,  //Need for re enroll
-            Waitlist_Time_Date_Stamp_Override__c = null,    //Need for re enroll
-            Waitlist_Released__c = null,//Need for re enroll
-            Waitlist_Released_Dt__c = null //Need for re enroll
+            Waitlist_Time_Date_Stamp_Override__c = null,
+            Waitlist_Released__c = null,//RAVI
+            Waitlist_Released_Dt__c = null//RAVI
+            
         );
 
         update toUpdatePE;
@@ -244,7 +251,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
                 Science_Placement_Level__c = null,
                 Final_Grade_Level__c = null,
                 AutomatedPlacementExclude__c = false,
-                StudentPlacementBucket__c = null
+				StudentPlacementBucket__c = null
             ));
         }
         if (toUpdateASIs.size()>0) {

@@ -246,7 +246,19 @@ public class NES_ReEnrUtilitiesTest {
         
         hed__program_enrollment__c studentPe = [Select Id,Enrollment_Type__c,Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.ParentId, hed__Account__c,RecordTypeId from hed__Program_Enrollment__c where RecordTypeId =:studentEnrollmentType Limit 1];
         studentPe.Status__c='Withdrawn';
+        
         update studentPe;
+        /*Id studentEnrollmentType1 = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
+        
+        hed__program_enrollment__c studentPe1 = [Select Id,Enrollment_Type__c,Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.ParentId, hed__Account__c,RecordTypeId, Waitlist_Released__c, Waitlist_Released_Dt__c,Waitlist_Time_Date_Stamp__c from hed__Program_Enrollment__c where RecordTypeId =:studentEnrollmentType1 Limit 1];
+        studentPe1.Enrollment_Type__c='Re-enrolling student';
+        studentPe1.Status__c='In Progress';
+        
+        studentpe1.Waitlist_Released__c = null;
+        studentpe1.Waitlist_Released_Dt__c= null;
+        studentpe1.Waitlist_Time_Date_Stamp__c=null;
+        
+        update studentPe1;*/
         
         Enrollment__c enrollmentId=[SELECT Id,Program_Enrollment__c,Withdrawal_Category__c FROM Enrollment__c where Program_Enrollment__c =: studentPe.id Limit 1];    
         enrollmentId.Withdrawal_Category__c='No Show';

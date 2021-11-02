@@ -359,7 +359,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                             continue;
                         }
                     }
-
+					
                     // Skip if Stage.Status = Not Applicable, don't need to recalulate its Status.
                     if (parent.enrollment_component__r.recordtype.name == 'Stage' && originalStatus == 'Not Applicable')
                     {
@@ -369,14 +369,20 @@ public without sharing class ECA_HierarchyStatusUpdate
 
                         // forUpdateECAs.put(parent.id, parent); // wip
                         // continue;
-
-                        
+                        system.debug('MAp---------'+ peDataMap);
+					system.debug('Enrollment****** '+peData.currentStageECA);
+                     //Added by ravi Us 473192 
                         Enrollment_Component_Affiliation__c currentStageECA = peData.currentStageECA;
+                        if(currentStageECA!=null)
+                        {
+                            // End here
                         Enrollment_Component_Affiliation__c inFlightStageECA = toProcessECAs.get(currentStageECA.Id);
+                      
                         String originalStageStatus = (inFlightStageECA!=null ? inFlightStageECA.Status__c : currentStageECA.status__c);
                         if (originalStageStatus == 'In Progress') {
                             forUpdateECAs.put(parent.id, parent);
                             continue;
+                        }
                         }
                     }
                     

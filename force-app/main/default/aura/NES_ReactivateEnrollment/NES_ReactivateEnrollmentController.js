@@ -139,7 +139,7 @@
         
         //alert('Value of Result1' + component.get("v.peEnrollmentType"));
         var Result = component.get("v.EnrollmentInfo");
-        
+        //alert('Result');
         //alert('Value of Result2' + Result);
         
         //Added by Ravi # Us345735 on 01/19/2021
@@ -153,6 +153,7 @@
         else if( Result =='InitReActivation' && previousSchoolYear==newSchoolYear) 
         {
             //alert('I am here');
+            //alert('Value of Result3' + Result);
             helper.reactivateORreenrolledSameYear(component,event,helper);  
         }
        /* else if(previousSchoolYear==newSchoolYear){ 
@@ -174,24 +175,26 @@
             } */
         else if(previousSchoolYear==newSchoolYear)
         {
+              //alert('Value of Result4' + Result);
             if(Result =='InitReActivation')
-                
+              
                 helper.reactivateORreenrolledSameYear(component,event,helper);
             
             else if(previousGrade==gradeNew){
                 component.set("v.isError",false);
                 //this.handleSubmit(component, event, helper);
-                var a = component.get('c.handleSubmit');
+               // alert('handle');
+                    var a = component.get('c.handleSubmit');
                 $A.enqueueAction(a);
                 helper.InvokeReactive(component,event,helper);
             }
                 else{
-                    
+                   // alert('erro');
                     component.set("v.isError",true);
                 }
         } 
             else{ 
-                
+               // alert('else ro');
                 component.set('v.isOpen', true);
                 var stId=component.get('v.studentId');
                 var acName=component.get("v.acadName");

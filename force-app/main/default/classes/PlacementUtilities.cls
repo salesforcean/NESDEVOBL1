@@ -17,7 +17,7 @@ public class PlacementUtilities {
                 SELECT Id, Program_Enrollment__c,Academic_Documentation_Summary__c,School_Year__r.Start_Date__c,
                         LA_Placement_Level__c, HowStudentPlacementCompleted__c, CoursesFinalized__c, Math_Placement_Level__c,
                         Science_Placement_Level__c, Grade_Level_Requested__c, RecommendedAutoPlacement__c, AutomatedPlacementScore__c, 
-                        AutomatedPlacementExclude__c,
+                        AutomatedPlacementExclude__c,Grade_Level_Completed__c,
                         Final_Grade_Level__c, GiftedProgramRequest_LA_M_S__c, Program_Enrollment__r.Start_Year__r.Start_Date__c,
                         Program_Enrollment__r.hed__Account__r.AutomatedPlacementMaxCutoff__c,
                         School_Year__c, Program_Enrollment__r.Start_Year__r.Current_Year__c, APS_PlacedTimeStamp__c, 
@@ -38,64 +38,21 @@ public class PlacementUtilities {
         Map<ID, Annual_Student_Information__c> asiMap = new Map<ID, Annual_Student_Information__c>();
         list<annual_student_information__c> bucketASIs = new list<annual_student_information__c>();
         list<annual_student_information__c> asis = new list<annual_student_information__c>();
+        /* Create maps of just the ASIs and PEs we will eventually update */
+        map<ID, Annual_Student_Information__c> asiUpdateMap = new map<ID, Annual_Student_Information__c>();
+        
         for(annual_student_information__c asi : allasis){
+            asiUpdateMap.put(asi.ID, asi);
             if (asi.school_year__c == peMap.get(asi.Program_Enrollment__c).start_Year__c){
             	asiMap.put(asi.ID, asi);
             	asis.add(asi);
             }
-            /*Populate the list to call the bucket with */
-            if(peMap.get(asi.Program_Enrollment__c).EvaluatePlacementBucket__c == true){
-            	bucketASIs.add(asi);
-            }
+            
         
         }
         
-        /* Create maps of just the ASIs and PEs we will eventually update */
-        map<ID, Annual_Student_Information__c> asiUpdateMap = new map<ID, Annual_Student_Information__c>();
         
-        /* Build a list of PEs that need Exclusion evaluation */
-        Set<ID> evalExclude = new Set<ID> ();
-        
-        /*Build a list of PEs that need Score evaluation */
-         Set<ID>  evalScore = new Set<ID>();
-       
-        /*Populate the score and exclusion lists and set their calculation flags to null. We will update these records later to commit the flag change*/
-        for(hed__program_enrollment__c pe : peMap.Values()){
-            if (pe.EvaluatePlacementExclude__c){
-                pe.EvaluatePlacementExclude__c = false;
-                evalExclude.add(pe.id);
-            }
-            if (pe.EvaluatePlacementScore__c){
-                pe.EvaluatePlacementScore__c = false;
-                evalScore.add(pe.id);
-            }
-            if(pe.EvaluatePlacementBucket__c){
-            	pe.EvaluatePlacementBucket__c = false;
-            }
-        }
-        
-        
-        /* Get the results of the exclusion evaluation*/
-        list<Annual_Student_Information__c> asiExcludes = new list<Annual_Student_Information__c>();
-        asiExcludes = calculateAutomatedPlacementExclude(evalExclude, true);
-        System.debug('got Exclusions');
-        
-        /* Get the results of the score evaluation*/
-        list<Annual_Student_Information__c> asiScores = new list<Annual_Student_Information__c>();
-		asiScores = calculatePlacementScore(evalScore, asis);    
-        System.debug('got Scores');
-        
-        /* Merge the outcomes of the score and exclusion evaluations into the mapped ASIs */
-        for (annual_student_information__c asiEvalUpdate : asiExcludes){
-        	asiMap.get(asiEvalUpdate.ID).AutomatedPlacementExclude__c = asiEvalUpdate.AutomatedPlacementExclude__c;
-        	asiUpdateMap.put(asiEvalUpdate.ID, asiMap.get(asiEvalUpdate.ID));
-        }
-
-        for (annual_student_information__c asiScoreUpdate: asiScores){
-        	asiMap.get(asiScoreUpdate.ID).AutomatedPlacementScore__c = asiScoreUpdate.AutomatedPlacementScore__c;
-        	asiUpdateMap.put(asiScoreUpdate.ID, asiMap.get(asiScoreUpdate.ID));
-        }
-
+        //Suresh commented these lines end
         /**** Start evaluation of the AutoPlacement Process *****/
         list<Annual_Student_Information__c> asiPlacements = new list<Annual_Student_Information__c>();
         list<Annual_Student_Information__c> asiPlacementUpdates = new list<Annual_Student_Information__c>();
@@ -104,17 +61,19 @@ public class PlacementUtilities {
         ** Only call AutoPlacement for applicable ASIs. 
         ** If any manual values have been provided or the student has request highschool, we bypass the process 
         ***************************************************************/ 
+        System.debug('asiUpdateMap>>'+asiUpdateMap);
         for(Annual_Student_Information__c asi : asiUpdateMap.Values()) {
-            if(asi.HowStudentPlacementCompleted__c == null && asi.AutomatedPlacementScore__c != null && asi.AutomatedPlacementExclude__c == false
+            if(asi.HowStudentPlacementCompleted__c == null 
                     && asi.LA_Placement_Level__c == null && asi.Science_Placement_Level__c == null
-                    && asi.Final_Grade_Level__c == null && asi.Math_Placement_Level__c == null
-                    && asi.Grade_Level_Requested__c != '9' && asi.Grade_Level_Requested__c != '10'
-                    && asi.Grade_Level_Requested__c != '11' && asi.Grade_Level_Requested__c != '12') {
+                    && asi.Final_Grade_Level__c == null && asi.Math_Placement_Level__c == null 
+                    && asi.Grade_Level_Requested__c != null && asi.Grade_Level_Completed__c != null ) {
+                   //Add condition for school name and data of birth
                 asiPlacements.add(asi);
             }
         }
        	System.debug('calling PlacementProcess');
-       	asiPlacementUpdates = calculateAutomatedPlacementProcess(peIds, asiPlacements);
+        if(asiPlacements.size()>0)
+       	//asiPlacementUpdates = calculateAutomatedPlacementProcess(peIds, asiPlacements);
        	System.debug('PlacementProcess done');
        	
        	/* Merge the placement updates into the mapped ASIS */
@@ -212,7 +171,7 @@ public class PlacementUtilities {
              Academic_Documentation_Summary__c,School_Year__r.Start_Date__c, LA_Placement_Level__c, Program_Enrollment__r.WaitlistFlag__c, Program_Enrollment__r.WhyFlagged__c,
              HowStudentPlacementCompleted__c, CoursesFinalized__c, Math_Placement_Level__c, Science_Placement_Level__c, Grade_Level_Requested__c, RecommendedAutoPlacement__c,
              Final_Grade_Level__c, GiftedProgramRequest_LA_M_S__c, Program_Enrollment__r.Start_Year__r.Start_Date__c, School_Year__c, APS_PlacedTimeStamp__c,Grade_Level_Completed__c,
-			 Grade_8_Next_Years_Math_Course__c
+			 Grade_8_Next_Years_Math_Course__c,AutomatedPlacementScore__c
              FROM Annual_Student_Information__r),
             (SELECT Id, Status_Reason__c, Type__c, Program_Enrollment__c FROM Enrollment_Documents__r),
             (SELECT Id, Level_Requested__c, Course_Requested__c FROM Placement_and_Elective_Requests__r),
@@ -422,7 +381,7 @@ public class PlacementUtilities {
     ** Method to calculate the student's Automated Placement Score
     **
     ***************************************************************************/
-    public static List<Annual_Student_Information__c> calculatePlacementScore(Set<Id> programEnrollmentIds, List<Annual_Student_Information__c> asis){
+   /* public static List<Annual_Student_Information__c> calculatePlacementScore(Set<Id> programEnrollmentIds, List<Annual_Student_Information__c> asis){
         
         // Get all AnnualStudentInformation,Academic Information form programEnrollment
         Map<Id, hed__Program_Enrollment__c> ProgramEnrollments = new Map<Id, hed__Program_Enrollment__c>([
@@ -469,7 +428,7 @@ public class PlacementUtilities {
         /* if Annual Student Information school Start Date is equal to programEnrollment school Start Date then
 		populate studentInformationMap with Enrollment Id and Student Information object */
         
-        Map<Id, Annual_Student_Information__c> studentInformationMap = new Map<Id, Annual_Student_Information__c>();
+       /* Map<Id, Annual_Student_Information__c> studentInformationMap = new Map<Id, Annual_Student_Information__c>();
         if (!ProgramEnrollments.isEmpty()) {
             
             for (hed__Program_Enrollment__c prEn : ProgramEnrollments.values()) {
@@ -572,15 +531,16 @@ public class PlacementUtilities {
             }
         }
         return studentInfoList;
-    }
+    }*/
     
-    
+ 
     /****************************************************************************
     ** Created By Ritvik on 21-12-2018.
     ** Updated and moved to PlacementUtilities by Alex Chisholm on 11/10/2019
     ** purpose :This logic will be required to support grade level determination
     ** Params :List of program enrollment Ids
     *****************************************************************************/
+    /*
     public static List<Annual_Student_Information__c> calculateAutomatedPlacementProcess(list<Id> progEnrollIds, List<Annual_Student_Information__c> asis) {
         System.debug('in calculateAutomatedPlacementProcess');
         
@@ -619,14 +579,8 @@ public class PlacementUtilities {
             if (asiRecord.School_Year__c == asiRecord.Program_Enrollment__r.Start_Year__c) {
                 hed__Program_Enrollment__c programEnrollment = new hed__Program_Enrollment__c(Id = asiRecord.Program_Enrollment__c);
 
-                if (asiRecord.AutomatedPlacementExclude__c) {
-                    continue;
-                } else if (asiRecord.AutomatedPlacementScore__c != null && asiRecord.AutomatedPlacementExclude__c == false &&
-                        asiRecord.AutomatedPlacementScore__c <= asiRecord.Program_Enrollment__r.hed__Account__r.AutomatedPlacementMaxCutoff__c && asiRecord.LA_Placement_Level__c == null &&
-                        asiRecord.Science_Placement_Level__c == null && asiRecord.Final_Grade_Level__c == null && asiRecord.Math_Placement_Level__c == null &&
-                        (asiRecord.Grade_Level_Requested__c == '8' || asiRecord.Grade_Level_Requested__c == '7' || asiRecord.Grade_Level_Requested__c == '6' ||
-                                asiRecord.Grade_Level_Requested__c == '5' || asiRecord.Grade_Level_Requested__c == '4' || asiRecord.Grade_Level_Requested__c == '3' ||
-                                asiRecord.Grade_Level_Requested__c == '2' || asiRecord.Grade_Level_Requested__c == '1' || asiRecord.Grade_Level_Requested__c == 'K' || asiRecord.Grade_Level_Requested__c == 'Kindergarten')) {
+                 if (asiRecord.LA_Placement_Level__c == null && asiRecord.Science_Placement_Level__c == null && asiRecord.Final_Grade_Level__c == null && asiRecord.Math_Placement_Level__c == null)
+                 {
 					
 					System.debug('made it past first hed__Account__r reference');
 					//Mark Membrino 11/19/2019 Made changes for Gap Analysis trans K changes. Story 117570                    
@@ -642,17 +596,8 @@ public class PlacementUtilities {
 							asiRecord.Math_Placement_Level__c = 'K';
 							asiRecord.Science_Placement_Level__c = 'K';
 						}
-                    } else if (asiRecord.Grade_Level_Requested__c == '8') {
-                        asiRecord.Math_Placement_Level__c = asiRecord.Program_enrollment__r.hed__account__r.grade8math__c;
-                        asiRecord.Final_Grade_Level__c = '8';
-                        asiRecord.LA_Placement_Level__c = '8';
-                        asiRecord.Science_Placement_Level__c = '8';
-                    } else if (asiRecord.Grade_Level_Requested__c == '7') {
-                        asiRecord.Math_Placement_Level__c = asiRecord.Program_enrollment__r.hed__account__r.grade7math__c;
-                        asiRecord.Final_Grade_Level__c = '7';
-                        asiRecord.LA_Placement_Level__c = '7';
-                        asiRecord.Science_Placement_Level__c = '7';
-                    } else {
+                    } 
+                    else {
                         asiRecord.LA_Placement_Level__c = asiRecord.Grade_Level_Requested__c;
                         asiRecord.Science_Placement_Level__c = asiRecord.Grade_Level_Requested__c;
                         asiRecord.Final_Grade_Level__c = asiRecord.Grade_Level_Requested__c;
@@ -662,67 +607,24 @@ public class PlacementUtilities {
                     programEnrollment = asiRecord.Program_Enrollment__r;
                     programEnrollment.PlacementFlag__c = null;
 
-                    /* Records_Request__c - populating Secondary_Academic_Doc_Request__c field
-                    ** Alex - Removing 11/10/2019. I don't think this is needed
-                    if (!progEnrollIdsRecordsRequest_Map.isEmpty() && progEnrollIdsRecordsRequest_Map.containsKey(asiRecord.Program_Enrollment__c)) {
-                        for (Records_Request__c recordsRequest : progEnrollIdsRecordsRequest_Map.get(asiRecord.Program_Enrollment__c)) {
-                            recordsRequest.Secondary_Academic_Doc_Request__c = null;
-                            allObjectsUpdateList.add(recordsRequest);
-                        }
-                    }*/
-
+            
                     asiRecord.CoursesFinalized__c = 'Yes';
                     asiRecord.HowStudentPlacementCompleted__c = 'Standard Auto-Placement Process';
 
-                    /*Calculate Program_Enrollment__c .StudentFlag__c - REMOVED 11/10/2019
-                    if (!isMatch(asiRecord.Program_Enrollment__r.WaitlistFlag__c, 'Active', false) &&
-                            !isMatch(asiRecord.Program_Enrollment__r.WhyFlagged__c, 'Eligibility', false) &&
-                            !isMatch(asiRecord.Program_Enrollment__r.WhyFlagged__c, 'Disciplinary History', false) &&
-                            !isMatch(asiRecord.Program_Enrollment__r.WhyFlagged__c, 'Special Education', false) &&
-                            !isMatch(asiRecord.Program_Enrollment__r.WhyFlagged__c, 'Placement', false)) {
-                        programEnrollment.StudentFlag__c = null;
-                    } else if (asiRecord.Program_Enrollment__r.WhyFlagged__c == null) {
-                        programEnrollment.StudentFlag__c = 'Released';
-                    } else {
-                        programEnrollment.StudentFlag__c = 'On-Hold';
-                    }*/
-
-                    /*Alex Removed 11/10/2019 - Why is this here? Nothing about placement is relevant to the determination of this data.
-                    ** Calculate Opportunity.Lottery_Selection__c
-                    if (!progEnrollIdsOpportunity.isEmpty() && progEnrollIdsOpportunity.containsKey(asiRecord.Program_Enrollment__c)) {
-                        if (progEnrollIdsOpportunity.get(asiRecord.Program_Enrollment__c).Lottery_Selection_Date__c != null) {
-                            progEnrollIdsOpportunity.get(asiRecord.Program_Enrollment__c).Lottery_Selection__c = 'Selected';
-                        } else {
-                            progEnrollIdsOpportunity.get(asiRecord.Program_Enrollment__c).Lottery_Selection__c = 'Not Selected';
-                        }
-                    }*/
-
-                    // Calculate Annual_Student_Information__c.APS_PlacedTimeStamp__c
+                     // Calculate Annual_Student_Information__c.APS_PlacedTimeStamp__c
                     if (asiRecord.Program_Enrollment__r.Start_Year__r.Current_Year__c == true &&
                             asiRecord.APS_PlacedTimeStamp__c == null && asiRecord.CoursesFinalized__c == 'Yes') {
                         asiRecord.APS_PlacedTimeStamp__c = System.now();
                     }
 
-                    /*if (!programEnrollUpdateList.contains(programEnrollment)) {
-                        allObjectsUpdateList.add(programEnrollment);
-                    }*/
-
+        
                     asiIds.add(asiRecord.Id);
                     //allObjectsUpdateList.add(progEnrollIdsOpportunity.get(asiRecord.Program_Enrollment__c));
                 }
             }
 
-        }
-        /*Checking for sObject List that is to be updated is empty or not.
-        if (!allObjectsUpdateList.isEmpty()) {
-            try {
-                update allObjectsUpdateList;
-            } catch (Exception e) {
-                System.debug('Exception :::' + e.getMessage());
-                //logger.logException('calculateAutomatedPlacementProcess', e);
-                //logger.saveLogs();
-            }
-        }*/
+        } 
         return asis;
     }
+     */
 }

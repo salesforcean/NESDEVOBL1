@@ -141,6 +141,11 @@
                 <default>false</default>
                 <label>Vietnamese</label>
             </value>
+            <value>
+                <fullName>ASL</fullName>
+                <default>false</default>
+                <label>ASL</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
     <visibleLines>5</visibleLines>

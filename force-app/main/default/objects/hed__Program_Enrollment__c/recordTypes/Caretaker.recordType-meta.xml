@@ -1222,21 +1222,6 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Grad_On_track__c</picklist>
-        <values>
-            <fullName>No</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Unsure</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Yes</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>GradeLevelEligibility__c</picklist>
         <values>
             <fullName>Allowed to Enroll</fullName>
@@ -1431,6 +1416,21 @@
         <picklist>Grades_Home_Schooled__c</picklist>
         <values>
             <fullName>Values to be added</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Graduate_On_Track__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
             <default>false</default>
         </values>
     </picklistValues>

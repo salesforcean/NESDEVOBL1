@@ -106,7 +106,7 @@
  * changes added by anithap on 17/01/2019
  * 
  */
-                setTimeout(function(){ $A.get('e.force:refreshView').fire(); }, 10000); // //Added for Open Application User story 451172 -->DK
+                setTimeout(function(){ $A.get('e.force:refreshView').fire(); }, 5000);  //Added for Open Application User story 451172 -->DK
               	  $A.get("e.force:navigateToURL").setParams({
                        
                     "url": url

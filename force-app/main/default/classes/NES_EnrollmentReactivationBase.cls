@@ -24,7 +24,7 @@ public abstract class NES_EnrollmentReactivationBase {
     public List<Enrollment_Component_Affiliation__c> ecaList {get; protected set;}
 
     public NES_EnrollmentReactivationBase(String stud_PEID, Reactivation type) { 
-
+		
         this.type = type;
         init(stud_PEID);    
 
@@ -174,7 +174,8 @@ public abstract class NES_EnrollmentReactivationBase {
 
 
         system.debug('ecaList to process' + ecaList);
-        for (Enrollment_Component_Affiliation__c eca : ecaList) {
+          for (Enrollment_Component_Affiliation__c eca : ecaList) {
+            
             System.debug('my list-----'+eca);
             //Maddileti :8/20/Defect-450194/474866 -Modified code
             if(((eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Enrollment_Component__r.Needed_for_ITR__c == true) || (eca.Enrollment_Component__r.Needed_for_Re_enrollment__c != true && eca.Status__c == 'Not Started')) && enrollmentType == 'RE-ENROLLMENT')
@@ -186,38 +187,35 @@ public abstract class NES_EnrollmentReactivationBase {
 
                 eca.Status__c = 'Not Started';
             }else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
-                
-                //Added for Open Application User story 451172 -->DK
-                if(enrollmentType == 'RE-ENROLLMENT'){
-                    if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c != 'Active'){
-                        eca.Status__c = 'Complete';
-                    }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == 'Active'){
-                        eca.Status__c = 'In Progress';
-                    }else if(eca.Order__c == 3){
-                        eca.Status__c = 'In Progress';
-                    }else if(eca.Order__c > 3){
-						 eca.Status__c = 'Not Started';
+            
+             //Added for Open Application User story 451172 -->DK
+              
+				if(enrollmentType == 'RE-ENROLLMENT' || enrollmentType == 'FULL' || enrollmentType == 'SOFT'){
+                    string  firstGrade = 'CapoCA - First Grade';
+                    if((eca.Order__c == 2 || eca.Order__c == 3 || eca.Order__c == 4) && eca.Program_Enrollment__r.Open_Application__c == 'Released' && eca.Program_Enrollment__r.Program_Grade_Level__c == firstGrade){
+                        ecaList[1].Status__c = 'In Progress';
+                    }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == null && eca.Enrollment_Component__r.Name != 'Open Application'){
+                        ecaList[1].Status__c = 'In Progress';
+                    }else if((eca.Order__c == 3 || eca.Order__c == 4 || eca.Order__c == 5) && eca.Program_Enrollment__r.Open_Application__c == null && eca.Program_Enrollment__r.Program_Grade_Level__c != firstGrade){
+                    	ecaList[2].Status__c = 'In Progress';
+                    }else{
+                        eca.Status__c = 'Not Started';          
                     }
-                }
-                //End for Open Application User story 451172 -->DK
-                else{
+                }else{
                     if(eca.Order__c == 2){
                         eca.Status__c = 'In Progress';
                     }else if(eca.Order__c > 2){
-						 eca.Status__c = 'Not Started';
+                        eca.Status__c = 'Not Started';
                     }
                 }
-                
-                
-                
-
+                 //End for Open Application User story 451172 -->DK  
+                          
                 // Added for testing
                StageEcaToUpdate.add(eca);   
               StageECASet.add(eca.Id);
-                 // Added for testing
-
-
+                 // Added for testing                
             }
+               
             system.debug('Enrollment Type*********'+eca.Program_Enrollment__r.Enrollment_Type__c);
             //Added for making Form status as In Progress, This will run only for Re-Enrolling Students for Defect 244255
             if((eca.Enrollment_Component__r.RecordType.Name == 'Form') && enrollmentType == 'RE-ENROLLMENT') 
@@ -250,7 +248,7 @@ public abstract class NES_EnrollmentReactivationBase {
         if(StageEcaToUpdate.Size()>0)
             update StageEcaToUpdate;
         //added for testing
-        
+      
         if (ecaToUpdate.size()>0) {
            // Added code for the defect 228339 by Maddileti on 28-08-2020   
            // To bypass the auto-completion logic , passing Flag value from  NES_EnrollmentReactivationBase class to NES_AddStudentCBLQueueable class
@@ -285,6 +283,8 @@ public abstract class NES_EnrollmentReactivationBase {
            update ecaToUpdate;
         }
     }
+    
+    
 
 
     // exception classes

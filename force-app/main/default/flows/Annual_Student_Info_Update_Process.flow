@@ -1,44 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <decisions>
-        <name>isChangedDecision10_myRule_8_AutomatedPlacementScore_c</name>
-        <label>isChangedDecision10_myRule_8_AutomatedPlacementScore_c</label>
+    <actionCalls>
+        <processMetadataValues>
+            <name>ActionCallType</name>
+            <value>
+                <stringValue>process</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>flowSelection</name>
+            <value>
+                <stringValue>Annual Student Info Invocable Update Process</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myWaitEvent_myWait_myRule_6_event_0_SA1</name>
+        <label>Update ASI records based on date of birth</label>
+        <locationX>600</locationX>
+        <locationY>200</locationY>
+        <actionName>Annual_Student_Info_Invocable_Update_Process</actionName>
+        <actionType>flow</actionType>
+        <connector>
+            <targetReference>myWaitEvent_myWait_myRule_6_event_0_postWaitExecutionAssignment</targetReference>
+        </connector>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue>Annual_Student_Information__c</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>SObject</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>SObject</name>
+            <value>
+                <elementReference>myVariable_current</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <assignments>
+        <name>myWaitAssignment_myWait_myRule_6</name>
+        <label>myWaitAssignment_myWait_myRule_6</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
+        <assignmentItems>
+            <assignToReference>cancelWaits</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>myWait_myRule_6</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
             <targetReference>myDecision</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_10_myRule_8_AutomatedPlacementScore_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.AutomatedPlacementScore__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.AutomatedPlacementScore__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myDecision</targetReference>
-            </connector>
-            <label>isChangedRule_10_myRule_8_AutomatedPlacementScore_c</label>
-        </rules>
-    </decisions>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>myWaitEvent_myWait_myRule_6_event_0_postWaitExecutionAssignment</name>
+        <label>myWaitEvent_myWait_myRule_6_event_0_postWaitExecutionAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myWaitEvent_myWait_myRule_6_event_0_postActionExecutionVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myWait_myRule_6</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>isChangedDecision2_myRule_1_Grade_Level_Requested_c</name>
         <label>isChangedDecision2_myRule_1_Grade_Level_Requested_c</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>isChangedDecision5_myRule_4_Grade_Level_Requested_c</targetReference>
+            <targetReference>myPreWaitDecision_myWait_myRule_6</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -59,105 +124,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>isChangedDecision5_myRule_4_Grade_Level_Requested_c</targetReference>
+                <targetReference>myPreWaitDecision_myWait_myRule_6</targetReference>
             </connector>
             <label>isChangedRule_2_myRule_1_Grade_Level_Requested_c</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>isChangedDecision5_myRule_4_Grade_Level_Requested_c</name>
-        <label>isChangedDecision5_myRule_4_Grade_Level_Requested_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>isChangedDecision6_myRule_4_GiftedProgramRequest_LA_M_S_c</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_5_myRule_4_Grade_Level_Requested_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.Grade_Level_Requested__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.Grade_Level_Requested__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>isChangedDecision6_myRule_4_GiftedProgramRequest_LA_M_S_c</targetReference>
-            </connector>
-            <label>isChangedRule_5_myRule_4_Grade_Level_Requested_c</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>isChangedDecision6_myRule_4_GiftedProgramRequest_LA_M_S_c</name>
-        <label>isChangedDecision6_myRule_4_GiftedProgramRequest_LA_M_S_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>isChangedDecision9_myRule_8_AutomatedPlacementExclude_c</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_6_myRule_4_GiftedProgramRequest_LA_M_S_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.GiftedProgramRequest_LA_M_S__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.GiftedProgramRequest_LA_M_S__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>isChangedDecision9_myRule_8_AutomatedPlacementExclude_c</targetReference>
-            </connector>
-            <label>isChangedRule_6_myRule_4_GiftedProgramRequest_LA_M_S_c</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>isChangedDecision9_myRule_8_AutomatedPlacementExclude_c</name>
-        <label>isChangedDecision9_myRule_8_AutomatedPlacementExclude_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>isChangedDecision10_myRule_8_AutomatedPlacementScore_c</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_9_myRule_8_AutomatedPlacementExclude_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.AutomatedPlacementExclude__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.AutomatedPlacementExclude__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>isChangedDecision10_myRule_8_AutomatedPlacementScore_c</targetReference>
-            </connector>
-            <label>isChangedRule_9_myRule_8_AutomatedPlacementExclude_c</label>
         </rules>
     </decisions>
     <decisions>
@@ -323,174 +292,23 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision7</targetReference>
+            <targetReference>myDecision5</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_4</name>
-            <conditionLogic>(1 OR 2) AND 3 AND 4 AND 5</conditionLogic>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Picklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_5_myRule_4_Grade_Level_Requested_c</leftValueReference>
+                <leftValueReference>formula_myRule_4</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>MultiPicklist</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_6_myRule_4_GiftedProgramRequest_LA_M_S_c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Program_Enrollment__r.EvaluatePlacementExclude__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>ID</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideReferenceTo</name>
-                    <value>
-                        <stringValue>School_Year__c</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>ID</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Reference</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.School_Year__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.Program_Enrollment__r.Start_Year__c</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>GlobalConstant</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Program_Enrollment__r.HowStudentPlacementCompleted__c</leftValueReference>
-                <operator>EqualTo</operator>
             </conditions>
             <connector>
                 <targetReference>myRule_4_A1</targetReference>
             </connector>
-            <label>EvalPlacementExcludeUpdate</label>
+            <label>Update Placement Review on PE</label>
         </rules>
     </decisions>
     <decisions>
@@ -500,143 +318,155 @@
                 <numberValue>2.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision7</name>
-        <label>myDecision7</label>
+        <name>myDecision5</name>
+        <label>myDecision5</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_8</name>
-            <conditionLogic>1 AND 2 AND (3 OR 4)</conditionLogic>
+            <name>myRule_6</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Program_Enrollment__r.EvaluatePlacementBucket__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>GlobalConstant</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Program_Enrollment__r.HowStudentPlacementCompleted__c</leftValueReference>
-                <operator>EqualTo</operator>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_9_myRule_8_AutomatedPlacementExclude_c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Number</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Number</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_10_myRule_8_AutomatedPlacementScore_c</leftValueReference>
+                <leftValueReference>formula_myRule_6</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_8_A1</targetReference>
+                <targetReference>myRule_6_pmetdec</targetReference>
             </connector>
-            <label>EvaluatePlacementBucker</label>
+            <label>Insert Logic for calca</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPostWaitDecision_myWaitEvent_myWait_myRule_6_event_0</name>
+        <label>myPostWaitDecision_myWaitEvent_myWait_myRule_6_event_0</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitEvent_myWait_myRule_6_event_0_postWaitExecutionAssignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPostWaitRule_myWaitEvent_myWait_myRule_6_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_current.LastModifiedDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWaitEvent_myWait_myRule_6_event_0_SA1</targetReference>
+            </connector>
+            <label>myPostWaitRule_myWaitEvent_myWait_myRule_6_event_0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myPreWaitDecision_myWait_myRule_6</name>
+        <label>myPreWaitDecision_myWait_myRule_6</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myWaitAssignment_myWait_myRule_6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myPreWaitRule_myWait_myRule_6</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_6</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myDecision</targetReference>
+            </connector>
+            <label>myPreWaitRule_myWait_myRule_6</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_6_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>600</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myWait_myRule_6</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_6_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myWait_myRule_6</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_6_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_6_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
         </rules>
     </decisions>
     <description>Main process for handling Annual_Student_Information__c updates.</description>
-    <interviewLabel>Annual_Student_Info_Update_Process-2_InterviewLabel</interviewLabel>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>NOT(ISNEW()) &amp;&amp; OR(ISCHANGED([Annual_Student_Information__c].Grade_Level_Requested__c ) ,ISCHANGED([Annual_Student_Information__c].Grade_Level_Completed__c ))
+&amp;&amp;
+(VALUE(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)) -VALUE(TEXT([Annual_Student_Information__c].Grade_Level_Completed__c)) !=1)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_4</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT(ISNEW()) &amp;&amp; OR(ISCHANGED({!myVariable_current.Grade_Level_Requested__c} ) ,ISCHANGED({!myVariable_current.Grade_Level_Completed__c} ))
+&amp;&amp;
+(VALUE(TEXT({!myVariable_current.Grade_Level_Requested__c})) -VALUE(TEXT({!myVariable_current.Grade_Level_Completed__c})) !=1)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(ISNEW(),CONTAINS([Annual_Student_Information__c].Program_Enrollment__r.hed__Account__r.Parent.Name ,&apos;California&apos;))
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_6</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISNEW(),CONTAINS({!myVariable_current.Program_Enrollment__r.hed__Account__r.Parent.Name} ,&apos;California&apos;))</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(ISNEW(),CONTAINS([Annual_Student_Information__c].Program_Enrollment__r.hed__Account__r.Parent.Name ,&apos;California&apos;))
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_6_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(ISNEW(),CONTAINS({!myVariable_old.Program_Enrollment__r.hed__Account__r.Parent.Name} ,&apos;California&apos;))</expression>
+    </formulas>
+    <interviewLabel>Annual_Student_Info_Update_Process-24_InterviewLabel</interviewLabel>
     <label>Annual Student Info Update Process</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -772,11 +602,11 @@
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_4_A1</name>
-        <label>UpdateEvalExclude</label>
+        <label>Update PE Record</label>
         <locationX>400</locationX>
         <locationY>200</locationY>
         <connector>
-            <targetReference>myDecision7</targetReference>
+            <targetReference>myDecision5</targetReference>
         </connector>
         <filters>
             <processMetadataValues>
@@ -795,7 +625,7 @@
             <processMetadataValues>
                 <name>dataType</name>
                 <value>
-                    <stringValue>Boolean</stringValue>
+                    <stringValue>Picklist</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -807,7 +637,7 @@
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>Evaluate AutoPlacement Exclusion</stringValue>
+                    <stringValue>Placement Flag</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -819,98 +649,25 @@
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>Boolean</stringValue>
+                    <stringValue>Picklist</stringValue>
                 </value>
             </processMetadataValues>
-            <field>EvaluatePlacementExclude__c</field>
+            <field>PlacementFlag__c</field>
             <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>hed__Program_Enrollment__c</object>
-    </recordUpdates>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>extraTypeInfo</name>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Annual_Student_Information__c].Program Enrollment</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>referenceTargetField</name>
-        </processMetadataValues>
-        <name>myRule_8_A1</name>
-        <label>Update EvalBucker</label>
-        <locationX>800</locationX>
-        <locationY>200</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Program_Enrollment__c</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Evaluate Placement Bucket</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Boolean</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>EvaluatePlacementBucket__c</field>
-            <value>
-                <booleanValue>true</booleanValue>
+                <stringValue>Placement Review</stringValue>
             </value>
         </inputAssignments>
         <object>hed__Program_Enrollment__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision2_myRule_1_Grade_Level_Requested_c</startElementReference>
-    <status>Draft</status>
+    <status>Obsolete</status>
+    <variables>
+        <name>cancelWaits</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
@@ -927,4 +684,73 @@
         <isOutput>false</isOutput>
         <objectType>Annual_Student_Information__c</objectType>
     </variables>
+    <variables>
+        <name>myWaitEvent_myWait_myRule_6_event_0_postActionExecutionVariable</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <waits>
+        <name>myWait_myRule_6</name>
+        <label>myWait_myRule_6</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>defaultLabel</defaultConnectorLabel>
+        <waitEvents>
+            <processMetadataValues>
+                <name>inputParameterType</name>
+                <value>
+                    <stringValue>referenced</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>myWaitEvent_myWait_myRule_6_event_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>myWaitEvent_myWait_myRule_6_event_0_postActionExecutionVariable</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myPostWaitDecision_myWaitEvent_myWait_myRule_6_event_0</targetReference>
+            </connector>
+            <eventType>DateRefAlarmEvent</eventType>
+            <inputParameters>
+                <name>TimeTableColumnEnumOrId</name>
+                <value>
+                    <stringValue>Annual_Student_Information__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>EntityObjectId</name>
+                <value>
+                    <elementReference>myVariable_current.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffsetUnit</name>
+                <value>
+                    <stringValue>Hours</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeOffset</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>TimeFieldColumnEnumOrId</name>
+                <value>
+                    <stringValue>LastModifiedDate</stringValue>
+                </value>
+            </inputParameters>
+            <label>myWaitEvent_myWait_myRule_6_event_0</label>
+        </waitEvents>
+    </waits>
 </Flow>

@@ -1021,7 +1021,7 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         //insert asis;
         set<Id> pids=new set<Id>{progEnrollment1.Id};
         List<Annual_Student_Information__c> asisRecords=new List<Annual_Student_Information__c>{asis};
-        insert asisRecords;
+        //insert asisRecords;
          Test.startTest();
         List<Annual_Student_Information__c> valReturns=NES_BusinessLogicUtils.calculateAutomatedPlacementProcess(pids,asisRecords);
         Test.stopTest();
@@ -1097,7 +1097,7 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         Annual_Student_Information__c asRecords = new Annual_Student_Information__c();
         asRecords.Program_Enrollment__c = progEnrollment1.id;
         asRecords.School_Year__c=previousSchoolYears.Id;
-        insert asRecords;
+        //insert asRecords;
         List<Annual_Student_Information__c> asisRecords=new List<Annual_Student_Information__c>{asRecords};
         set<Id> pids=new set<Id>{progEnrollment1.Id};
         
@@ -1196,13 +1196,13 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
           insert pes;
       hed__Program_Enrollment__c programEnrollment = [Select Id,hed__Account__c,hed__Contact__c from hed__Program_Enrollment__c WHERE Status__c = 'In Progress' AND Start_Year__c =: currentSchoolYear.Id limit 1];
       Annual_Student_Information__c currentASI = Peak_TestUtils.createAnnualStudentInformation('Current ASI', programEnrollment.Id, currentSchoolYear.Id, false);
-      currentASI.Grade_Level_Requested__c = '10';
+      //currentASI.Grade_Level_Requested__c = '10';
       //currentASI.HS_LTS__c = '1';
           List<hed__Program_Enrollment__c> abcd=new List<hed__Program_Enrollment__c>{programEnrollment};
       Test.startTest();
-      insert currentASI;
-      Annual_Student_Information__c asiRecord = [SELECT Id,Program_Enrollment__r.HS_LTS_Group__c FROM Annual_Student_Information__c
-      WHERE Id =: currentASI.Id];
+      //insert currentASI;
+      // Annual_Student_Information__c asiRecord = [SELECT Id,Program_Enrollment__r.HS_LTS_Group__c FROM Annual_Student_Information__c LIMIT 1];
+      //WHERE Id =: currentASI.Id];
       //Commented Deprecate Technology flag logic for US 476956
           //NES_BusinessLogicUtils.flagTechnologyAction(abcd);
       //System.assertEquals('Medium HS LTS',asiRecord.Program_Enrollment__r.HS_LTS_Group__c);
@@ -1358,7 +1358,9 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         hed__Program_Enrollment__c programEnrollment1 = [SELECT Id, Foster_Flag__c FROM hed__Program_Enrollment__c LIMIT 1];
         List<Student_Custody__c> scList = new list<Student_Custody__c>();
         Student_Custody__c studentCust = new Student_Custody__c(Custody_Name__c='Mother', Custody_Relationship__c='Foster mother (official custody awarded by government agency)', Program_Enrollment__c=programEnrollment1.Id);
+        Student_Custody__c studentCust1 = new Student_Custody__c(Custody_Name__c='Mother', Custody_Relationship__c='Legal guardian (has legal custody)', Program_Enrollment__c=programEnrollment1.Id);
         scList.add(studentCust);
+        scList.add(studentCust1);
         insert scList;
         
         Test.startTest();

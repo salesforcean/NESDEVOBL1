@@ -80,7 +80,6 @@
             <value>
                 <fullName>Kindergarten</fullName>
                 <default>false</default>
-                <isActive>false</isActive>
                 <label>Kindergarten</label>
             </value>
         </valueSetDefinition>

@@ -26,7 +26,7 @@ public class NES_ReactivateStdUtils {
         return ctUser; 
     }
     
-    public static Id getStudentRTId(){		
+    public static Id getStudentRTId(){      
         return Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Students').getRecordTypeId();
     }
     
@@ -103,8 +103,53 @@ public class NES_ReactivateStdUtils {
         affiliationRecord2.Order__c = stageAffiliations[0].Order__c;
         ecAffiliationsToInsert.add(affiliationRecord2);
         
-        //Add the rest of the stages that have no assignment logic.
+       //Added for Open Application User story 451172 -->DK
+        //Id studentEnrollTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
+                
+         hed__Program_Enrollment__c hPe = [SELECT id, Open_Application__c,RecordTypeId from hed__Program_Enrollment__c where Id=:studentPEId];                       
+                      
+        string TASInprogress = 'N';   
+         system.debug('==>stageAffiliations.size()'+stageAffiliations.size());
         for (Integer i = 1; i < stageAffiliations.size(); i++) {
+            
+            system.debug('==>i'+i);
+            Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
+            if(i==1 && hPe.Open_Application__c == 'Active'){
+                affiliationRecord.Enrollment_Component__c = stageAffiliations[i].Child_Enrollment_Component__c;
+                system.debug('==>affiliationRecord.Enrollment_Component__c'+affiliationRecord.Enrollment_Component__c);
+               
+
+                affiliationRecord.Program_Enrollment__c = hPe.Id;
+                affiliationRecord.Order__c = stageAffiliations[i].Order__c;
+                affiliationRecord.Status__c = 'In Progress';                                             
+            }else if(!(String.isBlank(stageAffiliations[i].Child_Enrollment_Component__r.Assignment_Logic__c))){ 
+                system.debug('we are at line 121');
+                affiliationRecord.Status__c = 'Not Applicable';
+                TASInprogress = 'Y';
+            }
+            
+            if (i!= 1 && String.isBlank(stageAffiliations[i].Child_Enrollment_Component__r.Assignment_Logic__c)) { 
+                affiliationRecord.Enrollment_Component__c = stageAffiliations[i].Child_Enrollment_Component__c;
+                affiliationRecord.Program_Enrollment__c = hPe.Id;
+                affiliationRecord.Order__c = stageAffiliations[i].Order__c;
+                if (i == 1){
+                    affiliationRecord.Status__c = 'In Progress';
+                }else if (stageAffiliations[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student' && TASInprogress == 'Y' && hpe.Open_Application__c != 'Active'){
+                    system.debug('we are at line 138');
+                    affiliationRecord.Status__c = 'In Progress';
+                }else{
+                    affiliationRecord.Status__c = 'Not Started';
+                }
+                
+            }
+            ecAffiliationsToInsert.add(affiliationRecord);
+        }
+        
+       // End for Open Application User story 451172 -->DK
+      
+        
+        //Add the rest of the stages that have no assignment logic.
+       /* for (Integer i = 1; i < stageAffiliations.size(); i++) {
             if (String.isBlank(stageAffiliations[i].Child_Enrollment_Component__r.Assignment_Logic__c)) {                
                 Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                 affiliationRecord.Enrollment_Component__c = stageAffiliations[i].Child_Enrollment_Component__c;
@@ -117,7 +162,7 @@ public class NES_ReactivateStdUtils {
                     affiliationRecord.Status__c = 'Not Started';
                 ecAffiliationsToInsert.add(affiliationRecord);
             }
-        } 
+        }*/
         
         //add forms affiliation for the forms under stage 1 that have no assignment logic
         List<Enrollment_Component_Relationship__c> formRelationships = [

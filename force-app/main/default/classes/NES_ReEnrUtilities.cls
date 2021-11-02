@@ -10,7 +10,8 @@ public without Sharing class NES_ReEnrUtilities {
                 
             // Get the Student PE Record
             hed__Program_Enrollment__c studentPERecord = [Select Id, ProfileName__c, Status__c,Start_Year__c,Program_Grade_Level__r.Grade_Level__r.Name,Household_Program_Enrollment__c,
-                                                          Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.ParentId, hed__Account__c, OwnerId,
+                                                          Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.ParentId, hed__Account__c, OwnerId, 
+                                                          Waitlist_Released__c, Waitlist_Released_Dt__c,WaitlistFlag__c, Waitlist_Time_Date_Stamp__c,
                                                           Enrollment_Type__c from hed__Program_Enrollment__c where Id=:studentPEId limit 1 FOR UPDATE]; 
             
             // Get the Academic Program
@@ -39,18 +40,43 @@ public without Sharing class NES_ReEnrUtilities {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
                                                                         Enrollment_Type__c = 'Re-enrolling student'
                                                                         );
+            //Added by Ravi   Us 473192  
             pe.Waitlist_Released__c = null;
-            pe.Waitlist_Released_Dt__c = null;  
+            pe.Waitlist_Released_Dt__c = null;
+            pe.WaitlistFlag__c=null; 
+            pe.Waitlist_Time_Date_Stamp__c=null;
+            System.debug('NDEBUG In SYReEnroll :::' );
                update pe;
            }
-             else
+            /*else if(callType == 'InitReActivation'){
+               hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
+                                                                        Enrollment_Type__c = 'Initial Enrollment'
+                                                                        );
+               //pe.Status__c = 'In Progress';
+               //pe.Open_Application__c = null;
+               pe.WaitlistFlag__c = null;
+               update pe;
+           }*/
+            //Added by Ravi Us 473192 
+             else 
              {
+                 String enrollmentType='Re-enrolling student';
+                 if(callType == 'InitReActivation')
+                  enrollmentType='Initial Enrollment';
+                 
+                     
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
-                                                                        Enrollment_Type__c = 'Re-enrolling student',
+                                                                        Enrollment_Type__c = enrollmentType,
                                                                         Status__c = 'In Progress');
-              pe.Waitlist_Released__c = null;
-            pe.Waitlist_Released_Dt__c = null;  
+                 
+            pe.Waitlist_Released__c = null;//RAVI
+            pe.Waitlist_Released_Dt__c = null;
+            pe.WaitlistFlag__c=null; 
+            pe.Waitlist_Time_Date_Stamp__c=null;
+  				
+			System.debug('NDEBUG Not In SYReEnroll :::' );
              update pe;
+              //End Here   
                  createOpportunity(studentContact,studentPERecord,AcademicProgram,callType);
              }
            
@@ -76,7 +102,7 @@ public without Sharing class NES_ReEnrUtilities {
     
   public Static void UpdateECAs(Id programEnrollment,Id caretakerEnrollmentId,string EnrollmentType){
     List<Enrollment_Component_Affiliation__c> existEcas=new List<Enrollment_Component_Affiliation__c>();
-        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c,Enrollment_Component__r.Name from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment FOR UPDATE]){
+        for (Enrollment_Component_Affiliation__c eca : [select id,Status__c,Order__c,Enrollment_Component__c,Enrollment_Component__r.Assignment_Logic__c,Enrollment_Component__r.RecordType.Name,Enrollment_Component__r.Component_Type__c,Enrollment_Component__r.Name,Program_Enrollment__r.Open_Application__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c = :programEnrollment FOR UPDATE]){
            
             existEcas.add(eca);
         }
@@ -171,7 +197,24 @@ public without Sharing class NES_ReEnrUtilities {
                         eca.Status__c = 'Complete';
                         
                     }
-                    
+                  /*if(EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment'){
+                        if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c != 'Active'){
+                            eca.Status__c = 'Complete';
+                        }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == 'Active'){
+                            eca.Status__c = 'In Progress';
+                        }else if(eca.Order__c == 3){
+                            eca.Status__c = 'In Progress';
+                        }else if(eca.Order__c > 3){
+                            eca.Status__c = 'Not Started';
+                        }
+                    }else{
+                        if(eca.Order__c == 2){
+                            eca.Status__c = 'In Progress';
+                        }else if(eca.Order__c > 2){
+                            eca.Status__c = 'Not Started';
+                        }
+                    }*/
+                    //EnrollmentType == 'InitReActivation'
                     else if(eca.Order__c == 2){
                         
                         eca.Status__c = 'In Progress';

@@ -17,6 +17,7 @@ and Program_Enrollment__c objects
         return NES_EnrollmentHelper.getRelatedStages(programEnrollmentId);
     }
     
+  
     /**
 * Created by Ashish Sharma on 11/14/18.
 * Parameters: ID
@@ -235,10 +236,10 @@ and using those child components get the required component information
                                                 (select id,Withdrawal_Category__c from Enrollments__r order by createddate desc)  
                                                 from hed__Program_Enrollment__c where Id =: peId limit  1];	
       
-												
-        	if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student')
+				// 	peRecord.Enrollment_Type__c == 'Initial Enrollment'	Added by Ravi 473192 for Renrollment process						
+        	if(peRecord.Status__c == 'Inactive' &&( peRecord.Enrollment_Type__c == 'Returning Student'||peRecord.Enrollment_Type__c == 'Initial Enrollment'))
             {
-
+				//End here
 
             	result = 'InitReActivation';
             }
@@ -254,5 +255,18 @@ and using those child components get the required component information
         
     }
 
-
+     //Added for Open Application User story 451172 -->DK
+    @AuraEnabled
+    public static list<hed__Program_Enrollment__c> updatedOpenAppReleased(id studentPeId){
+        System.debug('studentPeId' +studentPeId);
+        list<hed__Program_Enrollment__c> lstPE = new list<hed__Program_Enrollment__c>();
+        hed__Program_Enrollment__c pe = [select id,Open_Application__c from hed__Program_Enrollment__c where id =:studentPeId];
+        if(pe.Open_Application__c == 'Released'){
+            pe.Open_Application__c = null;
+            lstPE.add(pe);
+        }
+        update lstPE;
+        return lstPE;
+    }
+	 //End for Open Application User story 451172 -->DK
 }

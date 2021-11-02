@@ -16,7 +16,7 @@
         console.log('context=', context);
         console.log(context);
         var action = component.get("c.reactivateStudent");
-        
+        alert(context);
         action.setParams({
             studPEID: programEnrollmentId,
             reactivationType: context

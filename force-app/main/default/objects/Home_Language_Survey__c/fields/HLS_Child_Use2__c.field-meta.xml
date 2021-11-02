@@ -141,6 +141,11 @@
                 <default>false</default>
                 <label>Vietnamese</label>
             </value>
+            <value>
+                <fullName>Albanian</fullName>
+                <default>false</default>
+                <label>Albanian</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

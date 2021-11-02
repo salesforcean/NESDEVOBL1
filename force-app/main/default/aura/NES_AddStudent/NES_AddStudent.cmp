@@ -188,7 +188,7 @@
                                                     </aura:iteration>
                                                 </lightning:select>
                                             <!--div style="color:Red"-->
-                                                <Br></Br>
+                                                <Br></Br><br></br>
                                                 <div class="slds-text-body_regular" style="color:Red">
                                                 <h5> {!v.GradesNotAvailMsg}</h5>
                                                 </div>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>HLS2_ChildLanguageExpress__c</fullName>
+    <fullName>HLS_Guardian_Native_Language__c</fullName>
     <externalId>false</externalId>
-    <label>HLS2 ChildLanguageExpress</label>
+    <label>HLS Guardian Native Language</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
@@ -17,14 +17,14 @@
                 <label>Albanian</label>
             </value>
             <value>
+                <fullName>Another Language</fullName>
+                <default>false</default>
+                <label>Another Language</label>
+            </value>
+            <value>
                 <fullName>Arabic</fullName>
                 <default>false</default>
                 <label>Arabic</label>
-            </value>
-            <value>
-                <fullName>ASL</fullName>
-                <default>false</default>
-                <label>ASL</label>
             </value>
             <value>
                 <fullName>Bengali</fullName>
@@ -42,14 +42,14 @@
                 <label>Cebuano</label>
             </value>
             <value>
-                <fullName>Chinese(Cantonese)</fullName>
+                <fullName>Chinese- Cantonese</fullName>
                 <default>false</default>
-                <label>Chinese(Cantonese)</label>
+                <label>Chinese- Cantonese</label>
             </value>
             <value>
-                <fullName>Chinese(Mandarin)</fullName>
+                <fullName>Chinese- Mandarin</fullName>
                 <default>false</default>
-                <label>Chinese(Mandarin)</label>
+                <label>Chinese- Mandarin</label>
             </value>
             <value>
                 <fullName>Czech</fullName>
@@ -145,24 +145,6 @@
                 <fullName>Vietnamese</fullName>
                 <default>false</default>
                 <label>Vietnamese</label>
-            </value>
-            <value>
-                <fullName>ALS</fullName>
-                <default>false</default>
-                <isActive>false</isActive>
-                <label>ALS</label>
-            </value>
-            <value>
-                <fullName>No</fullName>
-                <default>false</default>
-                <isActive>false</isActive>
-                <label>No</label>
-            </value>
-            <value>
-                <fullName>Yes</fullName>
-                <default>false</default>
-                <isActive>false</isActive>
-                <label>Yes</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -45,6 +45,7 @@ public class NES_ProgramEnrollmentHandler {
                     validRecords.add(programEnrollment);
                 }
             }
+            
             //80196 Bug Changes Ajith
             //if(programEnrollment.EntranceAgeEligibilityOverride__c != null){
             //    programEnrollment.EntAgeEliOvrDate__c = system.today();
@@ -56,6 +57,9 @@ public class NES_ProgramEnrollmentHandler {
         //if (validRecords.size() > 0) {
         //    NES_BusinessLogicUtils.calculateEntranceAgeEligibility(validRecords);
         //}
+        //Suresh code
+        //System.debug('handleBeforeInsertNES_AnnualStudentInfoHandler>>'+ NES_AnnualStudentInfoHandler.getProgramGradeLevelId(newList[0].Id,'1'));
+                
 
         //All new records should have the address validation run and the technolgy flag set.
         //NES_BusinessLogicUtils.calculateAddressEligibility(newList);
@@ -67,7 +71,7 @@ public class NES_ProgramEnrollmentHandler {
         Boolean origAssignment = NES_Constants.runAssignment;
         Boolean origRunAssignment = NES_ECACompletion.shouldRunCompletion && NES_Constants.runAssignment;
         NES_ECACompletion.shouldRunCompletion = false;
-        NES_Constants.runAssignment = false; 
+        NES_Constants.runAssignment = false;       
 
         // Changes added on 2020-06-23.
         // Sumanth/Rakesh: Added the below 2 Maps for US # 186957 (Task# 195460, 195459)
@@ -96,6 +100,7 @@ public class NES_ProgramEnrollmentHandler {
         // Sumanth/Rakesh: Added the below 2 Maps for US # 186957 (Task# 195460, 195459)
      	for (hed__Program_Enrollment__c progEnroll : csNewMap.values()){
             progEnroll.Concatenated_Status__c = csOldMap.get(progEnroll.Id).Status__c+'-'+progEnroll.Status__c;
+            
         }
 
       //  for (hed__Program_Enrollment__c programEnrollment : newMap.values()) { //Swapna:Changed for active list
@@ -113,7 +118,7 @@ public class NES_ProgramEnrollmentHandler {
                     actlstoldMap.get(programEnrollment.Id).EntranceAgeEligibilityOverride__c != programEnrollment.EntranceAgeEligibilityOverride__c){
                 programEnrollment.EntAgeEliOvrDate__c = system.today();
             }
-
+           
             //We only calculate the disciplinary flag when the past actions are first set and if the PE is 'In Progress'
             //added logic for the bug 127334
               //if ( String.isBlank(oldMap.get(programEnrollment.Id).DisciplinaryPastActions__c) && !String.isBlank(programEnrollment.DisciplinaryPastActions__c) && programEnrollment.Status__c == 'In Progress')
@@ -135,6 +140,9 @@ public class NES_ProgramEnrollmentHandler {
     
     
     public static void handleAfterUpdate(Map<Id, hed__Program_Enrollment__c> newMap, Map<Id, hed__Program_Enrollment__c> oldMap,Map<Id, hed__Program_Enrollment__c> actlstnewMap, Map<Id, hed__Program_Enrollment__c> actlstoldMap) {
+        
+        System.debug('handleAfterUpdate newMap>'+newMap+'<oldMap>'+oldMap+'<actlstnewMap>'+actlstnewMap+'<actlstoldMap>'+actlstoldMap);
+
         Boolean origRunPlacement = runPlacement;
         runPlacement = false;
         Boolean origCompletion = NES_ECACompletion.shouldRunCompletion;
@@ -142,7 +150,7 @@ public class NES_ProgramEnrollmentHandler {
         Boolean origRunAssignment = NES_ECACompletion.shouldRunCompletion && NES_Constants.runAssignment;
         NES_ECACompletion.shouldRunCompletion = false;
         NES_Constants.runAssignment = false;
-        
+		
         if (!logicSwitch) {
             return;
         }
@@ -211,6 +219,7 @@ public class NES_ProgramEnrollmentHandler {
             for (id i:pEsForCompleteAssignmentIds) {
                 
                  System.enqueueJob(new NES_AddStudentCBLQueueable(i));
+                 
             }
         }
         //137647 -Swapna For ReActivation Case
@@ -222,43 +231,7 @@ public class NES_ProgramEnrollmentHandler {
         /****** Placement Updates ****************/
         runPlacement = origRunPlacement;
         system.debug('runPlacement:' + runPlacement);
-        if(runPlacement) {
-            // NES_ProgramEnrollmentBusinessLogic.calculatePlacement(newMap.values(), oldMap);
-            list<ID> runPlacementPEs = new list<ID>();
-            list<ID> runBucketPEs = new list<ID>();
-            /* Add students to the list for placement execution if they are ready for placement, they have not been placed, they need 
-            ** at least one of their components of placement updated, and at least one of the status indicators for placement changed values in the
-            ** transaction. This will make sure the queueable only fires when there is a state change that triggers placement and will not fire for
-            ** any transactions that execute between the queueable being fired and it running and commiting the changes back to the PE */
-            for(hed__program_enrollment__c runPlacementPE : actlstnewMap.values()){
-                if(
-                	(runPlacementPE.HowStudentPlacementCompleted__c == null || newmap.get(runPlacementPE.ID).HowStudentPlacementCompleted__c == 'Standard Manual Process')
-                    && runPlacementPE.isPlacementReady__c == true  && (runPlacementPE.EvaluatePlacementScore__c == true || runPlacementPE.EvaluatePlacementExclude__c == true || runPlacementPE.EvaluatePlacementBucket__c == true)
-                    && (oldmap.get(runPlacementPE.ID).EvaluatePlacementScore__c != newmap.get(runPlacementPE.ID).EvaluatePlacementScore__c || oldmap.get(runPlacementPE.ID).EvaluatePlacementExclude__c != newmap.get(runPlacementPE.ID).EvaluatePlacementExclude__c || oldmap.get(runPlacementPE.ID).isPlacementReady__c != newmap.get(runPlacementPE.ID).isPlacementReady__c || oldmap.get(runPlacementPE.ID).EvaluatePlacementBucket__c != newmap.get(runPlacementPE.ID).EvaluatePlacementBucket__c )
-           		){runPlacementPEs.add(runPlacementPE.ID);}
-                
-                /* If the student is placeable, isn't being evaluated for full placement, and is either marked as EvalPlacementBucket true or has had an update
-                ** changing their placement flag or how student placement completed value, add them to the bucket eval list *
-                }else if(runPlacementPE.isPlacementReady__c == true 
-                	&& (runPlacementPE.EvaluatePlacementBucket__c == true
-                	|| oldmap.get(runPlacementPE.ID).PlacementFlag__c != newmap.get(runPlacementPE.ID).PlacementFlag__c
-                	|| oldmap.get(runPlacementPE.ID).HowStudentPlacementCompleted__c != newmap.get(runPlacementPE.ID).HowStudentPlacementCompleted__c)){ //added for 127565/127795
-                    runBucketPEs.add(runPlacementPE.ID);    
-                }*/
-   
-            /* Fire the full placement job for students needing evaluation */
-            if(runPlacementPEs.size()>0){
-                //NES_ProgramEnrollmentBusinessLogic.calculatePlacement(actlstnewMap.values(), actlstoldMap);//Swapna:Changed to active list
-                System.enqueueJob(new NES_PlacementQueueable(runPlacementPEs)); 
-                //runPlacement = false;
-            }/*else{
-             //Fire the bucket job for bucket-only evaluations 
-            if(runBucketPEs.size()>0){
-               System.enqueueJob(new PlacementBucketQueueable(runBucketPEs));  
-            }*/
-            }
-            //runPlacement = false;
-        }
+        
         /********* End Placement Updates *************/
 		/****Moved over to line number 143 ****/
        NES_Constants.runAssignment = origAssignment;
@@ -342,7 +315,7 @@ public class NES_ProgramEnrollmentHandler {
         //End-added for #107180 User Story (Task 108660) on 2019-09-06
 
         //Start: US #226654 (Krishna Peddanagammol) on 28-Aug-2020
-        /*try{
+        try{
             if(newMap.size()>0){
                 List<Enrollment_Component_Affiliation__c> ecaList = new List<Enrollment_Component_Affiliation__c>();
                 
@@ -355,7 +328,7 @@ public class NES_ProgramEnrollmentHandler {
                 System.debug('ecaList.size() = '+ecaList.size());
                 List<Enrollment_Component_Affiliation__c> ecaUpdateList = new List<Enrollment_Component_Affiliation__c>();
                 Double waitlistOrder = 0;
-                String WaitlistStageUpdate = 'Y'; 
+                String WaitlistStageUpdate = 'Y';
                 if(ecaList.size()>0){
                     for(Enrollment_Component_Affiliation__c eca: ecaList){
                         if((eca.Program_Enrollment__r.waitlistflag__c == 'Active') && (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && (eca.Enrollment_Component__r.Name == 'Waitlist')) {
@@ -370,7 +343,7 @@ public class NES_ProgramEnrollmentHandler {
                             (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && 
                             (eca.Order__c > waitlistOrder) && (eca.Status__c <> 'Not Started')){
                                 eca.Status__c = 'Not Started';
-                                ecaUpdateList.add(eca);                                
+                                ecaUpdateList.add(eca);
                             }
                             //Defect-473087
                             else if((eca.Program_Enrollment__r.waitlistflag__c == 'Active') && 
@@ -412,11 +385,13 @@ public class NES_ProgramEnrollmentHandler {
         }
         catch(Exception ex) { 
             System.debug('Exception Thrown:' + ex.getMessage()); logger.logException('execute', ex); logger.saveLogs(); 
-        }*/
+        }
         //End: US #226654    
     }
 
     public static void handleAfterInsert(List<hed__Program_Enrollment__c> newList,List<hed__Program_Enrollment__c> actList) {
+      
+        System.debug('handleAfterInsert newList>'+newList+'<actList>'+actList);
       
         if (!logicSwitch) return;
 
@@ -443,7 +418,7 @@ public class NES_ProgramEnrollmentHandler {
           
 
         }
-        
+         
         Set<Id> programEnrollmentIds = new Set<Id>();
         Set<string> activePEIds = new Set<string>();
 

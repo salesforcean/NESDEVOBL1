@@ -43,6 +43,11 @@ public without sharing class NES_EnrollmentReactivationHandler {
                 message='Re-enrollment Success: Student was successfully Re-enrolled.';
                 peakResponse.success = true;
             }
+            /*else if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Initial Enrollment'){
+                NES_ReEnrUtilities.InitreenrollingStudent(peRecord.hed__Contact__c, peRecord.Id,'InitReactivation');
+                message='Re-enrollment Success: Student was successfully Re-enrolled.';
+                peakResponse.success = true;
+            }*/
             else
             if(peRecord.Status__c == 'Inactive' && peRecord.Enrollment_Type__c == 'Returning Student' && reactivationType.toUpperCase() == 'SOFT'){
                  message='Program Enrollment is eligible only for Full ReActivation.';

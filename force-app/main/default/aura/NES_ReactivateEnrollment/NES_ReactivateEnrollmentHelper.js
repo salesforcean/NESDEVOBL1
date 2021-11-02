@@ -138,9 +138,10 @@
         action.setCallback(this, function(response){
             var peakResponse = response.getReturnValue();
             //alert('Response from Apex Controller '+ peakResponse.success);
-            console.log(peakResponse);
+            console.log('reactivateORreenrolledSameYear>>'+peakResponse);
             if(peakResponse.success){
                 component.set("v.success", true);
+                helper.openAppReleased(component,event,helper);  //Added for Open Application User story 451172 -->DK
                 window.setTimeout(
                     $A.getCallback(function(){
                         var redirect = $A.get("e.force:navigateToURL");
@@ -158,7 +159,23 @@
             }
         });
         $A.enqueueAction(action);
-    }
+    },
     // End by Maddileti for US 389103 on 16/07/2021
     
+    //Added for Open Application User story 451172 -->DK
+    openAppReleased : function(component, event, helper){
+    	var programEnrollmentId = component.get("v.programEnrollmentId");
+		var action = component.get("c.updatedOpenAppReleased");
+        action.setParams({
+            studentPeId: programEnrollmentId
+        });
+        action.setCallback(this, function(response){
+            var peakResponse = response.getReturnValue();
+            if(peakResponse.success){
+                component.set("v.success", true);
+            }
+        });
+        $A.enqueueAction(action);    	
+	}
+     //End for Open Application User story 451172 -->DK
 })

@@ -4,6 +4,7 @@
   */
 public class NES_AnnualStudentInfoBusinessLogic {
     private static Peak_ApexLog logger = new Peak_ApexLog('AnnualStudentInfoBusinessLogic');
+    public static String placementFlag='Placement Review';
 
     /** 
      * Created by Ritvik on 19-11-2018.
@@ -35,7 +36,7 @@ public class NES_AnnualStudentInfoBusinessLogic {
         Map<Id, hed__Program_Enrollment__c> programEnrollmentMap = new Map<Id, hed__Program_Enrollment__c>();
         //Iterating over program enrollment record whose contact record type is students & Id is in programEnrollmentIds list.
         for (hed__Program_Enrollment__c programEnrollmentRecord : [
-                SELECT Id,Status__c,hed__Contact__r.RecordTypeId, Final_Grade_Level__c
+                SELECT Id,Status__c,hed__Contact__r.RecordTypeId,Program_Grade_Level__c, Final_Grade_Level__c,PlacementFlag__c
                 FROM hed__Program_Enrollment__c
                 WHERE
                 Id IN :programEnrollmentIds AND hed__Contact__r.RecordType.Name = 'Students'
@@ -47,12 +48,17 @@ public class NES_AnnualStudentInfoBusinessLogic {
         for (Annual_Student_Information__c record : newList) {
             if (programEnrollmentMap.containsKey(record.Program_Enrollment__c)) {
                 //Checking for program enrollment status field before populating Final_Grade_Level__c field with Annual Student Information Final_Grade_Level__c field.
-                System.debug('programEnrollmentMap.get(record.Program_Enrollment__c).Status__c'+programEnrollmentMap.get(record.Program_Enrollment__c).Status__c);
+                System.debug('programEnrollmentMap.get(record.Program_Enrollment__c).Status__c'+programEnrollmentMap+'<<newList>>'+newList);
                 //Modified the below if condition to check if the Final Grade Level on the ASI is null or not if it is not null then only update PE record
                 if ((programEnrollmentMap.get(record.Program_Enrollment__c).Status__c == 'Enrolled' || programEnrollmentMap.get(record.Program_Enrollment__c).Status__c == 'Withdrawn' || programEnrollmentMap.get(record.Program_Enrollment__c).Status__c == 'In Progress' || programEnrollmentMap.get(record.Program_Enrollment__c).Status__c == 'Complete') &&
                         record.Final_Grade_Level__c != null) {
                     hed__Program_Enrollment__c programEnrollment = new hed__Program_Enrollment__c(Id = record.Program_Enrollment__c);
-                    programEnrollment.Final_Grade_Level__c = record.Final_Grade_Level__c;
+                    
+                      //getProgramGradeLevelId function is used to get Program_Grade_Level__c id value, paramters are program enrollment id and grade level
+                      // programEnrollment.Program_Grade_Level__c = NES_AnnualStudentInfoHandler.getProgramGradeLevelId(programEnrollmentMap.get(record.Program_Enrollment__c).Id,record.Grade_Level_Requested__c);
+                       
+                       programEnrollment.Final_Grade_Level__c = record.Final_Grade_Level__c;
+                       
                     if (!tempEnrollIds.contains(programEnrollment.Id)) {
                         tempEnrollIds.add(programEnrollment.Id);
                         programEnrollmentList.add(programEnrollment);
