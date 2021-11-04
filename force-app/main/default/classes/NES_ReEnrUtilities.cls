@@ -40,7 +40,8 @@ public without Sharing class NES_ReEnrUtilities {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
                                                                         Enrollment_Type__c = 'Re-enrolling student'
                                                                         );
-            //Added by Ravi   Us 473192  
+            //Added by Ravi   Us 473192 
+            pe.Open_Application__c = null;   //Added for Open Application User story 451172 -->DK
             pe.Waitlist_Released__c = null;
             pe.Waitlist_Released_Dt__c = null;
             pe.WaitlistFlag__c=null; 
@@ -48,15 +49,7 @@ public without Sharing class NES_ReEnrUtilities {
             System.debug('NDEBUG In SYReEnroll :::' );
                update pe;
            }
-            /*else if(callType == 'InitReActivation'){
-               hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
-                                                                        Enrollment_Type__c = 'Initial Enrollment'
-                                                                        );
-               //pe.Status__c = 'In Progress';
-               //pe.Open_Application__c = null;
-               pe.WaitlistFlag__c = null;
-               update pe;
-           }*/
+          
             //Added by Ravi Us 473192 
              else 
              {
@@ -68,7 +61,7 @@ public without Sharing class NES_ReEnrUtilities {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
                                                                         Enrollment_Type__c = enrollmentType,
                                                                         Status__c = 'In Progress');
-                 
+            pe.Open_Application__c = null;    //Added for Open Application User story 451172 -->DK  
             pe.Waitlist_Released__c = null;//RAVI
             pe.Waitlist_Released_Dt__c = null;
             pe.WaitlistFlag__c=null; 
@@ -197,7 +190,7 @@ public without Sharing class NES_ReEnrUtilities {
                         eca.Status__c = 'Complete';
                         
                     }
-                  /*if(EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment'){
+                 /* if(EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment'){
                         if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c != 'Active'){
                             eca.Status__c = 'Complete';
                         }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == 'Active'){
@@ -215,7 +208,7 @@ public without Sharing class NES_ReEnrUtilities {
                         }
                     }*/
                     //EnrollmentType == 'InitReActivation'
-                    else if(eca.Order__c == 2){
+                   else if(eca.Order__c == 2){
                         
                         eca.Status__c = 'In Progress';
                         

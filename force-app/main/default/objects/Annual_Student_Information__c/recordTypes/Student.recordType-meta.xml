@@ -1337,6 +1337,10 @@
             <fullName>K</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>Kindergarten</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>HS_NCAA_Interest__c</picklist>

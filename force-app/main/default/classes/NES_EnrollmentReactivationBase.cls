@@ -187,22 +187,31 @@ public abstract class NES_EnrollmentReactivationBase {
 
                 eca.Status__c = 'Not Started';
             }else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
+                
+                /*if(eca.Order__c == 2){
+                        eca.Status__c = 'In Progress';
+                    }else if(eca.Order__c > 2){
+                        eca.Status__c = 'Not Started';
+                    }*/
             
              //Added for Open Application User story 451172 -->DK
               
 				if(enrollmentType == 'RE-ENROLLMENT' || enrollmentType == 'FULL' || enrollmentType == 'SOFT'){
-                    string  firstGrade = 'CapoCA - First Grade';
-                    if((eca.Order__c == 2 || eca.Order__c == 3 || eca.Order__c == 4) && eca.Program_Enrollment__r.Open_Application__c == 'Released' && eca.Program_Enrollment__r.Program_Grade_Level__c == firstGrade){
+                    //string  firstGrade = 'CapoCA - First Grade';
+                    System.debug('eca.Program_Enrollment__r.Open_Application__c' +eca.Program_Enrollment__r.Open_Application__c);
+                    System.debug('eca.Order__c' +eca.Order__c);	
+                    if((eca.Order__c == 2 || eca.Order__c == 3 || eca.Order__c == 4) && eca.Program_Enrollment__r.Open_Application__c == 'Released'){
+                       
                         ecaList[1].Status__c = 'In Progress';
                     }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == null && eca.Enrollment_Component__r.Name != 'Open Application'){
                         ecaList[1].Status__c = 'In Progress';
-                    }else if((eca.Order__c == 3 || eca.Order__c == 4 || eca.Order__c == 5) && eca.Program_Enrollment__r.Open_Application__c == null && eca.Program_Enrollment__r.Program_Grade_Level__c != firstGrade){
+                    }else if((eca.Order__c == 3 || eca.Order__c == 4 || eca.Order__c == 5) && eca.Program_Enrollment__r.Open_Application__c == null){
                     	ecaList[2].Status__c = 'In Progress';
                     }else{
                         eca.Status__c = 'Not Started';          
                     }
                 }else{
-                    if(eca.Order__c == 2){
+                   if(eca.Order__c == 2){
                         eca.Status__c = 'In Progress';
                     }else if(eca.Order__c > 2){
                         eca.Status__c = 'Not Started';

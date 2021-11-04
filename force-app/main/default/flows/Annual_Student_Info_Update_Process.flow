@@ -660,7 +660,7 @@
         <object>hed__Program_Enrollment__c</object>
     </recordUpdates>
     <startElementReference>isChangedDecision2_myRule_1_Grade_Level_Requested_c</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>

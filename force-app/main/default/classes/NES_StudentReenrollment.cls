@@ -89,7 +89,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
                 ([
                     SELECT  Id, SystemModstamp, Enrollment_Component__c,Status__c,Order__c,
                             Enrollment_Component__r.RecordType.Name, Name,Program_Enrollment__c,Program_Enrollment__r.Enrollment_Type__c,
-                            Enrollment_Component__r.Needed_for_Re_enrollment__c,Program_Enrollment__r.Open_Application__c, //Added for Open Application User story 451172 -->DK
+                            Enrollment_Component__r.Needed_for_Re_enrollment__c,Enrollment_Component__r.Name,Program_Enrollment__r.Open_Application__c, //Added for Open Application User story 451172 -->DK
                             Enrollment_Component__r.RecordTypeId,Enrollment_Component__r.Needed_for_ITR__c
                     FROM    Enrollment_Component_Affiliation__c 
                     WHERE   
