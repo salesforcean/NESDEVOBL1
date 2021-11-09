@@ -195,22 +195,37 @@ public abstract class NES_EnrollmentReactivationBase {
                     }*/
             
              //Added for Open Application User story 451172 -->DK
-              
-				if(enrollmentType == 'RE-ENROLLMENT' || enrollmentType == 'FULL' || enrollmentType == 'SOFT'){
-                    //string  firstGrade = 'CapoCA - First Grade';
+              System.debug('eca.Order__c' +eca.Order__c);	
+              System.debug('enrollmentType' +enrollmentType);
+                System.debug('eca.Program_Enrollment__r.Open_Application__c' +eca.Program_Enrollment__r.Open_Application__c);
+                System.debug('eca.Enrollment_Component__r.Name' +eca.Enrollment_Component__r.Name);
+				if(enrollmentType == 'RE-ENROLLMENT' || enrollmentType == 'FULL' || enrollmentType == 'SOFT' || enrollmentType == 'FULL-REACTIVATION'){             
                     System.debug('eca.Program_Enrollment__r.Open_Application__c' +eca.Program_Enrollment__r.Open_Application__c);
                     System.debug('eca.Order__c' +eca.Order__c);	
                     if((eca.Order__c == 2 || eca.Order__c == 3 || eca.Order__c == 4) && eca.Program_Enrollment__r.Open_Application__c == 'Released'){
-                       
-                        ecaList[1].Status__c = 'In Progress';
+                        //ecaList[1].Status__c = 'In Progress';
+                        eca.Status__c = 'In Progress';
+                         System.debug('eca.Order__c' +eca.Order__c);	
                     }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == null && eca.Enrollment_Component__r.Name != 'Open Application'){
-                        ecaList[1].Status__c = 'In Progress';
-                    }else if((eca.Order__c == 3 || eca.Order__c == 4 || eca.Order__c == 5) && eca.Program_Enrollment__r.Open_Application__c == null){
-                    	ecaList[2].Status__c = 'In Progress';
-                    }else{
+                       // ecaList[1].Status__c = 'In Progress';
+                        eca.Status__c = 'In Progress';
+                    }else if((eca.Order__c == 3 || eca.Order__c == 4 || eca.Order__c == 5) && eca.Program_Enrollment__r.Open_Application__c == null ){
+                    	//ecaList[2].Status__c = 'In Progress';
+                    		if (eca.Enrollment_Component__r.Name == 'Tell Us About Your Student')
+                         		eca.Status__c = 'In Progress';
+                        else {
+                            eca.Status__c = 'Not Started';
+                        }
+                    }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == null && eca.Enrollment_Component__r.Name == 'Open Application'){
+                         eca.Status__c = 'Complete';
+                    }
+                    
+                    else{
                         eca.Status__c = 'Not Started';          
                     }
                 }else{
+                    System.debug('we are at line 220');	
+                     System.debug('Order__c' +eca.Order__c);
                    if(eca.Order__c == 2){
                         eca.Status__c = 'In Progress';
                     }else if(eca.Order__c > 2){

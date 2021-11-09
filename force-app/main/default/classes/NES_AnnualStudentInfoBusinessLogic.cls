@@ -4,8 +4,7 @@
   */
 public class NES_AnnualStudentInfoBusinessLogic {
     private static Peak_ApexLog logger = new Peak_ApexLog('AnnualStudentInfoBusinessLogic');
-    public static String placementFlag='Placement Review';
-
+    
     /** 
      * Created by Ritvik on 19-11-2018.
      * Modified by Ritvik on 26-11-2018.

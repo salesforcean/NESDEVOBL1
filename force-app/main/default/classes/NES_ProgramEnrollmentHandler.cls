@@ -57,9 +57,7 @@ public class NES_ProgramEnrollmentHandler {
         //if (validRecords.size() > 0) {
         //    NES_BusinessLogicUtils.calculateEntranceAgeEligibility(validRecords);
         //}
-        //Suresh code
-        //System.debug('handleBeforeInsertNES_AnnualStudentInfoHandler>>'+ NES_AnnualStudentInfoHandler.getProgramGradeLevelId(newList[0].Id,'1'));
-                
+             
 
         //All new records should have the address validation run and the technolgy flag set.
         //NES_BusinessLogicUtils.calculateAddressEligibility(newList);

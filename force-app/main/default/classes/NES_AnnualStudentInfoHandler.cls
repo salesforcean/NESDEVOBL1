@@ -194,63 +194,7 @@ public with sharing class NES_AnnualStudentInfoHandler {
         System.debug('<<newMaphandleBeforUpdate>>'+newMap+'<<oldMap>>'+oldMap);
            
     }
-    public static Map<String,String> getASIInformation(Id programId) {
-       Map<String,String> peMapData=new Map<String,String>();
-
-       List<hed__Program_Enrollment__c> listObj=new List<hed__Program_Enrollment__c>();
-        try{
-            listObj=[SELECT Id, hed__Account__r.Id,hed__Account__r.Name,hed__Contact__r.Birthdate__c FROM hed__Program_Enrollment__c where id=:programId];
-             if((listObj.size()>0)){
-              peMapData.put('programName',listObj[0].hed__Account__r.Name);
-              peMapData.put('birthDate',String.valueOf(listObj[0].hed__Contact__r.Birthdate__c));  
-             }
-
-            
-        }catch(Exception ex){
-            System.debug('Error occured while retrieving Id:'+ex.getMessage());
-        }
-        return peMapData;
-   }
-   public static Id getProgramGradeLevelId(String programEnId,String gradeLevel) {
-       Id returnProgramId=null;
-       Id acadProgId=null;
-       try{
-           System.debug('before loop>>'+programEnId+'<<gradeLevel>>'+gradeLevel);
-           if(NES_AnnualStudentInfoHandler.findObjectAPIName(programEnId)==accountObject){
-               System.debug('inside loop>>'+programEnId+'<<gradeLevel>>'+gradeLevel);
-              List<Program_Grade_Level__c> listObj=[SELECT Id FROM Program_Grade_Level__c WHERE Academic_Program__c =:programEnId limit 1 ];
-               //SELECT Id FROM Program_Grade_Level__c WHERE Academic_Program__c =:programEnId  and Grade_Level__r.Name=:gradeLevel limit 1 
-              System.debug('Account conidtion>>'+listObj[0].id);
-           }  
-           if(NES_AnnualStudentInfoHandler.findObjectAPIName(programEnId)==programEnrollmentObject){
-               acadProgId=[SELECT hed__Account__c FROM hed__Program_Enrollment__c WHERE Id =:programEnId limit 1].hed__Account__c;
-               returnProgramId=[SELECT Id FROM Program_Grade_Level__c WHERE Academic_Program__c =:acadProgId  and Grade_Level__r.Name=:gradeLevel limit 1 ].Id;
-            System.debug('ProgramEnrollment conidtion>>'+returnProgramId);
-           }
-           System.debug('else conidtion>>'+returnProgramId);
-       }catch(Exception ex){
-           System.debug('Error occured while retrieving Id:'+ex.getMessage());
-       }
-       System.debug('programEnId>>'+programEnId+'<>'+returnProgramId);
-       //returnProgramId='a2X0x000000mG4QEAU';
-        return returnProgramId;
-   }
-   public static String findObjectAPIName( String recordId ){
-       System.debug('findObjectAPIName conidtion>>'+recordId);
-       String keyPrefix;
-       String objectAPIName = '';
-        if(recordId == null)
-            return null;
-        keyPrefix = recordId.substring(0,3);
-         for( Schema.SObjectType obj : Schema.getGlobalDescribe().Values() ){
-              String prefix = obj.getDescribe().getKeyPrefix();
-               if(prefix == keyPrefix){
-                         objectAPIName = obj.getDescribe().getName();
-                          break;
-                }
-         }
-         return objectAPIName;
-    }
+   
     /* End of changes for the #77940 */
 
 }

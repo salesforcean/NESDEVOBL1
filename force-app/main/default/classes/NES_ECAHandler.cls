@@ -167,7 +167,9 @@ public class NES_ECAHandler {
             }
             
             // Added by Ravi US 473192
-            if (eca.Status__c == 'Complete' && oldMap.get(eca.Id).Status__c != 'Complete' && eca.Enrollment_Component__r.Waitlist__c && eca.Enrollment_Component__r.RecordType.Name == 'Stage'){
+            if (((eca.Status__c == 'Complete' && oldMap.get(eca.Id).Status__c != 'Complete')
+                || (eca.Status__c == 'Not Applicable' && oldMap.get(eca.Id).Status__c == 'In Progress'))
+                && eca.Enrollment_Component__r.Waitlist__c && eca.Enrollment_Component__r.RecordType.Name == 'Stage'){
                 hed__Program_Enrollment__c PE;
                 if (!pesToUpdateMap.containsKey(eca.Program_Enrollment__c))
                     PE = new hed__Program_Enrollment__c();
@@ -178,9 +180,10 @@ public class NES_ECAHandler {
                     if(System.today() < eca.Program_Enrollment__r.hed__Account__r.School_Start_Date__c)
                         PE.Waitlist_Released__c = 'Before School Start Date';
                     else{
-                        PE.Waitlist_Released__c = 'After School Start Date';
-                        PE.Waitlist_Released_Dt__c = System.today();
+                        PE.Waitlist_Released__c = 'After School Start Date';                        
                     }
+                    PE.id = eca.Program_Enrollment__c;
+                    PE.Waitlist_Released_Dt__c = System.today();
                     pesToUpdateMap.put(eca.Program_Enrollment__c, PE);
                 }
             }
