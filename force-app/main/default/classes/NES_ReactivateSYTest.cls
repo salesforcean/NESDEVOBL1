@@ -100,6 +100,7 @@ public class NES_ReactivateSYTest {
         Enrollment_Component__c stageComponent1 = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Stage', false);
         stageComponent.name = 'Waitlist';
         //added
+                
         
         Enrollment_Component__c processComponentNew = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Process', false);        
         Enrollment_Component__c stageComponentNew = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Stage', false);
@@ -163,7 +164,7 @@ public class NES_ReactivateSYTest {
         Enrollment_Component_Relationship__c questionGroup_question_with_no_logic_ECR = Peak_TestUtils.createEnrollmentComponentRelationship(questionComponent_With_No_Logic.Id,questionGroupComponent_With_No_Logic.Id);
         questionGroup_question_with_no_logic_ECR.Order__c = 2;
         update questionGroup_question_with_no_logic_ECR;
-        
+               
         Enrollment_Component_Relationship__c section_questionGroup_ECR = Peak_TestUtils.createEnrollmentComponentRelationship(questionGroupComponent.Id,sectionComponent.Id);
         section_questionGroup_ECR.Order__c = 3;
         update section_questionGroup_ECR;
@@ -181,8 +182,6 @@ public class NES_ReactivateSYTest {
         Enrollment_Component_Relationship__c section_question_ECRNew = Peak_TestUtils.createEnrollmentComponentRelationship(questionGroupComponentNew.Id, sectionComponentNew.Id);
         Enrollment_Component_Relationship__c questionGroup_question_ECRNew = Peak_TestUtils.createEnrollmentComponentRelationship(questionComponentNew.Id,questionGroupComponentNew.Id);
         Enrollment_Component_Relationship__c messageRelationShipNew = Peak_TestUtils.createEnrollmentComponentRelationship(questionGroupComponentNew.Id,messageComponentNew.Id);
-        
-        
         
         // create Enrollment Component Affiliations with different parent Enrollment Components.
         List<Enrollment_Component_Affiliation__c> enrollmentComponentAffiliations = new List<Enrollment_Component_Affiliation__c>();
@@ -202,11 +201,11 @@ public class NES_ReactivateSYTest {
         enrollmentComponentAffiliations.add(processAffiliation);
         Enrollment_Component_Affiliation__c messageAffiliation = Peak_TestUtils.createEnrollmentComponentAffiliation(studentEnrollment.Id, messageComponent.Id, false);
         enrollmentComponentAffiliations.add(messageAffiliation);
-        
         insert enrollmentComponentAffiliations;
-        
-        
     }
+    
+    
+    
     static testMethod void unitTesting() {
         
         User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'portalUser@gmail.com'];
@@ -222,11 +221,13 @@ public class NES_ReactivateSYTest {
         System.runAs(careTaker) { 
             Test.startTest();
             Peak_Response studentInsertResponse = NES_EnrollmentController.nextYearEnrollment(studentid.Id,academicProgram.Name,schoolYears[0].name,gradeLevel.Name, callType,flag,stdPE.id);
+          
             Test.stopTest();
             System.assertEquals(true,studentInsertResponse.success);
         List<Peak_Apex_Log__c> apLogs= [select id from Peak_Apex_Log__c];
         system.assertEquals(0,apLogs.size());
         }
     }
-    
+
+
 }

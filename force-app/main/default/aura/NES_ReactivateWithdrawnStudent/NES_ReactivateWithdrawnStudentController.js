@@ -12,11 +12,11 @@
         var programEnrollmentId = component.get("v.programEnrollmentId");
         var stundentName = component.get("v.studentName");
         var context = component.get("v.context");
-        console.log('pdid=', programEnrollmentId);
-        console.log('context=', context);
-        console.log(context);
+        //console.log('pdid=', programEnrollmentId);
+        //console.log('context=', context);
+        //console.log(context);
         var action = component.get("c.reactivateStudent");
-        alert(context);
+        //alert(context);
         action.setParams({
             studPEID: programEnrollmentId,
             reactivationType: context

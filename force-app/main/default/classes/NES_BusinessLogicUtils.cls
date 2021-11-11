@@ -1844,7 +1844,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                         
                         //Added for Userstory 451172- DK                       
                         if(pgl.Id == pe.Program_Grade_Level__c){
-                            if(pgl.ActivateWaitlist__c == TRUE && pe.WaitlistFlag__c!= 'Released' && pgl.ActivateWaitlist__c == TRUE && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()){
+                            if(pgl.ActivateWaitlist__c == TRUE && pe.WaitlistFlag__c!= 'Released' && pgl.StartWaitlist__c <= System.now() && pgl.EndWaitlist__c >= System.now()){
                                 pe.WaitlistFlag__c = 'Active';
                             }  
                             if(pgl.Open_Application__c == 'Active' && pe.Open_Application__c!= 'Released' && pgl.Start_Open_Application__c <= System.now() && pgl.End_Open_Application__c >= System.now()){

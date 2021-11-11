@@ -52,21 +52,5 @@
         }
  
     },
-    
-   /* openApp: function(component, event, helper){
-        var datset = event.currentTarget.dataset;
-       // component.set("v.loading",true);
-        var action = component.get("c.openApplication");
-        action.setParams({
-            programEnrollmentId : datset.programenrollmentid
-        });
-        action.setCallback(this, function(response){
-            var state = response.getState();
-            if(state === 'SUCCESS'){
-                console.log('updated successfully');
-            }
-        });
-        $A.enqueueAction(action);
-    }*/
-        
+
 });

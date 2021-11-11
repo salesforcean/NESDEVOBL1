@@ -299,7 +299,10 @@ public class Peak_TestUtils {
         compRelationship.Order__c = 1;
         insert compRelationship;
         return compRelationship;
+
     }
+    
+    
 
     /**
     Created by : Anushka Bansal
@@ -338,15 +341,14 @@ public class Peak_TestUtils {
      Parameters : Program Enrollment Id, Enrollment Component Id, isInsert
      Return : Enrollment_Component_Affiliation__c record.
      **/
-    public static Enrollment_Component_Affiliation__c createEnrollmentComponentAffiliation(String programEnrollmentId, String componentId) {
-
+    public static Enrollment_Component_Affiliation__c createEnrollmentComponentAffiliation(String programEnrollmentId, String componentId) {   
         Enrollment_Component_Affiliation__c compAffiliation = new Enrollment_Component_Affiliation__c();
         compAffiliation.Status__c = 'Complete';
         compAffiliation.Date_Completed__c = System.today();
         compAffiliation.Deferral_Date__c = System.today();
         compAffiliation.Program_Enrollment__c = programEnrollmentId;
         compAffiliation.Enrollment_Component__c = componentId;
-
+ 
         try {
             insert compAffiliation;
         } catch (exception ex) {

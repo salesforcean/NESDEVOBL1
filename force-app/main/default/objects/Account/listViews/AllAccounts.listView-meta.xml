@@ -8,10 +8,5 @@
     <columns>Email__c</columns>
     <columns>hed__Primary_Contact__c</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>ACCOUNT.CREATED_DATE</field>
-        <operation>equals</operation>
-        <value>10/12/2020 12:00 AM</value>
-    </filters>
     <label>All Accounts</label>
 </ListView>

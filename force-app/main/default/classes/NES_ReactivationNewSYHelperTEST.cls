@@ -71,7 +71,7 @@ public class NES_ReactivationNewSYHelperTEST {
         
         Grade_Level__c gradeLevel=[select id,name from Grade_Level__c where name ='test' limit 1];
         
-        System.debug('academicProgram++'+academicProgram);
+        //System.debug('academicProgram++'+academicProgram);
         List<School_Year__c> schoolYears = [SELECT Id,name FROM School_Year__c WHERE Name = 'Test School Year' LIMIT 1];
         
         //Create a student enrollment for the CareTaker Contact

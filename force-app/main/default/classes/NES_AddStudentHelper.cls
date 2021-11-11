@@ -678,13 +678,9 @@ public without sharing class NES_AddStudentHelper {
                 
                 
                 
-               		 //Added for Userstory 451172- DK    
-              // Id studentEnrollTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();
-                
-                //List<hed__Program_Enrollment__c> hPe = [SELECT id, Open_Application__c,RecordTypeId from hed__Program_Enrollment__c where Id=:newStudentEnrollment.Id];                       
-                           
-                string TASInprogress = 'N';             
-                for (Integer i = 1; i < relationships.size(); i++) {
+               		 //Added for Userstory 451172- DK     
+               		 String TASInprogress = 'N';       
+                	for (Integer i = 1; i < relationships.size(); i++) {
                     Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                     if(i==1){
                         affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
@@ -693,15 +689,15 @@ public without sharing class NES_AddStudentHelper {
                         affiliationRecord.Status__c = 'In Progress';                                             
                     }else if(!(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c))){ 
                         affiliationRecord.Status__c = 'Not Applicable';
-                        TASInprogress = 'Y';
+                     	TASInprogress = 'Y';
                     }
                     if (i!= 1 && String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) { 
                         affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
                         affiliationRecord.Program_Enrollment__c = newStudentEnrollment.Id;
                         affiliationRecord.Order__c = relationships[i].Order__c;
-                        if (i == 1){ 
-                            affiliationRecord.Status__c = 'In Progress';
-                        }else if (relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student' && TASInprogress == 'Y'){
+                           if (i == 1){ 
+                           affiliationRecord.Status__c = 'In Progress';
+                       }else if (relationships[i].Child_Enrollment_Component__r.Name == 'Tell us About your Student' && TASInprogress == 'Y'){
                             affiliationRecord.Status__c = 'In Progress';
                         }else{
                             affiliationRecord.Status__c = 'Not Started';
@@ -709,7 +705,7 @@ public without sharing class NES_AddStudentHelper {
                     }
                     ecAffiliationsToInsert.add(affiliationRecord);
                 }
-
+             
                  // End for Userstory 451172- DK
  
       					//Add the rest of the stages that have no assignment logic.
@@ -822,7 +818,7 @@ public without sharing class NES_AddStudentHelper {
                 System.debug('<<academicProgram.name>>'+academicProgram);
                 System.debug('<<CALCA_STUDENT_ENROLLMENT_END_DATE>>'+Date.valueOf(System.Label.CALCA_STUDENT_ENROLLMENT_END_DATE)+'<<CALCA_STUDENT_ENROLLMENT_START_DATE>>'+Date.valueOf(System.Label.CALCA_STUDENT_ENROLLMENT_START_DATE));
                 
-                if ( (!academicProgram.Name.contains(System.Label.ASI_SCHOOL_NAME) && ((birthdate < Date.valueOf(System.Label.CALCA_STUDENT_ENROLLMENT_END_DATE)) || (birthdate > Date.valueOf(System.Label.CALCA_STUDENT_ENROLLMENT_START_DATE)))) && (birthdate < academicProgram.MaxSpecialEdBirthdate__c || birthdate > academicProgram.Too_Young_Cutoff__c)){
+                if ( (!academicProgram.Name.contains(System.Label.ASI_SCHOOL_NAME) && ((birthdate <= Date.valueOf(System.Label.CALCA_STUDENT_ENROLLMENT_END_DATE)) || (birthdate >= Date.valueOf(System.Label.CALCA_STUDENT_ENROLLMENT_START_DATE)))) && (birthdate < academicProgram.MaxSpecialEdBirthdate__c || birthdate > academicProgram.Too_Young_Cutoff__c)){
                         shouldHardStop = true;
                 }
                 

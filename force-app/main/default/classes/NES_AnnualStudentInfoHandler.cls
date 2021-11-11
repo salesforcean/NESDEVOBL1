@@ -102,7 +102,8 @@ public with sharing class NES_AnnualStudentInfoHandler {
 
         if (runCBL) {
             if (waitlistFlagCalcSwitch)
-                NES_AnnualStudentInfoBusinessLogic.waitlistCalculator(actlstnewMap.values(), actlstoldMap); //Swapna:Changed to active list
+                //Commenetd for defect 448189 
+                //NES_AnnualStudentInfoBusinessLogic.waitlistCalculator(actlstnewMap.values(), actlstoldMap); //Swapna:Changed to active list
             if (whyFlagSwitch) {
                 NES_BusinessLogicUtils.invokeCalculateWhyFlagMethod(actlstnewMap.values(), actlstoldMap); //Swapna:Changed to active list
             }

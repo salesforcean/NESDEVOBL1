@@ -53,13 +53,25 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
 
     @TestVisible private void processPE() {
+		// Start Defect 490665 : Naveen
+        // Get the PGL Info and Check if Waitlist is enabled and active for that grade level
+        List<hed__Program_Enrollment__c> pelist = [Select Id, Program_Grade_Level__r.ActivateWaitlist__c,Program_Grade_Level__r.StartWaitlist__c, Program_Grade_Level__r.EndWaitlist__c  from hed__Program_Enrollment__c where Id =: this.studPE.Id limit 1];
+        String WaitlistFlagVal = '';
+        
+        if(pelist != null && pelist.size() >0)
+        {
+            if(pelist[0].Program_Grade_Level__r.ActivateWaitlist__c == TRUE && pelist[0].Program_Grade_Level__r.ActivateWaitlist__c == TRUE && pelist[0].Program_Grade_Level__r.StartWaitlist__c <= System.now() && pelist[0].Program_Grade_Level__r.EndWaitlist__c >= System.now()){
+                                WaitlistFlagVal = 'Active';
+            }
+        }
+        // End Defect 490665 : Naveen
 
         hed__Program_Enrollment__c toUpdatePE = new hed__Program_Enrollment__c( 
             Id = this.studPE.Id,
             Status__c = PE_REACTIVATION_STATUS,
             Enrollment_Type__c = PE_RE_ENROLLMENT_TYPE_DEFAULT,
             Open_Application__c = null,  //Added for Open Application User story 451172 -->DK
-            WaitlistFlag__c = null,
+            WaitlistFlag__c = WaitlistFlagVal, // Defect 490665 : Naveen
             WaitlistCounter__c = null,
             Waitlist_Time_Date_Stamp__c = null,
             Waitlist_Time_Date_Stamp_Override__c = null,

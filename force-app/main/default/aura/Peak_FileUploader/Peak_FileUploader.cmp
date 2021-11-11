@@ -77,7 +77,8 @@
     <aura:attribute name="CustomIdName" type="String" default=""/>
     <aura:attribute name="isOnRecordPage" type="Boolean" default="false"/>
     <aura:attribute name="showWarningDialog" type="Boolean" default="false"/>
-    
+    <aura:attribute name="disclaimerText1" type="String" default="Are you using a Safari browser?" />
+    <aura:attribute name="disclaimerText" type="String" default="You might not be able to submit documents. Please use a different browser or refer to our help document."/>
     <aura:attribute name="canvasWidth" type="Integer" default="100"/>
     <aura:attribute name="canvasHeight" type="Integer" default="100"/>
      <!-- Swapna: Added for GTM -->
@@ -152,9 +153,43 @@
                     <lightning:layout multipleRows="true">
                         <!-- modified by ravi medidevicesize 8 to 12-->
                         <!-- modified by maddileti medidevicesize 12 to 8 for the bug 136920 on 07/09/2020 -->
-                        <lightning:layoutItem mediumDeviceSize="8" size="12">
-                            
-                            
+                        <lightning:layoutItem mediumDeviceSize="8" size="12" >
+                            <!--Safari browser icon Added by Ravi US 490649 -->
+                            <lightning:layout>
+                            <aura:if isTrue="{!$Browser.formFactor == 'DESKTOP'}">
+                            <lightning:layoutItem size="12">
+                             <div class="slds-box">
+                                <div class ="slds-grid slds-wrap">
+                                    <div class="slds-size_1-of-3">
+                                		<img src="{!$Resource.Safari_Browser_Icon}" />
+                                	</div>
+                                    <div class="slds-size_2-of-3">
+                                        <p class="slds-m-top_x-small"><B>{!v.disclaimerText1}</B></p>
+                                		<!--p class="slds-m-top_x-small">{!v.disclaimerText}</p-->
+                                        <p class="slds-m-top_x-small">You might not be able to submit documents. Please use a different browser or refer to our<a href="https://google.co.in/"> help document</a>.</p>
+                                        
+                                	</div>
+                                </div>
+                                </div>
+                                </lightning:layoutItem>
+                                <aura:set attribute="else" >
+                                  <div class= " viewMobile slds-box" Size="4" >
+                                    <div class ="slds-grid slds-wrap">
+                                    <div class=" slds-size_1-of-3">
+                                		<img src="{!$Resource.Safari_Browser_Icon}" />
+                                	</div>
+                                    <div class=" viewMobile slds-size_2-of-3">
+                                        <p class="slds-m-top_x-small"><B>{!v.disclaimerText1}</B></p>
+                                		<!--p class="slds-m-top_x-small">{!v.disclaimerText}</p-->
+                                        <p class="slds-m-top_x-small">You might not be able to submit documents. Please use a different browser or refer to our<a href="https://google.co.in/"> help document</a>.</p>
+                                	</div>
+                                </div>
+                                    </div>
+                                </aura:set>
+                                </aura:if>
+                                
+                            </lightning:layout>
+                            <!-- End here for Safari browser for desktop and mobile version is updated-->
                             <div class="{!v.documentInfo.documentName ? 'slds-var-m-bottom_x-large' : 'slds-hide'}">
                                <!-- Removed by Ravi-->
                                 <!-- <h5>{!v.studentName}</h5>
@@ -163,6 +198,7 @@
                                     <aura:unescapedHtml value="{!theText.Component_Message__c}"/>
                                 </aura:iteration>
                             </div>
+                            
                             
                             <section class="{!'peak-component ' + v.CustomClassName}" id="{!v.CustomIdName}">
                                 

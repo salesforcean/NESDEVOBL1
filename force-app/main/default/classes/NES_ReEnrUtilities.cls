@@ -11,6 +11,7 @@ public without Sharing class NES_ReEnrUtilities {
             // Get the Student PE Record
             hed__Program_Enrollment__c studentPERecord = [Select Id, ProfileName__c, Status__c,Start_Year__c,Program_Grade_Level__r.Grade_Level__r.Name,Household_Program_Enrollment__c,
                                                           Household_Program_Enrollment__r.hed__Contact__c,hed__Account__r.ParentId, hed__Account__c, OwnerId, 
+                                                          Program_Grade_Level__r.ActivateWaitlist__c,Program_Grade_Level__r.StartWaitlist__c, Program_Grade_Level__r.EndWaitlist__c, //Defect 490665 : Naveen
                                                           Waitlist_Released__c, Waitlist_Released_Dt__c,WaitlistFlag__c, Waitlist_Time_Date_Stamp__c,
                                                           Enrollment_Type__c from hed__Program_Enrollment__c where Id=:studentPEId limit 1 FOR UPDATE]; 
             
@@ -35,6 +36,15 @@ public without Sharing class NES_ReEnrUtilities {
                 AND RecordType.Name = :NES_DashboardUtilities.PROCESS_RT
                 LIMIT 1
             ];
+            
+           // Calculate the Waitlist Flag based on the Program Grade Level
+           // Start Defect 490665  :Naveen 
+           String WaitlistFlagVal = '';
+           if(studentPERecord.Program_Grade_Level__r.ActivateWaitlist__c == TRUE && studentPERecord.Program_Grade_Level__r.ActivateWaitlist__c == TRUE && studentPERecord.Program_Grade_Level__r.StartWaitlist__c <= System.now() && studentPERecord.Program_Grade_Level__r.EndWaitlist__c >= System.now()){
+                                WaitlistFlagVal = 'Active';
+            }
+            // End Defect 490665  :Naveen 
+           
            if(callType == 'SYReEnroll')
            {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
@@ -44,7 +54,7 @@ public without Sharing class NES_ReEnrUtilities {
             pe.Open_Application__c = null;   //Added for Open Application User story 451172 -->DK
             pe.Waitlist_Released__c = null;
             pe.Waitlist_Released_Dt__c = null;
-            pe.WaitlistFlag__c=null; 
+            pe.WaitlistFlag__c = WaitlistFlagVal;  // Defect 490665 : Naveen
             pe.Waitlist_Time_Date_Stamp__c=null;
             System.debug('NDEBUG In SYReEnroll :::' );
                update pe;
@@ -61,14 +71,14 @@ public without Sharing class NES_ReEnrUtilities {
                  hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c (id =studentPERecord.Id,CallType__c = callType,
                                                                         Enrollment_Type__c = enrollmentType,
                                                                         Status__c = 'In Progress');
-            pe.Open_Application__c = null;    //Added for Open Application User story 451172 -->DK  
-            pe.Waitlist_Released__c = null;//RAVI
-            pe.Waitlist_Released_Dt__c = null;
-            pe.WaitlistFlag__c=null; 
-            pe.Waitlist_Time_Date_Stamp__c=null;
+                pe.Open_Application__c = null;    //Added for Open Application User story 451172 -->DK  
+                pe.Waitlist_Released__c = null;//RAVI
+                pe.Waitlist_Released_Dt__c = null;
+                pe.WaitlistFlag__c = WaitlistFlagVal;  // Defect 490665 : Naveen 
+                pe.Waitlist_Time_Date_Stamp__c=null;
   				
-			System.debug('NDEBUG Not In SYReEnroll :::' );
-             update pe;
+				System.debug('NDEBUG Not In SYReEnroll :::' );
+             	update pe;
               //End Here   
                  createOpportunity(studentContact,studentPERecord,AcademicProgram,callType);
              }
@@ -111,7 +121,7 @@ public without Sharing class NES_ReEnrUtilities {
         
         system.debug('EvaluationUtils-Debug'+ EnrollmentType);
         
-        if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment')){
+        if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment' || EnrollmentType == 'SYReEnroll')){
                         
             for(Enrollment_Component_Affiliation__c eca :existEcas){
                  if(eca.Enrollment_Component__r.RecordType.Name =='Flag'){
@@ -185,30 +195,44 @@ public without Sharing class NES_ReEnrUtilities {
                 }
                 else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
                     
-                    if(eca.Order__c == 1 && eca.Status__c != 'Complete' ){
+                    if(eca.Order__c == 1 ){
                         
                         eca.Status__c = 'Complete';
                         
                     }
-                 /* if(EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment'){
-                        if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c != 'Active'){
-                            eca.Status__c = 'Complete';
-                        }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == 'Active'){
-                            eca.Status__c = 'In Progress';
-                        }else if(eca.Order__c == 3){
-                            eca.Status__c = 'In Progress';
-                        }else if(eca.Order__c > 3){
+                     //Added for Open Application User story 451172 -->DK
+                  if(EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment' || EnrollmentType == 'SYReEnroll'){
+                     
+                        if((eca.Order__c == 2 || eca.Order__c == 3 || eca.Order__c == 4) && eca.Program_Enrollment__r.Open_Application__c == 'Released'){
+                        eca.Status__c = 'In Progress';
+                       
+                    }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == null && eca.Enrollment_Component__r.Name != 'Open Application'){
+                        eca.Status__c = 'In Progress';
+                    }else if((eca.Order__c == 3 || eca.Order__c == 4 || eca.Order__c == 5) && eca.Program_Enrollment__r.Open_Application__c == null ){
+                    		if (eca.Enrollment_Component__r.Name == 'Tell Us About Your Student')
+                         		eca.Status__c = 'In Progress';
+                        else {
                             eca.Status__c = 'Not Started';
                         }
-                    }else{
-                        if(eca.Order__c == 2){
-                            eca.Status__c = 'In Progress';
-                        }else if(eca.Order__c > 2){
-                            eca.Status__c = 'Not Started';
-                        }
-                    }*/
-                    //EnrollmentType == 'InitReActivation'
-                   else if(eca.Order__c == 2){
+                    }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == null && eca.Enrollment_Component__r.Name == 'Open Application'){
+                         eca.Status__c = 'Complete';
+                    }
+                    
+                    else{
+                        //eca.Status__c = 'Not Started';          
+                    }
+                }else{
+
+                   if(eca.Order__c == 2){
+                        eca.Status__c = 'In Progress';
+                    }else if(eca.Order__c > 2){
+                        eca.Status__c = 'Not Started';
+                    }
+                }
+              
+                     //End for Open Application User story 451172 -->DK
+                   
+                   /*else if(eca.Order__c == 2){
                         
                         eca.Status__c = 'In Progress';
                         
@@ -216,7 +240,7 @@ public without Sharing class NES_ReEnrUtilities {
                         
                         eca.Status__c = 'Not Started';
                         
-                    }
+                    }*/
                     
                     StageEcaToUpdate.add(eca);            
                     
