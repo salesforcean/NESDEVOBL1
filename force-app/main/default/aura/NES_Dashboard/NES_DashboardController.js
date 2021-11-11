@@ -92,6 +92,7 @@
                 //alert(url);
                 if(url === '/enrollment') {
                     var dataset = event.currentTarget.dataset;
+                    //alert(JSON.stringify(dataset));
                     /**
              * changes added by anithap on 17/01/2019
              * added c__prefix to studentId,caretakerId,studentGrade,processId,programEnrollmentId.
@@ -106,14 +107,16 @@
  * changes added by anithap on 17/01/2019
  * 
  */
-                //setTimeout(function(){ $A.get('e.force:refreshView').fire(); }, 2000);  //Added for Open Application User story 451172 -->DK
-              	  $A.get("e.force:navigateToURL").setParams({
+				helper.helperRefreshOpenApp(component,event,helper,dataset.programenrollmentid);  // Added for DEFECT 494868- DK
+                
+                  $A.get("e.force:navigateToURL").setParams({
                        
                     "url": url
                      
                 }).fire();
-                              
-              //helper.openApp(component, event, helper); 
+               
+              
+              
              }
         
     },

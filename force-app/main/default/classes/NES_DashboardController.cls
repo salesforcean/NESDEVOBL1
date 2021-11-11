@@ -40,17 +40,18 @@ type Enrollment components and related ECAs. Return this information after addin
 	} */
     
     
-      /*@AuraEnabled
-    public static void openApplication(Id programEnrollmentId){ 
-     
-  	List<Enrollment_Component_Affiliation__c> lsteca  = [Select id, Name, Status__c,Program_Enrollment__c from Enrollment_Component_Affiliation__c where EC_Record_Type__c = 'Stage'  AND Enrollment_Component__r.Name = 'Open Application' AND Status__c = 'Not Started' AND Program_Enrollment__c=:programEnrollmentId];
-         system.debug('lsteca '+lsteca); 
-        for (Enrollment_Component_Affiliation__c eca :lsteca ){
-            eca.Status__c = 'In Progress';
+   
+    
+// Added for DEFECT 494868- DK    
+    @AuraEnabled
+    public static string refreshOPenAppPortal(Id programEnrollmentId){ 
+	string refreshPortal;     
+  	hed__Program_Enrollment__c hpe  = [Select id, Name, Stage__c,Open_Application__c from hed__Program_Enrollment__c where Id =:programEnrollmentId AND CreatedDate=today];
+        if(hpe.Stage__c == 'Open Application'){
+            refreshPortal = 'Refresh';
         }
-        system.debug('lsteca '+lsteca); 
-        if (lsteca.size() > 0){
-             update lsteca;
-        }
-    }*/
+        system.debug('===>refreshPortal '+refreshPortal);
+        return refreshPortal;
+    }
+   // End for DEFECT 494868- DK 
 }

@@ -52,5 +52,32 @@
         }
  
     },
-
+    
+    // Added for DEFECT 494868- DK
+    helperRefreshOpenApp : function(component, event, helper, peId){
+        var action = component.get("c.refreshOPenAppPortal"); 
+        alert('peId');
+        debugger;
+        action.setParams({
+            programEnrollmentId : peId
+        });
+        action.setCallback(this, function(a) {
+           var state = a.getState();
+            if (state === "SUCCESS") {
+                
+                var rfrsh = a.getReturnValue();
+                component.set("v.refreshOpen", rfrsh);
+                var openAppRefresh = component.get("v.refreshOpen");
+                if(openAppRefresh == 'Refresh'){
+                   
+                    setTimeout(function(){ $A.get('e.force:refreshView').fire(); }, 5000);  //Added for Open Application User story 451172 -->DK
+                }
+            }
+            else if(a.getState() === "ERROR"){
+            $A.log("Errors", a.getError());
+        }
+        });
+    $A.enqueueAction(action);
+    }
+		// End for DEFECT 494868- DK
 });

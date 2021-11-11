@@ -189,7 +189,7 @@
                                 </aura:if>
                                 
                             </lightning:layout>
-                            <!-- End here for Safari browser for desktop and mobile version is updated-->
+                            <!-- End here for Safari browser for desktop and mobile versions -->
                             <div class="{!v.documentInfo.documentName ? 'slds-var-m-bottom_x-large' : 'slds-hide'}">
                                <!-- Removed by Ravi-->
                                 <!-- <h5>{!v.studentName}</h5>
