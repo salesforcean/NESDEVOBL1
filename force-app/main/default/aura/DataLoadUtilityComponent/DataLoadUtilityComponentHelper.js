@@ -42,7 +42,6 @@
     createAccount : function (component,jsonstr,helper){
         console.log('jsonstr' + jsonstr);
         var action = component.get('c.insertData');
-        //  alert('Server Action' + action);    
         action.setParams({
             strfromle : jsonstr,section : '1'
         });
@@ -50,9 +49,11 @@
                 component.set("v.loaded",true); 
 
             var state = response.getState();
+                            var result=response.getReturnValue();
+                console.log('result--'+response.getReturnValue());
+
             if (state === "SUCCESS") {             
                 var result=response.getReturnValue();
-                console.log('result--'+JSON.stringify(result));
 
                 if(result.state=== "SUCCESS")
                 {

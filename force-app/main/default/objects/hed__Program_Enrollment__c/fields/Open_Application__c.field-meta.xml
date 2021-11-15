@@ -18,7 +18,7 @@
             </value>
             <value>
                 <fullName>Released</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>Released</label>
             </value>
             <value>

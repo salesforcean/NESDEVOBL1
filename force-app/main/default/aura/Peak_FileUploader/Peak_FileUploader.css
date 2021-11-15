@@ -251,26 +251,27 @@ border-color: #52d6d5;
 box-shadow: 0 0 0 0.2rem rgb(110 196 196 / 50%);
 }
 /*Ended for Submit, Yes Skip & Cancel 399187*/
+/*Added by Ravi #US490649*/ 
 .THIS .slds-size_2-of-12{
     
     width: 150px;
     height: 100px;
 
 }
-/*Added by Ravi #US490649*/ 
-.THIS .slds-size_1-of-3{
 
- Width: 170px;    
-    padding-left: 10px;
+.THIS .slds-size_1-of-3{
+	width: 105px;
+	padding-left: 10px;
     padding-right: 10px;
 }
-
 .THIS .slds-box{
     border-color:#722362;
     background: #eadee8;
-    
-     
 }
 .THIS .viewMobile{
     Width:302PX;
+}
+.THIS .slds-size_1-of-3_Mobile{
+    width: 120px;
+    margin-left: 75px;
 }

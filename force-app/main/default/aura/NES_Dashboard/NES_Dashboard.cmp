@@ -25,7 +25,8 @@
     -   Attributes used when coming from confirmation email.
     -   Needs to have arriveFromEmail trigger to True based on referral page
     -->
-    <aura:attribute name="refreshOpen" type="string" default = ""/>
+   
+    <aura:attribute name="refreshOpen" type="string" />
     <aura:attribute name="arriveFromEmail" type="Boolean" default="false" />
     <aura:attribute name="emailHeading" type="String" default="Email confirmed!"/>
     <aura:attribute name="emailSubheading" type="String" default="Now, add your Student(s)"/>

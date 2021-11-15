@@ -78,7 +78,7 @@
     <aura:attribute name="isOnRecordPage" type="Boolean" default="false"/>
     <aura:attribute name="showWarningDialog" type="Boolean" default="false"/>
     <aura:attribute name="disclaimerText1" type="String" default="Are you using a Safari browser?" />
-    <aura:attribute name="disclaimerText" type="String" default="You might not be able to submit documents. Please use a different browser or refer to our help document."/>
+    <aura:attribute name="disclaimerText" type="String" default="You might be able to submit documents. Please use a different browser or refer to our help document to change settings."/>
     <aura:attribute name="canvasWidth" type="Integer" default="100"/>
     <aura:attribute name="canvasHeight" type="Integer" default="100"/>
      <!-- Swapna: Added for GTM -->
@@ -165,8 +165,8 @@
                                 	</div>
                                     <div class="slds-size_2-of-3">
                                         <p class="slds-m-top_x-small"><B>{!v.disclaimerText1}</B></p>
-                                		<!--p class="slds-m-top_x-small">{!v.disclaimerText}</p-->
-                                        <p class="slds-m-top_x-small">You might not be able to submit documents. Please use a different browser or refer to our<a href="https://google.co.in/"> help document</a>.</p>
+                                		<p class="slds-m-top_x-small">{!v.disclaimerText}</p>
+                                        <!--p class="slds-m-top_x-small">You might not be able to submit documents. Please use a different browser or refer to our<a href="https://google.co.in/"> help document</a>.</p-->
                                         
                                 	</div>
                                 </div>
@@ -175,13 +175,13 @@
                                 <aura:set attribute="else" >
                                   <div class= " viewMobile slds-box" Size="4" >
                                     <div class ="slds-grid slds-wrap">
-                                    <div class=" slds-size_1-of-3">
+                                    <div class=" slds-size_1-of-3_Mobile">
                                 		<img src="{!$Resource.Safari_Browser_Icon}" />
                                 	</div>
                                     <div class=" viewMobile slds-size_2-of-3">
                                         <p class="slds-m-top_x-small"><B>{!v.disclaimerText1}</B></p>
-                                		<!--p class="slds-m-top_x-small">{!v.disclaimerText}</p-->
-                                        <p class="slds-m-top_x-small">You might not be able to submit documents. Please use a different browser or refer to our<a href="https://google.co.in/"> help document</a>.</p>
+                                		<p class="slds-m-top_x-small">{!v.disclaimerText}</p>
+                                        <!--p class="slds-m-top_x-small">You might not be able to submit documents. Please use a different browser or refer to our<a href="https://google.co.in/"> help document</a>.</p-->
                                 	</div>
                                 </div>
                                     </div>
@@ -189,6 +189,7 @@
                                 </aura:if>
                                 
                             </lightning:layout>
+                            <br></br>
                             <!-- End here for Safari browser for desktop and mobile versions -->
                             <div class="{!v.documentInfo.documentName ? 'slds-var-m-bottom_x-large' : 'slds-hide'}">
                                <!-- Removed by Ravi-->

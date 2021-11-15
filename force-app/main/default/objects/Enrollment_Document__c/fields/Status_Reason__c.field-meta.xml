@@ -27,6 +27,7 @@
             <controllingFieldValue>Custody Order</controllingFieldValue>
             <controllingFieldValue>Dental Examination</controllingFieldValue>
             <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
             <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
             <controllingFieldValue>Master Agreement</controllingFieldValue>
             <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
@@ -64,6 +65,7 @@
             <controllingFieldValue>Dental Examination</controllingFieldValue>
             <controllingFieldValue>Dental Examination (ORCA)</controllingFieldValue>
             <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <controllingFieldValue>Determination of Eligibility</controllingFieldValue>
             <controllingFieldValue>Individualized Education Program</controllingFieldValue>
             <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
             <controllingFieldValue>Master Agreement</controllingFieldValue>
@@ -147,11 +149,16 @@
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
             <controllingFieldValue>Report of Health Examination</controllingFieldValue>
             <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Home school Association Membership</controllingFieldValue>
             <controllingFieldValue>Ear, Eye and Dental Certificate (CEED)</controllingFieldValue>
+            <controllingFieldValue>Best fit Determination</controllingFieldValue>
             <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>Attendance Report</controllingFieldValue>
+            <controllingFieldValue>District Approval Form</controllingFieldValue>
             <controllingFieldValue>Gifted Documentation</controllingFieldValue>
             <controllingFieldValue>HISD Privacy Code</controllingFieldValue>
             <controllingFieldValue>Health Record (Massachusetts School Health Record)</controllingFieldValue>
+            <controllingFieldValue>Report of Dental Examination</controllingFieldValue>
             <controllingFieldValue>Home Language Survey</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
@@ -162,6 +169,8 @@
             <controllingFieldValue>Charter School Notification Form</controllingFieldValue>
             <controllingFieldValue>Custody Order</controllingFieldValue>
             <controllingFieldValue>Dental Examination</controllingFieldValue>
+            <controllingFieldValue>Determination of Eligibility</controllingFieldValue>
+            <controllingFieldValue>Report of Physical Examination</controllingFieldValue>
             <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
             <controllingFieldValue>Master Agreement</controllingFieldValue>
             <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
@@ -191,17 +200,24 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Home school Association Membership</controllingFieldValue>
+            <controllingFieldValue>Best fit Determination</controllingFieldValue>
+            <controllingFieldValue>Attendance Report</controllingFieldValue>
             <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>District Approval Form</controllingFieldValue>
             <controllingFieldValue>Gifted Documentation</controllingFieldValue>
             <controllingFieldValue>Home Language Survey</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
             <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
             <controllingFieldValue>Individualized Education Program</controllingFieldValue>
             <controllingFieldValue>Master Agreement</controllingFieldValue>
             <controllingFieldValue>PHLOTE</controllingFieldValue>
             <controllingFieldValue>Physical Examination</controllingFieldValue>
             <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <controllingFieldValue>Proof of Identity</controllingFieldValue>
             <controllingFieldValue>Proof of Residence</controllingFieldValue>
             <controllingFieldValue>Report Card</controllingFieldValue>
             <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
@@ -212,6 +228,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Best fit Determination</controllingFieldValue>
             <controllingFieldValue>Evaluation</controllingFieldValue>
             <controllingFieldValue>Gifted Documentation</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
@@ -226,8 +243,11 @@
         <valueSettings>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
             <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>Report of Dental Examination</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Determination of Eligibility</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
             <controllingFieldValue>Report Card</controllingFieldValue>
             <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
             <valueName>Received</valueName>
@@ -246,6 +266,7 @@
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>504 Plan</controllingFieldValue>
             <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
             <controllingFieldValue>Report Card</controllingFieldValue>
             <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
             <controllingFieldValue>State Test Scores</controllingFieldValue>
@@ -296,15 +317,27 @@
         <valueSettings>
             <controllingFieldValue>Immunization Booster</controllingFieldValue>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
             <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
             <controllingFieldValue>Proof of Age</controllingFieldValue>
             <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
             <valueName>Deferred-Extension Approved by Principal</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Immunization Booster</controllingFieldValue>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Deferred-Incomplete-Allow</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
             <valueName>Deferred-Non-compliant Allow</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Booster</controllingFieldValue>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Deferred-Verified-In progress</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Immunization Booster</controllingFieldValue>
@@ -324,6 +357,7 @@
         <valueSettings>
             <controllingFieldValue>Immunization Booster</controllingFieldValue>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
             <controllingFieldValue>Vision Screening</controllingFieldValue>
             <valueName>Invalid-Incomplete Exemption</valueName>
         </valueSettings>
@@ -357,13 +391,25 @@
             <valueName>Invalid-Updated Exemption Required</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Best fit Determination</controllingFieldValue>
             <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <controllingFieldValue>Master Agreement</controllingFieldValue>
+            <valueName>Invalid-Missing Signature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
+            <controllingFieldValue>Report of Dental Examination</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
             <controllingFieldValue>Custody Order</controllingFieldValue>
+            <controllingFieldValue>Determination of Eligibility</controllingFieldValue>
+            <controllingFieldValue>Report of Physical Examination</controllingFieldValue>
             <controllingFieldValue>Minnesota Health Screen Report</controllingFieldValue>
             <controllingFieldValue>NCCA Health Assessment</controllingFieldValue>
             <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
             <controllingFieldValue>Proof of Age</controllingFieldValue>
             <controllingFieldValue>Report Card</controllingFieldValue>
             <valueName>Invalid</valueName>
@@ -376,13 +422,6 @@
             <controllingFieldValue>Master Agreement</controllingFieldValue>
             <controllingFieldValue>Title I Compact</controllingFieldValue>
             <valueName>Invalid-Digital signature</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
-            <controllingFieldValue>Custody Order</controllingFieldValue>
-            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
-            <controllingFieldValue>Master Agreement</controllingFieldValue>
-            <valueName>Invalid-Missing Signature</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Evaluation</controllingFieldValue>
@@ -440,8 +479,24 @@
             <valueName>Verified-Complete</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>District Approval Form</controllingFieldValue>
+            <controllingFieldValue>Non-Resident Agreement Status</controllingFieldValue>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-Denied</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Gifted Documentation</controllingFieldValue>
             <valueName>Incomplete-Missing information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>IOWA Open Enrollment Application</controllingFieldValue>
+            <controllingFieldValue>In-District Approval Form</controllingFieldValue>
+            <valueName>Accepted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>IOWA Open Enrollment Application</controllingFieldValue>
+            <controllingFieldValue>In-District Approval Form</controllingFieldValue>
+            <valueName>Not Accepted</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Health Record (Massachusetts School Health Record)</controllingFieldValue>
@@ -450,14 +505,6 @@
         <valueSettings>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <valueName>Awaiting IEP</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Immunization Records</controllingFieldValue>
-            <valueName>Deferred-Incomplete-Allow</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Immunization Records</controllingFieldValue>
-            <valueName>Deferred-Verified-In progress</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
@@ -512,10 +559,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
-            <valueName>Invalid-Denied</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
             <valueName>Invalid-Incorrect CTR-grade level</valueName>
         </valueSettings>
         <valueSettings>
@@ -566,18 +609,19 @@
             <valueName>Received-Sent to District</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <valueName>Deferred</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
             <valueName>Verified-Refused</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>OEA</controllingFieldValue>
             <valueName>Invalid-Not Accepted</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>PHLOTE</controllingFieldValue>
-            <controllingFieldValue>Physical Examination</controllingFieldValue>
-            <controllingFieldValue>Vision Screening</controllingFieldValue>
-            <valueName>Deferred</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Physical Examination</controllingFieldValue>

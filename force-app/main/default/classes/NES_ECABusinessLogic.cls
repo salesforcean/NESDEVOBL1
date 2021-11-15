@@ -177,8 +177,10 @@ return studentInfoList;
         
         Set<Id> ecaIdSet = new Set<Id>();
         for (Enrollment_Component_Affiliation__c ecaRecord : newList) {
+            
             if (oldMap == null) {
                 if (ecaRecord.Status__c == 'In Progress') {
+                    
                     ecaIdSet.add(ecaRecord.Id);
                 }
             } else {

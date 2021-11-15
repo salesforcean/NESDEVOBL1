@@ -203,6 +203,11 @@ public class NES_DashboardControllerTest {
         NES_DashboardController.refreshOPenAppPortal(progEnrollment1.Id);
         Test.stopTest();
 }
-     
+     static testMethod void testnonopenApp(){
+        hed__Program_Enrollment__c progEnrollment1 = [Select id, Name, Stage__c,Open_Application__c from hed__Program_Enrollment__c limit 1];
+        Test.starttest();
+        NES_DashboardController.nonOpenAppUpdate(progEnrollment1.Id);
+        Test.stopTest();
+} 
     
 }

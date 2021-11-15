@@ -431,12 +431,22 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>OR(AND(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)!=&apos;Kindergarten&apos;,TEXT([Annual_Student_Information__c].Grade_Level_Completed__c) =&apos;Kindergarten&apos;),(VALUE(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)) -VALUE(TEXT([Annual_Student_Information__c].Grade_Level_Completed__c)) !=1)) &amp;&amp; NOT(ISNEW()) &amp;&amp; OR(ISCHANGED([Annual_Student_Information__c].Grade_Level_Requested__c ) ,ISCHANGED([Annual_Student_Information__c].Grade_Level_Completed__c ))</stringValue>
+                <stringValue>OR(
+TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)=TEXT([Annual_Student_Information__c].Grade_Level_Completed__c),
+AND(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)=&apos;Kindergarten&apos;,TEXT([Annual_Student_Information__c].Grade_Level_Completed__c) !=&apos;Kindergarten&apos;),
+AND(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)!=&apos;Kindergarten&apos;,TEXT([Annual_Student_Information__c].Grade_Level_Completed__c) =&apos;Kindergarten&apos;),
+(VALUE(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)) -VALUE(TEXT([Annual_Student_Information__c].Grade_Level_Completed__c)) !=1)) 
+&amp;&amp; NOT(ISNEW()) &amp;&amp; OR(ISCHANGED([Annual_Student_Information__c].Grade_Level_Requested__c ) ,ISCHANGED([Annual_Student_Information__c].Grade_Level_Completed__c ))</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_4</name>
         <dataType>Boolean</dataType>
-        <expression>OR(AND(TEXT({!myVariable_current.Grade_Level_Requested__c})!=&apos;Kindergarten&apos;,TEXT({!myVariable_current.Grade_Level_Completed__c}) =&apos;Kindergarten&apos;),(VALUE(TEXT({!myVariable_current.Grade_Level_Requested__c})) -VALUE(TEXT({!myVariable_current.Grade_Level_Completed__c})) !=1)) &amp;&amp; NOT(ISNEW()) &amp;&amp; OR(ISCHANGED({!myVariable_current.Grade_Level_Requested__c} ) ,ISCHANGED({!myVariable_current.Grade_Level_Completed__c} ))</expression>
+        <expression>OR(
+TEXT({!myVariable_current.Grade_Level_Requested__c})=TEXT({!myVariable_current.Grade_Level_Completed__c}),
+AND(TEXT({!myVariable_current.Grade_Level_Requested__c})=&apos;Kindergarten&apos;,TEXT({!myVariable_current.Grade_Level_Completed__c}) !=&apos;Kindergarten&apos;),
+AND(TEXT({!myVariable_current.Grade_Level_Requested__c})!=&apos;Kindergarten&apos;,TEXT({!myVariable_current.Grade_Level_Completed__c}) =&apos;Kindergarten&apos;),
+(VALUE(TEXT({!myVariable_current.Grade_Level_Requested__c})) -VALUE(TEXT({!myVariable_current.Grade_Level_Completed__c})) !=1)) 
+&amp;&amp; NOT(ISNEW()) &amp;&amp; OR(ISCHANGED({!myVariable_current.Grade_Level_Requested__c} ) ,ISCHANGED({!myVariable_current.Grade_Level_Completed__c} ))</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -462,7 +472,7 @@
         <dataType>Boolean</dataType>
         <expression>AND(ISNEW(),CONTAINS({!myVariable_old.Program_Enrollment__r.hed__Account__r.Parent.Name} ,&apos;California&apos;))</expression>
     </formulas>
-    <interviewLabel>Annual_Student_Info_Update_Process-5_InterviewLabel</interviewLabel>
+    <interviewLabel>Annual_Student_Info_Update_Process-8_InterviewLabel</interviewLabel>
     <label>Annual Student Info Update Process</label>
     <processMetadataValues>
         <name>ObjectType</name>

@@ -208,6 +208,13 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
         // AcademicPerformanceEligibility => set to Pending if not Null in oldValue
         String AcademicPerformanceEligibility = String.isBlank(this.studPE.AcademicPerformanceEligibility__c) ? null  : 'Pending';
 
+         // Defect: 490665 Start: Naveen
+        String WaitlistFlagVal = '';
+           if(this.studPE.Program_Grade_Level__r.ActivateWaitlist__c == TRUE && this.studPE.Program_Grade_Level__r.StartWaitlist__c <= System.now() && this.studPE.Program_Grade_Level__r.EndWaitlist__c >= System.now()){
+           	WaitlistFlagVal = 'Active';
+           }
+        //Defect: 490665 End: Naveen
+        
         hed__Program_Enrollment__c toUpdatePE = new hed__Program_Enrollment__c( 
             id = this.studPE.Id,
             Status__c = PE_REACTIVATION_REASON_CODE, 
@@ -228,7 +235,8 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
             Waitlist_Time_Date_Stamp__c = null,  //Need for re enroll
             Waitlist_Time_Date_Stamp_Override__c = null,
             Waitlist_Released__c = null,//RAVI
-            Waitlist_Released_Dt__c = null//RAVI
+            Waitlist_Released_Dt__c = null,//RAVI
+            WaitlistFlag__c = WaitlistFlagVal // Defect 490665: Naveen
             
         );
 

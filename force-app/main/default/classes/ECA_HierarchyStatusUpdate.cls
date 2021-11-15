@@ -287,6 +287,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                 if (originalStatus != 'Not Applicable') // skip if NA
                 {
                     parent.status__c = updatedStatus; //update the parent with the new status
+                    //parent.status__c = 'Not Applicable';
                     parent.Date_Completed__c = ( parent.status__c == 'Complete' ? System.today() : null );
                     forUpdateECAs.put(parent.id, parent); //add the updated eca to our update list
                 }

@@ -1875,38 +1875,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         return programEnrollmentsToUpdate;
     }
     
-    
-	/*public static void openApplicationflag(list<Program_Grade_Level__c> pglList) {   
-        set<id> peIds = new set<id>();
-        for(Program_Grade_Level__c pg: pglList){
-            peIds.add(pg.Id);
-            system.debug('peIds'+peIds);
-        }
-        list<hed__Program_Enrollment__c> peUpdate = new list<hed__Program_Enrollment__c>();
-        Map<Id,hed__Program_Enrollment__c> peList = new Map<Id,hed__Program_Enrollment__c>([select id,Program_Grade_Level__c,Open_Application__c from hed__Program_Enrollment__c where Program_Grade_Level__c IN:peIds AND Open_Application__c != null]);
-        system.debug('peList'+peList);
-        for(Program_Grade_Level__c pg: pglList){
-             system.debug('pglList'+pglList);
-            for(hed__Program_Enrollment__c penroll : peList.values()){
-                system.debug('penroll'+penroll);
-                if(pg.Id == penroll.Program_Grade_Level__c){
-                    if(pg.Open_Application__c == 'Active' && pg.Start_Open_Application__c <= System.now() && pg.End_Open_Application__c >= System.now()){
-                        penroll.Open_Application__c = pg.Open_Application__c;
-                        peUpdate.add(penroll);
-                        system.debug('peUpdate'+peUpdate);
-                    }else if(pg.Open_Application__c == 'Inactive' || pg.Start_Open_Application__c > System.now() || pg.End_Open_Application__c < System.now()){
-                        penroll.Open_Application__c = pg.Open_Application__c;
-                        peUpdate.add(penroll);
-                        system.debug('peUpdate'+peUpdate);
-                    }
-                }
-            }
-        }
-        if(peUpdate.size() > 0){
-            update peUpdate;
-            system.debug('peUpdate'+peUpdate);
-        }        
-    }*/
+  
     
     /**
 * Created by Raju on 24/12/18.
@@ -2035,7 +2004,6 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                                            peRecord.Status__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).Status__c ||
                                            peRecord.AcademicPerformanceEligibility__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).AcademicPerformanceEligibility__c ||
                                            peRecord.PrincipalGeneralFlag__c != ((hed__Program_Enrollment__c) oldMap.get(peRecord.Id)).PrincipalGeneralFlag__c))) {
-                                               
                                                if (peRecord.Id != null) {
                                                    progEnrollmentIds.add(peRecord.Id);
                                                }
@@ -2356,6 +2324,7 @@ returnString += '';
         Map<Id, Program_Grade_Level__c> programEnrollmentToProgramGradesMap = new Map<Id, Program_Grade_Level__c>();
         Map<Id, Special_Education__c> specialEducationMap = new Map<Id, Special_Education__c>();
         List<hed__Program_Enrollment__c> progEnrollmentList = new List<hed__Program_Enrollment__c>();
+        set<string> progFoster = new set<string>();
         Map<Id, List<Program_Grade_Level__c>> progGradesMap = new Map<Id, List<Program_Grade_Level__c>> ();
         
         //Query for ProgramGrade for Related programEnrollment Ids
@@ -2593,6 +2562,14 @@ returnString += '{Grade Level Eligibility}-';
             System.debug('returnString===>>>' + returnString);
             // Append return String to WhyFlagged__c field
             progEnrollment.WhyFlagged__c = returnString;
+            
+            //Added for user story 476964
+            if(progEnrollment.WhyFlagged__c.contains('Foster')){
+                progFoster.add(progEnrollment.WhyFlagged__c);
+            }else{
+                progFoster.add(progEnrollment.WhyFlagged__c);
+            }
+            //Ended for user story 476964
             progEnrollmentList.add(progEnrollment);
         }
         /*update the progEnrollmentList with WhyFlagged__c field
@@ -2608,6 +2585,11 @@ System.debug('Exception:' + e.getMessage());
 logger.logException('calculateWhyFlagged', e);
 }
 }*/
+        //Added for user story 476964
+        if(progFoster.size() > 0){
+            update progEnrollmentList;
+        }
+        //Ended for user story 476964
         
         System.debug('Returning enrollment list');
         logger.saveLogs();
@@ -2640,23 +2622,23 @@ logger.logException('calculateWhyFlagged', e);
         
     }
     
-    
     //476964 - Niranjan for Foster Flag display in Program Enrollment
     public static void calculateFosterFlag(list<Student_Custody__c> custodyList){
         
-        set<Id> peIds = new set<Id>();
         set<Id> fosterPEIds = new set<Id>();
+        set<Id> peIds = new set<Id>();
         set<Id> finlPEIds = new set<Id>();
+        set<Id> fosterwhyids = new set<Id>();
         
         for(Student_Custody__c custRel : custodyList){
-            if(custRel.Custody_Relationship__c == null || !custRel.Custody_Relationship__c.contains('Foster')){
-                peIds.add(custRel.Program_Enrollment__c);
-            }else if(custRel.Custody_Relationship__c.contains('Foster')){
+            if(custRel.Custody_Relationship__c.contains('Foster')){
                 fosterPEIds.add(custRel.Program_Enrollment__c);
+            }else{
+                peIds.add(custRel.Program_Enrollment__c);
             }
         }
         
-        if(peIds.size() > 0 && fosterPEIds.size() == 0){
+        if(peIds.size() > 0){
             finlPEIds.addAll(peIds);
         }else if(fosterPEIds.size() >= 1){
             finlPEIds.addAll(fosterPEIds);
@@ -2664,7 +2646,6 @@ logger.logException('calculateWhyFlagged', e);
         
         if(finlPEIds.size() > 0 && finlPEIds != null){
             list<hed__Program_Enrollment__c> pgrmEnrollList = new list<hed__Program_Enrollment__c>();
-            
             Map<Id,hed__Program_Enrollment__c> peEnrollMapRec = new Map<Id,hed__Program_Enrollment__c>([SELECT id,Foster_Flag__c from hed__Program_Enrollment__c where Id IN:finlPEIds]);
             
             for(hed__Program_Enrollment__c pe : peEnrollMapRec.values()){
@@ -2680,6 +2661,11 @@ logger.logException('calculateWhyFlagged', e);
             if(pgrmEnrollList.size() > 0){
                 update pgrmEnrollList;
             }
+            
+            for(hed__Program_Enrollment__c pe:pgrmEnrollList){
+                fosterwhyids.add(pe.Id);
+            }
+            calculateWhyFlagged(fosterwhyids);
         }
        
     }
