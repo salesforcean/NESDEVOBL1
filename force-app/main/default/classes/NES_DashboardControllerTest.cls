@@ -204,9 +204,30 @@ public class NES_DashboardControllerTest {
         Test.stopTest();
 }
      static testMethod void testnonopenApp(){
-        hed__Program_Enrollment__c progEnrollment1 = [Select id, Name, Stage__c,Open_Application__c from hed__Program_Enrollment__c limit 1];
-        Test.starttest();
-        NES_DashboardController.nonOpenAppUpdate(progEnrollment1.Id);
+        
+         hed__Program_Enrollment__c progEnrollment1 = [Select id, Name, Stage__c,Open_Application__c,Open_Application_Period_status__c from hed__Program_Enrollment__c limit 1];
+         progEnrollment1.Open_Application__c = '';
+         //progEnrollment1.Open_Application_Period_status__c = 'Inactive';
+         update progEnrollment1;
+         
+         Enrollment_Component__c enrollmentComp = new Enrollment_Component__c();
+         enrollmentComp.Name = 'Open Application';
+         insert enrollmentComp;
+         
+        Enrollment_Component_Affiliation__c compAffiliation1 = new Enrollment_Component_Affiliation__c();
+        compAffiliation1.Status__c = 'Complete';
+         compAffiliation1.EC_Record_Type__c = 'Stage';
+        compAffiliation1.Date_Completed__c = System.today();
+        compAffiliation1.Deferral_Date__c = System.today();
+        compAffiliation1.Program_Enrollment__c = progEnrollment1.Id;
+        compAffiliation1.Enrollment_Component__c = enrollmentComp.Id;
+ 		insert compAffiliation1;
+         
+         list<Enrollment_Component_Affiliation__c> ecalst = [select id,Enrollment_Component__c,Enrollment_Component__r.Name,Program_Enrollment__c,Order__c,EC_Record_Type__c, Program_Enrollment__r.Open_Application__c,Program_Enrollment__r.Open_Application_Period_status__c, Program_Enrollment__r.Program_Grade_Level__r.Open_Application__c,status__c from Enrollment_Component_Affiliation__c where Program_Enrollment__c=:progEnrollment1.Id AND Enrollment_Component__r.Name =:enrollmentComp.Name];
+         Test.starttest();
+         NES_DashboardController.nonOpenAppUpdate(progEnrollment1.Id);
+         
+        system.assert(ecalst.size() > 0);
         Test.stopTest();
 } 
     

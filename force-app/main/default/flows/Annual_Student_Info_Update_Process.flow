@@ -435,6 +435,7 @@
 TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)=TEXT([Annual_Student_Information__c].Grade_Level_Completed__c),
 AND(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)=&apos;Kindergarten&apos;,TEXT([Annual_Student_Information__c].Grade_Level_Completed__c) !=&apos;Kindergarten&apos;),
 AND(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)!=&apos;Kindergarten&apos;,TEXT([Annual_Student_Information__c].Grade_Level_Completed__c) =&apos;Kindergarten&apos;),
+AND(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)=&apos;K&apos;,TEXT([Annual_Student_Information__c].Grade_Level_Completed__c) !=&apos;K&apos;),
 (VALUE(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)) -VALUE(TEXT([Annual_Student_Information__c].Grade_Level_Completed__c)) !=1)) 
 &amp;&amp; NOT(ISNEW()) &amp;&amp; OR(ISCHANGED([Annual_Student_Information__c].Grade_Level_Requested__c ) ,ISCHANGED([Annual_Student_Information__c].Grade_Level_Completed__c ))</stringValue>
             </value>
@@ -445,6 +446,7 @@ AND(TEXT([Annual_Student_Information__c].Grade_Level_Requested__c)!=&apos;Kinder
 TEXT({!myVariable_current.Grade_Level_Requested__c})=TEXT({!myVariable_current.Grade_Level_Completed__c}),
 AND(TEXT({!myVariable_current.Grade_Level_Requested__c})=&apos;Kindergarten&apos;,TEXT({!myVariable_current.Grade_Level_Completed__c}) !=&apos;Kindergarten&apos;),
 AND(TEXT({!myVariable_current.Grade_Level_Requested__c})!=&apos;Kindergarten&apos;,TEXT({!myVariable_current.Grade_Level_Completed__c}) =&apos;Kindergarten&apos;),
+AND(TEXT({!myVariable_current.Grade_Level_Requested__c})=&apos;K&apos;,TEXT({!myVariable_current.Grade_Level_Completed__c}) !=&apos;K&apos;),
 (VALUE(TEXT({!myVariable_current.Grade_Level_Requested__c})) -VALUE(TEXT({!myVariable_current.Grade_Level_Completed__c})) !=1)) 
 &amp;&amp; NOT(ISNEW()) &amp;&amp; OR(ISCHANGED({!myVariable_current.Grade_Level_Requested__c} ) ,ISCHANGED({!myVariable_current.Grade_Level_Completed__c} ))</expression>
     </formulas>
@@ -472,7 +474,7 @@ AND(TEXT({!myVariable_current.Grade_Level_Requested__c})!=&apos;Kindergarten&apo
         <dataType>Boolean</dataType>
         <expression>AND(ISNEW(),CONTAINS({!myVariable_old.Program_Enrollment__r.hed__Account__r.Parent.Name} ,&apos;California&apos;))</expression>
     </formulas>
-    <interviewLabel>Annual_Student_Info_Update_Process-8_InterviewLabel</interviewLabel>
+    <interviewLabel>Annual_Student_Info_Update_Process-9_InterviewLabel</interviewLabel>
     <label>Annual Student Info Update Process</label>
     <processMetadataValues>
         <name>ObjectType</name>

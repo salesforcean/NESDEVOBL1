@@ -70,6 +70,9 @@
     $A.enqueueAction(action);
     },
 		// End for DEFECT 494868- DK
+		
+		
+		// Added for DEFECT 495363- DK 
     helperNonOpenApp : function(component, event, helper, peId){
         var action = component.get("c.nonOpenAppUpdate"); 
         action.setParams({
@@ -78,10 +81,12 @@
         action.setCallback(this, function(a) {
            var state = a.getState();
             if (state === "SUCCESS") {
-                alert('Updated successfully');
+               // alert('Updated successfully');
                 console.log('ECA Open App updated successfully');
             }
         });
     $A.enqueueAction(action);
     }
+    
+    // End for DEFECT 495363- DK 
 });

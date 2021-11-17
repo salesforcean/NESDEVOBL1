@@ -2624,7 +2624,7 @@ logger.logException('calculateWhyFlagged', e);
     
     //476964 - Niranjan for Foster Flag display in Program Enrollment
     public static void calculateFosterFlag(list<Student_Custody__c> custodyList){
-        
+        system.debug('==>custodyList '+custodyList);
         set<Id> fosterPEIds = new set<Id>();
         set<Id> peIds = new set<Id>();
         set<Id> finlPEIds = new set<Id>();
@@ -2632,13 +2632,46 @@ logger.logException('calculateWhyFlagged', e);
         
         for(Student_Custody__c custRel : custodyList){
             if(custRel.Custody_Relationship__c.contains('Foster')){
-                fosterPEIds.add(custRel.Program_Enrollment__c);
+                if(peIds.contains(custRel.Program_Enrollment__c)){
+                    peIds.remove(custRel.Program_Enrollment__c);
+                    fosterPEIds.add(custRel.Program_Enrollment__c);
+                }else{
+                    fosterPEIds.add(custRel.Program_Enrollment__c);
+                }
             }else{
-                peIds.add(custRel.Program_Enrollment__c);
+                if(!fosterPEIds.contains(custRel.Program_Enrollment__c)){
+                    peIds.add(custRel.Program_Enrollment__c);
+                }
             }
         }
         
-        if(peIds.size() > 0){
+        list<hed__Program_Enrollment__c> pgrmEnrollList = new list<hed__Program_Enrollment__c>();
+        for(Id peId : fosterPEIds){
+            hed__Program_Enrollment__c hpe = new hed__Program_Enrollment__c();
+            hpe.Id = peId;
+            hpe.Foster_Flag__c = 'Pending Review';
+            pgrmEnrollList.add(hpe);
+        }
+        
+        for(Id peId : peIds){
+            hed__Program_Enrollment__c hpe = new hed__Program_Enrollment__c();
+            hpe.Id = peId;
+            hpe.Foster_Flag__c = '';
+            pgrmEnrollList.add(hpe);
+        }
+        
+        if(pgrmEnrollList.size() > 0){
+            update pgrmEnrollList;
+        }
+        
+        for(hed__Program_Enrollment__c pe:pgrmEnrollList){
+                fosterwhyids.add(pe.Id);
+            }
+        
+        calculateWhyFlagged(fosterwhyids);
+        
+        
+    /*    if(peIds.size() > 0){
             finlPEIds.addAll(peIds);
         }else if(fosterPEIds.size() >= 1){
             finlPEIds.addAll(fosterPEIds);
@@ -2646,15 +2679,19 @@ logger.logException('calculateWhyFlagged', e);
         
         if(finlPEIds.size() > 0 && finlPEIds != null){
             list<hed__Program_Enrollment__c> pgrmEnrollList = new list<hed__Program_Enrollment__c>();
-            Map<Id,hed__Program_Enrollment__c> peEnrollMapRec = new Map<Id,hed__Program_Enrollment__c>([SELECT id,Foster_Flag__c from hed__Program_Enrollment__c where Id IN:finlPEIds]);
             
-            for(hed__Program_Enrollment__c pe : peEnrollMapRec.values()){
-                if(pe.Foster_Flag__c != 'Pending Review' && fosterPEIds.size() >= 1){
-                    pe.Foster_Flag__c = 'Pending Review';
-                    pgrmEnrollList.add(pe);
-                }else if(peIds.size() > 0 && fosterPEIds.size() == 0){
-                    pe.Foster_Flag__c = '';
-                    pgrmEnrollList.add(pe);
+            list<hed__Program_Enrollment__c> peList = [SELECT id,Foster_Flag__c,(SELECT id,Name,Custody_Relationship__c,Program_Enrollment__c from Student_Custody__r where Custody_Relationship__c LIKE 'Foster%') from hed__Program_Enrollment__c where Id IN:finlPEIds];
+           system.debug('==>custodyList '+peList);
+            
+            for(hed__Program_Enrollment__c pe : peList){
+                if (pe.Student_Custody__r.size() > 0 ) {
+                    if(pe.Foster_Flag__c != 'Pending Review' && fosterPEIds.size() >= 1){
+                        pe.Foster_Flag__c = 'Pending Review';
+                        pgrmEnrollList.add(pe);
+                    }else if(peIds.size() > 0 && fosterPEIds.size() == 0 && !sc.Custody_Relationship__c.contains('Foster')){
+                        pe.Foster_Flag__c = '';
+                        pgrmEnrollList.add(pe);
+                    }
                 }
             }
             
@@ -2666,7 +2703,29 @@ logger.logException('calculateWhyFlagged', e);
                 fosterwhyids.add(pe.Id);
             }
             calculateWhyFlagged(fosterwhyids);
-        }
+            
+         /*   Map<Id,hed__Program_Enrollment__c> peEnrollMapRec = new Map<Id,hed__Program_Enrollment__c>([SELECT id,Foster_Flag__c from hed__Program_Enrollment__c where Id IN:finlPEIds]);
+            
+            
+                for(hed__Program_Enrollment__c pe : peEnrollMapRec.values()){
+                    if(pe.Foster_Flag__c != 'Pending Review' && fosterPEIds.size() >= 1 ){
+                        pe.Foster_Flag__c = 'Pending Review';
+                        pgrmEnrollList.add(pe);
+                    }else if(peIds.size() > 0 && fosterPEIds.size() == 0){
+                        pe.Foster_Flag__c = '';
+                        pgrmEnrollList.add(pe);
+                    }
+                }
+            
+            if(pgrmEnrollList.size() > 0){
+                update pgrmEnrollList;
+            }
+            
+            for(hed__Program_Enrollment__c pe:pgrmEnrollList){
+                fosterwhyids.add(pe.Id);
+            }
+            calculateWhyFlagged(fosterwhyids);*/
+       // }*/
        
     }
     

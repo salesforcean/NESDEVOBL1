@@ -78,7 +78,7 @@
     <aura:attribute name="isOnRecordPage" type="Boolean" default="false"/>
     <aura:attribute name="showWarningDialog" type="Boolean" default="false"/>
     <aura:attribute name="disclaimerText1" type="String" default="Are you using a Safari browser?" />
-    <aura:attribute name="disclaimerText" type="String" default="You might be able to submit documents. Please use a different browser or refer to our help document to change settings."/>
+    <aura:attribute name="disclaimerText" type="String" default="You might not be able to submit documents. Please use a different browser or refer to our help document to change settings."/>
     <aura:attribute name="canvasWidth" type="Integer" default="100"/>
     <aura:attribute name="canvasHeight" type="Integer" default="100"/>
      <!-- Swapna: Added for GTM -->

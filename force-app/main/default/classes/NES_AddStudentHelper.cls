@@ -681,7 +681,7 @@ public without sharing class NES_AddStudentHelper {
 
                		 //Added for Userstory 451172- DK     
                		 String TASInprogress = 'N';       
-
+					//Id processIdstage = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get('Stage').getRecordTypeId();
                        for (Integer i = 1; i < relationships.size(); i++) {
                     Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                     if(i==1){

@@ -101,10 +101,9 @@
  * changes added by anithap on 17/01/2019
  * 
  */
-
-					
-				helper.helperNonOpenApp(component,event,helper,dataset.programenrollmentid);
-                helper.helperRefreshOpenApp(component,event,helper,dataset.programenrollmentid);  // Added for DEFECT 494868- DK
+				setTimeout(function(){ $A.get('e.force:refreshView').fire(); }, 5000);
+				//helper.helperRefreshOpenApp(component,event,helper,dataset.programenrollmentid);  // Added for DEFECT 494868- DK
+			   //helper.helperNonOpenApp(component,event,helper,dataset.programenrollmentid);  // Added for DEFECT 495363- DK  
                 $A.get("e.force:navigateToURL").setParams({
                     "url": url
                 }).fire();
