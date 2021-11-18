@@ -309,4 +309,14 @@ public with sharing class NES_EnrollmentControllerTest {
         List<School_Year__c> schoolIds = NES_EnrollmentController.getSchoolYears(academicProgram.Name);
         test.stopTest();
     }
+    
+    static testMethod void updatedOpenAppReleasedTest() {
+        hed__Program_Enrollment__c hpe = [SELECT Id,Open_Application__c FROM hed__Program_Enrollment__c LIMIT 1 ];
+        hpe.Open_Application__c = 'Released';
+        update hpe;
+        test.startTest();       
+        	NES_EnrollmentController.updatedOpenAppReleased(hpe.Id);
+        test.stopTest();
+    }
+    
 }

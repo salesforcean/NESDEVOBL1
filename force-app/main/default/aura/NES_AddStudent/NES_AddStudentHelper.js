@@ -260,7 +260,7 @@
             studentJSON: JSON.stringify(studentData),
             questionJSON: JSON.stringify(questionData)
         });
-
+		
         action.setCallback(this, function(response){
             var peakResponse = response.getReturnValue();
             if(peakResponse != null && peakResponse.success){
@@ -268,13 +268,18 @@
                 appEvent.setParams({
                    message: peakResponse.messages[0]
                 });
+                
+                
+                    setTimeout(function(){ $A.get('e.force:refreshView').fire(); },19000); // Added for DEFECT 494868- DK
+               
+             
                 appEvent.fire();
+      
                 component.set("v.addStudentActive", false);
                 component.set("v.loading", false);
                 component.set("v.supplementalQuestions", null);
-               // var isValid = response.getReturnValue();
-                // setTimeout(function(){ $A.get('e.force:refreshView').fire(); }, 9000);
-                
+                // var isValid = response.getReturnValue();
+                            
             } else {
                 component.set("v.message", "Sorry, we were unable to add your student. Please try again. If the problem persists please contact us.");
                 if(peakResponse != null) {

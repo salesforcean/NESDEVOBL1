@@ -2,7 +2,7 @@
 * Created by Ashish Sharma on 12/05/18.
 * Class Name: NES_DashboardController
 * Test Class Name: NES_DashboardControllerTest
-* Purpose : This class is controller class for NES_Dashboard lightning component
+* Purpose : This class is controller class for NES_Dashboard lightning component 
 */
 public without sharing class NES_DashboardController{ 
     
@@ -30,33 +30,20 @@ type Enrollment components and related ECAs. Return this information after addin
         return NES_ITRUtilities.createReturningStudentPE(studentId, programEnrollmentId);
 	}
 
- /**
-    * Created by Sravani on 07/07/21.
-    * Purpose : This is to create ITR spectific records.
-    */
-	/*@AuraEnabled
-    public static NES_ReEnrUtilities.ReEnrResults processReEnrasInEnr(Id studentId, Id programEnrollmentId){
-        return NES_ReEnrUtilities.reenrollingStudent(studentId, programEnrollmentId);
-	} */
-    
-    
-   
-    
-// Added for DEFECT 494868- DK    
+  // Added for DEFECT 494868- DK    
     @AuraEnabled
     public static string refreshOPenAppPortal(Id programEnrollmentId){ 
 	string refreshPortal;     
-  	hed__Program_Enrollment__c hpe  = [Select id, Name, Stage__c,Open_Application__c from hed__Program_Enrollment__c where Id =:programEnrollmentId AND CreatedDate=today AND Recordtype.Name='Student'];
-        System.debug('Printing Program Enrollment Id from Refreshopenappportal'+hpe.Id);
+  	hed__Program_Enrollment__c hpe  = [Select id, Name, Stage__c,Open_Application__c from hed__Program_Enrollment__c where Id =:programEnrollmentId AND CreatedDate=today];
         if(hpe.Stage__c == 'Open Application'){
             refreshPortal = 'Refresh';
         }
-        //system.debug('===>refreshPortal '+refreshPortal);
+       // system.debug('===>refreshPortal '+refreshPortal);
         return refreshPortal;
     }
    // End for DEFECT 494868- DK 
-   
-  // Added for DEFECT 495363- DK    
+
+    // Added for DEFECT 495363- DK    
    @AuraEnabled
     public static list<Enrollment_Component_Affiliation__c> nonOpenAppUpdate(Id peId){
         list<Enrollment_Component_Affiliation__c> ecAffLst = new list<Enrollment_Component_Affiliation__c>();
@@ -75,4 +62,5 @@ type Enrollment components and related ECAs. Return this information after addin
         return ecAffLst;
     }
 	// End for DEFECT 495363- DK  
+
 }

@@ -171,6 +171,7 @@
             <controllingFieldValue>Dental Examination</controllingFieldValue>
             <controllingFieldValue>Determination of Eligibility</controllingFieldValue>
             <controllingFieldValue>Report of Physical Examination</controllingFieldValue>
+            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
             <controllingFieldValue>Initial Enrollment Prior Participation Form</controllingFieldValue>
             <controllingFieldValue>Master Agreement</controllingFieldValue>
             <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
@@ -196,7 +197,15 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <valueName>Incomplete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <valueName>Invalid-Blank Form</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
@@ -228,6 +237,13 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
+            <valueName>Invalid-Outdated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
             <controllingFieldValue>Best fit Determination</controllingFieldValue>
             <controllingFieldValue>Evaluation</controllingFieldValue>
             <controllingFieldValue>Gifted Documentation</controllingFieldValue>
@@ -244,9 +260,11 @@
             <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
             <controllingFieldValue>Gifted Documentation</controllingFieldValue>
             <controllingFieldValue>Report of Dental Examination</controllingFieldValue>
+            <controllingFieldValue>Home Language Survey</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Custody Order</controllingFieldValue>
             <controllingFieldValue>Determination of Eligibility</controllingFieldValue>
+            <controllingFieldValue>Report of Physical Examination</controllingFieldValue>
             <controllingFieldValue>Physical Examination</controllingFieldValue>
             <controllingFieldValue>Report Card</controllingFieldValue>
             <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
@@ -257,6 +275,8 @@
             <controllingFieldValue>Evaluation</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
             <valueName>Received-No Documentation Available</valueName>
         </valueSettings>
         <valueSettings>
@@ -296,6 +316,30 @@
             <valueName>Invalid-Reenrollment</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing English/Language Arts coursework</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing Math coursework</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing Science coursework</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home School Prior Academic History</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
+            <valueName>Incomplete-Missing Social Studies coursework</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Report of Health Examination</controllingFieldValue>
             <controllingFieldValue>Income Form</controllingFieldValue>
             <controllingFieldValue>Blood Lead Test Screening</controllingFieldValue>
@@ -312,6 +356,8 @@
             <controllingFieldValue>Report of Health Examination</controllingFieldValue>
             <controllingFieldValue>Evaluation</controllingFieldValue>
             <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
             <valueName>Verified-Incomplete</valueName>
         </valueSettings>
         <valueSettings>
@@ -352,6 +398,8 @@
         <valueSettings>
             <controllingFieldValue>Immunization Booster</controllingFieldValue>
             <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
             <valueName>Exemption-Religious</valueName>
         </valueSettings>
         <valueSettings>
@@ -391,12 +439,33 @@
             <valueName>Invalid-Updated Exemption Required</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Home school Association Membership</controllingFieldValue>
+            <controllingFieldValue>Best fit Determination</controllingFieldValue>
+            <controllingFieldValue>Attendance Report</controllingFieldValue>
+            <valueName>Invalid-Incomplete</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Home school Association Membership</controllingFieldValue>
+            <controllingFieldValue>Best fit Determination</controllingFieldValue>
+            <controllingFieldValue>Attendance Report</controllingFieldValue>
+            <controllingFieldValue>District Approval Form</controllingFieldValue>
+            <valueName>Invalid-Pending</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Best fit Determination</controllingFieldValue>
             <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
             <controllingFieldValue>Custody Order</controllingFieldValue>
             <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
             <controllingFieldValue>Master Agreement</controllingFieldValue>
             <valueName>Invalid-Missing Signature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Best fit Determination</controllingFieldValue>
+            <valueName>Incomplete-Pending</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Best fit Determination</controllingFieldValue>
+            <valueName>Extension Approved by Principal</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Enrollment Notification &amp; Request for Records</controllingFieldValue>
@@ -424,6 +493,24 @@
             <valueName>Invalid-Digital signature</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Attendance Report</controllingFieldValue>
+            <valueName>Invalid-Need EOY</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Evaluation</controllingFieldValue>
+            <controllingFieldValue>Gifted Documentation</controllingFieldValue>
+            <controllingFieldValue>Home Language Survey</controllingFieldValue>
+            <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
+            <controllingFieldValue>504 Plan</controllingFieldValue>
+            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>PHLOTE</controllingFieldValue>
+            <controllingFieldValue>Physical Examination</controllingFieldValue>
+            <controllingFieldValue>State Test Scores</controllingFieldValue>
+            <controllingFieldValue>Vision Screening</controllingFieldValue>
+            <valueName>Deferred</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Evaluation</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>504 Plan</controllingFieldValue>
@@ -435,13 +522,9 @@
             <controllingFieldValue>Evaluation</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
             <valueName>Invalid-File Error</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Evaluation</controllingFieldValue>
-            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
-            <controllingFieldValue>Secondary Evaluation</controllingFieldValue>
-            <valueName>Invalid-Outdated</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Evaluation</controllingFieldValue>
@@ -453,6 +536,8 @@
             <controllingFieldValue>Evaluation</controllingFieldValue>
             <controllingFieldValue>IEP Exit Documentation</controllingFieldValue>
             <controllingFieldValue>Individualized Education Program</controllingFieldValue>
+            <controllingFieldValue>Report Card</controllingFieldValue>
+            <controllingFieldValue>Unofficial Transcript</controllingFieldValue>
             <valueName>Received-Incomplete</valueName>
         </valueSettings>
         <valueSettings>
@@ -485,11 +570,25 @@
             <valueName>Invalid-Denied</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>District Approval Form</controllingFieldValue>
+            <valueName>Invalid - Missing District Approval</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Gifted Documentation</controllingFieldValue>
             <valueName>Incomplete-Missing information</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Non-Resident Agreement Status</controllingFieldValue>
+            <controllingFieldValue>Custody Order</controllingFieldValue>
+            <valueName>Pending Review</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Non-Resident Agreement Status</controllingFieldValue>
+            <valueName>Approved</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>IOWA Open Enrollment Application</controllingFieldValue>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
             <controllingFieldValue>In-District Approval Form</controllingFieldValue>
             <valueName>Accepted</valueName>
         </valueSettings>
@@ -525,8 +624,16 @@
             <valueName>Submitted-Under Review</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Income Form</controllingFieldValue>
-            <valueName>Invalid-Blank Form</valueName>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Invalid-Oregon Exempt - VEC Required</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Invalid-IACA Provisional Certificate Required</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Immunization Records</controllingFieldValue>
+            <valueName>Invalid-INSPIRE Provisional Certificate- Required</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Income Form</controllingFieldValue>
@@ -534,6 +641,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Income Form</controllingFieldValue>
+            <controllingFieldValue>Individualized Education Program</controllingFieldValue>
             <valueName>Invalid-No signature</valueName>
         </valueSettings>
         <valueSettings>
@@ -582,6 +690,34 @@
             <valueName>Received-Transfer Finalized</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-Incorrect CTR- School year</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-Wrong Type Golden</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid Wrong Type South Kitsap</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid Wrong Type M. Knight</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Invalid-Rescinded</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Pending approval</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Choice Transfer Form</controllingFieldValue>
+            <valueName>Approved-Special Circumstances</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Dental Examination (ORCA)</controllingFieldValue>
             <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
             <valueName>Verified-Burden</valueName>
@@ -609,11 +745,8 @@
             <valueName>Received-Sent to District</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Certificate of Hearing and Vision Screening</controllingFieldValue>
-            <controllingFieldValue>PHLOTE</controllingFieldValue>
-            <controllingFieldValue>Physical Examination</controllingFieldValue>
-            <controllingFieldValue>Vision Screening</controllingFieldValue>
-            <valueName>Deferred</valueName>
+            <controllingFieldValue>District Notice of Intent to Enroll</controllingFieldValue>
+            <valueName>District denied</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Medical Emergency Authorization Form</controllingFieldValue>
@@ -641,6 +774,10 @@
             <controllingFieldValue>Proof of Age</controllingFieldValue>
             <controllingFieldValue>Re-Enrollment Report Card test</controllingFieldValue>
             <valueName>Verified-Affidavit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Age</controllingFieldValue>
+            <valueName>Invalid-Non-notarized Affidavit</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Proof of Residence</controllingFieldValue>
@@ -681,6 +818,30 @@
         <valueSettings>
             <controllingFieldValue>Proof of Residence</controllingFieldValue>
             <valueName>Verified-Residency Affidavit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-OutdatedLA-General 60 Day</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-OutdatedLA-90 Day</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-POR-too old-General 60 Day</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-POR-too old-90 Day</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Outdated Lease Agreement-General 60 Day</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Proof of Residence</controllingFieldValue>
+            <valueName>Invalid-Outdated Lease Agreement-90 Day</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Report Card</controllingFieldValue>

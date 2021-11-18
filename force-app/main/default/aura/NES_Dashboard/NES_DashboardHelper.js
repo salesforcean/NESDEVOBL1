@@ -22,6 +22,7 @@
             //added for the defect 342198 Begin : Jagadeesh bokam
    				 component.set("v.loading", false);
             //added for the defect 342198 End : Jagadeesh bokam
+			
             var appEvent = $A.get("e.c:NES_StudentsLoadedEvent");
             var numberOfStudents = students === null ? 0 : students.length;
             appEvent.setParams({
@@ -31,6 +32,7 @@
         });
         $A.enqueueAction(action); 
     },
+   
         //This function is not required as part of UX update
     stepHover: function(component, event, helper)
     {
@@ -39,6 +41,7 @@
         var notAllCompleted =  document.getElementsByClassName('slds-is-active').length > 0;
         var completedItems = document.getElementsByClassName('slds-is-completed');
         var hoveringOverLastCompleted = event.currentTarget == completedItems[completedItems.length - 1];
+
         if((!hoveringOverCurrentInProgress && notAllCompleted) || (!notAllCompleted && !hoveringOverLastCompleted)) {
             $A.util.toggleClass(event.currentTarget, 'showItem');
             if(notAllCompleted) {
@@ -47,9 +50,10 @@
                 $A.util.toggleClass(completedItems[completedItems.length - 1], 'hideItem');
             }
         }
+ 
     },
-
-    // Added for DEFECT 494868- DK
+    
+   // Added for DEFECT 494868- DK
     helperRefreshOpenApp : function(component, event, helper, peId){
         var action = component.get("c.refreshOPenAppPortal"); 
         action.setParams({
@@ -58,11 +62,12 @@
         action.setCallback(this, function(a) {
            var state = a.getState();
             if (state === "SUCCESS") {
-
+                
                 var rfrsh = a.getReturnValue();
                 component.set("v.refreshOpen", rfrsh);
                 var openAppRefresh = component.get("v.refreshOpen");
                 if(openAppRefresh == 'Refresh'){
+                   
                     setTimeout(function(){ $A.get('e.force:refreshView').fire(); }, 5000);  //Added for Open Application User story 451172 -->DK
                 }
             }
@@ -70,8 +75,7 @@
     $A.enqueueAction(action);
     },
 		// End for DEFECT 494868- DK
-		
-		
+					
 		// Added for DEFECT 495363- DK 
     helperNonOpenApp : function(component, event, helper, peId){
         var action = component.get("c.nonOpenAppUpdate"); 
@@ -89,4 +93,5 @@
     }
     
     // End for DEFECT 495363- DK 
+        
 });

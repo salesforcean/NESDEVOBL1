@@ -197,13 +197,14 @@ public class NES_DashboardControllerTest {
         List<Peak_Apex_Log__c> apLogs= [select id from Peak_Apex_Log__c];
         system.assertEquals(0,apLogs.size());
     } 
-    static testMethod void testopenApp(){
+    
+        static testMethod void testopenApp(){
         hed__Program_Enrollment__c progEnrollment1 = [Select id, Name, Stage__c,Open_Application__c from hed__Program_Enrollment__c limit 1];
         Test.starttest();
         NES_DashboardController.refreshOPenAppPortal(progEnrollment1.Id);
         Test.stopTest();
 }
-     static testMethod void testnonopenApp(){
+     	static testMethod void testnonopenApp(){
         
          hed__Program_Enrollment__c progEnrollment1 = [Select id, Name, Stage__c,Open_Application__c,Open_Application_Period_status__c from hed__Program_Enrollment__c limit 1];
          progEnrollment1.Open_Application__c = '';

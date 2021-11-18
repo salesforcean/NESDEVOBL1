@@ -229,8 +229,8 @@
                         component.set('v.activeTab', index);
                         activeFormId = form.formId;
                         //Swapna:For GTM
+                        activeFormStatus = form.ecaStatus;  
                         activeFormName = form.name;
-                        activeFormStatus = form.ecaStatus;
                         inProgressFound = true;
                     }
                 });

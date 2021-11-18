@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 11-17-2021
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without Sharing class NES_ReEnrUtilities {
     private static Peak_ApexLog logger = new Peak_ApexLog('NES_ReEnrUtilities');
     
@@ -121,91 +128,63 @@ public without Sharing class NES_ReEnrUtilities {
         
         system.debug('EvaluationUtils-Debug'+ EnrollmentType);
         
-        if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment' || EnrollmentType == 'SYReEnroll')){
-                        
+        if(existEcas != null && (EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment' || EnrollmentType == 'SYReEnroll')){                        
             for(Enrollment_Component_Affiliation__c eca :existEcas){
-                 if(eca.Enrollment_Component__r.RecordType.Name =='Flag'){
-                     eca.Status__c = 'Not Applicable';
-                 }
-                else if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){
-                  
-                    if(eca.Enrollment_Component__r.RecordType.Name == 'Document' ){
-                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c != 'Not Applicable'){
-                            
-                            STDDocECAs.add(eca.id);
-                            
-                           /* if(!(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)))
-                                
-                                eca.Status__c = 'Not Applicable';
-                            
-                            else */
-                                
-                                eca.Status__c = 'Not Started';
-                            
-                        }
-                        
-                        else if (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Not Applicable'){
-                            
-                            eca.Status__c = 'Not Started';
-                            
-                            HHDocECs.add(eca.Enrollment_Component__c);
-                            
-                        }
-                        
-                    }
-                
-                    else if(((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c != 'Household' && eca.Status__c != 'Complete'))){
-                        
-                        eca.Status__c = 'Not Started';
-                    }
-                    
-                    else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Complete')){
-                         eca.Status__c = 'Not Started';
-                        
-                    }  
-                     else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete' && eca.Enrollment_Component__r.RecordType.Name == 'Form' && eca.Enrollment_Component__r.Name == 'Household Information' )){
-                         eca.Status__c = 'In Progress';
-                        
-                    }
-                    
-                    else{
-                        
-                    if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c == 'Complete')
-                            
-                        {  
-                         
-                         eca.Status__c = 'Not Started';
-                        // eca.Is_Dirty__c = true;
-                         
-                        }
-                        
-                        
-                  else if((!(eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete')))
-                            
-                        { 
-                         
-                         eca.Status__c = 'Not Applicable';
-                         
-                        }
-                        
-                    }
-                    
-                    ecastoUpdate.add(eca);
-                    
+                if(eca.Enrollment_Component__r.RecordType.Name =='Flag'){
+                    eca.Status__c = 'Not Applicable';
                 }
-                else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){
-                    
-                    if(eca.Order__c == 1 ){
-                        
-                        eca.Status__c = 'Complete';
-                        
+                else if(eca.Enrollment_Component__r.RecordType.Name !='Stage'){                  
+                    if(eca.Enrollment_Component__r.RecordType.Name == 'Document' ){
+                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c != 'Not Applicable'){                            
+                            STDDocECAs.add(eca.id);                            
+                            /* if(!(String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)))                            
+                                eca.Status__c = 'Not Applicable';                            
+                            else */                                
+                                eca.Status__c = 'Not Started';                            
+                        }                        
+                        else if (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Not Applicable'){                            
+                            eca.Status__c = 'Not Started';                            
+                            HHDocECs.add(eca.Enrollment_Component__c);                            
+                        }                        
+                    }                
+                    else if(((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c != 'Household' && eca.Status__c != 'Complete'))){                        
+                        eca.Status__c = 'Not Started';
+                    }                    
+                    else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c != 'Complete')){
+                        eca.Status__c = 'Not Started';                        
+                    }  //Start: Fix for Defect: 495246 by Krishna Peddanagammol on 2021-11-17
+                    else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete' && eca.Enrollment_Component__r.RecordType.Name == 'Form' && (eca.Enrollment_Component__r.Name == 'Household Information' || eca.Enrollment_Component__r.Name == 'Additional Household Information'))){
+                        //eca.Status__c = 'In Progress';
+                        eca.Status__c = 'Not Started';                    
+                    }                    
+                    else if((String.isBlank(eca.Enrollment_Component__r.Assignment_Logic__c)) && (eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete' && eca.Enrollment_Component__r.RecordType.Name == 'Section')){
+                        eca.Status__c = 'Not Started';
+                    }                    
+                    else{                        
+                        if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c == 'Complete'){  
+                            eca.Status__c = 'Not Started';
+                            // eca.Is_Dirty__c = true;                        
+                        }
+                        else if(eca.Enrollment_Component__r.Component_Type__c == 'Student' && eca.Status__c == 'In Progress'){  
+                            eca.Status__c = 'Not Started';
+                            // eca.Is_Dirty__c = true;                        
+                        }
+                        //End: Fix for Defect: 495246 by Krishna Peddanagammol on 2021-11-17                        
+                        else if((!(eca.Enrollment_Component__r.Component_Type__c == 'Household' && eca.Status__c == 'Complete'))){                         
+                            eca.Status__c = 'Not Applicable';                        
+                        }                        
+                    }                    
+                    ecastoUpdate.add(eca);                    
+                }
+                else if((eca.Enrollment_Component__r.RecordType.Name == 'Stage')  && (eca.Status__c == 'In Progress' || eca.Status__c == 'Complete')){                    
+                    if(eca.Order__c == 1 ){                        
+                        eca.Status__c = 'Complete';                        
                     }
-                     //Added for Open Application User story 451172 -->DK
-                  if(EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment' || EnrollmentType == 'SYReEnroll'){
-                     
+                    //Added for Open Application User story 451172 -->DK
+                    if(EnrollmentType == 'InitReActivation' || EnrollmentType == 'InitReEnrollment' || EnrollmentType == 'SYReEnroll'){
+                    
                         if((eca.Order__c == 2 || eca.Order__c == 3 || eca.Order__c == 4) && eca.Program_Enrollment__r.Open_Application__c == 'Released'){
-                        eca.Status__c = 'In Progress';
-                       
+                        eca.Status__c = 'In Progress';                       
                     }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == null && eca.Enrollment_Component__r.Name != 'Open Application'){
                         eca.Status__c = 'In Progress';
                     }else if((eca.Order__c == 3 || eca.Order__c == 4 || eca.Order__c == 5) && eca.Program_Enrollment__r.Open_Application__c == null ){
@@ -271,10 +250,10 @@ public without Sharing class NES_ReEnrUtilities {
                 
             {
                 
-                if(StageEcaToUpdate.size()>0)
-                    
+                if(StageEcaToUpdate.size()>0){
+                    system.debug('StageEcaToUpdate='+StageEcaToUpdate);
                     update StageEcaToUpdate;
-                
+                }
             }
             
             catch(DMLException e) {

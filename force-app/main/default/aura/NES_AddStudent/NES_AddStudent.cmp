@@ -40,7 +40,6 @@
     <aura:attribute name="SchoolYearsNotAvailErrorMsg" type="String" default="The school you have selected does not have any school years available."/>
     <aura:attribute name="schoolYearsNotAvail" type="boolean" default="false"/>
     
-     <aura:attribute name="loaded" type="Boolean" default="false" />  
 	<aura:registerEvent name="GTMEvent" type="c:NES_GTMEvent" /> <!-- Swapna: Add for GTM -->
     <div>
         <div class="{!v.addStudentActive ? 'addStudentBlock' : 'slds-hide'}">

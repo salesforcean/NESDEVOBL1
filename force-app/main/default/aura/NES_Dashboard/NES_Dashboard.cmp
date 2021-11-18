@@ -25,8 +25,7 @@
     -   Attributes used when coming from confirmation email.
     -   Needs to have arriveFromEmail trigger to True based on referral page
     -->
-   
-    <aura:attribute name="refreshOpen" type="string" />
+     <aura:attribute name="refreshOpen" type="string" />
     <aura:attribute name="arriveFromEmail" type="Boolean" default="false" />
     <aura:attribute name="emailHeading" type="String" default="Email confirmed!"/>
     <aura:attribute name="emailSubheading" type="String" default="Now, add your Student(s)"/>
@@ -130,6 +129,7 @@
                                                     <div><h4>{!program.instituationName}</h4></div>
                                                     <div class="divAdj1 fontAdj">
                                                         School year: {!program.schoolYear} &nbsp; | &nbsp; Status: {!program.ecaStatus}
+                                                           
                                                         <aura:if isTrue="{!and(program.ecaStatus == 'In Progress',program.programGradeLevel)}">
                                                             &nbsp;|&nbsp; {!program.programGradeLevel}
                                                         </aura:if>
