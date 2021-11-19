@@ -1,8 +1,8 @@
 /**
-		* Created by ali.khan (Ness Tech) on 10/17/19.
-		* This class pass dependent picklist options to aura component: dynamicePicklistFSC
-		* Extending Benj Kamm's implementation for our dependent picklist usecase.
-		* Original Source: https://gist.github.com/boxfoot/4166342  
+        * Created by ali.khan (Ness Tech) on 10/17/19.
+        * This class pass dependent picklist options to aura component: dynamicePicklistFSC
+        * Extending Benj Kamm's implementation for our dependent picklist usecase.
+        * Original Source: https://gist.github.com/boxfoot/4166342  
 
     * Apex doesn't expose dependent picklist info directly, but it's possible to expose.
     * Approach:
@@ -35,103 +35,103 @@ public class HL_FieldDescribeUtil {
 
     public static Map<String, Map<String, String>> getDependentOptionsImpl(Schema.SObjectField theField, Schema.SObjectField ctrlField) {
 
-		// validFor property cannot be accessed via a method or a property,
-		// so we need to serialize the PicklistEntry object and then deserialize into a wrapper.
-		List<Schema.PicklistEntry> contrEntries;		
+        // validFor property cannot be accessed via a method or a property,
+        // so we need to serialize the PicklistEntry object and then deserialize into a wrapper.
+        List<Schema.PicklistEntry> contrEntries;        
         List<PicklistEntryWrapper> depEntries = HL_FieldDescribeUtil.wrapPicklistEntries(theField.getDescribe().getPicklistValues());
-		
+        
         if (ctrlField!=null) {
-            contrEntries = ctrlField.getDescribe().getPicklistValues();	
+            contrEntries = ctrlField.getDescribe().getPicklistValues(); 
         } else {
-            contrEntries = new List<Schema.PicklistEntry>();	
+            contrEntries = new List<Schema.PicklistEntry>();    
         }
 
-		// Set up the return container - Map<ControllingValue, List<DependentValues>>
-		// Map<String, List<String>> objResults = new Map<String, List<String>>();
-		Map<String, Map<String, String>>  objResults = new Map<String, Map<String, String>>();
-		List<String> controllingValues = new List<String>();
+        // Set up the return container - Map<ControllingValue, List<DependentValues>>
+        // Map<String, List<String>> objResults = new Map<String, List<String>>();
+        Map<String, Map<String, String>>  objResults = new Map<String, Map<String, String>>();
+        List<String> controllingValues = new List<String>();
 
-		for (Schema.PicklistEntry ple : contrEntries) {
-			
-			// @ALIKM: 21/Dec/2019 :: Changing the objResults to pass <Map of controllingPicklistValue => <Map of dependent picklist value => Label>>
-			// commented out below 3 lines...
-			// String label = ple.getLabel();
-			// objResults.put(label, new Map<String, String>());
-			// controllingValues.add(label);
+        for (Schema.PicklistEntry ple : contrEntries) {
+            
+            // @ALIKM: 21/Dec/2019 :: Changing the objResults to pass <Map of controllingPicklistValue => <Map of dependent picklist value => Label>>
+            // commented out below 3 lines...
+            // String label = ple.getLabel();
+            // objResults.put(label, new Map<String, String>());
+            // controllingValues.add(label);
 
-			// added these lines instead...
-			String value = ple.getValue();
-			objResults.put(value, new Map<String, String>()); 
-			controllingValues.add(value);
-			
-		}
+            // added these lines instead...
+            String value = ple.getValue();
+            objResults.put(value, new Map<String, String>()); 
+            controllingValues.add(value);
+            
+        }
 
-		for (PicklistEntryWrapper plew : depEntries) {
-			String label = plew.label;
-			String value = plew.value;
-			String validForBits = base64ToBits(plew.validFor);
-			for (Integer i = 0; i < validForBits.length(); i++) {
-				// For each bit, in order: if it's a 1, add this label to the dependent list for the corresponding controlling value
-				String bit = validForBits.mid(i, 1);
-				if (bit == '1') {
-					// objResults.get(controllingValues.get(i)).add(label);
-					objResults.get(controllingValues.get(i)).put(value, label);
-				}
-			}
-		}
+        for (PicklistEntryWrapper plew : depEntries) {
+            String label = plew.label;
+            String value = plew.value;
+            String validForBits = base64ToBits(plew.validFor);
+            for (Integer i = 0; i < validForBits.length(); i++) {
+                // For each bit, in order: if it's a 1, add this label to the dependent list for the corresponding controlling value
+                String bit = validForBits.mid(i, 1);
+                if (bit == '1') {
+                    // objResults.get(controllingValues.get(i)).add(label);
+                    objResults.get(controllingValues.get(i)).put(value, label);
+                }
+            }
+        }
 
-		return objResults;
-	}
+        return objResults;
+    }
 
-	// Convert decimal to binary representation (alas, Apex has no native method :-(
-	//    eg. 4 => '100', 19 => '10011', etc.
-	// Method: Divide by 2 repeatedly until 0. At each step note the remainder (0 or 1).
-	// These, in reverse order, are the binary.
-	public static String decimalToBinary(Integer val) {
-		String bits = '';
-		while (val > 0) {
-			Integer remainder = Math.mod(val, 2);
-			val = Integer.valueOf(Math.floor(val / 2));
-			bits = String.valueOf(remainder) + bits;
-		}
-		return bits;
-	}
+    // Convert decimal to binary representation (alas, Apex has no native method :-(
+    //    eg. 4 => '100', 19 => '10011', etc.
+    // Method: Divide by 2 repeatedly until 0. At each step note the remainder (0 or 1).
+    // These, in reverse order, are the binary.
+    public static String decimalToBinary(Integer val) {
+        String bits = '';
+        while (val > 0) {
+            Integer remainder = Math.mod(val, 2);
+            val = Integer.valueOf(Math.floor(val / 2));
+            bits = String.valueOf(remainder) + bits;
+        }
+        return bits;
+    }
 
-	// Convert a base64 token into a binary/bits representation
-	// e.g. 'gAAA' => '100000000000000000000'
-	public static String base64ToBits(String validFor) {
-		if (String.isEmpty(validFor)) return '';
+    // Convert a base64 token into a binary/bits representation
+    // e.g. 'gAAA' => '100000000000000000000'
+    public static String base64ToBits(String validFor) {
+        if (String.isEmpty(validFor)) return '';
 
-		String validForBits = '';
+        String validForBits = '';
 
-		for (Integer i = 0; i < validFor.length(); i++) {
-			String thisChar = validFor.mid(i, 1);
-			Integer val = base64Chars.indexOf(thisChar);
-			String bits = decimalToBinary(val).leftPad(6, '0');
-			validForBits += bits;
-		}
+        for (Integer i = 0; i < validFor.length(); i++) {
+            String thisChar = validFor.mid(i, 1);
+            Integer val = base64Chars.indexOf(thisChar);
+            String bits = decimalToBinary(val).leftPad(6, '0');
+            validForBits += bits;
+        }
 
-		return validForBits;
-	}
-
-
-	private static final String base64Chars = '' +
-			'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-			'abcdefghijklmnopqrstuvwxyz' +
-			'0123456789+/';
+        return validForBits;
+    }
 
 
-	private static List<PicklistEntryWrapper> wrapPicklistEntries(List<Schema.PicklistEntry> PLEs) {
-		return (List<PicklistEntryWrapper>)
-			JSON.deserialize(JSON.serialize(PLEs), List<PicklistEntryWrapper>.class);
-	}
+    private static final String base64Chars = '' +
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+            'abcdefghijklmnopqrstuvwxyz' +
+            '0123456789+/';
 
-	public class PicklistEntryWrapper {
-		public String active {get; set;}
-		public String defaultValue {get; set;}
-		public String label {get; set;}
-		public String value {get; set;}
-		public String validFor {get; set;}
-	}
+
+    private static List<PicklistEntryWrapper> wrapPicklistEntries(List<Schema.PicklistEntry> PLEs) {
+        return (List<PicklistEntryWrapper>)
+            JSON.deserialize(JSON.serialize(PLEs), List<PicklistEntryWrapper>.class);
+    }
+
+    public class PicklistEntryWrapper {
+        public String active {get; set;}
+        public String defaultValue {get; set;}
+        public String label {get; set;}
+        public String value {get; set;}
+        public String validFor {get; set;}
+    }
 
 }

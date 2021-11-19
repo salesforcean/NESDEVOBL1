@@ -153,7 +153,7 @@ public class NewECAProcessTest1 {
     //added for US116612
     
     static testMethod void unitTestOne() {
-        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'portalUser@gmail.com'];	
+        User careTaker = [SELECT Id, ContactId FROM User WHERE Username = 'portalUser@gmail.com'];  
         Account institutionalAccount = [SELECT Id FROM Account WHERE RecordType.Name = 'Educational Institution' LIMIT 1];
         Account academicProgram = [SELECT Id, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c FROM Account
                                           WHERE RecordType.Name = 'Academic Program' LIMIT 1];

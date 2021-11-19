@@ -26,7 +26,7 @@
 public class ecTreeParser {
     
     /**
-	* 	@ALIKM 20/apr/2020- commenting out changes
+    *   @ALIKM 20/apr/2020- commenting out changes
 
         private Id ecParentID;
         private ecrTree__c ecrTreeRec; 
@@ -143,7 +143,7 @@ public class ecTreeParser {
         public class ecrTreeImportException extends Exception {}
         public class ecrTreeIllegalArgumentException extends Exception {}
 
-	*/
+    */
 
 }
 

@@ -1,9 +1,9 @@
 /**
     @class:         ECA_CriteriaEvaluatorTest           
-	@description:   Test coverage for ECA_CriteriaEvaluator.
-	@author: 		Mark Membrino
-	@createdDate:   9/9/2020
-    @classes-covered with coverage snapshot: 	
+    @description:   Test coverage for ECA_CriteriaEvaluator.
+    @author:        Mark Membrino
+    @createdDate:   9/9/2020
+    @classes-covered with coverage snapshot:    
         => ECA_CriteriaEvaluator (94% coverage)
         => ECA_CriteriaEvaluatorHelper (100% coverage)
         => ECA_HierarchyStatusUpdate (91% coverage)
@@ -36,8 +36,8 @@ public class ECA_CriteriaEvaluatorTest
     {
         testData = new ECA_EvaluationTestData();
 
-		String newStatus = ECA_EvaluationTestData.COMPLETE_STATUS;
-		List<sObject> recsForUpdate = new List<sObject>();
+        String newStatus = ECA_EvaluationTestData.COMPLETE_STATUS;
+        List<sObject> recsForUpdate = new List<sObject>();
 
         // * FETCH Data
             testData.setAccounts(); // Query Academic Program & InstitutionAccount records
@@ -50,28 +50,28 @@ public class ECA_CriteriaEvaluatorTest
         // * END...
 
         System.assertNotEquals(null, testData.ecaSectionWithCriteria);
-		System.assertNotEquals(null, testData.studPEId);
-		
-		// * UPDATE TEST DATA
-		// fetch Stage1 ECA, set Status=Complete
-		Enrollment_Component_Affiliation__c Stage1StageECA = testData.getECAByECName(ECA_EvaluationTestData.STAGE_ONE, 'Stage');
-		Stage1StageECA.Status__c = ECA_EvaluationTestData.COMPLETE_STATUS;
-		Stage1StageECA.Date_Completed__c = System.today();
-		recsForUpdate.add(Stage1StageECA);
+        System.assertNotEquals(null, testData.studPEId);
+        
+        // * UPDATE TEST DATA
+        // fetch Stage1 ECA, set Status=Complete
+        Enrollment_Component_Affiliation__c Stage1StageECA = testData.getECAByECName(ECA_EvaluationTestData.STAGE_ONE, 'Stage');
+        Stage1StageECA.Status__c = ECA_EvaluationTestData.COMPLETE_STATUS;
+        Stage1StageECA.Date_Completed__c = System.today();
+        recsForUpdate.add(Stage1StageECA);
 
-		// fetch Stage2 ECA, set Status='In Progress'
-		Enrollment_Component_Affiliation__c Stage2StageECA = testData.getECAByECName(ECA_EvaluationTestData.STAGE_TWO, 'Stage');
-		Stage2StageECA.Status__c = ECA_EvaluationTestData.IN_PROGRESS_STATUS;
-		recsForUpdate.add(Stage2StageECA);
+        // fetch Stage2 ECA, set Status='In Progress'
+        Enrollment_Component_Affiliation__c Stage2StageECA = testData.getECAByECName(ECA_EvaluationTestData.STAGE_TWO, 'Stage');
+        Stage2StageECA.Status__c = ECA_EvaluationTestData.IN_PROGRESS_STATUS;
+        recsForUpdate.add(Stage2StageECA);
 
-		// fetch Stage2 SectionECA, set set Status=Complete
-		Enrollment_Component_Affiliation__c Stage2SectionECA = testData.getECAByECName(ECA_EvaluationTestData.STAGE_TWO, 'Section');
-		Stage2SectionECA.Status__c = ECA_EvaluationTestData.COMPLETE_STATUS;
+        // fetch Stage2 SectionECA, set set Status=Complete
+        Enrollment_Component_Affiliation__c Stage2SectionECA = testData.getECAByECName(ECA_EvaluationTestData.STAGE_TWO, 'Section');
+        Stage2SectionECA.Status__c = ECA_EvaluationTestData.COMPLETE_STATUS;
         Stage2SectionECA.Date_Completed__c = System.today();
-		recsForUpdate.add(Stage2SectionECA);		
-		
-		update recsForUpdate;
-		// * END
+        recsForUpdate.add(Stage2SectionECA);        
+        
+        update recsForUpdate;
+        // * END
 
         // Map<Id, Enrollment_Component_Affiliation__c> 
         //     editedECAs = new Map<Id, Enrollment_Component_Affiliation__c>{ Stage2SectionECA.Id => Stage2SectionECA };
@@ -80,19 +80,19 @@ public class ECA_CriteriaEvaluatorTest
             // ECA_HierarchyStatusUpdate.run(editedECAs);
             Stage2SectionECA.Is_Dirty__c = true;
             update Stage2SectionECA;
-		Test.stopTest();
+        Test.stopTest();
 
         
-		// * refresh data & verify/assert
-		// verify that PE is COMPLETED	
-		hed__Program_Enrollment__c studPE = [ SELECT Id, Status__c FROM hed__Program_Enrollment__c WHERE Id = :testData.studPEId ];
-		System.assertEquals(newStatus, studPE.Status__c);
+        // * refresh data & verify/assert
+        // verify that PE is COMPLETED  
+        hed__Program_Enrollment__c studPE = [ SELECT Id, Status__c FROM hed__Program_Enrollment__c WHERE Id = :testData.studPEId ];
+        System.assertEquals(newStatus, studPE.Status__c);
 
-		// verify that Opportunity is CLOSED_WON
-		Opportunity studPEOppty = [ SELECT Id, Program_Enrollment__c, StageName FROM Opportunity WHERE Program_Enrollment__c = :studPE.Id ];
-		System.assertEquals('Closed Won', studPEOppty.StageName);
+        // verify that Opportunity is CLOSED_WON
+        Opportunity studPEOppty = [ SELECT Id, Program_Enrollment__c, StageName FROM Opportunity WHERE Program_Enrollment__c = :studPE.Id ];
+        System.assertEquals('Closed Won', studPEOppty.StageName);
 
-		// verify that ALL Stages are COMPLETED
+        // verify that ALL Stages are COMPLETED
         for (Enrollment_Component_Affiliation__c eca :ECA_EvaluationTestData.refreshECAsByPEId(studPE.Id))
         {
             if (eca.Enrollment_Component__r.RecordType.Name=='Stage') // validate All Stages are Complete
@@ -105,8 +105,8 @@ public class ECA_CriteriaEvaluatorTest
                 // CompleteDate == Date.Today()
                 System.assertNotEquals(null, eca.Date_Completed__c);
             } 
-		}
-		// * END
+        }
+        // * END
     }
 
     /**
@@ -116,7 +116,7 @@ public class ECA_CriteriaEvaluatorTest
     @IsTest
     static void ECACriteriaEvaluatoMoveStageForwardPositiveTest()
     {
-		testData = new ECA_EvaluationTestData();
+        testData = new ECA_EvaluationTestData();
 
         String newStatus = ECA_EvaluationTestData.COMPLETE_STATUS;
         // * FETCH Data
@@ -130,7 +130,7 @@ public class ECA_CriteriaEvaluatorTest
         // * END...
 
         System.assertNotEquals(null, testData.ecaSectionWithCriteria);
-		System.assertNotEquals(null, testData.studPEId);
+        System.assertNotEquals(null, testData.studPEId);
 
         // Set the new Status
         testData.ecaSectionWithCriteria.Status__c = newStatus;
@@ -140,7 +140,7 @@ public class ECA_CriteriaEvaluatorTest
         Test.startTest();
             testData.ecaSectionWithCriteria.Is_Dirty__c = true;
             update testData.ecaSectionWithCriteria;
-		Test.stopTest();
+        Test.stopTest();
         
         // refresh data & verify/assert
         for (Enrollment_Component_Affiliation__c eca :ECA_EvaluationTestData.refreshECAsByPEId(testData.studPEId))
@@ -173,7 +173,7 @@ public class ECA_CriteriaEvaluatorTest
     @IsTest
     static void ECACriteriaEvaluatoFormStatusQuoTest()
     {
-		testData = new ECA_EvaluationTestData();
+        testData = new ECA_EvaluationTestData();
 
         String newStatus = ECA_EvaluationTestData.IN_PROGRESS_STATUS;
         // * FETCH Data
@@ -228,7 +228,7 @@ public class ECA_CriteriaEvaluatorTest
     @IsTest
     static void ECACriteriaEvaluatorDeferredDocumentPositive()
     {
-		testData = new ECA_EvaluationTestData();
+        testData = new ECA_EvaluationTestData();
 
         String newStatus = ECA_EvaluationTestData.IN_PROGRESS_STATUS;
         // * FETCH Data
@@ -308,7 +308,7 @@ public class ECA_CriteriaEvaluatorTest
     @IsTest
     static void PreviousStageDocumentMoveTest()
     {
-		testData = new ECA_EvaluationTestData();
+        testData = new ECA_EvaluationTestData();
 
         String newStatus = ECA_EvaluationTestData.IN_PROGRESS_STATUS;
         // * FETCH Data
@@ -455,7 +455,7 @@ public class ECA_CriteriaEvaluatorTest
     @IsTest
     static void WaitlistedStudentReleasedTest()
     {
-		testData = new ECA_EvaluationTestData();
+        testData = new ECA_EvaluationTestData();
 
         String newStatus = ECA_EvaluationTestData.IN_PROGRESS_STATUS;
         // * FETCH Data
@@ -600,7 +600,7 @@ public class ECA_CriteriaEvaluatorTest
     @IsTest
     static void FinalStageStudentWaitlistedTest()
     {
-		testData = new ECA_EvaluationTestData();
+        testData = new ECA_EvaluationTestData();
 
         String newStatus = ECA_EvaluationTestData.IN_PROGRESS_STATUS;
         // * FETCH Data

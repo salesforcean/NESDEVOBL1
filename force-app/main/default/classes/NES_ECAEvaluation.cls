@@ -73,9 +73,9 @@ allIds.addAll(questionIds); */
                                                                                
                List<Enrollment_Component_Affiliation__c> affiliationsForReturn = new List<Enrollment_Component_Affiliation__c>();
                Set<Enrollment_Component_Affiliation__c> affiliationsForInsert = new Set<Enrollment_Component_Affiliation__c>();
-				//Set<Enrollment_Component_Affiliation__c> affiliationsToUpdate = new Set<Enrollment_Component_Affiliation__c>();
+                //Set<Enrollment_Component_Affiliation__c> affiliationsToUpdate = new Set<Enrollment_Component_Affiliation__c>();
                                                                                
-               	 //Add any impacted components to all the components.
+                 //Add any impacted components to all the components.
                                                                                
                    if (impactedEnrollmentComponents!= null){ //added by anitha
                    allIds.addAll(impactedEnrollmentComponents);
@@ -121,7 +121,7 @@ allIds.addAll(questionIds); */
             WHERE Program_Enrollment__c = :studentEnrollmentId
             ]; */
               List<Id> affiliationCompIds = new List<Id>();
-         		if (progEnrollmentECAs <> null) {
+                if (progEnrollmentECAs <> null) {
                for (Enrollment_Component_Affiliation__c affiliation : progEnrollmentECAs) {
                 affiliationCompIds.add(affiliation.Enrollment_Component__c);
                    } 
@@ -137,7 +137,7 @@ allIds.addAll(questionIds); */
           System.debug('affiliationCompIds.contains(enrollmentComponentId)::'+affiliationCompIds.contains(enrollmentComponentId));
              if (!affiliationCompIds.contains(enrollmentComponentId)) {
             // Create an affiliation for this enrollment component
-   		Enrollment_Component_Affiliation__c newAffiiliation = new Enrollment_Component_Affiliation__c();
+        Enrollment_Component_Affiliation__c newAffiiliation = new Enrollment_Component_Affiliation__c();
          newAffiiliation.Enrollment_Component__c = enrollmentComponentId;
          newAffiiliation.Program_Enrollment__c = studentEnrollmentId;
                                                                                            
@@ -146,12 +146,12 @@ allIds.addAll(questionIds); */
                                                                                            
       if(newComponent.RecordType.Name == NES_DashboardUtilities.STAGE_RT && newAffiiliation.Order__c == 1) {
                 //goThroughStages = true;
-             	//assignedStages.add(newAffiiliation);
+                //assignedStages.add(newAffiiliation);
                 //assignedStageIds.add(newAffiiliation.Enrollment_Component__c);
                  newAffiiliation.Status__c = 'In Progress';                        
                   } else {
                    newAffiiliation.Status__c = 'Not Started';
-					 }
+                     }
                    affiliationsForInsert.add(newAffiiliation);
                    system.debug ('newAffiiliation' + newAffiiliation);
                           }  
@@ -159,7 +159,7 @@ allIds.addAll(questionIds); */
                                                                                    
        // Separate the sections
       // Mark Membrino 12/16/2019 While trying to understand this code I found that both sectionRelationships
-       //		and formRelationships are not referenced anywhere else in this method.
+       //       and formRelationships are not referenced anywhere else in this method.
       /*   List<Enrollment_Component_Relationship__c> sectionRelationships = new List<Enrollment_Component_Relationship__c>();
             for (Enrollment_Component_Relationship__c sectionDocRelationship : sectionDocRelationships) {
             Enrollment_Component__c tempEnrollmentComponent = enrollmentComponentMap.get(sectionDocRelationship.Child_Enrollment_Component__c);
@@ -183,7 +183,7 @@ allIds.addAll(questionIds); */
             }           */
                                                                                    
           //Mark Membrino  12/16/2019  This whole massive pile of code in the following if then else is just to add
-            //		child components that have no criteria for any parent component we decided to add.
+            //      child components that have no criteria for any parent component we decided to add.
                     if(affiliationsForInsert.size() > 0){
                        for (Enrollment_Component_Affiliation__c newAffiliation : affiliationsForInsert) {
                                                                                            
@@ -430,61 +430,61 @@ OR Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.MESSA
                                                                                 studentEnrollment.Id, studentEnrollment.Household_Program_Enrollment__c, stageRelationships, formRelationships, 
                                                                                 sectionRelationships, questionGroupRelationships, questionRelationships, thisProcessData, impactedEnrollmentComponents, progEnrollmentECAs);
         
-		
-				
-		
+        
+                
+        
         if (affiliations.size() > 0) { 
             //Added  condition to exclude ECA insertion for Migrated students who will have external id DEF255843(Jagadish Babu) 
-			if(studentEnrollment.Enrollment_Type__c == 'Re-enrolling student'){					
+            if(studentEnrollment.Enrollment_Type__c == 'Re-enrolling student'){                 
 
                 System.debug('StudentEnrollmentData Testing==========================>'+studentEnrollment);
 
-				Map<Id, Enrollment_Component__c> ecMap = allECData.enrollmentComponentMap;
-				List<Enrollment_Component_Affiliation__c> lstAffiliations = new List<Enrollment_Component_Affiliation__c>();
-				for(Enrollment_Component_Affiliation__c eca : affiliations){
-					if(ecMap.get(eca.Enrollment_Component__c).Needed_For_Re_Enrollment__c){
-						lstAffiliations.add(eca);
-					}				
-				}			
-				integer i=0;
-				do{
+                Map<Id, Enrollment_Component__c> ecMap = allECData.enrollmentComponentMap;
+                List<Enrollment_Component_Affiliation__c> lstAffiliations = new List<Enrollment_Component_Affiliation__c>();
+                for(Enrollment_Component_Affiliation__c eca : affiliations){
+                    if(ecMap.get(eca.Enrollment_Component__c).Needed_For_Re_Enrollment__c){
+                        lstAffiliations.add(eca);
+                    }               
+                }           
+                integer i=0;
+                do{
 
-					try{
-					   i++;
+                    try{
+                       i++;
                        if(lstAffiliations.size() > 0)
-					  	  insert lstAffiliations;                
-					   break;//Breaking the loop as the DML executed and no exceptions
-					}
-					catch(Exception e){
-						//logger.logException('runAssignment migarted students', e); 
+                          insert lstAffiliations;                
+                       break;//Breaking the loop as the DML executed and no exceptions
+                    }
+                    catch(Exception e){
+                        //logger.logException('runAssignment migarted students', e); 
                         logger.logException('runAssignment migarted students retry '+i, e); 
-						logger.saveLogs();
-					}
-				}while(i<5);
-			   //End:DEF255843 (Jagadish Babu)
-			}
+                        logger.saveLogs();
+                    }
+                }while(i<5);
+               //End:DEF255843 (Jagadish Babu)
+            }
            else{
              //Start: Added the below lines to fix Lock errors for BUG217916 (Jagadish Babu) to make sure retry the DMLs for 5 times
             /*try {insert affiliations;                
                 } catch (Exception e) { logger.logException('runAssignment', e); logger.saveLogs();   }*/
-				integer i=0;
-					do{
-						try{
-						   i++;
+                integer i=0;
+                    do{
+                        try{
+                           i++;
 
-						   insert affiliations;                
-						   break;//Breaking the loop as the DML executed and no exceptions
-						}
-						catch(Exception e){
-							//logger.logException('runAssignment', e); 
-							logger.logException('runAssignment retry '+i, e); 
-							logger.saveLogs();
-						}
-					}while(i<5);
-				   //End: BUG217916 (Jagadish Babu)
-				}
-						
-			} 
+                           insert affiliations;                
+                           break;//Breaking the loop as the DML executed and no exceptions
+                        }
+                        catch(Exception e){
+                            //logger.logException('runAssignment', e); 
+                            logger.logException('runAssignment retry '+i, e); 
+                            logger.saveLogs();
+                        }
+                    }while(i<5);
+                   //End: BUG217916 (Jagadish Babu)
+                }
+                        
+            } 
         }
     
     // Evaluate the ECC
@@ -545,7 +545,7 @@ WHERE Criteria_Type__c = :criteriaType
 AND Enrollment_Component__c IN :ECsToQueryFor
 ];*/
                                                      
-	  Set<Id> allPEIds = new Set<Id>{studentEnrollmentId};
+      Set<Id> allPEIds = new Set<Id>{studentEnrollmentId};
       List<hed__Program_Enrollment__c> progId = GenericSOQLQueries.programEnrollmentDetails(allPEIds);  
                Enrollment_Component__c processComponent = [SELECT Id FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :progId[0].hed__Account__c LIMIT 1];
      // hed__Program_Enrollment__c progId = [select Id , hed__Account__c from hed__Program_Enrollment__c where id =:studentEnrollmentId];
@@ -626,7 +626,7 @@ AND Enrollment_Component__c IN :ECsToQueryFor
                   Map<String, Boolean> resultMap = criteriaResultMap.get(enrollmentComponent.Id);
                   Boolean result;
                    if (criteriaType == 'Completion') {
-               		  result = NES_EvaluateUtil.evaluateCriteriaGroups(criteriaGroups, resultMap, enrollmentComponent.Completion_Logic__c);
+                      result = NES_EvaluateUtil.evaluateCriteriaGroups(criteriaGroups, resultMap, enrollmentComponent.Completion_Logic__c);
                                                              
                     } else if (criteriaType == 'Assignment') {
                      result = NES_EvaluateUtil.evaluateCriteriaGroups(criteriaGroups, resultMap, enrollmentComponent.Assignment_Logic__c);
@@ -639,7 +639,7 @@ AND Enrollment_Component__c IN :ECsToQueryFor
                 }
                                                  
          system.debug('componentsForAssignment' + componentsForAssignment);
-		return componentsForAssignment;
+        return componentsForAssignment;
           }
     
     
@@ -736,7 +736,7 @@ AND Enrollment_Component__c IN :ECsToQueryFor
                                                                
                   if (String.isBlank(relationship.Child_Enrollment_Component__r.Assignment_Logic__c) && formIds.contains(relationship.Parent_Enrollment_Component__c)) {
                       sectionIds.add(relationship.Child_Enrollment_Component__c);
-               		   Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
+                       Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                        affiliationRecord.Enrollment_Component__c = relationship.Child_Enrollment_Component__c;
                        affiliationRecord.Program_Enrollment__c = studentEnrollmentId;
                        affiliationRecord.Status__c = 'Not Started';
@@ -928,7 +928,7 @@ AND Enrollment_Component__c IN :ECsToQueryFor
                     insert affilsToInsert;
                 }
                    catch (Exception ex){                                                       
-         			System.debug('Exception Thrown:' + ex.getMessage()); logger.logException('execute', ex); logger.saveLogs();
+                    System.debug('Exception Thrown:' + ex.getMessage()); logger.logException('execute', ex); logger.saveLogs();
                  }*/                                                       
             integer i=0;
             do{

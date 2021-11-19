@@ -9,7 +9,7 @@ public class LightningForgotPasswordControllerTest {
           
         LightningForgotPasswordController lfpc= new LightningForgotPasswordController();
      
-    	LightningForgotPasswordController.forgotPassword('test','test');
+        LightningForgotPasswordController.forgotPassword('test','test');
        
     
     

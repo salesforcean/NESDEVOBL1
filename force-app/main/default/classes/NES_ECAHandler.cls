@@ -87,7 +87,7 @@ public class NES_ECAHandler {
 
                                                                   Enrollment_Component__r.Required_to_Complete_for_Auto_Placement__c,Program_Enrollment__r.Status__c, Program_Enrollment__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.id, Program_Enrollment__r.WaitlistFlag__c, 
-            													  Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
+                                                                  Program_Enrollment__r.hed__Account__r.School_Start_Date__c,
                                                                   Program_Enrollment__r.Household_Program_Enrollment__r.hed__Account__r.id, Enrollment_Component__r.Name,
                                                                   Enrollment_Component__r.Waitlist__c, Program_Enrollment__r.Waitlist_Time_Date_Stamp__c,Program_Enrollment__r.hed__Account__r.Use_Updated_ECA_Process__c
                                                                   FROM Enrollment_Component_Affiliation__c
@@ -120,7 +120,7 @@ public class NES_ECAHandler {
                    statusChangedECAs.add(eca);
             }*/
             
-			  //added for #101935 User Story (Task 104310) on 2019-08-13 to check the status of updated ECA changed for 'Complete' to 'In progress' or 'Not started' and collect all those ECA's in list
+              //added for #101935 User Story (Task 104310) on 2019-08-13 to check the status of updated ECA changed for 'Complete' to 'In progress' or 'Not started' and collect all those ECA's in list
             //updated for 122106, added oldMap check for ECA.Status = 'Not Applicable'
             //MM 8/26/2020  Added check to only include ECA for PEs in the old ECA process.
             //updated for 227705, added oldMap check for ECA.Status = 'Deferred'

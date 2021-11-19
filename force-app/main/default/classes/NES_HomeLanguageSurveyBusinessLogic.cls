@@ -38,18 +38,18 @@ public with sharing class NES_HomeLanguageSurveyBusinessLogic {
         for(Home_Language_Survey__c hls : newList){
         if (oldMap != null) {
             if (hls.HLS2_FirstLanguage__c != oldMap.get(hls.Id).HLS2_FirstLanguage__c || 
-			    hls.HLS2_ChildLanguage__c != oldMap.get(hls.Id).HLS2_ChildLanguage__c || 
-				hls.HLS2_Spoken_To_Child__c != oldMap.get(hls.Id).HLS2_Spoken_To_Child__c ||
-				hls.HLS2_Home_Language__c != oldMap.get(hls.Id).HLS2_Home_Language__c ||
-				hls.HLS2_School_Communications__c != oldMap.get(hls.Id).HLS2_School_Communications__c ||
-				hls.HLS2_School_Communications_Spoke__c != oldMap.get(hls.Id).HLS2_School_Communications_Spoke__c ||
-				hls.HLS2_Home_Language_Many__c != oldMap.get(hls.Id).HLS2_Home_Language_Many__c ||
-				hls.HLS2_Other_Adults_Language__c != oldMap.get(hls.Id).HLS2_Other_Adults_Language__c )
-					homeLangSurveyList.add(hls);
+                hls.HLS2_ChildLanguage__c != oldMap.get(hls.Id).HLS2_ChildLanguage__c || 
+                hls.HLS2_Spoken_To_Child__c != oldMap.get(hls.Id).HLS2_Spoken_To_Child__c ||
+                hls.HLS2_Home_Language__c != oldMap.get(hls.Id).HLS2_Home_Language__c ||
+                hls.HLS2_School_Communications__c != oldMap.get(hls.Id).HLS2_School_Communications__c ||
+                hls.HLS2_School_Communications_Spoke__c != oldMap.get(hls.Id).HLS2_School_Communications_Spoke__c ||
+                hls.HLS2_Home_Language_Many__c != oldMap.get(hls.Id).HLS2_Home_Language_Many__c ||
+                hls.HLS2_Other_Adults_Language__c != oldMap.get(hls.Id).HLS2_Other_Adults_Language__c )
+                    homeLangSurveyList.add(hls);
         }
         else if(hls.HLS2_FirstLanguage__c != null || hls.HLS2_ChildLanguage__c != null || hls.HLS2_Spoken_To_Child__c != null ||
-		        hls.HLS2_Home_Language__c != null || hls.HLS2_School_Communications__c != null || hls.HLS2_School_Communications_Spoke__c != null ||
-				hls.HLS2_Home_Language_Many__c != null || hls.HLS2_Other_Adults_Language__c != null )
+                hls.HLS2_Home_Language__c != null || hls.HLS2_School_Communications__c != null || hls.HLS2_School_Communications_Spoke__c != null ||
+                hls.HLS2_Home_Language_Many__c != null || hls.HLS2_Other_Adults_Language__c != null )
             homeLangSurveyList.add(hls);
         }  
         if(homeLangSurveyList.size() > 0)

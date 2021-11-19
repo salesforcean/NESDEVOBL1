@@ -66,14 +66,14 @@ public class NES_RegisterDoubleOptInCls {
                     system.debug('enableSMSService failed'+response.getBody());
                     logger.logInfo('enableSMSService', 'Double OptIn not enabled for '+string.join(mobileNums,',')+' Response from MC '+response.getStatusCode());                    
                 }             
-			}
-						
-		}
-	}
+            }
+                        
+        }
+    }
     
-	
-	//This method will be invoked when the access token is required from apigee team to invoke service
-	@TestVisible
+    
+    //This method will be invoked when the access token is required from apigee team to invoke service
+    @TestVisible
 
     private static String getApigeeAccessToken(String uNameHeader, String pNameHeader){
         //Http Callout to get response and token value
@@ -81,27 +81,27 @@ public class NES_RegisterDoubleOptInCls {
         formData.put(uNameHeader, '{!$Credential.Username}');
         formData.put(pNameHeader, '{!$Credential.Password}');
         HttpResponse response = getResponse('','callout:Apigee_Credentials/auth/json/pearson/authenticate','POST',formData); 
-		if(response.getStatusCode() == 200){
-			try{
-				//Parse response and get access token from response
-				NES_RegisterDoubleOptInCls.ApigeeTokenDetail jsonResponse = (NES_RegisterDoubleOptInCls.ApigeeTokenDetail) JSON.deserialize(response.getBody(), NES_RegisterDoubleOptInCls.ApigeeTokenDetail.class);
+        if(response.getStatusCode() == 200){
+            try{
+                //Parse response and get access token from response
+                NES_RegisterDoubleOptInCls.ApigeeTokenDetail jsonResponse = (NES_RegisterDoubleOptInCls.ApigeeTokenDetail) JSON.deserialize(response.getBody(), NES_RegisterDoubleOptInCls.ApigeeTokenDetail.class);
 
                 apigeeAccessToken = jsonResponse.tokenId;
                 system.debug('apigeeAccessToken--->'+apigeeAccessToken);
-				logger.logInfo('getApigeeAccessToken', 'token retrieved successfully: '+apigeeAccessToken);
-				return apigeeAccessToken;
-			}
-			catch(Exception e){
-				System.debug('Exception******'+e);
-				logger.logException('getApigeeAccessToken', e);
-				logger.saveLogs();
-				return null;
+                logger.logInfo('getApigeeAccessToken', 'token retrieved successfully: '+apigeeAccessToken);
+                return apigeeAccessToken;
+            }
+            catch(Exception e){
+                System.debug('Exception******'+e);
+                logger.logException('getApigeeAccessToken', e);
+                logger.saveLogs();
+                return null;
 
-			}
-		}		
-		return null;
-	}
-	
+            }
+        }       
+        return null;
+    }
+    
     //Call out to Agigee system which will make callout to Marketing Cloud to provide double OptIn for Care taker user
 
     private static HttpResponse getResponse(String reqBody, String endPointUrl, String methodName,Map<String, String> formData ){
@@ -146,7 +146,7 @@ public class NES_RegisterDoubleOptInCls {
         public String tokenId{get;set;}
         public String successUrl{get;set;}
         public String realm{get;set;}
-	}
-	
+    }
+    
     
 }

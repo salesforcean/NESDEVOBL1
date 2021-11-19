@@ -193,7 +193,7 @@ public with sharing class ecrTreeImportExportTest {
                                         treeString, 'test export failed, ecrTree export returned null ID.');
         
         Test.startTest(); // Import the process
-			ecrConsumerFormat processTree = ecrTreeImportExport.ImportTree(processEC.Id);
+            ecrConsumerFormat processTree = ecrTreeImportExport.ImportTree(processEC.Id);
         Test.stopTest();
 
     }

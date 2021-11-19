@@ -2,9 +2,9 @@
 * Purpose: Controller for NES_DocumentFileRefViewer VF Page
 * Change Log:
 *         2019-08-14 initial for #101928 User Story (Andrew Sim)
-*		  2019-09-11 fix to handle spaces in file names #102150/106220 (Andrew Sim)
-*		  2019-09-13 added method to support html responses and handle line breaks #102150/106220 (Andrew Sim)
-*		  2019-09-17 added method to improve decoding ISO 8859-1 and remove support for TIF #102150/106220 (Andrew Sim)
+*         2019-09-11 fix to handle spaces in file names #102150/106220 (Andrew Sim)
+*         2019-09-13 added method to support html responses and handle line breaks #102150/106220 (Andrew Sim)
+*         2019-09-17 added method to improve decoding ISO 8859-1 and remove support for TIF #102150/106220 (Andrew Sim)
 *         2020-06-19 removed methods no longer used (Mark Membrino)
 */
 public with sharing class NES_DocumentFileRefViewerController {

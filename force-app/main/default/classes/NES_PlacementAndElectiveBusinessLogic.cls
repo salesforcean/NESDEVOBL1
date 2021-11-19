@@ -94,7 +94,7 @@ public class NES_PlacementAndElectiveBusinessLogic {
                                                 where Program_Enrollment__c in :programEnrollmentIds ]){
                                                     if ( asi.Exclude_AutoCourse__c!= true){
                                                         if(!placementandElec.isEmpty()&&!placmenttope.isEmpty()){
-                                                            if(placmenttope.containskey(asi.Program_Enrollment__c) && asi.Program_Enrollment__r.hed__Account__r.Electives_Exclude_from_Auto_Course_Sel__c != null)		{
+                                                            if(placmenttope.containskey(asi.Program_Enrollment__c) && asi.Program_Enrollment__r.hed__Account__r.Electives_Exclude_from_Auto_Course_Sel__c != null)      {
                                                                 pickValues = asi.Program_Enrollment__r.hed__Account__r.Electives_Exclude_from_Auto_Course_Sel__c.split(';');
                                                                 if(pickValues.size()>0 && pickValues.contains(placementandElec.get(placmenttope.get(asi.Program_Enrollment__c)))){ 
                                                                     asi.Exclude_AutoCourse__c = true;

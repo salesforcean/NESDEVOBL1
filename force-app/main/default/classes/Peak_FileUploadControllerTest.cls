@@ -2,7 +2,7 @@
 private class Peak_FileUploadControllerTest {
     public static Account testAccount = new Account();
     public static Attachment testAttachment = new Attachment();
-	public static Enrollment_Component_Affiliation__c  eca = new Enrollment_Component_Affiliation__c();
+    public static Enrollment_Component_Affiliation__c  eca = new Enrollment_Component_Affiliation__c();
     public static Enrollment_Component_Affiliation__c  eca1 = new Enrollment_Component_Affiliation__c();
     Public static Enrollment_Document__c ed1 = new Enrollment_Document__c();
     public static hed__Program_Enrollment__c ProgramEnrollmentTest = new hed__Program_Enrollment__c();
@@ -31,12 +31,12 @@ private class Peak_FileUploadControllerTest {
         Account academicAccount = Peak_TestUtils.createAccountForNewStudentData(parentAccount.Id, schlYear.Id);
         ProgramEnrollmentTest = Peak_TestUtils.createProgramEnrollment(academicAccount.Id, TestContact.Id, schlYear.Id, true);
          ecp = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Form', true);
-		Enrollment_Component__c ecc = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Question', true);
+        Enrollment_Component__c ecc = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Question', true);
         Enrollment_Component__c ecp1 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Form', true);
         Enrollment_Component__c ecd = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', true);
-		Enrollment_Component_Relationship__c ecr = Peak_TestUtils.createEnrollmentComponentRelationship(ecc.id,ecp.id);
+        Enrollment_Component_Relationship__c ecr = Peak_TestUtils.createEnrollmentComponentRelationship(ecc.id,ecp.id);
         Enrollment_Component_Relationship__c ecr1 = Peak_TestUtils.createEnrollmentComponentRelationship(ecd.id,ecp1.id);
-		 eca = Peak_TestUtils.createEnrollmentComponentAffiliation(ProgramEnrollmentTest.Id, ecc.Id);
+         eca = Peak_TestUtils.createEnrollmentComponentAffiliation(ProgramEnrollmentTest.Id, ecc.Id);
          eca1 = Peak_TestUtils.createEnrollmentComponentAffiliation(ProgramEnrollmentTest.Id, ecd.Id);
          ed1 = Peak_TestUtils.createEnrollmentDocumentRecord(ProgramEnrollmentTest.id);
         ed1.Type__c = '504 Plan';

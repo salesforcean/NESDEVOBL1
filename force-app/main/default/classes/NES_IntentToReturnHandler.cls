@@ -56,8 +56,8 @@ public class NES_IntentToReturnHandler {
         Map<Id, List<Id>> peToObjectMap = new Map<Id, List<Id>> ();
         List<EvaluationUtils.fieldUpdate> fieldUpdateList = new List<EvaluationUtils.fieldUpdate> (); 
         for (Intent_To_Return__c newInfo : newMap.values()) {
-			Intent_To_Return__c oldInfo = oldMap.get(newInfo.Id);
-			List<String> changedFields = new List<String> ();
+            Intent_To_Return__c oldInfo = oldMap.get(newInfo.Id);
+            List<String> changedFields = new List<String> ();
             for (String str : mapFields.keySet()) {
                 try {
                     if (newInfo.get(str) != oldInfo.get(str)) {

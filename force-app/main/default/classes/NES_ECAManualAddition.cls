@@ -12,11 +12,11 @@ global class NES_ECAManualAddition implements Database.Batchable<sObject> {
        //return  Database.getQueryLocator('SELECT ID, Name, hed__Account__r.Name, Household_Program_Enrollment__c,Enrollment_Type__c FROM hed__program_enrollment__c where hed__Account__r.Name =:academicprogram1 AND Status__c = \'In Progress\' AND RecordType.Name = \'Student\' AND Enrollment_Type__c in (\'Initial Enrollment\', \'Re-enrolling Student\') AND Stage__c IN (\'Open Application\') ');
        if(string.isNotBlank(peId1))
        {
-        	return  Database.getQueryLocator('SELECT ID, Name, hed__Account__r.Name, Household_Program_Enrollment__c,Enrollment_Type__c FROM hed__program_enrollment__c where hed__Account__r.Name =:academicprogram1 AND RecordType.Name = \'Student\' and Id =: peId1 and enrollment_type__c != \'Returning Student\' ');
+            return  Database.getQueryLocator('SELECT ID, Name, hed__Account__r.Name, Household_Program_Enrollment__c,Enrollment_Type__c FROM hed__program_enrollment__c where hed__Account__r.Name =:academicprogram1 AND RecordType.Name = \'Student\' and Id =: peId1 and enrollment_type__c != \'Returning Student\' ');
        }
         else{
-        	// Final Query
-        	return  Database.getQueryLocator('SELECT ID, Name, hed__Account__r.Name, Household_Program_Enrollment__c,Enrollment_Type__c FROM hed__program_enrollment__c where hed__Account__r.Name =:academicprogram1 AND RecordType.Name = \'Student\' and enrollment_type__c != \'Returning Student\' ');
+            // Final Query
+            return  Database.getQueryLocator('SELECT ID, Name, hed__Account__r.Name, Household_Program_Enrollment__c,Enrollment_Type__c FROM hed__program_enrollment__c where hed__Account__r.Name =:academicprogram1 AND RecordType.Name = \'Student\' and enrollment_type__c != \'Returning Student\' ');
         }
     }
     global void execute(Database.BatchableContext bc, List<hed__program_enrollment__c> scope){
@@ -25,9 +25,9 @@ global class NES_ECAManualAddition implements Database.Batchable<sObject> {
         
         // Get the State CA
         String str = academicprogram1;
-		List<String> res = str.split(' ', 2);
+        List<String> res = str.split(' ', 2);
         String State = res[0].toUppercase();
-		System.debug('STATE :::' + State);
+        System.debug('STATE :::' + State);
         String StateStr = '%'+State+'2122%';
         System.debug('NDEBUG :: STATESTR :::' + StateStr);
         
@@ -42,14 +42,14 @@ global class NES_ECAManualAddition implements Database.Batchable<sObject> {
         
         // Unique for Non-Calca States  
         if(State != 'CALCA'){      
-        	newEcsList.add('Re-Enrollment Homeschool Prior Academic History Form (Document)');        
-        	newEcsList.add('Re-Enrollment Report Card (Document)');
+            newEcsList.add('Re-Enrollment Homeschool Prior Academic History Form (Document)');        
+            newEcsList.add('Re-Enrollment Report Card (Document)');
         }
         
         // Unique for Calca States 
         if(State == 'CALCA'){      
-        	newEcsList.add('Re-Enrollment Report Card (Optional Document)');        
-        	newEcsList.add('Re-Enrollment Homeschool Prior Academic History Form (Optional Document)');
+            newEcsList.add('Re-Enrollment Report Card (Optional Document)');        
+            newEcsList.add('Re-Enrollment Homeschool Prior Academic History Form (Optional Document)');
         }       
         
         // Get the List of new ECs
@@ -77,7 +77,7 @@ global class NES_ECAManualAddition implements Database.Batchable<sObject> {
         Map <String, Decimal> ecToOrderMap = new Map <String, Decimal> ();
         for(Enrollment_Component_Relationship__c ecr : ecrList){
             ecToOrderMap.put(ecr.Child_Enrollment_Component__c, ecr.Order__c);
-            System.debug('NDEBUG :::::: ' + ecr.Order__c);	
+            System.debug('NDEBUG :::::: ' + ecr.Order__c);  
         }
         
         // Check if any new ECAs already exists for this PE
@@ -90,20 +90,20 @@ global class NES_ECAManualAddition implements Database.Batchable<sObject> {
         if(existEcaList != null && existEcaList.size() > 0){
             for(Enrollment_Component_Affiliation__c eca : existEcaList){
                 if(eca != null)
-                	ecExistMap.put(eca.Enrollment_Component__c, true);
+                    ecExistMap.put(eca.Enrollment_Component__c, true);
             }            
         }
         System.debug('NDEBUG Existing ECA MAP:::' + ecExistMap);
         
         for(Id ecid: ecExistMap.keyset()){
             if(!ecExistMap.get(ecid))
-               finalEcsIdList.add(ecid);     		
-   		}      
+               finalEcsIdList.add(ecid);            
+        }      
         
         
         // Insert the final ECAs
         List <Enrollment_Component_Affiliation__c> ecaList = new List <Enrollment_Component_Affiliation__c> ();
-		Enrollment_Component_Affiliation__c e;
+        Enrollment_Component_Affiliation__c e;
         
         for(String ecId : finalEcsIdList){
             e = new Enrollment_Component_Affiliation__c ();
@@ -115,8 +115,8 @@ global class NES_ECAManualAddition implements Database.Batchable<sObject> {
             ecaList.add(e);
         }
 
-		System.debug('ECAs being inserted are:::::' + ecaList);
-		Insert ecaList;
+        System.debug('ECAs being inserted are:::::' + ecaList);
+        Insert ecaList;
     }
     global void finish(Database.BatchableContext bc){
         // execute any post-processing operations

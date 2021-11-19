@@ -338,7 +338,7 @@ public with sharing class NES_DocumentCentralHelperTest {
     //Added to Cover getDocumentsListByUser method (Jagadish Babu)
     static testMethod void getDocumentsListByUserTest(){        
         List<hed__Program_Enrollment__c> peRec = [SELECT Id, hed__Account__c, Status__c, hed__Contact__r.Name,Household_Program_Enrollment__r.hed__Contact__c, hed__Account__r.Document_Start_Date__c, hed__Account__r.Document_End_Date__c, RecordTypeId, RecordType.Name,(SELECT Id, Name, Status__c, Enrollment_component__r.Id, Enrollment_component__r.Name, Enrollment_component__r.RecordType.Name FROM Enrollment_Component_Affiliation__r), (Select Id, Enrollment_Component_Affiliation__c, Uploader__c from Enrollment_Documents__r) FROM hed__Program_Enrollment__c where recordtype.Name = 'Student'];
-    	List<User> caretaker = [Select Id, ContactId from User where ContactId=:peRec[0].Household_Program_Enrollment__r.hed__Contact__c];
+        List<User> caretaker = [Select Id, ContactId from User where ContactId=:peRec[0].Household_Program_Enrollment__r.hed__Contact__c];
         String results = NES_DocumentCentralHelper.getDocumentsListByUser(caretaker[0].Id);
         system.assertNotEquals(results, null);
        }

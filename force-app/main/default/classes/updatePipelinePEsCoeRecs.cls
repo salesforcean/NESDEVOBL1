@@ -22,7 +22,7 @@ global class updatePipelinePEsCoeRecs implements Database.Batchable<sObject> {
         //Id processid = 'a294o000001fC9RAAU';
         Id processid = 'a294o000001fC3jAAE';
         DateTime PECreatedDate = DateTime.newInstance(2021, 6, 2, 0, 0, 00); 
-		*/       
+        */       
         
         // Get the Enrollment Component Form RecordTypeId
         Id formId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType = 'Enrollment_Component__c' and Name = 'Form' limit 1].Id;
@@ -41,7 +41,7 @@ global class updatePipelinePEsCoeRecs implements Database.Batchable<sObject> {
         List <hed__program_enrollment__c> peList = [SELECT ID, Name, hed__Account__r.Name, 
                                                     Household_Program_Enrollment__c,Enrollment_Type__c 
                                                     FROM hed__program_enrollment__c where Id =: templId limit 1];
-		*/
+        */
         
         List <Id> peIdList = new List <Id> ();
             
@@ -75,7 +75,7 @@ global class updatePipelinePEsCoeRecs implements Database.Batchable<sObject> {
         
         for(hed__program_enrollment__c pe: scope){
             System.debug('PE ID being processed is :::::' + pe.Id);
-            //EvaluationUtils.PerformAsyncNewStudentStepsUpdatePipelinePEs(pe.id,processid,pe.Household_Program_Enrollment__c, pe.Enrollment_Type__c);	
+            //EvaluationUtils.PerformAsyncNewStudentStepsUpdatePipelinePEs(pe.id,processid,pe.Household_Program_Enrollment__c, pe.Enrollment_Type__c);  
         }
         
         // Get the Tell Us about your Student Stage ECAs and Update the Status to Complete

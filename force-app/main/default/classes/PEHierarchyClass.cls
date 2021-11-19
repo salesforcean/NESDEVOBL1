@@ -1,9 +1,9 @@
 /**
     @class:         ExpressionParserTest           
-	@author: 		Mark Membrino
-	@date:			8/31/2020
-	@description:   Test coverage expression evaluator, part of rewrite of the ECA assignment and completion logic.
-    @classes-covered with coverage snapshot: 	
+    @author:        Mark Membrino
+    @date:          8/31/2020
+    @description:   Test coverage expression evaluator, part of rewrite of the ECA assignment and completion logic.
+    @classes-covered with coverage snapshot:    
         => SyntaxKind (% coverage)
         
         // ECA_HierarchyStatusUpdateTest

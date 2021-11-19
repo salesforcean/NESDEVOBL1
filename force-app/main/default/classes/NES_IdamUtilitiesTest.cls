@@ -207,7 +207,7 @@ private with sharing class NES_IdamUtilitiesTest {
         Test.setMock(HttpCalloutMock.class, new IDAMCallout('Test', 200, 'Ok', false, false));
         
         CS_TestDataFactory factoryObj = new CS_TestDataFactory();
-		UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
+        UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
         String orgId = UserInfo.getOrganizationId();
         User CTUsr = factoryObj.createNewUser('Cont0818'+orgId+'@pearson.com', usrRole.Id, 'CTAdmin', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', UserInfo.getProfileId(),'LastName','Cont0818'+orgId+'@pearson.com');
@@ -247,10 +247,10 @@ private with sharing class NES_IdamUtilitiesTest {
     
     // USER STORY #. 216780 
     // Created By: Sumanth Krishna   
-	static testMethod void testEnrollmentDocumentUpdate(){
+    static testMethod void testEnrollmentDocumentUpdate(){
         Test.setMock(HttpCalloutMock.class, new IDAMCallout('Test', 200, 'Ok', false, false));
         CS_TestDataFactory factoryObj = new CS_TestDataFactory();
-		UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
+        UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
         String orgId = UserInfo.getOrganizationId();
         User CTUsr = factoryObj.createNewUser('Cont0818'+orgId+'@pearson.com', usrRole.Id, 'CTAdmin', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', UserInfo.getProfileId(),'LastName','Cont0818'+orgId+'@pearson.com');
@@ -283,7 +283,7 @@ private with sharing class NES_IdamUtilitiesTest {
             usrList.add(STDUsr);
             insert usrList; 
             
-			stdContList.get(0).Caretaker_Id__c = CTCon.id;
+            stdContList.get(0).Caretaker_Id__c = CTCon.id;
             stdContList.get(0).Commuity_User__c = STDUsr.id;
             update stdContList.get(0);
             
@@ -311,11 +311,11 @@ private with sharing class NES_IdamUtilitiesTest {
     
     // USER STORY #. 216777 
     // Created By: Rakesh Ramaswamy 
-	static testMethod void testProgramEnrollmentUpdate(){
+    static testMethod void testProgramEnrollmentUpdate(){
     
         Test.setMock(HttpCalloutMock.class, new IDAMCallout('Test', 200, 'Ok', false, false));
         CS_TestDataFactory factoryObj = new CS_TestDataFactory();
-		UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
+        UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
         String orgId = UserInfo.getOrganizationId();
         User CTUsr = factoryObj.createNewUser('Cont0818'+orgId+'@pearson.com', usrRole.Id, 'CTAdmin', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', UserInfo.getProfileId(),'LastName','Cont0818'+orgId+'@pearson.com');
@@ -350,7 +350,7 @@ private with sharing class NES_IdamUtilitiesTest {
             usrList.add(STDUsr);
             insert usrList; 
             
-			stdContList.get(0).Caretaker_Id__c = CTCon.id;
+            stdContList.get(0).Caretaker_Id__c = CTCon.id;
             stdContList.get(0).Commuity_User__c = STDUsr.id;
             update stdContList.get(0);
             
@@ -377,7 +377,7 @@ private with sharing class NES_IdamUtilitiesTest {
     public static testMethod void testAdditionalHouseholdMember(){
         Test.setMock(HttpCalloutMock.class, new IDAMCallout('Test', 200, 'Ok', false, false));
         CS_TestDataFactory factoryObj = new CS_TestDataFactory();
-		UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
+        UserRole usrRole = factoryObj.fetchUserRole('Pearson Community Role');
         String orgId = UserInfo.getOrganizationId();
         User usrObj = factoryObj.createNewUser('Cont0818'+orgId+'@pearson.com', usrRole.Id, 'ObjAdmin', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', UserInfo.getProfileId(),'LastName','Cont0818'+orgId+'@pearson.com');
@@ -387,11 +387,11 @@ private with sharing class NES_IdamUtilitiesTest {
             Id recordTypeIdHH  = Schema.SObjectType.Account.getRecordTypeInfosByName().get(CS_Constants.ACCOUNT_RECTYPE_HOUSEHOLD_ACCOUNT).getRecordTypeId(); 
             Account HHAccount = factoryObj.createNewAccount('HouseHoldAcc',recordTypeIdHH,null,null,null) ; // Household
             insert HHAccount;
-			List<List<Contact>> CommunityList=new List<List<Contact>>();
+            List<List<Contact>> CommunityList=new List<List<Contact>>();
             Id recordTypeIdCT = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_CARETAKER).getRecordTypeId();
-			list<Contact> CTHouseHold1ConList =  factoryObj.createListOfContacts('CTContatact', recordTypeIdCT,HHAccount.Id, null, 3);
+            list<Contact> CTHouseHold1ConList =  factoryObj.createListOfContacts('CTContatact', recordTypeIdCT,HHAccount.Id, null, 3);
             insert CTHouseHold1ConList;
-			
+            
             Id recordTypeIdSTD = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(CS_Constants.CONTACT_RECTYPE_STUDENTS).getRecordTypeId();
             List<Contact> stdContList = factoryObj.createListOfContacts('StdContact',recordTypeIdSTD,HHAccount.Id,CTHouseHold1ConList.get(0).id,3);
             insert stdContList;
@@ -402,11 +402,11 @@ private with sharing class NES_IdamUtilitiesTest {
             
             List<User> usrList = new List<User>();
             Profile CTProfile = [select id,name from profile where name='Caretaker Community User'];
-			Profile LCProfile = [select id,name from profile where name='Learning Coach Community User'];
+            Profile LCProfile = [select id,name from profile where name='Learning Coach Community User'];
             Profile STDProfile= [select id,name from profile where name='Student Community User'];
             User CTUsr = factoryObj.createnewPortalUser('CTUser@pearson.com', 'CTUser', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', CTProfile.Id,'LastName','CTser@pearson.com',CTHouseHold1ConList.get(0).id);
-			User LCUsr = factoryObj.createnewPortalUser('LCUser@pearson.com', 'LCUser', 'America/Los_Angeles', 'en_US', 
+            User LCUsr = factoryObj.createnewPortalUser('LCUser@pearson.com', 'LCUser', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', LCProfile.Id,'LastName','LCUser@pearson.com',lcContList.get(0).id);
             User STDUsr = factoryObj.createnewPortalUser('STDUser@pearson.com', 'STDUser', 'America/Los_Angeles', 'en_US', 
                                             'en_US','UTF-8','United States', STDProfile.Id,'LastName','LCUser@pearson.com',stdContList.get(0).id);
@@ -417,13 +417,13 @@ private with sharing class NES_IdamUtilitiesTest {
             Test.StartTest();
             insert usrList;
             lcContList.get(0).Commuity_User__c = LCUsr.id;
-			lcContList.get(0).Request_Type__c = 'Additional Household Member';
-			update lcContList.get(0);
+            lcContList.get(0).Request_Type__c = 'Additional Household Member';
+            update lcContList.get(0);
             system.assertEquals('Additional Household Member', lcContList.get(0).Request_Type__c);
             system.assertEquals(null, lcContList.get(0).SIS_Integration_Status__c);
             CTHouseHold1ConList.get(0).Commuity_User__c = CTUsr.id;
-			CTHouseHold1ConList.get(0).Request_Type__c = 'Additional Household Member';
-			update CTHouseHold1ConList.get(0);
+            CTHouseHold1ConList.get(0).Request_Type__c = 'Additional Household Member';
+            update CTHouseHold1ConList.get(0);
             system.assertEquals('Additional Household Member', CTHouseHold1ConList.get(0).Request_Type__c);
             system.assertEquals(null, CTHouseHold1ConList.get(0).SIS_Integration_Status__c);
             Test.StopTest();

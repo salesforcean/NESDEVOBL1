@@ -7,7 +7,7 @@ public with sharing class Peak_BaseControllerTest {
 
     @isTest
     public static void testGetSitePrefix() {
-    	system.assert(Peak_BaseController.getSitePrefix() != null);
+        system.assert(Peak_BaseController.getSitePrefix() != null);
     }
 
     // Test finding a user

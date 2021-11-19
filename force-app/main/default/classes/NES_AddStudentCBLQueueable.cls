@@ -13,7 +13,7 @@ public without sharing class NES_AddStudentCBLQueueable implements Queueable {
 
         List<hed__Program_Enrollment__c> programEnrollments = [
                 SELECT Id, hed__Contact__c, Start_Year__c, hed__Account__c, Final_Grade_Level__c, EntranceAgeEligibilityOverride__c,
-				    EntranceAgeEligibilitySystem__c, EntranceAgeEligibilityFinal__c,
+                    EntranceAgeEligibilitySystem__c, EntranceAgeEligibilityFinal__c,
                     (SELECT Id, Final_Grade_Level__c, Grade_Level_Requested__c, Program_Enrollment__c FROM Annual_Student_Information__r)
                 FROM hed__Program_Enrollment__c
                 WHERE Id = : programEnrollmentId
@@ -21,10 +21,10 @@ public without sharing class NES_AddStudentCBLQueueable implements Queueable {
 
         if(programEnrollments.size() > 0) {
 
-			//Mark Membring 3/19/2020  Moved from the enrollment triggers to reduce the soql count (154059)
-			programEnrollments = NES_BusinessLogicUtils.calculateAddressEligibility(programEnrollments);
+            //Mark Membring 3/19/2020  Moved from the enrollment triggers to reduce the soql count (154059)
+            programEnrollments = NES_BusinessLogicUtils.calculateAddressEligibility(programEnrollments);
             //Commented Deprecate Technology flag logic for US 476956
-			//programEnrollments = NES_BusinessLogicUtils.flagTechnologyAction(programEnrollments);
+            //programEnrollments = NES_BusinessLogicUtils.flagTechnologyAction(programEnrollments);
             update programEnrollments;
 
 
@@ -43,10 +43,10 @@ public without sharing class NES_AddStudentCBLQueueable implements Queueable {
                 NES_BusinessLogicUtils.runWhyFlagged = false;
                 update enrollments;
 
-				//Mark Membrino 2/24/2020 Moved this call from the enrollment trigger to here. 
-				Set<string> activePEIds = new Set<string>();
-				activePEIds.add(programEnrollmentId);
-				NES_BusinessLogicUtils.updateContactStartYear(activePEIds);
+                //Mark Membrino 2/24/2020 Moved this call from the enrollment trigger to here. 
+                Set<string> activePEIds = new Set<string>();
+                activePEIds.add(programEnrollmentId);
+                NES_BusinessLogicUtils.updateContactStartYear(activePEIds);
             } catch(Exception ex) { System.debug('Exception Thrown:' + ex.getMessage()); }
 
 

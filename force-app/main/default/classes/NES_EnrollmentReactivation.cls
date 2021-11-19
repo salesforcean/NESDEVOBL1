@@ -98,8 +98,8 @@ public without sharing class NES_EnrollmentReactivation {
     //         OR Enrollment_Component__r.RecordType.Name = 'Question'  OR Enrollment_Component__r.RecordType.Name = 'Question Group'
     //         OR Enrollment_Component__r.RecordType.Name = 'Document' OR Enrollment_Component__r.RecordType.Name = 'Flag'
     //         OR Enrollment_Component__r.RecordType.Name = 'Message' OR Enrollment_Component__r.RecordType.Name = 'Text' )) 
-	// 	//added for bug 149148
-	//     or ( (  Status__c= 'In Progress' or Status__c= 'Complete' ) 
+    //  //added for bug 149148
+    //     or ( (  Status__c= 'In Progress' or Status__c= 'Complete' ) 
     //         and (Enrollment_Component__r.RecordType.Name = 'Stage' AND Order__c != 1))))]); 
         
     //     System.debug('ecaList:' + JSON.serialize(ecaList));            
@@ -256,7 +256,7 @@ public without sharing class NES_EnrollmentReactivation {
     //     List<Enrollment_Document__c> edToUpdate = new List<Enrollment_Document__c>();
 
     //     for (Enrollment_Document__c ed : edlist) {
-	// 	    edToUpdate.add(new Enrollment_Document__c(id=ed.id, status_reason__c=ED_REACTIVATION_REASON_CODE));
+    //      edToUpdate.add(new Enrollment_Document__c(id=ed.id, status_reason__c=ED_REACTIVATION_REASON_CODE));
     //     }
     //     if (edList.size()>0) {
     //         update edToUpdate;
@@ -307,7 +307,7 @@ public without sharing class NES_EnrollmentReactivation {
     //             Science_Placement_Level__c = null,
     //             Final_Grade_Level__c = null,
     //             AutomatedPlacementExclude__c = false,
-	// 			StudentPlacementBucket__c = null
+    //          StudentPlacementBucket__c = null
     //         ));
     //     }
     //     if (toUpdateASIs.size()>0) {

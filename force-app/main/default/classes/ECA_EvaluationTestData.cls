@@ -1,8 +1,8 @@
 /**
     @class:         ECA_EvaluationTestData           
-	@description:   Data Class, holds all the values needed for ECA re-write test classes.
-	@author: 		Mark Membrino
-	@createdDate:   9/9/2020
+    @description:   Data Class, holds all the values needed for ECA re-write test classes.
+    @author:        Mark Membrino
+    @createdDate:   9/9/2020
     @classes used in: 
         => ECA_CriteriaEvaluatorTest
     @Note: 
@@ -67,10 +67,10 @@ public class ECA_EvaluationTestData
 
         // * Create ECA records for the Program Enrollment
         List<Enrollment_Component_Affiliation__c> ecas = createECAsByAcademicProgram(false, academicProgram.Id, studPE.Id);
-		insert ecas;
-		
-		// * Create Opportunity & Insert
-		Opportunity studPEOppty = Peak_TestUtils.createOpportunity(studPE.Id);
+        insert ecas;
+        
+        // * Create Opportunity & Insert
+        Opportunity studPEOppty = Peak_TestUtils.createOpportunity(studPE.Id);
     }
 
     public void setupAdditionalStages(String ecaStatus)
@@ -396,7 +396,7 @@ public class ECA_EvaluationTestData
         return (
             [
                 SELECT  Id, Name, Status__c, Order__c, Date_Completed__c, Program_Enrollment__c, Enrollment_Component__c, 
-						Enrollment_Component__r.Name, Enrollment_Component__r.RecordType.Name, Enrollment_Component__r.RecordTypeId
+                        Enrollment_Component__r.Name, Enrollment_Component__r.RecordType.Name, Enrollment_Component__r.RecordTypeId
                 FROM    Enrollment_Component_Affiliation__c
                 WHERE   Program_Enrollment__c = :studPE
             ]
@@ -458,21 +458,21 @@ public class ECA_EvaluationTestData
     }
     
     public Enrollment_Component_Affiliation__c getECAByECName(String ecName, String byRecTypeString)
-	{	
-		for (hed__Program_Enrollment__c pe : this.mapPEs.values())
-        {		
+    {   
+        for (hed__Program_Enrollment__c pe : this.mapPEs.values())
+        {       
          
             for (Enrollment_Component_Affiliation__c eca : pe.Enrollment_Component_Affiliation__r)
             {
-				if (!byRecTypeString.containsIgnoreCase(eca.Enrollment_Component__r.RecordType.Name))
-					continue;
+                if (!byRecTypeString.containsIgnoreCase(eca.Enrollment_Component__r.RecordType.Name))
+                    continue;
 
-				if (eca.Enrollment_Component__r.Name.containsIgnoreCase(ecName))
-					return eca;
+                if (eca.Enrollment_Component__r.Name.containsIgnoreCase(ecName))
+                    return eca;
             }
-		}
-		
-		return null;
+        }
+        
+        return null;
     }
     
     public Map<Id, hed__Program_Enrollment__c> getPEAndChildren() 
@@ -515,8 +515,8 @@ public class ECA_EvaluationTestData
         for (hed__Program_Enrollment__c pe : mapPEs.values())
         {
             if (this.studPEId==null)
-				studPEId = pe.Id;
-				
+                studPEId = pe.Id;
+                
             // gather all ECAs
             for (Enrollment_Component_Affiliation__c eca : pe.Enrollment_Component_Affiliation__r)
             {

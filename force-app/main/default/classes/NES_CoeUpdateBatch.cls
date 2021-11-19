@@ -14,7 +14,7 @@ global class NES_CoeUpdateBatch implements  Database.Batchable<sObject>, Databas
         testpeIdList.add('a09f0000007VIhrAAG');
         testpeIdList.add('a09f0000007VdU0AAK');
         testpeIdList.add('a09f0000007VdGIAA0');
-		*/
+        */
         // Get the PE records to be cleansed
         //String batchQueryStr = 'SELECT Id, Processed_in_V2__c, Status__c,Enrollment_Type__c, Start_Year__c, hed__Account__c, hed__Account__r.FirstDayforStudents__c, hed__Account__r.ParentId, hed__Account__r.PushToSecondSemester__c from hed__Program_Enrollment__c where Status__c =: complStatus AND Start_Year__c =: schYrId AND (Processed_in_V2__c =: fls OR SIS_Integration_Status__c  =: blankString) order by createddate desc';         
         //String batchQueryStr = 'SELECT Id, Processed_in_V2__c, Status__c,Enrollment_Type__c, Start_Year__c, hed__Account__c, hed__Account__r.FirstDayforStudents__c, hed__Account__r.ParentId, hed__Account__r.PushToSecondSemester__c from hed__Program_Enrollment__c where Id in : testpeIdList AND Status__c =: complStatus AND Start_Year__c =: schYrId AND SIS_Integration_Status__c  =: blankString order by createddate desc limit 10';         

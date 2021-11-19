@@ -377,8 +377,8 @@ private class  NES_EnrollmentCompAffiliationTriggerTest {
         update ecaAffiliation;
         Annual_Student_Information__c   studInfo=[select id,Grade_Level_Requested__c,AutomatedPlacementScore__c FROM Annual_Student_Information__c Where Program_Enrollment__c=:ecaAffiliation.Program_Enrollment__c];
         studInfo.RecommendedAutoPlacement__c = 'Yes';
-		studInfo.AutomatedPlacementExclude__c = false;
-		update studInfo;
+        studInfo.AutomatedPlacementExclude__c = false;
+        update studInfo;
 
         Enrollment_Component__c  prEn=[select id from Enrollment_Component__c Where Status__c='Not Complete' ];
         ecaAffiliation.Enrollment_Component__c=prEn.Id;
@@ -393,7 +393,7 @@ private class  NES_EnrollmentCompAffiliationTriggerTest {
         List<String> strList=new List<string>{'Math','Science'};
             String opt=String.join(strList, ';');
         prEn1 .SIF_AcademicSupportNeeds__c=opt;
-		prEn1.status__c = 'In Progress';
+        prEn1.status__c = 'In Progress';
         update prEn1;
         // Update ASI Grade Request
         studInfo.Grade_Level_Requested__c='2';

@@ -7,7 +7,7 @@
 *         Added code by Anitha P for #107180 User Story (Task 108660) on 2019-09-10
  * Added other Age Eligibility fields needed for calcuations US114797 (Andrew Sim) on 11/05/19
  *         added 2019-11-18 initial for #113765 User Story (Chinnamanaidu Neerasa)
- * 		2020-04-23 Test setup and method for US 125320 (Krishna Peddanagammol)
+ *      2020-04-23 Test setup and method for US 125320 (Krishna Peddanagammol)
 */
 @isTest
 public class NES_EnrollmentDocTriggerTest {
@@ -456,30 +456,30 @@ public class NES_EnrollmentDocTriggerTest {
             // start test.
             Test.startTest();
             enrollmentDocument1.Type__c = 'Charter School Notification Form';
-        	enrollmentDocument1.Status_Reason__c = 'Submitted';
+            enrollmentDocument1.Status_Reason__c = 'Submitted';
             update enrollmentDocument1;
             Document_Review__c parDocRev = new Document_Review__c ();
             if (academicAccount.Id!= null){
             parDocRev = [SELECT id,Status__c FROM Document_Review__c WHERE Academic_Program__c =: academicAccount.Id];
-            }	
+            }   
            //Stop test.
             Test.stopTest();
             
             System.assertEquals('In Progress', parDocRev.Status__c );
             
         }
-  	
+    
     // Test method for US#125320 by Krishna Peddanagammol on 2020-04-23 
     static testMethod void updateDocPendingStatusTest(){
-		Enrollment_Document__c ed = [SELECT Id, Enrollment_Component_Affiliation__c FROM Enrollment_Document__c 
+        Enrollment_Document__c ed = [SELECT Id, Enrollment_Component_Affiliation__c FROM Enrollment_Document__c 
                                      WHERE Type__c = 'Immunization Records'];
-        Test.startTest(); // start test  	
+        Test.startTest(); // start test     
             ed.Status_Reason__c = 'Pending';
-        	update ed;    
-        	Enrollment_Component_Affiliation__c eca = [SELECT Id, Program_Enrollment__r.Id, Status__c FROM Enrollment_Component_Affiliation__c 
+            update ed;    
+            Enrollment_Component_Affiliation__c eca = [SELECT Id, Program_Enrollment__r.Id, Status__c FROM Enrollment_Component_Affiliation__c 
                                                    WHERE Id = :ed.Enrollment_Component_Affiliation__c Limit 1];
-        	
+            
         Test.stopTest(); //Stop test            
-        System.assertEquals('In Progress', eca.Status__c );        	        
-     }	
+        System.assertEquals('In Progress', eca.Status__c );                 
+     }  
 }

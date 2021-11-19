@@ -2,7 +2,7 @@
 
 @class:         EvaluationUtils           
 @description:   Part of rewrite of the ECA assignment and completion logic, Created to support the new method for ECA Evaluation and Completion
-@author: 		Mark Membrino
+@author:        Mark Membrino
 @createdDate:   7/27/2020
 */
 
@@ -398,7 +398,7 @@ public class EvaluationUtils  {
                 i++;
                 if (newAffiliations.size() > 0){
                     upsert newAffiliations;
-                	break;//Breaking the loop as the DML executed and no exceptions
+                    break;//Breaking the loop as the DML executed and no exceptions
                 }
             }
             catch(DMLException e) {

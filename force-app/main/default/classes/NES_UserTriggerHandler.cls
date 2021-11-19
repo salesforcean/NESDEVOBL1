@@ -30,16 +30,16 @@ public with sharing class NES_UserTriggerHandler {
         
         // set document_download__c values in utility settings if the user is enabled for document download
         for (User obj : (List<User>) newList) {  
-	        if (utilitySettingsMap.containsKey(obj.Id)) {
-	        	// update document_download__c 
-	            Utility_Settings__c utilitySettings = utilitySettingsMap.get(obj.Id);
-	            utilitySettings.Document_Download__c = obj.Document_Download__c;
-	            upsertList.add(utilitySettings);
-	        } 
-        	else if (obj.Document_Download__c == true){
-        		upsertList.add(new Utility_Settings__c(SetupOwnerId = obj.Id, Document_Download__c = obj.Document_Download__c));    
-	        }
-        	
+            if (utilitySettingsMap.containsKey(obj.Id)) {
+                // update document_download__c 
+                Utility_Settings__c utilitySettings = utilitySettingsMap.get(obj.Id);
+                utilitySettings.Document_Download__c = obj.Document_Download__c;
+                upsertList.add(utilitySettings);
+            } 
+            else if (obj.Document_Download__c == true){
+                upsertList.add(new Utility_Settings__c(SetupOwnerId = obj.Id, Document_Download__c = obj.Document_Download__c));    
+            }
+            
         }
         // system.debug('upsertList: ' + upsertList);
         

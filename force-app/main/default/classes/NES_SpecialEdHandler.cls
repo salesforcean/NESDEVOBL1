@@ -24,7 +24,7 @@ public class NES_SpecialEdHandler {
             List<SObject> validRecords = new List<SObject>();
 
             for (Special_Education__c specialEducation : newList) {
-	            validRecords.add(specialEducation);
+                validRecords.add(specialEducation);
             }
 
            if (validRecords.size() > 0) {
@@ -95,8 +95,8 @@ public class NES_SpecialEdHandler {
 
             for (Special_Education__c specialEducation : newMap.values()) {
             //    if ( (specialEducation.IEPLastUpdated__c != oldMap.get(specialEducation.Id).IEPLastUpdated__c) ||
-			//		 (specialEducation.IEPHistory__c != oldMap.get(specialEducation.Id).IEPHistory__c)  )
-			//	{
+            //       (specialEducation.IEPHistory__c != oldMap.get(specialEducation.Id).IEPHistory__c)  )
+            //  {
                     validRecords.add(specialEducation);
            //     }
             }

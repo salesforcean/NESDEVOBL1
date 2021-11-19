@@ -37,7 +37,7 @@ public class NES_DocumentCentralControllerTest {
         Enrollment_Component__c formComponent = Peak_TestUtils.createEnrollmentComponent('TestForm','Form');
         Enrollment_Component__c messageComponent = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Message', true);
         Enrollment_Component__c messageComponent1 = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Message', true);
-	    Enrollment_Component__c formComponentObj = Peak_TestUtils.createEnrollmentComponent('TestForm','Form');
+        Enrollment_Component__c formComponentObj = Peak_TestUtils.createEnrollmentComponent('TestForm','Form');
         Enrollment_Component_Relationship__c enrollCompRelationship = Peak_TestUtils.createEnrollmentComponentRelationship(messageComponent.Id, formComponent.Id);
         Enrollment_Component_Relationship__c enrollCompRelationshipobj = Peak_TestUtils.createEnrollmentComponentRelationship(messageComponent1.Id, formComponentObj.Id);
         Enrollment_Component__c formComponent1 = Peak_TestUtils.createEnrollmentComponent('TestForm','Form');

@@ -66,7 +66,7 @@ public without sharing class NES_ECACompletion {
             List<hed__Program_Enrollment__c> programEnrollments = new List<hed__Program_Enrollment__c> ();
             Map<Id, hed__Program_Enrollment__c> newECAModelPEs = new Map<Id, hed__Program_Enrollment__c> ();
             Map<Id, hed__Program_Enrollment__c> oldECAModelPEs = new Map<Id, hed__Program_Enrollment__c> ();
-			// Below line commented for Bug 430196 To Many SOQL Queries
+            // Below line commented for Bug 430196 To Many SOQL Queries
             //for (hed__Program_Enrollment__c pe : [SELECT Id,Enrollment_Type__c, hed__Account__c, hed__Contact__c, hed__Contact__r.RecordType.Name, hed__Contact__r.AccountId, Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c, hed__Account__r.Use_Updated_ECA_Process__c FROM hed__Program_Enrollment__c WHERE Id IN :peToObjectMap.keySet()] )
             for (hed__Program_Enrollment__c pe :GenericSOQLQueries.programEnrollmentDetails(peToObjectMap.keySet()))
             {

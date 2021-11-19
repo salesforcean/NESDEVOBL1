@@ -4,7 +4,7 @@
 * Test Class : NES_BatchTimeCriteriaAssignmentOnlyTest
 * Description : This class utilizes NES_ECA_Assign_TimeCriteria_AcademicProg__mdt metadata, 
 * Grabes the Academic programs from the Custom metadata and runs manually on specific times for all kids that are in progress, Associated to the Academic programs .
-* 			            
+*                       
 */
 
 global with sharing class NES_BatchTimeCriteriaAssignmentOnly implements DataBase.Batchable<SObject>, Schedulable {

@@ -101,8 +101,8 @@ global class NES_EnrollmentCompentBuilder  {
 
                 //Do all the work of getting the EC data.
 
-				//Sravani -Added field in the query -Child_Enrollment_Component__r.Name
-				stageRelationships = [
+                //Sravani -Added field in the query -Child_Enrollment_Component__r.Name
+                stageRelationships = [
 
                     SELECT Child_Enrollment_Component__r.Name,Child_Enrollment_Component__c,Child_Enrollment_Component__r.Document_Type__c, Child_Enrollment_Component__r.Assignment_Logic__c, Id, Order__c, Parent_Enrollment_Component__c,
 
@@ -122,13 +122,13 @@ global class NES_EnrollmentCompentBuilder  {
                 }
 
 
-				formRelationships = [
+                formRelationships = [
                         SELECT Child_Enrollment_Component__r.Name,Child_Enrollment_Component__c, Order__c,Child_Enrollment_Component__r.Document_Type__c, Child_Enrollment_Component__r.Assignment_Logic__c,
-								Child_Enrollment_Component__r.Component_Type__c, Parent_Enrollment_Component__c,
+                                Child_Enrollment_Component__r.Component_Type__c, Parent_Enrollment_Component__c,
 
                                 Child_Enrollment_Component__r.RecordType.Name,Child_Enrollment_Component__r.Needed_for_ITR__c, Child_Enrollment_Component__r.Completion_Logic__c,Child_Enrollment_Component__r.Needed_for_Re_enrollment__c
 
-						FROM Enrollment_Component_Relationship__c
+                        FROM Enrollment_Component_Relationship__c
 
                         WHERE Parent_Enrollment_Component__c IN :stageIds
                         AND (Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.FORM_RT
@@ -144,8 +144,8 @@ global class NES_EnrollmentCompentBuilder  {
 
                 sectionRelationships = [
 
-						SELECT Child_Enrollment_Component__r.Name,Child_Enrollment_Component__c, Order__c, Parent_Enrollment_Component__c, 
-						Child_Enrollment_Component__r.Assignment_Logic__c, Child_Enrollment_Component__r.Component_Type__c,
+                        SELECT Child_Enrollment_Component__r.Name,Child_Enrollment_Component__c, Order__c, Parent_Enrollment_Component__c, 
+                        Child_Enrollment_Component__r.Assignment_Logic__c, Child_Enrollment_Component__r.Component_Type__c,
 
                         Child_Enrollment_Component__r.RecordType.Name,Child_Enrollment_Component__r.Document_Type__c,Child_Enrollment_Component__r.Needed_for_ITR__c, Child_Enrollment_Component__r.Completion_Logic__c,Child_Enrollment_Component__r.Needed_for_Re_enrollment__c
 

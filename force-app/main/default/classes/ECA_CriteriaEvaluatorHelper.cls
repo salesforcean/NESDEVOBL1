@@ -1,8 +1,8 @@
 /**
     @class:         ECA_CriteriaEvaluatorHelper           
-	@description:   Part of rewrite of the ECA assignment and completion logic, runs SOQL queries across relevant sObjects.
-	@author: 		Mark Membrino
-	@createdDate:   8/31/2020
+    @description:   Part of rewrite of the ECA assignment and completion logic, runs SOQL queries across relevant sObjects.
+    @author:        Mark Membrino
+    @createdDate:   8/31/2020
 */
 public class ECA_CriteriaEvaluatorHelper {
 

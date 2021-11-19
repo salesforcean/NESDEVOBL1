@@ -15,7 +15,7 @@ public class NES_ITRUtilities {
             // Naveen -- Addded below Code as a part of DEFECT 448995
             // Get the list of Verified and Non Learning Coach CT contacts under the Students PE Account
             //Student Record Type Id
-        	Id studentRecordTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(NES_DashboardUtilities.STUDENT_RT).getRecordTypeId();
+            Id studentRecordTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get(NES_DashboardUtilities.STUDENT_RT).getRecordTypeId();
             List <Contact> ctList = [Select Id, Recordtype.name from Contact where AccountId =: studentContact[0].AccountId and RecordtypeId !=: studentRecordTypeId 
                                      and Unverified__c =: false and V2_Role__c != : 'Learning Coach'];
             List <Id> ctIdList = new List <Id> ();

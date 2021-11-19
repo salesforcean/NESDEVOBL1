@@ -15,7 +15,7 @@ public with sharing class NES_DatatableFSCTestClass {
     
     // dataSetup here...
     @testSetup
-	static void testSetup() {
+    static void testSetup() {
         Account testAccount = Peak_TestUtils.createTestAccount();
         Contact testContact = Peak_TestUtils.createTestContact();
         // School_Year__c schoolYear = Peak_TestUtils.createSchoolYears('Test School Year', System.today());
@@ -35,11 +35,11 @@ public with sharing class NES_DatatableFSCTestClass {
         Contact careTakerContact = Peak_TestUtils.createTestContact('Caretaker', institutionAccount.Id);
         //Create a care taker user for community
         User careTaker = Peak_TestUtils.CreatePortalCaretTakerUser(careTakerContact.Id);
-	}
+    }
 
     // Test fetching of data from aura component.
-	@isTest
-	public static void testGetData() {
+    @isTest
+    public static void testGetData() {
         
         List<String> queryParams  =  new List<String>{queryFields, querysObjectAPIName, whereClauseIDFieldAPIName, whereClauseIDFieldValue};
         List<sObject> objResults;
@@ -63,11 +63,11 @@ public with sharing class NES_DatatableFSCTestClass {
         system.assertEquals(null, err, 'exceptions!');
 
 
-	}
+    }
 
     // Test updating of data from aura component.
-	@isTest
-	public static void testUpdateRecords() {
+    @isTest
+    public static void testUpdateRecords() {
 
         List<Account> accs = [SELECT Id, Name from Account];
         // Map<String, String> dependentPicklistByControllingFieldValue;
@@ -89,11 +89,11 @@ public with sharing class NES_DatatableFSCTestClass {
         system.assertEquals(null, err, 'exceptions!');
 
 
-	}
+    }
 
     // Test insertRecords from aura component.
-	@isTest
-	public static void testInsertRecords() {
+    @isTest
+    public static void testInsertRecords() {
 
 
         List<Account> accList = new List<Account>();
@@ -121,11 +121,11 @@ public with sharing class NES_DatatableFSCTestClass {
         system.assertEquals(null, err, 'exceptions!');
 
 
-	}
+    }
 
     // Test createPriorSchoolRecord & InsertRecordGeneric from aura component.
-	@isTest
-	public static void testCreatePriorSchoolRecord() {
+    @isTest
+    public static void testCreatePriorSchoolRecord() {
 
 
         // QUERY TEST DATA...

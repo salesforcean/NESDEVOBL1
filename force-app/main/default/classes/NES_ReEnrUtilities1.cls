@@ -63,8 +63,8 @@ public without Sharing class NES_ReEnrUtilities1 {
                                 ( 
                                     Status__c = 'Complete' 
                                     AND 
-									Enrollment_Component__r.Component_Type__c != : 'Household'
-									AND
+                                    Enrollment_Component__r.Component_Type__c != : 'Household'
+                                    AND
                                     Enrollment_Component__r.RecordType.Name 
                                         IN ('Section', 'Form', 'Question', 'Question Group', 'Document', 'Flag', 'Message', 'Text') 
                                 )
@@ -73,7 +73,7 @@ public without Sharing class NES_ReEnrUtilities1 {
                                     (  
                                         Status__c IN ('In Progress', 'Complete')
                                         AND 
-                                        (	
+                                        (   
                                             Enrollment_Component__r.RecordType.Name = 'Stage' 
                                             AND 
                                             Order__c != 1
@@ -98,7 +98,7 @@ public without Sharing class NES_ReEnrUtilities1 {
             }
             
 
-		List<Enrollment_Component_Affiliation__c> ecaToUpdate = new List<Enrollment_Component_Affiliation__c>();
+        List<Enrollment_Component_Affiliation__c> ecaToUpdate = new List<Enrollment_Component_Affiliation__c>();
         //Added for testing
        List<Enrollment_Component_Affiliation__c> StageEcaToUpdate = new List<Enrollment_Component_Affiliation__c>();
        Set<Id> StageECASet = new Set<Id>();
@@ -201,7 +201,7 @@ public without Sharing class NES_ReEnrUtilities1 {
             logger.logException('There is some issue with the ReEnrollment'+studentPEId, e);
             logger.saveLogs();
             return null;
-    	}
+        }
     }
     
     

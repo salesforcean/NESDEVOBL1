@@ -4,7 +4,7 @@
 global class ecrNodeQueue {
     
     /**
-	* 	@ALIKM 20/apr/2020- commenting out changes
+    *   @ALIKM 20/apr/2020- commenting out changes
 
         private List<Map<Id, ecrNode>> nodes;
     
@@ -40,5 +40,5 @@ global class ecrNodeQueue {
         public Boolean isEmpty() {
             return (nodes.size()==0);
         }
-	*/
+    */
 }

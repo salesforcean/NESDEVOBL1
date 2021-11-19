@@ -1,8 +1,8 @@
 /**
     @class:         ecrProcessData           
-	@description:   Data Class to hold Academic Program related data based on ECRs.
-	@author: 		Mark Membrino
-	@createdDate:   9/10/2020
+    @description:   Data Class to hold Academic Program related data based on ECRs.
+    @author:        Mark Membrino
+    @createdDate:   9/10/2020
 */
 public class ecrProcessData 
 {   

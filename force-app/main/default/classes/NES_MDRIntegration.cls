@@ -48,9 +48,9 @@ public without sharing class NES_MDRIntegration {
         // Make a http request with the given request
         try {
             Http http = new Http();
-			HttpResponse response = new HttpResponse();
-			if (!Test.isRunningTest())
-				response = http.send(request);
+            HttpResponse response = new HttpResponse();
+            if (!Test.isRunningTest())
+                response = http.send(request);
             String responseBody = response.getBody().replaceAll('@odata.context', 'dataContext');
             responseBody = responseBody.replaceAll('@search.score', 'searchScore');
             System.debug('Response===>>>' + responseBody);

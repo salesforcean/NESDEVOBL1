@@ -1,8 +1,8 @@
 /**
     @class:         ExpressionParserTest           
-	@description:   Test coverage for expression evaluator, part of rewrite of the ECA assignment and completion logic.
-	@author: 		Mark Membrino
-	@createdDate:   8/31/2020
+    @description:   Test coverage for expression evaluator, part of rewrite of the ECA assignment and completion logic.
+    @author:        Mark Membrino
+    @createdDate:   8/31/2020
     @classes-covered with coverage snapshot: 
         => SyntaxKind (NaN% coverage) // enum class
         => SyntaxNode (100% coverage)

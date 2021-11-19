@@ -44,7 +44,7 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
                         Enrollment_Component_Affiliation__c n = new Enrollment_Component_Affiliation__c(id = affiliation.id, Status__c = ecsToUpdate.Status__c );
                         ecas.add(n);          
                     }                        
-                }            	
+                }               
             }            
         }
         System.debug('ECAs 11.size()'+ecas.size());
@@ -75,15 +75,15 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
         }
         System.debug('updatePECs.size()'+updatePECs.size());
         if(updatePECs.size()>0)
-		    Database.update(updatePECs, false); 
+            Database.update(updatePECs, false); 
         ////////////
     }
     
     global void finish(Database.BatchableContext BC) {
         
     }
-	
-	//Constructor which will prepare  mapAcademicProgramWithGrade map
+    
+    //Constructor which will prepare  mapAcademicProgramWithGrade map
     public NES_ECA_Update_Batch(){
         Date dT = Date.Today();
         Date todayDate;
@@ -92,7 +92,7 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
             todayDate = testRec.Date_to_be_Updated_On__c;
         }
         else
-        	todayDate = date.newinstance(dT.year(), dT.month(), dT.day()); 
+            todayDate = date.newinstance(dT.year(), dT.month(), dT.day()); 
         mapAcademicProgramWithGrade =  new Map<String, List<NES_ECA_Update__mdt>>(); 
         enrollmentComponents = new Set<String>();
         for(NES_ECA_Update__mdt  ref: [Select Id, Date_to_be_Updated_On__c,Grade_level__c, Academic_Program__c, Enrollment_Component__c, Status__c,Type__c from NES_ECA_Update__mdt where Date_to_be_Updated_On__c=:todayDate ORDER BY Grade_level__c DESC]){
@@ -110,7 +110,7 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
                     integer j =0;
                     do{
                         j++;
-                    	mapAcademicProgramWithGrade.get(ref.Academic_Program__c+'|'+j).add(ref);     
+                        mapAcademicProgramWithGrade.get(ref.Academic_Program__c+'|'+j).add(ref);     
                     }while(j<12);                     
                 }                
             }else{
@@ -121,7 +121,7 @@ global class NES_ECA_Update_Batch  implements DataBase.Batchable<SObject>, Sched
                      mapAcademicProgramWithGrade.get(ref.Academic_Program__c+'|'+ref.Grade_level__c).add(ref);
                 }
             }
-            enrollmentComponents.add(ref.Enrollment_Component__c);    	
+            enrollmentComponents.add(ref.Enrollment_Component__c);      
         } 
             enrollmentComponentCriterias = [SELECT  Criteria__c, Criteria__r.Criteria_Field__c, Most_Recent__c, Question_Group__c, School_Year__c, Student_or_Household__c  
                                         FROM    Enrollment_Component_Criteria__c

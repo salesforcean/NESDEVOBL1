@@ -156,10 +156,10 @@ and using those child components get the required component information
         List<Grade_Level__c> gradeLevels =[SELECT Id, Name FROM Grade_Level__c where Id in (Select Grade_Level__c from Program_Grade_Level__c where Academic_Program__r.name=:acc.name 
                                                                                             AND ((Registration_Start_Date__c <= :todayDate AND Registration_End_Date__c >= :todayDate) OR 
                                                                                                 (Academic_Program__r.Registration_Start_Date__c <= :todayDate AND Academic_Program__r.Registration_End_Date__c >= :todayDate AND Registration_Start_Date__c = null AND Registration_End_Date__c =null))) order by order__c];
-	 
+     
         
         System.debug('grades:'+gradeLevels);
-	   return gradeLevels;
+       return gradeLevels;
         
     } 
    
@@ -211,7 +211,7 @@ and using those child components get the required component information
 
    @AuraEnabled
     public static NES_ReEnrUtilities.ReEnrResults doReEnrollment(Id studentContactId,Id studentPeId,String callType){
-    	return	NES_ReEnrUtilities.reenrollingStudent(studentContactId,studentPeId,callType);       
+        return  NES_ReEnrUtilities.reenrollingStudent(studentContactId,studentPeId,callType);       
 
 
 
@@ -220,11 +220,11 @@ and using those child components get the required component information
     @AuraEnabled
     public static NES_ReEnrUtilities.ReEnrResults InitReEnrollment(Id studentContactId,Id studentPeId,String callType){
         
-    	return	NES_ReEnrUtilities.InitreenrollingStudent(studentContactId,studentPeId,callType);       
+        return  NES_ReEnrUtilities.InitreenrollingStudent(studentContactId,studentPeId,callType);       
 
 
     } 
-	
+    
     
     @AuraEnabled
 
@@ -232,16 +232,16 @@ and using those child components get the required component information
         
 
         String result = '';
-    	hed__Program_Enrollment__c peRecord = [Select Id,Status__c,hed__Contact__c,Enrollment_Type__c,
+        hed__Program_Enrollment__c peRecord = [Select Id,Status__c,hed__Contact__c,Enrollment_Type__c,
                                                 (select id,Withdrawal_Category__c from Enrollments__r order by createddate desc)  
-                                                from hed__Program_Enrollment__c where Id =: peId limit  1];	
+                                                from hed__Program_Enrollment__c where Id =: peId limit  1]; 
       
-				// 	peRecord.Enrollment_Type__c == 'Initial Enrollment'	Added by Ravi 473192 for Renrollment process						
-        	if(peRecord.Status__c == 'Inactive' &&( peRecord.Enrollment_Type__c == 'Returning Student'||peRecord.Enrollment_Type__c == 'Initial Enrollment'))
+                //  peRecord.Enrollment_Type__c == 'Initial Enrollment' Added by Ravi 473192 for Renrollment process                        
+            if(peRecord.Status__c == 'Inactive' &&( peRecord.Enrollment_Type__c == 'Returning Student'||peRecord.Enrollment_Type__c == 'Initial Enrollment'))
             {
-				//End here
+                //End here
 
-            	result = 'InitReActivation';
+                result = 'InitReActivation';
             }
             else            
             if((!peRecord.Enrollments__r.isEmpty()) && ((peRecord.Status__c == 'Withdrawn' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'No Show') || (peRecord.Status__c == 'Complete' && peRecord.Enrollments__r[0].Withdrawal_Category__c == 'Not Returning')))
@@ -268,5 +268,5 @@ and using those child components get the required component information
         update lstPE;
         return lstPE;
     }
-	 //End for Open Application User story 451172 -->DK
+     //End for Open Application User story 451172 -->DK
 }

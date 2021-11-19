@@ -13,7 +13,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         Account account = Peak_TestUtils.createTestAccount();
         //Create SchoolYear
         School_Year__c schlYear = Peak_TestUtils.createSchoolYears('SchoolTest', System.today());
-		schlYear.Start_Date__c = Date.parse('12/09/19');
+        schlYear.Start_Date__c = Date.parse('12/09/19');
         schlYear.End_Date__c = Date.parse('12/09/20');
         update schlYear;
        //Create Recordtype
@@ -30,29 +30,29 @@ private class NES_AnnualStudentInfoUtilities2Test {
         List<Enrollment_Component__c> componentList = new List <Enrollment_Component__c>();
         Enrollment_Component__c processComponent = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
         //processComponent.Assignment_Logic__c = '1';
-		processComponent.Document_Type__c = 'Report Card';
-		//processComponent.Required_to_Complete_for_Auto_Placement__c = true;
-		Enrollment_Component__c processComponent2 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
+        processComponent.Document_Type__c = 'Report Card';
+        //processComponent.Required_to_Complete_for_Auto_Placement__c = true;
+        Enrollment_Component__c processComponent2 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
         processComponent2.Assignment_Logic__c = '1';
-		processComponent2.Document_Type__c = 'Individualized Education Program';
-		Enrollment_Component__c processComponent3 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
+        processComponent2.Document_Type__c = 'Individualized Education Program';
+        Enrollment_Component__c processComponent3 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
         processComponent3.Assignment_Logic__c = '1';
-		processComponent3.Document_Type__c = 'Evaluation';
-		Enrollment_Component__c processComponent4 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
+        processComponent3.Document_Type__c = 'Evaluation';
+        Enrollment_Component__c processComponent4 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
         processComponent4.Assignment_Logic__c = '1';
-		processComponent4.Document_Type__c = 'IEP Exit Documentation';
-		Enrollment_Component__c processComponent5 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
+        processComponent4.Document_Type__c = 'IEP Exit Documentation';
+        Enrollment_Component__c processComponent5 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
         processComponent5.Assignment_Logic__c = '1';
-		processComponent5.Document_Type__c = 'Home School Prior Academic History';
-		Enrollment_Component__c processComponent6 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
+        processComponent5.Document_Type__c = 'Home School Prior Academic History';
+        Enrollment_Component__c processComponent6 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
         processComponent6.Assignment_Logic__c = '1';
-		processComponent6.Document_Type__c = 'Unofficial Transcript';
-		Enrollment_Component__c processComponent7 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
+        processComponent6.Document_Type__c = 'Unofficial Transcript';
+        Enrollment_Component__c processComponent7 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
         processComponent7.Assignment_Logic__c = '1';
-		processComponent7.Document_Type__c = 'Gifted Documentation';
-		Enrollment_Component__c processComponent8 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
+        processComponent7.Document_Type__c = 'Gifted Documentation';
+        Enrollment_Component__c processComponent8 = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Document', false);
         processComponent8.Assignment_Logic__c = '1';
-		processComponent8.Document_Type__c = 'State Test Scores';
+        processComponent8.Document_Type__c = 'State Test Scores';
         Enrollment_Component__c stageComponent = Peak_TestUtils.createEnrollmentComponent(academicAccount.Id, 'Stage', false);
         stageComponent.Required_to_Complete_for_Auto_Placement__c = true;
 
@@ -88,7 +88,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         progEnrollment2.Start_Year__c = currentSchoolYear.Id;
         progEnrollment2.PlacementFlag__c  = 'Pending Assessment';
         progEnrollment2.Status__c = 'In Progress';
-		progEnrollment2.hed__Account__c  = academicAccount.Id;
+        progEnrollment2.hed__Account__c  = academicAccount.Id;
         progEnrollment2.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment2);
         //Create Program Enrollment Record
@@ -96,7 +96,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         progEnrollment3.Start_Year__c = currentSchoolYear.Id;
         progEnrollment3.PlacementFlag__c  = 'Pending Assessment';
         progEnrollment3.CohortEligibility__c ='Ineligible' ;   
-		progEnrollment3.hed__Account__c  = academicAccount.Id; 
+        progEnrollment3.hed__Account__c  = academicAccount.Id; 
         progEnrollment3.Status__c = 'In Progress';
         progEnrollment3.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment3);
@@ -105,7 +105,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         progEnrollment4.Start_Year__c = currentSchoolYear.Id;
         progEnrollment4.PlacementFlag__c  = 'Pending Assessment';
         progEnrollment4.CohortEligibility__c = 'Pending Review';    
-		progEnrollment4.hed__Account__c  = academicAccount.Id;
+        progEnrollment4.hed__Account__c  = academicAccount.Id;
         progEnrollment4.Status__c = 'In Progress';
         progEnrollment4.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment4);
@@ -114,7 +114,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         progEnrollment5.Start_Year__c = currentSchoolYear.Id;
         progEnrollment5.PlacementFlag__c  = 'Pending Assessment';
         progEnrollment5.CohortEligibility__c = 'Pending';    
-		progEnrollment5.hed__Account__c  = academicAccount.Id;
+        progEnrollment5.hed__Account__c  = academicAccount.Id;
         progEnrollment5.Status__c = 'In Progress';
         progEnrollment5.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment5);
@@ -122,7 +122,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         hed__Program_Enrollment__c progEnrollment6 = new hed__Program_Enrollment__c();
         progEnrollment6.Start_Year__c = currentSchoolYear.Id;
         progEnrollment6.PlacementFlag__c  = 'Awaiting Communication- More Info';
-		progEnrollment6.hed__Account__c  = academicAccount.Id;
+        progEnrollment6.hed__Account__c  = academicAccount.Id;
         progEnrollment6.Status__c = 'In Progress';
         progEnrollment6.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment6);
@@ -130,7 +130,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         hed__Program_Enrollment__c progEnrollment7 = new hed__Program_Enrollment__c();
         progEnrollment7.Start_Year__c = currentSchoolYear.Id;
         progEnrollment7.EnrollmentSpecialistContactReq__c = 'Pending Review';    
-		progEnrollment7.hed__Account__c  = academicAccount.Id;
+        progEnrollment7.hed__Account__c  = academicAccount.Id;
         progEnrollment7.Status__c = 'In Progress';
         progEnrollment7.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment7);
@@ -138,7 +138,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         hed__Program_Enrollment__c progEnrollment8 = new hed__Program_Enrollment__c();
         progEnrollment8.Start_Year__c = currentSchoolYear.Id;
         progEnrollment8.PlacementFlag__c  = 'Awaiting Communication- School Counselor';
-		progEnrollment8.hed__Account__c  = academicAccount.Id;
+        progEnrollment8.hed__Account__c  = academicAccount.Id;
         progEnrollment8.Status__c = 'In Progress';
         progEnrollment8.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment8);
@@ -147,7 +147,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         progEnrollment9.Start_Year__c = currentSchoolYear.Id;
         progEnrollment9.HomelessRiskFlag__c = 'Potential Homeless';
         progEnrollment9.PlacementFlag__c  = 'Principal Review';
-		progEnrollment9.hed__Account__c  = academicAccount.Id;
+        progEnrollment9.hed__Account__c  = academicAccount.Id;
         progEnrollment9.Status__c = 'In Progress';
         progEnrollment9.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment9);
@@ -167,21 +167,21 @@ private class NES_AnnualStudentInfoUtilities2Test {
         progEnrollment11.Start_Year__c = currentSchoolYear.Id;
         progEnrollment11.PlacementFlag__c  = 'Special Education Director';
         progEnrollment11.Status__c = 'In Progress';
-		progEnrollment11.hed__Account__c  = academicAccount.Id;
+        progEnrollment11.hed__Account__c  = academicAccount.Id;
         progEnrollment11.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment11);
         //Create Program Enrollment Record
         hed__Program_Enrollment__c progEnrollment12 = new hed__Program_Enrollment__c();
         progEnrollment12.Start_Year__c = currentSchoolYear.Id;
         progEnrollment12.PlacementFlag__c  = 'RC/PAH Not Uploaded';
-		progEnrollment12.hed__Account__c  = academicAccount.Id;
+        progEnrollment12.hed__Account__c  = academicAccount.Id;
         progEnrollment12.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         progEnrollment12.Status__c  = 'In Progress';
         peList.add(progEnrollment12);
         //Create Program Enrollment Record
         hed__Program_Enrollment__c progEnrollment13 = new hed__Program_Enrollment__c();
         progEnrollment13.Start_Year__c = currentSchoolYear.Id;
-		progEnrollment13.hed__Account__c  = academicAccount.Id;
+        progEnrollment13.hed__Account__c  = academicAccount.Id;
         progEnrollment13.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         progEnrollment13.Status__c  = 'In Progress';
         peList.add(progEnrollment13);
@@ -191,7 +191,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         progEnrollment14.PlacementFlag__c = 'Academic Placement Advisor' ;
         progEnrollment14.MoreHighSchoolDocumentation__c = 'Documentation needed';
         progEnrollment14.HomeSchoolEvaluatorReport__c = 'Received';
-		progEnrollment14.hed__Account__c  = academicAccount.Id;
+        progEnrollment14.hed__Account__c  = academicAccount.Id;
         progEnrollment14.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         progEnrollment14.Status__c  = 'In Progress';
         peList.add(progEnrollment14);
@@ -209,7 +209,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         progEnrollment.MoreHighSchoolDocumentation__c = '';
         progEnrollment.CreditByExamScores__c = '';
         progEnrollment.HomeSchoolEvaluatorReport__c = '';
-		progEnrollment.hed__Account__c  = academicAccount.Id;
+        progEnrollment.hed__Account__c  = academicAccount.Id;
         progEnrollment.Status__c  = 'In Progress';
         progEnrollment.EntranceAgeEligibilitySystem__c = 'Eligible' ;
         peList.add(progEnrollment); 
@@ -532,7 +532,7 @@ private class NES_AnnualStudentInfoUtilities2Test {
         system.assertEquals('Placed - K8', asi.StudentPlacementBucket__c);  
     }
     //test method for PlacementBucket value Placed – Auto Placed High School
-	//Mark Membrino - 10/12/2019  per Feature 101473, this is no long a bucket we are using.
+    //Mark Membrino - 10/12/2019  per Feature 101473, this is no long a bucket we are using.
    /* static testMethod void studentPlacementBucketPlacedAutoPlacedHighSchoolTest() {
         List<Annual_Student_Information__c> asiIdList = new List<Annual_Student_Information__c>();
         //Calling method to calculate Placement Bucket Field
@@ -576,14 +576,14 @@ private class NES_AnnualStudentInfoUtilities2Test {
         Annual_Student_Information__c asirecord = [SELECT Id,Program_Enrollment__c FROM Annual_Student_Information__c WHERE Name = 'Previous ASI16'];
         asiIdList.add(asirecord);   
 
-		List<Enrollment_Component_Affiliation__c> ecaList = new List<Enrollment_Component_Affiliation__c>();
-		for (Enrollment_Component__c enrollComp : [SELECT Id,Document_Type__c FROM Enrollment_Component__c ])
-		{ 
-			Enrollment_Component_Affiliation__c eca = Peak_TestUtils.createEnrollmentComponentAffiliation(asirecord.Program_Enrollment__c, enrollComp.Id, false);
-			ecaList.add(eca);
-		}
-		
-		insert ecaList;
+        List<Enrollment_Component_Affiliation__c> ecaList = new List<Enrollment_Component_Affiliation__c>();
+        for (Enrollment_Component__c enrollComp : [SELECT Id,Document_Type__c FROM Enrollment_Component__c ])
+        { 
+            Enrollment_Component_Affiliation__c eca = Peak_TestUtils.createEnrollmentComponentAffiliation(asirecord.Program_Enrollment__c, enrollComp.Id, false);
+            ecaList.add(eca);
+        }
+        
+        insert ecaList;
 
         NES_AnnualStudentInformationUtilities.recalculateStudentPlacementBucket(asiIdList, true);
         Test.stopTest();
@@ -593,9 +593,9 @@ private class NES_AnnualStudentInfoUtilities2Test {
         
     }
 
-	static testMethod void studentPlacementBucketParent2Test() {
-		//Mark the report card as having been recieved, now it should to the next bucket.  Also confirm that updating the document
-		//sends it back to the parent bucket.
+    static testMethod void studentPlacementBucketParent2Test() {
+        //Mark the report card as having been recieved, now it should to the next bucket.  Also confirm that updating the document
+        //sends it back to the parent bucket.
 
         NES_LogicFeatureSwitch__c  logicSwitch = Peak_TestUtils.createNESBusinessLogicSwitch('EnrollmentDocTrigger', true);
 
@@ -603,33 +603,33 @@ private class NES_AnnualStudentInfoUtilities2Test {
         Annual_Student_Information__c asirecord = [SELECT Id,Program_Enrollment__c FROM Annual_Student_Information__c WHERE Name = 'Previous ASI16'];
         asiIdList.add(asirecord);   
 
-		//Find the enrollment component for the Report Card.
-		Enrollment_Component__c enrollComp = [SELECT Id FROM Enrollment_Component__c WHERE Document_Type__c = 'Report Card']; 
-		enrollComp.Required_to_Complete_for_Auto_Placement__c = true;
-		update enrollComp;
+        //Find the enrollment component for the Report Card.
+        Enrollment_Component__c enrollComp = [SELECT Id FROM Enrollment_Component__c WHERE Document_Type__c = 'Report Card']; 
+        enrollComp.Required_to_Complete_for_Auto_Placement__c = true;
+        update enrollComp;
 
-		//Tie this Program enrollement to the report card enrollment component.
+        //Tie this Program enrollement to the report card enrollment component.
         Enrollment_Component_Affiliation__c eca1 = Peak_TestUtils.createEnrollmentComponentAffiliation(asirecord.Program_Enrollment__c, enrollComp.Id, false);
         insert eca1;
 
-		//Find the Report Card Enrollment Document and tie it to the ECA we just created and mark it as recieved.
+        //Find the Report Card Enrollment Document and tie it to the ECA we just created and mark it as recieved.
         Enrollment_Document__c enrollmntDoc = [select ID from Enrollment_Document__c where type__c = 'Report Card'];
         enrollmntDoc.Status_Reason__c = 'Received';
-		enrollmntDoc.Enrollment_Component_Affiliation__c = eca1.Id;
+        enrollmntDoc.Enrollment_Component_Affiliation__c = eca1.Id;
         update enrollmntDoc;
 
-		//Force the bucket calculation and confirm that is NOT be set to the parent because the report card is required
-		//but has been Recieved.
+        //Force the bucket calculation and confirm that is NOT be set to the parent because the report card is required
+        //but has been Recieved.
         NES_AnnualStudentInformationUtilities.recalculateStudentPlacementBucket(asiIdList, true);
         Annual_Student_Information__c Asi = [SELECT Id,StudentPlacementBucket__c FROM Annual_Student_Information__c WHERE Name = 'Previous ASI16'];
         system.assertEquals('Special Education Director', Asi.StudentPlacementBucket__c);
 
         Test.startTest();
 
-		//If the enrollment doc is updated, it should go back to the parent.
-		enrollmntDoc.Status_Reason__c = 'Submitted';
+        //If the enrollment doc is updated, it should go back to the parent.
+        enrollmntDoc.Status_Reason__c = 'Submitted';
         update enrollmntDoc;
-		eca1.Status__c = 'Complete';
+        eca1.Status__c = 'Complete';
         update eca1;
 
         NES_AnnualStudentInformationUtilities.recalculateStudentPlacementBucket(asiIdList, true);
@@ -642,33 +642,33 @@ private class NES_AnnualStudentInfoUtilities2Test {
         
     }
 
-	static testMethod void studentPlacementBucketParent3Test() {
+    static testMethod void studentPlacementBucketParent3Test() {
         List<Annual_Student_Information__c> asiIdList = new List<Annual_Student_Information__c>();
         //Calling method to calculate Placement Bucket Field
         Test.startTest();
         Annual_Student_Information__c asirecord = [SELECT Id,Program_Enrollment__c FROM Annual_Student_Information__c WHERE Name = 'Previous ASI16'];
         asiIdList.add(asirecord);   
 
-		//Add a bunch of enrollment component affiliations
-		List<Enrollment_Component_Affiliation__c> ecaList = new List<Enrollment_Component_Affiliation__c>();
+        //Add a bunch of enrollment component affiliations
+        List<Enrollment_Component_Affiliation__c> ecaList = new List<Enrollment_Component_Affiliation__c>();
 
-		for (Enrollment_Component__c enrollComp : [SELECT Id,Document_Type__c FROM Enrollment_Component__c where recordtype.name = 'Document'])
-		{ 
-			Enrollment_Component_Affiliation__c eca = Peak_TestUtils.createEnrollmentComponentAffiliation(asirecord.Program_Enrollment__c, enrollComp.Id, false);
-			ecaList.add(eca);
-		}
-		insert ecaList;
+        for (Enrollment_Component__c enrollComp : [SELECT Id,Document_Type__c FROM Enrollment_Component__c where recordtype.name = 'Document'])
+        { 
+            Enrollment_Component_Affiliation__c eca = Peak_TestUtils.createEnrollmentComponentAffiliation(asirecord.Program_Enrollment__c, enrollComp.Id, false);
+            ecaList.add(eca);
+        }
+        insert ecaList;
 
-		//For each of the enrollment component affiliations, give them a document that is recieved.
-		for (Enrollment_Component_Affiliation__c eca : [select Id, Enrollment_Component__r.Document_Type__c from Enrollment_Component_Affiliation__c where Enrollment_Component__r.recordtype.name = 'Document'])
-		{
-			list<Enrollment_Document__c> enrollmntDoc = [select ID from Enrollment_Document__c where  type__c = :eca.Enrollment_Component__r.Document_Type__c];
-			if (enrollmntDoc.size() > 0) {
-				enrollmntDoc[0].Status_Reason__c = 'Verified';
-				enrollmntDoc[0].Enrollment_Component_Affiliation__c = eca.Id;
-				update enrollmntDoc[0];
-			}
-		}
+        //For each of the enrollment component affiliations, give them a document that is recieved.
+        for (Enrollment_Component_Affiliation__c eca : [select Id, Enrollment_Component__r.Document_Type__c from Enrollment_Component_Affiliation__c where Enrollment_Component__r.recordtype.name = 'Document'])
+        {
+            list<Enrollment_Document__c> enrollmntDoc = [select ID from Enrollment_Document__c where  type__c = :eca.Enrollment_Component__r.Document_Type__c];
+            if (enrollmntDoc.size() > 0) {
+                enrollmntDoc[0].Status_Reason__c = 'Verified';
+                enrollmntDoc[0].Enrollment_Component_Affiliation__c = eca.Id;
+                update enrollmntDoc[0];
+            }
+        }
 
         NES_AnnualStudentInformationUtilities.recalculateStudentPlacementBucket(asiIdList, true);
         Test.stopTest();
@@ -707,8 +707,8 @@ private class NES_AnnualStudentInfoUtilities2Test {
         
     }
      //test method for Student placement buckent value 'Enrollment - RC/PAH Not Uploaded' 
-	 //Mark Membrino - 10/12/2019  per Feature 101473, this is no long a bucket we are using.
-	 /*
+     //Mark Membrino - 10/12/2019  per Feature 101473, this is no long a bucket we are using.
+     /*
      static testMethod void studentPlacementBucketRCPAHNotUploadedTest() {
         List<Annual_Student_Information__c> asiIdList = new List<Annual_Student_Information__c>();
         //Calling method to calculate Placement Bucket Field

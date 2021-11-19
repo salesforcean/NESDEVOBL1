@@ -16,8 +16,8 @@ public with sharing class NES_EnrollmentControllerTest {
         // Create a account with 'Academic Program' record type
         Account academicProgram = Peak_TestUtils.createAccountForNewStudentData(account.Id, currentSchoolYear.Id);
         hed__Program_Enrollment__c progEnrollment = Peak_TestUtils.createProgramEnrollment(academicProgram.Id, contact.Id, currentSchoolYear.Id, true);
-		
-		User u = [SELECT Id,ContactId FROM User WHERE ContactId != NULL AND IsActive = TRUE LIMIT 1];
+        
+        User u = [SELECT Id,ContactId FROM User WHERE ContactId != NULL AND IsActive = TRUE LIMIT 1];
         hed__Relationship__c  relationship = Peak_TestUtils.createRelationship(u.ContactId, contact.Id, true);
 
         // Create a Enrollment Components with different record type
@@ -175,7 +175,7 @@ public with sharing class NES_EnrollmentControllerTest {
         update hpe;
         Opportunity opty=Peak_TestUtils.createOpportunity(hpe.Id);
         Test.startTest();
-       	Peak_Response response = NES_EnrollmentController.terminateApplication(hpe.Id, 'Not a good fit');
+        Peak_Response response = NES_EnrollmentController.terminateApplication(hpe.Id, 'Not a good fit');
        
         Test.stopTest();
         hed__Program_Enrollment__c hpe1 = [SELECT Id,Status__c,Enrollment_Type__c FROM hed__Program_Enrollment__c where id=:hpe.id];
@@ -272,7 +272,7 @@ public with sharing class NES_EnrollmentControllerTest {
     
     /*Created By : Jagadish Babu
      *Purpose : this method is use to cover getIsEnrollmentReady method and reactivateStudent Method
-	 */
+     */
     static testMethod void testEnrollmentsReady() {
         hed__Program_Enrollment__c hpe = [SELECT Id, Initial_ECA_Creation_Complete__c FROM hed__Program_Enrollment__c where Initial_ECA_Creation_Complete__c = false  LIMIT 1 ];
         test.startTest();
@@ -281,11 +281,11 @@ public with sharing class NES_EnrollmentControllerTest {
         system.assertEquals(false, response);
         test.stopTest();
     }
-	
+    
     
     /*Created By : Jagadish Babu
      *Purpose : this method is use to cover getSchoolId
-	 */
+     */
     static testMethod void testGetSchoolId() {
         hed__Program_Enrollment__c hpe = [SELECT Id,hed__Account__r.ParentId FROM hed__Program_Enrollment__c LIMIT 1 ];
         test.startTest();       
@@ -315,7 +315,7 @@ public with sharing class NES_EnrollmentControllerTest {
         hpe.Open_Application__c = 'Released';
         update hpe;
         test.startTest();       
-        	NES_EnrollmentController.updatedOpenAppReleased(hpe.Id);
+            NES_EnrollmentController.updatedOpenAppReleased(hpe.Id);
         test.stopTest();
     }
     

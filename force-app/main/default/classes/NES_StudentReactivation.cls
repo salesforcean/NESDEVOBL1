@@ -79,8 +79,8 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
                         Enrollment_Component__c,
                         Enrollment_Component__r.Assignment_Logic__c,//Added for Open Application User story 451172 -->DK
                         Enrollment_Component__r.Name,  //Added for Open Application User story 451172 -->DK
-					    Enrollment_Component__r.RecordType.Name, 
-                       	Program_Enrollment__r.Open_Application__c, //Added for Open Application User story 451172 -->DK
+                        Enrollment_Component__r.RecordType.Name, 
+                        Program_Enrollment__r.Open_Application__c, //Added for Open Application User story 451172 -->DK
                         Program_Enrollment__r.Program_Grade_Level__c, //Added for Open Application User story 451172 -->DK
                         Name,Program_Enrollment__c,
                         Status__c,Order__c 
@@ -194,7 +194,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
         List<Enrollment_Document__c> edToUpdate = new List<Enrollment_Document__c>();
         
         for (Enrollment_Document__c ed : edlist) {
-		    edToUpdate.add(new Enrollment_Document__c(id=ed.id, status_reason__c=ED_REACTIVATION_REASON_CODE));
+            edToUpdate.add(new Enrollment_Document__c(id=ed.id, status_reason__c=ED_REACTIVATION_REASON_CODE));
         }
         if (edList.size()>0) {
             update edToUpdate;
@@ -211,7 +211,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
          // Defect: 490665 Start: Naveen
         String WaitlistFlagVal = '';
            if(this.studPE.Program_Grade_Level__r.ActivateWaitlist__c == TRUE && this.studPE.Program_Grade_Level__r.StartWaitlist__c <= System.now() && this.studPE.Program_Grade_Level__r.EndWaitlist__c >= System.now()){
-           	WaitlistFlagVal = 'Active';
+            WaitlistFlagVal = 'Active';
            }
         //Defect: 490665 End: Naveen
         
@@ -259,7 +259,7 @@ public class NES_StudentReactivation extends NES_EnrollmentReactivationBase {
                 Science_Placement_Level__c = null,
                 Final_Grade_Level__c = null,
                 AutomatedPlacementExclude__c = false,
-				StudentPlacementBucket__c = null
+                StudentPlacementBucket__c = null
             ));
         }
         if (toUpdateASIs.size()>0) {

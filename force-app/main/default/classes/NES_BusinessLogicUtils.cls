@@ -1830,7 +1830,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
         }
         
        //list<hed__Program_Enrollment__c> openAppPE = New list<hed__Program_Enrollment__c>();
-      	//boolean openAppFlag = true;
+        //boolean openAppFlag = true;
         Boolean resetPEFlag = false;
         for (hed__Program_Enrollment__c pe : programEnrollments) {
             if (opportunityMap.get(pe.Id) != null && annualStudentInformationMap.get(pe.Id) != null
@@ -1871,7 +1871,7 @@ programEnrollment.StudentFlag__c = 'On-Hold';
                 }
             
         }
-      	
+        
         return programEnrollmentsToUpdate;
     }
     

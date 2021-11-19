@@ -2,7 +2,7 @@
 public class NES_ECAManualAdditionTest {
     
     static testMethod void testNumberComparisonsLessThan(){
-    	NES_ECAManualAddition.testCoveragePaddingMethod();  
+        NES_ECAManualAddition.testCoveragePaddingMethod();  
         
     }
 

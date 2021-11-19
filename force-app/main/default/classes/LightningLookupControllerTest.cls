@@ -11,40 +11,40 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
 OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR 
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.		
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.       
 */
 @isTest
 public class LightningLookupControllerTest {
 
-	static testMethod void myTest1() {
+    static testMethod void myTest1() {
 
-		Account acct = new Account(Name = 'Test Account');
-//		Account acct = DataFactory.buildAccount('Test Account');
-		insert acct;
-		LightningLookupController.LookupRecords res = LightningLookupController.getRecords('Account', '', 'Name', '', 'Name like \'test%\'','','');
-		System.assertEquals(null,res);
-		res = LightningLookupController.getRecords('Account', 'Id', '', '', 'Name like \'test%\'','','');
-		System.assertEquals(null,res);
-		res = LightningLookupController.getRecords('Account', 'Id', '', 'CreatedDate', 'Name like \'test%\'','','');
-		System.assertEquals(null,res);
-		res = LightningLookupController.getRecords('Account', '', '', 'CreatedDate', 'Name like \'test%\'','','');
-		System.assertEquals(null,res);
-		res = LightningLookupController.getRecords('Account', 'Id', 'Name', 'CreatedDate', 'Name like \'test%\'','','');
-		System.assertEquals(1,res.lstDisplay.size());
-		System.assertEquals(1,res.lstValue.size());
-		System.assertEquals(1,res.lstRecords.size());
-		res = LightningLookupController.getRecords('Account', 'Id', 'Name', 'CreatedDate', 'Name like \'hufdehf%\'','','');
-		System.assertEquals(1,res.lstDisplay.size());
-		System.assertEquals(1,res.lstValue.size());
-		System.assertEquals(1,res.lstRecords.size());
-		System.assertEquals('No records found!',res.lstDisplay[0]);
-		String s = LightningLookupController.getHelpText('Account.Name');
-		s = LightningLookupController.getReference('Account.OwnerId');
-		System.assertEquals('User',s);
-		res = LightningLookupController.getFieldValue('Account', acct.Id, 'Name');
-		System.assertEquals(acct.Name,res.lstDisplay[0]);
-		System.assertEquals(acct.Id,res.lstValue[0]);
-		System.assertEquals(1, res.lstRecords.size());
-	}
-	
+        Account acct = new Account(Name = 'Test Account');
+//      Account acct = DataFactory.buildAccount('Test Account');
+        insert acct;
+        LightningLookupController.LookupRecords res = LightningLookupController.getRecords('Account', '', 'Name', '', 'Name like \'test%\'','','');
+        System.assertEquals(null,res);
+        res = LightningLookupController.getRecords('Account', 'Id', '', '', 'Name like \'test%\'','','');
+        System.assertEquals(null,res);
+        res = LightningLookupController.getRecords('Account', 'Id', '', 'CreatedDate', 'Name like \'test%\'','','');
+        System.assertEquals(null,res);
+        res = LightningLookupController.getRecords('Account', '', '', 'CreatedDate', 'Name like \'test%\'','','');
+        System.assertEquals(null,res);
+        res = LightningLookupController.getRecords('Account', 'Id', 'Name', 'CreatedDate', 'Name like \'test%\'','','');
+        System.assertEquals(1,res.lstDisplay.size());
+        System.assertEquals(1,res.lstValue.size());
+        System.assertEquals(1,res.lstRecords.size());
+        res = LightningLookupController.getRecords('Account', 'Id', 'Name', 'CreatedDate', 'Name like \'hufdehf%\'','','');
+        System.assertEquals(1,res.lstDisplay.size());
+        System.assertEquals(1,res.lstValue.size());
+        System.assertEquals(1,res.lstRecords.size());
+        System.assertEquals('No records found!',res.lstDisplay[0]);
+        String s = LightningLookupController.getHelpText('Account.Name');
+        s = LightningLookupController.getReference('Account.OwnerId');
+        System.assertEquals('User',s);
+        res = LightningLookupController.getFieldValue('Account', acct.Id, 'Name');
+        System.assertEquals(acct.Name,res.lstDisplay[0]);
+        System.assertEquals(acct.Id,res.lstValue[0]);
+        System.assertEquals(1, res.lstRecords.size());
+    }
+    
 }

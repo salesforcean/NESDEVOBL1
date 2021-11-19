@@ -1,7 +1,7 @@
 public with sharing class ecNodeParser {
     
     /**
-	* 	@ALIKM 20/apr/2020- commenting out changes
+    *   @ALIKM 20/apr/2020- commenting out changes
 
     public Id rootID {get; private set;}
     public Enrollment_Component__c rootRec {get; private set;}
@@ -121,6 +121,6 @@ public with sharing class ecNodeParser {
     }
 
     public class illegalArgumentNodeParserException extends Exception {}
-	*/
+    */
 
 }

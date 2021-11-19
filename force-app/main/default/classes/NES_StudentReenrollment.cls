@@ -53,7 +53,7 @@ public without sharing class NES_StudentReenrollment extends NES_EnrollmentReact
 
 
     @TestVisible private void processPE() {
-		// Start Defect 490665 : Naveen
+        // Start Defect 490665 : Naveen
         // Get the PGL Info and Check if Waitlist is enabled and active for that grade level
         List<hed__Program_Enrollment__c> pelist = [Select Id, Program_Grade_Level__r.ActivateWaitlist__c,Program_Grade_Level__r.StartWaitlist__c, Program_Grade_Level__r.EndWaitlist__c  from hed__Program_Enrollment__c where Id =: this.studPE.Id limit 1];
         String WaitlistFlagVal = '';

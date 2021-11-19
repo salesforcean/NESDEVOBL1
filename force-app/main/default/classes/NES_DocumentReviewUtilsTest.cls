@@ -257,7 +257,7 @@ insert dfr;
     static testMethod void getNextTest5() {
         Account institutionAccount = [SELECT Id, Name, RecordTypeId, CreatedDate FROM Account WHERE RecordType.Name = 'Educational Institution' AND Name = 'Test Account' LIMIT 1];
         School_Year__c schoolYears = [SELECT Id, Name, CreatedDate FROM School_Year__c WHERE Name = 'Test School Year' LIMIT 1];
-		Account academicProgram = [SELECT Id, Name, RecordTypeId, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c, CreatedDate 
+        Account academicProgram = [SELECT Id, Name, RecordTypeId, ParentId, School_Year__c, School_Year__r.Name, Registration_End_Date__c, Registration_Start_Date__c, CreatedDate 
                                    FROM Account WHERE RecordType.Name = 'Academic Program' AND Name = 'Test Account' LIMIT 1];
         hed__Program_Enrollment__c studentEnrollment = [SELECT Id, Name, CreatedDate FROM hed__Program_Enrollment__c WHERE RecordType.Name = 'Student' LIMIT 1];
         hed__Program_Enrollment__c caretakerEnrollment = [SELECT Id, Name, CreatedDate FROM hed__Program_Enrollment__c WHERE RecordType.Name = 'Caretaker' LIMIT 1];

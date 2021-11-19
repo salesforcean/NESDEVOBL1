@@ -6,7 +6,7 @@
 private class NES_Sch_UpdateHardStopTimeConsTest {
     static testmethod void schedulerTest()
     {
-		Test.startTest();
+        Test.startTest();
         String CRON_EXP = '0 0 * * * ?';
         String jobId = System.schedule('ScheduleHourTest',  CRON_EXP, new NES_Sch_UpdateHardStopTimeCons());
         CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered, NextFireTime FROM CronTrigger WHERE id = :jobId];

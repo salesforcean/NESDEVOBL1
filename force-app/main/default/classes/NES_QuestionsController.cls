@@ -92,13 +92,13 @@ public without sharing class NES_QuestionsController {
     //Added by Jagadeesh for the Task :341992
     @AuraEnabled
       public static Date updateAHIRec(Id programEnrollmentId){
-		List<Annual_Household_Information__c> AHIAckUpdate = new List<Annual_Household_Information__c>();
+        List<Annual_Household_Information__c> AHIAckUpdate = new List<Annual_Household_Information__c>();
         AHIAckUpdate = [select Income_Form_Submission_Ack__c,Income_Form_Submission_Date__c from Annual_Household_Information__c where Program_Enrollment__c in (select Household_Program_Enrollment__c from hed__Program_Enrollment__c where id =: programEnrollmentId)];
-      	if(AHIAckUpdate.size() > 0)
+        if(AHIAckUpdate.size() > 0)
         {
             AHIAckUpdate.get(0).Income_Form_Submission_Ack__c = false;
-        	update AHIAckUpdate;
-        	return AHIAckUpdate.get(0).Income_Form_Submission_Date__c;
+            update AHIAckUpdate;
+            return AHIAckUpdate.get(0).Income_Form_Submission_Date__c;
         }
         else
            return null;

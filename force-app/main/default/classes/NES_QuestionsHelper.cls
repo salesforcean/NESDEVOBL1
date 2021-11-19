@@ -37,13 +37,13 @@ public without sharing class NES_QuestionsHelper {
             List<Enrollment_Component_Affiliation__c> sectionAffiliation = new List<Enrollment_Component_Affiliation__c> ( [SELECT Id,Enrollment_Component__r.Name, Enrollment_Component__r.Completion_Logic__c FROM Enrollment_Component_Affiliation__c
                                                 WHERE Program_Enrollment__c = :programEnrollmentId and Enrollment_Component__c = :sectionId ] );
             //We should always find just one section with that id but retrieve as a list to avoid hard crashes.
-			
+            
              //added condition to prevent 'Change in Plan' section for ITR - Jagadeesh for US 338616
             if (sectionAffiliation.size() > 0) {
-				if(sectionAffiliation[0].Enrollment_Component__r.Name != System.Label.NES_Change_in_Plan){
+                if(sectionAffiliation[0].Enrollment_Component__r.Name != System.Label.NES_Change_in_Plan){
                 sectionAffiliation[0].Status__c = 'Complete';
                 sectionAffiliation[0].Date_Completed__c = System.today();
-				}
+                }
                 sectionAffiliation[0].is_Dirty__c = true;
                 update sectionAffiliation[0];
 
@@ -111,7 +111,7 @@ public without sharing class NES_QuestionsHelper {
                 }
             }
 
-			// Changes Updated By Guru for Defect#375566 -----Start
+            // Changes Updated By Guru for Defect#375566 -----Start
             /*hed__Program_Enrollment__c  studentEnrollment = [
                     SELECT Id, hed__Account__c,Enrollment_Type__c,V2_External_ID__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, hed__Contact__r.AccountId
                     FROM hed__Program_Enrollment__c
@@ -645,7 +645,7 @@ public without sharing class NES_QuestionsHelper {
 
     // Looks for additional ECAs
     public static List<NES_EvaluateUtil.Question> getRelatedQuestions2(Id programEnrollmentId, String questionJSON, Id sectionId, Boolean excludeMDRFields) {
-		//Converted "sectionAffiliation" as ListType for the Defect 226838 by Jagadeesh
+        //Converted "sectionAffiliation" as ListType for the Defect 226838 by Jagadeesh
         List<Enrollment_Component_Affiliation__c> sectionAffiliation = new List<Enrollment_Component_Affiliation__c>();
         sectionAffiliation = [SELECT Status__c FROM Enrollment_Component_Affiliation__c WHERE Enrollment_Component__c = :sectionId AND Program_Enrollment__c = :programEnrollmentId];
         List<Enrollment_Component__c> questionType = new List<Enrollment_Component__c>();
@@ -690,8 +690,8 @@ public without sharing class NES_QuestionsHelper {
                 User caretaker = [SELECT Id, Contact.AccountId, ContactId, Contact.RecordType.Name FROM User WHERE Id = :UserInfo.getUserId()];
                 // hed__Program_Enrollment__c studentEnrollment = [SELECT Id, hed__Account__c, hed__Account__r.Use_Updated_ECA_Process__c, hed__Contact__c FROM hed__Program_Enrollment__c WHERE Id = :programEnrollmentId];
                 hed__Program_Enrollment__c studentEnrollment = setStudPE(programEnrollmentId);
-				
-				// Added by Maddileti for Defect #361441 on 15/02/2021
+                
+                // Added by Maddileti for Defect #361441 on 15/02/2021
 
 
                /* List<hed__Program_Enrollment__c> caretakerEnrollment = [
@@ -711,9 +711,9 @@ public without sharing class NES_QuestionsHelper {
                         LIMIT 1
                 ]; 
                 
-				
-				// End by Maddileti for Defect #361441 on 15/02/2021
-				
+                
+                // End by Maddileti for Defect #361441 on 15/02/2021
+                
              
 
                 // If new ECA Model, set below flag to true
@@ -1211,7 +1211,7 @@ public without sharing class NES_QuestionsHelper {
         List<Annual_Household_Information__c> AHISubmitInfo = new List<Annual_Household_Information__c>();
         AHISubmitInfo = [select Income_Form_Submission_Date__c,Income_Form_Submitter__c  from Annual_Household_Information__c where Program_Enrollment__c in (select Household_Program_Enrollment__c from hed__Program_Enrollment__c where id =: programEnrollmentId)];
         if(AHISubmitInfo.size() > 0)  
-       		return AHISubmitInfo.get(0).Income_Form_Submission_Date__c;
+            return AHISubmitInfo.get(0).Income_Form_Submission_Date__c;
         else
            return null;
     }

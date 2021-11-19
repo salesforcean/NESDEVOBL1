@@ -22,13 +22,13 @@ public with sharing class NES_FBBFetchDependentPicklist {
         // System.debug(JSON.serialize(objResults));
         if (!(objResults.size() > 0)  || !objResults.containsKey(dpld.ctrlFieldPicklistValue)) {
             system.debug('Controlling Field Picklist entry not found.');
-			return null;
+            return null;
         }
         System.debug('objResults');
         System.debug(JSON.serialize(objResults.get(dpld.ctrlFieldPicklistValue)));
         return objResults.get(dpld.ctrlFieldPicklistValue);
 
-	}
+    }
 
     public static Map<String, Map<String, String>> getDependentOptionsAll(DependentPickDefinition dpld) {
 
@@ -53,19 +53,19 @@ public with sharing class NES_FBBFetchDependentPicklist {
 
         }
 
-		@InvocableVariable(required=true label='1. sObject API Name')
-		public String sObjectAPIName;
+        @InvocableVariable(required=true label='1. sObject API Name')
+        public String sObjectAPIName;
 
         @InvocableVariable(required=true label='2. Dependent Field API Name')
-		public String theField;
+        public String theField;
 
-		@InvocableVariable(required=true label='3. Controlling Field API Name')
-		public String ctrlField;
+        @InvocableVariable(required=true label='3. Controlling Field API Name')
+        public String ctrlField;
 
         @InvocableVariable(required=true label='4. Controlling Field Picklist Value')
-		public String ctrlFieldPicklistValue;
+        public String ctrlFieldPicklistValue;
 
-	}
+    }
     
 
 }

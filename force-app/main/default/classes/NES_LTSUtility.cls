@@ -183,7 +183,7 @@ public with sharing class NES_LTSUtility {
 
                 system.debug('lts ' + lts);
                 pe.LTS__c =  lts;
-				pe.LTSLastCalculation__c = System.today();  //MM Added during gap analysis 11/7/2019 
+                pe.LTSLastCalculation__c = System.today();  //MM Added during gap analysis 11/7/2019 
                 programEnrollmentsToUpdate.add(pe);
             }
         }

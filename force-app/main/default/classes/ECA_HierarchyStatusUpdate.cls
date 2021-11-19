@@ -148,8 +148,8 @@ public without sharing class ECA_HierarchyStatusUpdate
                 allComplete = false;
             }
             
-            //if(childStatus != 'Not Started' && childStatus != 'Not Applicable') //Check that all ECAs regardless of whether they are required or not are not started
-             if(childStatus != 'Not Started' || childStatus != 'Not Applicable') // Commented above if and added for User story 451172 -- by DK
+           // if(childStatus != 'Not Started' && childStatus != 'Not Applicable') //Check that all ECAs regardless of whether they are required or not are not started
+            if(childStatus != 'Not Started' || childStatus != 'Not Applicable') // Commented above if and added for User story 451172 -- by DK
             {
                 allNA = false; 
             } 
@@ -280,7 +280,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                 continue;
 
             String originalStatus = (inFlightParent!=null ? inFlightParent.Status__c : parent.status__c);
-			
+            
             String updatedStatus = getChildrenStatus(parent, true);
            
             if(updatedStatus!=null && parent !=null && ((updatedStatus != originalStatus) || (inFlightParent!=null && inFlightParent.Status__c !=  parent.status__c)) ) // parent.status__c)
@@ -360,7 +360,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                             continue;
                         }
                     }
-					
+                    
                     // Skip if Stage.Status = Not Applicable, don't need to recalulate its Status.
                     if (parent.enrollment_component__r.recordtype.name == 'Stage' && originalStatus == 'Not Applicable')
                     {
@@ -371,7 +371,7 @@ public without sharing class ECA_HierarchyStatusUpdate
                         // forUpdateECAs.put(parent.id, parent); // wip
                         // continue;
                         system.debug('MAp---------'+ peDataMap);
-					system.debug('Enrollment****** '+peData.currentStageECA);
+                    system.debug('Enrollment****** '+peData.currentStageECA);
                      //Added by ravi Us 473192 
                         Enrollment_Component_Affiliation__c currentStageECA = peData.currentStageECA;
                         if(currentStageECA!=null)

@@ -6,12 +6,12 @@ ecParse.process();
 
     // Select Id, Process_JSON__c
     // FROM processOutput__mdt
-    // ORDER BY SystemModstamp DESC							
+    // ORDER BY SystemModstamp DESC                         
  */
 public without sharing class ECParser {
     
     /**
-	 * 	@ALIKM 20/apr/2020- commenting out changes
+     *  @ALIKM 20/apr/2020- commenting out changes
 
         public enum Type {STUDENT,PROCESS,STAGE,MESSAGE,FORM,FLAG,SECTION,DOCUMENT,QUESTION,TEXT,QUESTIONGROUP}
     
@@ -144,7 +144,7 @@ public without sharing class ECParser {
             insert apxLog;
     
         }
-	*/	
+    */  
 }
 
 

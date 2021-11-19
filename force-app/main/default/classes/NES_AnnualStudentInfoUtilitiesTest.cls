@@ -23,8 +23,8 @@ private class NES_AnnualStudentInfoUtilitiesTest {
         academicProgramAccount.AutomatedPlacementMaxCutoff__c = 90;
         update academicProgramAccount;
         hed__Program_Enrollment__c progEnrollment5 = Peak_TestUtils.createProgramEnrollment(academicProgramAccount.Id, contact.Id,currentSchoolYear2020.Id, false);
-		insert progEnrollment5;
-		
+        insert progEnrollment5;
+        
         hed__Program_Enrollment__c progEnrollment1 = Peak_TestUtils.createProgramEnrollment(academicProgramAccount.Id, contact.Id,currentSchoolYear.Id, false);
         progEnrollment1.EntranceAgeEligibilitySystem__c = '';
         progEnrollment1.Start_Year__c =previousSchoolYear.Id;
@@ -70,7 +70,7 @@ private class NES_AnnualStudentInfoUtilitiesTest {
         progEnrollment3.CreditByExamScores__c = '';
         progEnrollment3.HomeSchoolEvaluatorReport__c = '';
         insert progEnrollment3;
-		
+        
         Annual_Student_Information__c currentASI1 = Peak_TestUtils.createAnnualStudentInformation('Current ASI1', progEnrollment1.Id, currentSchoolYear.Id, false);
         currentASI1.Final_Grade_Level__c = '3';
         currentASI1.CoursesFinalized__c = '';
@@ -83,7 +83,7 @@ private class NES_AnnualStudentInfoUtilitiesTest {
         currentASI1.Math_Placement_Level__c = '';
         currentASI1.Grade_Level_Requested__c = '';
         insert currentASI1;
-		Annual_Student_Information__c currentASI11 = peak_TestUtils.createAnnualStudentInformation('Current ASI11', progEnrollment5.Id, currentSchoolYear2020.Id, false);
+        Annual_Student_Information__c currentASI11 = peak_TestUtils.createAnnualStudentInformation('Current ASI11', progEnrollment5.Id, currentSchoolYear2020.Id, false);
         currentASI11.Final_Grade_Level__c = '1';
         currentASI11.CoursesFinalized__c = 'yes';
         currentASI11.HowStudentPlacementCompleted__c = '';
@@ -114,14 +114,14 @@ private class NES_AnnualStudentInfoUtilitiesTest {
         insert prevASI5;
 
         Annual_Student_Information__c prevASI2 = Peak_TestUtils.createAnnualStudentInformation('Previous ASI2', progEnrollment1.Id, previousSchoolYear.Id, false);
-		prevASI1.CoursesFinalized__c = 'Yes';
+        prevASI1.CoursesFinalized__c = 'Yes';
         insert prevASI2;
         Special_Education__c specialEducations = Peak_TestUtils.createSpecialEducation(progEnrollment1.Id,false);
         specialEducations.Name = 'SE1';
         insert specialEducations;
 
         Enrollment_Document__c enrollmentDocumentOne = Peak_TestUtils.createEnrollmentDocumentRecord(progEnrollment1.Id,'Individualized Education Program', 'Invalid-Illegible', true);
-    	Enrollment_Document__c enrollmentDocumentTwo = Peak_TestUtils.createEnrollmentDocumentRecord(progEnrollment1.Id,'Individualized Education Program', 'Invalid-Outdated', true);
+        Enrollment_Document__c enrollmentDocumentTwo = Peak_TestUtils.createEnrollmentDocumentRecord(progEnrollment1.Id,'Individualized Education Program', 'Invalid-Outdated', true);
     }
 
    /*static testMethod void caseScenario1(){
@@ -140,7 +140,7 @@ private class NES_AnnualStudentInfoUtilitiesTest {
 
     }*/
     Static testMethod void recalculateStudentTestCase1(){
-  	    Set<Id> asiIdList = new Set<Id>();
+        Set<Id> asiIdList = new Set<Id>();
         School_Year__c prevoiusYear = [SELECT Id FROM School_Year__c WHERE Name = '2017-2018'];
         hed__Program_Enrollment__c prvsProgramEnrollment = [SELECT Id FROM hed__Program_Enrollment__c WHERE Start_Year__c =: prevoiusYear.Id LIMIT 1];
         prvsProgramEnrollment.CohortEligibility__c = '';
@@ -179,7 +179,7 @@ private class NES_AnnualStudentInfoUtilitiesTest {
 
     }
 
-	static testMethod void caseScenario3(){
+    static testMethod void caseScenario3(){
           Set<Id> asiIdList = new Set<Id>();
           School_Year__c currentYear = [SELECT Id FROM School_Year__c WHERE Name = '2018-2019' LIMIT 1];
           hed__Program_Enrollment__c currentProgramEnrollment = [SELECT Id,EntranceAgeEligibilityFinal__c,CohortEligibility__c FROM hed__Program_Enrollment__c WHERE Start_Year__c =: currentYear.Id];
@@ -299,11 +299,11 @@ private class NES_AnnualStudentInfoUtilitiesTest {
         Test.stopTest();
       
     }  
-	static testMethod void caseScenarioAutoPlacedTest(){
+    static testMethod void caseScenarioAutoPlacedTest(){
                Set<Id> asiIdList = new Set<Id>();
       
         Annual_Student_Information__c currentASI = [SELECT Id,HowStudentPlacementCompleted__c,Program_Enrollment__c FROM Annual_Student_Information__c WHERE Name = 'Previous ASI5' LIMIT 1 ];
-       	currentASI.HowStudentPlacementCompleted__c = 'Standard Auto-Placement Process';
+        currentASI.HowStudentPlacementCompleted__c = 'Standard Auto-Placement Process';
         update currentASI; 
         System.debug('currentAsi==>>'+currentASI.HowStudentPlacementCompleted__c);
         hed__Program_Enrollment__c currentProgramEnrollment = [SELECT Id,WhyFlagged__c,EntranceAgeEligibilityFinal__c FROM hed__Program_Enrollment__c WHERE id =: currentASI.Program_Enrollment__c LIMIT 1];
@@ -318,12 +318,12 @@ private class NES_AnnualStudentInfoUtilitiesTest {
         Test.stopTest();
       
     }  
-	
+    
     static testMethod void caseScenarioAutoPlacedSchoolTest(){
                Set<Id> asiIdList = new Set<Id>();
       
         Annual_Student_Information__c currentASI = [SELECT Id,Final_Grade_Level__c,HowStudentPlacementCompleted__c,Program_Enrollment__c FROM Annual_Student_Information__c WHERE Name = 'Previous ASI5' LIMIT 1 ];
-       	currentASI.Final_Grade_Level__c = '10';
+        currentASI.Final_Grade_Level__c = '10';
         update currentASI; 
         System.debug('currentAsi==>>'+currentASI.HowStudentPlacementCompleted__c);
         hed__Program_Enrollment__c currentProgramEnrollment = [SELECT Id,Final_Grade_Level__c,WhyFlagged__c,EntranceAgeEligibilityFinal__c FROM hed__Program_Enrollment__c WHERE id =: currentASI.Program_Enrollment__c LIMIT 1];
@@ -342,7 +342,7 @@ private class NES_AnnualStudentInfoUtilitiesTest {
                Set<Id> asiIdList = new Set<Id>();
       
         Annual_Student_Information__c currentASI = [SELECT Id,Final_Grade_Level__c,HowStudentPlacementCompleted__c,Program_Enrollment__c FROM Annual_Student_Information__c WHERE Name = 'Previous ASI5' LIMIT 1 ];
-       	currentASI.HowStudentPlacementCompleted__c = '';
+        currentASI.HowStudentPlacementCompleted__c = '';
         currentASI.Final_Grade_Level__c = '10';
         update currentASI; 
         System.debug('currentAsi==>>'+currentASI.HowStudentPlacementCompleted__c);
@@ -369,7 +369,7 @@ private class NES_AnnualStudentInfoUtilitiesTest {
         System.debug('currentAsi==>>'+currentASI.AutomatedPlacementScore__c+'ASI.Start year'+currentASI.School_Year__c);
         currentASI.AutomatedPlacementScore__c = 30;
         currentASI.Academic_Documentation_Summary__c = 'Verified';
-       	currentASI.AutomatedPlacementExclude__c = false;
+        currentASI.AutomatedPlacementExclude__c = false;
         currentASI.School_Year__c = currentYear.Id;
 
         update currentASI;
@@ -392,7 +392,7 @@ private class NES_AnnualStudentInfoUtilitiesTest {
         currentProgramEnrollment.PlacementFlag__c = 'Principal Review';
         update currentProgramEnrollment;
          Annual_Student_Information__c currentASI = [SELECT Id,AutomatedPlacementExclude__c FROM Annual_Student_Information__c WHERE Program_Enrollment__c =: currentProgramEnrollment.Id ];
-       	
+        
         
         Test.startTest();
         //NES_AnnualStudentInformationUtilities.recalculateStudentPlacementBucket(asiIdList, true);

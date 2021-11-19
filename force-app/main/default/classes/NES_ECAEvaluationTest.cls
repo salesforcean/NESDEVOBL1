@@ -1,7 +1,7 @@
 @isTest
 private class NES_ECAEvaluationTest {
-	
-	@TestSetup
+    
+    @TestSetup
     static void setup(){
         //Create Educational Institutional Account i.e.., Parent Account
         Account institutionAccount = Peak_TestUtils.createEducationalInstitutionAccount();
@@ -112,7 +112,7 @@ private class NES_ECAEvaluationTest {
         componentList.add(questionGroupComponentNew);//added
         componentList.add(questionComponentNew);//added
         componentList.add(messageComponentNew);//added
-		
+        
         
      
         
@@ -283,7 +283,7 @@ private class NES_ECAEvaluationTest {
         criteriaGroup4.Group_Number__c = 1;
         criteriaGroup4.Group_Logic__c = '1 OR 2 OR 3 OR 4 OR 5';
         insert criteriaGroup4;
-		
+        
         Criteria_Group__c criteriaGroup5 = Peak_TestUtils.createCriteriaGroup(null, questionComponent.Id, false);
         criteriaGroup5.Group_Number__c = 1;
         criteriaGroup5.Group_Logic__c = '1 OR 2 OR 3 OR 4 OR 5';
@@ -306,189 +306,189 @@ private class NES_ECAEvaluationTest {
         refinementTwo.Refinement_Value__c = 'Pearson Pre';
         insert refinementTwo;
 
-		NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
-		NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(academicProgram.Id);
-	}
-	
-	static testMethod void unitTestOne() { 
-		String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
-		String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
-		String accountId = [SELECT Id FROM Account LIMIT 1].Id;
-		String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
-		String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
-		List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
+        NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
+        NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(academicProgram.Id);
+    }
+    
+    static testMethod void unitTestOne() { 
+        String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
+        String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
+        String accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
+        String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
+        List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
 
-		hed__Program_Enrollment__c studentEnrollment = [
+        hed__Program_Enrollment__c studentEnrollment = [
                 SELECT Id, hed__Account__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, hed__Contact__r.AccountId
                 FROM hed__Program_Enrollment__c
                 WHERE Id = :studentEnrollmentId
         ];
 
-				account acctToUpdate = new account (id = studentEnrollment.hed__Contact__r.AccountId, Confirmation_Start_Date__c = System.today() + 5);
-		update acctToUpdate;
+                account acctToUpdate = new account (id = studentEnrollment.hed__Contact__r.AccountId, Confirmation_Start_Date__c = System.today() + 5);
+        update acctToUpdate;
 
         Id processId = NES_ECACompletion.grabProcessId(studentEnrollment);
 
-		for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
-				stageRelationships.add(relationShip);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
-				formFlagRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
-				sectionDocRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
-				questionGroupRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
-				questionRelationships.add(relationship);
-			}
-		}
+        for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
+                stageRelationships.add(relationShip);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
+                formFlagRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
+                sectionDocRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
+                questionGroupRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
+                questionRelationships.add(relationship);
+            }
+        }
 
-		//Go get all the EC data for this process id.
-		NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
-		NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processId);
+        //Go get all the EC data for this process id.
+        NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
+        NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processId);
          //added
          List<Enrollment_Component_Affiliation__c> progEnrollECAListMap = new List<Enrollment_Component_Affiliation__c> ();
          for ( Enrollment_Component_Affiliation__c affiliation : [SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
-																		FROM Enrollment_Component_Affiliation__c
-																		WHERE Program_Enrollment__c = :studentEnrollmentId]) {
-				progEnrollECAListMap.add(affiliation);
-			}
+                                                                        FROM Enrollment_Component_Affiliation__c
+                                                                        WHERE Program_Enrollment__c = :studentEnrollmentId]) {
+                progEnrollECAListMap.add(affiliation);
+            }
         list<id> impactedcomponents = new list<id>();
           Enrollment_Component__c qComponent = [SELECT Id FROM Enrollment_Component__c WHERE Name = 'Waitlist' AND RecordType.Name = 'Stage' limit 1];  
           system.debug('qComponent'+qComponent);
         impactedcomponents.add(qComponent.id);
         //added
-		Test.startTest();
+        Test.startTest();
             NES_ECAEvaluation.evalAssignment(studentId, caretakerContactId, accountId, studentEnrollmentId, caretakerEnrollmentId,
             stageRelationships, formFlagRelationships, sectionDocRelationships, questionGroupRelationships, questionRelationships, thisProcessData,impactedcomponents,progEnrollECAListMap);//added
         Test.stopTest();
-	}
-	static testMethod void unitTestTwo() { 
-		String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
-		String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
-		String accountId = [SELECT Id FROM Account LIMIT 1].Id;
-		String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
-		String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
-		
-		List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component__c> ecomp = new List<Enrollment_Component__c>();
-		for( Enrollment_Component__c ec : [SELECT Id, Assignment_Logic__c  FROM Enrollment_Component__c LIMIT 100]){
-			ec.Assignment_Logic__c = null;
-			ecomp.add(ec);
-		}
-		update ecomp;
-		for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Child_Enrollment_Component__r.Assignment_Logic__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
-			stageRelationships.add(relationShip);
-			stageRelationships.add(relationShip);
-		}
+    }
+    static testMethod void unitTestTwo() { 
+        String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
+        String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
+        String accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
+        String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
+        
+        List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component__c> ecomp = new List<Enrollment_Component__c>();
+        for( Enrollment_Component__c ec : [SELECT Id, Assignment_Logic__c  FROM Enrollment_Component__c LIMIT 100]){
+            ec.Assignment_Logic__c = null;
+            ecomp.add(ec);
+        }
+        update ecomp;
+        for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Child_Enrollment_Component__r.Assignment_Logic__c, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
+            stageRelationships.add(relationShip);
+            stageRelationships.add(relationShip);
+        }
 
-        //added by anitha P	
+        //added by anitha P 
         Enrollment_Component__c processComponent = [select id from Enrollment_Component__c where RecordType.Name = 'Process' limit 1 ];
         //added by anitha P
-		Test.startTest();
+        Test.startTest();
             List<Id> relationIds = new List<Id>();
             for (Enrollment_Component_Relationship__c r :stageRelationships)
                 relationIds.add(r.id);
             NES_ECAEvaluation.createRemainingAffiliations(accountId, studentId, caretakerContactId, studentEnrollmentId, caretakerEnrollmentId, relationIds, processComponent.id);
         Test.stopTest();
-	}
+    }
 
-	static testMethod void unitTestThree() { 
-		List<String> ecomp = new List<String>();
-		for( Enrollment_Component__c ec : [SELECT Id, Assignment_Logic__c  FROM Enrollment_Component__c LIMIT 100]){
-			ecomp.add(ec.Id);
-		}
-		Test.startTest();
+    static testMethod void unitTestThree() { 
+        List<String> ecomp = new List<String>();
+        for( Enrollment_Component__c ec : [SELECT Id, Assignment_Logic__c  FROM Enrollment_Component__c LIMIT 100]){
+            ecomp.add(ec.Id);
+        }
+        Test.startTest();
             NES_ECAEvaluation.getCriteriaFieldList(ecomp, 'Assignment');
         Test.stopTest();
-	}
+    }
 
-	static testMethod void unitTestFour() { 
-		String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
-		String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
-		String accountId = [SELECT Id FROM Account LIMIT 1].Id;
-		String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
-		String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
-		List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
+    static testMethod void unitTestFour() { 
+        String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
+        String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
+        String accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
+        String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
+        List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
 
-		hed__Program_Enrollment__c studentEnrollment = [
+        hed__Program_Enrollment__c studentEnrollment = [
                 SELECT Id, hed__Account__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, hed__Contact__r.AccountId
                 FROM hed__Program_Enrollment__c
                 WHERE Id = :studentEnrollmentId
         ];
 
-		account acctToUpdate = new account (id = studentEnrollment.hed__Contact__r.AccountId, Confirmation_Start_Date__c = System.today() - 5);
-		update acctToUpdate;
+        account acctToUpdate = new account (id = studentEnrollment.hed__Contact__r.AccountId, Confirmation_Start_Date__c = System.today() - 5);
+        update acctToUpdate;
 
         Id processId = NES_ECACompletion.grabProcessId(studentEnrollment);
 
-		for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
-				stageRelationships.add(relationShip);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
-				formFlagRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
-				sectionDocRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
-				questionGroupRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
-				questionRelationships.add(relationship);
-			}
-		}
-		
-		//Go get all the EC data for this process id.
-		Enrollment_Component__c processComponent = [select id from Enrollment_Component__c where RecordType.Name = 'Process' limit 1 ];
+        for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
+                stageRelationships.add(relationShip);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
+                formFlagRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
+                sectionDocRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
+                questionGroupRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
+                questionRelationships.add(relationship);
+            }
+        }
+        
+        //Go get all the EC data for this process id.
+        Enrollment_Component__c processComponent = [select id from Enrollment_Component__c where RecordType.Name = 'Process' limit 1 ];
 
-		NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
-		NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processComponent.id);
+        NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
+        NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processComponent.id);
          //added
          List<Enrollment_Component_Affiliation__c> progEnrollECAListMap = new List<Enrollment_Component_Affiliation__c> ();
   
          for ( Enrollment_Component_Affiliation__c affiliation : [SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
-																		FROM Enrollment_Component_Affiliation__c
-																		WHERE Program_Enrollment__c = :studentEnrollmentId]) {
-				progEnrollECAListMap.add(affiliation);
-			}  
-		delete progEnrollECAListMap;
+                                                                        FROM Enrollment_Component_Affiliation__c
+                                                                        WHERE Program_Enrollment__c = :studentEnrollmentId]) {
+                progEnrollECAListMap.add(affiliation);
+            }  
+        delete progEnrollECAListMap;
         progEnrollECAListMap = new List<Enrollment_Component_Affiliation__c> ();
 
         list<id> impactedcomponents = new list<id>();
           Enrollment_Component__c qComponent = [SELECT Id FROM Enrollment_Component__c WHERE Name = 'Waitlist' AND RecordType.Name = 'Stage' limit 1];  
           system.debug('qComponent'+qComponent);
         impactedcomponents.add(qComponent.id);
-		impactedcomponents.addAll(allECData.enrollmentComponentMap.keySet());
+        impactedcomponents.addAll(allECData.enrollmentComponentMap.keySet());
 
         //added
-		Test.startTest();
+        Test.startTest();
             NES_ECAEvaluation.evalAssignment(studentId, caretakerContactId, accountId, studentEnrollmentId, caretakerEnrollmentId,
             thisProcessData.stageRelationships, thisProcessData.formRelationships, thisProcessData.sectionRelationships, thisProcessData.questionGroupRelationships, thisProcessData.questionRelationships, thisProcessData,impactedcomponents,progEnrollECAListMap);//added
         Test.stopTest();
-	}
+    }
     
     
     static testMethod void unitTestFive() {
         Id caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
         Id caretakerId = [SELECT Id,ContactId FROM User WHERE ContactId=:caretakerContactId LIMIT 1].Id;
-		Id studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
-		Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
-		Id studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
-		Id caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
+        Id studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
+        Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        Id studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
+        Id caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
         
         
         Set<Id> allEC = new Set<Id>();
@@ -516,79 +516,79 @@ private class NES_ECAEvaluationTest {
         
         
         for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c,Parent_Enrollment_Component__r.Assignment_Logic__c,Child_Enrollment_Component__c, Child_Enrollment_Component__r.Assignment_Logic__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
-			
+            
             allECAId.add(relationship.Id); 
-		}
+        }
         
         List<Enrollment_Component__c> processComponent = [select id,RecordType.Name from Enrollment_Component__c where RecordType.Name = 'Process'];        
-		Test.startTest();        	
+        Test.startTest();           
            NES_ECAEvaluation.createRemainingAffiliations(accountId,studentId,caretakerId,studentEnrollmentId,caretakerEnrollmentId,allECAId,processComponent[1].Id);
-        	
+            
         Test.stopTest();
     } 
     static testMethod void unitTestSix() { 
-		String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
-		String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
-		String accountId = [SELECT Id FROM Account LIMIT 1].Id;
-		String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
-		String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
-		List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
+        String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
+        String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
+        String accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
+        String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
+        List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
 
-		hed__Program_Enrollment__c studentEnrollment = [
+        hed__Program_Enrollment__c studentEnrollment = [
                 SELECT Id, hed__Account__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, hed__Contact__r.AccountId
                 FROM hed__Program_Enrollment__c
                 WHERE Id = :studentEnrollmentId
         ];
 
-		account acctToUpdate = new account (id = studentEnrollment.hed__Contact__r.AccountId, Confirmation_Start_Date__c = System.today() - 5);
-		update acctToUpdate;
+        account acctToUpdate = new account (id = studentEnrollment.hed__Contact__r.AccountId, Confirmation_Start_Date__c = System.today() - 5);
+        update acctToUpdate;
 
         Id processId = NES_ECACompletion.grabProcessId(studentEnrollment);
 
-		for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
-				stageRelationships.add(relationShip);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
-				formFlagRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
-				sectionDocRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
-				questionGroupRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
-				questionRelationships.add(relationship);
-			}
-		}
-		
-		//Go get all the EC data for this process id.
-		Enrollment_Component__c processComponent = [select id from Enrollment_Component__c where RecordType.Name = 'Process' limit 1 ];
+        for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
+                stageRelationships.add(relationShip);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
+                formFlagRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
+                sectionDocRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
+                questionGroupRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
+                questionRelationships.add(relationship);
+            }
+        }
+        
+        //Go get all the EC data for this process id.
+        Enrollment_Component__c processComponent = [select id from Enrollment_Component__c where RecordType.Name = 'Process' limit 1 ];
 
-		NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
-		NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processComponent.id);
+        NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
+        NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processComponent.id);
          //added
          List<Enrollment_Component_Affiliation__c> progEnrollECAListMap = new List<Enrollment_Component_Affiliation__c> ();
   
          for ( Enrollment_Component_Affiliation__c affiliation : [SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
-																		FROM Enrollment_Component_Affiliation__c
-																		WHERE Program_Enrollment__c = :studentEnrollmentId]) {
-				if(affiliation.Enrollment_Component__r.RecordType.Name == 'Stage')
-					progEnrollECAListMap.add(affiliation);
-			}  
-		//delete progEnrollECAListMap;
+                                                                        FROM Enrollment_Component_Affiliation__c
+                                                                        WHERE Program_Enrollment__c = :studentEnrollmentId]) {
+                if(affiliation.Enrollment_Component__r.RecordType.Name == 'Stage')
+                    progEnrollECAListMap.add(affiliation);
+            }  
+        //delete progEnrollECAListMap;
         progEnrollECAListMap = new List<Enrollment_Component_Affiliation__c> ();
-		list<id> impactedcomponents = new list<id>();
+        list<id> impactedcomponents = new list<id>();
           Enrollment_Component__c qComponent = [SELECT Id FROM Enrollment_Component__c WHERE RecordType.Name = 'Form' limit 1];  
           system.debug('qComponent'+qComponent);
         impactedcomponents.add(qComponent.id);
-		impactedcomponents.addAll(allECData.enrollmentComponentMap.keySet());
-		
+        impactedcomponents.addAll(allECData.enrollmentComponentMap.keySet());
+        
         Id studentEnrolId = Id.valueOf(studentEnrollmentId);
         Id caretakerEnrolId = Id.valueOf(caretakerEnrollmentId);
         Id stId = Id.valueOf(studentId);
@@ -596,7 +596,7 @@ private class NES_ECAEvaluationTest {
         Id acId =Id.valueOf(accountId);
         
         //added 
-		Test.startTest();
+        Test.startTest();
         
         List<Id> ECIds =  NES_ECAEvaluation.getMoreComponents(studentEnrollmentId,caretakerEnrollmentId,studentId,caretakerContactId,accountId,'Assignment',allECData.enrollmentComponentMap,true,impactedcomponents,progEnrollECAListMap); 
         //system.assertEquals(true, ECIds.size()>0);
@@ -604,71 +604,71 @@ private class NES_ECAEvaluationTest {
             thisProcessData.stageRelationships, thisProcessData.formRelationships, thisProcessData.sectionRelationships, thisProcessData.questionGroupRelationships, thisProcessData.questionRelationships, thisProcessData,impactedcomponents,progEnrollECAListMap);//added
          
         Test.stopTest();
-	}
+    }
     static testMethod void unitTestSeven() { 
-		String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
-		String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
-		String accountId = [SELECT Id FROM Account LIMIT 1].Id;
-		String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
-		String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
-		List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Criteria_Group__c>  LstCriteria= [SELECT Enrollment_Component__r.RecordType.Name,Group_Logic__c,Group_Number__c FROM Criteria_Group__c];
-		hed__Program_Enrollment__c studentEnrollment = [
+        String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
+        String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
+        String accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
+        String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
+        List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Criteria_Group__c>  LstCriteria= [SELECT Enrollment_Component__r.RecordType.Name,Group_Logic__c,Group_Number__c FROM Criteria_Group__c];
+        hed__Program_Enrollment__c studentEnrollment = [
                 SELECT Id, hed__Account__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, hed__Contact__r.AccountId
                 FROM hed__Program_Enrollment__c
                 WHERE Id = :studentEnrollmentId
         ];
 
-		account acctToUpdate = new account (id = studentEnrollment.hed__Contact__r.AccountId, Confirmation_Start_Date__c = System.today() - 5);
-		update acctToUpdate;
+        account acctToUpdate = new account (id = studentEnrollment.hed__Contact__r.AccountId, Confirmation_Start_Date__c = System.today() - 5);
+        update acctToUpdate;
 
         Id processId = NES_ECACompletion.grabProcessId(studentEnrollment);
 
-		for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
-				stageRelationships.add(relationShip);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
-				formFlagRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
-				sectionDocRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
-				questionGroupRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
-				questionRelationships.add(relationship);
-			}
-		}
-		
-		//Go get all the EC data for this process id.
-		Enrollment_Component__c processComponent = [select id from Enrollment_Component__c where RecordType.Name = 'Process' limit 1 ];
+        for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
+                stageRelationships.add(relationShip);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
+                formFlagRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
+                sectionDocRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
+                questionGroupRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
+                questionRelationships.add(relationship);
+            }
+        }
+        
+        //Go get all the EC data for this process id.
+        Enrollment_Component__c processComponent = [select id from Enrollment_Component__c where RecordType.Name = 'Process' limit 1 ];
 
-		NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
-		NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processComponent.id);
+        NES_EnrollmentCompentBuilder allECData = NES_EnrollmentCompentBuilder.getInstance();
+        NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = allECData.getSpecificProcessECData(processComponent.id);
          //added
          List<Enrollment_Component_Affiliation__c> progEnrollECAListMap = new List<Enrollment_Component_Affiliation__c> ();
   
          for ( Enrollment_Component_Affiliation__c affiliation : [SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
-																		FROM Enrollment_Component_Affiliation__c
-																		WHERE Program_Enrollment__c = :studentEnrollmentId]) {
-				if(affiliation.Enrollment_Component__r.RecordType.Name != 'Section')
-					progEnrollECAListMap.add(affiliation);
-			}  
-		//delete progEnrollECAListMap;
+                                                                        FROM Enrollment_Component_Affiliation__c
+                                                                        WHERE Program_Enrollment__c = :studentEnrollmentId]) {
+                if(affiliation.Enrollment_Component__r.RecordType.Name != 'Section')
+                    progEnrollECAListMap.add(affiliation);
+            }  
+        //delete progEnrollECAListMap;
         progEnrollECAListMap = new List<Enrollment_Component_Affiliation__c> ();
 
         list<id> impactedcomponents = new list<id>();
           Enrollment_Component__c qComponent = [SELECT Id FROM Enrollment_Component__c WHERE RecordType.Name = 'Section' limit 1];  
           system.debug('qComponent'+qComponent);
         impactedcomponents.add(qComponent.id);
-		impactedcomponents.addAll(allECData.enrollmentComponentMap.keySet());
-		
+        impactedcomponents.addAll(allECData.enrollmentComponentMap.keySet());
+        
         Id studentEnrolId = Id.valueOf(studentEnrollmentId);
         Id caretakerEnrolId = Id.valueOf(caretakerEnrollmentId);
         Id stId = Id.valueOf(studentId);
@@ -676,61 +676,61 @@ private class NES_ECAEvaluationTest {
         Id acId =Id.valueOf(accountId);
         
         //added 
-		Test.startTest();
+        Test.startTest();
         
         List<Id> ECIds = NES_ECAEvaluation.getMoreComponents(studentEnrollmentId,caretakerEnrollmentId,studentId,caretakerContactId,accountId,'Assignment',allECData.enrollmentComponentMap,true,impactedcomponents,progEnrollECAListMap); 
-        	//system.assertEquals(true, ECIds.size()>0);
+            //system.assertEquals(true, ECIds.size()>0);
             NES_ECAEvaluation.evalAssignment(studentId, caretakerContactId, accountId, studentEnrollmentId, caretakerEnrollmentId,
             thisProcessData.stageRelationships, thisProcessData.formRelationships, thisProcessData.sectionRelationships, thisProcessData.questionGroupRelationships, thisProcessData.questionRelationships, thisProcessData,impactedcomponents,progEnrollECAListMap);//added
         Test.stopTest();
-	}
+    }
     
     //Added as part of BUG217916 to cover runAssignment method (Jagadish Babu)
     static testMethod void runAssignmentTest(){
         String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
-		String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
-		String accountId = [SELECT Id FROM Account LIMIT 1].Id;
-		String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
-		String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
-		List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Criteria_Group__c>  LstCriteria= [SELECT Enrollment_Component__r.RecordType.Name,Group_Logic__c,Group_Number__c FROM Criteria_Group__c];
-		for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
-				stageRelationships.add(relationShip);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
-				formFlagRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
-				sectionDocRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
-				questionGroupRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
-				questionRelationships.add(relationship);
-			}
-		}
-		
+        String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
+        String accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
+        String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
+        List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Criteria_Group__c>  LstCriteria= [SELECT Enrollment_Component__r.RecordType.Name,Group_Logic__c,Group_Number__c FROM Criteria_Group__c];
+        for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
+                stageRelationships.add(relationShip);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
+                formFlagRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
+                sectionDocRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
+                questionGroupRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
+                questionRelationships.add(relationship);
+            }
+        }
+        
         List<hed__Program_Enrollment__c> studentEnrollment = [
                 SELECT Id, hed__Account__c,v2_External_Id__c,Enrollment_Type__c, hed__Contact__c,Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c, hed__Contact__r.AccountId,(Select Id,Enrollment_Component__c,Program_Enrollment__c,Status__c from Enrollment_Component_Affiliation__r)
                 FROM hed__Program_Enrollment__c
                 WHERE Id = :studentEnrollmentId
         ];
-		Enrollment_Component__c stageComponent = Peak_TestUtils.createEnrollmentComponent(studentEnrollment[0].hed__Account__c, 'Stage', false);
+        Enrollment_Component__c stageComponent = Peak_TestUtils.createEnrollmentComponent(studentEnrollment[0].hed__Account__c, 'Stage', false);
         stageComponent.Completion_Logic__c = 'test Stage';
-		insert stageComponent;
-		
-		List<Enrollment_Component__c> processECRec = [Select Id,
+        insert stageComponent;
+        
+        List<Enrollment_Component__c> processECRec = [Select Id,
                                                                  RecordType.Name,
                                                                  Process_Academic_Program__c
                                                                  from Enrollment_Component__c where Process_Academic_Program__c=:studentEnrollment[0].hed__Account__c and RecordType.Name =: NES_DashboardUtilities.PROCESS_RT];
-		Enrollment_Component_Relationship__c process_stage_ECR = Peak_TestUtils.createEnrollmentComponentRelationship(stageComponent.Id, processECRec[0].Id);																
-		system.assertEquals(studentEnrollment.size()>0, true);         
+        Enrollment_Component_Relationship__c process_stage_ECR = Peak_TestUtils.createEnrollmentComponentRelationship(stageComponent.Id, processECRec[0].Id);                                                               
+        system.assertEquals(studentEnrollment.size()>0, true);         
         test.startTest();
         NES_ECAEvaluation.runAssignment(studentEnrollmentId,null,studentEnrollment[0],null,processECRec[0].Id);
         test.stopTest();
@@ -740,50 +740,50 @@ private class NES_ECAEvaluationTest {
     //Added as part of BUG217916 to cover runAssignment method (Jagadish Babu)
     static testMethod void runAssignmentReEnrollTest(){
         String caretakerContactId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Caretaker' LIMIT 1].Id;
-		String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
-		String accountId = [SELECT Id FROM Account LIMIT 1].Id;
-		String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
-		String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
-		List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
-		List<Criteria_Group__c>  LstCriteria= [SELECT Enrollment_Component__r.RecordType.Name,Group_Logic__c,Group_Number__c FROM Criteria_Group__c];
-		for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
-				stageRelationships.add(relationShip);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
-				formFlagRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
-				sectionDocRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
-				questionGroupRelationships.add(relationship);
-			}
-			if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
-				questionRelationships.add(relationship);
-			}
-		}
-		
+        String studentId = [SELECT Id FROM Contact WHERE RecordType.DeveloperName = 'Students' LIMIT 1].Id;
+        String accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        String studentEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: studentId LIMIT 1].Id;
+        String caretakerEnrollmentId = [SELECT Id FROM hed__Program_Enrollment__c WHERE hed__Contact__c =: caretakerContactId LIMIT 1].Id;
+        List<Enrollment_Component_Relationship__c> stageRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> formFlagRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> sectionDocRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionGroupRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Enrollment_Component_Relationship__c> questionRelationships = new List<Enrollment_Component_Relationship__c>();
+        List<Criteria_Group__c>  LstCriteria= [SELECT Enrollment_Component__r.RecordType.Name,Group_Logic__c,Group_Number__c FROM Criteria_Group__c];
+        for(Enrollment_Component_Relationship__c relationShip : [SELECT Id, Parent_Enrollment_Component__c, Child_Enrollment_Component__c, Order__c, Child_Enrollment_Component__r.RecordType.DeveloperName FROM Enrollment_Component_Relationship__c LIMIT 100]) {
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Stage') {
+                stageRelationships.add(relationShip);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Form') {
+                formFlagRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Section') {
+                sectionDocRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question_Group') {
+                questionGroupRelationships.add(relationship);
+            }
+            if(relationShip.Child_Enrollment_Component__r.RecordType.DeveloperName == 'Question') {
+                questionRelationships.add(relationship);
+            }
+        }
+        
         List<hed__Program_Enrollment__c> studentEnrollment = [
                 SELECT Id, hed__Account__c,v2_External_Id__c,Enrollment_Type__c, hed__Contact__c,Household_Program_Enrollment__c,Household_Program_Enrollment__r.hed__Contact__c, hed__Contact__r.AccountId,(Select Id,Enrollment_Component__c,Program_Enrollment__c,Status__c from Enrollment_Component_Affiliation__r)
                 FROM hed__Program_Enrollment__c
                 WHERE Id = :studentEnrollmentId
         ];
         
-		Enrollment_Component__c stageComponent = Peak_TestUtils.createEnrollmentComponent(studentEnrollment[0].hed__Account__c, 'Stage', false);
+        Enrollment_Component__c stageComponent = Peak_TestUtils.createEnrollmentComponent(studentEnrollment[0].hed__Account__c, 'Stage', false);
         stageComponent.Completion_Logic__c = 'test Stage';
-		insert stageComponent;
-		
-		List<Enrollment_Component__c> processECRec = [Select Id,
+        insert stageComponent;
+        
+        List<Enrollment_Component__c> processECRec = [Select Id,
                                                                  RecordType.Name,
                                                                  Process_Academic_Program__c
                                                                  from Enrollment_Component__c where Process_Academic_Program__c=:studentEnrollment[0].hed__Account__c and RecordType.Name =: NES_DashboardUtilities.PROCESS_RT];
-		Enrollment_Component_Relationship__c process_stage_ECR = Peak_TestUtils.createEnrollmentComponentRelationship(stageComponent.Id, processECRec[0].Id);																
-		system.assertEquals(studentEnrollment.size()>0, true);         
+        Enrollment_Component_Relationship__c process_stage_ECR = Peak_TestUtils.createEnrollmentComponentRelationship(stageComponent.Id, processECRec[0].Id);                                                               
+        system.assertEquals(studentEnrollment.size()>0, true);         
         studentEnrollment[0].Enrollment_Type__c = 'Re-enrolling Student';
         update studentEnrollment[0];
         test.startTest();

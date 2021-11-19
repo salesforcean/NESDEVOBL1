@@ -483,7 +483,7 @@ public without sharing class  NES_AnnualStudentInformationUtilities {
         {
             if (eca.Document_Type__c == 'Evaluation') 
             {
-            	needsEval = true;
+                needsEval = true;
                 List<Enrollment_Document__c> docsThisECA = ECA_EnrollDoclist.get(eca.id);
                 if (docsThisECA != null) {
                     for (Enrollment_Document__c ec : docsThisECA)

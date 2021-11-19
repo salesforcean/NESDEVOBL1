@@ -1,6 +1,6 @@
 public with sharing class EC_Parser_Data {
     /**
-	* 	@ALIKM 20/apr/2020- commenting out changes
+    *   @ALIKM 20/apr/2020- commenting out changes
         // Singleton
         // private static EC_Parser_Data instance = null;
         
@@ -41,5 +41,5 @@ public with sharing class EC_Parser_Data {
         public void addECR(Enrollment_Component_Relationship__c ecr) {
             allECRs.add(ecr);
         }
-	*/
+    */
 }

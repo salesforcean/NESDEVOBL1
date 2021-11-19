@@ -11,8 +11,8 @@
 *         2019-09-17 for #101932/Bug 108433 (Chinnamanaidu Neerasa)
 *         2019-10-01 for #110763 User Story (Chinnamanaidu Neerasa)
 *         2019-11-18 for #113765 User Story (Chinnamanaidu Neerasa)
-*		  [2020-02-12 : ALI KM : US 135435] - Bug/Enhancement related changes made to reviewDocumentsBefore_Insert() method.
-*		  [2020-02-23 : Krishna Peddanagammol : US 125320] - Enhancement related changes made to updateDocumentECAStatus() method.
+*         [2020-02-12 : ALI KM : US 135435] - Bug/Enhancement related changes made to reviewDocumentsBefore_Insert() method.
+*         [2020-02-23 : Krishna Peddanagammol : US 125320] - Enhancement related changes made to updateDocumentECAStatus() method.
 **/
 
 public class NES_EnrollmentDocBusinessLogic {
@@ -70,13 +70,13 @@ public class NES_EnrollmentDocBusinessLogic {
 
         //Query all Program Enrollment records related to Enrollment Documents
         Map < Id, hed__Program_Enrollment__c > programEnrollmentMap = new Map < Id, hed__Program_Enrollment__c > (
-        		[SELECT Id, hed__Account__c, hed__Contact__r.AccountId FROM hed__Program_Enrollment__c WHERE Id IN:peIdset]);
+                [SELECT Id, hed__Account__c, hed__Contact__r.AccountId FROM hed__Program_Enrollment__c WHERE Id IN:peIdset]);
         System.debug('programEnrollmentMap ::' + programEnrollmentMap);
         
         //Alex C - Added to limit query results to just relevant households
         list<Id> accountIDs = new list<Id>();
         for(hed__Program_Enrollment__c updatedPE : programEnrollmentMap.values()){
-        	accountIDs.add(updatedPE.hed__Contact__r.AccountId);
+            accountIDs.add(updatedPE.hed__Contact__r.AccountId);
         }
         
         //Query all Document Review records from Database.This can be used to get the First Occurance of the given combination of Document Review record with EnrollmentDocument record
@@ -723,7 +723,7 @@ public class NES_EnrollmentDocBusinessLogic {
                 Enrollment_Document__c enrollmentDocumentold = oldmap.get(enrollmentDocument.id);           
                     
                 if (!String.isEmpty(enrollmentDocument.Status_Reason__c ) && !String.isEmpty(enrollmentDocumentold.Status_Reason__c )){
-					if (enrollmentDocumentold.Status_Reason__c!= enrollmentDocument.Status_Reason__c && enrollmentDocument.Status_Reason__c.startsWith('Deferred') )
+                    if (enrollmentDocumentold.Status_Reason__c!= enrollmentDocument.Status_Reason__c && enrollmentDocument.Status_Reason__c.startsWith('Deferred') )
                        affiliationIds.add(enrollmentDocument.Enrollment_Component_Affiliation__c);
                 }
              }  

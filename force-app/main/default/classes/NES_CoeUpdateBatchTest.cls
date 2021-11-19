@@ -16,8 +16,8 @@ public class NES_CoeUpdateBatchTest {
 
         Account academicProgramAccount = Peak_TestUtils.createAccountForNewStudentData(account.Id,schoolYear.Id);
         system.debug('1 ' + academicProgramAccount);
-		academicProgramAccount.Registration_Start_Date__c = Date.today().addMonths(-2);
-		update academicProgramAccount;
+        academicProgramAccount.Registration_Start_Date__c = Date.today().addMonths(-2);
+        update academicProgramAccount;
         
         hed__Program_Enrollment__c ProgramEnrollmentTest = Peak_TestUtils.createProgramEnrollment(academicProgramAccount.Id, TestContact.Id, schoolYear.Id, false);
         ProgramEnrollmentTest.Final_Grade_Level__c = '1';  

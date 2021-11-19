@@ -214,7 +214,7 @@ public without sharing class Peak_FileUploadController {
       @AuraEnabled
     public static String getformName(Id enrollmentComponentAffiliationId){
      Enrollment_Component_Affiliation__c ec = [select Enrollment_Component__c from Enrollment_Component_Affiliation__c where Id =: enrollmentComponentAffiliationId];
-	 Enrollment_Component__c currentForm = [select Name from Enrollment_Component__c where Id IN (select Parent_Enrollment_Component__c from Enrollment_Component_Relationship__c where Child_Enrollment_Component__c =: ec.Enrollment_Component__c)];
+     Enrollment_Component__c currentForm = [select Name from Enrollment_Component__c where Id IN (select Parent_Enrollment_Component__c from Enrollment_Component_Relationship__c where Child_Enrollment_Component__c =: ec.Enrollment_Component__c)];
      return currentForm.Name;
      }
 

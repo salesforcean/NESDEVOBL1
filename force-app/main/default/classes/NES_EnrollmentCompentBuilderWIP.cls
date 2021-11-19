@@ -1,6 +1,6 @@
 global class NES_EnrollmentCompentBuilderWIP  {
 /**
- * 	* 	@ALIKM 20/apr/2020- commenting out changes
+ *  *   @ALIKM 20/apr/2020- commenting out changes
  *  @Usage: 
  * 
         WIP:
@@ -67,8 +67,8 @@ global class NES_EnrollmentCompentBuilderWIP  {
         TEST after building ecr & ec records: 
         #1:
             for (Enrollment_Component_Relationship__c r : thisProcessData.sectionRelationships) {
-			if (r.Child_Enrollment_Component__r.RecordType.Name  == NES_DashboardUtilities.SECTION_RT ||
-			          r.Child_Enrollment_Component__r.RecordType.Name  == NES_DashboardUtilities.DOCUMENT_RT)
+            if (r.Child_Enrollment_Component__r.RecordType.Name  == NES_DashboardUtilities.SECTION_RT ||
+                      r.Child_Enrollment_Component__r.RecordType.Name  == NES_DashboardUtilities.DOCUMENT_RT)
                 formRelationships.add(r);
             }
         

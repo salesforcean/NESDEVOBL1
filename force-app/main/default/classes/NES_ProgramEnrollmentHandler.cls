@@ -52,7 +52,7 @@ public class NES_ProgramEnrollmentHandler {
             //}
         }
 
-		//Mark Membrino 3/19/2020 (1540590)  Removing all these calls because we do all these steps in NES_AddStudentCBLQueueable
+        //Mark Membrino 3/19/2020 (1540590)  Removing all these calls because we do all these steps in NES_AddStudentCBLQueueable
 
         //if (validRecords.size() > 0) {
         //    NES_BusinessLogicUtils.calculateEntranceAgeEligibility(validRecords);
@@ -96,7 +96,7 @@ public class NES_ProgramEnrollmentHandler {
 
         // Logic added on 2020-06-23. Logic to process Updates PEs and stamp Old and New PE Status Values into the Concatenated Status field.
         // Sumanth/Rakesh: Added the below 2 Maps for US # 186957 (Task# 195460, 195459)
-     	for (hed__Program_Enrollment__c progEnroll : csNewMap.values()){
+        for (hed__Program_Enrollment__c progEnroll : csNewMap.values()){
             progEnroll.Concatenated_Status__c = csOldMap.get(progEnroll.Id).Status__c+'-'+progEnroll.Status__c;
             
         }
@@ -148,7 +148,7 @@ public class NES_ProgramEnrollmentHandler {
         Boolean origRunAssignment = NES_ECACompletion.shouldRunCompletion && NES_Constants.runAssignment;
         NES_ECACompletion.shouldRunCompletion = false;
         NES_Constants.runAssignment = false;
-		
+        
         if (!logicSwitch) {
             return;
         }
@@ -179,7 +179,7 @@ public class NES_ProgramEnrollmentHandler {
         Set<Id> programEnrollmentIds = new Set<Id>();
         Set<Id> pEsForCompleteAssignmentIds = new Set<Id>();
         //137647 -Swapna For ReActivation Case
-		Set<Id> ReactivatedPEIds = new Set<Id>();
+        Set<Id> ReactivatedPEIds = new Set<Id>();
         Set<Id> allPEIds = new Set<Id>();
         NES_ProgramEnrollmentBusinessLogic.updateEnrollmentCapacity(oldMap, newMap.values());
 
@@ -196,7 +196,7 @@ public class NES_ProgramEnrollmentHandler {
             //137647 -Swapna For ReActivation Case
             if (programEnrollment.Status__c == 'In Progress' && oldMap.get(programEnrollment.Id).Status__c != 'In Progress' && (oldMap.get(programEnrollment.Id).Status__c == 'Inactive' || oldMap.get(programEnrollment.Id).Status__c == 'Ineligible' || oldMap.get(programEnrollment.Id).Status__c == 'Time Expired' || oldMap.get(programEnrollment.Id).Status__c == 'Withdrawn')) {
                 ReactivatedPEIds.add(programEnrollment.Id);
-       		}
+            }
 
             allPEIds.add(programEnrollment.Id);
         }
@@ -204,10 +204,10 @@ public class NES_ProgramEnrollmentHandler {
         if (programEnrollmentIds.size() > 0 && !System.isBatch() && !Test.isRunningTest()) {
             System.debug('push to SIS');
             NES_IdamUtilities.pushToSIS(programEnrollmentIds);
-			System.debug('updateHHPEOrderHold====='+programEnrollmentIds);
-			//If there is a Alt Shipping Address on the Account, we should set the Ordering Hold Flag
-			//and date on the Household PE.  We also need to create a case.
-			//Added code by viswa for #167639 User Story (Alternative Shipping Address Case Workflow) on 2020-04-24
+            System.debug('updateHHPEOrderHold====='+programEnrollmentIds);
+            //If there is a Alt Shipping Address on the Account, we should set the Ordering Hold Flag
+            //and date on the Household PE.  We also need to create a case.
+            //Added code by viswa for #167639 User Story (Alternative Shipping Address Case Workflow) on 2020-04-24
             NES_ProgramEnrollmentBusinessLogic.updateHHPEOrderHold(programEnrollmentIds);
             NES_ProgramEnrollmentBusinessLogic.updateASIForCompletedPEs(programEnrollmentIds);//Added code by Maddileti Boya for #194222 User Story on 2020-06-15
             System.debug('updateHHPEOrderHold=====After'+programEnrollmentIds);
@@ -231,7 +231,7 @@ public class NES_ProgramEnrollmentHandler {
         system.debug('runPlacement:' + runPlacement);
         
         /********* End Placement Updates *************/
-		/****Moved over to line number 143 ****/
+        /****Moved over to line number 143 ****/
        NES_Constants.runAssignment = origAssignment;
        NES_ECACompletion.shouldRunCompletion = origCompletion;
        
@@ -241,8 +241,8 @@ public class NES_ProgramEnrollmentHandler {
             //As part of the ECA reWrite, we need to know which ECA process to use and what type of PE is being updated.
             Map<Id, hed__Program_Enrollment__c> PEMap = new Map<Id, hed__Program_Enrollment__c> ();
 
-        	List<hed__Program_Enrollment__c> PEList = GenericSOQLQueries.programEnrollmentDetails(allPEIds);
-        	for (hed__Program_Enrollment__c pe:PEList) {
+            List<hed__Program_Enrollment__c> PEList = GenericSOQLQueries.programEnrollmentDetails(allPEIds);
+            for (hed__Program_Enrollment__c pe:PEList) {
                 PEMap.put(pe.Id, pe);
             }
             /*for (hed__Program_Enrollment__c pe:[select id, hed__Account__r.Use_Updated_ECA_Process__c, recordtype.name from hed__Program_Enrollment__c where id in :allPEIds]) {
@@ -362,7 +362,7 @@ public class NES_ProgramEnrollmentHandler {
                             }
 
                             // Code below else-if ladder logic for addressing Bug #. 280977
-							else if(
+                            else if(
                                 ((eca.Program_Enrollment__r.waitlistflag__c == 'Released') || 
                                 (eca.Program_Enrollment__r.waitlistflag__c == '')) &&
                                 (eca.Enrollment_Component__r.RecordType.Name == 'Stage') && 
@@ -435,7 +435,7 @@ public class NES_ProgramEnrollmentHandler {
 
         //for (hed__Program_Enrollment__c programEnrollment : actList)
         //  activePEIds.add(programEnrollment.id);
-		//Mark Membrino 2/24/20 Removed and moved logic from this trigger to NES_AddStudentCBLQueueable
+        //Mark Membrino 2/24/20 Removed and moved logic from this trigger to NES_AddStudentCBLQueueable
         //NES_BusinessLogicUtils.updateContactStartYear(activePEIds);
         
         //Start-added for #107180 User Story (Task 108660) on 2019-09-06

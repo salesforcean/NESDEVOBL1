@@ -15,7 +15,7 @@ public class NES_HouseholdIncomeBusinessLogicTest {
         system.debug('current sy ' + currentSchoolYear.Name);
 
         Contact contact = Peak_TestUtils.createTestContact('Students', account.Id);
-		Contact contact1 = Peak_TestUtils.createTestContact('Caretaker', account.Id);
+        Contact contact1 = Peak_TestUtils.createTestContact('Caretaker', account.Id);
         Account academicProgramAccount = Peak_TestUtils.createAccountForNewStudentData(account.Id,currentSchoolYear.Id);
         system.debug('1 ' + academicProgramAccount);
 
@@ -30,7 +30,7 @@ public class NES_HouseholdIncomeBusinessLogicTest {
         hed__Program_Enrollment__c progEnrollmentTest = Peak_TestUtils.createProgramEnrollment(academicProgramAccount.Id, contact.Id,currentSchoolYear.Id, false);
         progEnrollmentTest.ELLFlag__c='Potential';
         Insert progEnrollmentTest;
-		
+        
     }
    
     static testMethod void AfterInsertTestScenarioOne(){

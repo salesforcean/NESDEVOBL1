@@ -197,7 +197,7 @@ public with sharing class NES_ASIUtilitiesTest {
         insert enrollmentDocument1;
         Annual_Student_Information__c currentASI = [SELECT Id,LA_Placement_Level__c,RecommendedAutoPlacement__c,Final_Grade_Level__c,Math_Placement_Level__c,Grade_Level_Requested__c FROM Annual_Student_Information__c WHERE Name = 'Test ASI1' ];
         currentASI.LA_Placement_Level__c = '2';
-        currentASI.Math_Placement_Level__c = 'Gifted Math 4 (Math 5)';	
+        currentASI.Math_Placement_Level__c = 'Gifted Math 4 (Math 5)';  
         currentASI.Grade_Level_Requested__c = '8';
         currentASI.Final_Grade_Level__c = '9';
         update  currentASI;

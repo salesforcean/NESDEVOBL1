@@ -5,7 +5,7 @@
 public class ecrNode { // rename to ecrNode
 
     /** 
-	* 	@ALIKM 20/apr/2020- commenting out changes
+    *   @ALIKM 20/apr/2020- commenting out changes
         public Id parentId {get; private set;} // parent.ec.ID
         public Id nodeId {get; private set;} // ecr.ID / ec.ID
         // public Id ecrId {get; private set;} // ecr.ID
@@ -100,6 +100,6 @@ public class ecrNode { // rename to ecrNode
         // public void removeChildren() {
         //     this.children.clear();
         // }
-	*/
+    */
     
 }

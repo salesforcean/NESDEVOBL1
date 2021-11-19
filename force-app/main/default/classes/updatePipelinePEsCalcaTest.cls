@@ -2,9 +2,9 @@
 public class updatePipelinePEsCalcaTest {
     
     static testMethod void testNumberComparisonsLessThan(){
-    	updatePipelinePEsOACalca.testCoveragePaddingMethod(); 
+        updatePipelinePEsOACalca.testCoveragePaddingMethod(); 
         updatePipelinePEsITACalca.testCoveragePaddingMethod();
-		updatePipelinePEsTASCalca.testCoveragePaddingMethod(); 
+        updatePipelinePEsTASCalca.testCoveragePaddingMethod(); 
         updatePipelinePEsWaitListCalca.testCoveragePaddingMethod(); 
     }
 }

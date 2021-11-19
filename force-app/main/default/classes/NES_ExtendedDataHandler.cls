@@ -59,9 +59,9 @@ public with sharing class NES_ExtendedDataHandler {
         for(Extended_Data__c edRec: newRecList){
             if(edRec.School_Year__c == null){
                 if(String.isNotBlank(edRec.Program_Enrollment__c)){
-                	peIdList.add(edRec.Program_Enrollment__c);
-                	peToExDtRecMap.put(edRec.Program_Enrollment__c, edRec);
-                	updRecList.add(edRec);
+                    peIdList.add(edRec.Program_Enrollment__c);
+                    peToExDtRecMap.put(edRec.Program_Enrollment__c, edRec);
+                    updRecList.add(edRec);
                 }
             }            
         }
@@ -77,8 +77,8 @@ public with sharing class NES_ExtendedDataHandler {
         // Start updating the required Extended Data records
         for( Extended_Data__c edRec : updRecList){
             if(peIdToSchYrMap.containsKey(edRec.Program_Enrollment__c)){
-            	edRec.School_Year__c = peIdToSchYrMap.get(edRec.Program_Enrollment__c);
-        	}
+                edRec.School_Year__c = peIdToSchYrMap.get(edRec.Program_Enrollment__c);
+            }
         }
         
     }

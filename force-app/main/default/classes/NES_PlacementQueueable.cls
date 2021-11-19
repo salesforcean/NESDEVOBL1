@@ -8,8 +8,8 @@ public without sharing class NES_PlacementQueueable implements Queueable {
     private List<ID> peIds;
 
     public void execute(QueueableContext context) {
-		
-		/* Initiate the placement process for the list of PEs */
+        
+        /* Initiate the placement process for the list of PEs */
         PlacementUtilities.runPlacement(peIDs);
         //System.enqueueJob(new PlacementBucketQueueable(peIds)); --Removed by Alex 2020-01-23
     }

@@ -260,7 +260,8 @@
             studentJSON: JSON.stringify(studentData),
             questionJSON: JSON.stringify(questionData)
         });
-		
+		alert(JSON.stringify(studentData));
+        alert(JSON.stringify(questionData));
         action.setCallback(this, function(response){
             var peakResponse = response.getReturnValue();
             if(peakResponse != null && peakResponse.success){

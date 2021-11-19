@@ -1,6 +1,6 @@
 public class EnrollmentComponentTypes {
     /**
-	* 	@ALIKM 20/apr/2020- commenting out changes
+    *   @ALIKM 20/apr/2020- commenting out changes
         private static EnrollmentComponentTypes instance = null;
         public static Map<String, ComponentKind> typesMap {
             get {return typesMap; }
@@ -37,5 +37,5 @@ public class EnrollmentComponentTypes {
             QUESTIONGROUP,
             UNKNOWN
         }
-	*/
+    */
 }

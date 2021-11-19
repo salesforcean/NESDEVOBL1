@@ -134,7 +134,7 @@ private class NES_ProgramEnrollmentTriggerTest {
         ecaAffiliation1.status__c = 'In progress';
         Insert ecaAffiliation1;
         System.debug('ecaAffiliation1===>>' + ecaAffiliation1);
-	    //Start: Test coverage data for Bug #226654
+        //Start: Test coverage data for Bug #226654
         Enrollment_Component_Affiliation__c ecaAffiliation2 = Peak_TestUtils.createEnrollmentComponentAffiliation(programEnrollmentList[0].Id, enComp1.Id, false);
         ecaAffiliation2.status__c = 'Not Started';
         ecaAffiliation2.Order__c = 3.0;

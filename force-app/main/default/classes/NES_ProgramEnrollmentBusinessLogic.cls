@@ -182,8 +182,8 @@ public class NES_ProgramEnrollmentBusinessLogic {
 *        @Map<Id,hed__Program_Enrollment__c>
 */
     public static void calculateEntranceAgeEligibilityOverride(List<hed__Program_Enrollment__c> newList, Map<Id, hed__Program_Enrollment__c> oldMap) {
-		//Mark Membrino 11/5/2019  Per 114797, we are changing the way the age elig overview works and making it a formula.  We no
-		//longer need this override method to be called.
+        //Mark Membrino 11/5/2019  Per 114797, we are changing the way the age elig overview works and making it a formula.  We no
+        //longer need this override method to be called.
         /*List<hed__Program_Enrollment__c> prgEnrollments = new List<hed__Program_Enrollment__c>();
         
         for (hed__Program_Enrollment__c progEnrollment : newList) {
@@ -281,20 +281,20 @@ public class NES_ProgramEnrollmentBusinessLogic {
     
     //Start: code by Viswa for #167639 User Story (Alternative Shipping Address Case Workflow) on 2020-04-24
     
-	//New method for determining if the student needs an alternate shipping address.
-	//This will only get passed student PEs that were just set to a status of 'Complete' 
-	
-	public static void updateHHPEOrderHold(set<Id> PEsToCheck) {
+    //New method for determining if the student needs an alternate shipping address.
+    //This will only get passed student PEs that were just set to a status of 'Complete' 
+    
+    public static void updateHHPEOrderHold(set<Id> PEsToCheck) {
         // We need.  
         // 1. Alt shipping address fields  hed__Contact__r.account.Alt_Shipping_Street_1__c  Alt_Shipping_City__c
         // 2. Household PE   (Household_Program_Enrollment__c)
         
-		set<id> householdPEsToUpdateSet  = new set<id>();
-		list<hed__Program_Enrollment__c> HouseHoldPEsToUpdateList= new list<hed__Program_Enrollment__c>();
+        set<id> householdPEsToUpdateSet  = new set<id>();
+        list<hed__Program_Enrollment__c> HouseHoldPEsToUpdateList= new list<hed__Program_Enrollment__c>();
         
         list<case> casesToCreate = new list<case>();
         for (hed__Program_Enrollment__c newPE : [select id,Household_Program_Enrollment__c,hed__Contact__c,
-                                                 	 OrderingHoldFlag__c,OrderingHoldDate__c,
+                                                     OrderingHoldFlag__c,OrderingHoldDate__c,
                                                      hed__Contact__r.account.Alt_Shipping_City__c,hed__Contact__r.account.Alternative_Address_Request__c
                                                      from hed__Program_Enrollment__c
                                                      where id in :PEsToCheck]) {
@@ -304,24 +304,24 @@ public class NES_ProgramEnrollmentBusinessLogic {
            //for all the household pes that we found, we should update the OrderingHoldFlag__c to 'Alternate Shipping' and the OrderingHoldDate__c to today
             hed__Program_Enrollment__c newEP ;
             newEP= new hed__Program_Enrollment__c();
-			newEP.id=newPE.Household_Program_Enrollment__c;                                                      
+            newEP.id=newPE.Household_Program_Enrollment__c;                                                      
             newEP.OrderingHoldFlag__c = 'Alternate Shipping';
             newEP.OrderingHoldDate__c = System.now().date();
             
             HouseHoldPEsToUpdateList.add(newEP);
-			system.debug('newPE+++++'+newEP);
+            system.debug('newPE+++++'+newEP);
             //Create a case to notify the shipping team there is a new student that has an alternate address.
             Case objcase = new Case();
-	 		objcase.Type='Fulfillment';
-	 		objcase.Ticket_Type__c='Request ST Materials';
-	 		objcase.Ticket_Sub_Type__c='Alternate Shipping';
-	 		objcase.Description='Care Taker request to have equipment and materials sent to an alternative shipping address';
+            objcase.Type='Fulfillment';
+            objcase.Ticket_Type__c='Request ST Materials';
+            objcase.Ticket_Sub_Type__c='Alternate Shipping';
+            objcase.Description='Care Taker request to have equipment and materials sent to an alternative shipping address';
             objcase.Subject='Alternative Shipping Address Requested';
             objcase.OwnerId=System.Label.NES_Fulfillment_Queue;
             objcase.Platform__c = 'Pearson Connexus';
             objcase.Origin = 'Enrollment Community'; //Mohammad Shaik-Based on picklist value api name change for US : 183731
             objcase.System_of_Origin__c='New Enrollment';
-			objcase.ContactId = newPE.hed__Contact__c;
+            objcase.ContactId = newPE.hed__Contact__c;
             casesToCreate.add(objcase);
                
          }
@@ -337,7 +337,7 @@ public class NES_ProgramEnrollmentBusinessLogic {
           
     }
     //Added code by Maddileti Boya for #194222 User Story on 2020-06-15 
-	public static void updateASIForCompletedPEs(set<Id> pesToProcess) {
+    public static void updateASIForCompletedPEs(set<Id> pesToProcess) {
         List<hed__Program_Enrollment__c> programEnrollments = new List<hed__Program_Enrollment__c>([
             SELECT Id, Start_Year__c,
             (SELECT Id, Potential_Child_Find__c,Potential_Child_Find_Detailed_Log__c,
@@ -375,7 +375,7 @@ public class NES_ProgramEnrollmentBusinessLogic {
             //Added below if condition as part of US228767 (Jagadish Babu)  to avoid Null exception when ASI or specED not present
             if(progEnrollmentToAsiMap.containsKey(pe.Id) && specialEducationMap.containsKey(pe.Id)){
                  Annual_Student_Information__c asi = progEnrollmentToAsiMap.get(pe.Id);
-           	 	 Special_Education__c specEd = specialEducationMap.get(pe.Id);         	               
+                 Special_Education__c specEd = specialEducationMap.get(pe.Id);                         
                  //Make sure we have an ASI and a specEd recorder to work with.
                 if (specEd <> null && String.isBlank(asi.Potential_Child_Find__c) && (specEd.IEPLastUpdated__c !='Within the last year' && specEd.IEPLastUpdated__c !='Within the last two years' && specEd.IEPLastUpdated__c !='Within the last three years' 
                        || specEd.Plan504History__c !='Yes') && (specEd.IEPHistory__c =='Decline to Disclose' || specEd.HasStudentEverHad504Plan__c =='Decline to Disclose' || specEd.EvaluatedWithInLastYear__c =='Decline to Disclose' || specEd.EvaluatedWithInLastYear__c =='Yes'))
@@ -398,7 +398,7 @@ public class NES_ProgramEnrollmentBusinessLogic {
                 System.debug('Exception Thrown::' + e.getMessage());
             }
         }
-        	
+            
           
     }
     //End code by Maddileti Boya for #194222 User Story on 2020-06-15 

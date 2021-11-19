@@ -83,9 +83,9 @@ public without Sharing class NES_ReEnrUtilities {
                 pe.Waitlist_Released_Dt__c = null;
                 pe.WaitlistFlag__c = WaitlistFlagVal;  // Defect 490665 : Naveen 
                 pe.Waitlist_Time_Date_Stamp__c=null;
-  				
-				System.debug('NDEBUG Not In SYReEnroll :::' );
-             	update pe;
+                
+                System.debug('NDEBUG Not In SYReEnroll :::' );
+                update pe;
               //End Here   
                  createOpportunity(studentContact,studentPERecord,AcademicProgram,callType);
              }
@@ -105,7 +105,7 @@ public without Sharing class NES_ReEnrUtilities {
             logger.logException('There is some issue with the ReEnrollment'+studentPEId, e);
             logger.saveLogs();
             return null;
-    	}
+        }
         
     }
 
@@ -161,8 +161,8 @@ public without Sharing class NES_ReEnrUtilities {
                     }else if(eca.Order__c == 2 && eca.Program_Enrollment__r.Open_Application__c == null && eca.Enrollment_Component__r.Name != 'Open Application'){
                         eca.Status__c = 'In Progress';
                     }else if((eca.Order__c == 3 || eca.Order__c == 4 || eca.Order__c == 5) && eca.Program_Enrollment__r.Open_Application__c == null ){
-                    		if (eca.Enrollment_Component__r.Name == 'Tell Us About Your Student')
-                         		eca.Status__c = 'In Progress';
+                            if (eca.Enrollment_Component__r.Name == 'Tell Us About Your Student')
+                                eca.Status__c = 'In Progress';
                         else {
                             eca.Status__c = 'Not Started';
                         }
@@ -273,7 +273,7 @@ public without Sharing class NES_ReEnrUtilities {
                 Program_Enrollment__c = studentPERecord.Id,
                 StageName = 'Open',
                 CloseDate = AcademicProgram[0].Confirmation_End_Date__c == null ? Date.today() : AcademicProgram[0].Confirmation_End_Date__c.date()
-            	
+                
             );
        
             if(callType=='InitReActivation'){

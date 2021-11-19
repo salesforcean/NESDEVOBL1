@@ -99,10 +99,10 @@ public class NES_EntranceAgeUtilityTest {
         List<hed__Program_Enrollment__c> enrollments = new List<hed__Program_Enrollment__c>();
         enrollments.add(enrollment);
 
-		Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
+        Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
         specialEducation.IEPLastUpdated__c = 'Within the last year';
-		specialEducation.IEPHistory__c = 'No';
-		insert specialEducation;
+        specialEducation.IEPHistory__c = 'No';
+        insert specialEducation;
 
         enrollments = NES_EntranceAgeUtility.processProgramEnrollments(enrollments);
         update enrollments;
@@ -111,13 +111,13 @@ public class NES_EntranceAgeUtilityTest {
         System.assertEquals(NES_EntranceAgeUtility.NOT_ELIGIBLE_NO_BIRTHDAY, [SELECT EntranceAgeEligibilitySystem__c FROM hed__Program_Enrollment__c
                                                                               WHERE Id =: enrollment.Id].EntranceAgeEligibilitySystem__c);
 
-		//Now Call it passing the contact records.
-		List<sObject> contacts = new List<sObject>();
-		contact.Birthdate__c = System.today();
-		update contact;
+        //Now Call it passing the contact records.
+        List<sObject> contacts = new List<sObject>();
+        contact.Birthdate__c = System.today();
+        update contact;
         contacts.add(contact);
 
-		NES_EntranceAgeUtility.shouldCalculateAgeEligibility = true;
+        NES_EntranceAgeUtility.shouldCalculateAgeEligibility = true;
         NES_EntranceAgeUtility.calculateEntranceAgeEligibility(contacts);
 
         //Assert test should not longer be NOT_ELIGIBLE_NO_BIRTHDAY 
@@ -151,10 +151,10 @@ public class NES_EntranceAgeUtilityTest {
         List<hed__Program_Enrollment__c> enrollments = new List<hed__Program_Enrollment__c>();
         enrollments.add(enrollment);
 
-		Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
+        Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
         specialEducation.IEPLastUpdated__c = 'Within the last year';
-		specialEducation.IEPHistory__c = 'No';
-		insert specialEducation;
+        specialEducation.IEPHistory__c = 'No';
+        insert specialEducation;
 
         enrollments = NES_EntranceAgeUtility.processProgramEnrollments(enrollments);
         update enrollments;
@@ -189,7 +189,7 @@ public class NES_EntranceAgeUtilityTest {
         update account;
 
         specialEducation.IEPLastUpdated__c = 'Within the last year';
-		specialEducation.IEPHistory__c = 'No';
+        specialEducation.IEPHistory__c = 'No';
         update specialEducation;
 
         List<hed__Program_Enrollment__c> enrollments = new List<hed__Program_Enrollment__c>();
@@ -227,10 +227,10 @@ public class NES_EntranceAgeUtilityTest {
         enrollment.Program_Grade_Level__c = programGradeLevel.Id;
         insert enrollment;
 
-		Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
+        Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
         specialEducation.IEPLastUpdated__c = 'Within the last year';
-		specialEducation.IEPHistory__c = 'No';
-		insert specialEducation;
+        specialEducation.IEPHistory__c = 'No';
+        insert specialEducation;
 
         List<hed__Program_Enrollment__c> enrollments = new List<hed__Program_Enrollment__c>();
         enrollments.add(enrollment);
@@ -242,11 +242,11 @@ public class NES_EntranceAgeUtilityTest {
         System.assertEquals(NES_EntranceAgeUtility.TOO_YOUNG_OTHER, [SELECT EntranceAgeEligibilitySystem__c FROM hed__Program_Enrollment__c
                                                                      WHERE Id =: enrollment.Id].EntranceAgeEligibilitySystem__c);
 
-		//Now Call it passing the special ed records.
-		List<sObject> specEdRecs = new List<sObject>();
+        //Now Call it passing the special ed records.
+        List<sObject> specEdRecs = new List<sObject>();
         specEdRecs.add(specialEducation);
 
-		NES_EntranceAgeUtility.shouldCalculateAgeEligibility = true;
+        NES_EntranceAgeUtility.shouldCalculateAgeEligibility = true;
         NES_EntranceAgeUtility.calculateEntranceAgeEligibility(specEdRecs);
 
         System.assertEquals(NES_EntranceAgeUtility.TOO_YOUNG_OTHER, [SELECT EntranceAgeEligibilitySystem__c FROM hed__Program_Enrollment__c
@@ -284,7 +284,7 @@ public class NES_EntranceAgeUtilityTest {
         update account;
 
         specialEducation.IEPLastUpdated__c = 'Within the last year';
-		specialEducation.IEPHistory__c = 'No';
+        specialEducation.IEPHistory__c = 'No';
         update specialEducation;
 
         List<hed__Program_Enrollment__c> enrollments = new List<hed__Program_Enrollment__c>();
@@ -317,7 +317,7 @@ public class NES_EntranceAgeUtilityTest {
 
         Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
         specialEducation.IEPLastUpdated__c = NES_EntranceAgeUtility.MORE_THAN_THREE_YEARS;
-		specialEducation.IEPHistory__c = 'No';
+        specialEducation.IEPHistory__c = 'No';
         insert specialEducation;
 
         account.Too_Old_Other_Options_Start__c = null;
@@ -328,7 +328,7 @@ public class NES_EntranceAgeUtilityTest {
         update account;
 
         specialEducation.IEPLastUpdated__c = 'Within the last year';
-		specialEducation.IEPHistory__c = 'No';
+        specialEducation.IEPHistory__c = 'No';
         update specialEducation;
 
         List<hed__Program_Enrollment__c> enrollments = new List<hed__Program_Enrollment__c>();
@@ -351,10 +351,10 @@ public class NES_EntranceAgeUtilityTest {
 
 
 
-	static testMethod void testStudentTooYoungTransK() {
+    static testMethod void testStudentTooYoungTransK() {
         Contact contact = [SELECT Id, Birthdate__c FROM Contact WHERE LastName != 'LASTNAME' LIMIT 1];
         Account account = [SELECT Id FROM Account WHERE ParentId != null LIMIT 1];
-		account.OffersTransitionalK__c = true;
+        account.OffersTransitionalK__c = true;
         update account;
 
         Program_Grade_Level__c programGradeLevel = Peak_TestUtils.createProgramGradeLevel('1', account.Id, Peak_TestUtils.createGradeLevel('1', true).Id,
@@ -377,16 +377,16 @@ public class NES_EntranceAgeUtilityTest {
         update enrollments;
 
         //Assert test if EntranceAgeEligibilitySystem__c is PENDING_MORE_INFO or not
-		//Since the school offers trans k but the asi record does not indicate they have either rejected or accepted it,
-		//the status should be Pending more info.
+        //Since the school offers trans k but the asi record does not indicate they have either rejected or accepted it,
+        //the status should be Pending more info.
         System.assertEquals(NES_EntranceAgeUtility.PENDING_MORE_INFO, [SELECT EntranceAgeEligibilitySystem__c FROM hed__Program_Enrollment__c
                                                                      WHERE Id =: enrollment.Id].EntranceAgeEligibilitySystem__c);
     }
 
-	static testMethod void testStudentTooYoungTransKTooYoung() {
+    static testMethod void testStudentTooYoungTransKTooYoung() {
         Contact contact = [SELECT Id, Birthdate__c FROM Contact WHERE LastName != 'LASTNAME' LIMIT 1];
         Account account = [SELECT Id FROM Account WHERE ParentId != null LIMIT 1];
-		account.OffersTransitionalK__c = true;
+        account.OffersTransitionalK__c = true;
         update account;
 
         Program_Grade_Level__c programGradeLevel = Peak_TestUtils.createProgramGradeLevel('1', account.Id, Peak_TestUtils.createGradeLevel('1', true).Id,
@@ -403,10 +403,10 @@ public class NES_EntranceAgeUtilityTest {
         enrollment.Program_Grade_Level__c = programGradeLevel.Id;
         insert enrollment;
 
-		Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
+        Special_Education__c specialEducation = Peak_TestUtils.createSpecialEducation(enrollment.Id, false);
         specialEducation.IEPLastUpdated__c = 'Within the last year';
-		specialEducation.IEPHistory__c = 'No';
-		insert specialEducation;
+        specialEducation.IEPHistory__c = 'No';
+        insert specialEducation;
 
         Annual_Student_Information__c asi = new Annual_Student_Information__c(School_Year__c = schoolYearId, Program_Enrollment__c = enrollment.Id, TransitionalKAcknowledgement__c = 'No', Final_Grade_Level__c = '2');
         insert asi;
@@ -418,24 +418,24 @@ public class NES_EntranceAgeUtilityTest {
         update enrollments;
 
         //Assert test if EntranceAgeEligibilitySystem__c is TOO_YOUNG or not
-		//Since the school offers trans k and the asi record indicates they have rejected it,
-		//the status should be too young.
+        //Since the school offers trans k and the asi record indicates they have rejected it,
+        //the status should be too young.
         System.assertEquals(NES_EntranceAgeUtility.TOO_YOUNG, [SELECT EntranceAgeEligibilitySystem__c FROM hed__Program_Enrollment__c
                                                                      WHERE Id =: enrollment.Id].EntranceAgeEligibilitySystem__c);
 
 
 
-		asi.TransitionalKAcknowledgement__c = 'Yes';
-		update asi;
+        asi.TransitionalKAcknowledgement__c = 'Yes';
+        update asi;
 
-		//Now Call it passing the asi records.
-		List<sObject> asis = new List<sObject>();
+        //Now Call it passing the asi records.
+        List<sObject> asis = new List<sObject>();
         asis.add(asi);
 
-		NES_EntranceAgeUtility.shouldCalculateAgeEligibility = true;
+        NES_EntranceAgeUtility.shouldCalculateAgeEligibility = true;
         NES_EntranceAgeUtility.calculateEntranceAgeEligibility(asis);
 
-		//enrollments = NES_EntranceAgeUtility.processProgramEnrollments(enrollments);
+        //enrollments = NES_EntranceAgeUtility.processProgramEnrollments(enrollments);
         //update enrollments;
 
         System.assertEquals(NES_EntranceAgeUtility.ELIGIBLE, [SELECT EntranceAgeEligibilitySystem__c FROM hed__Program_Enrollment__c

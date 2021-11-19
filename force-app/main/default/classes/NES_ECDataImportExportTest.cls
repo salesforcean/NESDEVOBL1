@@ -154,7 +154,7 @@ public with sharing class NES_ECDataImportExportTest {
         System.assertNotEquals(null, exportRecID, 'test export failed, ecrTree export returned null ID.');
 
         Test.startTest(); // Import the process
-			NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = new NES_EnrollmentCompentBuilder.enrollmentComponentData(processEC.Id);
+            NES_EnrollmentCompentBuilder.enrollmentComponentData thisProcessData = new NES_EnrollmentCompentBuilder.enrollmentComponentData(processEC.Id);
         Test.stopTest();
 
         // assert to check if data actually got queried

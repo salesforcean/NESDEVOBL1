@@ -28,7 +28,7 @@ global class updatePipelinePEsWaitListCalca implements Database.Batchable<sObjec
         Id sectionId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType = 'Enrollment_Component__c' and Name = 'Section'].Id;
         // Get the Enrollment Component Stage RecordTypeId
         Id stageId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType = 'Enrollment_Component__c' and Name = 'Stage'].Id;
-		// Get the Enrollment Component Form RecordTypeId
+        // Get the Enrollment Component Form RecordTypeId
         Id flagId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType = 'Enrollment_Component__c' and Name = 'Flag'].Id;
         
         List <Id> peIdList = new List <Id> ();
@@ -55,9 +55,9 @@ global class updatePipelinePEsWaitListCalca implements Database.Batchable<sObjec
         updtellusEcaList.add(tellustage);
         }
         update updtellusEcaList;
-		
-		
-		// Get the Open Application Flag ECAs and Update the Status to Complete
+        
+        
+        // Get the Open Application Flag ECAs and Update the Status to Complete
         List <Enrollment_Component_Affiliation__c> opAppEcaList = [SELECT Id, Name, Program_Enrollment__c FROM Enrollment_Component_Affiliation__c where Program_Enrollment__c in: peIdList and  Enrollment_Component__r.RecordTypeId =: flagId and Enrollment_Component__r.Name =: 'Open Application Period Flag'];
         
         List <Enrollment_Component_Affiliation__c> updopAppEcaList = new List <Enrollment_Component_Affiliation__c> ();
@@ -66,8 +66,8 @@ global class updatePipelinePEsWaitListCalca implements Database.Batchable<sObjec
         updopAppEcaList.add(tellustage);
         }
         update updopAppEcaList;
-		
-		// Get the Open Application Stage ECAs and Update the Status to Complete
+        
+        // Get the Open Application Stage ECAs and Update the Status to Complete
         opAppEcaList = [SELECT Id, Name, Program_Enrollment__c FROM Enrollment_Component_Affiliation__c where Program_Enrollment__c in: peIdList and  Enrollment_Component__r.RecordTypeId =: stageId and Enrollment_Component__r.Name =: 'Open Application'];
         
         updopAppEcaList = new List <Enrollment_Component_Affiliation__c> ();

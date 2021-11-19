@@ -6,7 +6,7 @@
  * 
  * Change Log: 
  * 
- * 	Sumanth:20 Aug 2020: Added an If condition for Document Status in 'pushUserInfoToSIS' method for US # 216780
+ *  Sumanth:20 Aug 2020: Added an If condition for Document Status in 'pushUserInfoToSIS' method for US # 216780
  *  Guravaiah Gunturi: 24 August 2020: Added an "generateGUID" method  for US# 229433
  *  Sumanth:06 Oct 2020: Added docStatusReason,docStatusText in 'pushUserInfoToSIS' method and added docStatusReason,docStatusText variables
  *  in 'pushUserInfoToSISRequest' method as per ADO US # 285971
@@ -16,7 +16,7 @@ public class NES_IdamUtilities {
     
     // USER STORY #. 216768 and USER STORY #. 216772 
     // Created By: Sumanth Krishna & Rakesh Ramaswamy    
-	public pushUserInfoToSISRequest userInfoReq;
+    public pushUserInfoToSISRequest userInfoReq;
         
     /**
      * Created by Ashish Sharma on 12/24/18
@@ -55,7 +55,7 @@ public class NES_IdamUtilities {
                 }
             }
         }
-		//Sumanth:25-Oct-20:Commented out as this functionality is being moved to Flow:CS_PushEnrollmentToV2SystemsFlow as part of US # 334984
+        //Sumanth:25-Oct-20:Commented out as this functionality is being moved to Flow:CS_PushEnrollmentToV2SystemsFlow as part of US # 334984
      /*   if (PEsForRestrictedAPs != null && PEsForRestrictedAPs.size() > 0) {
             for (Id enrollmentId : PEsForRestrictedAPs) {
                 hed__Program_Enrollment__c pe = new hed__Program_Enrollment__c(Id = enrollmentId, SIS_Integration_Status__c = 'Restricted to SIS');
@@ -187,19 +187,19 @@ public class NES_IdamUtilities {
      
     // USER STORY #. 216768, USER STORY #. 216772, US #. 216780, US #. 216777
     // Developed By: Sumanth Krishna & Rakesh Ramaswamy
-	@InvocableMethod	
-	public static void pushUserInfoToSIS(list<pushUserInfoToSISRequest> userInfoUpdtRequests){		                		      		        
+    @InvocableMethod    
+    public static void pushUserInfoToSIS(list<pushUserInfoToSISRequest> userInfoUpdtRequests){                                                  
         NES_IdamUtilities nesIdamUtilObj = new NES_IdamUtilities();
         nesIdamUtilObj.userInfoReq = userInfoUpdtRequests.get(0);         
         String jsonBody=' ', eventTriggeredFieldLabel = ' ', eventTriggeredFieldValue = ' ',GUID=' ';
         String callOutToSISAppName = (System.Label.Application_Name_For_SIS_CallOut == 'nes') ? 'nes' : '';
-  		if(nesIdamUtilObj.userInfoReq.eventType == 'UserInfo Update'){                
+        if(nesIdamUtilObj.userInfoReq.eventType == 'UserInfo Update'){                
                 
-            	eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;            	
-            	eventTriggeredFieldValue = nesIdamUtilObj.userInfoReq.eventTriggeredFieldValue;                
+                eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;             
+                eventTriggeredFieldValue = nesIdamUtilObj.userInfoReq.eventTriggeredFieldValue;                
                 GUID = nesIdamUtilObj.userInfoReq.contactId+generateGUID();
-            	jsonBody = '{'+
-				'"correlationId":"'+GUID+'",'+
+                jsonBody = '{'+
+                '"correlationId":"'+GUID+'",'+
                 '"ApplicationName":"'+callOutToSISAppName+'",'+
                 '"Entity":"User",'+
                 '"Action":"u",'+
@@ -211,14 +211,14 @@ public class NES_IdamUtilities {
                 '}'+
                 '}';  
                                               
-        	if(jsonBody <> null)
+            if(jsonBody <> null)
                NES_IdamUtilities.calloutToSIS(jsonBody, nesIdamUtilObj.userInfoReq.contactId, eventTriggeredFieldLabel, eventTriggeredFieldValue, GUID);
          }
          // Rakesh: Added the below code for US # 216774
          else
          if(nesIdamUtilObj.userInfoReq.eventType == 'Additional Household Member'){                
             
-            eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;            	
+            eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;             
             eventTriggeredFieldValue = nesIdamUtilObj.userInfoReq.eventTriggeredFieldValue;                
             GUID = nesIdamUtilObj.userInfoReq.contactId+generateGUID();
             jsonBody = '{'+
@@ -240,12 +240,12 @@ public class NES_IdamUtilities {
          }
          else
          if(nesIdamUtilObj.userInfoReq.eventType == 'Address Change'){                
-				
-             	eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;
-            	eventTriggeredFieldValue = nesIdamUtilObj.userInfoReq.eventTriggeredFieldValue;
-             	GUID = nesIdamUtilObj.userInfoReq.householdId+generateGUID();
-             	jsonBody = '{'+
-				'"correlationId":"'+GUID+'",'+
+                
+                eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;
+                eventTriggeredFieldValue = nesIdamUtilObj.userInfoReq.eventTriggeredFieldValue;
+                GUID = nesIdamUtilObj.userInfoReq.householdId+generateGUID();
+                jsonBody = '{'+
+                '"correlationId":"'+GUID+'",'+
                 '"ApplicationName":"'+callOutToSISAppName+'",'+
                 '"Entity":"User",'+
                 '"Action":"u",'+
@@ -255,14 +255,14 @@ public class NES_IdamUtilities {
                 '}'+
                 '}'; 
                          
-        	if(jsonBody <>  null)
+            if(jsonBody <>  null)
                NES_IdamUtilities.calloutToSIS(jsonBody, nesIdamUtilObj.userInfoReq.householdId, eventTriggeredFieldLabel, eventTriggeredFieldValue, GUID);
          }
         //Sumanth: Added the below code for US # 216780
         else
         if(nesIdamUtilObj.userInfoReq.eventType == 'Document Status'){                
               
-         	eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;
+            eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;
             eventTriggeredFieldValue = nesIdamUtilObj.userInfoReq.eventTriggeredFieldValue;
             GUID = nesIdamUtilObj.userInfoReq.docId+generateGUID();
             jsonBody = '{'+
@@ -284,14 +284,14 @@ public class NES_IdamUtilities {
                 '}'+
                 '}';  
                                            
-        	if(jsonBody <> null)
+            if(jsonBody <> null)
                NES_IdamUtilities.calloutToSIS(jsonBody, nesIdamUtilObj.userInfoReq.docId, eventTriggeredFieldLabel, eventTriggeredFieldValue, GUID);
          }
         //Rakesh: Added the below code for US # 216777
         else
         if(nesIdamUtilObj.userInfoReq.eventType == 'Ordering Hold Flag'){                
               
-         	eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;
+            eventTriggeredFieldLabel = nesIdamUtilObj.userInfoReq.eventTriggeredFieldLabel;
             eventTriggeredFieldValue = nesIdamUtilObj.userInfoReq.eventTriggeredFieldValue;
             GUID = nesIdamUtilObj.userInfoReq.progEnrollmentId+generateGUID();
             jsonBody = '{'+
@@ -307,18 +307,18 @@ public class NES_IdamUtilities {
                 '}'+
                 '}';  
                                               
-        	if(jsonBody <> null)
+            if(jsonBody <> null)
                NES_IdamUtilities.calloutToSIS(jsonBody, nesIdamUtilObj.userInfoReq.progEnrollmentId, eventTriggeredFieldLabel, eventTriggeredFieldValue, GUID);
          }
-	}
+    }
     
     // USER STORY #. 216768, USER STORY #. 216772, US #. 216780, US #. 216777
     // Developed By: Sumanth Krishna & Rakesh Ramaswamy
     @future(callout=true)
     public static void calloutToSIS(string jsonString, String objectRecId, String eventTriggeredFieldLabel, String eventTriggeredFieldValue,String GUID){
         NES_IdamUtilities nesIdamUtilObj = new NES_IdamUtilities();
-        idamAccessToken = getIdamAccessToken();		        
-		string error = ' ', responseStatus; 
+        idamAccessToken = getIdamAccessToken();             
+        string error = ' ', responseStatus; 
                 
         HttpRequest request = new HttpRequest();
         HttpResponse response = new HttpResponse();
@@ -329,11 +329,11 @@ public class NES_IdamUtilities {
             request.setHeader('x-ctx-accesstoken', idamAccessToken);
             request.setTimeout(60000);                        
             request.setBody(jsonString);                        
-        	
+            
             try {
-                	Http http = new Http();
-                	response = http.send(request);                		                	
-                	NES_IdamUtilities.pushPCxInfoToSIS(objectRecId, response, null, eventTriggeredFieldLabel, eventTriggeredFieldValue,GUID);                           
+                    Http http = new Http();
+                    response = http.send(request);                                          
+                    NES_IdamUtilities.pushPCxInfoToSIS(objectRecId, response, null, eventTriggeredFieldLabel, eventTriggeredFieldValue,GUID);                           
               }
            catch(Exception ex){                 
                  NES_IdamUtilities.pushPCxInfoToSIS(objectRecId, response, ex, eventTriggeredFieldLabel, eventTriggeredFieldValue, GUID);                             
@@ -342,7 +342,7 @@ public class NES_IdamUtilities {
     
     // USER STORY #. 216768, USER STORY #. 216772, US #. 216780, US #. 216777
     // Developed By: Sumanth Krishna & Rakesh Ramaswamy
-    public static void pushPCxInfoToSIS(Id objectRecId, HttpResponse response, Exception exp, String eventTriggeredFieldLabel, String eventTriggeredFieldValue,String GUID){          	   
+    public static void pushPCxInfoToSIS(Id objectRecId, HttpResponse response, Exception exp, String eventTriggeredFieldLabel, String eventTriggeredFieldValue,String GUID){               
        Schema.sObjectType entityType = objectRecId.getSObjectType();
        String responseStatus = '';
        String error = '';
@@ -372,7 +372,7 @@ public class NES_IdamUtilities {
            logger.saveLogs();                                                                                    
            responseStatus = eventTriggeredFieldLabel+': '+ eventTriggeredFieldValue +' - SUCCESS: '+String.valueOf(response.getStatusCode()+' - GUID: '+GUID);           
        }                                   
-	   else {
+       else {
             if((response != null) && (response.getStatusCode() != null) && (exp == null)) {
                if((entityType != null) && String.valueOf(entityType).equals('Contact') && (eventTriggeredFieldLabel == 'Request Type') && (eventTriggeredFieldValue == 'UserInfo Update')){
                    logger.logError('pushPcxInfoToSIS', 'User Info error while pushing to SIS: '+response.getStatus()+': '+response.getStatusCode()+' - GUID: '+GUID);
@@ -392,7 +392,7 @@ public class NES_IdamUtilities {
                 logger.saveLogs(); 
                 error = response.getStatusCode() + (response.getStatus() != null ? ' : ' + response.getStatusCode() + ': ' + response.getStatus() : '');                               
                 responseStatus = eventTriggeredFieldLabel+': '+ eventTriggeredFieldValue +' - FAILED: '+String.valueOf(response.getStatusCode())+' - GUID: '+GUID;     
-   			}
+            }
          } 
         
        if((entityType != null) && String.valueOf(entityType).equals('Contact')){
@@ -407,22 +407,22 @@ public class NES_IdamUtilities {
        else if((entityType != null) && String.valueOf(entityType).equals('hed__Program_Enrollment__c')){
            sObjectList.add(new hed__Program_Enrollment__c(id = objectRecId, SIS_Integration_Status__c =  responseStatus, SIS_Update_Requested__c = system.now()));           
        }
-       List<Database.SaveResult> srList = Database.update(sObjectList, false);    	   
+       List<Database.SaveResult> srList = Database.update(sObjectList, false);         
       
        if (!srList.get(0).isSuccess()) { 
             Database.SaveResult sr = srList.get(0);
             Database.Error errObj = sr.getErrors().get(0);
             if(String.valueOf(entityType).equals('Contact'))
-            	logger.logError('Method:pushPCxInfoToSIS-Failed to Update Contact Record :'+sObjectList.get(0).id+' - GUID: '+GUID, errObj.getMessage());          
+                logger.logError('Method:pushPCxInfoToSIS-Failed to Update Contact Record :'+sObjectList.get(0).id+' - GUID: '+GUID, errObj.getMessage());          
             else
             if(String.valueOf(entityType).equals('Account'))
-            	logger.logError('Method:pushPCxInfoToSIS-Failed to Update Account Record :'+sObjectList.get(0).id+' - GUID: '+GUID, errObj.getMessage());
+                logger.logError('Method:pushPCxInfoToSIS-Failed to Update Account Record :'+sObjectList.get(0).id+' - GUID: '+GUID, errObj.getMessage());
             else
             if(String.valueOf(entityType).equals('Enrollment_Document__c'))
-            	logger.logError('Method:pushPCxInfoToSIS-Failed to Update Enrollment Document Record :'+sObjectList.get(0).id+' - GUID: '+GUID, errObj.getMessage());
+                logger.logError('Method:pushPCxInfoToSIS-Failed to Update Enrollment Document Record :'+sObjectList.get(0).id+' - GUID: '+GUID, errObj.getMessage());
             else
             if(String.valueOf(entityType).equals('hed__Program_Enrollment__c'))
-            	logger.logError('Method:pushPCxInfoToSIS-Failed to Update Program Enrollment Record :'+sObjectList.get(0).id+' - GUID: '+GUID, errObj.getMessage());
+                logger.logError('Method:pushPCxInfoToSIS-Failed to Update Program Enrollment Record :'+sObjectList.get(0).id+' - GUID: '+GUID, errObj.getMessage());
             
             logger.saveLogs();
         }
@@ -477,23 +477,23 @@ public class NES_IdamUtilities {
 
     @InvocableVariable    
     public string householdId;
-	
-	@InvocableVariable	
- 	 public String docId;
+    
+    @InvocableVariable  
+     public String docId;
 
     @InvocableVariable
     public String docType;
-	
-	@InvocableVariable
+    
+    @InvocableVariable
     public String docStatus;
-	
-	@InvocableVariable    
+    
+    @InvocableVariable    
     public String progEnrollmentId;
-	
-	@InvocableVariable
+    
+    @InvocableVariable
     public String orderingHoldStatus;
-	
-	@InvocableVariable
+    
+    @InvocableVariable
     public String eventType;  
     
     @InvocableVariable

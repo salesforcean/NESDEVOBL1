@@ -93,40 +93,40 @@ public without sharing class NES_DashboardUtilities{
      **/
     public class StudentsInformation {
          @AuraEnabled
-		public String studentFName{get;set;}	//Student first Name 
-		 @AuraEnabled
-        public String studentLName{get;set;}	//Student Last Nam
-		 @AuraEnabled
-        public String studentId{get;set;}	//student record Id
-		 @AuraEnabled
-        public List<AcademicProgramsWrapper> academicPrograms{get;set;}//List of academic programs
-	}
-	public class AcademicProgramsWrapper {
+        public String studentFName{get;set;}    //Student first Name 
          @AuraEnabled
-		public String academicProgram{get;set;}	//Academic Program Name (ex:ACA2020-2021)
-		 @AuraEnabled
-        public Id programEnrollmentId{get;set;}	//Program enrollment record Id
-		 @AuraEnabled
-        public Id processId{get;set;}	//process eca Id
-		 @AuraEnabled
-        public String ecaStatus{get;set;}	//process ECA status
-		 @AuraEnabled
-        public String programEnrollmentStatus{get;set;}	//Program enrollment Status
-		 @AuraEnabled
-        public Id accountId{get;set;}	//Educational Institution account Id
-		 @AuraEnabled
-        public Id gradeLevelId{get;set;}	//Program grade Level record Id
-		 @AuraEnabled
-        public String programGradeLevel{get;set;}	//program grade Level Name (ex:2nd grade)
-		 @AuraEnabled
-        public DateTime regStart{get;set;}	//Registartion start date
-		 @AuraEnabled
-        public DateTime regEnd{get;set;}	//Registartion end date
-		 @AuraEnabled
-        public String instituationName{get;set;}	//Educational Institution account Name
-		 @AuraEnabled
-        public String schoolYear{get;set;}	//School year (ex:2020-2021)
-		 @AuraEnabled
+        public String studentLName{get;set;}    //Student Last Nam
+         @AuraEnabled
+        public String studentId{get;set;}   //student record Id
+         @AuraEnabled
+        public List<AcademicProgramsWrapper> academicPrograms{get;set;}//List of academic programs
+    }
+    public class AcademicProgramsWrapper {
+         @AuraEnabled
+        public String academicProgram{get;set;} //Academic Program Name (ex:ACA2020-2021)
+         @AuraEnabled
+        public Id programEnrollmentId{get;set;} //Program enrollment record Id
+         @AuraEnabled
+        public Id processId{get;set;}   //process eca Id
+         @AuraEnabled
+        public String ecaStatus{get;set;}   //process ECA status
+         @AuraEnabled
+        public String programEnrollmentStatus{get;set;} //Program enrollment Status
+         @AuraEnabled
+        public Id accountId{get;set;}   //Educational Institution account Id
+         @AuraEnabled
+        public Id gradeLevelId{get;set;}    //Program grade Level record Id
+         @AuraEnabled
+        public String programGradeLevel{get;set;}   //program grade Level Name (ex:2nd grade)
+         @AuraEnabled
+        public DateTime regStart{get;set;}  //Registartion start date
+         @AuraEnabled
+        public DateTime regEnd{get;set;}    //Registartion end date
+         @AuraEnabled
+        public String instituationName{get;set;}    //Educational Institution account Name
+         @AuraEnabled
+        public String schoolYear{get;set;}  //School year (ex:2020-2021)
+         @AuraEnabled
         public String buttonLabel{get;set;}
          @AuraEnabled
         public String buttonTarget{get;set;}
@@ -144,7 +144,7 @@ public without sharing class NES_DashboardUtilities{
             this.regEnd = regEnd;
             this.instituationName = instituationName;
             this.schoolYear = schoolYear;            
-			this.buttonLabel = buttonLabel;
+            this.buttonLabel = buttonLabel;
             this.buttonTarget = buttonTarget;
         }
     }

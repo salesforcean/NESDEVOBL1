@@ -348,34 +348,34 @@ private class NES_ECACompletionTest {
         impactedcomp.add(processId);
         completionMapvalues.put(programEnrollment.id,impactedcomp);
 
-		Map<Id,List<Enrollment_Component_Affiliation__c>> progEnrollECAListMap = new Map<Id,List<Enrollment_Component_Affiliation__c>> ();
-		for ( Enrollment_Component_Affiliation__c affiliation : [SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
-															FROM Enrollment_Component_Affiliation__c
-															WHERE Program_Enrollment__c = :programEnrollment.id]) {
-			if (!progEnrollECAListMap.containsKey(affiliation.Program_Enrollment__c)){
-				list <Enrollment_Component_Affiliation__c> ecas = new List<Enrollment_Component_Affiliation__c> ();
-				ecas.add(affiliation);
-				progEnrollECAListMap.put(affiliation.Program_Enrollment__c, ecas);
-			} else
-				progEnrollECAListMap.get(affiliation.Program_Enrollment__c).add(affiliation);
-		}
+        Map<Id,List<Enrollment_Component_Affiliation__c>> progEnrollECAListMap = new Map<Id,List<Enrollment_Component_Affiliation__c>> ();
+        for ( Enrollment_Component_Affiliation__c affiliation : [SELECT Id, Enrollment_Component__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.RecordType.Name
+                                                            FROM Enrollment_Component_Affiliation__c
+                                                            WHERE Program_Enrollment__c = :programEnrollment.id]) {
+            if (!progEnrollECAListMap.containsKey(affiliation.Program_Enrollment__c)){
+                list <Enrollment_Component_Affiliation__c> ecas = new List<Enrollment_Component_Affiliation__c> ();
+                ecas.add(affiliation);
+                progEnrollECAListMap.put(affiliation.Program_Enrollment__c, ecas);
+            } else
+                progEnrollECAListMap.get(affiliation.Program_Enrollment__c).add(affiliation);
+        }
 
-		Set<Id> acedemicProgramsReferenced = new Set<Id> ();
-		map<Id,hed__Program_Enrollment__c> EnrollmentsMap = new map<Id,hed__Program_Enrollment__c>();
+        Set<Id> acedemicProgramsReferenced = new Set<Id> ();
+        map<Id,hed__Program_Enrollment__c> EnrollmentsMap = new map<Id,hed__Program_Enrollment__c>();
         for (hed__Program_Enrollment__c pe: [ SELECT Id, hed__Account__c, hed__Contact__c, Household_Program_Enrollment__r.hed__Contact__c, 
-								hed__Contact__r.AccountId, Household_Program_Enrollment__c
+                                hed__Contact__r.AccountId, Household_Program_Enrollment__c
                         FROM hed__Program_Enrollment__c
                         WHERE id = :programEnrollment.id ]) {
-			EnrollmentsMap.put(pe.Id, pe);
-			acedemicProgramsReferenced.add(pe.hed__Account__c);
-		}
+            EnrollmentsMap.put(pe.Id, pe);
+            acedemicProgramsReferenced.add(pe.hed__Account__c);
+        }
 
-		//Build a map between Academic Programs and Process ids.
-		map <Id, Id> academicProgramProcessIdMap = new Map<Id,Id>();
-		for (Enrollment_Component__c e : [SELECT Id, Process_Academic_Program__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :acedemicProgramsReferenced])
-		{
-			academicProgramProcessIdMap.put(e.Process_Academic_Program__c, e.id);
-		}
+        //Build a map between Academic Programs and Process ids.
+        map <Id, Id> academicProgramProcessIdMap = new Map<Id,Id>();
+        for (Enrollment_Component__c e : [SELECT Id, Process_Academic_Program__c FROM Enrollment_Component__c WHERE Process_Academic_Program__c = :acedemicProgramsReferenced])
+        {
+            academicProgramProcessIdMap.put(e.Process_Academic_Program__c, e.id);
+        }
 
         NES_ECACompletion.fireCompletion(completionMapvalues, progEnrollECAListMap, EnrollmentsMap, academicProgramProcessIdMap);//added
 
@@ -491,7 +491,7 @@ private class NES_ECACompletionTest {
                  OR Child_Enrollment_Component__r.RecordType.Name = :NES_DashboardUtilities.DOCUMENT_RT)
         ];
        //Feltch ECA's
-	   List<Enrollment_Component_Affiliation__c> thisStudentsECAs = new List<Enrollment_Component_Affiliation__c>();
+       List<Enrollment_Component_Affiliation__c> thisStudentsECAs = new List<Enrollment_Component_Affiliation__c>();
         for( Enrollment_Component_Affiliation__c studentAffiliations :[
             SELECT Id, Enrollment_Component__c, Order__c, Program_Enrollment__c, Status__c, Enrollment_Component__r.Assignment_Logic__c,
             Enrollment_Component__r.Completion_Logic__c, Enrollment_Component__r.RecordType.Name, Enrollment_Component__r.Is_Required__c
@@ -499,7 +499,7 @@ private class NES_ECACompletionTest {
             WHERE Program_Enrollment__c = : programEnrollment.id]){
                 singleAffiliationMap.put(studentAffiliations.Enrollment_Component__c, studentAffiliations);
                 sectionid =  formRelationships[0].Child_Enrollment_Component__c;
-				thisStudentsECAs.add(studentAffiliations);
+                thisStudentsECAs.add(studentAffiliations);
             }
 
         //call evaluateCompletion method
@@ -544,8 +544,8 @@ private class NES_ECACompletionTest {
 
         Enrollment_Component__c  prEn=[select id from Enrollment_Component__c WHERE RecordType.Name =: NES_DashboardUtilities.SECTION_RT LIMIT 1];
         prEn.Waitlist__c = true;
-		update prEn;
-		 
+        update prEn;
+         
         list<Enrollment_Component_Affiliation__c> ecaList = new list<Enrollment_Component_Affiliation__c> ([select id from Enrollment_Component_Affiliation__c where Enrollment_Component__c = :prEn.id]);
         ecaList[0].Status__c='Not Started';
         update ecaList;
@@ -553,9 +553,9 @@ private class NES_ECACompletionTest {
         ecaList[0].Status__c='In Progress';
         update ecaList;
 
-		//Re get the PE and make sure the waitlist date has been set.
-		programEnrollment = [SELECT Id, Waitlist_Time_Date_Stamp__c FROM hed__Program_Enrollment__c WHERE Household_Program_Enrollment__c != NULL LIMIT 1];
+        //Re get the PE and make sure the waitlist date has been set.
+        programEnrollment = [SELECT Id, Waitlist_Time_Date_Stamp__c FROM hed__Program_Enrollment__c WHERE Household_Program_Enrollment__c != NULL LIMIT 1];
 
-		system.assertNotEquals(null, programEnrollment.Waitlist_Time_Date_Stamp__c, 'Waitlist should no longer be null.');
+        system.assertNotEquals(null, programEnrollment.Waitlist_Time_Date_Stamp__c, 'Waitlist should no longer be null.');
     }
 }

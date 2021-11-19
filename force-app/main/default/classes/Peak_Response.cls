@@ -9,7 +9,7 @@ public with sharing class Peak_Response {
     @AuraEnabled public String status{get;set;}//program enrollment status
     @AuraEnabled public List<String> pickListValues{get;set;}//It holds picklist values of specific object's field
     @AuraEnabled public Map<String, Set<NES_RelationShipUtils.EnrollmentComponentData>> relationShipViewResults {get; set;}
-//	@AuraEnabled public String AccountId{get;set;} //Swapna:for GTM
+//  @AuraEnabled public String AccountId{get;set;} //Swapna:for GTM
     //Start: Task #66396 Ashish Sharma 12/21/2018
     @AuraEnabled public String parameter{get; set;}
     //End

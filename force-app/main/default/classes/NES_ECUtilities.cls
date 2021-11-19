@@ -95,7 +95,7 @@ public with sharing class NES_ECUtilities {
     * purpose : Method to construct Http request and return response of the request
 
     */
-	public static HttpCalloutMock mock = null;
+    public static HttpCalloutMock mock = null;
     public static HttpResponse createHttpRequestForPhoneData(String method, String endpoint, String authToken, String body) {
         HttpRequest request = new HttpRequest();
         request.setMethod(method);

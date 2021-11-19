@@ -33,7 +33,7 @@ public with sharing class NES_EvaluateUtiltest{
         List<Enrollment_Component__c> componentList = new List <Enrollment_Component__c>();
         Enrollment_Component__c processComponent = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Process', false);
         processComponent.Assignment_Logic__c = '1';
-		
+        
         Enrollment_Component__c stageComponent = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Stage', false);
 
         Enrollment_Component__c formComponent = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Form', false);
@@ -61,12 +61,12 @@ public with sharing class NES_EvaluateUtiltest{
         Enrollment_Component__c questionComponent_With_No_Logic = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Question', false);
         questionComponent_With_No_Logic.Component_Type__c = 'Household';
         questionComponent_With_No_Logic.Assignment_Logic__c = null;
-		
+        
         Enrollment_Component__c questionComponentNew = Peak_TestUtils.createEnrollmentComponent(academicProgram.Id, 'Question', false);
         questionComponentNew.Question_Type__c = 'Checkbox Group';
         questionComponent.Component_Type__c = 'Household';
         questionComponent.Assignment_Logic__c = null;
-		//insert questionComponentNew;
+        //insert questionComponentNew;
         
         componentList.add(processComponent);
         componentList.add(stageComponent);
@@ -78,9 +78,9 @@ public with sharing class NES_EvaluateUtiltest{
         componentList.add(questionGroupComponent_With_No_Logic);
         componentList.add(questionComponent);
         componentList.add(questionComponent_With_No_Logic);
-		componentList.add(questionComponentNew);
+        componentList.add(questionComponentNew);
         insert componentList;
-		
+        
         Enrollment_Component_Picklist_Option__c picklistOption = Peak_TestUtils.createEnrollmentComponentPicklistOption(String.valueOf(questionComponentNew.Id), true);
         
         // create Enrollment Component Relationships with different parent Enrollment Components.
@@ -134,7 +134,7 @@ public with sharing class NES_EvaluateUtiltest{
         houseHoldEnrollmentComponentCriteria.Criteria_Number__c = 2;
         insert houseHoldEnrollmentComponentCriteria;
 
-       	Criteria__c cr2 = Peak_TestUtils.createCriteriaRecord(null, 'hed__Program_Enrollment__c.hed__Account__r.Confirmation_Start_Date__c', '<=', false);
+        Criteria__c cr2 = Peak_TestUtils.createCriteriaRecord(null, 'hed__Program_Enrollment__c.hed__Account__r.Confirmation_Start_Date__c', '<=', false);
         cr2.Comparison_Data_Type__c = 'Datetime';
         //finalConformationCriteria.Comparison_Value__c = 'today()';
         cr2.Comparison_Field__c = 'hed__Program_Enrollment__c.hed__Account__r.Confirmation_Start_Date__c';
@@ -249,7 +249,7 @@ public with sharing class NES_EvaluateUtiltest{
         refine5.Operator__c = '=';
         refine5.Refinement_Field_Right__c = 'hed__account__r.Name';
         //insert refine5;
-		
+        
         Criteria_Refinement__c cr1 = new Criteria_Refinement__c();
         cr1.Criteria__c = cr2.Id;
         cr1.Refinement_Field_Left__c = 'hed__account__r.Name';
@@ -504,7 +504,7 @@ public with sharing class NES_EvaluateUtiltest{
         NES_EvaluateUtil.updateDataVoid(dataType, fieldData, fieldName, sObj);
         Test.stopTest();
     }
-	
+    
     static testMethod void testupdateDataVoidDate(){
         String dataType = 'Date';
         Date fieldData = Date.Today();
@@ -517,7 +517,7 @@ public with sharing class NES_EvaluateUtiltest{
         NES_EvaluateUtil.updateDataVoid(dataType, String.valueOf(fieldData), fieldName, sObj);
         Test.stopTest();
     }
-	static testMethod void testupdateDataVoidNumber(){
+    static testMethod void testupdateDataVoidNumber(){
         String dataType = 'Number';
         String fieldData = '12';
         String fieldName = 'Form_Sequence__c';
@@ -529,7 +529,7 @@ public with sharing class NES_EvaluateUtiltest{
         NES_EvaluateUtil.updateDataVoid(dataType, fieldData, fieldName, sObj);
         Test.stopTest();
     }
-	static testMethod void testupdateDataVoidDatetime(){
+    static testMethod void testupdateDataVoidDatetime(){
         String dataType = 'Picklist';
         String fieldData = 'false';
         String fieldName = 'Enrolling_4_Students_Flag__c';

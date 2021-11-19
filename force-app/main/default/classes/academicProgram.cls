@@ -1,7 +1,7 @@
 global class academicProgram {
 
     /**
-     * * 	@ALIKM 20/apr/2020- commenting out changes
+     * *    @ALIKM 20/apr/2020- commenting out changes
      * ## NOTES ##
      * 
      * @todo [2/Apr/2020]

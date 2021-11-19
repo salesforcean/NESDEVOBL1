@@ -20,7 +20,7 @@
 public class ecTreeGenerator {
     
     /**
-	* 	@ALIKM 20/apr/2020- commenting out changes
+    *   @ALIKM 20/apr/2020- commenting out changes
 
     private Id rootID;
     private Enrollment_Component__c rootRec;
@@ -164,7 +164,7 @@ public class ecTreeGenerator {
 
     public class illegalArgumentECTreeGeneratorException extends Exception {}
 
-	*/
+    */
     
 
 }

@@ -6,25 +6,25 @@
 * This will be used for Migrated students as Program grade level field in PE not updated from External System
 */
 global class NES_ProgramGradeLevelUpdateOnPEBatch implements DataBase.Batchable<SObject>, Schedulable {
-	public Map<String, Id> pglMap;//Academic Program with Grade Level Key and PGL Id as value
+    public Map<String, Id> pglMap;//Academic Program with Grade Level Key and PGL Id as value
     public static final String CA_STARTYEAR = '2020-2021'; 
     global Database.QueryLocator start(Database.BatchableContext BC) {
         Id StudentrecTypeId = Schema.SObjectType.hed__Program_Enrollment__c.getRecordTypeInfosByName().get('Student').getRecordTypeId();        
         String queryString = 'SELECT Id,Final_Grade_Level__c,hed__Contact__r.CA_StartYear__r.Name,Program_Grade_Level__c,hed__Account__c,V2_External_ID__c,RecordType.Name,(Select Id,School_Year__r.Name, Final_Grade_Level__c from Annual_Student_Information__r order by School_Year__r.Name DESC NULLS LAST limit 1) FROM hed__Program_Enrollment__c WHERE RecordTypeId=:StudentrecTypeId AND Program_Grade_Level__c = null AND hed__Account__c !=null AND hed__Contact__r.CA_StartYear__r.Name!=:CA_STARTYEAR';
-    	return Database.getQueryLocator(queryString);
+        return Database.getQueryLocator(queryString);
     }
     global void execute(Database.BatchableContext BC, List<SObject> scope) {
         List<hed__Program_Enrollment__c> lstProgramEnrollment = new List<hed__Program_Enrollment__c>();
         for(hed__Program_Enrollment__c peRec : (List<hed__Program_Enrollment__c>) scope){
             if(peRec.Annual_Student_Information__r.size() > 0){
                 if(peRec.Annual_Student_Information__r[0].Final_Grade_Level__c != null){
-					if(pglMap.containsKey(peRec.hed__Account__c+'|'+peRec.Annual_Student_Information__r[0].Final_Grade_Level__c))
+                    if(pglMap.containsKey(peRec.hed__Account__c+'|'+peRec.Annual_Student_Information__r[0].Final_Grade_Level__c))
                         lstProgramEnrollment.add(new hed__Program_Enrollment__c(Id=peRec.Id, Program_Grade_Level__c = pglMap.get(peRec.hed__Account__c+'|'+peRec.Annual_Student_Information__r[0].Final_Grade_Level__c)));                     
                 }
                 else if(peRec.Final_Grade_Level__c != null){
                      if(pglMap.containsKey(peRec.hed__Account__c+'|'+peRec.Final_Grade_Level__c)){
-                       		 lstProgramEnrollment.add(new hed__Program_Enrollment__c(Id=peRec.Id, Program_Grade_Level__c = pglMap.get(peRec.hed__Account__c+'|'+peRec.Final_Grade_Level__c)));                     
-               		 }
+                             lstProgramEnrollment.add(new hed__Program_Enrollment__c(Id=peRec.Id, Program_Grade_Level__c = pglMap.get(peRec.hed__Account__c+'|'+peRec.Final_Grade_Level__c)));                     
+                     }
                 }
             }
             else if(peRec.Final_Grade_Level__c != null){

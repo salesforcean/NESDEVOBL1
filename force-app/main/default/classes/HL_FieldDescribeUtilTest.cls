@@ -19,8 +19,8 @@ public with sharing class HL_FieldDescribeUtilTest {
 
 
     // Test fetching of dependent picklist values from PopulatePicklist
-	@isTest
-	public static void testFetchPicklistByControllingFieldValue_PopulatePicklist() {
+    @isTest
+    public static void testFetchPicklistByControllingFieldValue_PopulatePicklist() {
 
         
         List<Map<String, String>> dependentPicklistOptions;
@@ -44,11 +44,11 @@ public with sharing class HL_FieldDescribeUtilTest {
         system.assertEquals(null, err, 'exceptions!');
 
 
-	}
+    }
 
     // Test fetching of dependent picklist by value from NES_FBBFetchDependentPicklist
-	@isTest
-	public static void testFetchDependentPicklist_NES_FBBFetchDependentPicklist() {
+    @isTest
+    public static void testFetchDependentPicklist_NES_FBBFetchDependentPicklist() {
 
         
         Map<String, String> dependentPicklistByControllingFieldValue;
@@ -74,11 +74,11 @@ public with sharing class HL_FieldDescribeUtilTest {
         system.assertEquals(null, err, 'exceptions!');
 
 
-	}
+    }
 
     // Test fetching of dependent picklist values from HL_FieldDescribeUtil
-	@isTest
-	public static void test_HL_FieldDescribeUtil_fetchDependentPicklist() {
+    @isTest
+    public static void test_HL_FieldDescribeUtil_fetchDependentPicklist() {
 
         // String sObjectAPIName = 'Enrollment_Document__c';
         // String ctrlField = 'Type__c';
@@ -98,7 +98,7 @@ public with sharing class HL_FieldDescribeUtilTest {
         system.assertNotEquals(null, dependentPicklistsMap, 'dependentPicklistsMap is null!');
         system.assertEquals(null, err, 'exceptions!');
 
-	}
+    }
 
 
 }

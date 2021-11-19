@@ -15,7 +15,7 @@ global class updatePipelinePEsTASCalca implements Database.Batchable<sObject> {
     }
     
     global void execute(Database.BatchableContext bc, List<hed__program_enrollment__c> scope){     
-        		 
+                 
         
         // Get the Enrollment Component Form RecordTypeId
         Id formId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType = 'Enrollment_Component__c' and Name = 'Form' limit 1].Id;
@@ -23,7 +23,7 @@ global class updatePipelinePEsTASCalca implements Database.Batchable<sObject> {
         Id sectionId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType = 'Enrollment_Component__c' and Name = 'Section'].Id;
         // Get the Enrollment Component Stage RecordTypeId
         Id stageId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType = 'Enrollment_Component__c' and Name = 'Stage'].Id;
-		// Get the Enrollment Component Form RecordTypeId
+        // Get the Enrollment Component Form RecordTypeId
         Id flagId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType = 'Enrollment_Component__c' and Name = 'Flag'].Id;
         
         List <Id> peIdList = new List <Id> ();
@@ -39,7 +39,7 @@ global class updatePipelinePEsTASCalca implements Database.Batchable<sObject> {
         for(hed__program_enrollment__c pe: scope){
             System.debug('PE ID being processed is :::::' + pe.Id);
             /* EvaluationUtils.PerformAsyncNewStudentStepsUpdatePipelinePEs(pe.id,processid,pe.Household_Program_Enrollment__c,
-                                                                               pe.Enrollment_Type__c); */	
+                                                                               pe.Enrollment_Type__c); */   
         }
         
         // Get the Tell Us about your Student Stage ECAs and Update the Status to In Progress
@@ -51,9 +51,9 @@ global class updatePipelinePEsTASCalca implements Database.Batchable<sObject> {
         updtellusEcaList.add(tellustage);
         }
         update updtellusEcaList;
-		
-		
-		// Get the Open Application Flag ECAs and Update the Status to Complete
+        
+        
+        // Get the Open Application Flag ECAs and Update the Status to Complete
         List <Enrollment_Component_Affiliation__c> opAppEcaList = [SELECT Id, Name, Program_Enrollment__c FROM Enrollment_Component_Affiliation__c where Program_Enrollment__c in: peIdList and  Enrollment_Component__r.RecordTypeId =: flagId and Enrollment_Component__r.Name =: 'Open Application Period Flag'];
         
         List <Enrollment_Component_Affiliation__c> updopAppEcaList = new List <Enrollment_Component_Affiliation__c> ();
@@ -62,8 +62,8 @@ global class updatePipelinePEsTASCalca implements Database.Batchable<sObject> {
         updopAppEcaList.add(tellustage);
         }
         update updopAppEcaList;
-		
-		// Get the Open Application Stage ECAs and Update the Status to Complete
+        
+        // Get the Open Application Stage ECAs and Update the Status to Complete
         opAppEcaList = [SELECT Id, Name, Program_Enrollment__c FROM Enrollment_Component_Affiliation__c where Program_Enrollment__c in: peIdList and  Enrollment_Component__r.RecordTypeId =: stageId and Enrollment_Component__r.Name =: 'Open Application'];
         
         updopAppEcaList = new List <Enrollment_Component_Affiliation__c> ();
@@ -72,7 +72,7 @@ global class updatePipelinePEsTASCalca implements Database.Batchable<sObject> {
         updopAppEcaList.add(tellustage);
         }
         update updopAppEcaList;
-		
+        
 
     }
     

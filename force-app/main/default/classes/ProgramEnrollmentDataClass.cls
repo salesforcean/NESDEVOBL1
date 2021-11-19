@@ -1,8 +1,8 @@
 /**
     @class:         ProgramEnrollmentDataClass           
-	@description:   Data Class to hold PE related data
-	@author: 		Mark Membrino
-	@createdDate:   9/10/2020
+    @description:   Data Class to hold PE related data
+    @author:        Mark Membrino
+    @createdDate:   9/10/2020
 */
 public class ProgramEnrollmentDataClass 
 {

@@ -770,7 +770,7 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         currentSchoolYear = [SELECT Id, Name FROM School_Year__c WHERE Name =: currentSchoolYearName limit 1];
         PE = Peak_TestUtils.createProgramEnrollment(acc_academicProgram.Id, cntct_student.Id, currentSchoolYear.Id, true);
         
-		acc_academicProgram.TechnologyFlagAction__c = 'Pending Review';
+        acc_academicProgram.TechnologyFlagAction__c = 'Pending Review';
         update acc_academicProgram;
         
         PE.status__c = 'In Progress';
@@ -925,7 +925,7 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
     public static void calculateAutomatedPlacementProcess (){
         //School_Year__c previousSchoolYear= Peak_TestUtils.createSchoolYears('2018-2019', date.parse('11/17/2019'));
         date mydate = date.parse('04/12/2019');
-     	 School_Year__c previousSchoolYears=new School_Year__c();
+         School_Year__c previousSchoolYears=new School_Year__c();
         previousSchoolYears.Name='testing';
         previousSchoolYears.Start_Date__c=mydate;
         previousSchoolYears.End_Date__c=mydate;
@@ -951,8 +951,8 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         specialEds.Program_Enrollment__c=progEnrollment1.Id;
         specialEds.IEP__c='Documenting';
         specialEds.Plan504__c='504 Missing';
-       	specialEds.FormallyExitedIEP__c='Yes';
-       	insert specialEds;
+        specialEds.FormallyExitedIEP__c='Yes';
+        insert specialEds;
         Set<id> setprogEnrollmentid = new set<id> ();
         setprogEnrollmentid.add(progEnrollment1.id);
         Annual_Student_Information__c asis = new Annual_Student_Information__c();
@@ -990,11 +990,11 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         
         Set<id> setprogEnrollmentid2 = new set<id> ();
         setprogEnrollmentid2.add(progEnrollment2.id);
-      	List<hed__Program_Enrollment__c> pewhyflg1 = NES_BusinessLogicUtils.calculateWhyFlagged(setprogEnrollmentid2);
+        List<hed__Program_Enrollment__c> pewhyflg1 = NES_BusinessLogicUtils.calculateWhyFlagged(setprogEnrollmentid2);
        for(hed__Program_Enrollment__c hpc1 :pewhyflg1)
        
-       	system.assertNotEquals(False, pewhyflg[0].WhyFlagged__c.contains('{Special Education}'));
-       	List<Annual_Student_Information__c> valReturns=NES_BusinessLogicUtils.calculateAutomatedPlacementProcess(pids,asisRecords);
+        system.assertNotEquals(False, pewhyflg[0].WhyFlagged__c.contains('{Special Education}'));
+        List<Annual_Student_Information__c> valReturns=NES_BusinessLogicUtils.calculateAutomatedPlacementProcess(pids,asisRecords);
         Test.stopTest();
         
         
@@ -1278,37 +1278,37 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         hed__Program_Enrollment__c programEnrollment = [Select Id from hed__Program_Enrollment__c WHERE Status__c = 'In Progress' limit 1];//added by anitha
         School_Year__c currentSchoolYear = [Select Id from School_Year__c where Name = '2018-2019' limit 1];
         Annual_Household_Information__c currentAHI = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI.Income_Opt_Out_Options__c ='Yes';
+        currentAHI.Income_Opt_Out_Options__c ='Yes';
         
         Annual_Household_Information__c currentAHI1 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI1.Income_Opt_Out_Options__c ='Yes';
+        currentAHI1.Income_Opt_Out_Options__c ='Yes';
         currentAHI1.Total_Gross_HH_Income__c=1;
         currentAHI1.Number_HH_Children__c=10;
         currentAHI1.Number_HH_Adults__c=10;
        
         Annual_Household_Information__c currentAHI2 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI2.Income_Opt_Out_Options__c ='Yes';
+        currentAHI2.Income_Opt_Out_Options__c ='Yes';
         currentAHI2.Total_Gross_HH_Income__c=122500;
         currentAHI2.Number_HH_Children__c=10;
         currentAHI2.Number_HH_Adults__c=10;
         
         Annual_Household_Information__c currentAHI3 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI3.Income_Opt_Out_Options__c ='Yes';
+        currentAHI3.Income_Opt_Out_Options__c ='Yes';
         currentAHI3.Total_Gross_HH_Income__c=174310;
         currentAHI3.Number_HH_Children__c=10;
         currentAHI3.Number_HH_Adults__c=10;
         
         Annual_Household_Information__c currentAHI4 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI4.Income_Opt_Out_Options__c ='I certify that our household does not qualify';
+        currentAHI4.Income_Opt_Out_Options__c ='I certify that our household does not qualify';
         
         Annual_Household_Information__c currentAHI5 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
             currentAHI5.Income_Opt_Out_Options__c = 'I choose not to provide my income information'; 
         
         Annual_Household_Information__c currentAHI6 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		//currentAHI6.Income_Opt_Out_Options__c = null;
+        //currentAHI6.Income_Opt_Out_Options__c = null;
         
         Annual_Household_Information__c currentAHI7 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI7.HH_Has_Food_Stamp_Recipient__c ='Yes';
+        currentAHI7.HH_Has_Food_Stamp_Recipient__c ='Yes';
        
         Household_Income__c currentHI = Peak_TestUtils.createHouseholdIncome(programEnrollment.Id, currentSchoolYear.Id, false);
         currentHI.HHFosterChild__c = 'Yes';
@@ -1319,7 +1319,7 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         ahiList.add(currentAHI1);
         ahiList.add(currentAHI2);
         ahiList.add(currentAHI3);
-		ahiList.add(currentAHI4); 
+        ahiList.add(currentAHI4); 
         ahiList.add(currentAHI5); 
         ahiList.add(currentAHI6);
         ahiList.add(currentAHI7);
@@ -1329,7 +1329,7 @@ hed__Program_Enrollment__c progEnrollmentWithStatus = Peak_TestUtils.createProgr
         currentAHI.Total_Gross_HH_Income__c =10;
         NES_ECACompletion.shouldRunCompletion = true; 
         NES_Constants.runAssignment = true;
-		update currentAHI;
+        update currentAHI;
         currentAHI.Income_Opt_Out_Options__c = system.label.NES_AHI_Income_Opt;//added by jagadeesh - user story : 117580 
         update currentAHI;//added by jagadeesh - user story : 117580 
         

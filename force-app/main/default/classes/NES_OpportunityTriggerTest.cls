@@ -58,7 +58,7 @@ Private class NES_OpportunityTriggerTest {
         opportunity3.PreferredStartDate__c = System.today().addDays(-7);
         opportunity3.Semester_Indicator__c = 'Second';
         opportunity3.Program_Enrollment__c = programEnrollmentWithEnrollment.Id;
-		opportunity3.Semester_Indicator__c = 'First';
+        opportunity3.Semester_Indicator__c = 'First';
         opportunity3.Final_Semester_Indicator__c = '';
         Insert opportunity3;
 
@@ -438,7 +438,7 @@ Private class NES_OpportunityTriggerTest {
         System.assertNotEquals(enrollment1.Enrollment_Date__c, progEnrollment2.HouseholdEnrollmentDate__c);
 
     }
-	
+    
     Static testMethod void houseHoldEnrollmentDateTestCase3() {
         Test.StartTest();
         User portuser = [Select Id,ContactId FROM USER Where Username = 'portalUser@gmail.com'];

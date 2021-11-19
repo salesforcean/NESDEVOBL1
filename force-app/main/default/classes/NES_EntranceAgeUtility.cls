@@ -22,7 +22,7 @@ public without sharing class  NES_EntranceAgeUtility {
     public static final String TOO_OLD_OTHER = 'Too old - other options';
     public static final String PENDING_MORE_INFO = 'Pending - More Information Needed';
 
-	
+    
     static final String NA = 'NA';
     public static final String MORE_THAN_THREE_YEARS = 'More than three years ago';
     static final Set<String> LESS_THAN_THREE_YEARS_SET = new Set<String>{'Within the last year', 'Within the last two years',
@@ -45,7 +45,7 @@ public without sharing class  NES_EntranceAgeUtility {
         /*
  * 12/12/18 - Removed old Age Eligibility Logic US114797 (Andrew Sim)
          */
-		/* Mark Membrino 2/13/2020 Bug 137045  Some schools didn't like this opt out.
+        /* Mark Membrino 2/13/2020 Bug 137045  Some schools didn't like this opt out.
         if (!shouldCalculateAgeEligibility) {
             return;
         } else {
@@ -81,7 +81,7 @@ public without sharing class  NES_EntranceAgeUtility {
 
                         for(hed__Program_Enrollment__c programEnrollment : [SELECT Id, hed__Contact__c, Start_Year__c,
                                                                             hed__Account__c, Final_Grade_Level__c, EntranceAgeEligibilityOverride__c,
-																			EntranceAgeEligibilitySystem__c, EntranceAgeEligibilityFinal__c
+                                                                            EntranceAgeEligibilitySystem__c, EntranceAgeEligibilityFinal__c
                                                                             FROM hed__Program_Enrollment__c
                                                                             WHERE hed__Contact__c IN: contactIds and Status__c = 'In Progress']){
 
@@ -105,7 +105,7 @@ public without sharing class  NES_EntranceAgeUtility {
                         for(hed__Program_Enrollment__c programEnrollment : [SELECT Id, hed__Contact__c, Start_Year__c,
                                                                             hed__Account__c, Final_Grade_Level__c, EntranceAgeEligibilityOverride__c,
                                                                             EntranceAgeEligibilitySystem__c, EntranceAgeEligibilityFinal__c
-																			FROM hed__Program_Enrollment__c
+                                                                            FROM hed__Program_Enrollment__c
                                                                             WHERE Id IN: tempEnrollmentIds and Status__c = 'In Progress']){
 
                             tempEnrollments.add(programEnrollment);
@@ -128,7 +128,7 @@ public without sharing class  NES_EntranceAgeUtility {
                         for(hed__Program_Enrollment__c programEnrollment : [SELECT Id, hed__Contact__c, Start_Year__c,
                                                                             hed__Account__c, Final_Grade_Level__c, EntranceAgeEligibilityOverride__c,
                                                                             EntranceAgeEligibilitySystem__c, EntranceAgeEligibilityFinal__c
-																			FROM hed__Program_Enrollment__c
+                                                                            FROM hed__Program_Enrollment__c
                                                                             WHERE Id IN: tempEnrollmentIds and Status__c = 'In Progress']){
 
                             tempEnrollments.add(programEnrollment);
@@ -184,7 +184,7 @@ public without sharing class  NES_EntranceAgeUtility {
 
         System.debug(contactIds);
                
-	  // Added by CS Team Members - Rakesh & Sumanth to test the 101 SOQL Governer Limits work-around.
+      // Added by CS Team Members - Rakesh & Sumanth to test the 101 SOQL Governer Limits work-around.
        // List<Contact> currentContacts = [SELECT Id, Birthdate__c FROM Contact WHERE Id IN: contactIds];
        List<Contact> currentContacts = GenericSOQLQueries.contactDetails(contactIds);            
       // Ended by CS Team Members - Rakesh & Sumanth to test the 101 SOQL Governer Limits work-around.
@@ -231,7 +231,7 @@ public without sharing class  NES_EntranceAgeUtility {
 
         //Retrieve and populate the related Special_Education__c information in enrollmentSEMap
         Map<Id, Special_Education__c> enrollmentSEMap = new Map<Id, Special_Education__c>();
-		Map<Id,Id> enrollmentStartYearMap = new Map<Id,Id> ();
+        Map<Id,Id> enrollmentStartYearMap = new Map<Id,Id> ();
 
         List<hed__Program_Enrollment__c> enrollments = [
                 SELECT Id, Program_Grade_Level__c, Program_Grade_Level__r.Grade_Level__r.Name, hed__Contact__c, hed__Contact__r.Birthdate__c, hed__Account__c,
@@ -244,21 +244,21 @@ public without sharing class  NES_EntranceAgeUtility {
                 FROM hed__Program_Enrollment__c WHERE Id IN: programEnrollmentIds
         ];
         for(hed__Program_Enrollment__c temp : enrollments){
-			enrollmentStartYearMap.put(temp.Id, temp.Start_Year__c);
+            enrollmentStartYearMap.put(temp.Id, temp.Start_Year__c);
             if(temp.Special_Educations__r != null && temp.Special_Educations__r.size() > 0){
                 enrollmentSEMap.put(temp.Id, temp.Special_Educations__r[0]);
             }
         }
 
-		Map<Id, String> enrollmentTransKAckMap = new Map<Id,String> ();
-		//Mark Membrino 11/15/2019 Added as part of Gap Analysis Story 118665
-		//Iterate over all the ASIs for any of the enrollments we are working on and find the one
-		//for this year and save the Transitional Kindergarden Acknowledgement to a map.
-		for (Annual_Student_Information__c asi : [SELECT TransitionalKAcknowledgement__c, Program_Enrollment__c, School_Year__c FROM Annual_Student_Information__c WHERE  Program_Enrollment__c IN: programEnrollmentIds]) {
-			id thisPEsStartYear = enrollmentStartYearMap.get(asi.Program_Enrollment__c);
-			if (asi.School_Year__c == thisPEsStartYear && !enrollmentTransKAckMap.containsKey(asi.Program_Enrollment__c))
-				enrollmentTransKAckMap.put(asi.Program_Enrollment__c, asi.TransitionalKAcknowledgement__c);
-		}
+        Map<Id, String> enrollmentTransKAckMap = new Map<Id,String> ();
+        //Mark Membrino 11/15/2019 Added as part of Gap Analysis Story 118665
+        //Iterate over all the ASIs for any of the enrollments we are working on and find the one
+        //for this year and save the Transitional Kindergarden Acknowledgement to a map.
+        for (Annual_Student_Information__c asi : [SELECT TransitionalKAcknowledgement__c, Program_Enrollment__c, School_Year__c FROM Annual_Student_Information__c WHERE  Program_Enrollment__c IN: programEnrollmentIds]) {
+            id thisPEsStartYear = enrollmentStartYearMap.get(asi.Program_Enrollment__c);
+            if (asi.School_Year__c == thisPEsStartYear && !enrollmentTransKAckMap.containsKey(asi.Program_Enrollment__c))
+                enrollmentTransKAckMap.put(asi.Program_Enrollment__c, asi.TransitionalKAcknowledgement__c);
+        }
 
         //iterate the program enrollment records and populate the EntranceAgeEligibility__c
         for(hed__Program_Enrollment__c programEnrollment : enrollments){
@@ -274,11 +274,11 @@ public without sharing class  NES_EntranceAgeUtility {
             Date possiblyTooOldEndOther;
             Date possiblyTooOldStartOtherSpecial;
             Date possiblyTooOldEndOtherSpecial;
-			Date acedemicProgramTooYoungCutoff;
-			Boolean acedemicProgramOffersTransK;
+            Date acedemicProgramTooYoungCutoff;
+            Boolean acedemicProgramOffersTransK;
             String iepLastUpdated = '';
             String grade = programEnrollment.Program_Grade_Level__r.Grade_Level__r.Name;
-			Boolean isThereASpecEdRec = false;
+            Boolean isThereASpecEdRec = false;
 
             System.debug(contactDetailMap);
             System.debug(contactDetailMap.containsKey(programEnrollment.hed__Contact__c));
@@ -310,18 +310,18 @@ public without sharing class  NES_EntranceAgeUtility {
                 possiblyTooOldStartOtherSpecial = accountDetailMap.get(programEnrollment.hed__Account__c).Too_Old_Other_Options_Start_SPED__c;
                 possiblyTooOldEndOtherSpecial = accountDetailMap.get(programEnrollment.hed__Account__c).Too_Old_Other_Options_End_SPED__c;
                 acedemicProgramTooYoungCutoff = accountDetailMap.get(programEnrollment.hed__Account__c).Too_Young_Cutoff__c;
-				acedemicProgramOffersTransK = accountDetailMap.get(programEnrollment.hed__Account__c).OffersTransitionalK__c;
+                acedemicProgramOffersTransK = accountDetailMap.get(programEnrollment.hed__Account__c).OffersTransitionalK__c;
             }
             //End
             if(enrollmentSEMap.containsKey(programEnrollment.Id)){
                 iepLastUpdated = enrollmentSEMap.get(programEnrollment.Id).IEPLastUpdated__c;
-				isThereASpecEdRec = true;
+                isThereASpecEdRec = true;
             }
             System.debug('==iepLastUpdated==='+iepLastUpdated);
             System.debug('==birthdate==='+birthdate);
             if( (!isThereASpecEdRec) ||
-				(isThereASpecEdRec && String.isBlank(enrollmentSEMap.get(programEnrollment.Id).IEPHistory__c)) ||
-			    (isThereASpecEdRec && enrollmentSEMap.get(programEnrollment.Id).IEPHistory__c == 'Yes' && String.isBlank(iepLastUpdated) ) ){
+                (isThereASpecEdRec && String.isBlank(enrollmentSEMap.get(programEnrollment.Id).IEPHistory__c)) ||
+                (isThereASpecEdRec && enrollmentSEMap.get(programEnrollment.Id).IEPHistory__c == 'Yes' && String.isBlank(iepLastUpdated) ) ){
                 System.debug('In PENDING_MORE_INFO');
                 programEnrollment.EntranceAgeEligibilitySystem__c = PENDING_MORE_INFO;
             }else if(birthdate == null){
@@ -329,7 +329,7 @@ public without sharing class  NES_EntranceAgeUtility {
                 programEnrollment.EntranceAgeEligibilitySystem__c = NOT_ELIGIBLE_NO_BIRTHDAY;
             }else if(currentYearIds.contains(programEnrollment.Start_Year__c)){
                 if(gradeLevel != null && (   (gradeLevel.MinBirthdate__c != null && birthdate > gradeLevel.MinBirthdate__c)
-										  || (gradeLevel.MinBirthdate__c == null && birthdate > acedemicProgramTooYoungCutoff) ) ){
+                                          || (gradeLevel.MinBirthdate__c == null && birthdate > acedemicProgramTooYoungCutoff) ) ){
  
                     programEnrollment.EntranceAgeEligibilitySystem__c = TOO_YOUNG;
                 }else if((maxBirthDate != null &&
@@ -342,17 +342,17 @@ public without sharing class  NES_EntranceAgeUtility {
                          gradeLevel.TooYoung_OtherOptions_End__c != null &&
                          birthdate >= gradeLevel.TooYoung_OtherOptions_Start__c &&
                          birthdate <= gradeLevel.TooYoung_OtherOptions_End__c){
-					if (!acedemicProgramOffersTransK)  //School does not offer trans K so put the in the too young bucket.
-						programEnrollment.EntranceAgeEligibilitySystem__c = TOO_YOUNG_OTHER;
-					else  //School does offer Trans K so find out if the family as agreed to accept it.
-					{
-						if (String.isBlank(enrollmentTransKAckMap.get(programEnrollment.Id)))
-							programEnrollment.EntranceAgeEligibilitySystem__c = PENDING_MORE_INFO;
-						else if (enrollmentTransKAckMap.get(programEnrollment.Id) == 'Yes')
-							programEnrollment.EntranceAgeEligibilitySystem__c = ELIGIBLE;
-						else
-							programEnrollment.EntranceAgeEligibilitySystem__c = TOO_YOUNG;
-					}
+                    if (!acedemicProgramOffersTransK)  //School does not offer trans K so put the in the too young bucket.
+                        programEnrollment.EntranceAgeEligibilitySystem__c = TOO_YOUNG_OTHER;
+                    else  //School does offer Trans K so find out if the family as agreed to accept it.
+                    {
+                        if (String.isBlank(enrollmentTransKAckMap.get(programEnrollment.Id)))
+                            programEnrollment.EntranceAgeEligibilitySystem__c = PENDING_MORE_INFO;
+                        else if (enrollmentTransKAckMap.get(programEnrollment.Id) == 'Yes')
+                            programEnrollment.EntranceAgeEligibilitySystem__c = ELIGIBLE;
+                        else
+                            programEnrollment.EntranceAgeEligibilitySystem__c = TOO_YOUNG;
+                    }
                 }else if((possiblyOldStartDate != null && possiblyOldEndDate != null &&
                          birthdate >= possiblyOldStartDate && birthdate <= possiblyOldEndDate &&
                          (String.isBlank(iepLastUpdated) || (iepLastUpdated == MORE_THAN_THREE_YEARS))) ||

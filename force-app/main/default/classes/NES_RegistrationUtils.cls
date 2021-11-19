@@ -12,7 +12,7 @@ public without sharing class NES_RegistrationUtils {
         HttpRequest request = new HttpRequest();
         request.setMethod(method);
         request.setEndpoint(endpoint);
-		request.setTimeout(120000);
+        request.setTimeout(120000);
 
         if (method == 'POST') {
             request.setHeader('Content-Type', 'application/json');
@@ -51,8 +51,8 @@ public without sharing class NES_RegistrationUtils {
         newAccount.RecordTypeId = houseHoldRecordTypeId;
         newAccount.OwnerId = System.Label.NES_Household_OwnerId;
         newAccount.Email__c = emailString;
-		newAccount.ShippingState  = state;
-		newAccount.ShippingPostalCode = zipCode;
+        newAccount.ShippingState  = state;
+        newAccount.ShippingPostalCode = zipCode;
         try {
             insert newAccount;
         } catch(Exception e) {logger.logException('createRecords', e); logger.saveLogs();throw e;
@@ -145,18 +145,18 @@ public without sharing class NES_RegistrationUtils {
         newContact.Email = emailString;
 
         newContact.MiddleName = mName;
-		newContact.Suffix = suffix;
-		newContact.hed__PreferredPhone__c = phoneType;
-		if (phoneType == 'Home')
-			newContact.HomePhone = phone;
-		else if (phoneType == 'Work')
-			newContact.hed__WorkPhone__c = phone;
-		else if (phoneType == 'Mobile')
-			newContact.MobilePhone = phone;
-		else
-			newContact.OtherPhone = phone;
+        newContact.Suffix = suffix;
+        newContact.hed__PreferredPhone__c = phoneType;
+        if (phoneType == 'Home')
+            newContact.HomePhone = phone;
+        else if (phoneType == 'Work')
+            newContact.hed__WorkPhone__c = phone;
+        else if (phoneType == 'Mobile')
+            newContact.MobilePhone = phone;
+        else
+            newContact.OtherPhone = phone;
 
-		newContact.HasOptedOutOfSMS__c = smsOptOut;
+        newContact.HasOptedOutOfSMS__c = smsOptOut;
         
         if (recordTypeId != null && recordTypeId != '') {
             newContact.RecordTypeId = recordTypeId;

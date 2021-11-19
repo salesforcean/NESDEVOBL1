@@ -24,8 +24,8 @@ private with sharing class NES_UserTriggerHandlerTest {
             // force completion of any async processing
             Test.stopTest();
 
-           	// retrieve values and assert
-           	Utility_Settings__c objUser = [select Id, SetupOwnerId, Document_Download__c from Utility_Settings__c where SetupOwnerId = :testUser.Id];  
+            // retrieve values and assert
+            Utility_Settings__c objUser = [select Id, SetupOwnerId, Document_Download__c from Utility_Settings__c where SetupOwnerId = :testUser.Id];  
             system.assertEquals(true, objuser.Document_Download__c);
         }
     } 

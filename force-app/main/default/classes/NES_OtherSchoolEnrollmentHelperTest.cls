@@ -85,7 +85,7 @@ public class NES_OtherSchoolEnrollmentHelperTest {
         //
         Test.startTest(); 
         NES_OtherSchoolEnrollmentHelper.getSchoolsToAttend(studentid.Id);  
-        NES_OtherSchoolEnrollmentHelper.getSchoolYears(institutionalAccount.Name);	
+        NES_OtherSchoolEnrollmentHelper.getSchoolYears(institutionalAccount.Name);  
         NES_OtherSchoolEnrollmentHelper.getGradeLevels(institutionalAccount.Name,  schoolYears[0].Name);
         NES_OtherSchoolEnrollmentHelper.otherSchoolEnrollment(studentid.Id,institutionalAccount.Name,  schoolYears[0].Name,gradeLevel.Name,'application',true);  
         Test.stopTest();

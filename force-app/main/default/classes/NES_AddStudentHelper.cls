@@ -689,7 +689,7 @@ public without sharing class NES_AddStudentHelper {
                         affiliationRecord.Status__c = 'In Progress';                                             
                     }else if(!(String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c))){ 
                         affiliationRecord.Status__c = 'Not Applicable';
-                        TASInprogress = 'Y';
+                        //TASInprogress = 'Y';
                     }
                     if (i!= 1 && String.isBlank(relationships[i].Child_Enrollment_Component__r.Assignment_Logic__c)) { 
                         affiliationRecord.Enrollment_Component__c = relationships[i].Child_Enrollment_Component__c;
@@ -706,6 +706,7 @@ public without sharing class NES_AddStudentHelper {
                     ecAffiliationsToInsert.add(affiliationRecord);
                 }
 
+                system.debug('==>ecAffiliationsToInsert '+ecAffiliationsToInsert);
                  // End for Userstory 451172- DK
  
       					//Add the rest of the stages that have no assignment logic.

@@ -2,8 +2,8 @@
     @class:         ECA_CriteriaEvaluator           
     @description:   Part of rewrite of the ECA assignment and completion logic, runs thru is_Dirty ECAs & setup ECA.Status__c based 
                     on EC.Assignment/Completion Logic & triggers parentStatusUpdate as well.
-	@author: 		Mark Membrino
-	@createdDate:   8/31/2020
+    @author:        Mark Membrino
+    @createdDate:   8/31/2020
 */
 public class ECA_CriteriaEvaluator {
 
@@ -15,7 +15,7 @@ public class ECA_CriteriaEvaluator {
     /**
      * Called by TriggerCode
      */
-    public static void processDirtyECAs	(
+    public static void processDirtyECAs (
         List<Enrollment_Component_Affiliation__c> newList, 
         Map<Id, Enrollment_Component_Affiliation__c> newMap, 
         Map<Id, Enrollment_Component_Affiliation__c> oldMap
@@ -42,7 +42,7 @@ public class ECA_CriteriaEvaluator {
                     eca.is_Dirty__c != oldMap.get(eca.Id).is_Dirty__c
                 )
             ) {
-				system.debug('===> is_Dirty__c '+eca.is_Dirty__c);
+                system.debug('===> is_Dirty__c '+eca.is_Dirty__c);
                 dirtyECAs.add(eca);
                 dirtyPEIds.add(eca.Program_Enrollment__c);
                 dirtyECs.put(eca.Enrollment_Component__c, null);
@@ -61,7 +61,7 @@ public class ECA_CriteriaEvaluator {
        // Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>([Select Id, Enrollment_Type__c from hed__Program_Enrollment__c where id IN:dirtyPEIds]);
         // added by maddileti for defect 430511
         //Set<id> allPEIds = new Set<id>(dirtyPEIds);
-	    List<hed__Program_Enrollment__c> PEList = GenericSOQLQueries.programEnrollmentDetails(new Set<id>(dirtyPEIds));
+        List<hed__Program_Enrollment__c> PEList = GenericSOQLQueries.programEnrollmentDetails(new Set<id>(dirtyPEIds));
        Map<Id, hed__Program_Enrollment__c> mapPEWithEnrollmentType = new Map<Id, hed__Program_Enrollment__c>(PEList);
         // End by maddileti for defect 430511
         if (dirtyECAs.size()==0)
@@ -94,7 +94,7 @@ public class ECA_CriteriaEvaluator {
 
         for (Enrollment_Component_Affiliation__c eca : dirtyECAs) 
         {        
-			system.debug('ECA form Id here*******'+eca.Id);
+            system.debug('ECA form Id here*******'+eca.Id);
             
             ec = dirtyECs.get(eca.Enrollment_Component__c);
             eccCriteria = mapECtoECCriteria.get(ec.Id);
@@ -166,7 +166,7 @@ public class ECA_CriteriaEvaluator {
                     processedECAs.put(eca.Id, eca);
                 }
            }
-       	   
+           
             
             eca.is_Dirty__c = false;
         }
