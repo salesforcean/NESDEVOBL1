@@ -31,7 +31,9 @@ and Program_Enrollment__c objects
                                                                WHERE Program_Enrollment__c =: programEnrollmentId
                                                                AND Enrollment_Component__r.RecordType.Name =: NES_DashboardUtilities.STAGE_RT
                                                                AND status__c <> 'Not Applicable']){
-                                                                   enrollmentComponents.add(eca);
+                                                                   
+                                                                       enrollmentComponents.add(eca);
+                                                                   
                                                                }
                 System.debug('NDEBUG  ECAs are :::::' + enrollmentComponents);
                 return enrollmentComponents;

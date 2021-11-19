@@ -130,7 +130,8 @@ public without sharing class ECA_HierarchyStatusUpdate
             if(childEC != null) {
             
             Enrollment_Component_Affiliation__c childECA = queriedECAs.get(peData.ecToECAMap.get(childEC)); // given EC.Id fetch PE.ECA
-            
+          
+                
             System.debug('ChildECA=========>'+childECA);
             if(childECA != null){
                 string childStatus = ((toProcessECAs!=null && toProcessECAs.get(childECA.Id)!=null) ? toProcessECAs.get(childECA.Id).Status__c : childECA.Status__c);
@@ -147,8 +148,8 @@ public without sharing class ECA_HierarchyStatusUpdate
                 allComplete = false;
             }
             
-            if(childStatus != 'Not Started' && childStatus != 'Not Applicable') //Check that all ECAs regardless of whether they are required or not are not started
-             //if(childStatus != 'Not Started' || childStatus != 'Not Applicable') // Commented above if and added for User story 451172 -- by DK
+            //if(childStatus != 'Not Started' && childStatus != 'Not Applicable') //Check that all ECAs regardless of whether they are required or not are not started
+             if(childStatus != 'Not Started' || childStatus != 'Not Applicable') // Commented above if and added for User story 451172 -- by DK
             {
                 allNA = false; 
             } 

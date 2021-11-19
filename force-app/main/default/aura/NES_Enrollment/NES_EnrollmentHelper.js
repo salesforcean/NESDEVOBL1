@@ -387,15 +387,19 @@
                     console.log('#### Returned Response' + returnedResponse);
                     for(var i=0;i<returnedResponse.length; i++) {
                         if(returnedResponse[i].Order__c != null) {
+                            //alert('returnedResponse[i]'+returnedResponse[i].Order__c);
                             stages[i] = returnedResponse[i];
                         } else {
                             noOrderStages.push(returnedResponse[i])
+                            //alert('returnedResponse[i]'+returnedResponse[i].Order__c);
                         }
                         if(returnedResponse[i].Status__c == 'In Progress') {
+                            //alert('returnedResponse[i].Status__c' +returnedResponse[i].Status__c);
                             var indexVar = i;
                             component.set("v.currentStep", indexVar);
                             component.set("v.currentStageId",returnedResponse[i].Enrollment_Component__c);
                         } else if(returnedResponse[i].Status__c == 'Complete') {
+                            //alert('returnedResponse[i].Status__c' +returnedResponse[i].Status__c);
                             completeTally++;
                         }
                     }
@@ -407,7 +411,7 @@
                         helper.goToDashboard();
                     }
                 }
-
+				//alert(noOrderStages.length);
                 if(noOrderStages.length > 0) {
                     noOrderStages.forEach(stage => {
                         stages.push(stage);

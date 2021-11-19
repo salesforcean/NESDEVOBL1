@@ -6,9 +6,9 @@
     <columns>Component_Type__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>External_Id__c</field>
+        <field>RECORDTYPE</field>
         <operation>equals</operation>
-        <value>ALL:Flag_9</value>
+        <value>Enrollment_Component__c.Hidden_Input</value>
     </filters>
     <label>All Components</label>
 </ListView>

@@ -47,12 +47,12 @@ public class NES_AnnualHouseholdInfoBusinessLogic {
                             HH_Has_Foster_Children__c, Income_Opt_Out_Options__c,
                             Program_Enrollment__r.Start_Year__r.id,
                             School_Year__c,
-               				 Program_Enrollment__r.hed__Account__r.Fed_Elig_Inc_Free_Meals_HH_Size_of_1__c,// added by jagadeesh - user story : 117580
-                    		Program_Enrollment__r.hed__Account__r.Fed_Poverty_Elig_Inc_Addl_Per_Person__c, // added by jagadeesh - user story : 117580
-                   			 Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Free_Meals_HH_Size_of_1__c,// added by jagadeesh - user story : 117580
-                   			 Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Free_Meals_Addl_Per_Person__c,// added by jagadeesh - user story : 117580
-                   			 Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Red_Meals_HH_Size_of_1__c, // added by jagadeesh - user story : 117580
-                   			 Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Red_Meals_Addl_Per_Person__c // added by jagadeesh - user story : 117580
+                             Program_Enrollment__r.hed__Account__r.Fed_Elig_Inc_Free_Meals_HH_Size_of_1__c,// added by jagadeesh - user story : 117580
+                            Program_Enrollment__r.hed__Account__r.Fed_Poverty_Elig_Inc_Addl_Per_Person__c, // added by jagadeesh - user story : 117580
+                             Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Free_Meals_HH_Size_of_1__c,// added by jagadeesh - user story : 117580
+                             Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Free_Meals_Addl_Per_Person__c,// added by jagadeesh - user story : 117580
+                             Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Red_Meals_HH_Size_of_1__c, // added by jagadeesh - user story : 117580
+                             Program_Enrollment__r.hed__Account__r.FARM_Elig_Inc_Red_Meals_Addl_Per_Person__c // added by jagadeesh - user story : 117580
 
                     FROM Annual_Household_Information__c
                     WHERE Program_Enrollment__c IN:peIdSet AND Id IN:ahiIdSet

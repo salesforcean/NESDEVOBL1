@@ -676,12 +676,10 @@ public without sharing class NES_AddStudentHelper {
                 affiliationRecord2.Order__c = relationships[0].Order__c;
                 ecAffiliationsToInsert.add(affiliationRecord2);
 
-                    
-
 
                		 //Added for Userstory 451172- DK     
-               		 String TASInprogress = 'N';       
-					//Id processIdstage = Schema.SObjectType.Enrollment_Component__c.getRecordTypeInfosByName().get('Stage').getRecordTypeId();
+               		String TASInprogress = 'N';       
+					
                        for (Integer i = 1; i < relationships.size(); i++) {
                     Enrollment_Component_Affiliation__c affiliationRecord = new Enrollment_Component_Affiliation__c();
                     if(i==1){

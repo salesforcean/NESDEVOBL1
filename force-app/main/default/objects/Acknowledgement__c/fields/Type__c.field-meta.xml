@@ -180,6 +180,11 @@
                 <default>false</default>
                 <label>Program Expectations</label>
             </value>
+            <value>
+                <fullName>School Directory Inclusion</fullName>
+                <default>false</default>
+                <label>School Directory Inclusion</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -73,11 +73,11 @@
             }
         });
     $A.enqueueAction(action);
-    },
+    }
 		// End for DEFECT 494868- DK
 					
 		// Added for DEFECT 495363- DK 
-    helperNonOpenApp : function(component, event, helper, peId){
+    /*helperNonOpenApp : function(component, event, helper, peId){
         var action = component.get("c.nonOpenAppUpdate"); 
         action.setParams({
             peId : peId
@@ -90,7 +90,7 @@
             }
         });
     $A.enqueueAction(action);
-    }
+    }*/
     
     // End for DEFECT 495363- DK 
         

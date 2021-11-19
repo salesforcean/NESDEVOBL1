@@ -270,7 +270,8 @@
                 });
                 
                 
-                    setTimeout(function(){ $A.get('e.force:refreshView').fire(); },19000); // Added for DEFECT 494868- DK
+                setTimeout(function(){ $A.get('e.force:refreshView').fire(); },15000); // Added for DEFECT 494868- DK
+                $A.get('e.force:refreshView').fire(); // Added for DEFECT 494868- DK
                
              
                 appEvent.fire();

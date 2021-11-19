@@ -56,37 +56,37 @@ public class NES_AnnualHouseholdInfoBusinessLogicTest {
         hed__Program_Enrollment__c programEnrollment = [Select Id from hed__Program_Enrollment__c WHERE Status__c = 'In Progress' limit 1];//added by anitha
         School_Year__c currentSchoolYear = [Select Id from School_Year__c where Name = '2018-2019' limit 1];
         Annual_Household_Information__c currentAHI = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI.Income_Opt_Out_Options__c ='Yes';
+        currentAHI.Income_Opt_Out_Options__c ='Yes';
         
         Annual_Household_Information__c currentAHI1 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI1.Income_Opt_Out_Options__c ='Yes';
+        currentAHI1.Income_Opt_Out_Options__c ='Yes';
         currentAHI1.Total_Gross_HH_Income__c=1;
         currentAHI1.Number_HH_Children__c=10;
         currentAHI1.Number_HH_Adults__c=10;
        
         Annual_Household_Information__c currentAHI2 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI2.Income_Opt_Out_Options__c ='Yes';
+        currentAHI2.Income_Opt_Out_Options__c ='Yes';
         currentAHI2.Total_Gross_HH_Income__c=122500;
         currentAHI2.Number_HH_Children__c=10;
         currentAHI2.Number_HH_Adults__c=10;
         
         Annual_Household_Information__c currentAHI3 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI3.Income_Opt_Out_Options__c ='Yes';
+        currentAHI3.Income_Opt_Out_Options__c ='Yes';
         currentAHI3.Total_Gross_HH_Income__c=174310;
         currentAHI3.Number_HH_Children__c=10;
         currentAHI3.Number_HH_Adults__c=10;
         
         Annual_Household_Information__c currentAHI4 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI4.Income_Opt_Out_Options__c ='I certify that our household does not qualify';
+        currentAHI4.Income_Opt_Out_Options__c ='I certify that our household does not qualify';
         
         Annual_Household_Information__c currentAHI5 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI5.Income_Opt_Out_Options__c = system.label.NES_AHI_IncomeOptOut_Value; 
+        currentAHI5.Income_Opt_Out_Options__c = system.label.NES_AHI_IncomeOptOut_Value; 
         
         Annual_Household_Information__c currentAHI6 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI6.Income_Opt_Out_Options__c = null;
+        currentAHI6.Income_Opt_Out_Options__c = null;
         
         Annual_Household_Information__c currentAHI7 = Peak_TestUtils.createAnnualHouseholdInformation( programEnrollment.Id, currentSchoolYear.Id, false);
-		currentAHI7.HH_Has_Food_Stamp_Recipient__c ='Yes';
+        currentAHI7.HH_Has_Food_Stamp_Recipient__c ='Yes';
        
         Household_Income__c currentHI = Peak_TestUtils.createHouseholdIncome(programEnrollment.Id, currentSchoolYear.Id, false);
         currentHI.HHFosterChild__c = 'Yes';
@@ -96,7 +96,7 @@ public class NES_AnnualHouseholdInfoBusinessLogicTest {
         ahiList.add(currentAHI1);
         ahiList.add(currentAHI2);
         ahiList.add(currentAHI3);
-		ahiList.add(currentAHI4); 
+        ahiList.add(currentAHI4); 
         ahiList.add(currentAHI5); 
         ahiList.add(currentAHI6);
         ahiList.add(currentAHI7);
@@ -107,7 +107,7 @@ public class NES_AnnualHouseholdInfoBusinessLogicTest {
         currentAHI.Total_Gross_HH_Income__c =10;
         NES_ECACompletion.shouldRunCompletion = true; 
         NES_Constants.runAssignment = true;
-		update currentAHI;
+        update currentAHI;
         currentAHI.Income_Opt_Out_Options__c = system.label.NES_AHI_Income_Opt;//added by jagadeesh - user story : 117580 
         update currentAHI;//added by jagadeesh - user story : 117580 
         
